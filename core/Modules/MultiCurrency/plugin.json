@@ -1,0 +1,16 @@
+{
+    "id": "multi-currency",
+    "name": "Multi-Currency",
+    "version": "1.0.0",
+    "description": "Lets visitors browse and checkout in their preferred currency. Tenants choose which currencies to accept; exchange rates update automatically.",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "tenant",
+    "pricing": "free",
+    "min_platform_version": "2.5.0",
+    "main": "src/MultiCurrencyPlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null,
+    "settings_route": "tenant.admin.multi-currency.settings"
+}

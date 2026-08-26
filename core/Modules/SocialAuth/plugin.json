@@ -1,0 +1,15 @@
+{
+    "id": "social-auth",
+    "name": "Social Auth",
+    "version": "1.0.0",
+    "description": "Google OAuth login for landlord and tenant frontend users",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "both",
+    "pricing": "free",
+    "min_platform_version": "1.0.0",
+    "main": "src/SocialAuthPlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null
+}

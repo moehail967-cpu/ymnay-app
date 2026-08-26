@@ -1,0 +1,241 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "container-tn-hero-001",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-tn-hero-001",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-tn-hero-001", "type": "tinynest_hero_section" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "container-tn-cats-001",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-tn-cats-001",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-tn-cats-001", "type": "tinynest_category_grid" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#FFF5F8"
+                }
+            },
+            {
+                "id": "container-tn-prod-001",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-tn-prod-001",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-tn-prod-001", "type": "tinynest_featured_products" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#FCE4EE"
+                }
+            },
+            {
+                "id": "container-tn-promo-001",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-tn-promo-001",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-tn-promo-001", "type": "tinynest_promo_banner" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#F472B6",
+                    "contentWidth": "full_width"
+                }
+            },
+            {
+                "id": "container-tn-news-001",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-tn-news-001",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-tn-news-001", "type": "tinynest_newsletter" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "widget-tn-hero-001": {
+            "type": "tinynest_hero_section",
+            "container_id": "container-tn-hero-001",
+            "column_id": "column-tn-hero-001",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "hero_image": "@media:tinynest-hero-image"
+                    },
+                    "content": {
+                        "badge_text": "Trusted by 50,000+ Parents",
+                        "title": "Everything Your Little One Needs, All in One Place",
+                        "title_accent": "Needs",
+                        "subtitle": "Curated baby and toddler essentials from brands you can trust. Every product tested for safety, comfort, and quality.",
+                        "button_text": "Shop Baby",
+                        "button_url": {
+                            "id": null, "rel": [], "url": null, "text": null,
+                            "type": "external", "class": null, "title": null,
+                            "target": "_self",
+                            "utm_parameters": { "utm_term": null, "utm_medium": null, "utm_source": null, "utm_content": null, "utm_campaign": null },
+                            "custom_attributes": [],
+                            "responsive_behavior": { "mobile_target": "_self", "desktop_target": "_self" }
+                        },
+                        "button2_text": "Gift Registry",
+                        "button2_url": {
+                            "id": null, "rel": [], "url": null, "text": null,
+                            "type": "external", "class": null, "title": null,
+                            "target": "_self",
+                            "utm_parameters": { "utm_term": null, "utm_medium": null, "utm_source": null, "utm_content": null, "utm_campaign": null },
+                            "custom_attributes": [],
+                            "responsive_behavior": { "mobile_target": "_self", "desktop_target": "_self" }
+                        }
+                    }
+                },
+                "style": { "margin": "0", "padding": "0" },
+                "advanced": { "customCSS": null, "cssClasses": null },
+                "responsive": {}
+            }
+        },
+        "widget-tn-cats-001": {
+            "type": "tinynest_category_grid",
+            "container_id": "container-tn-cats-001",
+            "column_id": "column-tn-cats-001",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Shop by Category",
+                        "subtitle": "Find exactly what your little one needs"
+                    }
+                },
+                "style": { "margin": "0", "padding": "0" },
+                "advanced": { "customCSS": null, "cssClasses": null },
+                "responsive": {}
+            }
+        },
+        "widget-tn-prod-001": {
+            "type": "tinynest_featured_products",
+            "container_id": "container-tn-prod-001",
+            "column_id": "column-tn-prod-001",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "New Arrivals",
+                        "subtitle": "Freshly added baby essentials",
+                        "count": 8,
+                        "sort": "latest"
+                    }
+                },
+                "style": { "margin": "0", "padding": "0" },
+                "advanced": { "customCSS": null, "cssClasses": null },
+                "responsive": {}
+            }
+        },
+        "widget-tn-promo-001": {
+            "type": "tinynest_promo_banner",
+            "container_id": "container-tn-promo-001",
+            "column_id": "column-tn-promo-001",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Create Your Free Gift Registry",
+                        "subtitle": "Planning a baby shower? Let loved ones shop from your wish list. Simple, fun, and completely free to set up.",
+                        "button_text": "Start Registry",
+                        "button_url": {
+                            "id": null, "rel": [], "url": null, "text": null,
+                            "type": "external", "class": null, "title": null,
+                            "target": "_self",
+                            "utm_parameters": { "utm_term": null, "utm_medium": null, "utm_source": null, "utm_content": null, "utm_campaign": null },
+                            "custom_attributes": [],
+                            "responsive_behavior": { "mobile_target": "_self", "desktop_target": "_self" }
+                        }
+                    }
+                },
+                "style": { "margin": "0", "padding": "0" },
+                "advanced": { "customCSS": null, "cssClasses": null },
+                "responsive": {}
+            }
+        },
+        "widget-tn-news-001": {
+            "type": "tinynest_newsletter",
+            "container_id": "container-tn-news-001",
+            "column_id": "column-tn-news-001",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Join the TinyNest Family",
+                        "subtitle": "Get parenting tips, new arrivals and exclusive offers straight to your inbox.",
+                        "button_text": "Subscribe"
+                    }
+                },
+                "style": { "margin": "0", "padding": "0" },
+                "advanced": { "customCSS": null, "cssClasses": null },
+                "responsive": {}
+            }
+        }
+    }
+}

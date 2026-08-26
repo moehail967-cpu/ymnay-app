@@ -1,0 +1,201 @@
+/* ============================================================
+   VelvetLux — Luxury Fashion Theme (Light)
+   ============================================================ */
+@import url('https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+  --vl-plum:        #5C1F6B;
+  --vl-plum-deep:   #3D1248;
+  --vl-plum-light:  #F0E8F4;
+  --vl-champagne:   #C4A45E;
+  --vl-champagne-lt:#F5EDD0;
+  --vl-bg:          #F8F5F2;
+  --vl-white:       #FFFFFF;
+  --vl-dark:        #1A0820;
+  --vl-muted:       #7A6882;
+  --vl-border:      #E0D4E8;
+  --vl-radius:      2px;
+  --vl-radius-lg:   10px;
+  --vl-shadow:      0 16px 48px -8px rgba(92,31,107,.18);
+  --vl-shadow-sm:   0 4px 16px -4px rgba(92,31,107,.12);
+  --vl-font-head:   'Cormorant Garamond', Georgia, serif;
+  --vl-font-body:   'Montserrat', 'Helvetica Neue', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { background: var(--vl-bg); font-family: var(--vl-font-body); color: var(--vl-dark); margin: 0; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* ── Promo Bar ──────────────────── */
+.vl-promo-bar { background: var(--vl-plum); color: var(--vl-champagne-lt); text-align: center; padding: 10px 16px; font-size: 12px; font-weight: 400; letter-spacing: 1.5px; }
+.vl-promo-bar a { color: var(--vl-champagne); }
+.vl-logo-img{ width:168px!important; }
+/* ── Navbar ─────────────────────── */
+.vl-navbar { background: var(--vl-white); border-bottom: 1px solid var(--vl-border); padding: 18px 0; position: sticky; top: 0; z-index: 1000; }
+.vl-brand { font-family: var(--vl-font-head); font-size: 26px; font-weight: 500; color: var(--vl-dark); letter-spacing: 3px; font-style: italic; }
+.vl-brand span { color: var(--vl-champagne); }
+.vl-nav-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }
+.vl-nav-links a { font-size: 11px; font-weight: 500; color: var(--vl-muted); transition: color .2s; letter-spacing: 1.5px; text-transform: uppercase; }
+.vl-nav-links a:hover { color: var(--vl-plum); }
+.vl-navbar-logo-img { max-height: 46px; object-fit: contain; display: block; }
+/* Search — full border box */
+.vl-search { flex: 1; max-width: 320px; display: flex; align-items: center; border: 1px solid var(--vl-border); background: var(--vl-white); position: relative; }
+.vl-search-dropdown { display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: #fff; border: 1px solid var(--vl-border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,.12); z-index: 9999; list-style: none; margin: 0; padding: 6px 0; max-height: 380px; overflow-x: hidden; overflow-y: auto; }
+.vl-search-dropdown.open { display: block; }
+.vl-search-dropdown .product-suggestion-list-item { width: 100% !important; }
+.vl-search-dropdown .product-suggestion-list-link, .vl-search-dropdown li > a { display: flex; align-items: center; gap: 10px; padding: 8px 12px; text-decoration: none; color: var(--vl-dark, #1a1a1a); transition: background .15s; border-radius: 8px; margin: 0 4px; }
+.vl-search-dropdown .product-suggestion-list-link:hover, .vl-search-dropdown li > a:hover { background: rgba(0,0,0,.04); }
+.vl-search-dropdown .product-image { width: 44px; height: 44px; border-radius: 6px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--vl-border); }
+.vl-search-dropdown .product-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vl-search-dropdown .product-info { flex: 1; min-width: 0; }
+.vl-search-dropdown .product-info-top { margin: 0 !important; }
+.vl-search-dropdown .product-name, .vl-search-dropdown h6.product-name { display: block !important; font-size: 13px !important; font-weight: 600 !important; color: #1a1a1a !important; margin: 0 !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; line-height: 1.4 !important; }
+.vl-search-dropdown .price-update-through { display: flex !important; align-items: center; gap: 5px; margin-top: 2px; }
+.vl-search-dropdown .flash-price, .vl-search-dropdown .flash-prices { font-size: 12px !important; font-weight: 700; color: var(--vl-plum, #4A1C40); }
+.vl-search-dropdown .flash-old-prices { font-size: 11px !important; color: #aaa; text-decoration: line-through; }
+.vl-search-footer { border-top: 1px solid var(--vl-border) !important; margin-top: 6px; padding-top: 4px; }
+.vl-search-footer a { display: flex !important; align-items: center; justify-content: center; gap: 6px; padding: 8px 14px !important; margin: 0 !important; font-size: 12px; font-weight: 700; color: var(--vl-plum, #4A1C40) !important; text-decoration: none; transition: background .15s; }
+.vl-search-footer a:hover { background: rgba(0,0,0,.04) !important; }
+.vl-search-empty { display: flex !important; align-items: center; justify-content: center; padding: 20px 14px; font-size: 13px; color: #aaa; }
+.vl-search input { flex: 1; border: 0; background: transparent; padding: 8px 14px; font-size: 13px; font-family: var(--vl-font-body); outline: none; color: var(--vl-dark); }
+.vl-search input::placeholder { color: var(--vl-muted); }
+.vl-search button { background: transparent; color: var(--vl-muted); border: 0; padding: 0 12px; font-size: 16px; cursor: pointer; transition: color .2s; height: 100%; }
+.vl-search button:hover { color: var(--vl-plum); }
+.vl-icon-btn { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--vl-muted); cursor: pointer; transition: color .2s; position: relative; background: transparent; border: none; }
+.vl-icon-btn:hover { color: var(--vl-plum); }
+.vl-badge { position: absolute; top: 0; right: 0; background: var(--vl-champagne); color: #fff; font-size: 9px; font-weight: 700; width: 15px; height: 15px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+/* ── Buttons ────────────────────── */
+.vl-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 30px; font-family: var(--vl-font-body); font-size: 11px; font-weight: 500; cursor: pointer; border: 1px solid transparent; transition: all .3s; letter-spacing: 2px; text-transform: uppercase; }
+.vl-btn-plum { background: var(--vl-plum); color: #fff; border-color: var(--vl-plum); }
+.vl-btn-plum:hover { background: var(--vl-plum-deep); color: #fff; }
+.vl-btn-champagne { background: var(--vl-champagne); color: #fff; border-color: var(--vl-champagne); }
+.vl-btn-champagne:hover { background: #A8882E; color: #fff; }
+.vl-btn-outline { background: transparent; color: var(--vl-dark); border-color: var(--vl-dark); }
+.vl-btn-outline:hover { background: var(--vl-dark); color: #fff; }
+.vl-btn-outline-gold { background: transparent; color: var(--vl-champagne); border-color: var(--vl-champagne); }
+.vl-btn-outline-gold:hover { background: var(--vl-champagne); color: #fff; }
+.vl-btn-sm { padding: 9px 20px; font-size: 10px; }
+
+/* ── Section Headers ────────────── */
+.vl-section-tag { font-family: var(--vl-font-head); font-size: 15px; font-style: italic; color: var(--vl-champagne); display: block; margin-bottom: 8px; letter-spacing: .5px; }
+.vl-section-title { font-family: var(--vl-font-head); font-size: 40px; font-weight: 400; color: var(--vl-dark); margin-bottom: 6px; font-style: italic; letter-spacing: -.5px; }
+.vl-section-sub { font-size: 13px; color: var(--vl-muted); margin-bottom: 40px; letter-spacing: .5px; }
+.vl-divider { width: 40px; height: 1px; background: var(--vl-champagne); margin: 12px 0 32px; }
+
+/* ── Hero ───────────────────────── */
+.vl-hero { background: #F5F0EB; overflow: hidden; min-height: 580px; display: flex; align-items: stretch; }
+/*.vl-hero .container { display: flex; align-items: stretch; }*/
+.vl-hero-row { min-height: 580px; }
+.vl-hero-content { padding: 80px 48px 80px 0; max-width: 520px; }
+.vl-hero-eyebrow { font-family: var(--vl-font-head); font-size: 15px; font-style: italic; color: var(--vl-champagne); display: block; margin-bottom: 18px; letter-spacing: 1px; }
+.vl-hero-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 64px; font-weight: 400; color: var(--vl-dark); line-height: 1.08; margin-bottom: 0; font-style: italic; }
+.vl-hero-title span { color: var(--vl-champagne); font-style: italic; }
+.vl-hero-sub { font-size: 13px; color: var(--vl-muted); margin-bottom: 0; max-width: 400px; line-height: 1.9; letter-spacing: .5px; }
+/* Editorial image — portrait sized, not full column fill */
+.vl-hero-img-wrap { width: 520px;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+
+    /* Blob Shape */
+    border-radius: 58% 42% 35% 65% / 42% 35% 65% 58%;
+
+    background: #f5f5f5;
+    box-shadow: 0 30px 60px rgba(0,0,0,.12);
+
+    position: relative; }
+.vl-hero-editorial-img { width:100%;
+    object-fit:cover;
+    transition:.5s; }
+.vl-hero-img-wrap:hover .vl-hero-editorial-img{
+    transform:scale(1.08);
+}
+.vl-hero-img-placeholder { width: 100%; height: 100%; min-height: 580px; background: linear-gradient(160deg, var(--vl-plum-light), #E8D8F0); display: flex; align-items: center; justify-content: center; font-size: 130px; color: var(--vl-plum); opacity: .4; }
+
+/* ── Categories ─────────────────── */
+.vl-cat-card { background: var(--vl-white); border: 1px solid var(--vl-border); padding: 28px 16px 22px; text-align: center; transition: all .3s; cursor: pointer; display: block; }
+.vl-cat-card:hover { border-color: var(--vl-plum); }
+.vl-cat-icon { width: 64px; height: 64px; border: 1px solid var(--vl-border); display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 14px; color: var(--vl-plum); transition: all .2s; overflow: hidden; }
+.vl-cat-card:hover .vl-cat-icon { background: var(--vl-plum-light); border-color: var(--vl-plum); }
+.vl-cat-name { font-family: var(--vl-font-head); font-size: 15px; font-weight: 500; color: var(--vl-dark); letter-spacing: 1px; }
+.vl-cat-count { font-size: 12px; color: var(--vl-muted); margin-top: 4px; }
+
+/* ── Product Cards ──────────────── */
+.vl-card { background: var(--vl-white); border: 1px solid var(--vl-border); overflow: hidden; transition: all .3s; position: relative; height: 100%; display: flex; flex-direction: column; }
+.vl-card:hover { box-shadow: var(--vl-shadow); transform: translateY(-4px); border-color: var(--vl-plum); }
+.vl-card-img { height: 280px; background: var(--vl-plum-light); position: relative; overflow: hidden; flex-shrink: 0; }
+.vl-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.vl-card:hover .vl-card-img img { transform: scale(1.04); }
+.vl-card-badge { position: absolute; top: 12px; left: 12px; background: var(--vl-plum); color: #fff; font-size: 9px; font-weight: 600; padding: 3px 10px; letter-spacing: 1px; text-transform: uppercase; }
+.vl-card-wishlist { position: absolute; top: 12px; right: 12px; width: 32px; height: 32px; background: rgba(255,255,255,.9); display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--vl-muted); cursor: pointer; transition: all .2s; border: none; }
+.vl-card-wishlist:hover { background: var(--vl-plum); color: #fff; }
+.vl-card-body { padding: 18px 14px; flex: 1; display: flex; flex-direction: column; }
+.vl-card-cat { font-size: 10px; font-weight: 600; color: var(--vl-champagne); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; }
+.vl-card-name { font-family: var(--vl-font-head); font-size: 17px; font-weight: 500; color: var(--vl-dark); margin-bottom: 6px; line-height: 1.3; font-style: italic; }
+.vl-stars { color: var(--vl-champagne); font-size: 12px; margin-bottom: 10px; }
+.vl-card-price { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+.vl-price-sale { font-size: 18px; font-weight: 600; color: var(--vl-plum); }
+.vl-price-orig { font-size: 13px; color: var(--vl-muted); text-decoration: line-through; }
+.vl-card-atc { width: 100%; padding: 11px; background: transparent; color: var(--vl-plum); border: 1px solid var(--vl-plum); font-family: var(--vl-font-body); font-size: 10px; font-weight: 600; cursor: pointer; transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 6px; letter-spacing: 1.5px; text-transform: uppercase; margin-top: auto; }
+.vl-card-atc:hover { background: var(--vl-plum); color: #fff; }
+
+/* ── Placeholder ────────────────── */
+.vl-cat-placeholder { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 28px; color: var(--vl-plum); }
+
+/* ── Newsletter ─────────────────── */
+.vl-newsletter-outer { background: var(--vl-bg); }
+.vl-newsletter { background: var(--vl-plum); padding: 56px 48px; text-align: center; color: #fff; border-radius: 12px; margin: 0 auto; }
+.vl-newsletter h3 { font-family: var(--vl-font-head); font-size: 36px; font-weight: 400; margin-bottom: 8px; font-style: italic; color: #fff; }
+.vl-newsletter p { font-size: 14px; opacity: .8; margin-bottom: 28px; letter-spacing: .3px; color: #fff; }
+.vl-newsletter-form { display: flex; max-width: 420px; margin: 0 auto; border: 1px solid var(--vl-champagne); }
+.vl-newsletter-form input[type="email"], .vl-newsletter-form .email { flex: 1; border: 0; background: rgba(255,255,255,.08); padding: 12px 18px; font-size: 13px; font-family: var(--vl-font-body); outline: none; color: #fff; }
+.vl-newsletter-form input::placeholder { color: rgba(255,255,255,.45); }
+.vl-newsletter-form button, .vl-newsletter-form .newsletter-submit-btn { background: var(--vl-champagne); color: #fff; border: 0; padding: 12px 22px; font-size: 10px; font-weight: 600; cursor: pointer; letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap; font-family: var(--vl-font-body); transition: background .2s; }
+.vl-newsletter-form button:hover, .vl-newsletter-form .newsletter-submit-btn:hover { background: #A8882E; }
+
+/* ── Promo Section ──────────────── */
+.vl-promo { background: var(--vl-plum); color: var(--vl-champagne-lt); padding: 80px 0; }
+.vl-promo h2 { font-family: var(--vl-font-head); font-size: 48px; font-weight: 400; font-style: italic; margin-bottom: 12px; color: var(--vl-champagne-lt); }
+.vl-promo h2 span { color: var(--vl-champagne); }
+.vl-promo p { font-size: 14px; letter-spacing: .3px; opacity: .8; margin-bottom: 32px; color: var(--vl-champagne-lt); }
+
+/* ── Footer ─────────────────────── */
+.vl-footer { background: var(--vl-dark); color: rgba(255,255,255,.7); padding: 64px 0 0; }
+.vl-footer-brand { font-family: var(--vl-font-head); font-size: 26px; font-weight: 400; color: #fff; margin-bottom: 10px; letter-spacing: 3px; font-style: italic; }
+.vl-footer-brand span { color: var(--vl-champagne); }
+.vl-footer-desc { font-size: 13px; line-height: 1.8; opacity: .6; margin-bottom: 18px; color:var(--vl-white);}
+.vl-footer-title { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--vl-champagne); margin-bottom: 16px; }
+.vl-footer-links { list-style: none; padding: 0; margin: 0; }
+.vl-footer-links li { margin-bottom: 10px; }
+.vl-footer-links a { font-size: 13px; color: rgba(255,255,255,.5); transition: color .2s; }
+.vl-footer-links a:hover { color: var(--vl-champagne); }
+.vl-footer-bottom { border-top: 1px solid rgba(255,255,255,.06); margin-top: 48px; padding: 18px 0; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: rgba(255,255,255,.25); letter-spacing: .5px; }
+.vl-socials { display: flex; gap: 10px; }
+.vl-social-btn { width: 30px; height: 30px; border: 1px solid rgba(196,164,94,.3); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.5); font-size: 14px; transition: all .2s; }
+.vl-social-btn:hover { border-color: var(--vl-champagne); color: var(--vl-champagne); }
+
+/* Global Footer Widget Colors */
+.vl-footer h6 { color: var(--vl-champagne); font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; }
+.vl-footer p  { color: rgba(255,255,255,.55); }
+.vl-footer a  { color: rgba(255,255,255,.55); text-decoration: none; }
+.vl-footer a:hover { color: var(--vl-champagne); }
+.vl-newsletter .form-message-show { font-size: 13px; margin-bottom: 8px; text-align: center; color: rgba(255,255,255,.8); }
+.vl-newsletter .form-message-show:empty { display: none; margin: 0; }
+
+/* ── Product List Card ───────────── */
+.vl-list-card { background: var(--vl-white); border: 1px solid var(--vl-border); display: flex; overflow: hidden; transition: border-color .3s; }
+.vl-list-card:hover { border-color: var(--vl-plum); }
+.vl-list-img { position: relative; flex-shrink: 0; width: 180px; background: var(--vl-plum-light); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.vl-list-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.vl-list-card:hover .vl-list-img img { transform: scale(1.04); }
+.vl-list-body { flex: 1; padding: 22px 24px; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; }
+.vl-list-desc { font-size: 13px; color: var(--vl-muted); line-height: 1.6; margin-top: 6px; margin-bottom: 0; }
+.vl-list-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.vl-list-actions { display: flex; gap: 8px; }
+
+/* ── Pagination ──────────────────── */
+.vl-pagination { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; padding-top: 32px; }
+.vl-page-btn { width: 38px; height: 38px; border: 1px solid var(--vl-border); background: var(--vl-white); color: var(--vl-dark); font-size: 13px; cursor: pointer; transition: all .2s; display: flex; align-items: center; justify-content: center; }
+.vl-page-btn:hover, .vl-page-btn.active { background: var(--vl-plum); color: #fff; border-color: var(--vl-plum); }

@@ -1,0 +1,4 @@
+/* RTL overrides — sportzone */
+body { direction: rtl; text-align: right; }
+.sz-nav-links { flex-direction: row-reverse; }
+.sz-footer-bottom { flex-direction: row-reverse; }

@@ -1,0 +1,10 @@
+{
+    "id": "tier-pricing",
+    "name": "Tiered / Bulk Pricing",
+    "description": "Set quantity-based price tiers per product. Discounts apply automatically in the cart when quantity thresholds are met.",
+    "version": "1.0.0",
+    "type": "tenant",
+    "pricing": "free",
+    "author": "Nazmart",
+    "main": "src/TierPricingPlugin.php"
+}

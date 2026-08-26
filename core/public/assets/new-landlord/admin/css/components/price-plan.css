@@ -1,0 +1,252 @@
+/* ══════════════════════════════════════════════════════════════
+   Price Plan – Create / Edit Styles
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Payment Gateway Image Grid ──────────────────────────── */
+.payment-gateway-wrapper ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    gap: 0.5rem;
+    margin: 0;
+}
+
+.payment-gateway-wrapper ul li {
+    max-width: 100px;
+    cursor: pointer;
+    box-sizing: border-box;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color-border-main, #e0f0f0);
+    border-radius: 0.625rem;
+    transition: all 0.2s;
+}
+
+.payment-gateway-wrapper ul li:hover {
+    border-color: var(--color-primary, #1a5c4e);
+}
+
+.payment-gateway-wrapper ul li .img-select {
+    margin-bottom: 0;
+}
+
+.payment-gateway-wrapper ul li .img-select img,
+.img-select img {
+    max-width: 100%;
+}
+
+.payment-gateway-wrapper ul li.selected {
+    border-color: var(--color-primary, #1a5c4e);
+    box-shadow: 0 0 0 1px var(--color-primary, #1a5c4e);
+}
+
+/* ── Plugin Pick Cards (4-per-row, toggle style) ─────────── */
+.ppc-card {
+    border: 1.5px solid var(--color-border-main, #e5e7eb);
+    border-radius: 0.75rem;
+    padding: 0.875rem 0.875rem 0.75rem;
+    cursor: pointer;
+    user-select: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    background: var(--color-bg-surface, #fff);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.ppc-card:hover {
+    border-color: var(--color-primary, #1a5c4e);
+}
+
+.ppc-card.is-on {
+    border-color: var(--color-primary, #1a5c4e);
+    box-shadow: 0 0 0 1px var(--color-primary, #1a5c4e);
+}
+
+.ppc-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.ppc-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f4f6;
+    flex-shrink: 0;
+    transition: background 0.15s;
+}
+
+.ppc-card.is-on .ppc-icon {
+    background: rgba(26, 92, 78, 0.1);
+}
+
+.ppc-icon i {
+    font-size: 1.1rem;
+    color: #9ca3af;
+    transition: color 0.15s;
+}
+
+.ppc-card.is-on .ppc-icon i {
+    color: var(--color-primary, #1a5c4e);
+}
+
+/* Toggle switch visual */
+.ppc-toggle {
+    flex-shrink: 0;
+    padding-top: 2px;
+}
+
+.ppc-track {
+    display: block;
+    width: 2rem;
+    height: 1.1rem;
+    border-radius: 999px;
+    background: #d1d5db;
+    position: relative;
+    transition: background 0.2s;
+}
+
+.ppc-card.is-on .ppc-track {
+    background: var(--color-primary, #1a5c4e);
+}
+
+.ppc-thumb {
+    display: block;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    transform: translateY(-50%);
+    transition: left 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+
+.ppc-card.is-on .ppc-thumb {
+    left: calc(100% - 0.85rem - 2px);
+}
+
+.ppc-name {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-text-dark, #111827);
+    line-height: 1.3;
+}
+
+.ppc-footer {
+    display: flex;
+    align-items: center;
+}
+
+.ppc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+}
+
+.ppc-free {
+    background: #f0fdf4;
+    color: #15803d;
+}
+
+.ppc-paid {
+    background: #fffbeb;
+    color: #d97706;
+}
+
+/* ── Plugin Card Tooltip ─────────────────────────────────── */
+.ppc-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    background: #1f2937;
+    color: #f9fafb;
+    font-size: 0.7rem;
+    line-height: 1.45;
+    padding: 0.5rem 0.65rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    z-index: 50;
+    pointer-events: none;
+    white-space: normal;
+}
+
+.ppc-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #1f2937;
+}
+
+.ppc-card:hover .ppc-tooltip {
+    display: block;
+}
+
+/* ── FAQ Repeater ────────────────────────────────────────── */
+.all-field-wrap {
+    position: relative;
+}
+
+.all-field-wrap .action-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border-main, #e0f0f0);
+}
+
+.all-field-wrap .action-wrap span {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+}
+
+.all-field-wrap .action-wrap .add {
+    background: var(--color-primary-soft, #e0f0f0);
+    color: var(--color-primary, #1a5c4e);
+}
+
+.all-field-wrap .action-wrap .add:hover {
+    background: var(--color-primary, #1a5c4e);
+    color: #fff;
+}
+
+.all-field-wrap .action-wrap .remove {
+    background: var(--color-danger-bg, #fef2f2);
+    color: var(--color-danger, #ef4444);
+}
+
+.all-field-wrap .action-wrap .remove:hover {
+    background: var(--color-danger, #ef4444);
+    color: #fff;
+}

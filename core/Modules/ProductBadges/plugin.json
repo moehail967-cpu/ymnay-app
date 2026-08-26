@@ -1,0 +1,15 @@
+{
+    "id": "product-badges",
+    "name": "Product Badges",
+    "version": "1.0.0",
+    "description": "Automatically overlays New, Hot, Sale, and Low Stock badges on product cards based on configurable rules.",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "tenant",
+    "pricing": "free",
+    "min_platform_version": "2.5.0",
+    "main": "src/ProductBadgesPlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null
+}

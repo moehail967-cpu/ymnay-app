@@ -1,0 +1,11 @@
+{
+  "id": "feed-sync",
+  "name": "Feed Sync",
+  "version": "1.0.0",
+  "description": "Auto-generate and serve Google Merchant Center and Facebook/Meta Product Catalog XML feeds from live product data.",
+  "type": "tenant",
+  "pricing": "free",
+  "min_platform_version": "2.5.0",
+  "main": "src/FeedSyncPlugin.php",
+  "author": "Nazmart"
+}

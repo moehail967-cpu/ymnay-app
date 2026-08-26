@@ -1,0 +1,326 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "BookPoint — Your Digital Bookstore"
+      },
+      {
+        "key": "site_description",
+        "value": "Discover fiction, self-help, business books and more. Fast delivery, easy returns, and thousands of titles at your fingertips."
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/prod-book-1.jpg",
+        "import_as": "bookpoint-hero-book1"
+      },
+      {
+        "path": "assets/images/prod-book-2.jpg",
+        "import_as": "bookpoint-hero-book2"
+      },
+      {
+        "path": "assets/images/prod-book-3.jpg",
+        "import_as": "bookpoint-hero-book3"
+      },
+      {
+        "path": "assets/images/prod-book-2.jpg",
+        "import_as": "bookpoint-promo-1"
+      },
+      {
+        "path": "assets/images/prod-book-3.jpg",
+        "import_as": "bookpoint-promo-2"
+      },
+      {
+        "path": "assets/images/prod-book-1.jpg",
+        "import_as": "bookpoint-prod-1"
+      },
+      {
+        "path": "assets/images/prod-book-2.jpg",
+        "import_as": "bookpoint-prod-2"
+      },
+      {
+        "path": "assets/images/prod-book-3.jpg",
+        "import_as": "bookpoint-prod-3"
+      },
+      {
+        "path": "assets/images/prod-book-4.jpg",
+        "import_as": "bookpoint-prod-4"
+      },
+      {
+        "path": "assets/images/prod-book-5.jpg",
+        "import_as": "bookpoint-prod-5"
+      },
+      {
+        "path": "assets/images/prod-book-6.jpg",
+        "import_as": "bookpoint-prod-6"
+      },
+      {
+        "path": "assets/images/prod-book-7.jpg",
+        "import_as": "bookpoint-prod-7"
+      },
+      {
+        "path": "assets/images/prod-book-8.jpg",
+        "import_as": "bookpoint-prod-8"
+      },
+      {
+        "path": "assets/images/cat-fiction.jpg",
+        "import_as": "bookpoint-cat-fiction"
+      },
+      {
+        "path": "assets/images/cat-non-fiction.jpg",
+        "import_as": "bookpoint-cat-non-fiction"
+      },
+      {
+        "path": "assets/images/cat-business.jpg",
+        "import_as": "bookpoint-cat-business"
+      },
+      {
+        "path": "assets/images/cat-self-help.jpg",
+        "import_as": "bookpoint-cat-self-help"
+      },
+      {
+        "path": "assets/images/cat-technology.jpg",
+        "import_as": "bookpoint-cat-technology"
+      },
+      {
+        "path": "assets/images/cat-children.jpg",
+        "import_as": "bookpoint-cat-children"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Fiction",
+        "slug": "fiction",
+        "image": "bookpoint-cat-fiction"
+      },
+      {
+        "name": "Non-Fiction",
+        "slug": "non-fiction",
+        "image": "bookpoint-cat-non-fiction"
+      },
+      {
+        "name": "Business",
+        "slug": "business",
+        "image": "bookpoint-cat-business"
+      },
+      {
+        "name": "Self Help",
+        "slug": "self-help",
+        "image": "bookpoint-cat-self-help"
+      },
+      {
+        "name": "Technology",
+        "slug": "technology",
+        "image": "bookpoint-cat-technology"
+      },
+      {
+        "name": "Children",
+        "slug": "children",
+        "image": "bookpoint-cat-children"
+      }
+    ],
+    "products": [
+      {
+        "name": "The Midnight Library",
+        "summary": "A dazzling novel about all the lives you could have lived — and the one that makes everything worth it.",
+        "price": 13.99,
+        "compare_price": 17.99,
+        "category": "fiction",
+        "image": "bookpoint-prod-1",
+        "stock": 60,
+        "tags": [
+          "fiction",
+          "contemporary",
+          "bestseller"
+        ]
+      },
+      {
+        "name": "Where the Crawdads Sing",
+        "summary": "A coming-of-age mystery set in the marshlands of North Carolina. A stunning debut novel.",
+        "price": 14.99,
+        "compare_price": 18.99,
+        "category": "fiction",
+        "image": "bookpoint-prod-2",
+        "stock": 50,
+        "tags": [
+          "fiction",
+          "mystery",
+          "nature"
+        ]
+      },
+      {
+        "name": "Atomic Habits",
+        "summary": "An easy and proven way to build good habits and break bad ones. #1 New York Times bestseller.",
+        "price": 16.99,
+        "compare_price": 21.99,
+        "category": "self-help",
+        "image": "bookpoint-prod-3",
+        "stock": 80,
+        "tags": [
+          "self-help",
+          "habits",
+          "productivity",
+          "bestseller"
+        ]
+      },
+      {
+        "name": "Rich Dad Poor Dad",
+        "summary": "What the rich teach their kids about money that the poor and middle class do not.",
+        "price": 15.99,
+        "compare_price": 19.99,
+        "category": "business",
+        "image": "bookpoint-prod-4",
+        "stock": 70,
+        "tags": [
+          "business",
+          "finance",
+          "investing",
+          "classic"
+        ]
+      },
+      {
+        "name": "Python Crash Course",
+        "summary": "A hands-on, project-based introduction to programming in Python 3. Perfect for beginners.",
+        "price": 29.99,
+        "compare_price": 39.99,
+        "category": "technology",
+        "image": "bookpoint-prod-5",
+        "stock": 45,
+        "tags": [
+          "technology",
+          "python",
+          "programming",
+          "beginners"
+        ]
+      },
+      {
+        "name": "Sapiens: A Brief History of Humankind",
+        "summary": "From a renowned historian comes a groundbreaking narrative of humanity's creation and evolution.",
+        "price": 17.99,
+        "compare_price": 23.99,
+        "category": "non-fiction",
+        "image": "bookpoint-prod-6",
+        "stock": 55,
+        "tags": [
+          "non-fiction",
+          "history",
+          "science",
+          "bestseller"
+        ]
+      },
+      {
+        "name": "The Very Hungry Caterpillar",
+        "summary": "The classic picture book beloved by generations. Full colour illustrations by Eric Carle.",
+        "price": 8.99,
+        "compare_price": 11.99,
+        "category": "children",
+        "image": "bookpoint-prod-7",
+        "stock": 100,
+        "tags": [
+          "children",
+          "picture-book",
+          "classic",
+          "ages-2-5"
+        ]
+      },
+      {
+        "name": "Thinking, Fast and Slow",
+        "summary": "Daniel Kahneman's landmark exploration of the two systems that drive the way we think.",
+        "price": 18.99,
+        "compare_price": 24.99,
+        "category": "non-fiction",
+        "image": "bookpoint-prod-8",
+        "stock": 40,
+        "tags": [
+          "non-fiction",
+          "psychology",
+          "economics",
+          "bestseller"
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Browse Books",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Customer Support",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Why BookPoint",
+          "footer_badges": {
+            "badge_icon_": [
+              "📦",
+              "🔄",
+              "🔒",
+              "🎧"
+            ],
+            "badge_title_": [
+              "Free Delivery",
+              "Easy Returns",
+              "Secure Payment",
+              "24/7 Support"
+            ],
+            "badge_sub_": [
+              "On orders over $30",
+              "Return within 30 days",
+              "SSL encrypted checkout",
+              "Always here to help"
+            ]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "bookpoint-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/home-layout.json"
+      },
+      {
+        "title": "About Us",
+        "slug": "about-us",
+        "page_builder": true,
+        "breadcrumb": true,
+        "layout_file": "demo/about-layout.json"
+      },
+      {
+        "title": "Contact",
+        "slug": "contact-us",
+        "page_builder": true,
+        "breadcrumb": true,
+        "layout_file": "demo/contact-layout.json"
+      }
+    ]
+  }
+}

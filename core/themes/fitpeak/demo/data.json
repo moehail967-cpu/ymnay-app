@@ -1,0 +1,339 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "FitPeak Performance"
+      },
+      {
+        "key": "site_description",
+        "value": "Fuel your gains. Premium supplements and gear for peak performance."
+      },
+      {
+        "key": "site_logo",
+        "value": "@media:fitpeak-logo-color"
+      },
+      {
+        "key": "site_white_logo",
+        "value": "@media:fitpeak-logo-white"
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/logo-color.svg",
+        "import_as": "fitpeak-logo-color"
+      },
+      {
+        "path": "assets/images/logo-white.svg",
+        "import_as": "fitpeak-logo-white"
+      },
+      {
+        "path": "assets/images/whey-protein.jpg",
+        "import_as": "whey-protein"
+      },
+      {
+        "path": "assets/images/pre-workout.jpg",
+        "import_as": "pre-workout"
+      },
+      {
+        "path": "assets/images/creatine.jpg",
+        "import_as": "creatine"
+      },
+      {
+        "path": "assets/images/bcaa-amino.jpg",
+        "import_as": "bcaa-amino"
+      },
+      {
+        "path": "assets/images/vitamins.jpg",
+        "import_as": "vitamins"
+      },
+      {
+        "path": "assets/images/resistance-bands.jpg",
+        "import_as": "resistance-bands"
+      },
+      {
+        "path": "assets/images/shaker-bottle.jpg",
+        "import_as": "shaker-bottle"
+      },
+      {
+        "path": "assets/images/gym-apparel.jpg",
+        "import_as": "gym-apparel"
+      },
+      {
+        "path": "assets/images/cat-apparel.jpg",
+        "import_as": "cat-apparel"
+      },
+      {
+        "path": "assets/images/cat-equipment.jpg",
+        "import_as": "cat-equipment"
+      },
+      {
+        "path": "assets/images/cat-preworkout.jpg",
+        "import_as": "cat-preworkout"
+      },
+      {
+        "path": "assets/images/cat-protein.jpg",
+        "import_as": "cat-protein"
+      },
+      {
+        "path": "assets/images/cat-recovery.jpg",
+        "import_as": "cat-recovery"
+      },
+      {
+        "path": "assets/images/cat-vitamins.jpg",
+        "import_as": "cat-vitamins"
+      },
+      {
+        "path": "assets/images/gym-hero.jpg",
+        "import_as": "fitpeak-hero"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Protein",
+        "slug": "protein",
+        "image": "cat-protein"
+      },
+      {
+        "name": "Pre-Workout",
+        "slug": "pre-workout",
+        "image": "cat-preworkout"
+      },
+      {
+        "name": "Recovery",
+        "slug": "recovery",
+        "image": "cat-recovery"
+      },
+      {
+        "name": "Vitamins",
+        "slug": "vitamins",
+        "image": "cat-vitamins"
+      },
+      {
+        "name": "Equipment",
+        "slug": "equipment",
+        "image": "cat-equipment"
+      },
+      {
+        "name": "Apparel",
+        "slug": "apparel",
+        "image": "cat-apparel"
+      }
+    ],
+    "menus": [
+      {
+        "title": "Products Menu",
+        "status": "products",
+        "items": [
+          { "label": "Protein",     "url": "@url/shop" },
+          { "label": "Pre-Workout", "url": "@url/shop" },
+          { "label": "Creatine",    "url": "@url/shop" },
+          { "label": "Vitamins",    "url": "@url/shop" },
+          { "label": "Bundles",     "url": "@url/shop" }
+        ]
+      },
+      {
+        "title": "Support Menu",
+        "status": "support",
+        "items": [
+          { "label": "Track Order",  "url": "@url/" },
+          { "label": "Subscription", "url": "@url/" },
+          { "label": "Returns",      "url": "@url/" },
+          { "label": "Lab Reports",  "url": "@url/" },
+          { "label": "Contact",      "url": "@url/contact" }
+        ]
+      },
+      {
+        "title": "Quick Links",
+        "status": "default",
+        "items": [
+          { "label": "Home",       "url": "@url/" },
+          { "label": "Shop",       "url": "@url/shop" },
+          { "label": "Contact Us", "url": "@url/contact" }
+        ]
+      }
+    ],
+    "products": [
+      {
+        "name": "Whey Protein 2kg — Chocolate",
+        "summary": "100% pure whey protein isolate. 25g protein per serving.",
+        "description": "Our best-selling whey protein isolate delivers 25g of clean protein per serving with minimal carbs and fat.",
+        "price": 49.99,
+        "compare_price": 64.99,
+        "category": "protein",
+        "image": "whey-protein",
+        "stock": 150,
+        "tags": [
+          "whey",
+          "protein",
+          "muscle-gain",
+          "chocolate"
+        ]
+      },
+      {
+        "name": "Pre-Workout Extreme — Citrus Burst",
+        "summary": "High-stim pre-workout. 300mg caffeine, 6g citrulline.",
+        "description": "Engineered for serious athletes who demand maximum output. Clean energy, insane pumps, zero crash.",
+        "price": 39.99,
+        "compare_price": 54.99,
+        "category": "pre-workout",
+        "image": "pre-workout",
+        "stock": 80,
+        "tags": [
+          "pre-workout",
+          "energy",
+          "caffeine",
+          "pump"
+        ]
+      },
+      {
+        "name": "Creatine Monohydrate 500g",
+        "summary": "Micronised creatine monohydrate. 5g per serving. Unflavoured.",
+        "description": "The most researched supplement in sports nutrition. Increases strength, power output and lean muscle mass.",
+        "price": 19.99,
+        "compare_price": 27.99,
+        "category": "recovery",
+        "image": "creatine",
+        "stock": 200,
+        "tags": [
+          "creatine",
+          "strength",
+          "power",
+          "monohydrate"
+        ]
+      },
+      {
+        "name": "BCAA Recovery — Tropical",
+        "summary": "2:1:1 BCAA ratio. 7g per serving. Electrolytes included.",
+        "description": "Sip during or after training to accelerate muscle recovery and reduce soreness.",
+        "price": 29.99,
+        "compare_price": 39.99,
+        "category": "recovery",
+        "image": "bcaa-amino",
+        "stock": 100,
+        "tags": [
+          "bcaa",
+          "recovery",
+          "amino",
+          "electrolytes"
+        ]
+      },
+      {
+        "name": "Omega-3 Fish Oil 90 Caps",
+        "summary": "High-potency EPA/DHA. 1000mg per capsule. Heavy-metal tested.",
+        "description": "Supports joint health, heart health, and reduces exercise-induced inflammation.",
+        "price": 24.99,
+        "compare_price": 34.99,
+        "category": "vitamins",
+        "image": "vitamins",
+        "stock": 180,
+        "tags": [
+          "omega-3",
+          "fish-oil",
+          "joints",
+          "heart"
+        ]
+      },
+      {
+        "name": "Resistance Band Set — 5 Levels",
+        "summary": "Latex resistance bands. 10–50 lbs. Carry bag included.",
+        "description": "Five progressive resistance levels for warm-ups, mobility work, and full resistance training anywhere.",
+        "price": 27.99,
+        "compare_price": 39.99,
+        "category": "equipment",
+        "image": "resistance-bands",
+        "stock": 75,
+        "tags": [
+          "resistance-bands",
+          "home-gym",
+          "mobility",
+          "training"
+        ]
+      },
+      {
+        "name": "Shaker Bottle 700ml — Black",
+        "summary": "BPA-free shaker. Leak-proof lid. Wire mixing ball.",
+        "description": "Ergonomic wide-mouth shaker with a secure flip lid, stainless mixing ball, and measurement markings.",
+        "price": 12.99,
+        "compare_price": 17.99,
+        "category": "equipment",
+        "image": "shaker-bottle",
+        "stock": 300,
+        "tags": [
+          "shaker",
+          "bottle",
+          "gym-accessories"
+        ]
+      },
+      {
+        "name": "Performance Gym T-Shirt — Charcoal",
+        "summary": "Moisture-wicking. 4-way stretch. FitPeak logo.",
+        "description": "Lightweight performance tee built for high-intensity training. Flatlock seams prevent chafing.",
+        "price": 34.99,
+        "compare_price": 44.99,
+        "category": "apparel",
+        "image": "gym-apparel",
+        "stock": 120,
+        "tags": [
+          "t-shirt",
+          "gym-wear",
+          "performance",
+          "apparel"
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Products",
+          "menu_id": "@menu:products"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Support",
+          "menu_id": "@menu:support"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Certified Quality",
+          "footer_badges": {
+            "badge_icon_":  ["🏆", "🧪", "🚫", "🌿"],
+            "badge_title_": ["Informed Sport", "Lab Tested", "No Banned Substances", "Gluten Free"],
+            "badge_sub_":   ["Certified clean", "Third-party verified", "Safe for athletes", "Clean formula"]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "fitpeak-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/page_builder_layout.json"
+      }
+    ]
+  }
+}

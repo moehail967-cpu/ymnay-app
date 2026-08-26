@@ -1,0 +1,180 @@
+{
+  "sections": {
+    "settings": [
+      { "key": "site_title",       "value": "TinyNest Baby Store" },
+      { "key": "site_description", "value": "Gentle, safe and beautifully crafted for your little ones." },
+      { "key": "site_logo",        "value": "@media:tinynest-logo-color" },
+      { "key": "site_white_logo",  "value": "@media:tinynest-logo-white" }
+    ],
+    "media": [
+      { "path": "assets/images/logo-color.svg",     "import_as": "tinynest-logo-color" },
+      { "path": "assets/images/logo-white.svg",     "import_as": "tinynest-logo-white" },
+      { "path": "assets/images/tinynest-hero.jpg",  "import_as": "tinynest-hero-image" },
+      { "path": "assets/images/baby-clothing.jpg",  "import_as": "baby-clothing" },
+      { "path": "assets/images/teething-toy.jpg",   "import_as": "teething-toy" },
+      { "path": "assets/images/baby-blanket.jpg",   "import_as": "baby-blanket" },
+      { "path": "assets/images/baby-stroller.jpg",  "import_as": "baby-stroller" },
+      { "path": "assets/images/baby-monitor.jpg",   "import_as": "baby-monitor" },
+      { "path": "assets/images/baby-bath.jpg",      "import_as": "baby-bath" },
+      { "path": "assets/images/baby-sleep-sack.jpg","import_as": "baby-sleep-sack" },
+      { "path": "assets/images/teddy-bear.jpg",     "import_as": "teddy-bear" },
+      { "path": "assets/images/baby-bottle.jpg",    "import_as": "baby-bottle" },
+      { "path": "assets/images/baby-gift-set.jpg",  "import_as": "baby-gift-set" },
+      { "path": "assets/images/baby-lotion.jpg",    "import_as": "baby-lotion" },
+      { "path": "assets/images/baby-night-light.jpg","import_as": "baby-night-light" },
+      { "path": "assets/images/baby-toy-car.jpg",   "import_as": "baby-toy-car" },
+      { "path": "assets/images/cat-bath.jpg",       "import_as": "cat-bath" },
+      { "path": "assets/images/cat-clothing.jpg",   "import_as": "cat-clothing" },
+      { "path": "assets/images/cat-feeding.jpg",    "import_as": "cat-feeding" },
+      { "path": "assets/images/cat-health.jpg",     "import_as": "cat-health" },
+      { "path": "assets/images/cat-toys.jpg",       "import_as": "cat-toys" }
+    ],
+    "categories": [
+      { "name": "Newborn",    "slug": "newborn",    "image": "cat-clothing" },
+      { "name": "Toddler",    "slug": "toddler",    "image": "cat-toys" },
+      { "name": "Nursery",    "slug": "nursery",    "image": "baby-stroller" },
+      { "name": "Bath & Care","slug": "bath-care",  "image": "cat-bath" },
+      { "name": "Feeding",    "slug": "feeding",    "image": "cat-feeding" },
+      { "name": "Safety",     "slug": "safety",     "image": "cat-health" }
+    ],
+    "products": [
+      {
+        "name": "Organic Baby Onesie 3-Pack",
+        "summary": "100% GOTS-certified organic cotton, tagless, sizes 0–18 months.",
+        "price": 29.99, "compare_price": 39.99,
+        "category": "newborn", "image": "baby-clothing", "stock": 100,
+        "tags": ["organic", "onesie", "soft"]
+      },
+      {
+        "name": "Silicone Teething Toy Set",
+        "summary": "BPA-free silicone teethers in different textures, dishwasher safe.",
+        "price": 18.99, "compare_price": 24.99,
+        "category": "toddler", "image": "teething-toy", "stock": 120,
+        "tags": ["teething", "silicone", "bpa-free"]
+      },
+      {
+        "name": "Knitted Baby Blanket",
+        "summary": "Extra soft 100% merino wool blanket, 75×100cm, multiple colours.",
+        "price": 44.99, "compare_price": 59.99,
+        "category": "newborn", "image": "baby-blanket", "stock": 80,
+        "tags": ["blanket", "merino", "knitted"]
+      },
+      {
+        "name": "Compact Baby Stroller",
+        "summary": "Lightweight 6.5 kg stroller, one-hand fold, sun canopy, 0–36 months.",
+        "price": 249.99, "compare_price": 329.99,
+        "category": "nursery", "image": "baby-stroller", "stock": 30,
+        "tags": ["stroller", "lightweight", "compact"]
+      },
+      {
+        "name": "Video Baby Monitor",
+        "summary": "1080p HD camera, night vision, 2-way audio, room temperature display.",
+        "price": 89.99, "compare_price": 119.99,
+        "category": "safety", "image": "baby-monitor", "stock": 50,
+        "tags": ["monitor", "video", "night-vision"]
+      },
+      {
+        "name": "Baby Bath Support Set",
+        "summary": "Ergonomic bath seat plus soft sponge and temperature thermometer.",
+        "price": 34.99, "compare_price": 44.99,
+        "category": "bath-care", "image": "baby-bath", "stock": 70,
+        "tags": ["bath", "support", "newborn"]
+      },
+      {
+        "name": "Wearable Baby Sleep Sack",
+        "summary": "1.0 TOG sleeveless sleeping bag, 100% organic cotton, zip opening.",
+        "price": 39.99, "compare_price": 52.99,
+        "category": "newborn", "image": "baby-sleep-sack", "stock": 90,
+        "tags": ["sleep-sack", "wearable", "organic"]
+      },
+      {
+        "name": "Plush Stuffed Teddy Bear",
+        "summary": "Hypoallergenic stuffed bear, 35cm, machine washable, CE certified.",
+        "price": 24.99, "compare_price": 32.99,
+        "category": "toddler", "image": "teddy-bear", "stock": 110,
+        "tags": ["teddy", "plush", "gift"]
+      },
+      {
+        "name": "Anti-Colic Baby Bottle Set",
+        "summary": "Slow-flow silicone teat, 3-piece set, BPA-free, 260 ml.",
+        "price": 22.99, "compare_price": 29.99,
+        "category": "feeding", "image": "baby-bottle", "stock": 95,
+        "tags": ["bottle", "anti-colic", "bpa-free"]
+      },
+      {
+        "name": "Baby Lotion & Wash Bundle",
+        "summary": "Dermatologist-tested, fragrance-free moisturising lotion and wash duo.",
+        "price": 16.99, "compare_price": 22.99,
+        "category": "bath-care", "image": "baby-lotion", "stock": 85,
+        "tags": ["lotion", "wash", "sensitive"]
+      },
+      {
+        "name": "Soft Night Light Projector",
+        "summary": "Star projector with soothing sounds, timer, and warm amber glow.",
+        "price": 32.99, "compare_price": 44.99,
+        "category": "nursery", "image": "baby-night-light", "stock": 60,
+        "tags": ["night-light", "projector", "sleep"]
+      },
+      {
+        "name": "Wooden Push-Along Toy Car",
+        "summary": "Sustainably sourced beech wood, bright non-toxic paint, 12+ months.",
+        "price": 19.99, "compare_price": 26.99,
+        "category": "toddler", "image": "baby-toy-car", "stock": 75,
+        "tags": ["wooden", "toy", "push-along"]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Quick Links",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Help",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Safe for Babies",
+          "footer_badges": {
+            "badge_icon_":  ["🧸", "🌿", "💝", "🌈"],
+            "badge_title_": ["Safety Tested", "Non-Toxic", "Sustainably Made", "Developmental"],
+            "badge_sub_":   ["EN71 & ASTM certified", "BPA-free materials", "Eco-conscious", "Stimulates growth"]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/home-layout.json"
+      }
+    ]
+  }
+}

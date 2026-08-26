@@ -1,0 +1,331 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "PawHaus Pet Boutique"
+      },
+      {
+        "key": "site_description",
+        "value": "Premium nutrition, toys and accessories for your beloved pets."
+      },
+      {
+        "key": "site_logo",
+        "value": "@media:pawhaus-logo-color"
+      },
+      {
+        "key": "site_white_logo",
+        "value": "@media:pawhaus-logo-white"
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/logo-color.svg",
+        "import_as": "pawhaus-logo-color"
+      },
+      {
+        "path": "assets/images/logo-white.svg",
+        "import_as": "pawhaus-logo-white"
+      },
+      {
+        "path": "assets/images/pawhaus-hero.jpg",
+        "import_as": "pawhaus-hero-image"
+      },
+      {
+        "path": "assets/images/promo-banner.png",
+        "import_as": "pawhaus-promo-banner"
+      },
+      {
+        "path": "assets/images/dog-food.jpg",
+        "import_as": "dog-food"
+      },
+      {
+        "path": "assets/images/pet-bed.jpg",
+        "import_as": "pet-bed"
+      },
+      {
+        "path": "assets/images/pet-toy.jpg",
+        "import_as": "pet-toy"
+      },
+      {
+        "path": "assets/images/cat-food.jpg",
+        "import_as": "cat-food"
+      },
+      {
+        "path": "assets/images/dog-leash.jpg",
+        "import_as": "dog-leash"
+      },
+      {
+        "path": "assets/images/grooming-kit.jpg",
+        "import_as": "grooming-kit"
+      },
+      {
+        "path": "assets/images/hamster-toy.jpg",
+        "import_as": "hamster-toy"
+      },
+      {
+        "path": "assets/images/pet-carrier.jpg",
+        "import_as": "pet-carrier"
+      },
+      {
+        "path": "assets/images/cat-cats.jpg",
+        "import_as": "cat-cats"
+      },
+      {
+        "path": "assets/images/cat-dogs.jpg",
+        "import_as": "cat-dogs"
+      },
+      {
+        "path": "assets/images/cat-health-care.jpg",
+        "import_as": "cat-health-care"
+      },
+      {
+        "path": "assets/images/cat-small-pets.jpg",
+        "import_as": "cat-small-pets"
+      },
+      {
+        "path": "assets/images/aquatic.jpg",
+        "import_as": "aquatic"
+      },
+      {
+        "path": "assets/images/bird-food.jpg",
+        "import_as": "bird-food"
+      },
+      {
+        "path": "assets/images/fish-aquarium.jpg",
+        "import_as": "fish-aquarium"
+      },
+      {
+        "path": "assets/images/happy-dog.jpg",
+        "import_as": "happy-dog"
+      },
+      {
+        "path": "assets/images/pet-food-bag.jpg",
+        "import_as": "pet-food-bag"
+      },
+      {
+        "path": "assets/images/pet-gift-set.jpg",
+        "import_as": "pet-gift-set"
+      },
+      {
+        "path": "assets/images/pet-supplement.jpg",
+        "import_as": "pet-supplement"
+      },
+      {
+        "path": "assets/images/cat-food-treats.jpg",
+        "import_as": "cat-food-treats"
+      },
+      {
+        "path": "assets/images/cat-toys-play.jpg",
+        "import_as": "cat-toys-play"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Dogs",
+        "slug": "dogs",
+        "image": "cat-dogs"
+      },
+      {
+        "name": "Cats",
+        "slug": "cats",
+        "image": "cat-cats"
+      },
+      {
+        "name": "Small Pets",
+        "slug": "small-pets",
+        "image": "cat-small-pets"
+      },
+      {
+        "name": "Aquatic",
+        "slug": "aquatic",
+        "image": "aquatic"
+      },
+      {
+        "name": "Grooming",
+        "slug": "grooming",
+        "image": "cat-health-care"
+      },
+      {
+        "name": "Travel",
+        "slug": "travel",
+        "image": "pet-carrier"
+      }
+    ],
+    "products": [
+      {
+        "name": "Organic Dog Food 5kg",
+        "summary": "Grain-free dry food with salmon and sweet potato, for all breeds.",
+        "price": 54.99,
+        "compare_price": 69.99,
+        "category": "dogs",
+        "image": "dog-food",
+        "stock": 80,
+        "tags": ["organic", "dog-food", "grain-free"]
+      },
+      {
+        "name": "Cosy Memory Foam Pet Bed",
+        "summary": "Orthopaedic memory foam pet bed with removable washable cover.",
+        "price": 59.99,
+        "compare_price": 79.99,
+        "category": "dogs",
+        "image": "pet-bed",
+        "stock": 50,
+        "tags": ["bed", "memory-foam", "orthopedic"]
+      },
+      {
+        "name": "Interactive Puzzle Feeder Toy",
+        "summary": "Slow-feeder and IQ enrichment toy for dogs and cats.",
+        "price": 19.99,
+        "compare_price": 27.99,
+        "category": "small-pets",
+        "image": "pet-toy",
+        "stock": 100,
+        "tags": ["interactive", "toy", "enrichment"]
+      },
+      {
+        "name": "Premium Cat Food — Salmon (2kg)",
+        "summary": "High-protein wet and dry blend with real salmon and tuna.",
+        "price": 34.99,
+        "compare_price": 44.99,
+        "category": "cats",
+        "image": "cat-food",
+        "stock": 70,
+        "tags": ["cat-food", "salmon", "premium"]
+      },
+      {
+        "name": "Padded Dog Collar & Leash Set",
+        "summary": "Neoprene-padded collar and matching 1.5m leash, reflective stitching.",
+        "price": 29.99,
+        "compare_price": 39.99,
+        "category": "dogs",
+        "image": "dog-leash",
+        "stock": 90,
+        "tags": ["collar", "leash", "padded"]
+      },
+      {
+        "name": "Professional Pet Grooming Kit",
+        "summary": "7-piece kit: slicker brush, deshedder, nail clipper, ear cleaner and more.",
+        "price": 44.99,
+        "compare_price": 59.99,
+        "category": "grooming",
+        "image": "grooming-kit",
+        "stock": 60,
+        "tags": ["grooming", "brush", "nail-clipper"]
+      },
+      {
+        "name": "Small Animal Activity Toy Set",
+        "summary": "Chew tubes, tunnels and climbing accessories for rabbits and guinea pigs.",
+        "price": 14.99,
+        "compare_price": 19.99,
+        "category": "small-pets",
+        "image": "hamster-toy",
+        "stock": 110,
+        "tags": ["small-pet", "chew", "activity"]
+      },
+      {
+        "name": "Airline-Approved Pet Carrier",
+        "summary": "IATA-compliant soft-sided carrier, fits under most airline seats.",
+        "price": 69.99,
+        "compare_price": 89.99,
+        "category": "travel",
+        "image": "pet-carrier",
+        "stock": 40,
+        "tags": ["carrier", "airline", "travel"]
+      },
+      {
+        "name": "Premium Pet Food Bag 10kg",
+        "summary": "Balanced adult formula with real chicken, vegetables and omega oils.",
+        "price": 49.99,
+        "compare_price": 64.99,
+        "category": "dogs",
+        "image": "pet-food-bag",
+        "stock": 65,
+        "tags": ["dog-food", "premium", "chicken"]
+      },
+      {
+        "name": "Happy Dog Supplement Chews",
+        "summary": "Daily joint & immunity chews with glucosamine and vitamin C.",
+        "price": 24.99,
+        "compare_price": 34.99,
+        "category": "dogs",
+        "image": "pet-supplement",
+        "stock": 85,
+        "tags": ["supplement", "joint", "vitamins"]
+      },
+      {
+        "name": "Aquarium Starter Kit",
+        "summary": "10-litre tank with filter, LED lighting and fish food starter pack.",
+        "price": 79.99,
+        "compare_price": 99.99,
+        "category": "aquatic",
+        "image": "fish-aquarium",
+        "stock": 30,
+        "tags": ["aquarium", "fish", "tank"]
+      },
+      {
+        "name": "Pet Gift Set — Spoil Your Pet",
+        "summary": "Curated gift box with toy, treat, bandana and personalised card.",
+        "price": 34.99,
+        "compare_price": 44.99,
+        "category": "dogs",
+        "image": "pet-gift-set",
+        "stock": 45,
+        "tags": ["gift", "bundle", "treat"]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Quick Links",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Info",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Our Promise",
+          "footer_badges": {
+            "badge_icon_":  ["🐾", "🌿", "🔒", "💝"],
+            "badge_title_": ["Vet Approved", "Natural Ingredients", "Safe & Non-Toxic", "Made with Love"],
+            "badge_sub_":   ["Recommended by vets", "No harmful additives", "Tested for pets", "Pet-first philosophy"]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/home-layout.json"
+      }
+    ]
+  }
+}

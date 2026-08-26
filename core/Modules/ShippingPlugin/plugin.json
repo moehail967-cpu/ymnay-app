@@ -1,0 +1,15 @@
+{
+    "id": "shipping-plugin",
+    "name": "Shipping Plugin",
+    "version": "1.0.1",
+    "description": "",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "tenant",
+    "pricing": "free",
+    "min_platform_version": "1.0.0",
+    "main": "src/ShippingPluginPlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null
+}

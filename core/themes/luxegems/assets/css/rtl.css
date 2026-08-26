@@ -1,0 +1,4 @@
+/* RTL overrides — luxegems */
+body { direction: rtl; text-align: right; }
+.lx-nav-links { flex-direction: row-reverse; }
+.lx-footer-bottom { flex-direction: row-reverse; }

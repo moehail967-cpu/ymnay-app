@@ -1,0 +1,295 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "KidVille Toy Store"
+      },
+      {
+        "key": "site_description",
+        "value": "Making childhood magical since 2010. All our toys meet strict safety certifications — so parents can shop with confidence."
+      },
+      {
+        "key": "site_logo",
+        "value": "@media:kidville-logo-color"
+      },
+      {
+        "key": "site_white_logo",
+        "value": "@media:kidville-logo-white"
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/logo-color.svg",
+        "import_as": "kidville-logo-color"
+      },
+      {
+        "path": "assets/images/logo-white.svg",
+        "import_as": "kidville-logo-white"
+      },
+      {
+        "path": "assets/images/kids-toys-hero.jpg",
+        "import_as": "kidville-hero-right"
+      },
+      {
+        "path": "assets/images/LEGO.jpg",
+        "import_as": "lego-set"
+      },
+      {
+        "path": "assets/images/remote-control-car.jpg",
+        "import_as": "remote-control-car"
+      },
+      {
+        "path": "assets/images/educational-puzzle.jpg",
+        "import_as": "educational-puzzle"
+      },
+      {
+        "path": "assets/images/plush-teddy.jpg",
+        "import_as": "plush-teddy"
+      },
+      {
+        "path": "assets/images/robot-toy.jpg",
+        "import_as": "robot-toy"
+      },
+      {
+        "path": "assets/images/deluxe-art-craft-kit.jpg",
+        "import_as": "deluxe-art-craft-kit"
+      },
+      {
+        "path": "assets/images/kids-balance-bike.jpg",
+        "import_as": "kids-balance-bike"
+      },
+      {
+        "path": "assets/images/wooden-dollhouse-playset.jpg",
+        "import_as": "wooden-dollhouse-playset"
+      },
+      {
+        "path": "assets/images/cat-toys.jpg",
+        "import_as": "cat-toys"
+      },
+      {
+        "path": "assets/images/cat-games.jpg",
+        "import_as": "cat-games"
+      },
+      {
+        "path": "assets/images/cat-baby.jpg",
+        "import_as": "cat-baby"
+      },
+      {
+        "path": "assets/images/cat-clothing.jpg",
+        "import_as": "cat-clothing"
+      },
+      {
+        "path": "assets/images/cat-learning.jpg",
+        "import_as": "cat-learning"
+      },
+      {
+        "path": "assets/images/cat-outdoor.jpg",
+        "import_as": "cat-outdoor"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Toys",
+        "slug": "toys",
+        "image": "cat-toys"
+      },
+      {
+        "name": "Games",
+        "slug": "games",
+        "image": "cat-games"
+      },
+      {
+        "name": "Baby & Infant",
+        "slug": "baby-infant",
+        "image": "cat-baby"
+      },
+      {
+        "name": "Kids Fashion",
+        "slug": "kids-fashion",
+        "image": "cat-clothing"
+      },
+      {
+        "name": "Learning",
+        "slug": "learning",
+        "image": "cat-learning"
+      },
+      {
+        "name": "Outdoor Play",
+        "slug": "outdoor-play",
+        "image": "cat-outdoor"
+      }
+    ],
+    "products": [
+      {
+        "name": "LEGO Classic Builder Set",
+        "summary": "500-piece creative building set, ages 4+.",
+        "price": 29.99,
+        "compare_price": 39.99,
+        "category": "toys",
+        "image": "lego-set",
+        "stock": 100,
+        "tags": ["lego", "building", "creative"]
+      },
+      {
+        "name": "Remote Control Race Car",
+        "summary": "2.4GHz RC car, 30km/h top speed, rechargeable battery.",
+        "price": 39.99,
+        "compare_price": 54.99,
+        "category": "toys",
+        "image": "remote-control-car",
+        "stock": 80,
+        "tags": ["rc-car", "remote-control", "fast"]
+      },
+      {
+        "name": "Educational Puzzle 48pcs",
+        "summary": "World map jigsaw puzzle, educational and fun, ages 3+.",
+        "price": 14.99,
+        "compare_price": 19.99,
+        "category": "learning",
+        "image": "educational-puzzle",
+        "stock": 120,
+        "tags": ["puzzle", "educational", "ages-3-plus"]
+      },
+      {
+        "name": "Plush Teddy Bear 40cm",
+        "summary": "Super soft huggable teddy bear, hypoallergenic fill.",
+        "price": 24.99,
+        "compare_price": 32.99,
+        "category": "baby-infant",
+        "image": "plush-teddy",
+        "stock": 90,
+        "tags": ["teddy", "plush", "baby"]
+      },
+      {
+        "name": "Robot Coding Toy",
+        "summary": "Programmable robot that teaches coding basics, ages 5-10.",
+        "price": 49.99,
+        "compare_price": 64.99,
+        "category": "learning",
+        "image": "robot-toy",
+        "stock": 60,
+        "tags": ["robot", "coding", "stem"]
+      },
+      {
+        "name": "Deluxe Art & Craft Kit",
+        "summary": "150-piece kit with paints, brushes, crayons and stencils.",
+        "price": 19.99,
+        "compare_price": 26.99,
+        "category": "toys",
+        "image": "deluxe-art-craft-kit",
+        "stock": 75,
+        "tags": ["art", "craft", "creative"]
+      },
+      {
+        "name": "Kids' Balance Bike 12\"",
+        "summary": "Lightweight aluminium frame balance bike, ages 2-5.",
+        "price": 89.99,
+        "compare_price": 119.99,
+        "category": "outdoor-play",
+        "image": "kids-balance-bike",
+        "stock": 40,
+        "tags": ["bike", "balance", "outdoor"]
+      },
+      {
+        "name": "Wooden Dollhouse Playset",
+        "summary": "4-storey dollhouse with furniture and doll figures.",
+        "price": 69.99,
+        "compare_price": 89.99,
+        "category": "toys",
+        "image": "wooden-dollhouse-playset",
+        "stock": 35,
+        "tags": ["dollhouse", "wooden", "pretend-play"]
+      }
+    ],
+    "menus": [
+      {
+        "title": "Main Menu",
+        "status": "default",
+        "items": [
+          { "label": "Toys",         "url": "@url/shop?category=toys" },
+          { "label": "Games",        "url": "@url/shop?category=games" },
+          { "label": "Kids Fashion", "url": "@url/shop?category=kids-fashion" },
+          { "label": "Baby",         "url": "@url/shop?category=baby-infant" },
+          { "label": "Learning",     "url": "@url/shop?category=learning" },
+          { "label": "Outdoor",      "url": "@url/shop?category=outdoor-play" }
+        ]
+      },
+      {
+        "title": "Shop Menu",
+        "status": "shop",
+        "items": [
+          { "label": "Toys",         "url": "@url/shop?category=toys" },
+          { "label": "Games",        "url": "@url/shop?category=games" },
+          { "label": "Kids Fashion", "url": "@url/shop?category=kids-fashion" },
+          { "label": "Baby",         "url": "@url/shop?category=baby-infant" },
+          { "label": "Sale",         "url": "@url/shop" }
+        ]
+      },
+      {
+        "title": "Help Menu",
+        "status": "help",
+        "items": [
+          { "label": "Gift Finder",    "url": "@url/contact" },
+          { "label": "Delivery Info",  "url": "@url/contact" },
+          { "label": "Returns",        "url": "@url/contact" },
+          { "label": "Safety Info",    "url": "@url/contact" },
+          { "label": "Contact",        "url": "@url/contact" }
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Shop",
+          "menu_id": "@menu:shop"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Help",
+          "menu_id": "@menu:help"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Safe for Kids",
+          "footer_badges": {
+            "badge_icon_":  ["🧸", "🌈", "♻️", "🎨"],
+            "badge_title_": ["Safety Tested", "Age-Appropriate", "Eco Friendly", "Educational"],
+            "badge_sub_":   ["EN71 certified", "Developmental stages", "Sustainable materials", "Learning through play"]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "kidville-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/home-layout.json"
+      }
+    ]
+  }
+}

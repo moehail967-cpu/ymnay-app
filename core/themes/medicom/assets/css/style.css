@@ -1,0 +1,49 @@
+/*
+ * Medicom — Design Tokens
+ * This file defines all CSS custom properties used by pages.css.
+ * Keep this file variables-only; all component styles live in pages.css.
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;900&family=Roboto:wght@300;400;500;700;900&family=Jost:wght@300;400;500;600;700;800;900&display=swap");
+
+:root {
+    /* Brand palette — pharmacy blue */
+    --main-color-one:   #1A85ED;
+    --main-color-two:   #326DE4;
+    --main-color-three: #0E72D4;
+    --main-color-four:  #1266B8;
+    --main-color-five:  #0D5CA3;
+
+    /* Text */
+    --body-color:         #444444;
+    --heading-color:      #1B1C25;
+    --light-color:        #666666;
+    --extra-light-color:  #999999;
+
+    /* Typography */
+    --body-font:         "Roboto", sans-serif;
+    --heading-font:      "Rubik", sans-serif;
+    --jost-font:         "Jost", sans-serif;
+    --roboto-font:       "Roboto", sans-serif;
+    --rubik-font:        "Rubik", sans-serif;
+    --manrope-font:      "Rubik", sans-serif;      /* fallback — Manrope not loaded */
+    --roboto-slab-font:  "Roboto", serif;          /* fallback — Roboto Slab not loaded */
+    --opensans-font:     "Roboto", sans-serif;
+    --montserrat-font:   "Rubik", sans-serif;
+    --playfair-font:     "Rubik", serif;
+
+    /* Section backgrounds */
+    --section-bg-1: #f8f9fa;
+    --section-bg-2: #f0f4f8;
+    --section-bg-3: #e8f4fb;
+    --section-bg-4: #ffffff;
+    --section-bg-5: #f5f7fa;
+    --section-bg-6: #eef2f7;
+
+    /* Semantic */
+    --stock-color:            #28a745;   /* in-stock green */
+    --review-color:           #ffa800;   /* star rating amber */
+    --new-color:              #1A85ED;   /* "new" badge — matches brand */
+    --heading-color-home-19:  #1B1C25;
+}
+.el-logo-img { max-height: 46px; object-fit: contain; display: block; }

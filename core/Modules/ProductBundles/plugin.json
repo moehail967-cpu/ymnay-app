@@ -1,0 +1,10 @@
+{
+    "id": "product-bundles",
+    "name": "Product Bundles",
+    "description": "Create product bundles with automatic cart discounts. When all bundle products are in the cart, the discount applies automatically.",
+    "version": "1.0.0",
+    "type": "tenant",
+    "pricing": "free",
+    "author": "Nazmart",
+    "main": "src/ProductBundlesPlugin.php"
+}

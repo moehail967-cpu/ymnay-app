@@ -1,0 +1,154 @@
+/* ============================================================
+   Chefhome — Default Page Styles (shop, cart, checkout)
+   Loaded before theme CSS so theme overrides take precedence.
+   ============================================================ */
+
+/* Shop page layout compatibility */
+.shop-area { padding-top: 60px; padding-bottom: 60px; }
+.shop-contents-wrapper { display: flex; gap: 24px; }
+.shop-sidebar { min-width: 260px; }
+.product-grid-wrapper { flex: 1; }
+
+/* Cart & Checkout */
+.cart-area { padding-top: 60px; padding-bottom: 60px; }
+.checkout-area { padding-top: 60px; padding-bottom: 60px; }
+
+/* Product single */
+.single-product-details-area { padding-top: 60px; padding-bottom: 60px; }
+
+/* Price range slider — Bootstrap 5 compatible */
+.price-range-slider .noUi-connect { background: #E67E22; }
+.price-range-slider .noUi-handle { border-color: #E67E22; }
+
+/* Filter sidebar */
+.widget-box { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; border: 1px solid #f0f0f0; }
+.widget-box .widget-title { font-size: 15px; font-weight: 700; color: #C0392B; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #E67E22; }
+
+/* Add to cart button */
+.add-to-cart-btn { background: #E67E22; color: #fff; border: none; padding: 6px 24px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: opacity .2s; }
+.add-to-cart-btn:hover { opacity: .85; }
+
+/* Rating stars */
+.rating-star .las.la-star,
+.rating-star .las.la-star-half-alt { color: #f59e0b; }
+.rating-star .lar.la-star { color: #d1d5db; }
+
+/* ============================================================
+   Shop page — sort bar & view toggle (all-products.blade.php)
+   ============================================================ */
+.ch-sort-bar {
+    background: #fff;
+    border: 1px solid var(--ch-border);
+    border-radius: var(--ch-radius-sm);
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 22px;
+    font-size: 13px;
+    color: var(--ch-muted);
+}
+.ch-view-toggle button {
+    width: 34px; height: 34px;
+    border: 1px solid var(--ch-border);
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--ch-muted);
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s;
+}
+.ch-view-toggle button.active,
+.ch-view-toggle button:hover { background: var(--ch-red); border-color: var(--ch-red); color: #fff; }
+.ch-price-inputs { display: flex; gap: 8px; }
+.ch-price-input { flex: 1; padding: 8px 10px; border: 1px solid var(--ch-border); border-radius: var(--ch-radius-sm); font-size: 13px; width: 100%; }
+.ch-sort-select { padding: 7px 12px; border: 1px solid var(--ch-border); border-radius: var(--ch-radius-sm); font-size: 13px; color: var(--ch-dark); background: #fff; cursor: pointer; outline: none; }
+.ch-star-filter { color: #F1C40F; }
+
+/* ============================================================
+   Product details — gallery, tabs, reviews (product-details)
+   ============================================================ */
+.ch-thumb-grid    { display: grid; grid-template-columns: 72px 1fr; gap: 10px; }
+.ch-thumb-list    { display: flex; flex-direction: column; gap: 8px; }
+.ch-thumb         { width: 72px; height: 72px; border-radius: var(--ch-radius-sm); border: 2px solid var(--ch-border); overflow: hidden; cursor: pointer; transition: border-color .2s; background: var(--ch-warm); }
+.ch-thumb.active, .ch-thumb:hover { border-color: var(--ch-red); }
+.ch-thumb img     { width: 100%; height: 100%; object-fit: cover; }
+.ch-main-img      { border-radius: var(--ch-radius); border: 1px solid var(--ch-border); overflow: hidden; background: var(--ch-warm); aspect-ratio: 1; }
+.ch-main-img img  { width: 100%; height: 100%; object-fit: cover; }
+.ch-product-title { font-size: clamp(20px,3vw,28px); font-weight: 900; color: var(--ch-dark); margin-bottom: 10px; }
+.ch-product-price { font-size: 30px; font-weight: 900; color: var(--ch-red); }
+.ch-product-price-old { font-size: 16px; color: var(--ch-muted); text-decoration: line-through; margin-left: 8px; }
+
+/* Tabs — shared by product-details and digital product-details */
+.ch-tab-nav       { display: flex; gap: 0; border-bottom: 2px solid var(--ch-border); margin-bottom: 24px; overflow-x: auto; scrollbar-width: none; }
+.ch-tab-nav::-webkit-scrollbar { display: none; }
+.ch-tab-nav-btn   { padding: 12px 24px; font-size: 14px; font-weight: 700; color: var(--ch-muted); background: none; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; cursor: pointer; font-family: inherit; transition: all .2s; }
+.ch-tab-nav-btn.active { color: var(--ch-red); border-bottom-color: var(--ch-red); }
+.ch-tab-btn       { padding: 12px 24px; font-size: 14px; font-weight: 700; color: var(--ch-muted); background: none; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; cursor: pointer; font-family: inherit; transition: all .2s; outline: none; }
+.ch-tab-btn.active { color: var(--ch-red); border-bottom-color: var(--ch-red); }
+.ch-tab-panel     { display: none; }
+.ch-tab-panel.active { display: block; }
+
+/* Reviews */
+.ch-review-item   { padding: 20px 0; border-bottom: 1px solid var(--ch-border); }
+.ch-review-item:last-child { border-bottom: none; }
+
+/* Product form overrides (size/color lists inside ChefHome layout) */
+.ch-product-form .size-lists { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.ch-product-form .size-lists li { padding: 6px 16px; border: 1.5px solid var(--ch-border); border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--ch-muted); transition: all .2s; }
+.ch-product-form .size-lists li:hover, .ch-product-form .size-lists li.active { border-color: var(--ch-red); color: var(--ch-red); background: var(--ch-red-light); }
+.ch-product-form .size-lists li.disabled { opacity: .45; pointer-events: none; }
+.ch-product-form .color-list li { width: 28px; height: 28px; border-radius: 50%; padding: 0; }
+.ch-product-form .input-title { font-size: 13px; font-weight: 700; color: var(--ch-dark); display: block; margin-bottom: 8px; }
+.ch-product-form .form--input { display: none; }
+
+/* ============================================================
+   Dashboard (user-master.blade.php) — shared layout classes
+   ============================================================ */
+.ch-dash-wrap { display: flex; gap: 0; min-height: 60vh; align-items: flex-start; }
+.ch-dash-sidebar {
+    width: 250px; flex-shrink: 0;
+    background: #fff; border: 1px solid var(--ch-border);
+    border-radius: var(--ch-radius); position: sticky; top: 90px; overflow: hidden;
+}
+.ch-dash-user-info { padding: 20px 16px; border-bottom: 1px solid var(--ch-border); background: var(--ch-red); display: flex; align-items: center; gap: 12px; }
+.ch-dash-avatar { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.2); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; flex-shrink: 0; border: 2px solid rgba(255,255,255,.4); }
+.ch-dash-username { font-size: 13px; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ch-dash-email { font-size: 11px; color: rgba(255,255,255,.75); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+.ch-dash-nav { list-style: none; padding: 8px 0; margin: 0; }
+.ch-dash-nav li a { display: flex; align-items: center; gap: 10px; padding: 11px 18px; font-size: 13px; font-weight: 600; color: var(--ch-brown); text-decoration: none; transition: background .15s, color .15s; border-left: 3px solid transparent; }
+.ch-dash-nav li a:hover, .ch-dash-nav li.active a { background: var(--ch-red-light); color: var(--ch-red); border-left-color: var(--ch-red); }
+.ch-dash-nav li a i { font-size: 18px; width: 20px; text-align: center; }
+.ch-dash-nav li.logout a { color: var(--ch-red); }
+.ch-dash-nav li.logout a:hover { background: #FFF0EC; border-left-color: var(--ch-red); }
+.ch-dash-nav .ch-dash-divider { height: 1px; background: var(--ch-border); margin: 6px 16px; }
+.ch-dash-content { flex: 1; min-width: 0; }
+.ch-dash-card { background: #fff; border: 1px solid var(--ch-border); border-radius: var(--ch-radius); overflow: hidden; margin-bottom: 20px; }
+.ch-dash-card-header { padding: 14px 20px; border-bottom: 1px solid var(--ch-border); font-weight: 700; font-size: 13px; color: var(--ch-brown); text-transform: uppercase; letter-spacing: .5px; background: var(--ch-warm); display: flex; align-items: center; justify-content: space-between; }
+.ch-dash-card-body { padding: 20px; }
+.ch-dash-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.ch-dash-table thead tr { background: var(--ch-warm); border-bottom: 1px solid var(--ch-border); }
+.ch-dash-table thead th { padding: 11px 14px; text-align: left; color: var(--ch-muted); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+.ch-dash-table tbody tr { border-bottom: 1px solid var(--ch-border); }
+.ch-dash-table tbody tr:last-child { border-bottom: none; }
+.ch-dash-table tbody td { padding: 13px 14px; color: var(--ch-dark); vertical-align: middle; }
+.ch-dash-badge { padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; display: inline-block; }
+.ch-stat-card { background: #fff; border: 1px solid var(--ch-border); border-radius: var(--ch-radius); padding: 20px; display: flex; align-items: center; gap: 14px; height: 100%; }
+.ch-stat-icon { width: 50px; height: 50px; border-radius: 12px; background: var(--ch-red-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ch-stat-icon i { font-size: 24px; color: var(--ch-red); }
+.ch-stat-value { font-size: 24px; font-weight: 800; color: var(--ch-dark); line-height: 1; }
+.ch-stat-label { font-size: 12px; color: var(--ch-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: .5px; }
+.ch-dash-input { width: 100%; padding: 10px 14px; background: #fff; border: 1.5px solid var(--ch-border); border-radius: var(--ch-radius-sm); color: var(--ch-dark); font-size: 14px; outline: none; transition: border-color .15s; }
+.ch-dash-input:focus { border-color: var(--ch-red); }
+.ch-dash-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--ch-muted); display: block; margin-bottom: 6px; }
+.ch-dash-mobile-toggle { display: none; align-items: center; gap: 8px; background: var(--ch-red); border: none; border-radius: var(--ch-radius-sm); padding: 10px 16px; color: #fff; font-size: 13px; font-weight: 700; cursor: pointer; margin-bottom: 16px; }
+@media (max-width: 991px) {
+    .ch-dash-wrap { flex-direction: column; }
+    .ch-dash-sidebar { width: 100%; position: relative; top: 0; display: none; }
+    .ch-dash-sidebar.open { display: block; }
+    .ch-dash-mobile-toggle { display: flex; }
+}

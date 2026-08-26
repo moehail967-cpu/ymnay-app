@@ -1,0 +1,63 @@
+{
+  "name": "Hexfashion",
+  "slug": "hexfashion",
+  "description": "Fashion Theme",
+  "author": "Mazharul Islam Suzon",
+  "version": "1.0.0",
+  "status": true,
+  "screenshot": [
+    {
+      "primary": "primary.jpg",
+      "sort": "desc"
+    }
+  ],
+  "headerHook": [
+    {
+      "style": [
+        "hexfashion",
+        "pages"
+      ],
+      "script": [],
+      "blade": [],
+      "navbarArea": "navbar",
+      "breadcrumbArea": "breadcrumb",
+      "loadCoreStyle": {}
+    }
+  ],
+  "footerHook": [
+    {
+      "style": [],
+      "script": [],
+      "blade": [],
+      "widgetArea": "footer-hexfashion",
+      "loadCoreScript": {}
+    }
+  ],
+  "_legacy": {
+    "headerHook": [
+      {
+        "style": [
+          "hexfashion"
+        ],
+        "script": [],
+        "blade": [],
+        "navbarArea": "navbar",
+        "breadcrumbArea": "breadcrumb"
+      }
+    ],
+    "footerHook": [
+      {
+        "style": [],
+        "script": [],
+        "blade": [],
+        "widgetArea": "footer-hexfashion"
+      }
+    ]
+  },
+  "niche": "fashion",
+  "price": 0,
+  "license": "free",
+  "demo": {
+    "data": "demo/data.json"
+  }
+}

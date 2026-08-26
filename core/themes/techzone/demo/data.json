@@ -1,0 +1,359 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "Techzone — Your Tech Superstore"
+      },
+      {
+        "key": "site_tag_line",
+        "value": "The latest gadgets at the best prices"
+      },
+      {
+        "key": "main_color_one_techzone",
+        "value": "#0052CC"
+      },
+      {
+        "key": "main_color_two_techzone",
+        "value": "#00B8D9"
+      },
+      {
+        "key": "font_family",
+        "value": "Inter"
+      },
+      {
+        "key": "site_logo",
+        "value": "@media:techzone-logo-color"
+      },
+      {
+        "key": "site_white_logo",
+        "value": "@media:techzone-logo-white"
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/logo-color.svg",
+        "import_as": "techzone-logo-color"
+      },
+      {
+        "path": "assets/images/logo-white.svg",
+        "import_as": "techzone-logo-white"
+      },
+      {
+        "path": "assets/images/techzone-hero.jpg",
+        "import_as": "techzone-hero"
+      },
+      {
+        "path": "assets/images/laptop.jpg",
+        "import_as": "laptop"
+      },
+      {
+        "path": "assets/images/smartphone.jpg",
+        "import_as": "smartphone"
+      },
+      {
+        "path": "assets/images/headphones.jpg",
+        "import_as": "headphones"
+      },
+      {
+        "path": "assets/images/monitor.jpg",
+        "import_as": "monitor"
+      },
+      {
+        "path": "assets/images/gaming-console.jpg",
+        "import_as": "gaming-console"
+      },
+      {
+        "path": "assets/images/smart-home.jpg",
+        "import_as": "smart-home"
+      },
+      {
+        "path": "assets/images/camera.jpg",
+        "import_as": "camera"
+      },
+      {
+        "path": "assets/images/keyboard.jpg",
+        "import_as": "keyboard"
+      },
+      {
+        "path": "assets/images/smartwatch.jpg",
+        "import_as": "smartwatch"
+      },
+      {
+        "path": "assets/images/ssd-drive.jpg",
+        "import_as": "ssd-drive"
+      },
+      {
+        "path": "assets/images/tech-box.jpg",
+        "import_as": "tech-box"
+      },
+      {
+        "path": "assets/images/cat-accessories.jpg",
+        "import_as": "cat-accessories"
+      },
+      {
+        "path": "assets/images/cat-audio.jpg",
+        "import_as": "cat-audio"
+      },
+      {
+        "path": "assets/images/cat-cameras.jpg",
+        "import_as": "cat-cameras"
+      },
+      {
+        "path": "assets/images/cat-gaming.jpg",
+        "import_as": "cat-gaming"
+      },
+      {
+        "path": "assets/images/cat-laptops.jpg",
+        "import_as": "cat-laptops"
+      },
+      {
+        "path": "assets/images/cat-phones.jpg",
+        "import_as": "cat-phones"
+      },
+      {
+        "path": "assets/images/promo-banner.jpg",
+        "import_as": "cat-phones"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Laptops",
+        "slug": "laptops",
+        "image": "cat-laptops"
+      },
+      {
+        "name": "Smartphones",
+        "slug": "smartphones",
+        "image": "cat-phones"
+      },
+      {
+        "name": "Audio",
+        "slug": "audio",
+        "image": "cat-audio"
+      },
+      {
+        "name": "Gaming",
+        "slug": "gaming",
+        "image": "cat-gaming"
+      },
+      {
+        "name": "Cameras",
+        "slug": "cameras",
+        "image": "cat-cameras"
+      },
+      {
+        "name": "Accessories",
+        "slug": "accessories",
+        "image": "cat-accessories"
+      }
+    ],
+    "products": [
+      {
+        "name": "UltraBook Pro 14\" Laptop",
+        "summary": "Intel Core i7, 16GB RAM, 512GB NVMe SSD, OLED display.",
+        "price": 1499.0,
+        "compare_price": 1199.0,
+        "category": "laptops",
+        "image": "laptop",
+        "stock": 40,
+        "sold_count": 312,
+        "tags": ["laptop", "ultrabook", "intel"]
+      },
+      {
+        "name": "Galaxy X22 Pro Smartphone",
+        "summary": "6.7\" AMOLED, 200MP camera, 5000mAh, 5G enabled.",
+        "price": 899.0,
+        "compare_price": 799.0,
+        "category": "smartphones",
+        "image": "smartphone",
+        "stock": 60,
+        "sold_count": 487,
+        "tags": ["phone", "android", "5G"]
+      },
+      {
+        "name": "SoundBlast ANC Headphones",
+        "summary": "40hr battery, adaptive noise cancellation, Hi-Res Audio certified.",
+        "price": 349.0,
+        "compare_price": 249.0,
+        "category": "audio",
+        "image": "headphones",
+        "stock": 70,
+        "sold_count": 256,
+        "tags": ["headphones", "anc", "wireless"]
+      },
+      {
+        "name": "4K OLED 55\" Smart TV",
+        "summary": "120Hz panel, Dolby Vision IQ, built-in Google TV, HDMI 2.1.",
+        "price": 1399.0,
+        "compare_price": 1099.0,
+        "category": "accessories",
+        "image": "monitor",
+        "stock": 25,
+        "sold_count": 178,
+        "tags": ["tv", "oled", "4k"]
+      },
+      {
+        "name": "GamePad Elite Controller",
+        "summary": "Hall-effect joysticks, 40hr battery, works with PC, Xbox and Android.",
+        "price": 89.99,
+        "compare_price": 69.99,
+        "category": "gaming",
+        "image": "gaming-console",
+        "stock": 80,
+        "sold_count": 543,
+        "tags": ["controller", "gaming", "wireless"]
+      },
+      {
+        "name": "SmartHome Hub Pro",
+        "summary": "Compatible with 10,000+ devices, built-in Zigbee, Z-Wave and Matter.",
+        "price": 199.0,
+        "compare_price": 149.0,
+        "category": "accessories",
+        "image": "smart-home",
+        "stock": 50,
+        "sold_count": 194,
+        "tags": ["smarthome", "hub", "matter"]
+      },
+      {
+        "name": "MirrorCam 4K Action Camera",
+        "summary": "4K/60fps, 20MP, waterproof to 10m, HyperSmooth stabilisation.",
+        "price": 379.0,
+        "compare_price": 299.0,
+        "category": "cameras",
+        "image": "camera",
+        "stock": 45,
+        "sold_count": 98,
+        "tags": ["camera", "action", "4k"]
+      },
+      {
+        "name": "Mechanical Gaming Keyboard",
+        "summary": "TKL layout, Cherry MX Red switches, per-key RGB, aluminium frame.",
+        "price": 169.0,
+        "compare_price": 129.0,
+        "category": "accessories",
+        "image": "keyboard",
+        "stock": 65,
+        "sold_count": 211,
+        "tags": ["keyboard", "mechanical", "rgb"]
+      },
+      {
+        "name": "ProWatch Series 9 Smartwatch",
+        "summary": "Always-on AMOLED display, health sensors, 18-day battery, GPS.",
+        "price": 449.0,
+        "compare_price": 369.0,
+        "category": "accessories",
+        "image": "smartwatch",
+        "stock": 55,
+        "sold_count": 134,
+        "tags": ["smartwatch", "wearable", "fitness"]
+      },
+      {
+        "name": "SpeedX 2TB Portable SSD",
+        "summary": "USB 3.2 Gen 2, 2000MB/s read, shock-resistant, bus-powered.",
+        "price": 189.0,
+        "compare_price": 149.0,
+        "category": "accessories",
+        "image": "ssd-drive",
+        "stock": 90,
+        "sold_count": 76,
+        "tags": ["ssd", "storage", "portable"]
+      },
+      {
+        "name": "TechBundle Starter Kit",
+        "summary": "Everything you need to get started: cable management, USB hub, and more.",
+        "price": 79.0,
+        "compare_price": 59.0,
+        "category": "accessories",
+        "image": "tech-box",
+        "stock": 100,
+        "sold_count": 43,
+        "tags": ["bundle", "accessories", "starter"]
+      }
+    ],
+    "menus": [
+      {
+        "title": "Main Menu",
+        "items": [
+          {
+            "label": "Laptops",
+            "url": "/category/laptops"
+          },
+          {
+            "label": "Phones",
+            "url": "/category/smartphones"
+          },
+          {
+            "label": "Gaming",
+            "url": "/category/gaming"
+          },
+          {
+            "label": "TV & Audio",
+            "url": "/category/audio"
+          },
+          {
+            "label": "Cameras",
+            "url": "/category/cameras"
+          },
+          {
+            "label": "Accessories",
+            "url": "/category/accessories"
+          }
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Products",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Support",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Why TechZone",
+          "footer_badges": {
+            "badge_icon_":  ["🔧", "✅", "🔒", "📦"],
+            "badge_title_": ["Genuine Parts", "Quality Tested", "2-Year Warranty", "Fast Delivery"],
+            "badge_sub_":   ["OEM certified", "QA verified", "Peace of mind", "Tracked shipping"]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "home",
+        "set_as_home": true,
+        "page_builder": true,
+        "breadcrumb": false,
+        "layout_file": "demo/home-layout.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,354 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "section-cs001",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-cs001",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-cs001",
+                                "type": "casual_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-cs002",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-cs002",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-cs002",
+                                "type": "casual_category_grid"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-cs003",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-cs003",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-cs003",
+                                "type": "casual_popular_collection"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-cs004",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-cs004",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-cs004",
+                                "type": "casual_flash_sale_banner"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-cs005",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-cs005",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-cs005",
+                                "type": "casual_our_store"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-cs006",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-cs006",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-cs006",
+                                "type": "casual_brand_logos"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "widget-cs001": {
+            "type": "casual_hero_section",
+            "container_id": "section-cs001",
+            "column_id": "column-cs001",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "hero_image": "@media:casual-hero"
+                    },
+                    "content": {
+                        "eyebrow": "New Season Arrivals",
+                        "title": "Summer Collection",
+                        "button_text": "Browse All Categories",
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "product_count": 2
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-cs002": {
+            "type": "casual_category_grid",
+            "container_id": "section-cs002",
+            "column_id": "column-cs002",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "CATEGORIES",
+                        "limit": 6
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-cs003": {
+            "type": "casual_popular_collection",
+            "container_id": "section-cs003",
+            "column_id": "column-cs003",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "POPULAR COLLECTION",
+                        "count": 4
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-cs004": {
+            "type": "casual_flash_sale_banner",
+            "container_id": "section-cs004",
+            "column_id": "column-cs004",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "banner_image": "@media:casual-flash-banner"
+                    },
+                    "content": {
+                        "title": "Flash Sale",
+                        "subtitle": "Limited time offer — grab your favourites now!",
+                        "link_text": "Shop the Sale",
+                        "link_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "discount_text": "20% OFF"
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-cs005": {
+            "type": "casual_our_store",
+            "container_id": "section-cs005",
+            "column_id": "column-cs005",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "OUR STORE",
+                        "category_limit": 6,
+                        "product_limit": 9
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-cs006": {
+            "type": "casual_brand_logos",
+            "container_id": "section-cs006",
+            "column_id": "column-cs006",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "OUR BRANDS",
+                        "per_slide": 5,
+                        "limit": 15
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        }
+    }
+}

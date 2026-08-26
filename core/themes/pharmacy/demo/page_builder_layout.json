@@ -1,0 +1,441 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "section-1783311447057",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783311447057",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783311447057",
+                                "type": "pharmacy_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "container-1783311088848",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783311088848",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783311449362",
+                                "type": "pharmacy_category_grid"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1783311453087",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783311453087",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783311453087",
+                                "type": "pharmacy_best_sellers"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "transparent"
+                }
+            },
+            {
+                "id": "section-1783316879693",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783316879693",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783316879693",
+                                "type": "pharmacy_banner_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1783319628355",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783319628355",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783319628355",
+                                "type": "pharmacy_featured_products"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1783316881013",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783316881013",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783316881013",
+                                "type": "pharmacy_blog_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1783311454662",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783311454662",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783311454662",
+                                "type": "pharmacy_newsletter"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "widget-1783311447057": {
+            "type": "pharmacy_hero_section",
+            "container_id": "section-1783311447057",
+            "column_id": "column-1783311447057",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "product_image": {
+                            "id": 1085,
+                            "alt": null,
+                            "url": "https:\/\/pawhus.nazmart.test\/assets\/tenant\/uploads\/media-uploader\/pawhus\/pharmacy-hero1783317604.jpg",
+                            "size": "37.72 KB",
+                            "title": "pharmacy-hero.jpg",
+                            "filename": "pharmacy-hero1783317604.jpg",
+                            "mime_type": "image\/jpg"
+                        }
+                    },
+                    "content": {
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button2_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1783311449362": {
+            "type": "pharmacy_category_grid",
+            "container_id": "container-1783311088848",
+            "column_id": "column-1783311088848",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1783311453087": {
+            "type": "pharmacy_best_sellers",
+            "container_id": "section-1783311453087",
+            "column_id": "column-1783311453087",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1783311454662": {
+            "type": "pharmacy_newsletter",
+            "container_id": "section-1783311454662",
+            "column_id": "column-1783311454662",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1783316879693": {
+            "type": "pharmacy_banner_section",
+            "container_id": "section-1783316879693",
+            "column_id": "column-1783316879693",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button2_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1783316881013": {
+            "type": "pharmacy_blog_section",
+            "container_id": "section-1783316881013",
+            "column_id": "column-1783316881013",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1783319628355": {
+            "type": "pharmacy_featured_products",
+            "container_id": "section-1783319628355",
+            "column_id": "column-1783319628355",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "view_all_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        }
+    }
+}

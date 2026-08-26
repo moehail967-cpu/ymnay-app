@@ -1,0 +1,11 @@
+{
+  "id": "cart-discount",
+  "name": "Cart Discount",
+  "version": "1.0.0",
+  "description": "Tiered cart-level discounts with progress bars. No coupon code needed — discount auto-applies when cart total reaches a threshold.",
+  "type": "tenant",
+  "pricing": "free",
+  "min_platform_version": "2.5.0",
+  "main": "src/CartDiscountPlugin.php",
+  "author": "Nazmart"
+}

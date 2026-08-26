@@ -1,0 +1,15 @@
+{
+    "id": "affiliate",
+    "name": "Affiliate Program",
+    "version": "1.0.0",
+    "description": "Referral tracking and commission management. Customers get a unique referral link; earned commissions are tracked per order and can be paid out manually.",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "tenant",
+    "pricing": "free",
+    "min_platform_version": "2.5.0",
+    "main": "src/AffiliatePlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null
+}

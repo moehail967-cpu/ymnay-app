@@ -1,0 +1,322 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "GlowLab Beauty"
+      },
+      {
+        "key": "site_description",
+        "value": "Science-backed skincare for radiant, healthy skin."
+      },
+      {
+        "key": "main_color_one_glowlab",
+        "value": "#1C1410"
+      },
+      {
+        "key": "main_color_two_glowlab",
+        "value": "#2e2e2e"
+      },
+      {
+        "key": "site_logo",
+        "value": "@media:glowlab-logo-color"
+      },
+      {
+        "key": "site_white_logo",
+        "value": "@media:glowlab-logo-white"
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/logo-color.svg",
+        "import_as": "glowlab-logo-color"
+      },
+      {
+        "path": "assets/images/logo-white.svg",
+        "import_as": "glowlab-logo-white"
+      },
+      {
+        "path": "assets/images/vitamin-c-serum.jpg",
+        "import_as": "vitamin-c-serum"
+      },
+      {
+        "path": "assets/images/hyaluronic-serum.jpg",
+        "import_as": "hyaluronic-serum"
+      },
+      {
+        "path": "assets/images/botanical-oil.jpg",
+        "import_as": "botanical-oil"
+      },
+      {
+        "path": "assets/images/exfoliant.jpg",
+        "import_as": "exfoliant"
+      },
+      {
+        "path": "assets/images/face-mask.jpg",
+        "import_as": "face-mask"
+      },
+      {
+        "path": "assets/images/foam-cleanser.jpg",
+        "import_as": "foam-cleanser"
+      },
+      {
+        "path": "assets/images/glow-serum.jpg",
+        "import_as": "glow-serum"
+      },
+      {
+        "path": "assets/images/sunscreen-spf.jpg",
+        "import_as": "sunscreen-spf"
+      },
+      {
+        "path": "assets/images/cat-cleansers.jpg",
+        "import_as": "cat-cleansers"
+      },
+      {
+        "path": "assets/images/cat-eye-care.jpg",
+        "import_as": "cat-eye-care"
+      },
+      {
+        "path": "assets/images/cat-masks.jpg",
+        "import_as": "cat-masks"
+      },
+      {
+        "path": "assets/images/cat-moisturizers.jpg",
+        "import_as": "cat-moisturizers"
+      },
+      {
+        "path": "assets/images/cat-serums.jpg",
+        "import_as": "cat-serums"
+      },
+      {
+        "path": "assets/images/cat-suncare.jpg",
+        "import_as": "cat-suncare"
+      },
+      {
+        "path": "assets/images/skincare-hero.jpg",
+        "import_as": "glowlab-hero"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Serums",
+        "slug": "serums",
+        "image": "cat-serums"
+      },
+      {
+        "name": "Moisturisers",
+        "slug": "moisturisers",
+        "image": "cat-moisturizers"
+      },
+      {
+        "name": "Cleansers",
+        "slug": "cleansers",
+        "image": "cat-cleansers"
+      },
+      {
+        "name": "Masks",
+        "slug": "masks",
+        "image": "cat-masks"
+      },
+      {
+        "name": "Sun Care",
+        "slug": "sun-care",
+        "image": "cat-suncare"
+      },
+      {
+        "name": "Sets & Gifts",
+        "slug": "sets-gifts",
+        "image": "cat-eye-care"
+      }
+    ],
+    "products": [
+      {
+        "name": "Vitamin C Brightening Serum",
+        "summary": "15% stabilised vitamin C, niacinamide and ferulic acid for a radiant glow.",
+        "price": 38.0,
+        "compare_price": 49.0,
+        "category": "serums",
+        "image": "vitamin-c-serum",
+        "stock": 100,
+        "tags": [
+          "vitamin-c",
+          "serum",
+          "brightening"
+        ]
+      },
+      {
+        "name": "Hydra-Boost Moisturiser",
+        "summary": "72-hour hydration with hyaluronic acid and ceramides.",
+        "price": 45.0,
+        "compare_price": 59.0,
+        "category": "moisturisers",
+        "image": "hyaluronic-serum",
+        "stock": 90,
+        "tags": [
+          "moisturiser",
+          "hydrating",
+          "daily"
+        ]
+      },
+      {
+        "name": "Rose Hip Facial Oil",
+        "summary": "Cold-pressed rose hip seed oil, rich in vitamins A, C and E.",
+        "price": 62.0,
+        "compare_price": 79.0,
+        "category": "serums",
+        "image": "botanical-oil",
+        "stock": 70,
+        "tags": [
+          "rose",
+          "facial-oil",
+          "anti-aging"
+        ]
+      },
+      {
+        "name": "Resurfacing AHA Exfoliant",
+        "summary": "10% AHA + 1% BHA gentle chemical exfoliant, smooths texture overnight.",
+        "price": 34.0,
+        "compare_price": 44.0,
+        "category": "serums",
+        "image": "exfoliant",
+        "stock": 80,
+        "tags": [
+          "aha",
+          "exfoliant",
+          "resurfacing"
+        ]
+      },
+      {
+        "name": "Detox Charcoal Face Mask",
+        "summary": "Kaolin clay and activated charcoal, deep-cleanses pores in 10 minutes.",
+        "price": 28.0,
+        "compare_price": 36.0,
+        "category": "masks",
+        "image": "face-mask",
+        "stock": 110,
+        "tags": [
+          "mask",
+          "charcoal",
+          "pores"
+        ]
+      },
+      {
+        "name": "Gentle Foam Cleanser",
+        "summary": "pH-balanced, fragrance-free foam cleanser suitable for all skin types.",
+        "price": 22.0,
+        "compare_price": 29.0,
+        "category": "cleansers",
+        "image": "foam-cleanser",
+        "stock": 120,
+        "tags": [
+          "cleanser",
+          "gentle",
+          "foam"
+        ]
+      },
+      {
+        "name": "Glow Booster Serum",
+        "summary": "Niacinamide 10% + zinc 1%, minimises pores and controls oil.",
+        "price": 32.0,
+        "compare_price": 42.0,
+        "category": "serums",
+        "image": "glow-serum",
+        "stock": 95,
+        "tags": [
+          "niacinamide",
+          "glow",
+          "pores"
+        ]
+      },
+      {
+        "name": "SPF 50 Daily Sunscreen",
+        "summary": "Lightweight, invisible SPF 50+ PA++++, no white cast.",
+        "price": 26.0,
+        "compare_price": 34.0,
+        "category": "sun-care",
+        "image": "sunscreen-spf",
+        "stock": 130,
+        "tags": [
+          "sunscreen",
+          "spf50",
+          "daily"
+        ]
+      }
+    ],
+    "menus": [
+      {
+        "name": "Products Menu",
+        "status": "products",
+        "items": [
+          { "label": "All Products", "url": "#shop" },
+          { "label": "Serums", "url": "#serums" },
+          { "label": "Moisturisers", "url": "#moisturisers" },
+          { "label": "Cleansers", "url": "#cleansers" },
+          { "label": "Sun Care", "url": "#sun-care" }
+        ]
+      },
+      {
+        "name": "Help Menu",
+        "status": "help",
+        "items": [
+          { "label": "Contact Us", "url": "#contact" },
+          { "label": "FAQ", "url": "#faq" },
+          { "label": "Shipping Info", "url": "#shipping" },
+          { "label": "Returns", "url": "#returns" }
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Products",
+          "menu_id": "@menu:products"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Help",
+          "menu_id": "@menu:help"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Our Promise",
+          "footer_badges": {
+            "badge_icon_":  ["🌿", "🧪", "♻️", "🌸"],
+            "badge_title_": ["Cruelty Free", "Dermatologist Tested", "Sustainable", "Vegan Certified"],
+            "badge_sub_":   ["Never tested on animals", "Clinically formulated", "Recyclable packaging", "100% plant-based"]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "glowlab-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/page_builder_layout.json"
+      }
+    ]
+  }
+}

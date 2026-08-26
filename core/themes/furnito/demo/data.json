@@ -1,0 +1,339 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "Furnito — Premium Furniture Store"
+      },
+      {
+        "key": "site_description",
+        "value": "Transform your home with our curated collection of premium furniture for every room."
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/prod-sofa.jpg",
+        "import_as": "furnito-prod-sofa"
+      },
+      {
+        "path": "assets/images/prod-bed.jpg",
+        "import_as": "furnito-prod-bed"
+      },
+      {
+        "path": "assets/images/prod-dining-table.jpg",
+        "import_as": "furnito-prod-dining-table"
+      },
+      {
+        "path": "assets/images/prod-desk.jpg",
+        "import_as": "furnito-prod-desk"
+      },
+      {
+        "path": "assets/images/prod-office-chair.jpg",
+        "import_as": "furnito-prod-office-chair"
+      },
+      {
+        "path": "assets/images/prod-coffee-table.jpg",
+        "import_as": "furnito-prod-coffee-table"
+      },
+      {
+        "path": "assets/images/prod-wardrobe.jpg",
+        "import_as": "furnito-prod-wardrobe"
+      },
+      {
+        "path": "assets/images/prod-bookshelf.jpg",
+        "import_as": "furnito-prod-bookshelf"
+      },
+      {
+        "path": "assets/images/cat-bedroom.jpg",
+        "import_as": "furnito-cat-bedroom"
+      },
+      {
+        "path": "assets/images/cat-dining.jpg",
+        "import_as": "furnito-cat-dining"
+      },
+      {
+        "path": "assets/images/cat-living-room.jpg",
+        "import_as": "furnito-cat-living-room"
+      },
+      {
+        "path": "assets/images/cat-office.jpg",
+        "import_as": "furnito-cat-office"
+      },
+      {
+        "path": "assets/images/cat-outdoor.jpg",
+        "import_as": "furnito-cat-outdoor"
+      },
+      {
+        "path": "assets/images/cat-storage.jpg",
+        "import_as": "furnito-cat-storage"
+      },
+      {
+        "path": "assets/images/hero-banner.jpg",
+        "import_as": "furnito-hero-banner"
+      },
+      {
+        "path": "assets/images/cat-banner-1.jpg",
+        "import_as": "furnito-cat-banner-1"
+      },
+      {
+        "path": "assets/images/cat-banner-2.jpg",
+        "import_as": "furnito-cat-banner-2"
+      },
+      {
+        "path": "assets/images/new_arrival.jpg",
+        "import_as": "furnito-new-arrival"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Bedroom",
+        "slug": "bedroom",
+        "image": "furnito-cat-bedroom"
+      },
+      {
+        "name": "Dining",
+        "slug": "dining",
+        "image": "furnito-cat-dining"
+      },
+      {
+        "name": "Living Room",
+        "slug": "living-room",
+        "image": "furnito-cat-living-room"
+      },
+      {
+        "name": "Office",
+        "slug": "office",
+        "image": "furnito-cat-office"
+      },
+      {
+        "name": "Outdoor",
+        "slug": "outdoor",
+        "image": "furnito-cat-outdoor"
+      },
+      {
+        "name": "Storage",
+        "slug": "storage",
+        "image": "furnito-cat-storage"
+      }
+    ],
+    "products": [
+      {
+        "name": "Comfort Pro Sofa",
+        "summary": "Luxuriously padded 3-seater sofa in premium fabric. Perfect centrepiece for any living room.",
+        "price": 899.99,
+        "compare_price": 1199.99,
+        "category": "living-room",
+        "image": "furnito-prod-sofa",
+        "stock": 20,
+        "tags": [
+          "sofa",
+          "living-room",
+          "fabric",
+          "bestseller"
+        ]
+      },
+      {
+        "name": "King Platform Bed",
+        "summary": "Solid wood platform bed with upholstered headboard. Supports up to 800 lbs.",
+        "price": 1199.99,
+        "compare_price": 1499.99,
+        "category": "bedroom",
+        "image": "furnito-prod-bed",
+        "stock": 15,
+        "tags": [
+          "bed",
+          "king",
+          "bedroom",
+          "wood"
+        ]
+      },
+      {
+        "name": "Oak Dining Table",
+        "summary": "Seats 6 comfortably. Solid oak construction with a hand-rubbed oil finish.",
+        "price": 649.99,
+        "compare_price": 849.99,
+        "category": "dining",
+        "image": "furnito-prod-dining-table",
+        "stock": 18,
+        "tags": [
+          "dining",
+          "table",
+          "oak",
+          "seats-6"
+        ]
+      },
+      {
+        "name": "Executive Desk",
+        "summary": "Spacious L-shaped executive desk with built-in cable management and drawer unit.",
+        "price": 449.99,
+        "compare_price": 599.99,
+        "category": "office",
+        "image": "furnito-prod-desk",
+        "stock": 25,
+        "tags": [
+          "desk",
+          "office",
+          "l-shaped",
+          "cable-management"
+        ]
+      },
+      {
+        "name": "Ergonomic Office Chair",
+        "summary": "Lumbar support, adjustable armrests, and breathable mesh back. Work in comfort all day.",
+        "price": 299.99,
+        "compare_price": 399.99,
+        "category": "office",
+        "image": "furnito-prod-office-chair",
+        "stock": 30,
+        "tags": [
+          "chair",
+          "ergonomic",
+          "mesh",
+          "office"
+        ]
+      },
+      {
+        "name": "Glass Coffee Table",
+        "summary": "Tempered glass top with brushed steel frame. Elevates any living room aesthetic.",
+        "price": 249.99,
+        "compare_price": 329.99,
+        "category": "living-room",
+        "image": "furnito-prod-coffee-table",
+        "stock": 22,
+        "tags": [
+          "coffee-table",
+          "glass",
+          "steel",
+          "modern"
+        ]
+      },
+      {
+        "name": "Sliding Wardrobe",
+        "summary": "Floor-to-ceiling sliding door wardrobe with mirrored panels and internal shelving system.",
+        "price": 799.99,
+        "compare_price": 999.99,
+        "category": "bedroom",
+        "image": "furnito-prod-wardrobe",
+        "stock": 12,
+        "tags": [
+          "wardrobe",
+          "sliding",
+          "mirror",
+          "bedroom"
+        ]
+      },
+      {
+        "name": "Modular Bookshelf",
+        "summary": "Customisable modular shelving system. Add or rearrange units to fit your space.",
+        "price": 199.99,
+        "compare_price": 269.99,
+        "category": "storage",
+        "image": "furnito-prod-bookshelf",
+        "stock": 35,
+        "tags": [
+          "bookshelf",
+          "modular",
+          "storage",
+          "customisable"
+        ]
+      }
+    ],
+    "menus": [
+      {
+        "name": "Primary Navigation",
+        "location": "primary",
+        "items": [
+          {
+            "title": "Home",
+            "url": "@url/",
+            "order": 1
+          },
+          {
+            "title": "Shop",
+            "url": "@url/shop",
+            "order": 2
+          },
+          {
+            "title": "About",
+            "url": "@url/about",
+            "order": 3
+          },
+          {
+            "title": "Contact",
+            "url": "@url/contact",
+            "order": 4
+          }
+        ]
+      },
+      {
+        "name": "Footer Navigation",
+        "location": "footer",
+        "items": [
+          {
+            "title": "About",
+            "url": "@url/about",
+            "order": 1
+          },
+          {
+            "title": "Contact",
+            "url": "@url/contact",
+            "order": 2
+          }
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Shop",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Customer Care",
+          "menu_id": "@primary_menu"
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "furnito-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/home-layout.json"
+      },
+      {
+        "title": "About Us",
+        "slug": "about-us",
+        "page_builder": false,
+        "breadcrumb": true,
+        "layout_file": "assets/page_layout/about-layout.json"
+      },
+      {
+        "title": "Contact",
+        "slug": "contact-us",
+        "page_builder": false,
+        "breadcrumb": true,
+        "layout_file": "assets/page_layout/contact-layout.json"
+      }
+    ]
+  }
+}

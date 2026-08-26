@@ -1,0 +1,84 @@
+{
+  "name": "Freshmart",
+  "slug": "freshmart",
+  "description": "A vibrant grocery & fresh food theme with a clean, category-first layout. Perfect for supermarkets, organic shops, and delivery services.",
+  "author": "Nazmart",
+  "version": "1.0.0",
+  "niche": "grocery",
+  "price": 0,
+  "license": "free",
+  "status": true,
+  "requires": ">=2.5.0",
+  "screenshot": [
+    {
+      "primary": "primary.jpg",
+      "sort": "desc"
+    }
+  ],
+  "assets": {
+    "header": {
+      "styles": [
+        "style"
+      ],
+      "rtl_styles": [
+        "rtl"
+      ],
+      "scripts": []
+    },
+    "footer": {
+      "styles": [],
+      "scripts": [
+        "main"
+      ]
+    }
+  },
+  "views": {
+    "navbar": "header/navbar",
+    "breadcrumb": "header/breadcrumb",
+    "footer_widget": "footer/widget-area",
+    "header_hook": "header/hook",
+    "footer_hook": "footer/hook"
+  },
+  "headerHook": [
+    {
+      "style": [
+        "style",
+        "pages"
+      ],
+      "rtl_style": [
+        "rtl"
+      ],
+      "script": [],
+      "blade": [
+        "freshmart-header"
+      ],
+      "navbarArea": "header/navbar",
+      "breadcrumbArea": "header/breadcrumb",
+      "loadCoreStyle": {}
+    }
+  ],
+  "footerHook": [
+    {
+      "style": [],
+      "script": [
+        "main"
+      ],
+      "blade": [
+        "freshmart-footer"
+      ],
+      "widgetArea": "footer/widget-area",
+      "loadCoreScript": {}
+    }
+  ],
+  "demo": {
+    "data": "demo/data.json",
+    "preview_url": ""
+  },
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2026-04-28",
+      "notes": "Initial release"
+    }
+  ]
+}

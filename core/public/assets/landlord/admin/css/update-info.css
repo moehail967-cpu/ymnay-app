@@ -1,0 +1,83 @@
+.floating-card-wraper{
+    position: fixed;
+    right: 28px;
+    bottom: 28px;
+    max-width: 490px;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #EAECF0;
+    background: #fff;
+    color: #141457;
+    box-shadow: 0 3px 16px 0 rgba(16, 24, 40, 0.07843137);
+    .info-icon{
+        font-size: 25px;
+    }
+    .floating-card {
+        position: relative;
+
+        .info-btn-wrapper{
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .info-card-title {
+            border-bottom: 1px solid #c9c9c9c9;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .floating-card-close-wrapper {
+            height: 24px;
+            width: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #FFFFFF;
+            border: 1px solid #EAECF0;
+            cursor: pointer;
+            transition: all .3s ease-in-out;
+            border-radius: 5px;
+            position: relative;
+            &::after{
+                position: absolute;
+                font-family: 'Material Design Icons';
+                z-index: 99;
+            }
+            &.info-close::after{
+                content: "\f156";
+
+                font-weight: 900;
+                font-size: 14px;
+            }
+            &.info-close:hover{
+                background: red;
+                color:#fff;
+            }
+            &.mark::after{
+                content: "\f12c";
+                font-weight: 900;
+                font-size: 14px;
+            }
+            &.mark:hover{
+                background: green;
+                color:#fff;
+            }
+        }
+    }
+    .floating-card-title {
+        font-size: 15px;
+        line-height: 1.1;
+        font-weight: 600;
+        margin: 0;
+        &:has(+ .floating-card-pera) {
+            margin-bottom: 5px;
+        }
+    }
+    .floating-card-pera:has(+ .floating-card-title){
+        margin-bottom: 18px;
+    }
+    .floating-card-pera a{
+        text-decoration: none;
+        color: inherit;
+        font-size: inherit;
+    }
+}

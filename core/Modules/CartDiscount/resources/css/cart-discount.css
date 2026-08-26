@@ -1,0 +1,165 @@
+/* ── Cart Discount Summary Widget ─────────────────────────────────────────── */
+
+.cd-summary-block {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    /* accent set inline via style="--cd-accent:..." from admin setting */
+    --cd-accent: #c9a96e;
+    /* Light-theme defaults — dark themes override below */
+    --cd-text:  rgba(0, 0, 0, .75);
+    --cd-muted: rgba(0, 0, 0, .45);
+}
+
+.cd-summary-heading {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cd-accent);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.cd-tier-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 5px 0;
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--cd-text);
+}
+
+.cd-tier-icon {
+    font-size: 15px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* Unlocked — green check */
+.cd-unlocked { color: #16a34a; }
+
+/* Locked — uses admin accent color */
+.cd-locked { color: var(--cd-accent); opacity: .8; }
+
+.cd-tier-label {
+    flex: 1;
+    color: var(--cd-text);
+}
+
+/* Highlighted amount — accent color */
+.cd-tier-label strong {
+    font-weight: 700;
+    color: var(--cd-accent);
+}
+
+/* Unlocked tier row — full label in green */
+.cd-tier-row.cd-unlocked-row .cd-tier-label {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+/* Progress bar track */
+.cd-progress-bar {
+    height: 4px;
+    background: rgba(0, 0, 0, .1);
+    border-radius: 99px;
+    margin-top: 6px;
+    overflow: hidden;
+}
+
+/* Progress fill */
+.cd-progress-fill {
+    height: 100%;
+    background: var(--cd-accent);
+    border-radius: 99px;
+    transition: width .4s ease;
+    min-width: 3px;
+}
+
+/* Unlocked row progress fill in green */
+.cd-unlocked-row .cd-progress-fill {
+    background: #16a34a;
+}
+
+/* Small label below the bar: "$1,000 / $5,000" */
+.cd-progress-label {
+    display: block;
+    font-size: 10px;
+    color: var(--cd-muted);
+    margin-top: 3px;
+    letter-spacing: .5px;
+}
+
+/* ── Dark-theme overrides ───────────────────────────────────────────────────
+   VelvetLux and DriveKit have dark order-summary cards.
+   Use the theme's own champagne/accent var where available.        */
+
+/* VelvetLux: dark card, champagne gold accent */
+.vl-summary-card .cd-summary-block,
+.vl-summary-card .cd-summary-block * {
+    --cd-text:  rgba(255, 255, 255, .75);
+    --cd-muted: rgba(255, 255, 255, .45);
+}
+.vl-summary-card .cd-summary-block {
+    border-top-color: rgba(255, 255, 255, .1);
+}
+.vl-summary-card .cd-summary-heading {
+    color: var(--vl-champagne, var(--cd-accent));
+}
+.vl-summary-card .cd-locked        { color: var(--vl-champagne, var(--cd-accent)); }
+.vl-summary-card .cd-tier-label strong { color: var(--vl-champagne, var(--cd-accent)); }
+.vl-summary-card .cd-progress-fill { background: var(--vl-champagne, var(--cd-accent)); }
+.vl-summary-card .cd-progress-bar  { background: rgba(255, 255, 255, .1); }
+
+/* DriveKit: dark card (.dk-order-summary) */
+.dk-order-summary .cd-summary-block,
+.dk-order-summary .cd-summary-block * {
+    --cd-text:  rgba(255, 255, 255, .75);
+    --cd-muted: rgba(255, 255, 255, .45);
+}
+.dk-order-summary .cd-summary-block {
+    border-top-color: rgba(255, 255, 255, .1);
+}
+.dk-order-summary .cd-progress-bar { background: rgba(255, 255, 255, .1); }
+
+/* Luxegems: dark card (.lg-summary-box) */
+.lg-summary-box .cd-summary-block,
+.lg-summary-box .cd-summary-block * {
+    --cd-text:  rgba(255, 255, 255, .75);
+    --cd-muted: rgba(255, 255, 255, .45);
+}
+.lg-summary-box .cd-summary-block {
+    border-top-color: rgba(255, 255, 255, .1);
+}
+.lg-summary-box .cd-heading       { color: var(--lx-gold, var(--cd-accent)); }
+.lg-summary-box .cd-locked        { color: var(--lx-gold, var(--cd-accent)); }
+.lg-summary-box .cd-tier-label strong { color: var(--lx-gold, var(--cd-accent)); }
+.lg-summary-box .cd-progress-fill { background: var(--lx-gold, var(--cd-accent)); }
+.lg-summary-box .cd-progress-bar  { background: rgba(255, 255, 255, .1); }
+
+/* Fitpeak: dark card (.fp-order-summary) */
+.fp-order-summary .cd-summary-block,
+.fp-order-summary .cd-summary-block * {
+    --cd-text:  rgba(255, 255, 255, .75);
+    --cd-muted: rgba(255, 255, 255, .45);
+}
+.fp-order-summary .cd-summary-block {
+    border-top-color: rgba(255, 255, 255, .1);
+}
+.fp-order-summary .cd-progress-bar { background: rgba(255, 255, 255, .1); }
+
+/* Techzone: dark card (.tz-order-summary) */
+.tz-order-summary .cd-summary-block,
+.tz-order-summary .cd-summary-block * {
+    --cd-text:  rgba(255, 255, 255, .75);
+    --cd-muted: rgba(255, 255, 255, .45);
+}
+.tz-order-summary .cd-summary-block {
+    border-top-color: rgba(255, 255, 255, .1);
+}
+.tz-order-summary .cd-heading       { color: var(--tz-blue, var(--cd-accent)); }
+.tz-order-summary .cd-locked        { color: var(--tz-blue, var(--cd-accent)); }
+.tz-order-summary .cd-tier-label strong { color: var(--tz-blue, var(--cd-accent)); }
+.tz-order-summary .cd-progress-fill { background: var(--tz-blue, var(--cd-accent)); }
+.tz-order-summary .cd-progress-bar  { background: rgba(255, 255, 255, .1); }

@@ -1,0 +1,205 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "section-mc-hero",
+                "type": "section",
+                "columns": [{ "id": "column-mc-hero", "width": "100%", "widgets": [{ "id": "widget-mc-hero", "type": "medicom_hero_section" }], "settings": [] }],
+                "settings": { "margin": "0px", "padding": "0px", "backgroundColor": "#ffffff" }
+            },
+            {
+                "id": "section-mc-features",
+                "type": "section",
+                "columns": [{ "id": "column-mc-features", "width": "100%", "widgets": [{ "id": "widget-mc-features", "type": "medicom_service_features" }], "settings": [] }],
+                "settings": { "margin": "0px", "padding": "0px", "backgroundColor": "#ffffff" }
+            },
+            {
+                "id": "section-mc-cats",
+                "type": "section",
+                "columns": [{ "id": "column-mc-cats", "width": "100%", "widgets": [{ "id": "widget-mc-cats", "type": "medicom_category_grid" }], "settings": [] }],
+                "settings": { "margin": "0px", "padding": "0px", "backgroundColor": "#ffffff" }
+            },
+            {
+                "id": "section-mc-products",
+                "type": "section",
+                "columns": [{ "id": "column-mc-products", "width": "100%", "widgets": [{ "id": "widget-mc-products", "type": "medicom_featured_products" }], "settings": [] }],
+                "settings": { "margin": "0px", "padding": "0px", "backgroundColor": "#ffffff" }
+            },
+            {
+                "id": "section-mc-promo",
+                "type": "section",
+                "columns": [{ "id": "column-mc-promo", "width": "100%", "widgets": [{ "id": "widget-mc-promo", "type": "medicom_promo_banners" }], "settings": [] }],
+                "settings": { "margin": "0px", "padding": "0px", "backgroundColor": "#ffffff" }
+            },
+            {
+                "id": "section-mc-store",
+                "type": "section",
+                "columns": [{ "id": "column-mc-store", "width": "100%", "widgets": [{ "id": "widget-mc-store", "type": "medicom_our_store" }], "settings": [] }],
+                "settings": { "margin": "0px", "padding": "0px", "backgroundColor": "#ffffff" }
+            },
+            {
+                "id": "section-mc-brands",
+                "type": "section",
+                "columns": [{ "id": "column-mc-brands", "width": "100%", "widgets": [{ "id": "widget-mc-brands", "type": "tenant_brand_logos" }], "settings": [] }],
+                "settings": { "margin": "0px", "padding": "0px", "backgroundColor": "#ffffff" }
+            }
+        ]
+    },
+    "widgets": {
+        "widget-mc-hero": {
+            "type": "medicom_hero_section",
+            "container_id": "section-mc-hero",
+            "column_id": "column-mc-hero",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "eyebrow":       "Your Health, Our Priority",
+                        "title_black_1": "Trusted",
+                        "title_blue":    "Pharmacy",
+                        "title_black_2": "Online",
+                        "description":   "Quality medicines, vitamins, and healthcare products delivered to your door.",
+                        "button_text":   "Shop Now",
+                        "button_url":    "@url/shop"
+                    },
+                    "media": {
+                        "hero_image": "@media:medicom-hero"
+                    }
+                },
+                "style": { "spacing": { "padding_top": 0, "padding_bottom": 0 } }
+            }
+        },
+        "widget-mc-features": {
+            "type": "medicom_service_features",
+            "container_id": "section-mc-features",
+            "column_id": "column-mc-features",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "feature_1_icon":  "las la-shipping-fast",
+                        "feature_1_title": "Fast Delivery",
+                        "feature_1_desc":  "Same-day delivery available",
+                        "feature_2_icon":  "las la-user-md",
+                        "feature_2_title": "Expert Advice",
+                        "feature_2_desc":  "Licensed pharmacists online",
+                        "feature_3_icon":  "las la-lock",
+                        "feature_3_title": "Secure Payment",
+                        "feature_3_desc":  "100% safe checkout",
+                        "feature_4_icon":  "las la-check-circle",
+                        "feature_4_title": "Certified Products",
+                        "feature_4_desc":  "All products certified"
+                    }
+                },
+                "style": { "spacing": { "padding_top": 60, "padding_bottom": 60 } }
+            }
+        },
+        "widget-mc-cats": {
+            "type": "medicom_category_grid",
+            "container_id": "section-mc-cats",
+            "column_id": "column-mc-cats",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title":          "Shop by Category",
+                        "category_count": 6
+                    }
+                },
+                "style": { "spacing": { "padding_top": 80, "padding_bottom": 80 } }
+            }
+        },
+        "widget-mc-products": {
+            "type": "medicom_featured_products",
+            "container_id": "section-mc-products",
+            "column_id": "column-mc-products",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title":         "Featured Products",
+                        "subtitle":      "Best selling health essentials",
+                        "product_count": 8
+                    }
+                },
+                "style": { "spacing": { "padding_top": 80, "padding_bottom": 80 } }
+            }
+        },
+        "widget-mc-promo": {
+            "type": "medicom_promo_banners",
+            "container_id": "section-mc-promo",
+            "column_id": "column-mc-promo",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "card_1": {
+                        "eyebrow":      "Medical Devices",
+                        "title_accent": "Infrared",
+                        "title_dark":   "Thermometer",
+                        "link_text":    "Shop Now",
+                        "link_url":     "@url/shop",
+                        "image":        "@media:medicom-promo-1"
+                    },
+                    "card_2": {
+                        "eyebrow":      "Health Monitors",
+                        "title_accent": "Blood Pressure",
+                        "title_dark":   "Monitor",
+                        "link_text":    "Shop Now",
+                        "link_url":     "@url/shop",
+                        "image":        "@media:medicom-promo-2"
+                    }
+                },
+                "style": { "spacing": { "padding_top": 60, "padding_bottom": 60 } }
+            }
+        },
+        "widget-mc-store": {
+            "type": "medicom_our_store",
+            "container_id": "section-mc-store",
+            "column_id": "column-mc-store",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title":          "Our Store",
+                        "category_limit": 6,
+                        "product_limit":  8
+                    }
+                },
+                "style": { "spacing": { "padding_top": 80, "padding_bottom": 80 } }
+            }
+        },
+        "widget-mc-brands": {
+            "type": "tenant_brand_logos",
+            "container_id": "section-mc-brands",
+            "column_id": "column-mc-brands",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": null,
+                "style": { "spacing": { "padding_top": 60, "padding_bottom": 60 } }
+            }
+        }
+    }
+}

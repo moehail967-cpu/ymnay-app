@@ -1,0 +1,766 @@
+@font-face {
+  font-family: 'Urbanist';
+  src: url('../fonts/Urbanist-Thin.ttf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Urbanist';
+  src: url('../fonts/Urbanist-ExtraLight.ttf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Urbanist';
+  src: url('../fonts/Urbanist-Light.ttf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Urbanist';
+  src: url('../fonts/Urbanist-Regular.ttf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Urbanist';
+  src: url('../fonts/Urbanist-Medium.ttf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Urbanist';
+  src: url('../fonts/Urbanist-SemiBold.ttf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Urbanist';
+  src: url('../fonts/Urbanist-Bold.ttf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Inter Regular — body */
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter/Inter_18pt-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Inter Medium — specific use */
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter/Inter_18pt-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  background-color: var(--section-bg-1, #FFFBFB);
+}
+
+/* Dynamic section background utility classes */
+.section-bg-1 { background-color: var(--section-bg-1, #FFFBFB); }
+.section-bg-2 { background-color: var(--section-bg-2, #FFF6EE); }
+.section-bg-3 { background-color: var(--section-bg-3, #F4F8FB); }
+.section-bg-4 { background-color: var(--section-bg-4, #F2F3FB); }
+.section-bg-5 { background-color: var(--section-bg-5, #F9F5F2); }
+.section-bg-6 { background-color: var(--section-bg-6, #E5EFF8); }
+
+
+.slider-wrap {
+  position: relative;
+}
+
+.side-nav {
+  position: absolute;
+  top: 50%;
+  font-size: 13px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  opacity: 0;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  z-index: 20;
+}
+
+.side-nav.prev {
+  left: 12px;
+  transform: translate(-10px, -50%);
+  background: #D1D5D9;
+  padding: 10px 20px;
+  border-radius: 12px;
+}
+
+.side-nav.next {
+  right: 12px;
+  transform: translate(10px, -50%);
+}
+
+.slider-wrap:hover .side-nav,
+.side-nav:hover {
+  opacity: 1;
+}
+
+.slider-wrap:hover .side-nav.prev,
+.side-nav.prev:hover,
+.slider-wrap:hover .side-nav.next,
+.side-nav.next:hover {
+  transform: translate(0, -50%);
+}
+
+/* allow side overflow */
+.owl-stage-outer {
+  overflow: visible;
+}
+
+/* default slide */
+.owl-item>div {
+  transition: all 0.6s ease;
+  opacity: 0.55;
+  transform: rotate(-2deg) scale(0.82);
+}
+
+/* center slide (BIG HERO) */
+.owl-item.center>div {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+  z-index: 10;
+}
+
+
+/* right slide */
+.owl-item.center+.owl-item.active>div {
+  transform: rotate(2deg) scale(0.85);
+  opacity: 0.75;
+}
+
+/* image size */
+.owl-item img {
+  width: 100%;
+  min-height: auto !important;
+  height: 100%;
+  /*object-fit: cover;*/
+  border-radius: 22px;
+}
+
+.owl-item:not(.center) img {
+  filter: blur(1.5px);
+}
+
+.owl-dots {
+  margin-bottom: 1.87rem;
+}
+
+/* Marquee sliders */
+.slides-wrapper {
+  height: clamp(100px, 30vh, 220px);
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.slide-box .box-content {
+  height: max(35vh, 250px);
+  aspect-ratio: 3 / 4;
+
+  display: grid;
+  place-items: center;
+  touch-action: pan-y;
+}
+
+
+/* pageination sliders */
+
+.swiper {
+  overflow: hidden !important;
+}
+
+
+.nav-btn {
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  transform: scale(1.05);
+}
+
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #d1d5db;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  width: 32px;
+  border-radius: 4px;
+  background: var(--main-color-one, #115e59);
+}
+
+
+
+:root {
+  --marquee-width: 100%;
+  --marquee-height: 120px;
+  --marquee-elements-displayed: 6;
+  --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed));
+  --marquee-animation-duration: calc(var(--marquee-elements) * 3s);
+}
+
+.marquee-wrapper {
+  display: flex;
+  flex-direction: column;
+  /* gap: 20px; */
+}
+
+.marquee {
+  overflow: hidden;
+
+}
+
+.marquee::before,
+.marquee::after {
+  position: absolute;
+  top: 0;
+  width: 10rem;
+  height: 100%;
+  content: "";
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marquee-content {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  animation: scrolling var(--marquee-animation-duration) linear infinite;
+  padding: 0;
+  margin: 0;
+}
+
+.marquee.reverse .marquee-content {
+  animation: scrolling-reverse var(--marquee-animation-duration) linear infinite;
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-1 * var(--marquee-element-width) * var(--marquee-elements)));
+  }
+}
+
+@keyframes scrolling-reverse {
+  0% {
+    transform: translateX(calc(-1 * var(--marquee-element-width) * var(--marquee-elements)));
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.marquee-content li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 488px;
+  height: 261px;
+  padding: 1rem;
+}
+
+.marquee-content li img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --marquee-elements-displayed: 3;
+  }
+
+  .marquee::before,
+  .marquee::after {
+    width: 5rem;
+  }
+}
+
+/* accordion-content  */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 400ms ease, opacity 300ms ease;
+  background-color: var(--section-bg-3, #F8FAFB);
+}
+
+.accordion-content.open {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.icon {
+  transition: transform 300ms ease;
+}
+
+.icon.open {
+  transform: rotate(135deg);
+  /* plus → cross */
+}
+
+
+.accordion-item {
+  transition: background-color 300ms ease;
+}
+
+.accordion-item.active {
+  background-color: var(--section-bg-3, #F5F7FB);
+  /* open হলে bg */
+}
+
+/* Feedback lineClamp  */
+.line-clamp-12 {
+  display: -webkit-box;
+  -webkit-line-clamp: 13;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-none {
+  display: block;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
+  overflow: visible;
+}
+
+/* Fallback utilities (ensure visible border/color when Tailwind isn't built) */
+.border-quate {
+  border-color: #374253 !important;
+}
+
+/* Fallback for Tailwind's `.border` utility so elements get a visible 1px border when Tailwind CSS isn't generated */
+.border {
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: #e5e7eb;
+  /* light gray default; overridden by .border-quate when present */
+}
+
+.text-quate {
+  color: var(--heading-color, #374253);
+}
+
+/* Fallback for Tailwind's `group-hover:text-base-100` utility (for local / unbuilt CSS) */
+.group:hover .group-hover\:text-base-100 {
+  color: #ECEDEF !important;
+  /* matches `base-100` in your Tailwind config */
+}
+
+/* Ensure SVG strokes/icons using currentColor pick up the hover color */
+.group:hover .group-hover\:text-base-100 svg,
+.group:hover .group-hover\:text-base-100 path,
+.group:hover .group-hover\:text-base-100 .icon {
+  color: inherit !important;
+  stroke: currentColor !important;
+  fill: currentColor !important;
+}
+
+/* Also add a rule for elements that use `group-hover:text-base-100` alongside other classes */
+.group:hover [class*="group-hover:text-base-100"] {
+  color: #ECEDEF !important;
+}
+
+/* Improve icon appearance on group hover */
+.group-hover\:text-base-100,
+.group-hover\:text-base-100 svg,
+.group-hover\:text-base-100 .icon-base,
+.group-hover\:text-base-100 i {
+  transition: color 200ms ease, transform 200ms ease;
+}
+
+/* Ensure icons inherit text color and use currentColor for stroke/fill */
+.group:hover .group-hover\:text-base-100 svg,
+.group:hover .group-hover\:text-base-100 .icon-base,
+.group:hover .group-hover\:text-base-100 i {
+  color: inherit !important;
+  stroke: currentColor !important;
+  fill: currentColor !important;
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Also make nav/control icons transition nicely */
+.nav-btn i,
+.icon-base,
+.icon {
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.nav-btn:hover i {
+  transform: translateX(-3px);
+}
+
+
+/* Dshaboard chat scroll bar styling */
+
+/* Chat messages container: ensure it scrolls and reserve gutter for scrollbar */
+#chatMessages {
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* smooth momentum on mobile */
+  scrollbar-width: thin;
+  /* Firefox: thinner scrollbar */
+  scrollbar-color: #94a3b8 transparent;
+  /* Firefox thumb/track */
+  scrollbar-gutter: stable;
+  /* reserve space for scrollbar to avoid layout shift */
+  max-height: calc(100vh - 260px);
+  /* keep chat inside viewport (adjust if necessary) */
+}
+
+/* WebKit (Chrome, Safari) custom scrollbar */
+#chatMessages::-webkit-scrollbar {
+  width: 8px;
+}
+
+#chatMessages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#chatMessages::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.7);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  /* add padding so thumb doesn't overlap content */
+  background-clip: padding-box;
+}
+
+#chatMessages:hover::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.95);
+}
+
+/* small accessibility improvement: always show a thin visual indicator on reduced-motion / high-contrast? */
+@media (prefers-contrast: more) {
+  #chatMessages::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+  }
+}
+
+
+/* select2  css*/
+
+/* Select2 Custom Styles */
+.select2-container--default .select2-selection--single {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.75rem !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding-left: 2.75rem !important;
+  background-color: #fff !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 48px !important;
+  padding-left: 0 !important;
+  color: #374151 !important;
+  font-size: 0.875rem !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+  color: #9ca3af !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 48px !important;
+  right: 12px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border-color: #9ca3af transparent transparent transparent !important;
+}
+
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  border-color: transparent transparent #9ca3af transparent !important;
+}
+
+.select2-dropdown {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #1b3f50 !important;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+  background-color: #e8f0f5 !important;
+  color: #1b3f50 !important;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.5rem !important;
+  padding: 6px 10px !important;
+  font-size: 0.875rem !important;
+  outline: none !important;
+}
+
+.select2-container {
+  width: 100% !important;
+}
+
+.select2-results__option {
+  font-size: 0.875rem;
+  padding: 8px 12px;
+}
+
+.select2-dropdown .select2-dropdown--below {
+  z-index: 0 !important;
+}
+
+
+/* ============================================
+   Navbar Dynamic Styles (uses CSS variables
+   from color-font-variable.blade.php)
+   ============================================ */
+
+/* --- Home page navbar (transparent bg, light text) --- */
+.navbar-home #mainNav {
+  /*background-color: transparent;*/
+}
+
+.navbar-home #mainNav ul li,
+.navbar-home #mainNav ul li a,
+.navbar-home #mainNav ul li i,
+.navbar-home #menuIcon {
+  color: #ffffff !important;
+  /*background-color: var(--section-bg-1, #FFFBFB);*/
+}
+
+/* --- Inner page navbar (bg color, dark text) --- */
+.navbar-inner #mainNav {
+  background-color: var(--section-bg-1, #FFFBFB);
+}
+
+.navbar-inner #mainNav ul li,
+.navbar-inner #mainNav ul li a,
+.navbar-inner #mainNav ul li i,
+.navbar-inner #menuIcon {
+  color: var(--heading-color, #333333) !important;
+}
+
+/* --- Dropdown always dark text on white bg (both pages) --- */
+.navbar-home #mainNav ul li .absolute a,
+.navbar-inner #mainNav ul li .absolute a {
+  color: var(--heading-color, #333333) !important;
+}
+
+/* --- Auth buttons (both pages) --- */
+.nav-auth-btn {
+  background-color: var(--main-color-two, #FF805D) !important;
+  /*color: #ffffff !important;*/
+}
+
+.nav-auth-btn:hover {
+  opacity: 0.9;
+}
+
+/* --- Mobile sidebar auth button --- */
+.nav-mobile-auth-btn {
+  background-color: var(--main-color-two, #FF805D);
+  color: var(--heading-color, #000000);
+}
+.nav-mobile-auth-btn_two {
+  background-color: var(--main-color-two, #93E720);
+  color: var(--heading-color, #000000);
+}
+.nav-mobile-auth-btn_two:hover {
+  opacity: 0.9;
+}
+
+.primary-btn{
+  background-color: var(--main-color-two);
+}
+.primary-btn:hover{
+  background-color: var(--secondary-color);
+}
+
+.secondary-btn{
+  background-color:var(--secondary-color);
+}
+.secondary-btn:hover{
+  background-color: var(--main-color-two);
+}
+.main-color-two{
+  background-color: var(--main-color-two);
+  color: #fff;
+}
+.secondary-color-two{
+  color: var(--secondary-color-two);
+}
+
+.site-btn{
+  background-color: var(--main-color-one);
+  color:#ffffff;
+}
+
+.site-secondary-btn{
+  background-color: var(--main-color-two, #93E720);
+  color: var(--heading-color, #000000);
+}
+.site-secondary-btn:hover{
+  opacity: 0.9;
+}
+
+.text-heading{
+  color: var(--main-color-two, #93E720);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Widget Section Views — Contact Forms & Theme Cards
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Contact FormBuilder (contact.blade.php) ── */
+.contact-form-wrap .custom-form-builder-land {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+@media (max-width: 767px) {
+    .contact-form-wrap .custom-form-builder-land { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+.contact-form-wrap .custom-form-builder-land .form-group.textarea,
+.contact-form-wrap .custom-form-builder-land .form-group.file,
+.contact-form-wrap .custom-form-builder-land .form-group.checkbox,
+.contact-form-wrap .custom-form-builder-land .form-group.recaptcha-wrap,
+.contact-form-wrap .custom-form-builder-land .btn-wrapper,
+.contact-form-wrap .custom-form-builder-land .error-message,
+.contact-form-wrap .custom-form-builder-land input[type="hidden"] { grid-column: 1 / -1; }
+.contact-form-wrap .custom-form-builder-land label {
+    display: block; font-size: 1.125rem; font-weight: 400;
+    color: var(--heading-color, #252C38); margin-bottom: 0.5rem;
+}
+.contact-form-wrap .custom-form-builder-land .form-control {
+    width: 100%; padding: 0.75rem 1rem; border-radius: 0.75rem;
+    background-color: #fff; border: 1px solid #e5e7eb;
+    color: var(--body-color, #374253); font-size: 1rem;
+    outline: none; box-shadow: none; transition: all 0.2s ease;
+    -webkit-appearance: none; appearance: none;
+}
+.contact-form-wrap .custom-form-builder-land .form-control::placeholder { color: #9ca3af; }
+.contact-form-wrap .custom-form-builder-land .form-control:focus {
+    border-color: transparent; box-shadow: 0 0 0 2px var(--main-color-one, #0C4D54);
+}
+.contact-form-wrap .custom-form-builder-land textarea.form-control { resize: none; min-height: 10rem; }
+.contact-form-wrap .custom-form-builder-land select.form-control {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236B7280' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; cursor: pointer;
+}
+.contact-form-wrap .custom-form-builder-land .form-group.checkbox { display: flex; align-items: center; gap: 0.75rem; }
+.contact-form-wrap .custom-form-builder-land .form-group.checkbox input[type="checkbox"] {
+    width: 1.25rem; height: 1.25rem; border-radius: 0.375rem;
+    border: 1px solid #e5e7eb; cursor: pointer; flex-shrink: 0; accent-color: var(--main-color-one, #0C4D54);
+}
+.contact-form-wrap .custom-form-builder-land .form-group.checkbox label { margin-bottom: 0; cursor: pointer; }
+.contact-form-wrap .custom-form-builder-land .btn-wrapper { display: flex; align-items: center; gap: 1rem; }
+.contact-form-wrap .custom-form-builder-land .custom_submit_form_button {
+    background-color: var(--main-color-one, #0C4D54); color: #fff; font-weight: 600;
+    padding: 0.75rem 2.5rem; border-radius: 0.75rem; border: none;
+    cursor: pointer; transition: all 0.3s ease-in-out; font-size: 1rem; line-height: 1.5;
+}
+.contact-form-wrap .custom-form-builder-land .custom_submit_form_button:hover {
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,.1), 0 10px 10px -5px rgba(0,0,0,.04); transform: scale(1.05);
+}
+.contact-form-wrap .custom-form-builder-land .custom_submit_form_button:active { transform: scale(0.95); }
+.contact-form-wrap .custom-form-builder-land .error-message .alert {
+    padding: 0.75rem 1rem; border-radius: 0.75rem; font-size: 0.95rem; margin-bottom: 0;
+}
+.contact-form-wrap .custom-form-builder-land .error-message .alert-danger { background: #fef2f2; border: 1px solid #fca5a5; color: #dc2626; }
+.contact-form-wrap .custom-form-builder-land .error-message .alert-success { background: #f0fdf4; border: 1px solid #86efac; color: #16a34a; }
+.contact-form-wrap .custom-form-builder-land .error-message ul { margin: 0; padding-left: 1.25rem; list-style: disc; }
+.contact-form-wrap .custom-form-builder-land .help-info { display: block; font-size: 0.85rem; color: #6b7280; margin-top: 0.35rem; }
+.contact-form-wrap .custom-form-builder-land .recaptcha-wrap { padding-top: 0.25rem; }
+.contact-form-wrap .custom-form-builder-land .ajax-loading-wrap.hide { display: none; }
+
+/* ── Contact Two (contact_two.blade.php) ── */
+.contact-two-wrap .contact-two-form {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;
+}
+@media (max-width: 767px) {
+    .contact-two-wrap .contact-two-form { grid-template-columns: 1fr; gap: 1.25rem; }
+}
+.contact-two-wrap .contact-two-form .ct-field-full,
+.contact-two-wrap .contact-two-form .ct-error,
+.contact-two-wrap .contact-two-form .ct-recaptcha,
+.contact-two-wrap .contact-two-form .ct-btn-wrap { grid-column: 1 / -1; }
+.contact-two-wrap .contact-two-form label {
+    display: block; font-size: 1.125rem; font-weight: 400;
+    color: var(--heading-color, #252C38); margin-bottom: 0.5rem;
+}
+.contact-two-wrap .contact-two-form input,
+.contact-two-wrap .contact-two-form textarea {
+    width: 100%; padding: 0.75rem 1rem; border-radius: 0.75rem;
+    background-color: #fff; border: 1px solid #e5e7eb;
+    color: var(--body-color, #374253); font-size: 1rem;
+    outline: none; box-shadow: none; transition: all 0.2s ease;
+}
+.contact-two-wrap .contact-two-form input::placeholder,
+.contact-two-wrap .contact-two-form textarea::placeholder { color: #9ca3af; }
+.contact-two-wrap .contact-two-form input:focus,
+.contact-two-wrap .contact-two-form textarea:focus { border-color: transparent; box-shadow: 0 0 0 2px var(--main-color-one, #0C4D54); }
+.contact-two-wrap .contact-two-form textarea { resize: none; min-height: 10rem; }
+.contact-two-wrap .contact-two-form .ct-btn-wrap { display: flex; align-items: center; gap: 1rem; }
+.contact-two-wrap .contact-two-form .ct-submit-btn {
+    background-color: var(--main-color-one, #0C4D54); color: #fff; font-weight: 600;
+    padding: 0.75rem 2.5rem; border-radius: 0.75rem; border: none;
+    cursor: pointer; transition: all 0.3s ease-in-out; font-size: 1rem;
+}
+.contact-two-wrap .contact-two-form .ct-submit-btn:hover {
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,.1), 0 10px 10px -5px rgba(0,0,0,.04); transform: scale(1.05);
+}
+.contact-two-wrap .contact-two-form .ct-submit-btn:active { transform: scale(0.95); }
+.contact-two-wrap .contact-two-form .ct-submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+.contact-two-wrap .ct-error .alert { padding: 0.75rem 1rem; border-radius: 0.75rem; font-size: 0.95rem; margin-bottom: 0; }
+.contact-two-wrap .ct-error .alert-success { background: #f0fdf4; border: 1px solid #86efac; color: #16a34a; }
+.contact-two-wrap .ct-error .alert-danger  { background: #fef2f2; border: 1px solid #fca5a5; color: #dc2626; }
+.contact-two-wrap .ct-error ul { margin: 0; padding-left: 1.25rem; list-style: disc; }
+
+/* ── Theme Scroll Card (amazing_themes.blade.php) ── */
+.theme-scroll-card { height: 350px; overflow: hidden; border-radius: 0.75rem; }
+.theme-scroll-card img { width: 100%; transition: transform 3s ease; transform: translateY(0); }
+.group:hover .theme-scroll-card img { transform: translateY(calc(-100% + 350px)); }

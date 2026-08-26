@@ -1,0 +1,201 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "section-tc-hero-a1b2c3d4",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-tc-hero-e5f6a7b8",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-tc-hero-c9d0e1f2", "type": "trailco_hero_section" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": { "margin": "0px", "padding": "0px", "backgroundColor": "#2C3B20", "contentWidth": "full_width" }
+            },
+            {
+                "id": "section-tc-cats-b2c3d4e5",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-tc-cats-f6a7b8c9",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-tc-cats-d0e1f2a3", "type": "trailco_category_grid" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": { "margin": "0px", "padding": "0px", "backgroundColor": "#F4F1EC", "contentWidth": "full_width" }
+            },
+            {
+                "id": "section-tc-prods-c3d4e5f6",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-tc-prods-a7b8c9d0",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-tc-prods-e1f2a3b4", "type": "trailco_featured_products" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": { "margin": "0px", "padding": "0px", "backgroundColor": "#F4F1EC", "contentWidth": "full_width" }
+            },
+            {
+                "id": "section-tc-promo-d4e5f6a7",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-tc-promo-b8c9d0e1",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-tc-promo-f2a3b4c5", "type": "trailco_promo_banner" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": { "margin": "0px", "padding": "0px", "backgroundColor": "#4A5E3A", "contentWidth": "full_width" }
+            },
+            {
+                "id": "section-tc-news-e5f6a7b8",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-tc-news-c9d0e1f2",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-tc-news-a3b4c5d6", "type": "trailco_newsletter" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": { "margin": "0px", "padding": "0px", "backgroundColor": "#EAF0E3", "contentWidth": "full_width" }
+            }
+        ]
+    },
+    "widgets": {
+        "widget-tc-hero-c9d0e1f2": {
+            "type": "trailco_hero_section",
+            "container_id": "section-tc-hero-a1b2c3d4",
+            "column_id": "column-tc-hero-e5f6a7b8",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "category_tag": "Adventure Awaits",
+                        "title": "Built for the<br>Wild. Tested on<br><span>Every Trail.</span>",
+                        "subtitle": "Professional outdoor gear for hikers, climbers, and adventurers. From day hikes to multi-day expeditions — we've got you covered.",
+                        "button_text": "Shop Gear",
+                        "button_url": "#",
+                        "button2_text": "Find Your Trail",
+                        "button2_url": "#"
+                    },
+                    "media": {
+                        "hero_image": "@media:trailco-hero"
+                    }
+                },
+                "style": { "spacing": { "padding_top": 0, "padding_bottom": 0 } },
+                "advanced": { "customCSS": null, "cssClasses": null },
+                "responsive": {}
+            }
+        },
+        "widget-tc-cats-d0e1f2a3": {
+            "type": "trailco_category_grid",
+            "container_id": "section-tc-cats-b2c3d4e5",
+            "column_id": "column-tc-cats-f6a7b8c9",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Shop by <span>Activity</span>",
+                        "subtitle": "Find gear matched to your adventure.",
+                        "item_count": 6
+                    }
+                },
+                "style": { "spacing": { "padding_top": 72, "padding_bottom": 72 } },
+                "advanced": { "customCSS": null, "cssClasses": null },
+                "responsive": {}
+            }
+        },
+        "widget-tc-prods-e1f2a3b4": {
+            "type": "trailco_featured_products",
+            "container_id": "section-tc-prods-c3d4e5f6",
+            "column_id": "column-tc-prods-a7b8c9d0",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Gear Our <span>Experts</span> Trust",
+                        "view_all_url": "#"
+                    },
+                    "query": {
+                        "item_count": 8,
+                        "sort_by": "latest"
+                    }
+                },
+                "style": { "spacing": { "padding_top": 60, "padding_bottom": 60 } },
+                "advanced": { "customCSS": null, "cssClasses": null },
+                "responsive": {}
+            }
+        },
+        "widget-tc-promo-f2a3b4c5": {
+            "type": "trailco_promo_banner",
+            "container_id": "section-tc-promo-d4e5f6a7",
+            "column_id": "column-tc-promo-b8c9d0e1",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Build Your Kit. Own the Trail.",
+                        "subtitle": "From boot selection to layering systems — get a personalised gear recommendation from our outdoor experts. Free, no obligation.",
+                        "button_text": "Talk to an Expert",
+                        "button_url": "#"
+                    }
+                },
+                "style": { "spacing": { "padding_top": 60, "padding_bottom": 60 } },
+                "advanced": { "customCSS": null, "cssClasses": null },
+                "responsive": {}
+            }
+        },
+        "widget-tc-news-a3b4c5d6": {
+            "type": "trailco_newsletter",
+            "container_id": "section-tc-news-e5f6a7b8",
+            "column_id": "column-tc-news-c9d0e1f2",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Gear Guides & <span>Trail Updates</span>",
+                        "subtitle": "Monthly adventure inspiration, gear reviews from our guides, and member-only sale access.",
+                        "button_text": "Subscribe"
+                    }
+                },
+                "style": { "spacing": { "padding_top": 72, "padding_bottom": 72 } },
+                "advanced": { "customCSS": null, "cssClasses": null },
+                "responsive": {}
+            }
+        }
+    }
+}

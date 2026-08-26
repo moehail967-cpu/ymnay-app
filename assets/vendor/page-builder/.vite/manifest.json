@@ -1,0 +1,11 @@
+{
+  "resources/js/page-builder-standalone.jsx": {
+    "file": "assets/page-builder.js",
+    "name": "page-builder",
+    "src": "resources/js/page-builder-standalone.jsx",
+    "isEntry": true,
+    "css": [
+      "assets/page-builder.css"
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+<?php
+
+namespace Themes\Medicom\Widgets;
+
+use Xgenious\PageBuilder\Core\BaseWidget;
+use Xgenious\PageBuilder\Core\ControlManager;
+use Xgenious\PageBuilder\Core\FieldManager;
+use Xgenious\PageBuilder\Core\WidgetCategory;
+
+class CategoryGrid extends BaseWidget
+{
+    protected function getWidgetType(): string { return 'medicom_category_grid'; }
+    protected function getWidgetName(): string { return 'Medicom: Category Grid'; }
+    protected function getWidgetIcon(): string|array { return 'las la-th'; }
+    protected function getWidgetDescription(): string { return __('Responsive circular category grid'); }
+    protected function getCategory(): string { return WidgetCategory::THEME; }
+    protected function getWidgetTags(): array { return ['category', 'grid', 'medicom']; }
+
+    public function getGeneralFields(): array
+    {
+        $control = new ControlManager();
+        $control->addGroup('content', 'Content')
+            ->registerField('section_tag', FieldManager::TEXT()->setLabel('Section Tag')->setDefault('Our Specialties'))
+            ->registerField('title', FieldManager::TEXT()->setLabel('Title')->setDefault('Shop by Category'))
+            ->registerField('subtitle', FieldManager::TEXT()->setLabel('Subtitle')->setDefault('Browse our handcrafted collections'))
+            ->registerField('category_count', FieldManager::NUMBER()->setLabel('Categories to Show')->setDefault(6)->setMin(1)->setMax(12))
+            ->endGroup();
+        return $control->getFields();
+    }
+
+    public function getStyleFields(): array
+    {
+        $control = new ControlManager();
+        $control->addGroup('spacing', 'Spacing')
+            ->registerField('padding_top', FieldManager::NUMBER()->setLabel('Padding Top (px)')->setDefault(80)->setMin(0)->setMax(200))
+            ->registerField('padding_bottom', FieldManager::NUMBER()->setLabel('Padding Bottom (px)')->setDefault(80)->setMin(0)->setMax(200))
+            ->endGroup();
+        return $control->getFields();
+    }
+
+    public function render(array $settings = []): string
+    {
+        if (!function_exists('tenant') || !tenant()) {
+            return '<div style="padding:40px;text-align:center;background:#f9f9f9;border:1px dashed #ccc;border-radius:8px;color:#888;font-family:sans-serif;"><p style="margin:0;font-size:14px;">Medicom: Category Grid — preview on the live page</p></div>';
+        }
+
+        $content = $settings['general']['content'] ?? [];
+        $spacing = $settings['style']['spacing']   ?? [];
+        $count   = (int) ($content['category_count'] ?? 6);
+
+        $categories = theme_categories()->take($count);
+
+        return view('theme-medicom::widgets.category_grid', [
+            'section_tag'    => $content['section_tag'] ?? 'Our Specialties',
+            'title'          => $content['title'] ?? 'Shop by Category',
+            'subtitle'       => $content['subtitle'] ?? 'Browse our handcrafted collections',
+            'categories'     => $categories,
+            'padding_top'    => (int) ($spacing['padding_top']    ?? 80),
+            'padding_bottom' => (int) ($spacing['padding_bottom'] ?? 80),
+        ])->render();
+    }
+
+    public function enable(): bool
+    {
+        return !is_null(tenant()) && (tenant()->theme_slug ?? '') === 'medicom';
+    }
+}

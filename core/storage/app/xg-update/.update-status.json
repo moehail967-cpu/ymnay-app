@@ -1,0 +1,110 @@
+{
+    "update_id": "upd_20260818_074828_GYwkLF",
+    "started_at": "2026-08-18T07:48:28+00:00",
+    "last_activity": "2026-08-25T00:15:43+03:00",
+    "version": {
+        "current": "1.5.2",
+        "target": "4.1.0"
+    },
+    "mode": "chunked",
+    "phase": "error",
+    "download": {
+        "method": "chunked",
+        "total_size": 603695933,
+        "downloaded_size": 10485760,
+        "total_chunks": 58,
+        "chunk_size": 10485760,
+        "completed_chunks": [
+            0
+        ],
+        "current_chunk": 1,
+        "chunk_hashes": [
+            "efc24a80b72b5875155f602b0fea3619fd2120199eadf816d7c7e9acf0fa2cd4"
+        ],
+        "zip_hash": "3baaf54d7a77dd6b624bae9a1137867ce0d778754a36cec3d2d0e7fd2818f1a8",
+        "percent": 2
+    },
+    "extraction": {
+        "status": "pending",
+        "total_files": 0,
+        "extracted_files": 0,
+        "current_batch": 0,
+        "total_batches": 0,
+        "percent": 0
+    },
+    "replacement": {
+        "status": "pending",
+        "total_files": 0,
+        "replaced_files": 0,
+        "skipped_files": 0,
+        "current_batch": 0,
+        "total_batches": 0,
+        "percent": 0,
+        "current_file": null
+    },
+    "migration": {
+        "status": "pending",
+        "migrations_run": 0,
+        "seeders_run": 0,
+        "tenant_progress": {
+            "total": 0,
+            "completed": 0
+        }
+    },
+    "skip_files": "",
+    "skip_directories": "",
+    "is_tenant": false,
+    "maintenance_mode": false,
+    "errors": [
+        {
+            "type": "download_failed",
+            "message": "Failed to download chunk 1: HTTP 403 - License is not valid for this product",
+            "context": {
+                "chunk_index": 1
+            },
+            "occurred_at": "2026-08-25T00:15:35+03:00"
+        },
+        {
+            "type": "download_failed",
+            "message": "Failed to download chunk 1: HTTP 403 - License is not valid for this product",
+            "context": {
+                "chunk_index": 1
+            },
+            "occurred_at": "2026-08-25T00:15:38+03:00"
+        },
+        {
+            "type": "download_failed",
+            "message": "Failed to download chunk 1: HTTP 403 - License is not valid for this product",
+            "context": {
+                "chunk_index": 1
+            },
+            "occurred_at": "2026-08-25T00:15:43+03:00"
+        }
+    ],
+    "log": [
+        {
+            "time": "07:48:28",
+            "message": "Update initialized"
+        },
+        {
+            "time": "07:48:30",
+            "message": "Downloading chunk 0..."
+        },
+        {
+            "time": "07:48:54",
+            "message": "Chunk 0 downloaded (10 MB)"
+        },
+        {
+            "time": "00:15:35",
+            "message": "Downloading chunk 1..."
+        },
+        {
+            "time": "00:15:38",
+            "message": "Downloading chunk 1..."
+        },
+        {
+            "time": "00:15:43",
+            "message": "Downloading chunk 1..."
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "name": "CommissionManage",
+    "alias": "commissionmanage",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CommissionManage\\Providers\\CommissionManageServiceProvider",
+        "Modules\\CommissionManage\\Providers\\EventServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "nazmartMetaData": {
+        "plugin_type": "external",
+        "admin_settings": {
+            "show_admin_landlord": true,
+            "show_admin_tenant": true,
+            "menu_item": [
+                {
+                    "id": "commission-manage-settings-menu-items",
+                    "label": "Commission Manage",
+                    "route": "#",
+                    "parent": null,
+                    "icon": "mdi mdi-percent",
+                    "class": "plugin-menu"
+                },
+                {
+                    "id": "commission-manage-settings-page",
+                    "label": "Commission Settings",
+                    "route": "landlord.admin.commission.settings",
+                    "parent": "commission-manage-settings-menu-items",
+                    "class": "plugin-menu"
+                }
+            ]
+        }
+    }
+}

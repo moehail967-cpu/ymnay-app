@@ -1,0 +1,716 @@
+/* ====== Base Reset ====== */
+:root {
+    /* Brand Colors */
+    --color-primary: #1a5c4e;
+    --color-primary-hover: #103d34;
+    --color-primary-soft: #e0f0f0;
+    --color-primary-soft-hover: #adebeb;
+
+    /* Backgrounds */
+    --color-bg-base: #f8fbfa;
+    --color-bg-surface: #ffffff;
+    --color-bg-secondary: #F0FCFB;
+    --color-bg-sidebar: #E7F7F7;
+    --color-bg-muted: #edf9f9;
+
+    /* Text Colors */
+    --color-text-main: #1a1816;
+    --color-text-dark: #111827;
+    --color-text-muted: #6b7280;
+    --color-text-subtle: #9ca3af;
+    --color-text-brand: #3a6761;
+
+    /* Borders */
+    --color-border-main: #e0f0f0;
+    --color-border-subtle: #edf9f9;
+    --color-border-hover: #b0dede;
+    --color-sidebar-hover: #b0dede;
+
+    /* Semantic Colors */
+    --color-success: #10b981;
+    --color-success-bg: #ecfdf5;
+    --color-danger: #ef4444;
+    --color-danger-bg: #fef2f2;
+    --color-warning: #f59e0b;
+    --color-warning-bg: #fffbeb;
+    --color-info: #3b82f6;
+    --color-info-bg: #eff6ff;
+
+    /* Featured Card Gradient */
+    --gradient-featured: linear-gradient(135deg, #1a3a3a 0%, #0f4f4f 50%, #1a5c4e 100%);
+
+    /* Elevation Shims */
+    --shadow-main: 0 8px 30px -6px rgba(45, 106, 79, 0.12);
+}
+body {
+    background: var(--color-bg-base) !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* ====== Sidebar Menu Styles ====== */
+.admin-sidebar .nav {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.admin-sidebar .nav .nav-item {
+    margin: 0;
+    list-style: none;
+}
+
+.admin-sidebar .nav .nav-item > .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-subtle);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: transparent;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.admin-sidebar .nav .nav-item > .nav-link:hover {
+    color: var(--color-text-dark);
+    background: var(--color-bg-muted);
+}
+
+.admin-sidebar .nav .nav-item.active > .nav-link {
+    color: var(--color-text-dark);
+    border-left: 3px solid var(--color-primary);
+    padding-left: 21px;
+}
+
+.admin-sidebar .nav .nav-item > .nav-link .menu-icon {
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.admin-sidebar .nav .nav-item > .nav-link .menu-title {
+    flex: 1;
+    font-size: 14px;
+}
+
+.admin-sidebar .nav .nav-item > .nav-link .menu-arrow {
+    font-size: 12px;
+    transition: transform 0.2s ease;
+    margin-left: auto;
+}
+
+.admin-sidebar .nav .nav-item.active > .nav-link .menu-arrow,
+.admin-sidebar .nav .nav-item > .nav-link[aria-expanded="true"] .menu-arrow {
+    transform: rotate(90deg);
+}
+
+/* Submenu styling */
+.admin-sidebar .nav .nav-item .collapse,
+.admin-sidebar .nav .nav-item .collapse.show {
+    padding-left: 12px;
+}
+
+.admin-sidebar .nav .nav-item .sub-menu .nav-item > .nav-link {
+    padding: 8px 14px 8px 24px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--color-text-subtle);
+}
+
+.admin-sidebar .nav .nav-item .sub-menu .nav-item > .nav-link:hover {
+    color: var(--color-text-dark);
+    background: var(--color-bg-muted);
+}
+
+.admin-sidebar .nav .nav-item .sub-menu .nav-item.active > .nav-link {
+    color: var(--color-text-dark);
+    font-weight: 600;
+}
+
+/* Scrollbar */
+.sidebar-scroll::-webkit-scrollbar { width: 3px; }
+.sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+.sidebar-scroll::-webkit-scrollbar-thumb { background: var(--color-border-hover); border-radius: 2px; }
+.sidebar-scroll::-webkit-scrollbar-thumb:hover { background: #8cc9c9; }
+
+/* ====== Sidebar Collapsed State ====== */
+.sidebar-collapsed .admin-sidebar { width: 4.5rem !important; }
+.sidebar-collapsed .admin-sidebar .sidebar-menu-text,
+.sidebar-collapsed .admin-sidebar .sidebar-profile-text,
+.sidebar-collapsed .admin-sidebar .sidebar-search,
+.sidebar-collapsed .admin-sidebar .sidebar-label,
+.sidebar-collapsed .admin-sidebar .submenu-arrow,
+.sidebar-collapsed .admin-sidebar .submenu-collapse,
+.sidebar-collapsed .admin-sidebar .menu-arrow,
+.sidebar-collapsed .admin-sidebar .menu-title,
+.sidebar-collapsed .admin-sidebar .collapse,
+.sidebar-collapsed .admin-sidebar .collapse.show { display: none !important; }
+.sidebar-collapsed .admin-sidebar .nav .nav-item > a,
+.sidebar-collapsed .admin-sidebar .nav .nav-item > button { justify-content: center; padding: 10px; }
+.sidebar-collapsed .admin-sidebar .sidebar-collapsed-logo { display: block !important; }
+.sidebar-collapsed .admin-sidebar .nav .nav-item > a .sidebar-label,
+.sidebar-collapsed .admin-sidebar .nav .nav-item > button .sidebar-label { display: none !important; }
+.sidebar-collapsed .admin-sidebar .nav .nav-item > a > .w-1\.5,
+.sidebar-collapsed .admin-sidebar .nav .nav-item > button > .w-1\.5 { display: none !important; }
+.sidebar-collapsed .admin-sidebar .nav .nav-item > .nav-link { justify-content: center; padding: 10px; }
+.sidebar-collapsed .admin-sidebar .nav .nav-item > .nav-link .menu-icon { margin-right: 0; }
+.sidebar-collapsed .admin-content { margin-left: 4.5rem !important; }
+
+/* ====== Collapsed Sidebar: Per-item Nav Flyout ====== */
+
+/* Hidden by default (when sidebar is NOT collapsed) */
+.admin-sidebar .nav > .nav-item > .nav-flyout {
+    display: none;
+}
+
+/* When sidebar IS collapsed: show as fixed panel */
+.sidebar-collapsed .admin-sidebar .nav > .nav-item > .nav-flyout {
+    display: block;
+    position: fixed;
+    left: 4.5rem;
+    top: var(--nf-top, 0px);
+    z-index: 9999;
+    min-width: 195px;
+    background: var(--color-bg-surface, #ffffff);
+    border: 1px solid var(--color-border-main, #e0f0f0);
+    border-radius: 0 0.5rem 0.5rem 0;
+    box-shadow: 4px 6px 24px rgba(0,0,0,0.12);
+    padding: 0.3rem 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.14s ease;
+}
+
+/*
+ * :has(:hover) — shows the flyout when hovering the nav-item OR the flyout itself.
+ * Because .nav-flyout is a DOM child of .nav-item, hovering the flyout makes
+ * nav-item:has(:hover) match, keeping the flyout open without any timers.
+ */
+.sidebar-collapsed .admin-sidebar .nav > .nav-item:has(:hover) > .nav-flyout {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Fallback for browsers without :has() (flyout closes when mouse moves into it) */
+.sidebar-collapsed .admin-sidebar .nav > .nav-item:hover > .nav-flyout {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ---- Flyout inner styles ---- */
+.nav-flyout .nf-header {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-text-dark, #111827);
+    border-bottom: 1px solid var(--color-border-subtle, #edf9f9);
+    white-space: nowrap;
+}
+.nav-flyout .nf-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1rem;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted, #6b7280);
+    text-decoration: none !important;
+    transition: background 0.12s, color 0.12s;
+    white-space: nowrap;
+}
+.nav-flyout .nf-link:hover {
+    background: var(--color-bg-muted, #edf9f9);
+    color: #2d6a4f;
+}
+.nav-flyout .nf-link.nf-active {
+    color: #2d6a4f;
+    font-weight: 700;
+}
+.nav-flyout .nf-link.nf-solo {
+    font-weight: 600;
+    color: var(--color-text-dark, #111827);
+}
+.nav-flyout .nf-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+    opacity: 0.6;
+}
+
+/* ====== Mobile Sidebar ====== */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 39;
+    backdrop-filter: blur(2px);
+}
+.sidebar-mobile-open .sidebar-overlay { display: block; }
+.sidebar-mobile-open .admin-sidebar { transform: translateX(0) !important; }
+
+@media (max-width: 1023px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+        position: fixed !important;
+        z-index: 40;
+    }
+    .admin-content { margin-left: 0 !important; }
+}
+
+/* ====== Bootstrap Modal compat (keep hidden by default) ====== */
+.modal { display: none !important; }
+.modal.show { display: flex !important; }
+
+/* ====== Tailwind Modal System (.tw-modal) ====== */
+.tw-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1050;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+.tw-modal.open {
+    display: flex;
+}
+.tw-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+.tw-modal.open .tw-modal-backdrop {
+    opacity: 1;
+}
+.tw-modal-panel {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-main);
+    border-radius: 1.25rem;
+    box-shadow: 0 20px 60px -12px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0,0,0,0.03);
+    transform: scale(0.95) translateY(10px);
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+}
+.tw-modal.open .tw-modal-panel {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+.tw-modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border-main);
+}
+.tw-modal-head-info {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+.tw-modal-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.tw-modal-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin: 0;
+    line-height: 1.3;
+}
+.tw-modal-close {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--color-text-subtle);
+    cursor: pointer;
+    transition: all 0.15s;
+    flex-shrink: 0;
+    font-size: 1rem;
+    line-height: 1;
+}
+.tw-modal-close:hover {
+    background: var(--color-bg-muted);
+    border-color: var(--color-border-main);
+    color: var(--color-text-dark);
+}
+.tw-modal-body {
+    padding: 1.5rem;
+}
+.tw-modal-foot {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.625rem;
+    padding: 0.875rem 1.5rem;
+    background: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border-main);
+}
+.tw-modal-label {
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.375rem;
+}
+.tw-modal-input {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    border-radius: 0.75rem;
+    font-size: 0.8125rem;
+    border: 1px solid var(--color-border-main);
+    background: var(--color-bg-secondary);
+    color: var(--color-text-dark);
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+.tw-modal-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(26, 92, 78, 0.08);
+    background: var(--color-bg-surface);
+}
+.tw-modal-input::placeholder {
+    color: var(--color-text-subtle);
+}
+.tw-modal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1.125rem;
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+.tw-modal-btn-cancel {
+    background: transparent;
+    border: 1px solid var(--color-border-main);
+    color: var(--color-text-muted);
+}
+.tw-modal-btn-cancel:hover {
+    background: var(--color-bg-muted);
+    color: var(--color-text-dark);
+    border-color: var(--color-border-hover);
+}
+.tw-modal-btn-save {
+    background: var(--color-primary);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(26, 92, 78, 0.2);
+}
+.tw-modal-btn-save:hover {
+    background: var(--color-primary-hover);
+    box-shadow: 0 4px 14px rgba(26, 92, 78, 0.3);
+    transform: translateY(-1px);
+}
+.tw-modal-field + .tw-modal-field {
+    margin-top: 1rem;
+}
+.tw-modal-tenant-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    background: var(--color-bg-muted);
+    border: 1px solid var(--color-border-main);
+    margin-top: 1rem;
+}
+
+/* Scrollbar inside modal panel */
+.tw-modal-panel::-webkit-scrollbar { width: 4px; }
+.tw-modal-panel::-webkit-scrollbar-thumb { background: var(--color-border-hover); border-radius: 2px; }
+
+/* ====== Select2 z-index fix ====== */
+.select2-container { z-index: 9999; }
+
+/* ====== Cards ====== */
+.card {
+    border-radius: 1rem;
+    border: 1px solid var(--color-border-main);
+    box-shadow: none;
+    background: var(--color-bg-surface);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card .card-body { padding: 1.5rem; }
+.card:hover {
+    box-shadow: 0 8px 30px -6px rgba(45, 106, 79, 0.12);
+    transform: translateY(-2px);
+    border-color: var(--color-border-hover);
+}
+
+/* ====== Form styling ====== */
+.form-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-main);
+    margin-bottom: 0.375rem;
+}
+.form-control {
+    border-radius: 0.75rem;
+    border-color: var(--color-border-main);
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--color-bg-secondary);
+}
+.form-control:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.12);
+    background: var(--color-bg-surface);
+}
+
+/* ====== Buttons ====== */
+.btn, .btn-primary, .btn-secondary, .btn-success, .btn-info, .btn-warning, .btn-danger,
+.btn-outline-primary, .btn-outline-secondary, .btn-outline-success, .btn-outline-info {
+    border-radius: 0.75rem;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 500;
+}
+.btn-primary, .btn-success {
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+}
+.btn-primary:hover, .btn-success:hover {
+    background: var(--color-primary-hover) !important;
+    border-color: var(--color-primary-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3);
+}
+.btn-primary:active, .btn-success:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+.btn-info {
+    background: var(--color-info) !important;
+    border-color: var(--color-info) !important;
+}
+.btn-info:hover {
+    background: #0e7490 !important;
+    border-color: #0e7490 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(8, 145, 178, 0.3);
+}
+.btn-danger {
+    background: var(--color-danger) !important;
+    border-color: var(--color-danger) !important;
+}
+.btn-danger:hover {
+    background: #b91c1c !important;
+    border-color: #b91c1c !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+.btn-warning {
+    background: var(--color-warning) !important;
+    border-color: var(--color-warning) !important;
+}
+.btn-warning:hover {
+    background: #b45309 !important;
+    border-color: #b45309 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+}
+.btn-secondary {
+    transition: all 0.25s ease;
+}
+.btn-secondary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ====== Table rows hover ====== */
+.table > tbody > tr {
+    transition: background-color 0.15s ease;
+}
+.table > tbody > tr:hover {
+    background-color: var(--color-bg-muted) !important;
+}
+.table-hover > tbody > tr:hover {
+    background-color: var(--color-bg-muted) !important;
+}
+
+/* ====== Badge / pill hover ====== */
+.badge {
+    transition: all 0.2s ease;
+    border-radius: 9999px;
+}
+.badge:hover {
+    opacity: 0.85;
+}
+
+/* ====== Nav tabs hover ====== */
+.nav-tabs .nav-link {
+    transition: all 0.2s ease;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+.nav-tabs .nav-link:hover {
+    border-color: var(--color-border-hover);
+    background: var(--color-bg-muted);
+}
+
+/* ====== Pagination hover ====== */
+.page-link {
+    transition: all 0.2s ease;
+    border-radius: 0.5rem !important;
+}
+.page-link:hover {
+    background: var(--color-primary) !important;
+    color: #fff !important;
+    border-color: var(--color-primary) !important;
+    transform: translateY(-1px);
+}
+
+/* ====== Select2 hover ====== */
+.select2-container--default .select2-selection--single {
+    border-radius: 0.75rem !important;
+    border-color: var(--color-border-main) !important;
+    transition: all 0.2s ease;
+}
+.select2-container--default .select2-selection--single:hover {
+    border-color: var(--color-primary) !important;
+}
+
+/* ====== Input / textarea hover ====== */
+.form-control:hover {
+    border-color: var(--color-border-hover);
+}
+textarea.form-control:hover {
+    border-color: var(--color-border-hover);
+}
+
+/* ====== Dropdown item hover ====== */
+.dropdown-item {
+    transition: all 0.15s ease;
+    border-radius: 0.375rem;
+}
+.dropdown-item:hover {
+    background: var(--color-bg-muted);
+}
+
+/* ====== SweetAlert button hover fix ====== */
+.swal2-confirm {
+    transition: all 0.2s ease !important;
+}
+.swal2-confirm:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3) !important;
+}
+
+/* ====== RTL / Arabic Admin Panel Layout ======
+   Scoped to html[dir="rtl"] so these rules only fire when the page
+   direction is RTL. No PHP conditional needed — the selector IS the condition.
+   Loaded via app.css which comes after the Tailwind CDN script, so these
+   rules sit at the top of the cascade and need no !important on most properties.
+   We still add !important on margin/position to beat any Tailwind !important overrides.
+   ============================================================ */
+
+/* Sidebar: anchor to right edge */
+html[dir="rtl"] .admin-sidebar {
+    left: auto !important;
+    right: 0 !important;
+}
+
+/* Content area: offset from the right (where sidebar now lives) */
+html[dir="rtl"] .admin-content {
+    margin-left: 0 !important;
+    margin-right: 15rem !important; /* matches sidebar w-60 = 240px = 15rem */
+}
+
+/* Collapsed sidebar: narrower offset from right */
+html[dir="rtl"] .sidebar-collapsed .admin-content {
+    margin-left: 0 !important;
+    margin-right: 4.5rem !important;
+}
+
+/* Active nav item: flip left border indicator to right */
+html[dir="rtl"] .admin-sidebar .nav .nav-item.active > .nav-link {
+    border-left: none;
+    border-right: 3px solid var(--color-primary, #1a5c4e);
+    padding-left: 24px;
+    padding-right: 21px;
+}
+
+/* Menu icon: flip margin to the left */
+html[dir="rtl"] .admin-sidebar .nav .nav-item > .nav-link .menu-icon {
+    margin-right: 0;
+    margin-left: 12px;
+}
+
+/* Menu arrow: push to logical start (right in RTL) */
+html[dir="rtl"] .admin-sidebar .nav .nav-item > .nav-link .menu-arrow {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* Submenu: flip indent to right side */
+html[dir="rtl"] .admin-sidebar .nav .nav-item .collapse,
+html[dir="rtl"] .admin-sidebar .nav .nav-item .collapse.show {
+    padding-left: 0;
+    padding-right: 12px;
+}
+
+/* Sidebar search: move icon from left-3 to right-3 */
+html[dir="rtl"] .admin-sidebar .relative > i.mdi-magnify {
+    left: auto !important;
+    right: 0.75rem !important;
+}
+
+/* Sidebar search input: flip padding so text clears the icon */
+html[dir="rtl"] .admin-sidebar #menuSearch {
+    padding-left: 3.5rem;
+    padding-right: 2.5rem;
+}
+
+/* Collapsed flyout panel: open to the left of the sidebar */
+html[dir="rtl"] .sidebar-collapsed .admin-sidebar .nav > .nav-item > .nav-flyout {
+    left: auto !important;
+    right: 4.5rem !important;
+    border-radius: 0.5rem 0 0 0.5rem;
+    box-shadow: -4px 6px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Mobile: sidebar slides in from the right */
+@media (max-width: 1023px) {
+    html[dir="rtl"] .admin-sidebar {
+        transform: translateX(100%) !important;
+    }
+    html[dir="rtl"] .admin-content {
+        margin-right: 0 !important;
+    }
+    html[dir="rtl"] .sidebar-mobile-open .admin-sidebar {
+        transform: translateX(0) !important;
+    }
+}

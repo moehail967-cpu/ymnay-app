@@ -1,0 +1,15 @@
+{
+    "id": "woo-commerce",
+    "name": "WooCommerce Import",
+    "version": "1.0.2",
+    "description": "",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "tenant",
+    "pricing": "free",
+    "min_platform_version": "1.0.0",
+    "main": "src/WooCommercePlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null
+}

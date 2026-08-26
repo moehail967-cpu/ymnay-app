@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+
+  <!-- Icon circle -->
+  <circle cx="44" cy="40" r="26" fill="#ffffff" opacity="0.12"/>
+  <circle cx="44" cy="40" r="22" fill="#ffffff" opacity="0.25"/>
+
+  <!-- Icon -->
+  <text x="44" y="47" font-size="18" text-anchor="middle" dominant-baseline="middle"
+        font-family="Segoe UI Emoji, Apple Color Emoji, sans-serif">👶</text>
+
+  <!-- Brand name — all white -->
+  <text x="82" y="34" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="700"
+        fill="#ffffff" letter-spacing="-0.5">Tiny<tspan fill="#ffffff" opacity="0.75">Nest</tspan></text>
+
+  <!-- Tagline -->
+  <text x="83" y="54" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-weight="400"
+        fill="#ffffff" opacity="0.6" letter-spacing="2.5">BABY ESSENTIALS</text>
+
+  <!-- Accent underline -->
+  <line x1="82" y1="59" x2="175" y2="59" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+</svg>

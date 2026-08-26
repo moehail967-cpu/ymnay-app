@@ -1,0 +1,1 @@
+{{-- Pharmacy: breadcrumb suppressed — each page renders its own teal banner with breadcrumb inside @section('content') --}}

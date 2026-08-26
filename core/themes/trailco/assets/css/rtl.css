@@ -1,0 +1,4 @@
+/* RTL overrides — trailco */
+body { direction: rtl; text-align: right; }
+.tr-nav-links { flex-direction: row-reverse; }
+.tr-footer-bottom { flex-direction: row-reverse; }

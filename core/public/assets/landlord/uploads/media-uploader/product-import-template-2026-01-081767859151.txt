@@ -1,0 +1,1 @@
+name,slug,summary,description,status_id,sale_price,sku,stock_count,uom

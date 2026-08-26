@@ -1,0 +1,15 @@
+{
+    "id": "integrations",
+    "name": "Integrations",
+    "version": "1.0.0",
+    "description": "",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "both",
+    "pricing": "free",
+    "min_platform_version": "1.0.0",
+    "main": "src/IntegrationsPlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null
+}

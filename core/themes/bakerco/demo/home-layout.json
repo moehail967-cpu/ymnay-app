@@ -1,0 +1,307 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "section-1782734371576",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1782734371576",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1782734371576",
+                                "type": "bakerco_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "gap": "0px",
+                    "margin": "0px",
+                    "padding": "0px",
+                    "maxWidth": 1200,
+                    "contentWidth": "full_width_contained",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "78c2f10a-ea92-4316-9a09-7eed40152e36",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "19436207-6513-4975-acf7-941a53162026",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "26f24ca8-ec6f-4702-bcaf-34d505da5922",
+                                "type": "bakerco_category_grid"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "e667812d-22c8-4592-b6be-ebe6387cc9a8",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "bdc6fa14-4bf1-426c-96a6-d22eaa403209",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "f10f350e-e68f-42b5-8f17-0e3c8a368db9",
+                                "type": "bakerco_featured_products"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1782735277838",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1782735277838",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1782735277838",
+                                "type": "bakerco_promo_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1782794844962",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1782794844962",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1782794844962",
+                                "type": "bakerco_newsletter"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "26f24ca8-ec6f-4702-bcaf-34d505da5922": {
+            "type": "bakerco_category_grid",
+            "container_id": "78c2f10a-ea92-4316-9a09-7eed40152e36",
+            "column_id": "19436207-6513-4975-acf7-941a53162026",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "limit": 6
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "f10f350e-e68f-42b5-8f17-0e3c8a368db9": {
+            "type": "bakerco_featured_products",
+            "container_id": "e667812d-22c8-4592-b6be-ebe6387cc9a8",
+            "column_id": "bdc6fa14-4bf1-426c-96a6-d22eaa403209",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "widget-1782734371576": {
+            "type": "bakerco_hero_section",
+            "container_id": "section-1782734371576",
+            "column_id": "column-1782734371576",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "hero_image": "@media:bakerco-hero"
+                    },
+                    "content": {
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button2_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1782735277838": {
+            "type": "bakerco_promo_section",
+            "container_id": "section-1782735277838",
+            "column_id": "column-1782735277838",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1782794844962": {
+            "type": "bakerco_newsletter",
+            "container_id": "section-1782794844962",
+            "column_id": "column-1782794844962",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        }
+    }
+}

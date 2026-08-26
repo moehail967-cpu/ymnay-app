@@ -1,0 +1,316 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "Aromatic — Luxury Fragrances"
+      },
+      {
+        "key": "site_description",
+        "value": "Discover your signature scent. Premium perfumes, skincare and home fragrances crafted for every mood."
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/hero-banner.png",
+        "import_as": "aromatic-hero"
+      },
+      {
+        "path": "assets/images/promo-banner.jpg",
+        "import_as": "aromatic-promo-banner"
+      },
+      {
+        "path": "assets/images/cat-perfumes.jpg",
+        "import_as": "aromatic-cat-perfumes"
+      },
+      {
+        "path": "assets/images/cat-candles.jpg",
+        "import_as": "aromatic-cat-candles"
+      },
+      {
+        "path": "assets/images/cat-gift-sets.jpg",
+        "import_as": "aromatic-cat-gift-sets"
+      },
+      {
+        "path": "assets/images/cat-skincare.jpg",
+        "import_as": "aromatic-cat-skincare"
+      },
+      {
+        "path": "assets/images/cat-hair-care.jpg",
+        "import_as": "aromatic-cat-hair-care"
+      },
+      {
+        "path": "assets/images/cat-body-care.jpg",
+        "import_as": "aromatic-cat-body-care"
+      },
+      {
+        "path": "assets/images/prod-perfume-1.jpg",
+        "import_as": "aromatic-prod-perfume-1"
+      },
+      {
+        "path": "assets/images/prod-perfume-2.jpg",
+        "import_as": "aromatic-prod-perfume-2"
+      },
+      {
+        "path": "assets/images/prod-perfume-3.jpg",
+        "import_as": "aromatic-prod-perfume-3"
+      },
+      {
+        "path": "assets/images/prod-candle.jpg",
+        "import_as": "aromatic-prod-candle"
+      },
+      {
+        "path": "assets/images/prod-serum.jpg",
+        "import_as": "aromatic-prod-serum"
+      },
+      {
+        "path": "assets/images/prod-face-cream.jpg",
+        "import_as": "aromatic-prod-face-cream"
+      },
+      {
+        "path": "assets/images/prod-hair-oil.jpg",
+        "import_as": "aromatic-prod-hair-oil"
+      },
+      {
+        "path": "assets/images/prod-body-lotion.jpg",
+        "import_as": "aromatic-prod-body-lotion"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Perfumes",
+        "slug": "perfumes",
+        "image": "aromatic-cat-perfumes"
+      },
+      {
+        "name": "Candles",
+        "slug": "candles",
+        "image": "aromatic-cat-candles"
+      },
+      {
+        "name": "Gift Sets",
+        "slug": "gift-sets",
+        "image": "aromatic-cat-gift-sets"
+      },
+      {
+        "name": "Skincare",
+        "slug": "skincare",
+        "image": "aromatic-cat-skincare"
+      },
+      {
+        "name": "Hair Care",
+        "slug": "hair-care",
+        "image": "aromatic-cat-hair-care"
+      },
+      {
+        "name": "Body Care",
+        "slug": "body-care",
+        "image": "aromatic-cat-body-care"
+      }
+    ],
+    "products": [
+      {
+        "name": "Midnight Rose Eau de Parfum",
+        "summary": "A deep, romantic floral built on dark rose, smoky oud and warm amber. Long-lasting sillage.",
+        "price": 89.99,
+        "compare_price": 119.99,
+        "category": "perfumes",
+        "image": "aromatic-prod-perfume-1",
+        "stock": 40,
+        "tags": [
+          "rose",
+          "oud",
+          "floral",
+          "evening"
+        ]
+      },
+      {
+        "name": "Ocean Breeze Cologne",
+        "summary": "Crisp aquatic freshness — sea salt, white cedar and a cool citrus opening.",
+        "price": 64.99,
+        "compare_price": 84.99,
+        "category": "perfumes",
+        "image": "aromatic-prod-perfume-2",
+        "stock": 55,
+        "tags": [
+          "aquatic",
+          "fresh",
+          "citrus",
+          "cedar"
+        ]
+      },
+      {
+        "name": "Velvet Oud EDP 100ml",
+        "summary": "Rich Middle-Eastern oud accord layered with spiced saffron and creamy sandalwood.",
+        "price": 129.99,
+        "compare_price": 169.99,
+        "category": "perfumes",
+        "image": "aromatic-prod-perfume-3",
+        "stock": 30,
+        "tags": [
+          "oud",
+          "saffron",
+          "sandalwood",
+          "oriental"
+        ]
+      },
+      {
+        "name": "Sandalwood & Vanilla Soy Candle",
+        "summary": "Hand-poured 200g soy wax candle with warm sandalwood, vanilla and a whisper of musk. 45-hour burn.",
+        "price": 39.99,
+        "compare_price": 54.99,
+        "category": "candles",
+        "image": "aromatic-prod-candle",
+        "stock": 50,
+        "tags": [
+          "candle",
+          "sandalwood",
+          "vanilla",
+          "soy"
+        ]
+      },
+      {
+        "name": "Vitamin C Brightening Serum",
+        "summary": "High-potency 20% Vitamin C serum that visibly brightens skin and reduces dark spots in 4 weeks.",
+        "price": 49.99,
+        "compare_price": 69.99,
+        "category": "skincare",
+        "image": "aromatic-prod-serum",
+        "stock": 60,
+        "tags": [
+          "serum",
+          "vitamin-c",
+          "brightening",
+          "skincare"
+        ]
+      },
+      {
+        "name": "Rose Hydra Cream 50ml",
+        "summary": "Intense 72-hour hydration with rose hip oil and hyaluronic acid for plump, dewy skin.",
+        "price": 44.99,
+        "compare_price": 59.99,
+        "category": "skincare",
+        "image": "aromatic-prod-face-cream",
+        "stock": 45,
+        "tags": [
+          "moisturiser",
+          "rose",
+          "hyaluronic",
+          "skincare"
+        ]
+      },
+      {
+        "name": "Argan Hair Elixir 100ml",
+        "summary": "Cold-pressed Moroccan argan oil blended with silk proteins for glossy, frizz-free hair.",
+        "price": 34.99,
+        "compare_price": 44.99,
+        "category": "hair-care",
+        "image": "aromatic-prod-hair-oil",
+        "stock": 70,
+        "tags": [
+          "argan",
+          "hair",
+          "oil",
+          "frizz-free"
+        ]
+      },
+      {
+        "name": "Silk Body Lotion 250ml",
+        "summary": "Lightweight, fast-absorbing lotion enriched with shea butter and jasmine extract for silky skin.",
+        "price": 29.99,
+        "compare_price": 39.99,
+        "category": "body-care",
+        "image": "aromatic-prod-body-lotion",
+        "stock": 80,
+        "tags": [
+          "lotion",
+          "shea",
+          "jasmine",
+          "body-care"
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Collections",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Customer Care",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Our Promise",
+          "footer_badges": {
+            "badge_icon_": [
+              "🌿",
+              "✈️",
+              "🔒",
+              "🎁"
+            ],
+            "badge_title_": [
+              "100% Authentic",
+              "Free Shipping",
+              "Secure Payment",
+              "Gift Wrapping"
+            ],
+            "badge_sub_": [
+              "Genuine fragrances only",
+              "On orders over $60",
+              "SSL encrypted checkout",
+              "Complimentary on request"
+            ]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "aromatic-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/page_builder_layout.json"
+      },
+      {
+        "title": "About Us",
+        "slug": "about-us",
+        "page_builder": false,
+        "breadcrumb": true,
+        "layout_file": "assets/page_layout/about-layout.json"
+      },
+      {
+        "title": "Contact",
+        "slug": "contact-us",
+        "page_builder": false,
+        "breadcrumb": true,
+        "layout_file": "assets/page_layout/contact-layout.json"
+      }
+    ]
+  }
+}

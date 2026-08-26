@@ -1,0 +1,39 @@
+/* ============================================================
+   Kidville — Default Page Styles (shop, cart, checkout)
+   Loaded before theme CSS so theme overrides take precedence.
+   ============================================================ */
+
+/* Shop page layout compatibility */
+.shop-area { padding-top: 60px; padding-bottom: 60px; }
+.shop-contents-wrapper { display: flex; gap: 24px; }
+.shop-sidebar { min-width: 260px; }
+.product-grid-wrapper { flex: 1; }
+
+/* Cart & Checkout */
+.cart-area { padding-top: 60px; padding-bottom: 60px; }
+.checkout-area { padding-top: 60px; padding-bottom: 60px; }
+
+/* Product single */
+.single-product-details-area { padding-top: 60px; padding-bottom: 60px; }
+
+/* Price range slider — Bootstrap 5 compatible */
+.price-range-slider .noUi-connect { background: #f97316; }
+.price-range-slider .noUi-handle { border-color: #f97316; }
+
+/* Filter sidebar */
+.widget-box { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; border: 1px solid #f0f0f0; }
+.widget-box .widget-title { font-size: 15px; font-weight: 700; color: #1e3a5f; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #f97316; }
+
+/* Add to cart button */
+.add-to-cart-btn { background: var(--kv-red); color: #fff; border: none; padding: 6px 24px; border-radius: 30px; font-weight: 600; cursor: pointer; transition: opacity .2s; }
+.add-to-cart-btn:hover { opacity: .85; }
+
+/* Rating stars */
+.rating-star .las.la-star,
+.rating-star .las.la-star-half-alt { color: #f59e0b; }
+.rating-star .lar.la-star { color: #d1d5db; }
+.size-lists li.disabled { opacity: .4; cursor: not-allowed; pointer-events: none; }
+
+/* Hide star-rating plugin tooltip in review form */
+[data-star-rating] .gl-star-rating--stars[aria-label]:after,
+[data-star-rating] .gl-star-rating--stars[aria-label]:before { display: none !important; }

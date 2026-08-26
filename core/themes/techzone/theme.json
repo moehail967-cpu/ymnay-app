@@ -1,0 +1,84 @@
+{
+  "name": "Techzone",
+  "slug": "techzone",
+  "description": "A bold, dark-accent electronics theme built for gadgets, computers, phones, and tech accessories. Features a spec-driven product layout and comparison-friendly design.",
+  "author": "Nazmart",
+  "version": "1.0.0",
+  "niche": "electronics",
+  "price": 0,
+  "license": "free",
+  "status": true,
+  "requires": ">=2.5.0",
+  "screenshot": [
+    {
+      "primary": "primary.jpg",
+      "sort": "desc"
+    }
+  ],
+  "assets": {
+    "header": {
+      "styles": [
+        "style"
+      ],
+      "rtl_styles": [
+        "rtl"
+      ],
+      "scripts": []
+    },
+    "footer": {
+      "styles": [],
+      "scripts": [
+        "main"
+      ]
+    }
+  },
+  "views": {
+    "navbar": "header/navbar",
+    "breadcrumb": "header/breadcrumb",
+    "footer_widget": "footer/widget-area",
+    "header_hook": "header/hook",
+    "footer_hook": "footer/hook"
+  },
+  "headerHook": [
+    {
+      "style": [
+        "style",
+        "pages"
+      ],
+      "rtl_style": [
+        "rtl"
+      ],
+      "script": [],
+      "blade": [
+        "techzone-header"
+      ],
+      "navbarArea": "header/navbar",
+      "breadcrumbArea": "header/breadcrumb",
+      "loadCoreStyle": {}
+    }
+  ],
+  "footerHook": [
+    {
+      "style": [],
+      "script": [
+        "main"
+      ],
+      "blade": [
+        "techzone-footer"
+      ],
+      "widgetArea": "footer/widget-area",
+      "loadCoreScript": {}
+    }
+  ],
+  "demo": {
+    "data": "demo/data.json",
+    "preview_url": ""
+  },
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2026-04-28",
+      "notes": "Initial release"
+    }
+  ]
+}

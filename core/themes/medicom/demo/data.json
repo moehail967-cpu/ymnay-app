@@ -1,0 +1,335 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "Medicom — Online Pharmacy"
+      },
+      {
+        "key": "site_description",
+        "value": "Your trusted source for quality medicines, vitamins, and healthcare products delivered to your door."
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/hero-banner.jpg",
+        "import_as": "medicom-hero"
+      },
+      {
+        "path": "assets/images/promo-banner1.jpg",
+        "import_as": "medicom-promo-1"
+      },
+      {
+        "path": "assets/images/promo-banner2.jpg",
+        "import_as": "medicom-promo-2"
+      },
+      {
+        "path": "assets/images/prod-vitamins.jpg",
+        "import_as": "medicom-prod-vitamins"
+      },
+      {
+        "path": "assets/images/prod-supplements.jpg",
+        "import_as": "medicom-prod-supplements"
+      },
+      {
+        "path": "assets/images/prod-pills.jpg",
+        "import_as": "medicom-prod-pills"
+      },
+      {
+        "path": "assets/images/prod-first-aid-kit.jpg",
+        "import_as": "medicom-prod-first-aid-kit"
+      },
+      {
+        "path": "assets/images/prod-thermometer.jpg",
+        "import_as": "medicom-prod-thermometer"
+      },
+      {
+        "path": "assets/images/prod-eye-drops.jpg",
+        "import_as": "medicom-prod-eye-drops"
+      },
+      {
+        "path": "assets/images/prod-bandage.jpg",
+        "import_as": "medicom-prod-bandage"
+      },
+      {
+        "path": "assets/images/prod-antiseptic.jpg",
+        "import_as": "medicom-prod-antiseptic"
+      },
+      {
+        "path": "assets/images/cat-baby.jpg",
+        "import_as": "medicom-cat-baby"
+      },
+      {
+        "path": "assets/images/cat-devices.jpg",
+        "import_as": "medicom-cat-devices"
+      },
+      {
+        "path": "assets/images/cat-first-aid.jpg",
+        "import_as": "medicom-cat-first-aid"
+      },
+      {
+        "path": "assets/images/cat-prescription.jpg",
+        "import_as": "medicom-cat-prescription"
+      },
+      {
+        "path": "assets/images/cat-skincare.jpg",
+        "import_as": "medicom-cat-skincare"
+      },
+      {
+        "path": "assets/images/cat-vitamins.jpg",
+        "import_as": "medicom-cat-vitamins"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Baby Care",
+        "slug": "baby-care",
+        "image": "medicom-cat-baby"
+      },
+      {
+        "name": "Medical Devices",
+        "slug": "medical-devices",
+        "image": "medicom-cat-devices"
+      },
+      {
+        "name": "First Aid",
+        "slug": "first-aid",
+        "image": "medicom-cat-first-aid"
+      },
+      {
+        "name": "Prescription",
+        "slug": "prescription",
+        "image": "medicom-cat-prescription"
+      },
+      {
+        "name": "Skincare",
+        "slug": "skincare",
+        "image": "medicom-cat-skincare"
+      },
+      {
+        "name": "Vitamins",
+        "slug": "vitamins",
+        "image": "medicom-cat-vitamins"
+      }
+    ],
+    "products": [
+      {
+        "name": "Daily Vitamin Complex",
+        "summary": "Complete daily multivitamin with 20+ essential nutrients. Supports immune health and energy.",
+        "price": 24.99,
+        "compare_price": 34.99,
+        "category": "vitamins",
+        "image": "medicom-prod-vitamins",
+        "stock": 100,
+        "tags": [
+          "vitamins",
+          "multivitamin",
+          "immune",
+          "daily"
+        ]
+      },
+      {
+        "name": "Omega-3 Supplements",
+        "summary": "Premium fish oil capsules. 1000mg per serving. Supports heart and brain health.",
+        "price": 19.99,
+        "compare_price": 26.99,
+        "category": "vitamins",
+        "image": "medicom-prod-supplements",
+        "stock": 80,
+        "tags": [
+          "omega3",
+          "fish-oil",
+          "heart-health",
+          "supplements"
+        ]
+      },
+      {
+        "name": "Pain Relief Tablets",
+        "summary": "Fast-acting ibuprofen 200mg tablets. Relieves headaches, muscle aches, and fever.",
+        "price": 9.99,
+        "compare_price": 13.99,
+        "category": "prescription",
+        "image": "medicom-prod-pills",
+        "stock": 150,
+        "tags": [
+          "pain-relief",
+          "ibuprofen",
+          "headache",
+          "fever"
+        ]
+      },
+      {
+        "name": "Complete First Aid Kit",
+        "summary": "100-piece kit with bandages, antiseptic wipes, gauze, and more. Home and travel ready.",
+        "price": 34.99,
+        "compare_price": 44.99,
+        "category": "first-aid",
+        "image": "medicom-prod-first-aid-kit",
+        "stock": 60,
+        "tags": [
+          "first-aid",
+          "kit",
+          "bandage",
+          "travel"
+        ]
+      },
+      {
+        "name": "Digital Thermometer",
+        "summary": "Fast and accurate readings in 10 seconds. Memory function stores last reading.",
+        "price": 14.99,
+        "compare_price": 19.99,
+        "category": "medical-devices",
+        "image": "medicom-prod-thermometer",
+        "stock": 70,
+        "tags": [
+          "thermometer",
+          "digital",
+          "fever",
+          "medical-device"
+        ]
+      },
+      {
+        "name": "Eye Relief Drops",
+        "summary": "Lubricating eye drops for dry and irritated eyes. Preservative-free formula.",
+        "price": 12.99,
+        "compare_price": 17.99,
+        "category": "prescription",
+        "image": "medicom-prod-eye-drops",
+        "stock": 90,
+        "tags": [
+          "eye-drops",
+          "dry-eyes",
+          "lubricating",
+          "preservative-free"
+        ]
+      },
+      {
+        "name": "Premium Bandage Pack",
+        "summary": "Assorted sizes fabric bandages. Waterproof, flexible, and long-lasting adhesion.",
+        "price": 8.99,
+        "compare_price": 11.99,
+        "category": "first-aid",
+        "image": "medicom-prod-bandage",
+        "stock": 120,
+        "tags": [
+          "bandage",
+          "waterproof",
+          "flexible",
+          "first-aid"
+        ]
+      },
+      {
+        "name": "Antiseptic Solution",
+        "summary": "Broad-spectrum antiseptic for cuts, wounds, and minor skin infections. Alcohol-free.",
+        "price": 7.99,
+        "compare_price": 10.99,
+        "category": "first-aid",
+        "image": "medicom-prod-antiseptic",
+        "stock": 110,
+        "tags": [
+          "antiseptic",
+          "wound-care",
+          "alcohol-free",
+          "skin"
+        ]
+      }
+    ],
+    "menus": [
+      {
+        "name": "Primary Navigation",
+        "location": "primary",
+        "items": [
+          {
+            "title": "Home",
+            "url": "@url/",
+            "order": 1
+          },
+          {
+            "title": "Shop",
+            "url": "@url/shop",
+            "order": 2
+          },
+          {
+            "title": "About",
+            "url": "@url/about",
+            "order": 3
+          },
+          {
+            "title": "Contact",
+            "url": "@url/contact",
+            "order": 4
+          }
+        ]
+      },
+      {
+        "name": "Footer Navigation",
+        "location": "footer",
+        "items": [
+          {
+            "title": "About",
+            "url": "@url/about",
+            "order": 1
+          },
+          {
+            "title": "Contact",
+            "url": "@url/contact",
+            "order": 2
+          }
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Shop",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Customer Support",
+          "menu_id": "@primary_menu"
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "medicom-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/home-layout.json"
+      },
+      {
+        "title": "About Us",
+        "slug": "about-us",
+        "page_builder": false,
+        "breadcrumb": true,
+        "layout_file": "assets/page_layout/about-layout.json"
+      },
+      {
+        "title": "Contact",
+        "slug": "contact-us",
+        "page_builder": false,
+        "breadcrumb": true,
+        "layout_file": "assets/page_layout/contact-layout.json"
+      }
+    ]
+  }
+}

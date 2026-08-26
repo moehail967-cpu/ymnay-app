@@ -1,0 +1,10 @@
+{
+    "id": "product-qa",
+    "name": "Product Q&A",
+    "description": "Let customers ask questions on product pages. Admin reviews and answers. Answered Q&As are displayed publicly.",
+    "version": "1.0.0",
+    "type": "tenant",
+    "pricing": "free",
+    "author": "Nazmart",
+    "main": "src/ProductQAPlugin.php"
+}

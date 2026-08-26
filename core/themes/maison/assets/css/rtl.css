@@ -1,0 +1,4 @@
+/* RTL overrides — maison */
+body { direction: rtl; text-align: right; }
+.ms-nav-links { flex-direction: row-reverse; }
+.ms-footer-bottom { flex-direction: row-reverse; }

@@ -1,0 +1,15 @@
+{
+    "id": "widget-builder",
+    "name": "Widget Builder",
+    "version": "1.0.0",
+    "description": "Customizable sidebar and footer widget system",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "both",
+    "pricing": "free",
+    "min_platform_version": "1.0.0",
+    "main": "src/WidgetBuilderPlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null
+}

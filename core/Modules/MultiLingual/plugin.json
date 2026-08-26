@@ -1,0 +1,16 @@
+{
+    "id": "multi-lingual",
+    "name": "Multi-Lingual Content",
+    "version": "1.0.0",
+    "description": "Per-language product, page, blog, and category content for tenant stores. Zero performance overhead for default-locale visitors.",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "tenant",
+    "pricing": "free",
+    "min_platform_version": "2.5.0",
+    "main": "src/MultiLingualPlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null,
+    "settings_route": "tenant.admin.multi-lingual.settings"
+}

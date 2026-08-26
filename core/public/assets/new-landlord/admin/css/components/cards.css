@@ -1,0 +1,436 @@
+/* Dashboard Cards Styles */
+.dash-card {
+    background: var(--color-bg-surface);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+}
+
+.dash-card:hover {
+    box-shadow: 0 8px 30px -8px rgba(45, 106, 79, 0.70);
+    transform: translateY(-3px);
+    background: var(--color-bg-surface);
+}
+
+.dash-card .card-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: var(--color-primary-soft);
+    transition: background-color 0.2s;
+}
+
+.dash-card .card-icon:hover {
+    background-color: var(--color-primary-soft-hover);
+}
+
+.dash-card .card-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+}
+
+.dash-card .card-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-text-main);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.dash-card .card-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.featured-card {
+    background: var(--gradient-featured);
+    border: none;
+    color: #fff;
+    border-radius: 1rem;
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.featured-card:hover {
+    box-shadow: 0 12px 40px -8px rgba(15,79,79,0.35);
+    transform: translateY(-2px);
+}
+
+.featured-card::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -20%;
+    width: 60%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.featured-card .card-label {
+    color: rgba(255,255,255,0.55);
+}
+
+.featured-card .card-value {
+    color: #fff;
+}
+
+.chart-card {
+    background: var(--color-bg-surface);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chart-card:hover {
+    box-shadow: 0 8px 30px -8px rgba(45, 106, 79, 0.12);
+    transform: translateY(-2px);
+    border-color: var(--color-border-hover);
+}
+
+.alert-card {
+    background: var(--color-bg-surface);
+    border-radius: 1rem;
+    padding: 1.25rem 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.alert-card:hover {
+    box-shadow: 0 8px 30px -8px rgba(45, 106, 79, 0.12);
+    transform: translateY(-2px);
+    border-color: var(--color-border-hover);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Stat Cards (small metric cards on list pages)
+   ══════════════════════════════════════════════════════════════ */
+.stat-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.stat-card:hover {
+    box-shadow: 0 8px 30px -8px rgba(45, 106, 79, 0.70);
+    transform: translateY(-3px);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Plugin Cards
+   ══════════════════════════════════════════════════════════════ */
+
+.plugin-card {
+    background: var(--color-bg-surface);
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--color-border-main);
+}
+
+.plugin-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-soft-hover) 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.plugin-card:hover {
+    box-shadow: 0 12px 36px -8px rgba(45, 106, 79, 0.22);
+    transform: translateY(-4px);
+    border-color: var(--color-border-hover);
+}
+
+.plugin-card:hover::before {
+    opacity: 1;
+}
+
+.plugin-card .plugin-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.25s;
+}
+
+.plugin-card:hover .plugin-icon {
+    transform: scale(1.08);
+}
+
+.plugin-card .plugin-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    line-height: 1.35;
+    margin: 0;
+}
+
+.plugin-card .plugin-version {
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--color-text-brand);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-main);
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    letter-spacing: 0.02em;
+}
+
+.plugin-card .plugin-category {
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.625rem;
+    border-radius: 9999px;
+}
+
+.plugin-card .plugin-desc {
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.4em;
+}
+
+.plugin-card .plugin-status {
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.plugin-card .plugin-status .status-dot {
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 9999px;
+    animation: none;
+}
+
+.plugin-card .plugin-status.is-active .status-dot {
+    background: var(--color-success);
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+    animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2); }
+    50% { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1); }
+}
+
+.plugin-card .plugin-footer {
+    border-top: 1px solid var(--color-border-main);
+    background: var(--color-bg-secondary);
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.plugin-card .plugin-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--color-border-main);
+    background: var(--color-bg-surface);
+    color: var(--color-text-muted);
+    transition: all 0.2s;
+}
+
+.plugin-card .plugin-btn:hover {
+    border-color: var(--color-border-hover);
+    color: var(--color-text-dark);
+    background: var(--color-bg-muted);
+}
+
+.plugin-card .plugin-btn.btn-activate {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+    flex: 1;
+}
+
+.plugin-card .plugin-btn.btn-activate:hover {
+    background: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+    box-shadow: 0 4px 12px rgba(26, 92, 78, 0.25);
+}
+
+.plugin-card .plugin-btn.btn-deactivate {
+    flex: 1;
+    background: var(--color-warning-bg);
+    color: var(--color-warning);
+}
+
+.plugin-card .plugin-btn.btn-deactivate:hover {
+    background: var(--color-warning-bg);
+    color: var(--color-warning);
+    border-color: var(--color-warning);
+}
+
+.plugin-card .plugin-btn.btn-delete:hover {
+    background: var(--color-danger-bg);
+    color: var(--color-danger);
+    border-color: var(--color-danger);
+}
+
+.plugin-card .plugin-core-label {
+    flex: 1;
+    text-align: center;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-brand);
+    padding: 0.375rem 0;
+}
+
+/* ── Tenant-managed footer label (Option A) ──────────────────────── */
+.plugin-card .plugin-tenant-label {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-info, #0ea5e9);
+    padding: 0.375rem 0;
+}
+
+/* Subtle tint on the card border when tenant-only */
+.plugin-card.is-tenant-managed {
+    border-color: rgba(14, 165, 233, 0.25);
+}
+.plugin-card.is-tenant-managed::before {
+    background: linear-gradient(90deg, var(--color-info, #0ea5e9) 0%, rgba(14, 165, 233, 0.3) 100%);
+}
+.plugin-card.is-tenant-managed .plugin-footer {
+    background: rgba(14, 165, 233, 0.05);
+}
+
+/* ── Scope badges (Option D) ─────────────────────────────────────── */
+.plugin-scope-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.5625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 9999px;
+}
+
+.plugin-scope-badge.scope-tenant {
+    background: rgba(14, 165, 233, 0.1);
+    color: var(--color-info, #0ea5e9);
+    border: 1px solid rgba(14, 165, 233, 0.25);
+}
+
+.plugin-scope-badge.scope-landlord {
+    background: var(--color-bg-primary-soft, #eef2ff);
+    color: var(--color-text-brand, #1a5c4e);
+    border: 1px solid rgba(26, 92, 78, 0.2);
+}
+
+.plugin-scope-badge.scope-both {
+    background: rgba(245, 158, 11, 0.1);
+    color: #b45309;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+/* ── Plugin filter tabs (Option B) ──────────────────────────────── */
+.plugin-filter-tabs {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    flex-wrap: wrap;
+}
+
+.pf-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--color-border-main);
+    background: var(--color-bg-surface);
+    color: var(--color-text-muted);
+    transition: all 0.2s;
+}
+
+.pf-tab:hover {
+    border-color: var(--color-border-hover);
+    color: var(--color-text-dark);
+    background: var(--color-bg-muted);
+}
+
+.pf-tab.active {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+}
+
+.pf-tab .pf-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.25rem;
+    height: 1.25rem;
+    padding: 0 0.3rem;
+    border-radius: 9999px;
+    font-size: 0.625rem;
+    font-weight: 700;
+    background: rgba(255,255,255,0.2);
+    color: inherit;
+}
+
+.pf-tab:not(.active) .pf-count {
+    background: var(--color-bg-secondary);
+    color: var(--color-text-subtle);
+}

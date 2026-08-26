@@ -1,0 +1,305 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "ChefHome Restaurant"
+      },
+      {
+        "key": "site_description",
+        "value": "Authentic flavours, delivered fresh to your door."
+      },
+      {
+        "key": "site_logo",
+        "value": "@media:chefhome-logo-color"
+      },
+      {
+        "key": "site_white_logo",
+        "value": "@media:chefhome-logo-white"
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/logo-color.svg",
+        "import_as": "chefhome-logo-color"
+      },
+      {
+        "path": "assets/images/logo-white.svg",
+        "import_as": "chefhome-logo-white"
+      },
+      {
+        "path": "assets/images/paella.jpg",
+        "import_as": "paella"
+      },
+      {
+        "path": "assets/images/grilled-steak.jpg",
+        "import_as": "grilled-steak"
+      },
+      {
+        "path": "assets/images/dessert-cake.jpg",
+        "import_as": "dessert-cake"
+      },
+      {
+        "path": "assets/images/sushi.jpg",
+        "import_as": "sushi"
+      },
+      {
+        "path": "assets/images/pizza.jpg",
+        "import_as": "pizza"
+      },
+      {
+        "path": "assets/images/pad-thai.jpg",
+        "import_as": "pad-thai"
+      },
+      {
+        "path": "assets/images/salad.jpg",
+        "import_as": "salad"
+      },
+      {
+        "path": "assets/images/burger.jpg",
+        "import_as": "burger"
+      },
+      {
+        "path": "assets/images/cat-appetizers.jpg",
+        "import_as": "cat-appetizers"
+      },
+      {
+        "path": "assets/images/cat-asian.jpg",
+        "import_as": "cat-asian"
+      },
+      {
+        "path": "assets/images/cat-beverages.jpg",
+        "import_as": "cat-beverages"
+      },
+      {
+        "path": "assets/images/cat-desserts.jpg",
+        "import_as": "cat-desserts"
+      },
+      {
+        "path": "assets/images/cat-mains.jpg",
+        "import_as": "cat-mains"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Starters",
+        "slug": "starters",
+        "image": "cat-appetizers"
+      },
+      {
+        "name": "Mains",
+        "slug": "mains",
+        "image": "cat-mains"
+      },
+      {
+        "name": "Asian",
+        "slug": "asian",
+        "image": "cat-asian"
+      },
+      {
+        "name": "Italian",
+        "slug": "italian"
+      },
+      {
+        "name": "Desserts",
+        "slug": "desserts",
+        "image": "cat-desserts"
+      },
+      {
+        "name": "Beverages",
+        "slug": "beverages",
+        "image": "cat-beverages"
+      }
+    ],
+    "products": [
+      {
+        "name": "Grilled Salmon Fillet",
+        "summary": "Atlantic salmon, lemon butter sauce, seasonal vegetables.",
+        "price": 24.99,
+        "compare_price": 29.99,
+        "category": "mains",
+        "image": "paella",
+        "stock": 30,
+        "tags": [
+          "seafood",
+          "grilled",
+          "healthy"
+        ]
+      },
+      {
+        "name": "Beef Ribeye 300g",
+        "summary": "28-day dry-aged ribeye, truffle butter, fries.",
+        "price": 34.99,
+        "compare_price": 42.99,
+        "category": "mains",
+        "image": "grilled-steak",
+        "stock": 25,
+        "tags": [
+          "beef",
+          "steak",
+          "grill"
+        ]
+      },
+      {
+        "name": "Tiramisu",
+        "summary": "Classic Italian mascarpone dessert with espresso-soaked ladyfingers.",
+        "price": 8.99,
+        "compare_price": 11.99,
+        "category": "desserts",
+        "image": "dessert-cake",
+        "stock": 40,
+        "tags": [
+          "italian",
+          "dessert",
+          "coffee"
+        ]
+      },
+      {
+        "name": "Sushi Platter (16 pcs)",
+        "summary": "Chef's selection of nigiri and maki rolls.",
+        "price": 28.99,
+        "compare_price": 36.99,
+        "category": "asian",
+        "image": "sushi",
+        "stock": 20,
+        "tags": [
+          "sushi",
+          "japanese",
+          "fresh"
+        ]
+      },
+      {
+        "name": "Margherita Pizza",
+        "summary": "San Marzano tomato, fior di latte, fresh basil.",
+        "price": 16.99,
+        "compare_price": 21.99,
+        "category": "italian",
+        "image": "pizza",
+        "stock": 35,
+        "tags": [
+          "pizza",
+          "italian",
+          "vegetarian"
+        ]
+      },
+      {
+        "name": "Pad Thai Noodles",
+        "summary": "Stir-fried rice noodles, egg, bean sprouts, crushed peanuts.",
+        "price": 15.99,
+        "compare_price": 19.99,
+        "category": "asian",
+        "image": "pad-thai",
+        "stock": 30,
+        "tags": [
+          "pad-thai",
+          "thai",
+          "noodles"
+        ]
+      },
+      {
+        "name": "Garden Caesar Salad",
+        "summary": "Romaine, parmesan, croutons, house-made caesar dressing.",
+        "price": 11.99,
+        "compare_price": 14.99,
+        "category": "starters",
+        "image": "salad",
+        "stock": 50,
+        "tags": [
+          "salad",
+          "healthy",
+          "vegetarian"
+        ]
+      },
+      {
+        "name": "Smash Burger",
+        "summary": "Double smash patty, cheddar, pickles, house sauce, brioche bun.",
+        "price": 18.99,
+        "compare_price": 23.99,
+        "category": "mains",
+        "image": "burger",
+        "stock": 40,
+        "tags": [
+          "burger",
+          "smash",
+          "beef"
+        ]
+      }
+    ],
+    "menus": [
+      {
+        "title": "Quick Links",
+        "status": "default",
+        "items": [
+          { "label": "Home",    "url": "@url/" },
+          { "label": "Shop",    "url": "@url/shop" },
+          { "label": "About",   "url": "@url/about" },
+          { "label": "Contact", "url": "@url/contact" },
+          { "label": "Blog",    "url": "@url/blog" }
+        ]
+      },
+      {
+        "title": "Policies",
+        "status": "active",
+        "items": [
+          { "label": "Privacy Policy",     "url": "#" },
+          { "label": "Return Policy",      "url": "#" },
+          { "label": "Terms & Conditions", "url": "#" },
+          { "label": "FAQ",                "url": "#" }
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Quick Links",
+          "menu_id": "@menu:default"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Policies",
+          "menu_id": "@menu:active"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Our Standards",
+          "footer_badges": {
+            "badge_icon_":  ["👨‍🍳", "🥘", "⏱️", "🌿"],
+            "badge_title_": ["Chef Approved", "Fresh Recipes", "Quick Prep", "Natural Ingredients"],
+            "badge_sub_":   ["Professional kitchen tested", "Updated weekly", "30-minute meals", "No preservatives"]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "chefhome-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/home-layout.json"
+      }
+    ]
+  }
+}

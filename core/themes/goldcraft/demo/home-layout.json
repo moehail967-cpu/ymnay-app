@@ -1,0 +1,377 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "gc-container-hero",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "gc-column-hero",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "gc-widget-hero",
+                                "type": "goldcraft_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#F9F5EE"
+                }
+            },
+            {
+                "id": "gc-container-cats",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "gc-column-cats",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "gc-widget-cats",
+                                "type": "goldcraft_category_grid"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#FAF7F2"
+                }
+            },
+            {
+                "id": "gc-container-products",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "gc-column-products",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "gc-widget-products",
+                                "type": "goldcraft_featured_products"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#F9F5EE"
+                }
+            },
+            {
+                "id": "gc-container-promo",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "gc-column-promo",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "gc-widget-promo",
+                                "type": "goldcraft_promo_banner"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#2A1F14"
+                }
+            },
+            {
+                "id": "gc-container-newsletter",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "gc-column-newsletter",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "gc-widget-newsletter",
+                                "type": "goldcraft_newsletter"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#FAF7F2"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "gc-widget-hero": {
+            "type": "goldcraft_hero_section",
+            "container_id": "gc-container-hero",
+            "column_id": "gc-column-hero",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "hero_image": "@media:goldcraft-hero"
+                    },
+                    "content": {
+                        "badge_text": "Crafted by Hand, Made to Last",
+                        "title": "Where Fine Craft Meets <em>Timeless<\/em> Beauty",
+                        "subtitle": "Each piece is handcrafted by master jewellers using ethically sourced gemstones and recycled precious metals. Jewellery that tells your story.",
+                        "button_text": "Shop Collections",
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button2_text": "Commission a Piece",
+                        "button2_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "gc-widget-cats": {
+            "type": "goldcraft_category_grid",
+            "container_id": "gc-container-cats",
+            "column_id": "gc-column-cats",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "section_tag": "Collections",
+                        "title": "Shop by Category",
+                        "subtitle": "Curated jewellery for every occasion and style.",
+                        "category_count": 6
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "gc-widget-products": {
+            "type": "goldcraft_featured_products",
+            "container_id": "gc-container-products",
+            "column_id": "gc-column-products",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "tag": "New Arrivals",
+                        "title": "Crafted This Season",
+                        "subtitle": null,
+                        "product_type": "featured",
+                        "count": 8,
+                        "view_all_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "gc-widget-promo": {
+            "type": "goldcraft_promo_banner",
+            "container_id": "gc-container-promo",
+            "column_id": "gc-column-promo",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Commission a <span>Bespoke<\/span> Piece",
+                        "text": "Work directly with our master jewellers to create a one-of-a-kind piece that carries your story. From concept to creation.",
+                        "icon1": "💍",
+                        "icon2": "✨",
+                        "button_text": "Start Your Commission",
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button2_text": null,
+                        "button2_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "gc-widget-newsletter": {
+            "type": "goldcraft_newsletter",
+            "container_id": "gc-container-newsletter",
+            "column_id": "gc-column-newsletter",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "tag_text": "Jewellery Journal",
+                        "title": "New Collections & Exclusive Offers",
+                        "subtitle": "Be first to see new arrivals, bespoke commissions, and private sale events for GoldCraft members.",
+                        "button_text": "Subscribe"
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        }
+    }
+}

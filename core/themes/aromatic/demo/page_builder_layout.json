@@ -1,0 +1,358 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "section-1784632567812",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1784632567812",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1784632567812",
+                                "type": "aromatic_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1784631140091",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1784631140091",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1784631140091",
+                                "type": "aromatic_product_type_list"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1784631144899",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1784631144899",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1784631144899",
+                                "type": "aromatic_promo_banner"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1784631141391",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1784631141391",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1784631141391",
+                                "type": "aromatic_new_collection"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "transparent"
+                }
+            },
+            {
+                "id": "section-1784631146286",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1784631146286",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1784631146286",
+                                "type": "aromatic_brand"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1784631147680",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1784631147680",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1784631147680",
+                                "type": "aromatic_instagram_widget"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "widget-1784632567812": {
+            "type": "aromatic_hero_section",
+            "container_id": "section-1784632567812",
+            "column_id": "column-1784632567812",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "hero_image": "@media:aromatic-hero"
+                    },
+                    "content": {
+                        "section_tag": "New Arrivals",
+                        "title": "Discover Your <br>Signature Scent",
+                        "subtitle": "Explore our curated collection of premium fragrances crafted for every mood.",
+                        "button_text": "Shop Collection",
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button2_text": "Learn More",
+                        "button2_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1784631140091": {
+            "type": "aromatic_product_type_list",
+            "container_id": "section-1784631140091",
+            "column_id": "column-1784631140091",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "item_show": 4
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1784631144899": {
+            "type": "aromatic_promo_banner",
+            "container_id": "section-1784631144899",
+            "column_id": "column-1784631144899",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "promo_image": "@media:aromatic-promo-banner"
+                    },
+                    "content": {
+                        "title": "New Perfume Collection",
+                        "price": "330",
+                        "button_text": "Buy Now",
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1784631141391": {
+            "type": "aromatic_new_collection",
+            "container_id": "section-1784631141391",
+            "column_id": "column-1784631141391",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1784631146286": {
+            "type": "aromatic_brand",
+            "container_id": "section-1784631146286",
+            "column_id": "column-1784631146286",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1784631147680": {
+            "type": "aromatic_instagram_widget",
+            "container_id": "section-1784631147680",
+            "column_id": "column-1784631147680",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        }
+    }
+}

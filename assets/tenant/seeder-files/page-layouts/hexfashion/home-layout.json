@@ -1,0 +1,516 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "section-1785241466100",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1785241466100",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1785241466100",
+                                "type": "hexfashion_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "transparent"
+                }
+            },
+            {
+                "id": "section-1785242710075",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1785242710075",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1785242710075",
+                                "type": "hexfashion_promo_banner"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1785242683325",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1785242683325",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1785242683325",
+                                "type": "hexfashion_featured_products"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1785301815115",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1785301815115",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1785301815115",
+                                "type": "hexfashion_our_store"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1785302321623",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1785302321624",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1785302321624",
+                                "type": "hexfashion_deal_of_the_week"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1785302440120",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1785302440120",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1785302440120",
+                                "type": "hexfashion_flash_store"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1785304777387",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1785304777387",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1785304777387",
+                                "type": "hexfashion_testimonials"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1785303988755",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1785303988755",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1785303988755",
+                                "type": "hexfashion_blog_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1785303990735",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1785303990735",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1785303990735",
+                                "type": "hexfashion_brand_logos"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "widget-1785241466100": {
+            "type": "hexfashion_hero_section",
+            "container_id": "section-1785241466100",
+            "column_id": "column-1785241466100",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "hero_image": {
+                            "id": 1002,
+                            "alt": null,
+                            "url": "https:\/\/hexfashion.nazmart.test\/assets\/tenant\/uploads\/media-uploader\/hexfashion\/hero-banner1785241655.png",
+                            "size": "568.44 KB",
+                            "title": "hero-banner.jpg",
+                            "filename": "hero-banner1785241655.png",
+                            "mime_type": "image\/png"
+                        }
+                    },
+                    "content": {
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1785242683325": {
+            "type": "hexfashion_featured_products",
+            "container_id": "section-1785242683325",
+            "column_id": "column-1785242683325",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1785242710075": {
+            "type": "hexfashion_promo_banner",
+            "container_id": "section-1785242710075",
+            "column_id": "column-1785242710075",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "left_image": {
+                            "id": 1003,
+                            "alt": null,
+                            "url": "https:\/\/hexfashion.nazmart.test\/assets\/tenant\/uploads\/media-uploader\/hexfashion\/promo-banner11785301435.png",
+                            "size": "307.22 KB",
+                            "title": "promo-banner1.jpg",
+                            "filename": "promo-banner11785301435.png",
+                            "mime_type": "image\/png"
+                        },
+                        "right_image": {
+                            "id": 1004,
+                            "alt": null,
+                            "url": "https:\/\/hexfashion.nazmart.test\/assets\/tenant\/uploads\/media-uploader\/hexfashion\/promo-banner21785301441.png",
+                            "size": "439.16 KB",
+                            "title": "promo-banner2.jpg",
+                            "filename": "promo-banner21785301441.png",
+                            "mime_type": "image\/png"
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1785301815115": {
+            "type": "hexfashion_our_store",
+            "container_id": "section-1785301815115",
+            "column_id": "column-1785301815115",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "product_limit": 6
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1785302321624": {
+            "type": "hexfashion_deal_of_the_week",
+            "container_id": "section-1785302321623",
+            "column_id": "column-1785302321624",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "banner_image": {
+                            "id": 1005,
+                            "alt": null,
+                            "url": "https:\/\/hexfashion.nazmart.test\/assets\/tenant\/uploads\/media-uploader\/hexfashion\/banner1785302376.png",
+                            "size": "122.61 KB",
+                            "title": "banner.jpg",
+                            "filename": "banner1785302376.png",
+                            "mime_type": "image\/png"
+                        }
+                    },
+                    "content": {
+                        "link_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1785302440120": {
+            "type": "hexfashion_flash_store",
+            "container_id": "section-1785302440120",
+            "column_id": "column-1785302440120",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1785303988755": {
+            "type": "hexfashion_blog_section",
+            "container_id": "section-1785303988755",
+            "column_id": "column-1785303988755",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1785303990735": {
+            "type": "hexfashion_brand_logos",
+            "container_id": "section-1785303990735",
+            "column_id": "column-1785303990735",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1785304777387": {
+            "type": "hexfashion_testimonials",
+            "container_id": "section-1785304777387",
+            "column_id": "column-1785304777387",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        }
+    }
+}

@@ -1,0 +1,66 @@
+{
+    "version": "1.0",
+    "theme": "__SLUG__",
+    "sections": {
+        "settings": [
+            {"key": "site_title", "value": "__NAME__ Store"}
+        ],
+        "media": [],
+        "categories": [],
+        "products": [],
+        "menus": [],
+        "widgets": [
+            {
+                "widget_location": "footer",
+                "widget_name": "GlobalFooterBrandWidget",
+                "widget_order": 1,
+                "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+                "widget_settings": {}
+            },
+            {
+                "widget_location": "footer",
+                "widget_name": "GlobalFooterNavWidget",
+                "widget_order": 2,
+                "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+                "widget_settings": {
+                    "title": "Quick Links",
+                    "menu_id": "@primary_menu"
+                }
+            },
+            {
+                "widget_location": "footer",
+                "widget_name": "GlobalFooterNavWidget",
+                "widget_order": 3,
+                "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+                "widget_settings": {
+                    "title": "Help",
+                    "menu_id": "@primary_menu"
+                }
+            },
+            {
+                "widget_location": "footer",
+                "widget_name": "GlobalFooterBadgesWidget",
+                "widget_order": 4,
+                "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+                "widget_settings": {
+                    "title": "Our Promise",
+                    "footer_badges": {
+                        "badge_icon_":  ["✅", "🚚", "🔒", "💝"],
+                        "badge_title_": ["Quality Assured", "Fast Delivery", "Secure Shopping", "Customer First"],
+                        "badge_sub_":   ["Tested and certified", "Quick dispatch", "Safe checkout", "Always here to help"]
+                    }
+                }
+            }
+        ],
+        "pages": [
+            {
+                "title": "Home",
+                "slug": "home",
+                "page_builder": true,
+                "breadcrumb": false,
+                "set_as_home": true,
+                "layout_file": ""
+            }
+        ]
+    }
+}

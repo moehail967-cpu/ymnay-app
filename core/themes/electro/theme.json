@@ -1,0 +1,95 @@
+{
+  "name": "Electro",
+  "slug": "electro",
+  "description": "Electronics Theme",
+  "author": "Mazharul Islam Suzon",
+  "version": "1.0.3",
+  "status": true,
+  "screenshot": [
+    {
+      "primary": "primary.jpg"
+    }
+  ],
+  "headerHook": [
+    {
+      "loadCoreStyle": {
+        "odometer": false,
+        "magnific-popup": false
+      },
+      "style": [
+        "style",
+        "pages"
+      ],
+      "rtl_style": [
+        "rtl"
+      ],
+      "script": [],
+      "blade": [],
+      "navbarArea": "header/navbar",
+      "breadcrumbArea": "breadcrumb"
+    }
+  ],
+  "footerHook": [
+    {
+      "loadCoreScript": {
+        "odometer": false,
+        "viewport.jquery": false,
+        "main": false
+      },
+      "style": [],
+      "script": [
+        "imagesloaded.pkgd.min",
+        "isotope.pkgd.min",
+        "main"
+      ],
+      "blade": [],
+      "widgetArea": "footer"
+    }
+  ],
+  "_legacy": {
+    "headerHook": [
+      {
+        "loadCoreStyle": {
+          "odometer": false,
+          "common": false,
+          "magnific-popup": false
+        },
+        "style": [
+          "style"
+        ],
+        "rtl_style": [
+          "rtl"
+        ],
+        "script": [],
+        "blade": [],
+        "navbarArea": "header/navbar",
+        "breadcrumbArea": "breadcrumb"
+      }
+    ],
+    "footerHook": [
+      {
+        "loadCoreScript": {
+          "odometer": false,
+          "viewport.jquery": false,
+          "main": false
+        },
+        "style": [],
+        "script": [
+          "imagesloaded.pkgd.min",
+          "isotope.pkgd.min",
+          "main"
+        ],
+        "blade": [
+          "footer"
+        ],
+        "widgetArea": "footer"
+      }
+    ]
+  },
+  "niche": "electronics",
+  "price": 0,
+  "license": "free",
+  "demo": {
+    "data": "demo/data.json"
+  }
+}

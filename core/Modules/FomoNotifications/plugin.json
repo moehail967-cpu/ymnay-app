@@ -1,0 +1,11 @@
+{
+  "id": "fomo-notifications",
+  "name": "FOMO Notifications",
+  "version": "1.0.0",
+  "description": "Show social-proof purchase toast notifications on your storefront using real or synthetic recent orders.",
+  "type": "tenant",
+  "pricing": "free",
+  "min_platform_version": "2.5.0",
+  "main": "src/FomoNotificationsPlugin.php",
+  "author": "Nazmart"
+}

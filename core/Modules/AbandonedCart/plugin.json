@@ -1,0 +1,15 @@
+{
+    "id": "abandoned-cart",
+    "name": "Abandoned Cart Recovery",
+    "version": "1.0.0",
+    "description": "Tracks abandoned carts and sends automated email reminders to recover lost sales.",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "tenant",
+    "pricing": "free",
+    "min_platform_version": "2.5.0",
+    "main": "src/AbandonedCartPlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null
+}

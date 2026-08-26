@@ -1,0 +1,530 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "c3a4bb27-a458-4e59-9b06-b6f08ba40200",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "6b218176-8a35-4398-92f9-bf09b603a780",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "6d883a07-dc1e-40ff-a446-90eedf4fac91",
+                                "type": "electro_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1785050391034",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1785050391034",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1785050391034",
+                                "type": "electro_category_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "794faceb-da3c-4e15-b817-8059832fa5a7",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "09762b90-1714-4a63-8b09-b87248c20455",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "db8147a7-312e-42b7-be3c-f21b36d0d9cf",
+                                "type": "electro_category_banners"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "d8b7d21e-1b35-4f55-a554-2d90855c1d6a",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "34554adf-d303-46bc-bdc2-929e1fd01a78",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "ac4990e7-dcb2-4305-a13a-55dfa3e6aa06",
+                                "type": "electro_our_store"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "4609a2d6-16ad-4538-bb27-d12f233dee8c",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "a1a2804b-8e4a-4111-9fb1-a022d9bc3926",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "223996c8-65d2-450a-b0b9-0874bc6ba8af",
+                                "type": "electro_promo_banners"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#f8f8f8"
+                }
+            },
+            {
+                "id": "522d8817-a739-40c8-850e-fecee468add7",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "019bc3ef-aa12-47f5-a533-3d072c597f40",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "b2bda2ba-c418-45a3-a6d3-f84348652fac",
+                                "type": "electro_new_release_banner"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "8f97ef74-330c-4ad0-bb75-d2e0f998290c",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "8828d4ac-8f87-493d-95a7-ed53c97591da",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "b7324724-ff81-439c-9650-433bedb4ac25",
+                                "type": "electro_featured_collections"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#f8f8f8"
+                }
+            },
+            {
+                "id": "section-1785050613772",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1785050613772",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1785050613772",
+                                "type": "electro_brand_logos"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "273b35fc-a46c-41e7-abd0-6cd3e8932d08",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "6dd0e0de-a447-4935-ac60-0163915b0e02",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "2d4282bf-877b-4618-a082-69d8022c39b3",
+                                "type": "electro_service_features"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#f8f8f8"
+                }
+            },
+            {
+                "id": "section-1785050681856",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1785050681856",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1785050681856",
+                                "type": "tenant_recent_blog"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "6d883a07-dc1e-40ff-a446-90eedf4fac91": {
+            "type": "electro_hero_section",
+            "container_id": "c3a4bb27-a458-4e59-9b06-b6f08ba40200",
+            "column_id": "6b218176-8a35-4398-92f9-bf09b603a780",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "hero_image": "@media:electro-hero-banner"
+                    },
+                    "content": {
+                        "title": "Your Tech Experience",
+                        "eyebrow": "Best Of 2025",
+                        "button_url": "@url/shop",
+                        "button_text": "Shop Now",
+                        "description": "Every tech enthusiast's haven — PCs, Laptops, Headphones, Cameras, and Electronics Gadgets Galore!",
+                        "product_count": 5
+                    }
+                },
+                "style": {
+                    "spacing": {
+                        "padding_top": 0,
+                        "padding_bottom": 0
+                    }
+                },
+                "advanced": [],
+                "responsive": {}
+            }
+        },
+        "2d4282bf-877b-4618-a082-69d8022c39b3": {
+            "type": "electro_service_features",
+            "container_id": "273b35fc-a46c-41e7-abd0-6cd3e8932d08",
+            "column_id": "6dd0e0de-a447-4935-ac60-0163915b0e02",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "feature_1_desc": "On all orders over $99",
+                        "feature_1_icon": "las la-shipping-fast",
+                        "feature_2_desc": "Expert help anytime",
+                        "feature_2_icon": "las la-headset",
+                        "feature_3_desc": "Hassle-free returns",
+                        "feature_3_icon": "las la-undo",
+                        "feature_4_desc": "100% safe checkout",
+                        "feature_4_icon": "las la-lock",
+                        "feature_1_title": "Free Shipping",
+                        "feature_2_title": "24\/7 Support",
+                        "feature_3_title": "90 Day Returns",
+                        "feature_4_title": "Secure Payment"
+                    }
+                },
+                "style": {
+                    "spacing": {
+                        "padding_top": 40,
+                        "padding_bottom": 40
+                    }
+                },
+                "advanced": [],
+                "responsive": {}
+            }
+        },
+        "db8147a7-312e-42b7-be3c-f21b36d0d9cf": {
+            "type": "electro_category_banners",
+            "container_id": "794faceb-da3c-4e15-b817-8059832fa5a7",
+            "column_id": "09762b90-1714-4a63-8b09-b87248c20455",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "banner_1": {
+                        "name": "Phone Collection",
+                        "image": "@media:electro-coll-phone",
+                        "link_url": "@url/phones"
+                    },
+                    "banner_2": {
+                        "name": "Watch Collection",
+                        "image": "@media:electro-coll-watch",
+                        "link_url": "@url/smart-home"
+                    },
+                    "banner_3": {
+                        "name": "Laptop Collection",
+                        "image": "@media:electro-coll-laptop",
+                        "link_url": "@url/laptops"
+                    }
+                },
+                "style": {
+                    "spacing": {
+                        "padding_top": 60,
+                        "padding_bottom": 60
+                    }
+                },
+                "advanced": [],
+                "responsive": {}
+            }
+        },
+        "ac4990e7-dcb2-4305-a13a-55dfa3e6aa06": {
+            "type": "electro_our_store",
+            "container_id": "d8b7d21e-1b35-4f55-a554-2d90855c1d6a",
+            "column_id": "34554adf-d303-46bc-bdc2-929e1fd01a78",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Our Store",
+                        "product_limit": 8,
+                        "category_limit": 6
+                    }
+                },
+                "style": {
+                    "spacing": {
+                        "padding_top": 80,
+                        "padding_bottom": 80
+                    }
+                },
+                "advanced": [],
+                "responsive": {}
+            }
+        },
+        "223996c8-65d2-450a-b0b9-0874bc6ba8af": {
+            "type": "electro_promo_banners",
+            "container_id": "4609a2d6-16ad-4538-bb27-d12f233dee8c",
+            "column_id": "a1a2804b-8e4a-4111-9fb1-a022d9bc3926",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "card_1": {
+                        "image": "@media:electro-camp-1",
+                        "link_url": "@url/shop"
+                    },
+                    "card_2": {
+                        "image": "@media:electro-camp-2",
+                        "link_url": "@url/shop"
+                    },
+                    "promo_1": {
+                        "image": "@media:electro-prod-smartphone",
+                        "eyebrow": "New Arrivals",
+                        "button_url": "@url/shop",
+                        "title_dark": "Products Coming Soon",
+                        "button_text": "Shop Now",
+                        "title_accent": "Winter"
+                    },
+                    "promo_2": {
+                        "image": "@media:electro-prod-headphones",
+                        "eyebrow": "Limited Offer",
+                        "button_url": "@url/shop",
+                        "title_dark": "Buy 1 Get 1 Free",
+                        "button_text": "Shop Now",
+                        "title_accent": "Summer Sale"
+                    }
+                },
+                "style": {
+                    "spacing": {
+                        "padding_top": 60,
+                        "padding_bottom": 60
+                    }
+                },
+                "advanced": [],
+                "responsive": {}
+            }
+        },
+        "b2bda2ba-c418-45a3-a6d3-f84348652fac": {
+            "type": "electro_new_release_banner",
+            "container_id": "522d8817-a739-40c8-850e-fecee468add7",
+            "column_id": "019bc3ef-aa12-47f5-a533-3d072c597f40",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "product_image": "@media:electro-promo-banner"
+                    },
+                    "content": {
+                        "badge_text": "New Release",
+                        "price": "$349.99",
+                        "button_url": "@url/shop",
+                        "title_dark": "Noise-Cancelling Headphones",
+                        "button_text": "Buy Now",
+                        "title_accent": "Flagship"
+                    }
+                },
+                "style": {
+                    "spacing": {
+                        "padding_top": 80,
+                        "padding_bottom": 80
+                    }
+                },
+                "advanced": [],
+                "responsive": {}
+            }
+        },
+        "b7324724-ff81-439c-9650-433bedb4ac25": {
+            "type": "electro_featured_collections",
+            "container_id": "8f97ef74-330c-4ad0-bb75-d2e0f998290c",
+            "column_id": "8828d4ac-8f87-493d-95a7-ed53c97591da",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Featured Collections",
+                        "product_count": 8
+                    }
+                },
+                "style": {
+                    "spacing": {
+                        "padding_top": 80,
+                        "padding_bottom": 80
+                    }
+                },
+                "advanced": [],
+                "responsive": {}
+            }
+        },
+        "widget-1785050391034": {
+            "type": "electro_category_section",
+            "container_id": "section-1785050391034",
+            "column_id": "column-1785050391034",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1785050613772": {
+            "type": "electro_brand_logos",
+            "container_id": "section-1785050613772",
+            "column_id": "column-1785050613772",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general":  {
+                    "content": {
+                        "title": "OUR BRANDS",
+                        "per_slide": 5,
+                        "limit": 15
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1785050681856": {
+            "type": "tenant_recent_blog",
+            "container_id": "section-1785050681856",
+            "column_id": "column-1785050681856",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        }
+    }
+}

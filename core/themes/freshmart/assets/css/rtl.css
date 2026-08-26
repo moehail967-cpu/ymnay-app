@@ -1,0 +1,8 @@
+/* Freshmart — RTL overrides */
+body[dir="rtl"] .fm-hero-content { padding-right: 48px; padding-left: 0; }
+body[dir="rtl"] .fm-hero-img { right: auto; left: 0; object-position: bottom left; }
+body[dir="rtl"] .fm-section-title::before { margin-left: 10px; margin-right: 0; }
+body[dir="rtl"] .fm-product-actions { right: auto; left: 10px; transform: translateX(-8px); }
+body[dir="rtl"] .fm-product-card:hover .fm-product-actions { transform: translateX(0); }
+body[dir="rtl"] .fm-product-badge { left: auto; right: 10px; }
+body[dir="rtl"] .fm-footer-link { text-align: right; }

@@ -1,0 +1,312 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "b1d0ddae-dcd6-4852-8c0b-49c59145fffe",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "821437ca-c1be-4a72-b0f4-68496c0b24d0",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "0dafc072-09b2-4277-989d-3ff260b634d1",
+                                "type": "sportzone_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#0b1120"
+                }
+            },
+            {
+                "id": "88756039-dd0a-4d37-8a0f-3a5cbab2456e",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "d0cbcdd4-dde4-488b-bdd7-959101303fb8",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "88c5f165-7b3e-4836-ab2a-fde4718de9e2",
+                                "type": "sportzone_category_grid"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "30f76822-6eee-4478-9d29-6ebb7fef813c",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "382e52a7-4d2b-4c2e-b172-9c977b1c2a72",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "b30dbccd-3e48-4400-b49e-e906bf0e511d",
+                                "type": "sportzone_featured_products"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#f8f9fa"
+                }
+            },
+            {
+                "id": "90a68064-befe-4c6e-bb0c-908fdac2c23d",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "9b9b4c3e-f525-4b0f-8b58-75d246ae2778",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "824eb95f-c21e-4b03-b34b-6709124e16d6",
+                                "type": "sportzone_promo_banner"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#e63946"
+                }
+            },
+            {
+                "id": "63086118-2bcc-4da1-9c92-6f8a0c14e121",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "a5ab72ac-a771-4579-9a89-288d6c8ec655",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "d11f778c-0cdd-4642-95e2-d4db584c5615",
+                                "type": "sportzone_newsletter"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#0b1120"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "0dafc072-09b2-4277-989d-3ff260b634d1": {
+            "type": "sportzone_hero_section",
+            "container_id": "b1d0ddae-dcd6-4852-8c0b-49c59145fffe",
+            "column_id": "821437ca-c1be-4a72-b0f4-68496c0b24d0",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "product_image": {
+                            "id": 1011,
+                            "alt": null,
+                            "url": "https:\/\/sport.nazmart.test\/assets\/tenant\/uploads\/media-uploader\/sport\/sportzone-hero1783333254.jpg",
+                            "size": "137.14 KB",
+                            "title": "sportzone-hero.jpg",
+                            "filename": "sportzone-hero1783333254.jpg",
+                            "mime_type": "image\/jpg"
+                        }
+                    },
+                    "content": {
+                        "title": "Gear Up For Your",
+                        "subtitle": "Premium sports equipment trusted by over 10,000 athletes worldwide. Find your edge.",
+                        "badge_text": "New Season 2025",
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button2_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button_text": "Shop Now",
+                        "button2_text": "View Deals",
+                        "title_accent": "Best Performance"
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "88c5f165-7b3e-4836-ab2a-fde4718de9e2": {
+            "type": "sportzone_category_grid",
+            "container_id": "88756039-dd0a-4d37-8a0f-3a5cbab2456e",
+            "column_id": "d0cbcdd4-dde4-488b-bdd7-959101303fb8",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Shop By Sport"
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "b30dbccd-3e48-4400-b49e-e906bf0e511d": {
+            "type": "sportzone_featured_products",
+            "container_id": "30f76822-6eee-4478-9d29-6ebb7fef813c",
+            "column_id": "382e52a7-4d2b-4c2e-b172-9c977b1c2a72",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Featured Products",
+                        "subtitle": "Top picks from our sports collection"
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "824eb95f-c21e-4b03-b34b-6709124e16d6": {
+            "type": "sportzone_promo_banner",
+            "container_id": "90a68064-befe-4c6e-bb0c-908fdac2c23d",
+            "column_id": "9b9b4c3e-f525-4b0f-8b58-75d246ae2778",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "tag": "Limited Time Offer",
+                        "title": "Get 20% Off Your First Order",
+                        "subtitle": "Use code SPORT20 at checkout. Valid on all full-price items across every category.",
+                        "button_text": "Claim Discount",
+                        "button2_text": "Browse All Deals"
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "d11f778c-0cdd-4642-95e2-d4db584c5615": {
+            "type": "sportzone_newsletter",
+            "container_id": "63086118-2bcc-4da1-9c92-6f8a0c14e121",
+            "column_id": "a5ab72ac-a771-4579-9a89-288d6c8ec655",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Stay in the Game",
+                        "subtitle": "Get exclusive deals, training tips and early access to new collections.",
+                        "button_text": "Subscribe"
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        }
+    }
+}

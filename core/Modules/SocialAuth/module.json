@@ -1,0 +1,32 @@
+{
+    "name": "SocialAuth",
+    "alias": "socialauth",
+    "description": "Google OAuth login for landlord and tenant frontend users",
+    "version": "1.0.0",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SocialAuth\\Providers\\SocialAuthServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "nazmartMetaData": {
+        "plugin_type": "external",
+        "admin_settings": {
+            "show_admin_landlord": true,
+            "show_admin_tenant": true,
+            "menu_item": [
+                {
+                    "id": "social-auth-settings",
+                    "label": "Social Auth",
+                    "route": "landlord.admin.social.auth.settings",
+                    "tenantRoute": "tenant.admin.social.auth.settings",
+                    "parent": null,
+                    "permissions": "",
+                    "class": "plugin-menu"
+                }
+            ]
+        }
+    }
+}

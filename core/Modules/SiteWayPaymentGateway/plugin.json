@@ -1,0 +1,15 @@
+{
+    "id": "siteway-payment-gateway",
+    "name": "SiteWay Payment Gateway",
+    "version": "1.0.0",
+    "description": "",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "tenant",
+    "pricing": "free",
+    "min_platform_version": "1.0.0",
+    "main": "src/SiteWayPaymentGatewayPlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null
+}

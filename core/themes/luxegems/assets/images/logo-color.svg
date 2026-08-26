@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="80" viewBox="0 0 320 80">
+    <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1A1A2E"/>
+            <stop offset="100%" stop-color="#C9A84C"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Background -->
+    <circle cx="44" cy="40" r="26" fill="url(#grad)" opacity="0.12"/>
+    <circle cx="44" cy="40" r="22" fill="url(#grad)"/>
+
+    <!-- Diamond Icon -->
+    <g transform="translate(44 40)">
+        <polygon
+            points="-10,-6 -4,-12 4,-12 10,-6 0,12"
+            fill="none"
+            stroke="#FFFFFF"
+            stroke-width="1.8"
+            stroke-linejoin="round"/>
+
+        <line x1="-10" y1="-6" x2="10" y2="-6"
+              stroke="#FFFFFF" stroke-width="1.2"/>
+
+        <line x1="-4" y1="-12" x2="0" y2="12"
+              stroke="#FFFFFF" stroke-width="1.2"/>
+
+        <line x1="4" y1="-12" x2="0" y2="12"
+              stroke="#FFFFFF" stroke-width="1.2"/>
+
+        <line x1="0" y1="-12" x2="0" y2="12"
+              stroke="#FFFFFF" stroke-width="1.2"/>
+    </g>
+
+    <!-- Brand -->
+    <text x="82"
+          y="35"
+          font-family="Georgia,'Times New Roman',serif"
+          font-size="26"
+          font-weight="700"
+          fill="#1A1A2E">
+        Luxe<tspan fill="#C9A84C">Gems</tspan>
+    </text>
+
+    <!-- Tagline -->
+    <text x="83"
+          y="54"
+          font-family="Arial,Helvetica,sans-serif"
+          font-size="10.5"
+          font-weight="400"
+          fill="#1A1A2E"
+          opacity="0.7"
+          letter-spacing="2">
+        RARE &amp; PRECIOUS
+    </text>
+
+    <!-- Underline -->
+    <line
+        x1="82"
+        y1="60"
+        x2="185"
+        y2="60"
+        stroke="url(#grad)"
+        stroke-width="1.5"
+        opacity="0.55"/>
+</svg>

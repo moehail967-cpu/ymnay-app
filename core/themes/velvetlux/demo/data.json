@@ -1,0 +1,291 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "VelvetLux Fashion"
+      },
+      {
+        "key": "site_description",
+        "value": "Curated luxury fashion for those who define their own style."
+      },
+      {
+        "key": "site_logo",
+        "value": "@media:velvetlux-logo-color"
+      },
+      {
+        "key": "site_white_logo",
+        "value": "@media:velvetlux-logo-white"
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/logo-color.svg",
+        "import_as": "velvetlux-logo-color"
+      },
+      {
+        "path": "assets/images/logo-white.svg",
+        "import_as": "velvetlux-logo-white"
+      },
+      {
+        "path": "assets/images/velvetlux-hero.jpg",
+        "import_as": "velvetlux-hero"
+      },
+      {
+        "path": "assets/images/silk-dress.jpg",
+        "import_as": "silk-dress"
+      },
+      {
+        "path": "assets/images/cashmere-coat.jpg",
+        "import_as": "cashmere-coat"
+      },
+      {
+        "path": "assets/images/leather-bag.jpg",
+        "import_as": "leather-bag"
+      },
+      {
+        "path": "assets/images/heels-shoes.jpg",
+        "import_as": "heels-shoes"
+      },
+      {
+        "path": "assets/images/mens-suit.jpg",
+        "import_as": "mens-suit"
+      },
+      {
+        "path": "assets/images/cashmere-scarf.jpg",
+        "import_as": "cashmere-scarf"
+      },
+      {
+        "path": "assets/images/swimwear.jpg",
+        "import_as": "swimwear"
+      },
+      {
+        "path": "assets/images/leather-gloves.jpg",
+        "import_as": "leather-gloves"
+      },
+      {
+        "path": "assets/images/cat-accessories.jpg",
+        "import_as": "cat-accessories"
+      },
+      {
+        "path": "assets/images/cat-bags.jpg",
+        "import_as": "cat-bags"
+      },
+      {
+        "path": "assets/images/cat-coats.jpg",
+        "import_as": "cat-coats"
+      },
+      {
+        "path": "assets/images/cat-dresses.jpg",
+        "import_as": "cat-dresses"
+      },
+      {
+        "path": "assets/images/cat-mens.jpg",
+        "import_as": "cat-mens"
+      },
+      {
+        "path": "assets/images/cat-shoes.jpg",
+        "import_as": "cat-shoes"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Dresses",
+        "slug": "dresses",
+        "image": "cat-dresses"
+      },
+      {
+        "name": "Outerwear",
+        "slug": "outerwear",
+        "image": "cat-coats"
+      },
+      {
+        "name": "Bags",
+        "slug": "bags",
+        "image": "cat-bags"
+      },
+      {
+        "name": "Footwear",
+        "slug": "footwear",
+        "image": "cat-shoes"
+      },
+      {
+        "name": "Menswear",
+        "slug": "menswear",
+        "image": "cat-mens"
+      },
+      {
+        "name": "Accessories",
+        "slug": "accessories",
+        "image": "cat-accessories"
+      }
+    ],
+    "products": [
+      {
+        "name": "Silk Evening Gown",
+        "summary": "100% pure silk, bias-cut, cowl neckline, available in champagne and navy.",
+        "price": 649.0,
+        "compare_price": 899.0,
+        "category": "dresses",
+        "image": "silk-dress",
+        "stock": 25,
+        "tags": [
+          "silk",
+          "evening",
+          "luxury"
+        ]
+      },
+      {
+        "name": "Double-Faced Cashmere Coat",
+        "summary": "Grade-A Mongolian cashmere, unstructured silhouette, horn buttons.",
+        "price": 899.0,
+        "compare_price": 1199.0,
+        "category": "outerwear",
+        "image": "cashmere-coat",
+        "stock": 20,
+        "tags": [
+          "cashmere",
+          "winter",
+          "premium"
+        ]
+      },
+      {
+        "name": "Italian Leather Clutch",
+        "summary": "Full-grain Nappa leather, gilt chain strap, satin interior lining.",
+        "price": 299.0,
+        "compare_price": 399.0,
+        "category": "bags",
+        "image": "leather-bag",
+        "stock": 35,
+        "tags": [
+          "leather",
+          "clutch",
+          "evening"
+        ]
+      },
+      {
+        "name": "Suede Stiletto Heels",
+        "summary": "10cm stiletto in Italian suede, cushioned insole, classic pointed toe.",
+        "price": 349.0,
+        "compare_price": 449.0,
+        "category": "footwear",
+        "image": "heels-shoes",
+        "stock": 30,
+        "tags": [
+          "heels",
+          "suede",
+          "stiletto"
+        ]
+      },
+      {
+        "name": "Tailored Wool Suit",
+        "summary": "Super 120s merino wool, slim lapels, two-button single-breasted.",
+        "price": 799.0,
+        "compare_price": 999.0,
+        "category": "menswear",
+        "image": "mens-suit",
+        "stock": 20,
+        "tags": [
+          "suit",
+          "wool",
+          "tailored"
+        ]
+      },
+      {
+        "name": "Cashmere Wrap Scarf",
+        "summary": "100% pure cashmere, 200×70cm, hand-finished fringed edges.",
+        "price": 189.0,
+        "compare_price": 249.0,
+        "category": "accessories",
+        "image": "cashmere-scarf",
+        "stock": 50,
+        "tags": [
+          "scarf",
+          "cashmere",
+          "wrap"
+        ]
+      },
+      {
+        "name": "Resort Swimwear Set",
+        "summary": "Italian lycra fabric, adjustable straps, UV50+ protection.",
+        "price": 249.0,
+        "compare_price": 329.0,
+        "category": "dresses",
+        "image": "swimwear",
+        "stock": 40,
+        "tags": [
+          "swimwear",
+          "resort",
+          "luxury"
+        ]
+      },
+      {
+        "name": "Lambskin Leather Gloves",
+        "summary": "Hairline cashmere lining, touchscreen-compatible fingertips, unisex.",
+        "price": 149.0,
+        "compare_price": 199.0,
+        "category": "accessories",
+        "image": "leather-gloves",
+        "stock": 45,
+        "tags": [
+          "gloves",
+          "leather",
+          "winter"
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Collections",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Services",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Our Commitment",
+          "footer_badges": {
+            "badge_icon_":  ["♻️", "🌿", "✂️", "📦"],
+            "badge_title_": ["Ethical Production", "Organic Cotton", "European Ateliers", "Carbon-Neutral"],
+            "badge_sub_":   ["Fair trade certified", "GOTS certified", "Handmade in EU", "Offset shipping"]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "velvetlux-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/home-layout.json"
+      }
+    ]
+  }
+}

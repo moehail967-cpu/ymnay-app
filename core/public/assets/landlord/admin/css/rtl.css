@@ -1,0 +1,354 @@
+body {
+    direction: rtl;
+    unicode-bidi: embed;
+}
+p,ul,ol{
+    text-align: right;
+}
+.pull-left,
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_info{
+    float: right !important;
+}
+.pull-right,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_paginate{
+    float: left !important;
+}
+.sidebar-menu,
+.page-title-area:before{
+    left: auto;
+    right: 0;
+}
+
+.page-container {
+    padding-left: 0;
+    padding-right: 280px;
+}
+.sbar_collapsed.page-container{
+    padding-right: 0px;
+}
+.sbar_collapsed .sidebar-menu{
+    right: -280px;
+}
+
+.footer-area p{
+    text-align: center;
+}
+.seofct-icon i{
+    margin-right: 0;
+    margin-left: 20px;
+}
+.header-title{
+    text-align: right;
+}
+.breadcrumbs li a:before {
+    right: auto;
+    left: -13px;
+}
+
+.breadcrumbs li a, .breadcrumbs li span {
+    margin-right: 0;
+    margin-left: 20px;
+}
+.page-title {
+    margin-right: 0;
+    margin-left: 30px;
+}
+.form-group {
+    text-align: right;
+}
+.nav-btn {
+    margin: 10px 0 0 30px;
+}
+.user-profile img.avatar {
+    margin-right: 0;
+    margin-left: 20px;
+}
+.modal-header .close {
+    margin: -1rem auto -1rem -0rem;
+}
+.modal-footer button:first-child {
+    margin-left: 10px;
+}
+.alert {
+    margin: 10px 0;
+    text-align: right;
+}
+.card {
+    text-align: right;
+}
+.widget-area-header .widget-area-expand {
+    right: auto;
+    left: 20px;
+}
+.widget-handler .remove-widget {
+    right: auto;
+    left: 10px;
+}
+
+.widget-handler .expand {
+    right: auto;
+    left: 40px;
+}
+.dd-item .remove_item {
+    right: auto !important;
+    left: 10px;
+}
+
+.dd-item .expand {
+    right: auto !important;
+    left: 36px;
+}
+
+.modal-footer {
+    justify-content: flex-start;
+}
+.metismenu li a {
+    padding-right: 30px;
+}
+
+.delivery-time-countdown-wrap .nx-singular-countdown-item + .nx-singular-countdown-item {
+    margin-left: 0px;
+    margin-right: 10px;
+}
+.single-message-item .top-part .content {
+    text-align: right;
+    margin-left: 0;
+    margin-right: 20px;
+}
+
+.single-message-item.customer {
+    text-align: right;
+}
+
+select.form-control:not([size]):not([multiple]) {
+    padding-right: 25px;
+}
+body > .alert.alert-warning {
+    margin-left: 0px !important;
+    margin-right: 315px !important;
+}
+.alert-warning {
+    border-left: none;
+    border-right: 5px solid #e4b82c;
+}
+.alert-danger {
+    border-left: none;
+    border-right: 5px solid red;
+}
+.alert-success {
+    border-left: none;
+    border-right: 5px solid #319a31;
+}
+.dsh-box-style .add-new {
+    right: auto;
+    left: 10px;
+}
+.dsh-box-style .content {
+    margin-left: 0;
+    margin-right: 20px;
+}
+.notification-area .dropdown-menu, .user-profile .dropdown-menu {
+    left: 0px !important;
+    right: auto !important;
+}
+@media (max-width: 1364px) and (min-width: 1200px){
+    .sbar_collapsed .sidebar-menu {
+        right: -400px;
+    }
+    body > .alert.alert-warning {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+    .nav-btn {
+        left: auto !important;
+    }
+}
+.dash-content {
+    padding-right: 20px;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    float: right;
+    padding-left: 8px;
+}
+
+@media screen and (min-width: 992px) {
+    .navbar .navbar-menu-wrapper .navbar-nav.navbar-nav-right {
+        margin-left: 0;
+        margin-right: auto;
+    }
+}
+.sidebar .nav .nav-item {
+    padding: 0 1.25rem;
+}
+.sidebar .nav .nav-item .nav-link i.menu-icon {
+    margin-left: 0;
+    margin-right: auto;
+}
+.sidebar .nav.sub-menu {
+    text-align: right;
+    align-items: flex-start;
+    padding: 0;
+}
+.sidebar .nav.sub-menu .nav-item .nav-link {
+    padding: 0.75rem 1.5rem 0.75rem 2rem;
+}
+.sidebar .nav.sub-menu .nav-item .nav-link:before {
+    left: auto;
+    right: 0;
+    -webkit-transform: translateY(-50%) rotate(180deg);
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.sidebar .nav .nav-item.nav-profile .nav-link .nav-profile-text {
+    margin-left: 0rem;
+    margin-right: 1rem;
+}
+
+.sidebar .nav .nav-item.nav-profile .nav-link .nav-profile-badge {
+    margin-left: 0;
+    margin-right: auto;
+}
+.navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile .nav-link .nav-profile-text {
+    margin-left: 0;
+    margin-right: 1.25rem;
+}
+.me-2, .template-demo > .btn-group, .template-demo > .btn-group-vertical, .template-demo > .dropdown {
+    margin-right: 0 !important;
+    margin-left: 0.5rem !important;
+}
+.navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .dropdown-menu.navbar-dropdown {
+    text-align: right;
+}
+
+.widget-handler .remove-widget {
+    right: auto !important;
+    left: 10px !important;
+}
+
+.widget-handler .expand {
+    right: auto !important;
+    left: 40px !important;
+}
+.user_details_flex {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.modal-header .btn-close {
+    margin: 0px 0px auto;
+}
+.main-panel{
+    margin-left: unset;
+    margin-right: auto;
+}
+
+/* ============================================================
+   New Tailwind Admin Panel — RTL Overrides
+   Uses html[dir="rtl"] prefix for higher specificity so these
+   rules beat both Tailwind CDN utilities (.class = 0,1,0) and
+   style.css class selectors, even when loaded earlier in <head>.
+   ============================================================ */
+
+/* Sidebar: anchor to the right edge instead of left */
+html[dir="rtl"] .admin-sidebar {
+    left: auto !important;
+    right: 0 !important;
+}
+
+/* Content area: offset from the right (where sidebar now lives) */
+html[dir="rtl"] .admin-content {
+    margin-left: 0 !important;
+    margin-right: 15rem !important; /* matches sidebar w-60 = 240px = 15rem */
+}
+
+/* Collapsed sidebar: narrower offset from right */
+html[dir="rtl"] .sidebar-collapsed .admin-content {
+    margin-left: 0 !important;
+    margin-right: 4.5rem !important;
+}
+
+/* Active nav item: flip left border indicator to right */
+html[dir="rtl"] .admin-sidebar .nav .nav-item.active > .nav-link {
+    border-left: none !important;
+    border-right: 3px solid var(--color-primary, #1a5c4e) !important;
+    padding-left: 24px !important;
+    padding-right: 21px !important;
+}
+
+/* Menu icon: flip margin to the left side */
+html[dir="rtl"] .admin-sidebar .nav .nav-item > .nav-link .menu-icon {
+    margin-right: 0 !important;
+    margin-left: 12px !important;
+}
+
+/* Menu arrow: push to the logical start (right in RTL) */
+html[dir="rtl"] .admin-sidebar .nav .nav-item > .nav-link .menu-arrow {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+/* Submenu: flip indent to the right side */
+html[dir="rtl"] .admin-sidebar .nav .nav-item .collapse,
+html[dir="rtl"] .admin-sidebar .nav .nav-item .collapse.show {
+    padding-left: 0 !important;
+    padding-right: 12px !important;
+}
+
+/* Sidebar search icon: move from left-3 to right-3 */
+html[dir="rtl"] .admin-sidebar .relative > i.mdi-magnify {
+    left: auto !important;
+    right: 0.75rem !important;
+}
+
+/* Sidebar search input: flip padding so text clears the icon */
+html[dir="rtl"] .admin-sidebar #menuSearch {
+    padding-left: 3.5rem !important;
+    padding-right: 2.5rem !important;
+}
+
+/* Collapsed flyout panel: open to the left of the sidebar */
+html[dir="rtl"] .sidebar-collapsed .admin-sidebar .nav > .nav-item > .nav-flyout {
+    left: auto !important;
+    right: 4.5rem !important;
+    border-radius: 0.5rem 0 0 0.5rem !important;
+    box-shadow: -4px 6px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Mobile: sidebar slides in from the right instead of the left */
+@media (max-width: 1023px) {
+    html[dir="rtl"] .admin-sidebar {
+        transform: translateX(100%) !important;
+    }
+    html[dir="rtl"] .admin-content {
+        margin-right: 0 !important;
+    }
+    html[dir="rtl"] .sidebar-mobile-open .admin-sidebar {
+        transform: translateX(0) !important;
+    }
+}
+
+/* ── RTL: Topbar dropdown panels (notifications, profile, messages) ─── */
+html[dir="rtl"] .dropdown-panel {
+    right: auto !important;
+    left: 0 !important;
+}
+
+/* ── RTL: Row action menu text & icon alignment ───────────────────── */
+html[dir="rtl"] .row-action-menu a,
+html[dir="rtl"] .row-action-menu button.action-item {
+    flex-direction: row-reverse;
+}
+
+/* ── RTL: Search input label direction fix ────────────────────────── */
+html[dir="rtl"] .dataTables_filter label {
+    direction: rtl;
+}
+html[dir="rtl"] .dataTables_filter input {
+    margin-right: 0.5em;
+    margin-left: 0;
+}

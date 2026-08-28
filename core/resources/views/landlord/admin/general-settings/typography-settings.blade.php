@@ -29,7 +29,7 @@
                 <div class="px-4 sm:px-6 py-5 space-y-5">
                     <div>
                         <label class="lnd-label">{{__('Font Family')}}</label>
-                        <select class="form-control nice-select wide" name="body_font_family" id="body_font_family">
+                        <select class="form-control nice-select wide body_font_family" name="body_font_family" id="body_font_family" data-theme="landlord">
                             @foreach($google_fonts as $font_family => $font_variant)
                                 <option value="{{$font_family}}" @selected($font_family == get_static_option('body_font_family'))>{{$font_family}}</option>
                             @endforeach
@@ -41,15 +41,19 @@
                         @php
                             $font_family_selected = get_static_option('body_font_family') ?? get_static_option('body_font_family');
                             $get_font_family_variants = property_exists($google_fonts, $font_family_selected) ? (array) $google_fonts->$font_family_selected : ['variants' => array('regular')];
+                            $body_selected_variant = !empty(get_static_option('body_font_variant')) ? unserialize(get_static_option('body_font_variant')) : [];
                         @endphp
-                        <select class="form-control wide" multiple id="body_font_variant" name="body_font_variant[]" size="5">
+                        <div class="body_font_variant_landlord flex flex-wrap gap-2 p-3 border border-main rounded-lg bg-white">
                             @foreach($get_font_family_variants['variants'] as $variant)
-                                @php
-                                    $selected_variant = !empty(get_static_option('body_font_variant')) ? unserialize(get_static_option('body_font_variant')) : [];
-                                @endphp
-                                <option value="{{$variant}}" @selected(in_array($variant, $selected_variant))>{{str_replace(['0,','1,'],['','i'],$variant)}}</option>
+                                @php $label = str_replace(['0,','1,'],['','i'],$variant); @endphp
+                                <label class="flex items-center gap-1.5 text-xs text-dark cursor-pointer select-none">
+                                    <input type="checkbox" name="body_font_variant[]" value="{{$variant}}"
+                                        class="rounded border-main accent-primary"
+                                        @checked(in_array($variant, $body_selected_variant))>
+                                    {{$label}}
+                                </label>
                             @endforeach
-                        </select>
+                        </div>
                         <p class="text-xs text-muted mt-1.5">{{__('Select which font weights to load')}}</p>
                     </div>
                 </div>
@@ -76,7 +80,7 @@
                 <div class="px-4 sm:px-6 py-5 space-y-5" id="heading_font_fields">
                     <div>
                         <label class="lnd-label">{{__('Font Family')}}</label>
-                        <select class="form-control nice-select wide" name="heading_font_family" id="heading_font_family">
+                        <select class="form-control nice-select wide heading_font_family" name="heading_font_family" id="heading_font_family" data-theme="landlord">
                             @foreach($google_fonts as $font_family => $font_variant)
                                 <option value="{{$font_family}}" @selected($font_family == get_static_option('heading_font_family'))>{{$font_family}}</option>
                             @endforeach
@@ -88,15 +92,19 @@
                         @php
                             $font_family_selected = get_static_option('heading_font_family') ?? '';
                             $get_font_family_variants = property_exists($google_fonts, $font_family_selected) ? (array) $google_fonts->$font_family_selected : ['variants' => array('regular')];
+                            $heading_selected_variant = !empty(get_static_option('heading_font_variant')) ? unserialize(get_static_option('heading_font_variant')) : [];
                         @endphp
-                        <select class="form-control wide" multiple name="heading_font_variant[]" id="heading_font_variant" size="5">
+                        <div class="heading_font_variant_landlord flex flex-wrap gap-2 p-3 border border-main rounded-lg bg-white">
                             @foreach($get_font_family_variants['variants'] as $variant)
-                                @php
-                                    $selected_variant = !empty(get_static_option('heading_font_variant')) ? unserialize(get_static_option('heading_font_variant')) : [];
-                                @endphp
-                                <option value="{{$variant}}" @selected(in_array($variant, $selected_variant))>{{str_replace(['0,','1,'],['','i'],$variant)}}</option>
+                                @php $label = str_replace(['0,','1,'],['','i'],$variant); @endphp
+                                <label class="flex items-center gap-1.5 text-xs text-dark cursor-pointer select-none">
+                                    <input type="checkbox" name="heading_font_variant[]" value="{{$variant}}"
+                                        class="rounded border-main accent-primary"
+                                        @checked(in_array($variant, $heading_selected_variant))>
+                                    {{$label}}
+                                </label>
                             @endforeach
-                        </select>
+                        </div>
                         <p class="text-xs text-muted mt-1.5">{{__('Select which font weights to load')}}</p>
                     </div>
                 </div>
@@ -143,6 +151,17 @@
                 toggleHeadingFields();
                 $headingCheck.on('change', toggleHeadingFields);
 
+                function buildVariantCheckboxes(nameAttr, variants) {
+                    var html = '';
+                    $.each(variants, function (index, value) {
+                        var nameval = value.replace('0,', '').replace('1,', 'i');
+                        html += '<label class="flex items-center gap-1.5 text-xs text-dark cursor-pointer select-none">'
+                            + '<input type="checkbox" name="' + nameAttr + '[]" value="' + value + '" class="rounded border-main accent-primary"> '
+                            + nameval + '</label>';
+                    });
+                    return html;
+                }
+
                 // AJAX font variant loader for body font
                 $(document).on('change', '.body_font_family', function (e) {
                     e.preventDefault();
@@ -158,13 +177,8 @@
                         },
                         success: function (data) {
                             var theme = data.theme;
-                            var variantSelector = $('.body_font_variant_' + theme);
-                            variantSelector.html('');
-                            $.each(data.decoded_fonts.variants, function (index, value) {
-                                var nameval = value.replace('0,', '');
-                                nameval = nameval.replace('1,', 'i');
-                                variantSelector.append('<option value="' + value + '">' + nameval + '</option>');
-                            });
+                            var nameAttr = (theme === 'landlord') ? 'body_font_variant' : 'body_font_variant_' + theme;
+                            $('.body_font_variant_' + theme).html(buildVariantCheckboxes(nameAttr, data.decoded_fonts.variants));
                         }
                     });
                 });
@@ -184,13 +198,8 @@
                         },
                         success: function (data) {
                             var theme = data.theme;
-                            var variantSelector = $('.heading_font_variant_' + theme);
-                            variantSelector.html('');
-                            $.each(data.decoded_fonts.variants, function (index, value) {
-                                var nameval = value.replace('0,', '');
-                                nameval = nameval.replace('1,', 'i');
-                                variantSelector.append('<option value="' + value + '">' + nameval + '</option>');
-                            });
+                            var nameAttr = (theme === 'landlord') ? 'heading_font_variant' : 'heading_font_variant_' + theme;
+                            $('.heading_font_variant_' + theme).html(buildVariantCheckboxes(nameAttr, data.decoded_fonts.variants));
                         }
                     });
                 });

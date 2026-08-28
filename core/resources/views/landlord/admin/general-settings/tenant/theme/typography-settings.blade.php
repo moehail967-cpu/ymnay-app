@@ -31,15 +31,19 @@
                 @php
                     $body_font_selected = get_static_option('body_font_family_'.$suffix) ?? '';
                     $body_font_variants = property_exists($google_fonts, $body_font_selected) ? (array) $google_fonts->$body_font_selected : ['variants' => ['regular']];
+                    $body_selected_variant = !empty(get_static_option('body_font_variant_'.$suffix)) ? unserialize(get_static_option('body_font_variant_'.$suffix)) : [];
                 @endphp
-                <select class="form-control wide body_font_variant_{{$suffix}}" multiple id="body_font_variant_{{$suffix}}" name="body_font_variant_{{$suffix}}[]" size="5">
+                <div class="body_font_variant_{{$suffix}} flex flex-wrap gap-2 p-3 border border-main rounded-lg bg-white">
                     @foreach($body_font_variants['variants'] as $variant)
-                        @php
-                            $selected_variant = !empty(get_static_option('body_font_variant_'.$suffix)) ? unserialize(get_static_option('body_font_variant_'.$suffix)) : [];
-                        @endphp
-                        <option value="{{$variant}}" @selected(in_array($variant, $selected_variant))>{{str_replace(['0,','1,'],['','i'],$variant)}}</option>
+                        @php $label = str_replace(['0,','1,'],['','i'],$variant); @endphp
+                        <label class="flex items-center gap-1.5 text-xs text-dark cursor-pointer select-none">
+                            <input type="checkbox" name="body_font_variant_{{$suffix}}[]" value="{{$variant}}"
+                                class="rounded border-main accent-primary"
+                                @checked(in_array($variant, $body_selected_variant))>
+                            {{$label}}
+                        </label>
                     @endforeach
-                </select>
+                </div>
                 <p class="text-xs text-muted mt-1.5">{{__('Select which font weights to load')}}</p>
             </div>
         </div>
@@ -78,15 +82,19 @@
                 @php
                     $heading_font_selected = get_static_option('heading_font_family_'.$suffix) ?? '';
                     $heading_font_variants = property_exists($google_fonts, $heading_font_selected) ? (array) $google_fonts->$heading_font_selected : ['variants' => ['regular']];
+                    $heading_selected_variant = !empty(get_static_option('heading_font_variant_'.$suffix)) ? unserialize(get_static_option('heading_font_variant_'.$suffix)) : [];
                 @endphp
-                <select class="form-control wide heading_font_variant_{{$suffix}}" multiple name="heading_font_variant_{{$suffix}}[]" id="heading_font_variant_{{$suffix}}" size="5">
+                <div class="heading_font_variant_{{$suffix}} flex flex-wrap gap-2 p-3 border border-main rounded-lg bg-white">
                     @foreach($heading_font_variants['variants'] as $variant)
-                        @php
-                            $selected_variant = !empty(get_static_option('heading_font_variant_'.$suffix)) ? unserialize(get_static_option('heading_font_variant_'.$suffix)) : [];
-                        @endphp
-                        <option value="{{$variant}}" @selected(in_array($variant, $selected_variant))>{{str_replace(['0,','1,'],['','i'],$variant)}}</option>
+                        @php $label = str_replace(['0,','1,'],['','i'],$variant); @endphp
+                        <label class="flex items-center gap-1.5 text-xs text-dark cursor-pointer select-none">
+                            <input type="checkbox" name="heading_font_variant_{{$suffix}}[]" value="{{$variant}}"
+                                class="rounded border-main accent-primary"
+                                @checked(in_array($variant, $heading_selected_variant))>
+                            {{$label}}
+                        </label>
                     @endforeach
-                </select>
+                </div>
                 <p class="text-xs text-muted mt-1.5">{{__('Select which font weights to load')}}</p>
             </div>
         </div>

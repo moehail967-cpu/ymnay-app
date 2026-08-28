@@ -24,7 +24,8 @@ tailwind.config = {
       },
 
       fontFamily: {
-        inter: ["Inter", "sans-serif"],
+        inter: ["Inter", "sans-serif"],  // legacy kept for compatibility
+        shorooq: ["Shorooq", "Inter", "sans-serif"],
 
         urbanist: ["Urbanist", "sans-serif"],
       },

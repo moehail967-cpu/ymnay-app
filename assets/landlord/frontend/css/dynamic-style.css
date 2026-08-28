@@ -1,4 +1,7 @@
-/* Write Custom Css Here */
-.maintain-title{
-	color: red;
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Shorooq", sans-serif !important;
+}
+
+p, span, a, li, label, button, input, textarea {
+    font-family: "Shorooq", sans-serif !important;
 }

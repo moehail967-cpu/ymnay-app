@@ -1,0 +1,913 @@
+/* ==========================================================================
+   YMNAY SAAS PLATFORM - PRODUCTION WEB FONTS (WOFF2 / WOFF)
+   Optimized lightweight payload for stores and tenant storefronts.
+   ========================================================================== */
+
+@font-face {
+  font-family: '29LT Bukra';
+  src: url('29LT Bukra/29lt-bukra-medium.woff2') format('woff2'),
+       url('29LT Bukra/29lt-bukra-medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: '29LT Bukra';
+  src: url('29LT Bukra/29ltbukrabold.woff2') format('woff2'),
+       url('29LT Bukra/29ltbukrabold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: '29LT Bukra';
+  src: url('29LT Bukra/29ltbukrabolditalic.woff2') format('woff2'),
+       url('29LT Bukra/29ltbukrabolditalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: '29LT Bukra';
+  src: url('29LT Bukra/29ltbukralight.woff2') format('woff2'),
+       url('29LT Bukra/29ltbukralight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: '29LT Bukra';
+  src: url('29LT Bukra/29ltbukraregular.woff2') format('woff2'),
+       url('29LT Bukra/29ltbukraregular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ABC Ginto Discord Nord';
+  src: url('ABC Ginto Discord Nord/ABCGintoDiscordNord-BlackItalic.woff2') format('woff2'),
+       url('ABC Ginto Discord Nord/ABCGintoDiscordNord-BlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ABC Ginto Discord Nord';
+  src: url('ABC Ginto Discord Nord/ABCGintoDiscordNord-Bold.woff2') format('woff2'),
+       url('ABC Ginto Discord Nord/ABCGintoDiscordNord-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ABC Ginto Discord Nord';
+  src: url('ABC Ginto Discord Nord/ABCGintoDiscordNord-BoldItalic.woff2') format('woff2'),
+       url('ABC Ginto Discord Nord/ABCGintoDiscordNord-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AlhurraTxtlight';
+  src: url('AlhurraTxtlight/AlHurra Font Bold.woff2') format('woff2'),
+       url('AlhurraTxtlight/AlHurra Font Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AlhurraTxtlight';
+  src: url('AlhurraTxtlight/AlHurra Font Light.woff2') format('woff2'),
+       url('AlhurraTxtlight/AlHurra Font Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AlhurraTxtlight';
+  src: url('AlhurraTxtlight/AlHurra Font Regular.woff2') format('woff2'),
+       url('AlhurraTxtlight/AlHurra Font Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hacen Saudi Arabia';
+  src: url('Hacen Saudi Arabia/ArbFONTS-Hacen Saudi Arabia.woff2') format('woff2'),
+       url('Hacen Saudi Arabia/ArbFONTS-Hacen Saudi Arabia.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hacen Saudi Arabia';
+  src: url('Hacen Saudi Arabia/ArbFONTS-Hacen-Saudi-Arabia.woff2') format('woff2'),
+       url('Hacen Saudi Arabia/ArbFONTS-Hacen-Saudi-Arabia.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hala';
+  src: url('Hala/Hala Bold.woff2') format('woff2'),
+       url('Hala/Hala Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('IBM Plex Sans Arabic/IBMPlexSansArabic-Bold.woff2') format('woff2'),
+       url('IBM Plex Sans Arabic/IBMPlexSansArabic-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('IBM Plex Sans Arabic/IBMPlexSansArabic-ExtraLight.woff2') format('woff2'),
+       url('IBM Plex Sans Arabic/IBMPlexSansArabic-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('IBM Plex Sans Arabic/IBMPlexSansArabic-Light.woff2') format('woff2'),
+       url('IBM Plex Sans Arabic/IBMPlexSansArabic-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('IBM Plex Sans Arabic/IBMPlexSansArabic-Medium.woff2') format('woff2'),
+       url('IBM Plex Sans Arabic/IBMPlexSansArabic-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('IBM Plex Sans Arabic/IBMPlexSansArabic-Regular.woff2') format('woff2'),
+       url('IBM Plex Sans Arabic/IBMPlexSansArabic-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('IBM Plex Sans Arabic/IBMPlexSansArabic-SemiBold.woff2') format('woff2'),
+       url('IBM Plex Sans Arabic/IBMPlexSansArabic-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('IBM Plex Sans Arabic/IBMPlexSansArabic-Thin.woff2') format('woff2'),
+       url('IBM Plex Sans Arabic/IBMPlexSansArabic-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kufam';
+  src: url('Kufam/Kufam-Black.woff2') format('woff2'),
+       url('Kufam/Kufam-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kufam';
+  src: url('Kufam/Kufam-BlackItalic.woff2') format('woff2'),
+       url('Kufam/Kufam-BlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kufam';
+  src: url('Kufam/Kufam-Bold.woff2') format('woff2'),
+       url('Kufam/Kufam-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kufam';
+  src: url('Kufam/Kufam-BoldItalic.woff2') format('woff2'),
+       url('Kufam/Kufam-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kufam';
+  src: url('Kufam/Kufam-ExtraBold.woff2') format('woff2'),
+       url('Kufam/Kufam-ExtraBold.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kufam';
+  src: url('Kufam/Kufam-ExtraBoldItalic.woff2') format('woff2'),
+       url('Kufam/Kufam-ExtraBoldItalic.woff') format('woff');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kufam';
+  src: url('Kufam/Kufam-Italic.woff2') format('woff2'),
+       url('Kufam/Kufam-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kufam';
+  src: url('Kufam/Kufam-Italic-VariableFont_wght.woff2') format('woff2'),
+       url('Kufam/Kufam-Italic-VariableFont_wght.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kufam';
+  src: url('Kufam/Kufam-Medium.woff2') format('woff2'),
+       url('Kufam/Kufam-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kufam';
+  src: url('Kufam/Kufam-MediumItalic.woff2') format('woff2'),
+       url('Kufam/Kufam-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kufam';
+  src: url('Kufam/Kufam-Regular.woff2') format('woff2'),
+       url('Kufam/Kufam-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kufam';
+  src: url('Kufam/Kufam-SemiBold.woff2') format('woff2'),
+       url('Kufam/Kufam-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kufam';
+  src: url('Kufam/Kufam-SemiBoldItalic.woff2') format('woff2'),
+       url('Kufam/Kufam-SemiBoldItalic.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kufam';
+  src: url('Kufam/Kufam-VariableFont_wght.woff2') format('woff2'),
+       url('Kufam/Kufam-VariableFont_wght.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Madani Arabic';
+  src: url('Madani Arabic/Madani Arabic Black.woff2') format('woff2'),
+       url('Madani Arabic/Madani Arabic Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Madani Arabic';
+  src: url('Madani Arabic/Madani Arabic Bold.woff2') format('woff2'),
+       url('Madani Arabic/Madani Arabic Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Madani Arabic';
+  src: url('Madani Arabic/Madani Arabic Extra Bold.woff2') format('woff2'),
+       url('Madani Arabic/Madani Arabic Extra Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Madani Arabic';
+  src: url('Madani Arabic/Madani Arabic Extra Light.woff2') format('woff2'),
+       url('Madani Arabic/Madani Arabic Extra Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Madani Arabic';
+  src: url('Madani Arabic/Madani Arabic Light.woff2') format('woff2'),
+       url('Madani Arabic/Madani Arabic Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Madani Arabic';
+  src: url('Madani Arabic/Madani Arabic Medium.woff2') format('woff2'),
+       url('Madani Arabic/Madani Arabic Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Madani Arabic';
+  src: url('Madani Arabic/Madani Arabic Regular.woff2') format('woff2'),
+       url('Madani Arabic/Madani Arabic Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Madani Arabic';
+  src: url('Madani Arabic/Madani Arabic Semi Bold.woff2') format('woff2'),
+       url('Madani Arabic/Madani Arabic Semi Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Madani Arabic';
+  src: url('Madani Arabic/Madani Arabic Thin.woff2') format('woff2'),
+       url('Madani Arabic/Madani Arabic Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Madani Arabic';
+  src: url('Madani Arabic/Madani Arabic Variable.woff2') format('woff2'),
+       url('Madani Arabic/Madani Arabic Variable.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Arabic';
+  src: url('Montserrat Arabic/Montserrat-Arabic Black 900.woff2') format('woff2'),
+       url('Montserrat Arabic/Montserrat-Arabic Black 900.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Arabic';
+  src: url('Montserrat Arabic/Montserrat-Arabic Bold 700.woff2') format('woff2'),
+       url('Montserrat Arabic/Montserrat-Arabic Bold 700.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Arabic';
+  src: url('Montserrat Arabic/Montserrat-Arabic ExtraBold 800.woff2') format('woff2'),
+       url('Montserrat Arabic/Montserrat-Arabic ExtraBold 800.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Arabic';
+  src: url('Montserrat Arabic/Montserrat-Arabic ExtraLight 275.woff2') format('woff2'),
+       url('Montserrat Arabic/Montserrat-Arabic ExtraLight 275.woff') format('woff');
+  font-weight: 275;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Arabic';
+  src: url('Montserrat Arabic/Montserrat-Arabic Light 300.woff2') format('woff2'),
+       url('Montserrat Arabic/Montserrat-Arabic Light 300.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Arabic';
+  src: url('Montserrat Arabic/Montserrat-Arabic Medium 500.woff2') format('woff2'),
+       url('Montserrat Arabic/Montserrat-Arabic Medium 500.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Arabic';
+  src: url('Montserrat Arabic/Montserrat-Arabic Regular 400.woff2') format('woff2'),
+       url('Montserrat Arabic/Montserrat-Arabic Regular 400.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Arabic';
+  src: url('Montserrat Arabic/Montserrat-Arabic SemiBold 600.woff2') format('woff2'),
+       url('Montserrat Arabic/Montserrat-Arabic SemiBold 600.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Arabic';
+  src: url('Montserrat Arabic/Montserrat-Arabic Thin 250.woff2') format('woff2'),
+       url('Montserrat Arabic/Montserrat-Arabic Thin 250.woff') format('woff');
+  font-weight: 250;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neo Sans Arabic';
+  src: url('Neo Sans Arabic/Neo Sans Arabic Regular.woff2') format('woff2'),
+       url('Neo Sans Arabic/Neo Sans Arabic Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neo Sans Arabic';
+  src: url('Neo Sans Arabic/NeoSansArabic.woff2') format('woff2'),
+       url('Neo Sans Arabic/NeoSansArabic.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neo Sans Arabic';
+  src: url('Neo Sans Arabic/NeoSansArabicBlack.woff2') format('woff2'),
+       url('Neo Sans Arabic/NeoSansArabicBlack.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neo Sans Arabic';
+  src: url('Neo Sans Arabic/NeoSansArabicBold.woff2') format('woff2'),
+       url('Neo Sans Arabic/NeoSansArabicBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neo Sans Arabic';
+  src: url('Neo Sans Arabic/NeoSansArabicLight.woff2') format('woff2'),
+       url('Neo Sans Arabic/NeoSansArabicLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neo Sans Arabic';
+  src: url('Neo Sans Arabic/NeoSansArabicMedium.woff2') format('woff2'),
+       url('Neo Sans Arabic/NeoSansArabicMedium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neo Sans Arabic';
+  src: url('Neo Sans Arabic/NeoSansArabicUltra.woff2') format('woff2'),
+       url('Neo Sans Arabic/NeoSansArabicUltra.woff') format('woff');
+  font-weight: 950;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neo Sans Arabic';
+  src: url('Neo Sans Arabic/Neo_Sans_Medium.woff2') format('woff2'),
+       url('Neo Sans Arabic/Neo_Sans_Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-Black.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-BlackItalic.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-BlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-Bold.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-BoldItalic.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-ExtraBold.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-ExtraBold.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-ExtraBoldItalic.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-ExtraBoldItalic.woff') format('woff');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-ExtraLight.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-ExtraLightItalic.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-ExtraLightItalic.woff') format('woff');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-Light.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-LightItalic.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-Medium.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-MediumItalic.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-Regular.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-RegularItalic.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-RegularItalic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-SemiBold.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-SemiBoldItalic.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-SemiBoldItalic.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-Thin.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_Norsal-ThinItalic.woff2') format('woff2'),
+       url('Norsal/alfont_com_Norsal-ThinItalic.woff') format('woff');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_NorsalGX.woff2') format('woff2'),
+       url('Norsal/alfont_com_NorsalGX.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Norsal';
+  src: url('Norsal/alfont_com_NorsalGX (1).woff2') format('woff2'),
+       url('Norsal/alfont_com_NorsalGX (1).woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Palestine';
+  src: url('Palestine/Palestine-Regular.woff2') format('woff2'),
+       url('Palestine/Palestine-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poetry';
+  src: url('Poetry/Poetry Medium.woff2') format('woff2'),
+       url('Poetry/Poetry Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Shorooq';
+  src: url('Shorooq/Shorooq.woff2') format('woff2'),
+       url('Shorooq/Shorooq.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sultan Display';
+  src: url('Sultan Display/SultanDisplayItalic-2.woff2') format('woff2'),
+       url('Sultan Display/SultanDisplayItalic-2.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'The Year of The Camel';
+  src: url('The Year of The Camel/ArbFONTS-TheYearofTheCamel-Bold.woff2') format('woff2'),
+       url('The Year of The Camel/ArbFONTS-TheYearofTheCamel-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'The Year of The Camel';
+  src: url('The Year of The Camel/ArbFONTS-TheYearofTheCamel-ExtraBold.woff2') format('woff2'),
+       url('The Year of The Camel/ArbFONTS-TheYearofTheCamel-ExtraBold.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'The Year of The Camel';
+  src: url('The Year of The Camel/ArbFONTS-TheYearofTheCamel-ExtraLight.woff2') format('woff2'),
+       url('The Year of The Camel/ArbFONTS-TheYearofTheCamel-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'The Year of The Camel';
+  src: url('The Year of The Camel/ArbFONTS-TheYearofTheCamel-Light.woff2') format('woff2'),
+       url('The Year of The Camel/ArbFONTS-TheYearofTheCamel-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'The Year of The Camel';
+  src: url('The Year of The Camel/ArbFONTS-TheYearofTheCamel-Medium.woff2') format('woff2'),
+       url('The Year of The Camel/ArbFONTS-TheYearofTheCamel-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'The Year of The Camel';
+  src: url('The Year of The Camel/ArbFONTS-TheYearofTheCamel-Regular.woff2') format('woff2'),
+       url('The Year of The Camel/ArbFONTS-TheYearofTheCamel-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'The Year of The Camel';
+  src: url('The Year of The Camel/ArbFONTS-TheYearofTheCamel-Thin.woff2') format('woff2'),
+       url('The Year of The Camel/ArbFONTS-TheYearofTheCamel-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'URW DIN Arabic';
+  src: url('URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-1.woff2') format('woff2'),
+       url('URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-1.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'URW DIN Arabic';
+  src: url('URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-Demi.woff2') format('woff2'),
+       url('URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-Demi.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'URW DIN Arabic';
+  src: url('URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-Medium.woff2') format('woff2'),
+       url('URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'URW DIN Arabic';
+  src: url('URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-SemiCond-Medium.woff2') format('woff2'),
+       url('URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-SemiCond-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'URW DIN Arabic';
+  src: url('URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-Thin-1.woff2') format('woff2'),
+       url('URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-Thin-1.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'URW DIN Arabic';
+  src: url('URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-XLight-1.woff2') format('woff2'),
+       url('URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-XLight-1.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ya Modern Pro';
+  src: url('Ya Modern Pro/Ya-ModernPro-Bold.woff2') format('woff2'),
+       url('Ya Modern Pro/Ya-ModernPro-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Zain';
+  src: url('Zain/alfont_com_zain-mob-long500.woff2') format('woff2'),
+       url('Zain/alfont_com_zain-mob-long500.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

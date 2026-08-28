@@ -25,3 +25,9 @@ core/.env.*
 .DS_Store
 __MACOSX/
 *.log
+
+# Backup files
+*.bak
+*.bak_
+*.backup_*
+

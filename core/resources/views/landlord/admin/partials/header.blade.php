@@ -15,8 +15,10 @@
         @endif
     </title>
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+    {{-- Shorooq Arabic Font (Ymnay Self-Hosted Web Fonts) --}}
+    <link rel="preload" href="{{ global_asset('assets/common/fonts/ymnay-web-fonts/Shorooq/Shorooq.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="{{ global_asset('assets/common/fonts/ymnay-web-fonts/ymnay-fonts.css') }}">
+    {{-- Google Fonts removed: replaced by Shorooq (self-hosted ymnay-web-fonts) --}}
     {!! render_favicon_by_id(get_static_option('site_favicon')) !!}
 
     <!-- Keep: required vendor CSS (Bootstrap base needed for modals/components in inner pages) -->
@@ -125,7 +127,7 @@
 @include('landlord.admin.partials.sidebar')
 ===== END OLD BOOTSTRAP BODY STRUCTURE ===== --}}
 
-<body class="font-inter antialiased">
+<body class="font-shorooq antialiased">
 <!-- Mobile sidebar overlay -->
 <div class="sidebar-overlay" onclick="closeSidebar()"></div>
 

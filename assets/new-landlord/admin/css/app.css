@@ -20,7 +20,7 @@
 body {
     background-color: var(--color-bg-base);
     color: var(--color-text-main);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Shorooq', 'Inter', sans-serif;
 }
 
 /* Text Shims */
@@ -155,7 +155,7 @@ body {
 .sp-input {
     border-radius: 0.375rem !important;
     border-color: var(--color-border-main) !important;
-    font-family: 'Inter', sans-serif !important;
+    font-family: 'Shorooq', 'Inter', sans-serif !important;
     font-size: 0.75rem !important;
 }
 .sp-input:focus {

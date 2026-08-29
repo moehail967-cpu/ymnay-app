@@ -1,4 +1,4 @@
-# Nazmart - Multi-Tenant E-commerce Platform
+# Ymnay - Multi-Tenant E-commerce Platform
 
 Nazmart is a comprehensive multi-tenant e-commerce solution built with Laravel, designed to allow multiple independent online shops to operate on a single installation. Each tenant (shop owner) gets their own isolated environment with dedicated database, custom domain support, and modular functionality.
 

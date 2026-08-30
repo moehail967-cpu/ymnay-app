@@ -1,0 +1,30 @@
+{
+    "name": "YemeniWallets",
+    "alias": "yemeniwallets",
+    "description": "Manual payment gateway for Yemeni e-wallets",
+    "keywords": [],
+    "priority": 0,
+    "providers": [],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "nazmartMetaData": {
+        "plugin_type": "external",
+        "paymentGateway": {
+            "name": "Yemeni E-Wallets",
+            "slug": "yemeni_wallets",
+            "landlord": false,
+            "tenant": true,
+            "chargeCustomerMethodNameSpace": "Modules\\\\YemeniWallets\\\\Http\\\\Controllers\\\\YemeniWalletsGatewayController",
+            "chargeCustomerMethodName": "chargeCustomer",
+            "test_mode": false,
+            "status": true,
+            "extraInfoMarkupBlade": "yemeni_wallets_checkout_extra",
+            "logo_file": "yemeni-wallets-logo.png",
+            "admin_settings": {
+                "show_admin_landlord": false,
+                "show_admin_tenant": true
+            }
+        }
+    }
+}

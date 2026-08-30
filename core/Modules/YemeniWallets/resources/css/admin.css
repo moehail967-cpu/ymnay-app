@@ -1,0 +1,8 @@
+.yemeni-wallets-options { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+.wallet-option-card { display: flex; align-items: center; gap: 8px; border: 1px solid #ddd; border-radius: 8px; padding: 8px 14px; cursor: pointer; }
+.wallet-option-card:has(input:checked) { border-color: #2e7d32; background: #f1f8f1; }
+.wallet-logo { width: 28px; height: 28px; object-fit: contain; }
+.wallet-details-box { border: 1px dashed #2e7d32; background: #f9fdf9; border-radius: 8px; padding: 12px; margin-top: 8px; }
+.wallet-details-box ul { list-style: none; padding: 0; margin: 6px 0 0; }
+.wallet-proof-upload label { display: block; margin-bottom: 6px; font-weight: 600; }
+.required { color: #c62828; }

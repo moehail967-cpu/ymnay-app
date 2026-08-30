@@ -42,5 +42,7 @@
     "loyalty-points": true,
     "tracking-pixel": true,
     "ai-integration": true,
-    "SocialAuth": true
+    "SocialAuth": true,
+    "yemeni-wallets": true,
+    "YemeniWallets": true
 }

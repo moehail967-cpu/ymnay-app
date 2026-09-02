@@ -21,7 +21,7 @@ class PackageAutoRenewUsingWallet extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Renew expired tenant packages using opted-in wallet balances';
 
     /**
      * Execute the console command.
@@ -32,9 +32,9 @@ class PackageAutoRenewUsingWallet extends Command
     {
         Log::channel('package_auto_renew')->info(' Package auto-renew started at ' . now());
         try {
-            WalletService::renew_package_from_wallet();
+            $summary = WalletService::renew_package_from_wallet();
 
-            Log::channel('package_auto_renew')->info('Package auto-renew completed successfully at ' . now());
+            Log::channel('package_auto_renew')->info('Package auto-renew completed successfully at ' . now(), $summary);
         } catch (Throwable $e) {
             Log::channel('package_auto_renew')->error('Package auto-renew failed: ' . $e->getMessage(), [
                 'message' => $e->getMessage(),

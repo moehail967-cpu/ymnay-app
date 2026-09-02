@@ -110,7 +110,7 @@
 }
 .tw-table-wrap table.dataTable tbody tr:hover,
 .tw-table-wrap table tbody tr:hover {
-    background-color: #f5fbfb !important;
+    background-color: var(--color-bg-muted, #f5fbfb) !important;
 }
 .tw-table-wrap table.dataTable tbody td,
 .tw-table-wrap table tbody td {

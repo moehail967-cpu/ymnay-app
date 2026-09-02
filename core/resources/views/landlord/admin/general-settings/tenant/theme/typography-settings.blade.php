@@ -30,7 +30,7 @@
                 <label class="lnd-label">{{__('Font Variant')}}</label>
                 @php
                     $body_font_selected = get_static_option('body_font_family_'.$suffix) ?? '';
-                    $body_font_variants = property_exists($google_fonts, $body_font_selected) ? (array) $google_fonts->$body_font_selected : ['variants' => ['regular']];
+                    $body_font_variants = array_key_exists($body_font_selected, (array)$google_fonts) ? (array) $google_fonts[$body_font_selected] : ['variants' => ['regular']];
                     $body_selected_variant = !empty(get_static_option('body_font_variant_'.$suffix)) ? unserialize(get_static_option('body_font_variant_'.$suffix)) : [];
                 @endphp
                 <div class="body_font_variant_{{$suffix}} flex flex-wrap gap-2 p-3 border border-main rounded-lg bg-white">
@@ -81,7 +81,7 @@
                 <label class="lnd-label">{{__('Font Variant')}}</label>
                 @php
                     $heading_font_selected = get_static_option('heading_font_family_'.$suffix) ?? '';
-                    $heading_font_variants = property_exists($google_fonts, $heading_font_selected) ? (array) $google_fonts->$heading_font_selected : ['variants' => ['regular']];
+                    $heading_font_variants = array_key_exists($heading_font_selected, (array)$google_fonts) ? (array) $google_fonts[$heading_font_selected] : ['variants' => ['regular']];
                     $heading_selected_variant = !empty(get_static_option('heading_font_variant_'.$suffix)) ? unserialize(get_static_option('heading_font_variant_'.$suffix)) : [];
                 @endphp
                 <div class="heading_font_variant_{{$suffix}} flex flex-wrap gap-2 p-3 border border-main rounded-lg bg-white">

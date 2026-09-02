@@ -1189,6 +1189,14 @@ function global_assets_path($path)
     return str_replace(['core/public/', 'core\\public\\'], '', public_path($path));
 }
 
+function versioned_asset($path)
+{
+    $full_path = public_path($path);
+    $version = file_exists($full_path) ? filemtime($full_path) : time();
+
+    return global_asset($path) . '?v=' . $version;
+}
+
 function get_page_slug($id, $default = null)
 {
     return \App\Models\Page::where('id', $id)->first()->slug ?? $default;
@@ -2193,90 +2201,135 @@ function wrap_by_paragraph($text, $double_break = false)
     return '<p>' . $text . '</p>' . $break;
 }
 
-function is_ymnay_web_font($font_family)
+/**
+ * Load the custom-fonts.json catalog once and return as an array.
+ * Returns [] if the file does not exist (safe fallback).
+ */
+function get_custom_fonts_catalog(): array
 {
-    static $ymnay_fonts = [
-        '29LT Bukra',
-        'ABC Ginto Discord Nord',
-        'AlhurraTxtlight',
-        'Hacen Saudi Arabia',
-        'Hala',
-        'IBM Plex Sans Arabic',
-        'Kufam',
-        'Madani Arabic',
-        'Montserrat Arabic',
-        'Neo Sans Arabic',
-        'Norsal',
-        'Palestine',
-        'Poetry',
-        'Shorooq',
-        'Sultan Display',
-        'The Year of The Camel',
-        'URW DIN Arabic',
-        'Ya Modern Pro',
-        'Zain'
-    ];
-    return in_array($font_family, $ymnay_fonts, true);
+    static $catalog = null;
+    if ($catalog === null) {
+        $prefix  = is_null(tenant()) ? 'landlord' : 'tenant';
+        $path    = 'assets/' . $prefix . '/frontend/webfonts/custom-fonts.json';
+        $catalog = file_exists($path) ? (json_decode(file_get_contents($path), true) ?? []) : [];
+    }
+    return $catalog;
+}
+
+/**
+ * Given a font family name, generate the @font-face CSS block for
+ * every requested variant from the self-hosted custom font catalog.
+ * Returns empty string when the family is not a custom font.
+ */
+function build_custom_font_face(string $family, array $variants): string
+{
+    $catalog = get_custom_fonts_catalog();
+    if (empty($catalog[$family])) {
+        return '';
+    }
+
+    $prefix   = is_null(tenant()) ? 'landlord' : 'tenant';
+    $base_url = asset('assets/' . $prefix . '/frontend/webfonts/custom');
+    $entry    = $catalog[$family];
+    $files    = $entry['files'] ?? [];
+
+    // Weight map: 0,NNN → NNN   |   1,NNN → NNN (italic)
+    $css = '';
+    foreach ($variants as $variant) {
+        if (!isset($files[$variant])) {
+            continue;                              // variant not shipped
+        }
+        $file        = $files[$variant];
+        $file_url    = $base_url . '/' . $file;
+        $weight      = (int) preg_replace('/^\d,/', '', $variant); // e.g. "0,600" → 600
+        $style       = str_starts_with($variant, '1,') ? 'italic' : 'normal';
+        $ext         = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+        $fmt_map     = ['woff2' => 'woff2', 'woff' => 'woff', 'ttf' => 'truetype', 'otf' => 'opentype'];
+        $fmt         = $fmt_map[$ext] ?? 'truetype';
+
+        $css .= "@font-face{\n"
+              . "  font-family:'{$family}';\n"
+              . "  src:url('{$file_url}') format('{$fmt}');\n"
+              . "  font-weight:{$weight};\n"
+              . "  font-style:{$style};\n"
+              . "  font-display:swap;\n"
+              . "}\n";
+    }
+    return $css;
 }
 
 function load_google_fonts($theme_number = '')
 {
-    $body_font_family = get_static_option(tenant() ? 'body_font_family_' . $theme_number : 'body_font_family') ?? 'Madani Arabic';
-    $heading_font_family = get_static_option(tenant() ? 'heading_font_family_' . $theme_number : 'heading_font_family') ?? 'Madani Arabic';
+    //google fonts link;
+    $fonts_url = 'https://fonts.googleapis.com/css2?family=';
+    //body fonts
+    $body_font_family = get_static_option(tenant() ? 'body_font_family_' . $theme_number . '' : 'body_font_family') ?? 'Open Sans';
+    $heading_font_family = get_static_option(tenant() ? 'heading_font_family_' . $theme_number . '' : 'heading_font_family') ?? 'Montserrat';
 
-    $html = '';
+    $load_body_font_family = str_replace(' ', '+', $body_font_family);
+    $body_font_variant = get_static_option(tenant() ? 'body_font_variant_' . $theme_number . '' : 'body_font_variant');
+    $body_font_variant_selected_arr = !empty($body_font_variant) ? unserialize($body_font_variant, ['class' => false]) : ['0,400'];
+    if (!is_array($body_font_variant_selected_arr) || empty($body_font_variant_selected_arr)) {
+        $body_font_variant_selected_arr = ['0,400'];
+    }
+    // Normalise legacy 'regular' / 'italic' strings to weighted format
+    $body_font_variant_selected_arr = array_map(function($v) {
+        if ($v === 'regular') return '0,400';
+        if ($v === 'italic')  return '1,400';
+        return $v;
+    }, $body_font_variant_selected_arr);
+    $load_body_font_variant = implode(';', $body_font_variant_selected_arr);
 
-    if (is_ymnay_web_font($body_font_family) || is_ymnay_web_font($heading_font_family)) {
-        $fonts_css_url = global_asset('assets/common/fonts/ymnay-web-fonts/ymnay-fonts.css');
-        $html .= sprintf('<link rel="stylesheet" href="%1$s?v=1.0.0">' . PHP_EOL, $fonts_css_url);
+    $body_italic = '';
+    preg_match('/1,/', $load_body_font_variant, $match);
+    if (count($match) > 0) {
+        $body_italic = 'ital,';
+    } else {
+        $load_body_font_variant = str_replace('0,', '', $load_body_font_variant);
     }
 
-    $google_fonts_to_load = [];
-
-    if (!empty($body_font_family) && !is_ymnay_web_font($body_font_family)) {
-        $load_body_font_family = str_replace(' ', '+', $body_font_family);
-        $body_font_variant = get_static_option(tenant() ? 'body_font_variant_' . $theme_number : 'body_font_variant');
-        $body_font_variant_selected_arr = !empty($body_font_variant) ? unserialize($body_font_variant, ['class' => false]) : ['0,400'];
-        if (!is_array($body_font_variant_selected_arr) || empty($body_font_variant_selected_arr)) {
-            $body_font_variant_selected_arr = ['0,400'];
-        }
-        $body_font_variant_selected_arr = array_map(function($v) {
-            if ($v === 'regular') return '0,400';
-            if ($v === 'italic')  return '1,400';
-            return trim($v);
-        }, $body_font_variant_selected_arr);
-        $load_body_font_variant = implode(';', $body_font_variant_selected_arr);
-
-        $body_italic = '';
-        preg_match('/1,/', $load_body_font_variant, $match);
-        if (count($match) > 0) {
-            $body_italic = 'ital,';
-        } else {
-            $load_body_font_variant = str_replace('0,', '', $load_body_font_variant);
-        }
-
-        $google_fonts_to_load[] = $load_body_font_family . ':' . $body_italic . 'wght@' . $load_body_font_variant;
+    $load_heading_font_family = str_replace(' ', '+', $heading_font_family);
+    if (tenant()) {
+        $heading_font_variant = get_static_option('heading_font_variant_' . $theme_number . '');
+    } else {
+        $heading_font_variant = get_static_option('heading_font_variant');
     }
 
-    if (!empty($heading_font_family) && !is_ymnay_web_font($heading_font_family) && $heading_font_family != $body_font_family) {
-        $load_heading_font_family = str_replace(' ', '+', $heading_font_family);
-        if (tenant()) {
-            $heading_font_variant = get_static_option('heading_font_variant_' . $theme_number);
-        } else {
-            $heading_font_variant = get_static_option('heading_font_variant');
-        }
+    $heading_font_variant_selected_arr = !empty($heading_font_variant) ? unserialize($heading_font_variant, ['class' => false]) : ['0,400'];
+    if (!is_array($heading_font_variant_selected_arr) || empty($heading_font_variant_selected_arr)) {
+        $heading_font_variant_selected_arr = ['0,400'];
+    }
+    // Normalise legacy 'regular' / 'italic' strings to weighted format
+    $heading_font_variant_selected_arr = array_map(function($v) {
+        if ($v === 'regular') return '0,400';
+        if ($v === 'italic')  return '1,400';
+        return $v;
+    }, $heading_font_variant_selected_arr);
+    $load_heading_font_variant = implode(';', $heading_font_variant_selected_arr);
 
-        $heading_font_variant_selected_arr = !empty($heading_font_variant) ? unserialize($heading_font_variant, ['class' => false]) : ['0,400'];
-        if (!is_array($heading_font_variant_selected_arr) || empty($heading_font_variant_selected_arr)) {
-            $heading_font_variant_selected_arr = ['0,400'];
-        }
-        $heading_font_variant_selected_arr = array_map(function($v) {
-            if ($v === 'regular') return '0,400';
-            if ($v === 'italic')  return '1,400';
-            return trim($v);
-        }, $heading_font_variant_selected_arr);
-        $load_heading_font_variant = implode(';', $heading_font_variant_selected_arr);
+    // ── Detect custom (self-hosted) fonts ─────────────────────────────────────
+    $custom_catalog    = get_custom_fonts_catalog();
+    $body_is_custom    = isset($custom_catalog[$body_font_family]);
+    $heading_is_custom = !empty($heading_font_family) && isset($custom_catalog[$heading_font_family]);
 
+    $custom_css = '';
+
+    // Build @font-face blocks for any custom font in use
+    if ($body_is_custom) {
+        $custom_css .= build_custom_font_face($body_font_family, $body_font_variant_selected_arr);
+    }
+    if ($heading_is_custom && $heading_font_family !== $body_font_family) {
+        $custom_css .= build_custom_font_face($heading_font_family, $heading_font_variant_selected_arr);
+    }
+
+    // ── Build Google Fonts URL for non-custom families ────────────────────────
+    $google_families = [];
+
+    if (!$body_is_custom) {
+        $google_families[] = $load_body_font_family . ':' . $body_italic . 'wght@' . $load_body_font_variant;
+    }
+
+    if (!empty($heading_font_family) && $heading_font_family !== $body_font_family && !$heading_is_custom) {
         $heading_italic = '';
         preg_match('/1,/', $load_heading_font_variant, $match);
         if (count($match) > 0) {
@@ -2284,17 +2337,25 @@ function load_google_fonts($theme_number = '')
         } else {
             $load_heading_font_variant = str_replace('0,', '', $load_heading_font_variant);
         }
-
-        $google_fonts_to_load[] = $load_heading_font_family . ':' . $heading_italic . 'wght@' . $load_heading_font_variant;
+        $google_families[] = $load_heading_font_family . ':' . $heading_italic . 'wght@' . $load_heading_font_variant;
     }
 
-    if (!empty($google_fonts_to_load)) {
-        $fonts_url = 'https://fonts.googleapis.com/css2?family=' . implode('&family=', $google_fonts_to_load) . '&display=swap';
-        $html .= sprintf('<link rel="preconnect" href="https://fonts.gstatic.com"> <link href="%1$s" rel="stylesheet">' . PHP_EOL, $fonts_url);
+    // ── Assemble output HTML ──────────────────────────────────────────────────
+    $output = '';
+
+    if (!empty($google_families)) {
+        $google_url = 'https://fonts.googleapis.com/css2?family=' . implode('&family=', $google_families) . '&display=swap';
+        $output    .= '<link rel="preconnect" href="https://fonts.gstatic.com"> ';
+        $output    .= '<link href="' . $google_url . '" rel="stylesheet">';
     }
 
-    return $html;
+    if (!empty($custom_css)) {
+        $output .= '<style id="custom-font-faces">' . $custom_css . '</style>';
+    }
+
+    return $output;
 }
+
 
 function wrap_random_number($number)
 {

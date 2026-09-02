@@ -28,7 +28,7 @@
     background: transparent;
     border: none;
     width: 100%;
-    text-align: start;
+    text-align: left;
     cursor: pointer;
     transition: background 0.12s;
     white-space: nowrap;

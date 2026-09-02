@@ -1,30 +1,30 @@
 /* ====== Base Reset ====== */
 :root {
     /* Brand Colors */
-    --color-primary: #1a5c4e;
-    --color-primary-hover: #103d34;
-    --color-primary-soft: #e0f0f0;
-    --color-primary-soft-hover: #adebeb;
+    --color-primary: #1A4A3E;
+    --color-primary-hover: #E6F7EF;
+    --color-primary-soft: #F1FFFB;
+    --color-primary-soft-hover: #D8F1ED;
 
     /* Backgrounds */
-    --color-bg-base: #f8fbfa;
-    --color-bg-surface: #ffffff;
-    --color-bg-secondary: #F0FCFB;
-    --color-bg-sidebar: #E7F7F7;
-    --color-bg-muted: #edf9f9;
+    --color-bg-base: #EEF1F3;
+    --color-bg-surface: #FFFFFF;
+    --color-bg-secondary: #EEF1F3;
+    --color-bg-sidebar: #FFFFFF;
+    --color-bg-muted: #EDF9F9;
 
     /* Text Colors */
-    --color-text-main: #1a1816;
-    --color-text-dark: #111827;
-    --color-text-muted: #6b7280;
-    --color-text-subtle: #9ca3af;
-    --color-text-brand: #3a6761;
+    --color-text-main: #000000;
+    --color-text-dark: #000000;
+    --color-text-muted: #64748B;
+    --color-text-subtle: #64748B;
+    --color-text-brand: #21B777;
 
     /* Borders */
-    --color-border-main: #e0f0f0;
-    --color-border-subtle: #edf9f9;
-    --color-border-hover: #b0dede;
-    --color-sidebar-hover: #b0dede;
+    --color-border-main: #F1F7F7;
+    --color-border-subtle: #F8F8F8;
+    --color-border-hover: #D8F1ED;
+    --color-sidebar-hover: #F8FAFC;
 
     /* Semantic Colors */
     --color-success: #10b981;
@@ -37,10 +37,10 @@
     --color-info-bg: #eff6ff;
 
     /* Featured Card Gradient */
-    --gradient-featured: linear-gradient(135deg, #1a3a3a 0%, #0f4f4f 50%, #1a5c4e 100%);
+    --gradient-featured: linear-gradient(135deg, #0a2520 0%, #0f3530 50%, #1A4A3E 100%);
 
     /* Elevation Shims */
-    --shadow-main: 0 8px 30px -6px rgba(45, 106, 79, 0.12);
+    --shadow-main: 0 8px 30px -6px rgba(26, 74, 62, 0.12);
 }
 body {
     background: var(--color-bg-base) !important;
@@ -161,88 +161,6 @@ body {
 .sidebar-collapsed .admin-sidebar .nav .nav-item > .nav-link { justify-content: center; padding: 10px; }
 .sidebar-collapsed .admin-sidebar .nav .nav-item > .nav-link .menu-icon { margin-right: 0; }
 .sidebar-collapsed .admin-content { margin-left: 4.5rem !important; }
-
-/* ====== Collapsed Sidebar: Per-item Nav Flyout ====== */
-
-/* Hidden by default (when sidebar is NOT collapsed) */
-.admin-sidebar .nav > .nav-item > .nav-flyout {
-    display: none;
-}
-
-/* When sidebar IS collapsed: show as fixed panel */
-.sidebar-collapsed .admin-sidebar .nav > .nav-item > .nav-flyout {
-    display: block;
-    position: fixed;
-    left: 4.5rem;
-    top: var(--nf-top, 0px);
-    z-index: 9999;
-    min-width: 195px;
-    background: var(--color-bg-surface, #ffffff);
-    border: 1px solid var(--color-border-main, #e0f0f0);
-    border-radius: 0 0.5rem 0.5rem 0;
-    box-shadow: 4px 6px 24px rgba(0,0,0,0.12);
-    padding: 0.3rem 0;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.14s ease;
-}
-
-/*
- * :has(:hover) — shows the flyout when hovering the nav-item OR the flyout itself.
- * Because .nav-flyout is a DOM child of .nav-item, hovering the flyout makes
- * nav-item:has(:hover) match, keeping the flyout open without any timers.
- */
-.sidebar-collapsed .admin-sidebar .nav > .nav-item:has(:hover) > .nav-flyout {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Fallback for browsers without :has() (flyout closes when mouse moves into it) */
-.sidebar-collapsed .admin-sidebar .nav > .nav-item:hover > .nav-flyout {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* ---- Flyout inner styles ---- */
-.nav-flyout .nf-header {
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--color-text-dark, #111827);
-    border-bottom: 1px solid var(--color-border-subtle, #edf9f9);
-    white-space: nowrap;
-}
-.nav-flyout .nf-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.45rem 1rem;
-    font-size: 0.8125rem;
-    color: var(--color-text-muted, #6b7280);
-    text-decoration: none !important;
-    transition: background 0.12s, color 0.12s;
-    white-space: nowrap;
-}
-.nav-flyout .nf-link:hover {
-    background: var(--color-bg-muted, #edf9f9);
-    color: #2d6a4f;
-}
-.nav-flyout .nf-link.nf-active {
-    color: #2d6a4f;
-    font-weight: 700;
-}
-.nav-flyout .nf-link.nf-solo {
-    font-weight: 600;
-    color: var(--color-text-dark, #111827);
-}
-.nav-flyout .nf-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: currentColor;
-    flex-shrink: 0;
-    opacity: 0.6;
-}
 
 /* ====== Mobile Sidebar ====== */
 .sidebar-overlay {
@@ -627,90 +545,4 @@ textarea.form-control:hover {
 .swal2-confirm:hover {
     transform: translateY(-1px) !important;
     box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3) !important;
-}
-
-/* ====== RTL / Arabic Admin Panel Layout ======
-   Scoped to html[dir="rtl"] so these rules only fire when the page
-   direction is RTL. No PHP conditional needed — the selector IS the condition.
-   Loaded via app.css which comes after the Tailwind CDN script, so these
-   rules sit at the top of the cascade and need no !important on most properties.
-   We still add !important on margin/position to beat any Tailwind !important overrides.
-   ============================================================ */
-
-/* Sidebar: anchor to right edge */
-html[dir="rtl"] .admin-sidebar {
-    left: auto !important;
-    right: 0 !important;
-}
-
-/* Content area: offset from the right (where sidebar now lives) */
-html[dir="rtl"] .admin-content {
-    margin-left: 0 !important;
-    margin-right: 15rem !important; /* matches sidebar w-60 = 240px = 15rem */
-}
-
-/* Collapsed sidebar: narrower offset from right */
-html[dir="rtl"] .sidebar-collapsed .admin-content {
-    margin-left: 0 !important;
-    margin-right: 4.5rem !important;
-}
-
-/* Active nav item: flip left border indicator to right */
-html[dir="rtl"] .admin-sidebar .nav .nav-item.active > .nav-link {
-    border-left: none;
-    border-right: 3px solid var(--color-primary, #1a5c4e);
-    padding-left: 24px;
-    padding-right: 21px;
-}
-
-/* Menu icon: flip margin to the left */
-html[dir="rtl"] .admin-sidebar .nav .nav-item > .nav-link .menu-icon {
-    margin-right: 0;
-    margin-left: 12px;
-}
-
-/* Menu arrow: push to logical start (right in RTL) */
-html[dir="rtl"] .admin-sidebar .nav .nav-item > .nav-link .menu-arrow {
-    margin-left: 0;
-    margin-right: auto;
-}
-
-/* Submenu: flip indent to right side */
-html[dir="rtl"] .admin-sidebar .nav .nav-item .collapse,
-html[dir="rtl"] .admin-sidebar .nav .nav-item .collapse.show {
-    padding-left: 0;
-    padding-right: 12px;
-}
-
-/* Sidebar search: move icon from left-3 to right-3 */
-html[dir="rtl"] .admin-sidebar .relative > i.mdi-magnify {
-    left: auto !important;
-    right: 0.75rem !important;
-}
-
-/* Sidebar search input: flip padding so text clears the icon */
-html[dir="rtl"] .admin-sidebar #menuSearch {
-    padding-left: 3.5rem;
-    padding-right: 2.5rem;
-}
-
-/* Collapsed flyout panel: open to the left of the sidebar */
-html[dir="rtl"] .sidebar-collapsed .admin-sidebar .nav > .nav-item > .nav-flyout {
-    left: auto !important;
-    right: 4.5rem !important;
-    border-radius: 0.5rem 0 0 0.5rem;
-    box-shadow: -4px 6px 24px rgba(0, 0, 0, 0.12);
-}
-
-/* Mobile: sidebar slides in from the right */
-@media (max-width: 1023px) {
-    html[dir="rtl"] .admin-sidebar {
-        transform: translateX(100%) !important;
-    }
-    html[dir="rtl"] .admin-content {
-        margin-right: 0 !important;
-    }
-    html[dir="rtl"] .sidebar-mobile-open .admin-sidebar {
-        transform: translateX(0) !important;
-    }
 }

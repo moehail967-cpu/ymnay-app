@@ -1,7 +1,9 @@
+/* Disable Shorooq and force headings to use Typography Settings */
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Shorooq", sans-serif !important;
+    font-family: var(--heading-font) !important;
 }
 
-p, span, a, li, label, button, input, textarea {
-    font-family: "Shorooq", sans-serif !important;
+/* Disable Shorooq and force all other text to use Typography Settings */
+body, p, span, a, li, label, button, input, textarea {
+    font-family: var(--body-font) !important;
 }

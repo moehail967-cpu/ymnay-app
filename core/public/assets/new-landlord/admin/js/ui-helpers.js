@@ -17,106 +17,21 @@
     window.toggleSidebarCollapse = function() {
         document.body.classList.toggle('sidebar-collapsed');
         var content = document.querySelector('.admin-content');
-        var isRtl = document.documentElement.getAttribute('dir') === 'rtl';
         if (document.body.classList.contains('sidebar-collapsed')) {
-            if (isRtl) {
-                content.style.marginRight = '4.5rem';
-                content.style.marginLeft = '';
-            } else {
-                content.style.marginLeft = '4.5rem';
-                content.style.marginRight = '';
-            }
+            content.style.marginLeft = '4.5rem';
         } else {
             content.style.marginLeft = '';
-            content.style.marginRight = '';
         }
     };
 
     // ====== Submenu Toggle ======
     window.toggleSubmenu = function(btn) {
-        // In collapsed mode, submenu toggle is handled by the flyout — do nothing
-        if (document.body.classList.contains('sidebar-collapsed')) return;
         var submenu = btn.nextElementSibling;
         if (!submenu || !submenu.classList.contains('submenu-collapse')) return;
         var arrow = btn.querySelector('.submenu-arrow');
         submenu.classList.toggle('hidden');
         if (arrow) arrow.classList.toggle('rotate-180');
     };
-
-    // ====== Collapsed Sidebar: Nav Flyout (CSS :has-based) ======
-    (function () {
-        function escHtml(str) {
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;');
-        }
-
-        function buildFlyoutHtml(navItem) {
-            // The trigger is a <button> (parent w/ submenu) or <a> (leaf link)
-            var trigger = navItem.querySelector(':scope > button, :scope > a');
-            if (!trigger) return '';
-
-            var labelEl = trigger.querySelector('.menu-title');
-            var label = labelEl ? labelEl.textContent.trim() : '';
-            if (!label) return '';
-
-            // Collect submenu links from .submenu-collapse (even if CSS hides it)
-            var subItems = [];
-            var collapse = navItem.querySelector(':scope > .submenu-collapse');
-            if (collapse) {
-                collapse.querySelectorAll('li.nav-item > a').forEach(function (a) {
-                    var t = a.querySelector('.menu-title');
-                    if (!t) return;
-                    subItems.push({
-                        href: a.getAttribute('href') || '#',
-                        label: t.textContent.trim(),
-                        active: a.classList.contains('font-bold')
-                    });
-                });
-            }
-
-            var html = '';
-            if (subItems.length > 0) {
-                html += '<div class="nf-header">' + escHtml(label) + '</div>';
-                subItems.forEach(function (s) {
-                    html += '<a href="' + escHtml(s.href) + '" class="nf-link' + (s.active ? ' nf-active' : '') + '">';
-                    html += '<span class="nf-dot"></span>' + escHtml(s.label) + '</a>';
-                });
-            } else {
-                var href = trigger.getAttribute('href');
-                if (!href || href === '#') return ''; // no flyout needed for non-links
-                html += '<a href="' + escHtml(href) + '" class="nf-link nf-solo">' + escHtml(label) + '</a>';
-            }
-            return html;
-        }
-
-        function initNavFlyouts() {
-            var sidebar = document.getElementById('adminSidebar');
-            if (!sidebar) return;
-
-            sidebar.querySelectorAll('.nav > .nav-item').forEach(function (item) {
-                var html = buildFlyoutHtml(item);
-                if (!html) return;
-
-                var flyout = document.createElement('div');
-                flyout.className = 'nav-flyout';
-                flyout.innerHTML = html;
-                item.appendChild(flyout);
-
-                // Set --nf-top so CSS positions the flyout at the right vertical offset
-                function updateTop() {
-                    var r = item.getBoundingClientRect();
-                    item.style.setProperty('--nf-top', Math.round(r.top) + 'px');
-                }
-                updateTop();
-                item.addEventListener('mouseenter', updateTop);
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', initNavFlyouts);
-    })();
 
     // ====== DataTable translation helper ======
     window.translatedDataTable = function(translations) {

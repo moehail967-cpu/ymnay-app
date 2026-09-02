@@ -15,7 +15,7 @@
             <label class="lnd-label">{{__('Font Variant')}}</label>
             @php
                 $font_family_selected = get_static_option('body_font_family_'.$suffix) ?? get_static_option('body_font_family_'.$suffix);
-                $get_font_family_variants = property_exists($google_fonts, $font_family_selected) ? (array) $google_fonts->$font_family_selected : ['variants' => array('regular')];
+                $get_font_family_variants = array_key_exists($font_family_selected, (array)$google_fonts) ? (array) $google_fonts[$font_family_selected] : ['variants' => array('regular')];
             @endphp
             <select class="form-control wide body_font_variant_{{$suffix}}" multiple id="body_font_variant" name="body_font_variant_{{$suffix}}[]" size="5">
                 @foreach($get_font_family_variants['variants'] as $variant)
@@ -57,7 +57,7 @@
                     <label class="lnd-label">{{__('Font Variant')}}</label>
                     @php
                         $font_family_selected = get_static_option('heading_font_family_'.$suffix) ?? '';
-                        $get_font_family_variants = property_exists($google_fonts, $font_family_selected) ? (array) $google_fonts->$font_family_selected : ['variants' => array('regular')];
+                        $get_font_family_variants = array_key_exists($font_family_selected, (array)$google_fonts) ? (array) $google_fonts[$font_family_selected] : ['variants' => array('regular')];
                     @endphp
                     <select class="form-control wide heading_font_variant_{{$suffix}}" multiple name="heading_font_variant_{{$suffix}}[]" id="heading_font_variant" size="5">
                         @foreach($get_font_family_variants['variants'] as $variant)

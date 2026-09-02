@@ -1,0 +1,64 @@
+{
+  "gg sans": {
+    "variants": ["0,400", "0,500", "0,600", "0,800"],
+    "files": {
+      "0,400": "ggsans-Normal.woff2",
+      "0,500": "ggsans-Medium.woff2",
+      "0,600": "ggsans-SemiBold.woff2",
+      "0,800": "ggsans-ExtraBold.woff2"
+    }
+  },
+  "Helvetica Neue": {
+    "variants": ["0,100", "0,300", "0,400", "1,400", "0,500", "0,700", "0,900"],
+    "files": {
+      "0,100": "HelveticaNeueThin.otf",
+      "0,300": "HelveticaNeueLight.otf",
+      "0,400": "HelveticaNeueRoman.otf",
+      "1,400": "HelveticaNeueItalic.ttf",
+      "0,500": "HelveticaNeueMedium.otf",
+      "0,700": "HelveticaNeueBold.otf",
+      "0,900": "HelveticaNeueBlack.otf"
+    }
+  },
+  "Neo Sans Arabic": {
+    "variants": ["0,300", "0,400", "0,500", "0,700"],
+    "files": {
+      "0,300": "NeoSansArabicLight.ttf",
+      "0,400": "NeoSansArabicRegular.ttf",
+      "0,500": "NeoSansArabicMedium.ttf",
+      "0,700": "NeoSansArabicBold.ttf"
+    }
+  },
+  "Optima": {
+    "variants": ["0,400", "1,400", "0,500", "0,700"],
+    "files": {
+      "0,400": "OptimaRegular.ttf",
+      "1,400": "OptimaItalic.ttf",
+      "0,500": "OptimaMedium.ttf",
+      "0,700": "OptimaBold.ttf"
+    }
+  },
+  "SF Pro Display": {
+    "variants": ["0,400", "0,500", "0,700"],
+    "files": {
+      "0,400": "SFPRODISPLAYREGULAR.OTF",
+      "0,500": "SFPRODISPLAYMEDIUM.OTF",
+      "0,700": "SFPRODISPLAYBOLD.OTF"
+    }
+  },
+  "Hacen Saudi Arabia": {
+    "variants": ["0,400"],
+    "files": {
+      "0,400": "HacenSaudiArabia.ttf"
+    }
+  },
+  "The Year of The Camel": {
+    "variants": ["0,300", "0,400", "0,500", "0,700"],
+    "files": {
+      "0,300": "ArbFONTS-TheYearofTheCamel-Light.otf",
+      "0,400": "ArbFONTS-TheYearofTheCamel-Regular.otf",
+      "0,500": "ArbFONTS-TheYearofTheCamel-Medium.otf",
+      "0,700": "ArbFONTS-TheYearofTheCamel-Bold.otf"
+    }
+  }
+}

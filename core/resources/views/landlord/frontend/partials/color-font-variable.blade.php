@@ -50,7 +50,7 @@
         --sectionC:          {{ $c1 }};
         --color-bg-sidebar:  {{ get_static_option('admin_sidebar_bg',  '#E7F7F7') }};
 
-        --heading-font: "{{ get_static_option('heading_font_family', 'Roboto Slab') }}",serif;
-        --body-font:    "{{ get_static_option('body_font_family',    'Manrope')     }}",sans-serif;
+        --heading-font: "{{ get_static_option('heading_font_family', 'Urbanist') }}",sans-serif;
+        --body-font:    "{{ get_static_option('body_font_family',    'Inter')    }}",sans-serif;
     }
 </style>

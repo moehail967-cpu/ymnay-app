@@ -359,20 +359,46 @@ class GeneralSettingsController extends Controller
     public function typography_settings()
     {
         $prefix = is_null(tenant()) ? 'landlord' : 'tenant';
-        $all_google_fonts = file_get_contents('assets/' . $prefix . '/frontend/webfonts/google-fonts.json');
+        $all_google_fonts = json_decode(file_get_contents('assets/' . $prefix . '/frontend/webfonts/google-fonts.json'), true);
 
-        return view(self::BASE_PATH . 'typography-settings')->with(['google_fonts' => json_decode($all_google_fonts)]);
+        // Merge self-hosted custom fonts into the dropdown (at the top for easy discovery)
+        $custom_fonts_path = 'assets/' . $prefix . '/frontend/webfonts/custom-fonts.json';
+        if (file_exists($custom_fonts_path)) {
+            $custom_fonts = json_decode(file_get_contents($custom_fonts_path), true) ?? [];
+            // Strip the 'files' key so the structure matches google-fonts.json
+            $custom_simplified = [];
+            foreach ($custom_fonts as $family => $data) {
+                $custom_simplified[$family] = ['variants' => $data['variants']];
+            }
+            // Custom fonts first, then Google fonts
+            $all_google_fonts = array_merge($custom_simplified, $all_google_fonts);
+        }
+
+        return view(self::BASE_PATH . 'typography-settings')->with(['google_fonts' => $all_google_fonts]);
     }
 
     public function get_single_font_variant(Request $request)
     {
         $prefix = is_null(tenant()) ? 'landlord' : 'tenant';
-        $all_google_fonts = file_get_contents('assets/' . $prefix . '/frontend/webfonts/google-fonts.json');
-        $decoded_fonts = json_decode($all_google_fonts, true);
+        $all_google_fonts = json_decode(
+            file_get_contents('assets/' . $prefix . '/frontend/webfonts/google-fonts.json'), true
+        );
+
+        // Also check in custom fonts
+        $custom_fonts_path = 'assets/' . $prefix . '/frontend/webfonts/custom-fonts.json';
+        if (file_exists($custom_fonts_path)) {
+            $custom_fonts = json_decode(file_get_contents($custom_fonts_path), true) ?? [];
+            foreach ($custom_fonts as $family => $data) {
+                $all_google_fonts[$family] = ['variants' => $data['variants']];
+            }
+        }
+
+        $family = $request->font_family;
+        $decoded_fonts = $all_google_fonts[$family] ?? ['variants' => ['regular']];
 
         $data = [
-            'decoded_fonts' => $decoded_fonts[$request->font_family],
-            'theme' => $request->theme
+            'decoded_fonts' => $decoded_fonts,
+            'theme'         => $request->theme
         ];
 
         return response()->json($data);

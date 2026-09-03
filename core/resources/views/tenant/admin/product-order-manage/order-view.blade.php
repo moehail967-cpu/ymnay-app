@@ -6,7 +6,10 @@
 <x-landlord-flash-msg/>
 <x-landlord-error-msg/>
 
-@php $order_meta = json_decode($order->payment_meta); @endphp
+@php
+    $order_meta = json_decode($order->payment_meta);
+    $ymnay_wallet_payment = $order_meta->ymnay_manual_wallet ?? null;
+@endphp
 
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
@@ -100,6 +103,21 @@
             </div>
             <div class="p-4 sm:p-6">
                 <p class="text-sm text-dark">{{$order->message}}</p>
+            </div>
+        </div>
+        @endif
+
+        @if($ymnay_wallet_payment)
+        <div class="bg-surface rounded-xl shadow-main border border-main overflow-hidden">
+            <div class="px-4 sm:px-6 py-3.5 border-b border-main"><h4 class="text-xs font-bold text-dark uppercase tracking-widest">{{__('Manual Wallet Payment')}}</h4></div>
+            <div class="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div><span class="block text-[10px] font-bold text-muted uppercase">{{__('Wallet')}}</span><span class="text-sm font-semibold text-dark">{{$ymnay_wallet_payment->wallet->name ?? '—'}}</span></div>
+                <div><span class="block text-[10px] font-bold text-muted uppercase">{{__('Wallet number')}}</span><span class="text-sm font-semibold text-dark">{{$ymnay_wallet_payment->wallet->account_number ?? '—'}}</span></div>
+                <div><span class="block text-[10px] font-bold text-muted uppercase">{{__('Recipient')}}</span><span class="text-sm font-semibold text-dark">{{$ymnay_wallet_payment->wallet->recipient_name ?? '—'}}</span></div>
+                <div><span class="block text-[10px] font-bold text-muted uppercase">{{__('Review status')}}</span><span class="text-sm font-semibold text-dark">{{__($ymnay_wallet_payment->review_status ?? 'pending')}}</span></div>
+                @if($order->checkout_image_path)
+                <div class="sm:col-span-2"><span class="block text-[10px] font-bold text-muted uppercase mb-2">{{__('Transfer receipt')}}</span><a target="_blank" href="{{asset('assets/uploads/ymnay-wallet-proofs/'.$order->checkout_image_path)}}"><img class="w-40 max-h-48 object-contain rounded-xl border border-main" src="{{asset('assets/uploads/ymnay-wallet-proofs/'.$order->checkout_image_path)}}" alt="{{__('Transfer receipt')}}"></a></div>
+                @endif
             </div>
         </div>
         @endif
@@ -233,6 +251,20 @@
                     </div>
                 </div>
             </div>
+
+            @if($ymnay_wallet_payment && $order->payment_status !== 'success' && $order->status !== 'cancel')
+            <div class="px-4 pb-4 space-y-3 border-t border-main pt-4">
+                <form method="post" action="{{route('ymnaycustom.tenant.wallets.orders.approve',$order)}}">
+                    @csrf
+                    <button class="w-full px-4 py-2.5 rounded-xl bg-success text-white font-semibold" onclick="return confirm('{{__('Confirm that the payment was received?')}}')">{{__('Approve Payment and Complete Order')}}</button>
+                </form>
+                <form method="post" action="{{route('ymnaycustom.tenant.wallets.orders.reject',$order)}}" class="space-y-2">
+                    @csrf
+                    <textarea name="rejection_reason" required maxlength="1000" class="lnd-input" rows="3" placeholder="{{__('Rejection reason shown to the customer')}}"></textarea>
+                    <button class="w-full px-4 py-2.5 rounded-xl bg-danger text-white font-semibold" onclick="return confirm('{{__('Reject this payment?')}}')">{{__('Reject Payment')}}</button>
+                </form>
+            </div>
+            @endif
 
             {{-- Quick Info --}}
             <div class="px-4 pb-4 space-y-2">

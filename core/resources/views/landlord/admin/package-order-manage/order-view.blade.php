@@ -6,6 +6,11 @@
 <x-landlord-flash-msg/>
 <x-landlord-error-msg/>
 
+@php
+    $ymnayCustomFields = json_decode((string) $order->custom_fields, true);
+    $ymnayWalletPayment = is_array($ymnayCustomFields) ? ($ymnayCustomFields['ymnay_manual_wallet'] ?? null) : null;
+@endphp
+
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
     {{-- Main Content --}}
@@ -96,12 +101,24 @@
             <div class="p-4 sm:p-6">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
                     @foreach($all_custom_fields ?? [] as $key => $field)
+                        @continue($key === 'ymnay_manual_wallet' || is_array($field) || is_object($field))
                         <div>
                             <span class="block text-[10px] font-bold tracking-widest text-muted uppercase mb-0.5">{{ ucfirst($key) }}</span>
                             <span class="text-sm text-dark">{{$field}}</span>
                         </div>
                     @endforeach
                 </div>
+            </div>
+        </div>
+        @endif
+
+        @if($ymnayWalletPayment)
+        <div class="bg-surface rounded-xl shadow-main border border-main overflow-hidden">
+            <div class="px-4 sm:px-6 py-3.5 border-b border-main"><h4 class="text-xs font-bold text-dark uppercase tracking-widest">{{__('Manual Wallet Payment')}}</h4></div>
+            <div class="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div><span class="block text-[10px] font-bold text-muted uppercase">{{__('Wallet')}}</span><span class="text-sm font-semibold text-dark">{{$ymnayWalletPayment['wallet']['name'] ?? '—'}}</span></div>
+                <div><span class="block text-[10px] font-bold text-muted uppercase">{{__('Review status')}}</span><span class="text-sm font-semibold text-dark">{{__($ymnayWalletPayment['review_status'] ?? 'pending')}}</span></div>
+                <div class="sm:col-span-2"><span class="block text-[10px] font-bold text-muted uppercase">{{__('Instructions snapshot')}}</span><p class="text-sm text-dark whitespace-pre-line">{{$ymnayWalletPayment['wallet']['description'] ?? ''}}</p></div>
             </div>
         </div>
         @endif
@@ -191,6 +208,20 @@
                     </div>
                 </div>
             </div>
+
+            @if($ymnayWalletPayment && $order->payment_status !== 'complete' && $order->status !== 'cancel')
+            <div class="px-4 pb-4 space-y-3 border-t border-main pt-4">
+                <form method="post" action="{{route('ymnaycustom.landlord.wallets.orders.approve',$order)}}">
+                    @csrf
+                    <button class="w-full px-4 py-2.5 rounded-xl bg-success text-white font-semibold" onclick="return confirm('{{__('Confirm that the payment was received and activate the package?')}}')">{{__('Approve Payment and Activate Package')}}</button>
+                </form>
+                <form method="post" action="{{route('ymnaycustom.landlord.wallets.orders.reject',$order)}}" class="space-y-2">
+                    @csrf
+                    <textarea name="rejection_reason" required maxlength="1000" class="lnd-input" rows="3" placeholder="{{__('Rejection reason shown to the customer')}}"></textarea>
+                    <button class="w-full px-4 py-2.5 rounded-xl bg-danger text-white font-semibold" onclick="return confirm('{{__('Reject this payment?')}}')">{{__('Reject Payment')}}</button>
+                </form>
+            </div>
+            @endif
 
             {{-- Quick Info --}}
             <div class="px-4 pb-4 space-y-2">

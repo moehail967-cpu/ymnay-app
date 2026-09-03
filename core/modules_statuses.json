@@ -42,5 +42,6 @@
     "loyalty-points": true,
     "tracking-pixel": true,
     "ai-integration": true,
-    "SocialAuth": true
+    "SocialAuth": true,
+    "YmnayCustom": true
 }

@@ -1,0 +1,5 @@
+{
+  "name": "ymnay/ymnay-custom",
+  "description": "Ymnay-owned customizations and local payment workflows",
+  "autoload": {"psr-4": {"Modules\\YmnayCustom\\": ""}}
+}

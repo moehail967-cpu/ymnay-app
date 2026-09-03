@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="120" viewBox="0 0 240 120">
+  <rect width="240" height="120" rx="18" fill="#0f766e"/>
+  <path d="M54 32h96a18 18 0 0 1 18 18v38H54a18 18 0 0 1-18-18V50a18 18 0 0 1 18-18Z" fill="#fff" opacity=".96"/>
+  <path d="M137 52h47a12 12 0 0 1 12 12v15a12 12 0 0 1-12 12h-47a12 12 0 0 1-12-12V64a12 12 0 0 1 12-12Z" fill="#14b8a6"/>
+  <circle cx="151" cy="72" r="6" fill="#fff"/>
+  <text x="58" y="72" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#0f766e">Ymnay</text>
+</svg>

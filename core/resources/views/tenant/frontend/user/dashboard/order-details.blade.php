@@ -121,6 +121,17 @@
         </div>
         <!-- Order status end-->
 
+        @if(!empty($order_meta->ymnay_manual_wallet))
+            @php($wallet_payment = $order_meta->ymnay_manual_wallet)
+            <div class="alert {{$wallet_payment->review_status === 'rejected' ? 'alert-danger' : ($wallet_payment->review_status === 'approved' ? 'alert-success' : 'alert-info')}} mt-3">
+                <strong>{{__('Manual wallet payment')}} — {{$wallet_payment->wallet->name ?? ''}}</strong><br>
+                {{__('Review status')}}: {{__($wallet_payment->review_status ?? 'pending')}}
+                @if(!empty($wallet_payment->rejection_reason))
+                    <br><strong>{{__('Rejection reason')}}:</strong> {{$wallet_payment->rejection_reason}}
+                @endif
+            </div>
+        @endif
+
         <!-- Order summery start -->
         <div class="order-inner-content-wrap">
             <h4 class="title">{{__("order details")}}</h4>

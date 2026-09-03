@@ -131,6 +131,8 @@ class PaymentLogController extends Controller
             'selected_payment_gateway' => $selected_payment_gateway . '|string',
             'trasaction_id' => $manual_transection_condition,
             'trasaction_attachment' => $manual_transection_condition . '|mimes:jpeg,png,jpg,gif|max:2048',
+            'ymnay_wallet_id' => 'required_if:selected_payment_gateway,ymnay_manual_wallet|nullable|integer',
+            'ymnay_wallet_proof' => 'required_if:selected_payment_gateway,ymnay_manual_wallet|nullable|image|mimes:jpeg,jpg,png,webp|max:4096',
             'subdomain' => "required_if:custom_subdomain,!=,null",
             'custom_subdomain' => "required_if:subdomain,==,custom_domain__dd",
             'coupon' => "nullable"
@@ -138,6 +140,8 @@ class PaymentLogController extends Controller
             "custom_subdomain.required_if" => __("Custom Sub Domain Required."),
             "trasaction_id" => __("Transaction ID Required."),
             "trasaction_attachment.required" => __("Transaction Attachment Required."),
+            "ymnay_wallet_id.required_if" => __("Please select a wallet."),
+            "ymnay_wallet_proof.required_if" => __("Transfer receipt image is required."),
             "theme_slug.in" => __("The selected theme is invalid.")
         ]);
 

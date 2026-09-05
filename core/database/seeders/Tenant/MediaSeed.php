@@ -22,13 +22,17 @@ class MediaSeed extends Seeder
         $this->seedMediaUploaderFiles();
 
         // coping media
-        $source_dir = 'assets/tenant/seeder-files/all-media';
-        $destination_dir = 'assets/tenant/uploads/media-uploader/' . tenant()->id;
+        $source_dir = base_path('../assets/tenant/seeder-files/all-media');
+        $destination_dir = base_path('../assets/tenant/uploads/media-uploader/' . tenant()->id);
         $this->recursive_files_copy($source_dir, $destination_dir);
     }
 
     private function recursive_files_copy($source_dir, $destination_dir)
     {
+        if (!is_dir($source_dir)) {
+            return;
+        }
+
         // Open the source folder / directory
         $dir = opendir($source_dir);
 

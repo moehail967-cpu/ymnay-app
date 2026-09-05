@@ -3,20 +3,20 @@ tailwind.config = {
     extend: {
       colors: {
         // Dynamic colors from admin Color Settings (CSS variables set in color-font-variable.blade.php)
-        primary: 'var(--main-color-one, #92E721)',
-        secondary: 'var(--heading-color, #252C38)',
-        heading: 'var(--main-color-two, #92E721)',
+        primary: 'var(--main-color-one, #F04751)',
+        secondary: 'var(--heading-color, #333333)',
+        heading: 'var(--main-color-two, #FF805D)',
         'base-100': 'var(--light-color, #ECEDEF)',
-        'base-200': 'var(--heading-color, #252C38)',
+        'base-200': 'var(--heading-color, #333333)',
         'borderCS': '#D1D5D9',
-        'subTitle': 'rgba(235,246,73,0.20)',
-        'sub2Title': '#374253',
-        'sectionC': '#0C4D54',
-        'rise': '#FFFAEE',
-        'quate': '#374253',
+        'subTitle': 'var(--secondary-color, #F7A3A8)',
+        'sub2Title': 'var(--heading-color, #374253)',
+        'sectionC': 'var(--main-color-one, #F04751)',
+        'rise': 'var(--section-bg-2, #FFF6EE)',
+        'quate': 'var(--heading-color, #374253)',
 
-        // dashborad all color
-        'aside': '#0C4D54'
+        // Admin panel sidebar — uses admin CSS variable system
+        'aside': 'var(--color-bg-sidebar, #E7F7F7)'
       },
 
       teal: {
@@ -24,10 +24,10 @@ tailwind.config = {
       },
 
       fontFamily: {
-        inter: ["Inter", "sans-serif"],  // legacy kept for compatibility
-        shorooq: ["Shorooq", "Inter", "sans-serif"],
+        // Dynamic fonts from admin Typography Settings (CSS variables set in color-font-variable.blade.php)
+        inter: ["var(--body-font, 'Inter')", "sans-serif"],
 
-        urbanist: ["Urbanist", "sans-serif"],
+        urbanist: ["var(--heading-font, 'Urbanist')", "sans-serif"],
       },
 
 

@@ -71,6 +71,25 @@ class PaymentLogController extends Controller
             return redirect()->back()->with('error', __('You must be logged in to place an order.'));
         }
 
+        // The multi-page order wizard owns these values server-side. Do not
+        // trust package, theme, subdomain, or account fields posted by the browser.
+        $wizard = session('order_wizard');
+        if (!empty($wizard['plan_id'])) {
+            if (empty($wizard['theme_slug']) || empty($wizard['subdomain'])) {
+                return redirect()->route('landlord.frontend.plan.order.start')
+                    ->with('error', __('Please complete the store setup first.'));
+            }
+
+            $request->merge([
+                'package_id'      => $wizard['plan_id'],
+                'theme_slug'      => $wizard['theme_slug'],
+                'subdomain'       => 'custom_domain__dd',
+                'custom_subdomain'=> $wizard['subdomain'],
+                'name'            => Auth::guard('web')->user()->name,
+                'email'           => Auth::guard('web')->user()->email,
+            ]);
+        }
+
         //  Determine manual transaction rule based on gateway
         $manual_transection_condition = $request->selected_payment_gateway === 'manual_payment' ? 'required' : 'nullable';
 
@@ -126,13 +145,11 @@ class PaymentLogController extends Controller
             'name' => 'nullable|string|max:191',
             'email' => 'nullable|email|max:191',
             'theme_slug' => ['required', Rule::in(getAllThemeSlug())],
-            'package_id' => 'required|string',
+            'package_id' => 'required|integer|exists:price_plans,id',
             'payment_gateway' => $zero_price_condition . '|string',
             'selected_payment_gateway' => $selected_payment_gateway . '|string',
             'trasaction_id' => $manual_transection_condition,
             'trasaction_attachment' => $manual_transection_condition . '|mimes:jpeg,png,jpg,gif|max:2048',
-            'ymnay_wallet_id' => 'required_if:selected_payment_gateway,ymnay_manual_wallet|nullable|integer',
-            'ymnay_wallet_proof' => 'required_if:selected_payment_gateway,ymnay_manual_wallet|nullable|image|mimes:jpeg,jpg,png,webp|max:4096',
             'subdomain' => "required_if:custom_subdomain,!=,null",
             'custom_subdomain' => "required_if:subdomain,==,custom_domain__dd",
             'coupon' => "nullable"
@@ -140,8 +157,6 @@ class PaymentLogController extends Controller
             "custom_subdomain.required_if" => __("Custom Sub Domain Required."),
             "trasaction_id" => __("Transaction ID Required."),
             "trasaction_attachment.required" => __("Transaction Attachment Required."),
-            "ymnay_wallet_id.required_if" => __("Please select a wallet."),
-            "ymnay_wallet_proof.required_if" => __("Transfer receipt image is required."),
             "theme_slug.in" => __("The selected theme is invalid.")
         ]);
 

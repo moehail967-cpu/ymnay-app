@@ -1,5 +1,11 @@
-  
-        const swiper = new Swiper(".mySwiper", {
+(() => {
+    const slider = document.querySelector(".mySwiper");
+
+    if (!slider || typeof Swiper === "undefined") {
+        return;
+    }
+
+    new Swiper(slider, {
             slidesPerView: 4,
             spaceBetween: 24,
             loop: true,
@@ -50,6 +56,6 @@
                     centeredSlides: false,
                 },
             },
-        });
-
+    });
+})();
 

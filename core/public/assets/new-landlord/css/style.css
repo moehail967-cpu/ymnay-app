@@ -74,9 +74,18 @@
 
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--body-font, 'Inter'), sans-serif;
   font-weight: 400;
+  background-color: var(--section-bg-1, #FFFBFB);
 }
+
+/* Dynamic section background utility classes */
+.section-bg-1 { background-color: var(--section-bg-1, #FFFBFB); }
+.section-bg-2 { background-color: var(--section-bg-2, #FFF6EE); }
+.section-bg-3 { background-color: var(--section-bg-3, #F4F8FB); }
+.section-bg-4 { background-color: var(--section-bg-4, #F2F3FB); }
+.section-bg-5 { background-color: var(--section-bg-5, #F9F5F2); }
+.section-bg-6 { background-color: var(--section-bg-6, #E5EFF8); }
 
 
 .slider-wrap {
@@ -151,7 +160,7 @@ body {
   width: 100%;
   min-height: auto !important;
   height: 100%;
-  object-fit: cover;
+  /*object-fit: cover;*/
   border-radius: 22px;
 }
 
@@ -209,7 +218,7 @@ body {
 .swiper-pagination-bullet-active {
   width: 32px;
   border-radius: 4px;
-  background: #115e59;
+  background: var(--main-color-one, #115e59);
 }
 
 
@@ -311,7 +320,7 @@ body {
   overflow: hidden;
   opacity: 0;
   transition: max-height 400ms ease, opacity 300ms ease;
-  background-color: #F8FAFB;
+  background-color: var(--section-bg-3, #F8FAFB);
 }
 
 .accordion-content.open {
@@ -334,7 +343,7 @@ body {
 }
 
 .accordion-item.active {
-  background-color: #F5F7FB;
+  background-color: var(--section-bg-3, #F5F7FB);
   /* open হলে bg */
 }
 
@@ -367,7 +376,7 @@ body {
 }
 
 .text-quate {
-  color: #374253 !important;
+  color: var(--heading-color, #374253);
 }
 
 /* Fallback for Tailwind's `group-hover:text-base-100` utility (for local / unbuilt CSS) */
@@ -577,7 +586,7 @@ body {
 /* --- Dropdown always dark text on white bg (both pages) --- */
 .navbar-home #mainNav ul li .absolute a,
 .navbar-inner #mainNav ul li .absolute a {
-  color: #333333 !important;
+  color: var(--heading-color, #333333) !important;
 }
 
 /* --- Auth buttons (both pages) --- */
@@ -593,23 +602,25 @@ body {
 /* --- Mobile sidebar auth button --- */
 .nav-mobile-auth-btn {
   background-color: var(--main-color-two, #FF805D);
+  color: var(--heading-color, #000000);
 }
 .nav-mobile-auth-btn_two {
-  background-color: var(--section-bg-1, #FFFBFB);
+  background-color: var(--main-color-two, #93E720);
+  color: var(--heading-color, #000000);
 }
 .nav-mobile-auth-btn_two:hover {
-  background-color: var(--main-color-two, #FF805D) !important;
+  opacity: 0.9;
 }
 
 .primary-btn{
   background-color: var(--main-color-two);
 }
 .primary-btn:hover{
-  background-color: #ffffff;
+  background-color: var(--secondary-color);
 }
 
 .secondary-btn{
-  background-color: #ffffff;
+  background-color:var(--secondary-color);
 }
 .secondary-btn:hover{
   background-color: var(--main-color-two);
@@ -628,17 +639,15 @@ body {
 }
 
 .site-secondary-btn{
-  background-color: #ffffff;
-  border: 1px solid #0c0c0c;
+  background-color: var(--main-color-two, #93E720);
+  color: var(--heading-color, #000000);
 }
 .site-secondary-btn:hover{
-  background-color: var(--main-color-one);
-  color: #ffffff;
-  border-style: none;
+  opacity: 0.9;
 }
 
 .text-heading{
-  color: var(--main-color-two);
+  color: var(--main-color-two, #93E720);
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -675,7 +684,7 @@ body {
 }
 .contact-form-wrap .custom-form-builder-land .form-control::placeholder { color: #9ca3af; }
 .contact-form-wrap .custom-form-builder-land .form-control:focus {
-    border-color: transparent; box-shadow: 0 0 0 2px #0C4D54;
+    border-color: transparent; box-shadow: 0 0 0 2px var(--main-color-one, #0C4D54);
 }
 .contact-form-wrap .custom-form-builder-land textarea.form-control { resize: none; min-height: 10rem; }
 .contact-form-wrap .custom-form-builder-land select.form-control {
@@ -685,12 +694,12 @@ body {
 .contact-form-wrap .custom-form-builder-land .form-group.checkbox { display: flex; align-items: center; gap: 0.75rem; }
 .contact-form-wrap .custom-form-builder-land .form-group.checkbox input[type="checkbox"] {
     width: 1.25rem; height: 1.25rem; border-radius: 0.375rem;
-    border: 1px solid #e5e7eb; cursor: pointer; flex-shrink: 0; accent-color: #0C4D54;
+    border: 1px solid #e5e7eb; cursor: pointer; flex-shrink: 0; accent-color: var(--main-color-one, #0C4D54);
 }
 .contact-form-wrap .custom-form-builder-land .form-group.checkbox label { margin-bottom: 0; cursor: pointer; }
 .contact-form-wrap .custom-form-builder-land .btn-wrapper { display: flex; align-items: center; gap: 1rem; }
 .contact-form-wrap .custom-form-builder-land .custom_submit_form_button {
-    background-color: #0C4D54; color: #fff; font-weight: 600;
+    background-color: var(--main-color-one, #0C4D54); color: #fff; font-weight: 600;
     padding: 0.75rem 2.5rem; border-radius: 0.75rem; border: none;
     cursor: pointer; transition: all 0.3s ease-in-out; font-size: 1rem; line-height: 1.5;
 }
@@ -733,11 +742,11 @@ body {
 .contact-two-wrap .contact-two-form input::placeholder,
 .contact-two-wrap .contact-two-form textarea::placeholder { color: #9ca3af; }
 .contact-two-wrap .contact-two-form input:focus,
-.contact-two-wrap .contact-two-form textarea:focus { border-color: transparent; box-shadow: 0 0 0 2px #0C4D54; }
+.contact-two-wrap .contact-two-form textarea:focus { border-color: transparent; box-shadow: 0 0 0 2px var(--main-color-one, #0C4D54); }
 .contact-two-wrap .contact-two-form textarea { resize: none; min-height: 10rem; }
 .contact-two-wrap .contact-two-form .ct-btn-wrap { display: flex; align-items: center; gap: 1rem; }
 .contact-two-wrap .contact-two-form .ct-submit-btn {
-    background-color: #0C4D54; color: #fff; font-weight: 600;
+    background-color: var(--main-color-one, #0C4D54); color: #fff; font-weight: 600;
     padding: 0.75rem 2.5rem; border-radius: 0.75rem; border: none;
     cursor: pointer; transition: all 0.3s ease-in-out; font-size: 1rem;
 }

@@ -14,6 +14,7 @@
 @import 'components/attributes.css';
 @import 'components/digitalproduct.css';
 @import 'components/coupon.css';
+@import 'components/shipping-plugin.css';
 
 /* Global Overrides and Utility Shims */
 body {
@@ -33,8 +34,7 @@ body {
 .bg-base { background-color: var(--color-bg-base) !important; }
 .bg-surface { background-color: var(--color-bg-surface) !important; }
 .bg-secondary { background-color: var(--color-bg-secondary) !important; }
-/*.bg-sidebar { background-color: var(--color-bg-sidebar) !important; }*/
-.bg-sidebar { background-color: var(--color-bg-surface) !important; }
+.bg-sidebar { background-color: var(--color-bg-sidebar) !important; }
 .bg-muted { background-color: var(--color-bg-muted) !important; }
 
 /* Semantic Color Shims */
@@ -46,6 +46,8 @@ body {
 
 .bg-primary { background-color: var(--color-primary) !important; }
 .bg-primary-soft { background-color: var(--color-primary-soft) !important; }
+.bg-brand { background-color: var(--color-text-brand) !important; }
+.bg-subtle { background-color: var(--color-text-subtle) !important; }
 .bg-success { background-color: var(--color-success) !important; }
 .bg-success-soft { background-color: var(--color-success-bg) !important; }
 .bg-danger { background-color: var(--color-danger) !important; }

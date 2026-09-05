@@ -50,14 +50,14 @@
 {{--    new css for new landing page : --}}
 {!! render_favicon_by_id(get_static_option('site_favicon')) !!}
     <!-- Icon Library (use local stylesheet that defines .ti and .tabler-* classes) -->
-    <link rel="stylesheet" href="{{asset('assets/new-landlord/css/glightbox.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/new-landlord/css/tablar-icon.css')}}">
+    <link rel="stylesheet" href="{{versioned_asset('assets/new-landlord/css/glightbox.min.css')}}">
+    <link rel="stylesheet" href="{{versioned_asset('assets/new-landlord/css/tablar-icon.css')}}">
     <!-- Owl Carousel CSS -->
-    <link rel="stylesheet" href="{{asset('assets/new-landlord/css/owl.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/new-landlord/css/slider.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/new-landlord/css/custom_slider.css')}}">
+    <link rel="stylesheet" href="{{versioned_asset('assets/new-landlord/css/owl.css')}}">
+    <link rel="stylesheet" href="{{versioned_asset('assets/new-landlord/css/slider.css')}}">
+    <link rel="stylesheet" href="{{versioned_asset('assets/new-landlord/css/custom_slider.css')}}">
 
-    <link rel="stylesheet" href="{{asset('assets/new-landlord/css/style.css')}}">
+    <link rel="stylesheet" href="{{versioned_asset('assets/new-landlord/css/style.css')}}">
 
     @if(\App\Facades\GlobalLanguage::user_lang_dir() == 'rtl')
         <link rel="stylesheet" href="{{asset('assets/landlord/frontend/css/rtl.css')}}">
@@ -79,8 +79,8 @@
         </script>
     @endif
 
-    <script src="{{asset('assets/new-landlord/js/tailwind_browser.js')}}"></script>
-    <script src="{{asset('assets/new-landlord/js/tailwind-config.js')}}"></script>
+    <script src="{{versioned_asset('assets/new-landlord/js/tailwind_browser.js')}}"></script>
+    <script src="{{versioned_asset('assets/new-landlord/js/tailwind-config.js')}}"></script>
 </head>
 <body>
 {!! renderBodyStartHooks() !!}

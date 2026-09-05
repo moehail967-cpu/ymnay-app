@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Events\TenantCronjobEvent;
 use App\Mail\BasicMail;
 use App\Models\PaymentLogs;
 use App\Models\User;
@@ -47,33 +46,28 @@ class PackageExpireCommand extends Command
                                 continue;
                             }
 
-                            $day_list = json_decode(get_static_option('package_expire_notify_mail_days')) ?? [];
+                            $day_list = json_decode(
+                                get_static_option('package_expire_notify_mail_days'),
+                                true
+                            );
+                            $startDate = Carbon::today();
+                            $expireDate = Carbon::parse($payment_log->expire_date);
 
-                            rsort($day_list);
+                            if (self::shouldSendExpiryNotification($expireDate, $startDate, $day_list)) {
+                                $days_remaining = $startDate->diffInDays($expireDate);
 
-                            foreach ($day_list as $day) {
-                                $startDate = Carbon::today();
-                                $notification_date = Carbon::parse($payment_log->expire_date)->subDay($day);
-                                $compareDays = $notification_date->lt($startDate);
+                                $subject = 'Subscription Will Expire - ' . get_static_option('site_title');
+                                $body = 'Your Subscription will expire very soon. Only ' . $days_remaining . ' Days Left. Please subscribe to a plan before expiration.';
 
-                                if ($compareDays) {
-                                    $days_remaining = $startDate->diffInDays(Carbon::parse($payment_log->expire_date));
+                                Mail::to($payment_log->email)->send(new BasicMail($body, $subject));
 
-                                    $subject = 'Subscription Will Expire - ' . get_static_option('site_title');
-                                    $body = 'Your Subscription will expire very soon. Only ' . $days_remaining . ' Days Left. Please subscribe to a plan before expiration.';
-
-                                    Mail::to($payment_log->email)->send(new BasicMail($body, $subject));
-
-                                    Log::info('Expiry mail sent', [
-                                        'user_id'     => $user->id,
-                                        'tenant_id'   => $table_user_id->id,
-                                        'email'       => $payment_log->email,
-                                        'days_left'   => $days_remaining,
-                                        'expire_date' => $payment_log->expire_date,
-                                    ]);
-
-                                    break; // exit loop once mail sent
-                                }
+                                Log::info('Expiry mail sent', [
+                                    'user_id'     => $user->id,
+                                    'tenant_id'   => $table_user_id->id,
+                                    'email'       => $payment_log->email,
+                                    'days_left'   => $days_remaining,
+                                    'expire_date' => $payment_log->expire_date,
+                                ]);
                             }
                         } catch (Throwable $e) {
                             Log::error('Error processing tenant in PackageExpireCommand', [
@@ -107,6 +101,28 @@ class PackageExpireCommand extends Command
             ]);
             return 1;
         }
+    }
+
+    public static function shouldSendExpiryNotification(
+        Carbon $expireDate,
+        Carbon $today,
+        mixed $notificationDays
+    ): bool {
+        if (!is_array($notificationDays)) {
+            return false;
+        }
+
+        foreach ($notificationDays as $day) {
+            if (!is_numeric($day) || (int) $day < 0) {
+                continue;
+            }
+
+            if ($expireDate->copy()->startOfDay()->subDays((int) $day)->isSameDay($today)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 //    public function handle()

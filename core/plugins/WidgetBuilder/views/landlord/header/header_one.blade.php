@@ -29,6 +29,7 @@
                                 <i class="ti tabler-arrow-narrow-right text-black text-[20px]"></i>
                             </span>
                         </a>
+                        @if(!empty($secondaryBtnText) && !empty($secondaryBtnUrl) && $secondaryBtnUrl !== '#')
                         <a href="{{ $secondaryBtnUrl }}"
                            class="primary-btn text-base-200 font-medium text-sm sm:text-base rounded-[8px] flex items-center gap-2 transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer group py-2 sm:py-2.5 lg:py-2.5 px-4 sm:px-6 lg:px-6">
                             <span class="font-medium text-base-200 transition-transform duration-300 group-hover:-translate-x-1 flex items-center justify-center gap-2">
@@ -36,6 +37,7 @@
                                 {{ $secondaryBtnText }}
                             </span>
                         </a>
+                        @endif
                     </div>
 
                     <span class="mt-6 text-base-100 font-medium">{{ $subtitle }}</span>

@@ -125,7 +125,18 @@ Route::middleware(['landlord_glvar','set_lang','maintenance_mode'])->controller(
     Route::post('/verify-email','check_verify_user_email');
     Route::get('/resend-verify-email','resend_verify_user_email')->name('user.email.verify.resend');
 
-    //Order
+    // Multi-page store order wizard
+    Route::get('/plan-order', 'order_wizard_plans')->name('frontend.plan.order.start');
+    Route::get('/plan-order/{id}/theme', 'order_wizard_theme')->name('frontend.plan.order.theme');
+    Route::post('/plan-order/{id}/theme', 'order_wizard_store_theme')->name('frontend.plan.order.theme.store');
+    Route::get('/plan-order/{id}/store', 'order_wizard_store')->name('frontend.plan.order.store');
+    Route::post('/plan-order/{id}/store', 'order_wizard_store_domain')->name('frontend.plan.order.store.save');
+    Route::get('/plan-order/{id}/register', 'order_wizard_register')->name('frontend.plan.order.register');
+    Route::get('/plan-order/{id}/payment', 'order_wizard_payment')->name('frontend.plan.order.payment');
+    Route::get('/plan-order/{id}/create-store', 'order_wizard_create_store')->name('frontend.plan.order.create-store');
+    Route::post('/plan-order/{id}/create-store', 'order_wizard_provision_free_store')->name('frontend.plan.order.create-store.provision');
+
+    // Legacy plan links remain supported and start at the theme step.
     Route::get('/plan-order/{id}','plan_order')->name('frontend.plan.order');
     //payment status route
     Route::get('/order-success/{id}','order_payment_success')->name('frontend.order.payment.success');

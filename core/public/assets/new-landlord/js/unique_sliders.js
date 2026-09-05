@@ -1,13 +1,18 @@
 
         (() => {
             const track = document.getElementById("track");
-            const wrap = track.parentElement;
-            const cards = Array.from(track.children);
+            const wrap = track?.parentElement;
             const prev = document.getElementById("prev");
             const next = document.getElementById("next");
             const dotsBox = document.getElementById("dots");
 
-            const isMobile = () => matchMedia("(max-width:767px)").matches;
+            if (!track || !wrap || !prev || !next || !dotsBox) {
+                return;
+            }
+
+            const cards = Array.from(track.children);
+
+            const isMobile = () => matchMedia("(max-width:1023px)").matches;
 
             cards.forEach((_, i) => {
                 const dot = document.createElement("span");
@@ -18,6 +23,31 @@
             const dots = Array.from(dotsBox.children);
 
             let current = 0;
+            let autoSlideInterval;
+
+            function startAutoSlide() {
+                if (autoSlideInterval) clearInterval(autoSlideInterval);
+                autoSlideInterval = setInterval(() => {
+                    if (isMobile() && cards.length > 0) {
+                        go(1);
+                    }
+                }, 3000);
+            }
+
+            function stopAutoSlide() {
+                if (autoSlideInterval) {
+                    clearInterval(autoSlideInterval);
+                    autoSlideInterval = null;
+                }
+            }
+
+            function checkAutoSlide() {
+                if (isMobile()) {
+                    startAutoSlide();
+                } else {
+                    stopAutoSlide();
+                }
+            }
 
             function center(i) {
                 const card = cards[i];
@@ -45,7 +75,14 @@
             }
 
             function go(step) {
-                activate(Math.min(Math.max(current + step, 0), cards.length - 1), true);
+                const nextIndex = Math.min(Math.max(current + step, 0), cards.length - 1);
+                if (isMobile()) {
+                    // For mobile, wrap around for continuous auto-sliding
+                    const wrappedIndex = nextIndex >= cards.length ? 0 : nextIndex < 0 ? cards.length - 1 : nextIndex;
+                    activate(wrappedIndex, false);
+                } else {
+                    activate(nextIndex, true);
+                }
             }
 
             prev.onclick = () => go(-1);
@@ -57,9 +94,13 @@
             }, { passive: true });
 
             cards.forEach((card, i) => {
-                card.addEventListener("mouseenter", () => 
-                    matchMedia("(hover:hover)").matches && activate(i, true)
-                );
+                card.addEventListener("mouseenter", () => {
+                    if (isMobile()) stopAutoSlide();
+                    if (matchMedia("(hover:hover)").matches) activate(i, true);
+                });
+                card.addEventListener("mouseleave", () => {
+                    if (isMobile()) startAutoSlide();
+                });
                 card.addEventListener("click", () => activate(i, true));
             });
 
@@ -72,15 +113,32 @@
             track.addEventListener("touchend", (e) => {
                 const dx = e.changedTouches[0].clientX - sx;
                 const dy = e.changedTouches[0].clientY - sy;
-                if (isMobile() ? Math.abs(dy) > 60 : Math.abs(dx) > 60)
-                    go((isMobile() ? dy : dx) > 0 ? -1 : 1);
+                const threshold = 30;
+                
+                if (isMobile()) {
+                    // For mobile, use horizontal swipe
+                    if (Math.abs(dx) > threshold && Math.abs(dx) > Math.abs(dy)) {
+                        go(dx > 0 ? -1 : 1);
+                        // Restart auto-slide after manual swipe
+                        stopAutoSlide();
+                        setTimeout(startAutoSlide, 1000);
+                    }
+                } else {
+                    // For desktop, use vertical/horizontal as before
+                    if (Math.abs(dy) > 60 || Math.abs(dx) > 60)
+                        go((isMobile() ? dy : dx) > 0 ? -1 : 1);
+                }
             }, { passive: true });
 
-            if (isMobile()) dotsBox.hidden = true;
+            if (isMobile()) dotsBox.hidden = false;
 
-            addEventListener("resize", () => center(current));
+            addEventListener("resize", () => {
+                center(current);
+                checkAutoSlide();
+            });
 
             toggleUI(0);
             center(0);
+            checkAutoSlide();
         })();
  

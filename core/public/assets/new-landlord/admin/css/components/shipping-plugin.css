@@ -1,0 +1,422 @@
+/* ──────────────────────────────────────────────────────────────────
+   Shipping Plugin – gateway cards & modals
+────────────────────────────────────────────────────────────────── */
+
+/* ── Gateway Card ─────────────────────────────────────────────── */
+.sp-gateway-card {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-main);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-main);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    overflow: hidden;
+}
+
+.sp-gateway-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px -8px rgba(26, 92, 78, 0.18);
+}
+
+/* ── Logo Area ────────────────────────────────────────────────── */
+.sp-card-logo {
+    height: 148px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e8f5f2 0%, #d0ece8 100%);
+    position: relative;
+}
+
+.sp-card-logo img {
+    max-height: 72px;
+    max-width: 70%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(26, 92, 78, 0.12));
+}
+
+/* ── Status Badge ─────────────────────────────────────────────── */
+.sp-status-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.sp-status-badge.active {
+    background: var(--color-success-bg);
+    color: var(--color-success);
+    border: 1px solid #a7f3d0;
+}
+
+.sp-status-badge.inactive {
+    background: var(--color-danger-bg);
+    color: var(--color-danger);
+    border: 1px solid #fecaca;
+}
+
+.sp-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.sp-status-badge.active .sp-status-dot   { background: var(--color-success); }
+.sp-status-badge.inactive .sp-status-dot { background: var(--color-danger); }
+
+/* ── Token Error Banner ───────────────────────────────────────── */
+.sp-token-error {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 5px 12px;
+    background: var(--color-danger);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+/* ── Card Body ────────────────────────────────────────────────── */
+.sp-card-body {
+    padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.sp-card-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    margin-bottom: 0.35rem;
+}
+
+.sp-card-desc {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    flex: 1;
+    margin-bottom: 1rem;
+}
+
+.sp-card-desc a {
+    color: var(--color-primary);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.sp-card-desc a:hover { text-decoration: underline; }
+
+/* ── Action Buttons ───────────────────────────────────────────── */
+.sp-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.sp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 13px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+}
+
+.sp-btn:hover { opacity: 0.82; transform: translateY(-1px); }
+.sp-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.sp-btn-toggle-active {
+    background: var(--color-success-bg);
+    color: var(--color-success);
+    border-color: #a7f3d0;
+}
+
+.sp-btn-toggle-inactive {
+    background: var(--color-danger-bg);
+    color: var(--color-danger);
+    border-color: #fecaca;
+}
+
+.sp-btn-settings {
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    border-color: var(--color-border-main);
+}
+
+.sp-btn-config {
+    background: var(--color-warning-bg);
+    color: var(--color-warning);
+    border-color: #fde68a;
+}
+
+.sp-btn-info {
+    background: var(--color-info-bg);
+    color: var(--color-info);
+    border-color: #bfdbfe;
+}
+
+/* ── Modal Redesign ───────────────────────────────────────────── */
+.sp-modal .modal-content {
+    border: none;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 24px 64px -12px rgba(0,0,0,0.18);
+}
+
+.sp-modal .modal-header {
+    background: var(--gradient-featured);
+    border-bottom: none;
+    padding: 1.25rem 1.5rem;
+    position: relative;
+}
+
+.sp-modal .modal-header .modal-title {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sp-modal .modal-header .modal-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.sp-modal .btn-close {
+    filter: brightness(0) invert(1);
+    opacity: 0.75;
+}
+
+.sp-modal .btn-close:hover { opacity: 1; }
+
+.sp-modal .modal-body {
+    padding: 1.5rem;
+    background: var(--color-bg-surface);
+}
+
+.sp-modal .sp-section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border-main);
+}
+
+.sp-modal .sp-form-group {
+    margin-bottom: 1.1rem;
+}
+
+.sp-modal .sp-form-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    margin-bottom: 0.4rem;
+    display: block;
+}
+
+.sp-modal .sp-form-label .req {
+    color: var(--color-danger);
+    margin-left: 2px;
+}
+
+.sp-modal .sp-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.sp-modal .sp-input-icon {
+    position: absolute;
+    left: 11px;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    pointer-events: none;
+}
+
+.sp-modal .sp-input {
+    width: 100%;
+    padding: 9px 12px 9px 36px;
+    border: 1.5px solid var(--color-border-main);
+    border-radius: 9px;
+    font-size: 0.85rem;
+    color: var(--color-text-dark);
+    background: var(--color-bg-base);
+    transition: border-color 0.18s, box-shadow 0.18s;
+    outline: none;
+}
+
+.sp-modal .sp-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(26, 92, 78, 0.1);
+    background: var(--color-bg-surface);
+}
+
+.sp-modal .sp-input-hint {
+    font-size: 0.73rem;
+    color: var(--color-text-muted);
+    margin-top: 5px;
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.sp-modal .sp-input-hint.info { color: var(--color-info); }
+
+.sp-modal .sp-modal-footer {
+    padding: 1rem 1.5rem 1.5rem;
+    background: var(--color-bg-surface);
+    border-top: 1px solid var(--color-border-main);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+.sp-modal .sp-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 22px;
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: 9px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.18s;
+}
+
+.sp-modal .sp-submit-btn:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-1px);
+}
+
+.sp-modal .sp-cancel-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    background: var(--color-bg-base);
+    color: var(--color-text-muted);
+    border: 1.5px solid var(--color-border-main);
+    border-radius: 9px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+
+.sp-modal .sp-cancel-btn:hover {
+    background: var(--color-bg-secondary);
+    color: var(--color-text-dark);
+}
+
+/* ── Select override inside sp-modal ──────────────────────────── */
+.sp-modal .sp-select {
+    width: 100%;
+    padding: 9px 12px 9px 36px;
+    border: 1.5px solid var(--color-border-main);
+    border-radius: 9px;
+    font-size: 0.85rem;
+    color: var(--color-text-dark);
+    background: var(--color-bg-base);
+    transition: border-color 0.18s, box-shadow 0.18s;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+.sp-modal .sp-select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(26, 92, 78, 0.1);
+    background-color: var(--color-bg-surface);
+}
+
+/* ── Switcher override inside sp-modal ────────────────────────── */
+.sp-modal .sp-switcher-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.sp-modal .sp-switcher-row:last-child { border-bottom: none; }
+
+.sp-modal .sp-switcher-info { flex: 1; }
+
+.sp-modal .sp-switcher-info .sw-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    margin-bottom: 3px;
+}
+
+.sp-modal .sp-switcher-info .sw-desc {
+    font-size: 0.74rem;
+    color: var(--color-text-muted);
+    line-height: 1.45;
+}
+
+/* ── Page Header ──────────────────────────────────────────────── */
+.sp-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.sp-page-header h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin: 0 0 3px;
+}
+
+.sp-page-header p {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    margin: 0;
+}

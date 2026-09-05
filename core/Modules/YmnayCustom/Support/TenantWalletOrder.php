@@ -15,15 +15,17 @@ class TenantWalletOrder
 
         request()->validate([
             'ymnay_wallet_id' => ['required', 'integer'],
+            'ymnay_wallet_account' => ['required', 'string', 'max:100'],
             'ymnay_wallet_proof' => ['required', 'image', 'mimes:jpeg,jpg,png,webp', 'max:4096'],
         ], [
-            'ymnay_wallet_id.required' => __('Please select a wallet.'),
-            'ymnay_wallet_proof.required' => __('Transfer receipt image is required.'),
+            'ymnay_wallet_id.required' => __('يرجى اختيار المحفظة.'),
+            'ymnay_wallet_account.required' => __('يرجى اختيار رقم المحفظة والعملة.'),
+            'ymnay_wallet_proof.required' => __('صورة سند التحويل مطلوبة.'),
         ]);
 
-        $snapshot = WalletRepository::checkoutSnapshot((int) request('ymnay_wallet_id'));
+        $snapshot = WalletRepository::checkoutSnapshot((int) request('ymnay_wallet_id'), (string) request('ymnay_wallet_account'));
         if (!$snapshot) {
-            throw ValidationException::withMessages(['ymnay_wallet_id' => __('The selected wallet is unavailable.')]);
+            throw ValidationException::withMessages(['ymnay_wallet_id' => __('المحفظة أو رقم التحويل المحدد غير متاح.')]);
         }
 
         $image = request()->file('ymnay_wallet_proof');

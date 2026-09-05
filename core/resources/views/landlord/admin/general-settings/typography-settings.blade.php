@@ -9,6 +9,48 @@
 
 <x-landlord-error-msg/>
 <x-landlord-flash-msg/>
+<div class="mb-5">
+    <details class="bg-surface rounded-xl shadow-main border border-main overflow-hidden group">
+        <summary class="px-4 sm:px-6 py-4 cursor-pointer flex justify-between items-center font-bold text-dark font-urbanist select-none" style="background-color: var(--primary-soft, #f0fdf4);">
+            <div class="flex items-center gap-2">
+                <i class="las la-info-circle text-primary text-xl"></i>
+                {{__('How to add your own custom fonts')}}
+            </div>
+            <i class="las la-angle-down transition-transform group-open:rotate-180"></i>
+        </summary>
+        <div class="p-4 sm:p-6 text-sm text-dark space-y-4 bg-white border-t border-main">
+            <p>{{__('Your website supports adding self-hosted custom fonts natively. Follow these steps to add new fonts:')}}</p>
+            <ol class="list-decimal pl-5 space-y-2">
+                <li><strong>{{__('Prepare Files')}}:</strong> {{__('Place your .woff2 or .woff font files inside a folder named after your font (e.g. "My Custom Font").')}}</li>
+                <li><strong>{{__('For Client Shops (Tenant)')}}:</strong>
+                    <ul class="list-disc pl-5 mt-1 text-xs text-gray-600">
+                        <li>{{__('Upload your font folder to:')}} <code class="bg-gray-100 px-1 rounded text-black">assets/tenant/frontend/webfonts/custom/</code></li>
+                        <li>{{__('Add your JSON configuration to:')}} <code class="bg-gray-100 px-1 rounded text-black">assets/tenant/frontend/webfonts/custom-fonts.json</code></li>
+                    </ul>
+                </li>
+                <li><strong>{{__('For Main Site (Landlord)')}}:</strong>
+                    <ul class="list-disc pl-5 mt-1 text-xs text-gray-600">
+                        <li>{{__('Upload your font folder to:')}} <code class="bg-gray-100 px-1 rounded text-black">assets/landlord/frontend/webfonts/custom/</code></li>
+                        <li>{{__('Add your JSON configuration to:')}} <code class="bg-gray-100 px-1 rounded text-black">assets/landlord/frontend/webfonts/custom-fonts.json</code></li>
+                    </ul>
+                </li>
+            </ol>
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mt-3">
+                <p class="font-bold mb-2 text-xs">{{__('Example JSON configuration:')}}</p>
+                <pre class="text-xs text-blue-600 whitespace-pre-wrap font-mono">
+"My Custom Font": {
+    "variants": [ "0,400", "0,700" ],
+    "files": {
+        "0,400": "My Custom Font/font-regular.woff2",
+        "0,700": "My Custom Font/font-bold.woff2"
+    }
+}</pre>
+                <p class="text-xs mt-3 text-gray-500"><em>{{__('Note: "0,400" means Normal-Regular, "1,700" means Italic-Bold.')}}</em></p>
+            </div>
+            <p class="text-primary font-semibold mt-2">{{__('Once you save the JSON file, your new font will automatically appear at the top of the dropdowns below!')}}</p>
+        </div>
+    </details>
+</div>
 
 <form class="forms-sample" method="post" action="{{route(route_prefix().'admin.general.typography.settings')}}">
     @csrf
@@ -40,7 +82,7 @@
                         <label class="lnd-label">{{__('Font Variant')}}</label>
                         @php
                             $font_family_selected = get_static_option('body_font_family') ?? get_static_option('body_font_family');
-                            $get_font_family_variants = property_exists($google_fonts, $font_family_selected) ? (array) $google_fonts->$font_family_selected : ['variants' => array('regular')];
+                            $get_font_family_variants = array_key_exists($font_family_selected, (array)$google_fonts) ? (array) $google_fonts[$font_family_selected] : ['variants' => array('regular')];
                             $body_selected_variant = !empty(get_static_option('body_font_variant')) ? unserialize(get_static_option('body_font_variant')) : [];
                         @endphp
                         <div class="body_font_variant_landlord flex flex-wrap gap-2 p-3 border border-main rounded-lg bg-white">
@@ -91,7 +133,7 @@
                         <label class="lnd-label">{{__('Font Variant')}}</label>
                         @php
                             $font_family_selected = get_static_option('heading_font_family') ?? '';
-                            $get_font_family_variants = property_exists($google_fonts, $font_family_selected) ? (array) $google_fonts->$font_family_selected : ['variants' => array('regular')];
+                            $get_font_family_variants = array_key_exists($font_family_selected, (array)$google_fonts) ? (array) $google_fonts[$font_family_selected] : ['variants' => array('regular')];
                             $heading_selected_variant = !empty(get_static_option('heading_font_variant')) ? unserialize(get_static_option('heading_font_variant')) : [];
                         @endphp
                         <div class="heading_font_variant_landlord flex flex-wrap gap-2 p-3 border border-main rounded-lg bg-white">

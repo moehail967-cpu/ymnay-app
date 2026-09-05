@@ -18,6 +18,7 @@ use App\Helpers\EmailHelpers\VerifyUserMailSend;
 use Illuminate\Support\Facades\Log;
 use App\Helpers\LanguageHelper;
 use App\Helpers\Payment\DatabaseUpdateAndMailSend\LandlordPricePlanAndTenantCreate;
+use App\Helpers\TenantHelper\TenantHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Services\DynamicRouteManager;
 use App\Mail\AdminResetEmail;
@@ -34,6 +35,7 @@ use App\Models\Tenant;
 use App\Models\TenantUniqueKey;
 use App\Models\Themes;
 use App\Models\User;
+use App\Models\ZeroPricePlanHistory;
 use App\Traits\SeoDataConfig;
 use Artesaos\SEOTools\SEOMeta;
 use Carbon\Carbon;
@@ -234,30 +236,224 @@ class LandlordFrontendController extends Controller
 
     public function plan_order($id)
     {
-        abort_if(empty($id), 404);
+        $this->orderWizardPlan($id);
 
-        $order_details    = PricePlan::findOrFail($id);
-        $payment_gateways = PaymentGateway::where('name', 'manual_payment')->first();
+        return redirect()->route('landlord.frontend.plan.order.theme', $id);
+    }
 
-        $user             = Auth::guard('web')->user();
-        $payment_old_data = [];
-        $user_has_trial   = false;
+    public function order_wizard_plans()
+    {
+        session()->forget('order_wizard');
 
-        if ($user) {
-            $payment_old_data = PaymentLogs::where(['user_id' => $user->id, 'payment_status' => 'complete'])->get()->toArray();
-            $user_has_trial   = PaymentLogs::where('user_id', $user->id)->where('status', 'trial')->exists();
+        return view('landlord.frontend.pages.package.order-wizard', [
+            'step' => 'plans',
+            'plans' => PricePlan::where('status', 1)->orderBy('id')->get(),
+            'state' => [],
+        ]);
+    }
+
+    public function order_wizard_theme($id)
+    {
+        $plan = $this->orderWizardPlan($id);
+
+        return view('landlord.frontend.pages.package.order-wizard', [
+            'step' => 'theme',
+            'plan' => $plan,
+            'themeSlugs' => $this->orderWizardThemeSlugs($plan),
+            'state' => session('order_wizard', []),
+        ]);
+    }
+
+    public function order_wizard_store_theme(Request $request, $id)
+    {
+        $plan = $this->orderWizardPlan($id);
+        $request->validate(['theme_slug' => ['required', \Illuminate\Validation\Rule::in($this->orderWizardThemeSlugs($plan))]]);
+
+        session()->put('order_wizard.theme_slug', $request->theme_slug);
+
+        return redirect()->route('landlord.frontend.plan.order.store', $plan->id);
+    }
+
+    public function order_wizard_store($id)
+    {
+        $plan = $this->orderWizardPlan($id);
+        if (empty(session('order_wizard.theme_slug'))) {
+            return redirect()->route('landlord.frontend.plan.order.theme', $plan->id);
         }
 
-        // Show trial toggle only if plan supports trial AND user hasn't used one yet
-        $show_trial_option = $order_details->has_trial == 1 && !$user_has_trial;
-
-        return view('landlord.frontend.pages.package.order-page-new')->with([
-            'order_details'     => $order_details,
-            'payment_old_data'  => $payment_old_data,
-            'payment_gateways'  => $payment_gateways ?? [],
-            'user_has_trial'    => $user_has_trial,
-            'show_trial_option' => $show_trial_option,
+        return view('landlord.frontend.pages.package.order-wizard', [
+            'step' => 'store',
+            'plan' => $plan,
+            'state' => session('order_wizard', []),
         ]);
+    }
+
+    public function order_wizard_store_domain(Request $request, $id)
+    {
+        $plan = $this->orderWizardPlan($id);
+        $request->validate(['subdomain' => ['required', 'alpha_dash', 'max:63', 'unique:tenants,id']]);
+
+        $restricted = array_filter(array_map('trim', explode(',', get_static_option('forbidden_subdomains') ?? '')));
+        if (in_array(strtolower($request->subdomain), array_map('strtolower', $restricted), true)) {
+            return back()->withErrors(['subdomain' => __('wizard.subdomain_unavailable')])->withInput();
+        }
+
+        session()->put('order_wizard.subdomain', Str::lower($request->subdomain));
+
+        return redirect()->route('landlord.frontend.plan.order.register', $plan->id);
+    }
+
+    public function order_wizard_register($id)
+    {
+        $plan = $this->orderWizardPlan($id);
+        if (empty(session('order_wizard.theme_slug')) || empty(session('order_wizard.subdomain'))) {
+            return redirect()->route('landlord.frontend.plan.order.store', $plan->id);
+        }
+
+        if (Auth::guard('web')->check()) {
+            return $this->orderWizardNextAfterRegistration($plan);
+        }
+
+        return view('landlord.frontend.pages.package.order-wizard', [
+            'step' => 'register',
+            'plan' => $plan,
+            'state' => session('order_wizard', []),
+        ]);
+    }
+
+    public function order_wizard_payment($id)
+    {
+        $plan = $this->orderWizardPlan($id);
+        if (!Auth::guard('web')->check()) {
+            return redirect()->route('landlord.frontend.plan.order.register', $plan->id);
+        }
+        if (empty(session('order_wizard.theme_slug')) || empty(session('order_wizard.subdomain'))) {
+            return redirect()->route('landlord.frontend.plan.order.store', $plan->id);
+        }
+        if ((float) $plan->price === 0.0) {
+            return redirect()->route('landlord.frontend.plan.order.create-store', $plan->id);
+        }
+
+        return view('landlord.frontend.pages.package.order-wizard', [
+            'step' => 'payment',
+            'plan' => $plan,
+            'state' => session('order_wizard', []),
+        ]);
+    }
+
+    public function order_wizard_create_store($id)
+    {
+        $plan = $this->orderWizardPlan($id);
+        if (!Auth::guard('web')->check()) {
+            return redirect()->route('landlord.frontend.plan.order.register', $plan->id);
+        }
+        if ((float) $plan->price > 0) {
+            return redirect()->route('landlord.frontend.plan.order.payment', $plan->id);
+        }
+
+        return view('landlord.frontend.pages.package.order-wizard', [
+            'step' => 'create-store',
+            'plan' => $plan,
+            'state' => session('order_wizard', []),
+        ]);
+    }
+
+    public function order_wizard_provision_free_store(Request $request, $id)
+    {
+        $plan = $this->orderWizardPlan($id);
+        $state = session('order_wizard', []);
+        $user = Auth::guard('web')->user();
+
+        abort_unless($user && (float) $plan->price === 0.0, 403);
+        abort_if(empty($state['theme_slug']) || empty($state['subdomain']), 422, __('wizard.complete_setup'));
+
+        if (Tenant::find($state['subdomain'])) {
+            return response()->json(['type' => 'danger', 'msg' => __('wizard.subdomain_in_use')], 422);
+        }
+
+        $freePlanLimit = get_static_option('zero_plan_limit');
+        if ($freePlanLimit !== null && $freePlanLimit !== '' && ZeroPricePlanHistory::where('user_id', $user->id)->count() >= (int) $freePlanLimit) {
+            return response()->json(['type' => 'danger', 'msg' => __('wizard.free_limit')], 422);
+        }
+
+        $tenantHelper = TenantHelpers::init()
+            ->setTenantId($state['subdomain'])
+            ->setPackage($plan)
+            ->setTheme($state['theme_slug']);
+
+        try {
+            $paymentLog = PaymentLogs::create([
+                'email' => $user->email,
+                'name' => $user->name,
+                'package_name' => $plan->title,
+                'package_price' => 0,
+                'package_gateway' => 'manual_payment',
+                'package_id' => $plan->id,
+                'user_id' => $user->id,
+                'tenant_id' => $state['subdomain'],
+                'theme_slug' => $state['theme_slug'],
+                'status' => 'complete',
+                'payment_status' => 'complete',
+                'is_renew' => 0,
+                'track' => Str::random(10),
+                'start_date' => $tenantHelper->getStartDate(),
+                'expire_date' => $tenantHelper->getExpiredDate(),
+            ]);
+
+            if (!(new PaymentLogController())->update_tenant(['order_id' => $paymentLog->id], 1)) {
+                throw new \RuntimeException('Tenant provisioning failed.');
+            }
+            ZeroPricePlanHistory::create(['user_id' => $user->id, 'plan_id' => $plan->id]);
+            session()->forget('order_wizard');
+            $tenant = Tenant::findOrFail($state['subdomain']);
+
+            return response()->json([
+                'type' => 'success',
+                'redirect' => $this->orderWizardTenantAdminUrl($tenant, $user),
+            ]);
+        } catch (\Throwable $exception) {
+            Log::error('Free wizard store provisioning failed', [
+                'plan_id' => $plan->id,
+                'subdomain' => $state['subdomain'],
+                'error' => $exception->getMessage(),
+            ]);
+
+            return response()->json(['type' => 'danger', 'msg' => __('wizard.unable_create')], 500);
+        }
+    }
+
+    private function orderWizardPlan($id): PricePlan
+    {
+        $plan = PricePlan::where('status', 1)->findOrFail($id);
+        session()->put('order_wizard.plan_id', $plan->id);
+
+        return $plan;
+    }
+
+    private function orderWizardThemeSlugs(PricePlan $plan): array
+    {
+        $themeSlugs = $plan->plan_themes()->pluck('theme_slug')->filter()->values()->all();
+
+        return !empty($themeSlugs) ? $themeSlugs : getAllThemeSlug();
+    }
+
+    private function orderWizardNextAfterRegistration(PricePlan $plan)
+    {
+        return redirect()->route(
+            (float) $plan->price === 0.0
+                ? 'landlord.frontend.plan.order.create-store'
+                : 'landlord.frontend.plan.order.payment',
+            $plan->id
+        );
+    }
+
+    private function orderWizardTenantAdminUrl(Tenant $tenant, User $user): string
+    {
+        $domain = optional($tenant->domain)->domain ?: $tenant->id . '.' . env('CENTRAL_DOMAIN');
+        $baseUrl = tenant_url_with_protocol($domain);
+        $token = hash_hmac('sha512', $user->username . '_' . $tenant->id, $tenant->unique_key);
+
+        return $baseUrl . '/token-login/' . $token;
     }
 
     public function order_confirm($id)
@@ -288,6 +484,16 @@ class LandlordFrontendController extends Controller
 
         if (empty($extract_id)) {
             abort(404);
+        }
+
+        $tenant = Tenant::find($payment_details->tenant_id);
+        $user = Auth::guard('web')->user();
+        if ($payment_details->payment_status === 'complete'
+            && $tenant
+            && $user
+            && (int) $tenant->user_id === (int) $user->id) {
+            session()->forget('order_wizard');
+            return redirect()->to($this->orderWizardTenantAdminUrl($tenant, $user));
         }
 
         return view('landlord.frontend.payment.payment-success', compact('payment_details', 'domain'));
@@ -348,7 +554,7 @@ class LandlordFrontendController extends Controller
             'password'        => ['required', 'string', 'min:8', 'confirmed'],
             'terms_condition' => ['required'],
         ], [
-            'terms_condition.required' => __('Please mark on our terms and condition to agree and proceed'),
+            'terms_condition.required' => __('wizard.terms_required'),
         ]);
 
         // Generate a 6-digit numeric OTP
@@ -372,13 +578,17 @@ class LandlordFrontendController extends Controller
 
         // Send OTP email via existing BasicMail + MarkupGenerator
         try {
-            $msg  = MarkupGenerator::paragraph(__('Hello') . ' ' . $request->name . ',');
-            $msg .= MarkupGenerator::paragraph(__('Use the code below to verify your email address. It expires in 5 minutes.'));
+            $msg  = MarkupGenerator::paragraph(__('wizard.hello') . ' ' . $request->name . ',');
+            $msg .= MarkupGenerator::paragraph(__('wizard.otp_email_body'));
             $msg .= MarkupGenerator::code($otp);
-            $msg .= MarkupGenerator::paragraph(__('If you did not request this, please ignore this email.'));
-            $subject = __('Your Registration OTP') . ' — ' . get_static_option('site_title');
-            Mail::to($request->email)->send(new BasicMail($msg, $subject));
-        } catch (\Exception $e) {
+            $msg .= MarkupGenerator::paragraph(__('wizard.otp_ignore'));
+            $subject = __('wizard.otp_subject') . ' — ' . get_static_option('site_title');
+            $sentMessage = Mail::to($request->email)->send(new BasicMail($msg, $subject));
+            Log::info('[tenant_user_create_otp] OTP email accepted by mail server', [
+                'email' => $request->email,
+                'message_id' => $sentMessage?->getMessageId(),
+            ]);
+        } catch (\Throwable $e) {
             Log::error('[tenant_user_create_otp] OTP email failed', [
                 'email' => $request->email,
                 'error' => $e->getMessage(),
@@ -386,14 +596,14 @@ class LandlordFrontendController extends Controller
             session()->forget('pending_registration');
             return response()->json([
                 'type' => 'danger',
-                'msg'  => __('Could not send OTP email. Please check your mail configuration.'),
+                'msg'  => __('wizard.otp_email_failed'),
             ]);
         }
 
         return response()->json([
             'status' => 'otp_sent',
             'type'   => 'success',
-            'msg'    => __('OTP sent to your email. Please check your inbox.'),
+            'msg'    => __('wizard.otp_sent'),
             'email'  => $request->email,
         ]);
     }
@@ -407,7 +617,7 @@ class LandlordFrontendController extends Controller
         if (empty($pending)) {
             return response()->json([
                 'type'   => 'danger',
-                'msg'    => __('Session expired. Please register again.'),
+                'msg'    => __('wizard.session_expired'),
                 'status' => 'expired',
             ]);
         }
@@ -417,7 +627,7 @@ class LandlordFrontendController extends Controller
             session()->forget('pending_registration');
             return response()->json([
                 'type'   => 'danger',
-                'msg'    => __('OTP has expired. Please register again.'),
+                'msg'    => __('wizard.otp_expired'),
                 'status' => 'expired',
             ]);
         }
@@ -427,7 +637,7 @@ class LandlordFrontendController extends Controller
             session()->forget('pending_registration');
             return response()->json([
                 'type'   => 'danger',
-                'msg'    => __('Too many incorrect attempts. Please register again.'),
+                'msg'    => __('wizard.otp_too_many'),
                 'status' => 'expired',
             ]);
         }
@@ -439,7 +649,7 @@ class LandlordFrontendController extends Controller
             $remaining = 5 - $pending['attempts'];
             return response()->json([
                 'type'   => 'danger',
-                'msg'    => __('Incorrect OTP.') . ' ' . $remaining . ' ' . __('attempts remaining.'),
+                'msg'    => __('wizard.otp_incorrect') . ' ' . $remaining . ' ' . __('wizard.attempts_remaining'),
                 'status' => 'invalid',
             ]);
         }
@@ -466,7 +676,7 @@ class LandlordFrontendController extends Controller
         return response()->json([
             'status'     => 'valid',
             'type'       => 'success',
-            'msg'        => __('Registration successful! Redirecting...'),
+            'msg'        => __('wizard.registration_success'),
             'user_id'    => $user->id,
             'name'       => $user->name,
             'email'      => $user->email,
@@ -481,7 +691,7 @@ class LandlordFrontendController extends Controller
         if (empty($pending)) {
             return response()->json([
                 'type'   => 'danger',
-                'msg'    => __('Session expired. Please register again.'),
+                'msg'    => __('wizard.session_expired'),
                 'status' => 'expired',
             ]);
         }
@@ -491,7 +701,7 @@ class LandlordFrontendController extends Controller
             $wait = 60 - (now()->timestamp - $pending['last_sent']);
             return response()->json([
                 'type' => 'warning',
-                'msg'  => sprintf(__('Please wait %d seconds before resending.'), $wait),
+            'msg'  => sprintf(__('wizard.resend_wait'), $wait),
             ]);
         }
 
@@ -505,25 +715,29 @@ class LandlordFrontendController extends Controller
         session()->save();
 
         try {
-            $msg  = MarkupGenerator::paragraph(__('Hello') . ' ' . $pending['name'] . ',');
-            $msg .= MarkupGenerator::paragraph(__('Your new OTP code (expires in 5 minutes):'));
+            $msg  = MarkupGenerator::paragraph(__('wizard.hello') . ' ' . $pending['name'] . ',');
+            $msg .= MarkupGenerator::paragraph(__('wizard.otp_email_body'));
             $msg .= MarkupGenerator::code($otp);
-            $subject = __('Resend: Your Registration OTP') . ' — ' . get_static_option('site_title');
-            Mail::to($pending['email'])->send(new BasicMail($msg, $subject));
-        } catch (\Exception $e) {
+            $subject = __('wizard.otp_subject') . ' — ' . get_static_option('site_title');
+            $sentMessage = Mail::to($pending['email'])->send(new BasicMail($msg, $subject));
+            Log::info('[resend_registration_otp] OTP email accepted by mail server', [
+                'email' => $pending['email'],
+                'message_id' => $sentMessage?->getMessageId(),
+            ]);
+        } catch (\Throwable $e) {
             Log::error('[resend_registration_otp] Email failed', [
                 'email' => $pending['email'],
                 'error' => $e->getMessage(),
             ]);
             return response()->json([
                 'type' => 'danger',
-                'msg'  => __('Could not resend OTP. Please try again.'),
+                'msg'  => __('wizard.resend_failed'),
             ]);
         }
 
         return response()->json([
             'type'   => 'success',
-            'msg'    => __('A new OTP has been sent to your email.'),
+            'msg'    => __('wizard.resend_sent'),
             'status' => 'resent',
         ]);
     }

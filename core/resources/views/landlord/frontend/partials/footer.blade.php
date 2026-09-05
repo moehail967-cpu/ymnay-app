@@ -157,12 +157,10 @@ $(document).on('submit', '.contact-two-form', function (e) {
 </script>
 <script src="{{asset('assets/new-landlord/js/counter_up.js')}}"></script>
 <script src="{{asset('assets/new-landlord/js/glightbox.min.js')}}"></script>
-<script src="{{asset('assets/new-landlord/js/pagination_sliders.js')}}"></script>
-<script src="{{asset('assets/new-landlord/js/pagination_sliders_2.js')}}"></script>
+<script src="{{ asset('assets/new-landlord/js/pagination_sliders.js') }}?v={{ filemtime(public_path('assets/new-landlord/js/pagination_sliders.js')) }}"></script>
 <script src="{{asset('assets/new-landlord/js/theme_sliders.js')}}"></script>
-<script src="{{asset('assets/new-landlord/js/unique_sliders.js')}}"></script>
-<script src="{{asset('assets/new-landlord/js/accoredian.js')}}"></script>
-<script src="{{asset('assets/new-landlord/js/accoredian.js')}}"></script>
+<script src="{{ asset('assets/new-landlord/js/unique_sliders.js') }}?v={{ filemtime(public_path('assets/new-landlord/js/unique_sliders.js')) }}"></script>
+<script src="{{ asset('assets/new-landlord/js/accoredian.js') }}?v={{ filemtime(public_path('assets/new-landlord/js/accoredian.js')) }}"></script>
 <script src="{{asset('assets/new-landlord/js/nav.js')}}"></script>
 <script src="{{asset('assets/new-landlord/js/feedback.js')}}"></script>
 
@@ -253,7 +251,7 @@ $(document).on('submit', '.contact-two-form', function (e) {
         $dynamic_script = 'assets/landlord/frontend/js/dynamic-script.js';
     @endphp
     @if(file_exists($dynamic_script))
-        <script src="{{asset($dynamic_script)}}"></script>
+        <script src="{{ asset($dynamic_script) }}?v={{ filemtime(public_path($dynamic_script)) }}"></script>
     @endif
     {!! get_static_option('site_third_party_tracking_code') !!}
     {!! renderBodyEndHooks() !!}

@@ -1,30 +1,30 @@
 :root {
     /* Brand Colors */
-    --color-primary: #1a5c4e;
-    --color-primary-hover: #103d34;
-    --color-primary-soft: #e0f0f0;
-    --color-primary-soft-hover: #adebeb;
-    
+    --color-primary: #1A4A3E;
+    --color-primary-hover: #E6F7EF;
+    --color-primary-soft: #F1FFFB;
+    --color-primary-soft-hover: #D8F1ED;
+
     /* Backgrounds */
-    --color-bg-base: #f8fbfa;
-    --color-bg-surface: #ffffff;
-    --color-bg-secondary: #F0FCFB;
-    --color-bg-sidebar: #E7F7F7;
-    --color-bg-muted: #edf9f9;
-    
+    --color-bg-base: #EEF1F3;
+    --color-bg-surface: #FFFFFF;
+    --color-bg-secondary: #EEF1F3;
+    --color-bg-sidebar: #FFFFFF;
+    --color-bg-muted: #EDF9F9;
+
     /* Text Colors */
-    --color-text-main: #1a1816;
-    --color-text-dark: #111827;
-    --color-text-muted: #6b7280;
-    --color-text-subtle: #9ca3af;
-    --color-text-brand: #3a6761;
-    
+    --color-text-main: #000000;
+    --color-text-dark: #000000;
+    --color-text-muted: #64748B;
+    --color-text-subtle: #64748B;
+    --color-text-brand: #21B777;
+
     /* Borders */
-    --color-border-main: #e0f0f0;
-    --color-border-subtle: #edf9f9;
-    --color-border-hover: #b0dede;
-    --color-sidebar-hover: #b0dede;
-    
+    --color-border-main: #F1F7F7;
+    --color-border-subtle: #F8F8F8;
+    --color-border-hover: #D8F1ED;
+    --color-sidebar-hover: #F8FAFC;
+
     /* Semantic Colors */
     --color-success: #10b981;
     --color-success-bg: #ecfdf5;
@@ -34,12 +34,12 @@
     --color-warning-bg: #fffbeb;
     --color-info: #3b82f6;
     --color-info-bg: #eff6ff;
-    
+
     /* Featured Card Gradient */
-    --gradient-featured: linear-gradient(135deg, #1a3a3a 0%, #0f4f4f 50%, #1a5c4e 100%);
-    
+    --gradient-featured: linear-gradient(135deg, #0a2520 0%, #0f3530 50%, #1A4A3E 100%);
+
     /* Elevation Shims */
-    --shadow-main: 0 8px 30px -6px rgba(45, 106, 79, 0.12);
+    --shadow-main: 0 8px 30px -6px rgba(var(--color-primary-rgb, 26, 74, 62), 0.12);
 }
 
 /* Dark Mode Overrides */

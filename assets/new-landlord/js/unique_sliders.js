@@ -1,11 +1,16 @@
 
         (() => {
             const track = document.getElementById("track");
-            const wrap = track.parentElement;
-            const cards = Array.from(track.children);
+            const wrap = track?.parentElement;
             const prev = document.getElementById("prev");
             const next = document.getElementById("next");
             const dotsBox = document.getElementById("dots");
+
+            if (!track || !wrap || !prev || !next || !dotsBox) {
+                return;
+            }
+
+            const cards = Array.from(track.children);
 
             const isMobile = () => matchMedia("(max-width:1023px)").matches;
 

@@ -16,9 +16,7 @@
         ->orderBy('id')
         ->first()
         ?? \App\Models\PricePlan::where('status', 1)->orderBy('id')->first();
-    $getStartedRoute = $featuredPlan
-        ? route('landlord.frontend.plan.order', $featuredPlan->id)
-        : route('landlord.user.login');
+    $getStartedRoute = route('landlord.frontend.plan.order.start');
 @endphp
 
 <header class="fixed top-0 left-0 w-full z-50 {{ $navbarClass }}">
@@ -62,7 +60,7 @@
                                 </a>
                                 <a href="{{ $getStartedRoute }}"
                                    class="{{ $navBtnClass }} font-medium px-4 sm:px-6 py-2 sm:py-2.5 lg:py-2.5 lg:px-6 text-sm sm:text-base rounded-[8px] flex items-center gap-2 transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 active:scale-95">
-                                    {{ get_static_option('default_register_text') ?? __('Create Store') }}
+                                    {{ get_static_option('default_register_text') ?: __('ابدأ موقعك') }}
                                 </a>
                             @endif
                         </div>
@@ -120,7 +118,7 @@
                         </a>
                         <a href="{{ $getStartedRoute }}"
                            class="nav-mobile-auth-btn w-full font-medium px-6 py-2.5 rounded-full flex items-center justify-center gap-2 transition-all duration-200 shadow-lg hover:shadow-xl">
-                            {{ get_static_option('default_register_text') ?? __('Create Store') }}
+                           {{ get_static_option('default_register_text') ?: __('ابدأ موقعك') }}
                         </a>
                     @endif
                 </div>

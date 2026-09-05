@@ -75,36 +75,16 @@
     gap: 0.5rem;
 }
 
-.ppc-icon {
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f3f4f6;
-    flex-shrink: 0;
-    transition: background 0.15s;
-}
-
-.ppc-card.is-on .ppc-icon {
-    background: rgba(26, 92, 78, 0.1);
-}
-
-.ppc-icon i {
-    font-size: 1.1rem;
-    color: #9ca3af;
-    transition: color 0.15s;
-}
-
-.ppc-card.is-on .ppc-icon i {
-    color: var(--color-primary, #1a5c4e);
+.ppc-name {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-text-dark, #111827);
+    line-height: 1.3;
 }
 
 /* Toggle switch visual */
 .ppc-toggle {
     flex-shrink: 0;
-    padding-top: 2px;
 }
 
 .ppc-track {
@@ -139,13 +119,7 @@
     left: calc(100% - 0.85rem - 2px);
 }
 
-.ppc-name {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--color-text-dark, #111827);
-    line-height: 1.3;
-}
-
+/* Paid badge */
 .ppc-footer {
     display: flex;
     align-items: center;
@@ -159,11 +133,6 @@
     font-weight: 700;
     padding: 0.15rem 0.5rem;
     border-radius: 999px;
-}
-
-.ppc-free {
-    background: #f0fdf4;
-    color: #15803d;
 }
 
 .ppc-paid {

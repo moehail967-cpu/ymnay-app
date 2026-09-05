@@ -25,7 +25,7 @@
             </button>
             @endif
 
-            @if(!empty($secondaryBtnText))
+            @if(!empty($secondaryBtnText) && !empty($secondaryBtnUrl) && $secondaryBtnUrl !== '#')
             <button
                 class="secondary-btn text-secondary font-medium px-4 sm:px-6 py-2 sm:py-2.5 lg:py-2.5 lg:px-6 text-sm sm:text-base rounded-[8px] flex items-center gap-2 transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer group">
                 <span

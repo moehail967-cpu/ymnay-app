@@ -85,6 +85,7 @@ trait PaymentUpdateTrait
             if (!$tenant) {
                 $tenant = Tenant::create([
                     'id' => $payment_log->tenant_id,
+                    'user_id' => $payment_log->user_id,
                     'theme_slug' => $payment_log->theme_slug ?? 'hexfashion'
                 ]);
             }

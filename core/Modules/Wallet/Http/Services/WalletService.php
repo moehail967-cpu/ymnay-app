@@ -15,6 +15,7 @@ use Illuminate\Support\Str;
 use Modules\Wallet\Entities\Wallet;
 use Modules\Wallet\Entities\WalletSettings;
 use Modules\Wallet\Entities\WalletTenantList;
+use Throwable;
 
 class WalletService
 {
@@ -30,7 +31,7 @@ class WalletService
         $user_id = $user_id ?? Auth::guard('web')->user()?->id;
         $user = User::find($user_id);
 
-        if ($user->wallet?->walletSettings?->wallet_alert)
+        if ($user?->wallet?->walletSettings?->wallet_alert)
         {
             $wallet_balance = $user?->wallet?->balance;
             $wallet_minimum_amount = $user?->wallet?->walletSettings?->minimum_amount ?? 0;
@@ -48,75 +49,102 @@ class WalletService
 
     public static function renew_package_from_wallet()
     {
-        $array_index['failed'] = 0;
-        $array_index['completed'] = 0;
+        $summary = ['failed' => 0, 'completed' => 0];
 
-        $failed_packages_count = 0;
-        $failed_packages = [];
+        $settings = WalletSettings::query()
+            ->where('renew_package', true)
+            ->get();
 
-        $completed_packages_count = 0;
-        $completed_packages = [];
+        foreach ($settings as $walletSettings) {
+            $user = User::find($walletSettings->user_id);
 
-        $price_plans = PricePlan::select('id', 'title', 'type', 'price')->get();
-        foreach ($price_plans as $plan)
-        {
-            $payment_logs = PaymentLogs::where(['package_id' => $plan->id, 'payment_status' => 'complete'])->latest()->get();
-            foreach ($payment_logs->unique('user_id') as $log)
-            {
-                $user = User::find($log->user_id);
-                $user_id = $user->id;
-                $email = $user->email;
+            if (!$user) {
+                continue;
+            }
 
-                $wallet_settings = WalletSettings::where('user_id', $user_id)->first();
-                if (!empty($wallet_settings) && $wallet_settings->renew_package)
-                {
-                    $wallet_tenant_list = WalletTenantList::where('user_id', $user_id)->get();
-                    foreach ($wallet_tenant_list ?? [] as $key => $tenant)
-                    {
-                        $expire_date = Carbon::parse($tenant->tenant?->expire_date);
-                        if ($expire_date->greaterThan(now()))
-                        {
-                            continue;
+            $failedPackages = [];
+            $completedPackages = [];
+
+            $walletTenantList = WalletTenantList::query()
+                ->where('user_id', $user->id)
+                ->with('tenant')
+                ->get();
+
+            foreach ($walletTenantList as $tenantEntry) {
+                $tenant = $tenantEntry->tenant;
+
+                if (!$tenant?->expire_date || Carbon::parse($tenant->expire_date)->greaterThan(now())) {
+                    continue;
+                }
+
+                $paymentLog = PaymentLogs::query()
+                    ->where('tenant_id', $tenantEntry->tenant_id)
+                    ->where('user_id', $user->id)
+                    ->where('payment_status', 'complete')
+                    ->latest()
+                    ->first();
+
+                $plan = $paymentLog
+                    ? PricePlan::select('id', 'title', 'type', 'price')->find($paymentLog->package_id)
+                    : null;
+
+                if (!$paymentLog || !$plan) {
+                    continue;
+                }
+
+                try {
+                    $renewed = DB::transaction(function () use ($tenantEntry, $paymentLog, $plan, $user) {
+                        $lockedTenant = Tenant::query()
+                            ->whereKey($tenantEntry->tenant_id)
+                            ->lockForUpdate()
+                            ->first();
+
+                        if (!$lockedTenant?->expire_date || Carbon::parse($lockedTenant->expire_date)->greaterThan(now())) {
+                            return null;
                         }
 
-                        $wallet_balance = Wallet::where('user_id', $user_id)->first()->balance;
-                        if($plan->price <= $wallet_balance)
-                        {
-                            if (($wallet_balance - $plan->price) < 0)
-                            {
-                                continue;
-                            }
+                        $wallet = Wallet::query()
+                            ->where('user_id', $user->id)
+                            ->lockForUpdate()
+                            ->first();
 
-                            DB::beginTransaction();
-                            try {
-                                self::renew_package($tenant, $log, $plan, $user);
-                                \DB::commit();
-
-                                $completed_packages['tenant_id'][$array_index['completed']] = $tenant->tenant_id;
-                                $completed_packages['price_plan_title'][$array_index['completed']] = $plan->title;
-                                $completed_packages['price_plan_price'][$array_index['completed']] = $plan->price;
-                                $array_index['completed']++;
-                                $completed_packages_count++;
-                            } catch (\Exception $exception)
-                            {
-                                \DB::rollBack();
-                                return $exception;
-                            }
-                        } else {
-                            $failed_packages['tenant_id'][$array_index['failed']] = $tenant->tenant_id;
-                            $failed_packages['price_plan_title'][$array_index['failed']] = $plan->title;
-                            $failed_packages['price_plan_price'][$array_index['failed']] = $plan->price;
-                            $array_index['failed']++;
-                            $failed_packages_count++;
+                        if (!$wallet || (float) $wallet->balance < (float) $plan->price) {
+                            return false;
                         }
-                    }
+
+                        self::renew_package($tenantEntry, $paymentLog, $plan, $user, $wallet);
+
+                        return true;
+                    }, 3);
+                } catch (Throwable $exception) {
+                    throw $exception;
+                }
+
+                if ($renewed === null) {
+                    continue;
+                }
+
+                $package = [
+                    'tenant_id' => $tenantEntry->tenant_id,
+                    'price_plan_title' => $plan->title,
+                    'price_plan_price' => $plan->price,
+                ];
+
+                if ($renewed) {
+                    $completedPackages[] = $package;
+                    $summary['completed']++;
+                } else {
+                    $failedPackages[] = $package;
+                    $summary['failed']++;
                 }
             }
+
+            self::failed_renewal(count($failedPackages), $failedPackages, $user->email);
+            self::renew_package_email(count($completedPackages), $completedPackages, $user->email);
+            self::check_wallet_balance($user->id);
         }
 
-        self::failed_renewal($failed_packages_count, $failed_packages, $email);
-        self::renew_package_email($completed_packages_count, $completed_packages, $email);
-        self::check_wallet_balance($user->id);
+        return $summary;
     }
 
     private static function failed_renewal($failed_packages_count, $failed_packages, $email)
@@ -129,9 +157,9 @@ class WalletService
             $message = '<h4>'.$unit.' '.__('of your package is failed to renew due to low balance in wallet').'</h4></br>';
 
             $i=1;
-            for ($key=0; $key<count(current($failed_packages)); $key++)
+            foreach ($failed_packages as $key => $package)
             {
-                $message .= '<span>'.$i++.'</span>. <span>'.$failed_packages['tenant_id'][$key].'</span> - <span>'.$failed_packages['price_plan_title'][$key].'</span> - <span>'.$failed_packages['price_plan_price'][$key].site_currency_symbol().'</span></br>';
+                $message .= '<span>'.$i++.'</span>. <span>'.$package['tenant_id'].'</span> - <span>'.$package['price_plan_title'].'</span> - <span>'.$package['price_plan_price'].site_currency_symbol().'</span></br>';
             }
             $message .= '<br><p>'.__('Please deposit balance to continue using the renewal feature').'</p>';
 
@@ -139,7 +167,7 @@ class WalletService
         }
     }
 
-    private static function renew_package($tenant, $last_payment_log, $used_price_plan, $user)
+    private static function renew_package($tenant, $last_payment_log, $used_price_plan, $user, Wallet $wallet)
     {
         $package_start_date = '';
         $package_expire_date = '';
@@ -196,9 +224,8 @@ class WalletService
 
         self::update_tenant($last_payment_log->id);
 
-        $last_balance = Wallet::where('user_id', $user->id)->first();
-        Wallet::where('user_id', $user->id)->update([
-            'balance' => $last_balance->balance - $used_price_plan->price
+        $wallet->update([
+            'balance' => (float) $wallet->balance - (float) $used_price_plan->price
         ]);
     }
 
@@ -225,9 +252,9 @@ class WalletService
             $message = '<h4>'.__('Your package'.$unit[1].' '.$unit[0].' renewed successfully using wallet balance').'</h4></br>';
 
             $i=1;
-            for ($key=0; $key<count(current($completed_packages)); $key++)
+            foreach ($completed_packages as $key => $package)
             {
-                $message .= '<span>'.$i++.'</span>. <span>'.$completed_packages['tenant_id'][$key].'</span> - <span>'.$completed_packages['price_plan_title'][$key].'</span> - <span>'.amount_with_currency_symbol($completed_packages['price_plan_price'][$key] ?? 000).'</span></br>';
+                $message .= '<span>'.$i++.'</span>. <span>'.$package['tenant_id'].'</span> - <span>'.$package['price_plan_title'].'</span> - <span>'.amount_with_currency_symbol($package['price_plan_price'] ?? 0).'</span></br>';
             }
             $message .= '<br><p>'.__('To check it out please visit the website').'</p>';
 

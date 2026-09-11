@@ -1,0 +1,335 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "Casual — Fashion & Lifestyle Store"
+      },
+      {
+        "key": "site_description",
+        "value": "Discover everyday fashion essentials. Dresses, tops, bottoms, outerwear, footwear and accessories for every occasion."
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/hero-banner.jpg",
+        "import_as": "casual-hero"
+      },
+      {
+        "path": "assets/images/flash-banner.jpg",
+        "import_as": "casual-flash-banner"
+      },
+      {
+        "path": "assets/images/cat-dresses.jpg",
+        "import_as": "casual-cat-dresses"
+      },
+      {
+        "path": "assets/images/cat-tops.jpg",
+        "import_as": "casual-cat-tops"
+      },
+      {
+        "path": "assets/images/cat-bottoms.jpg",
+        "import_as": "casual-cat-bottoms"
+      },
+      {
+        "path": "assets/images/cat-outerwear.jpg",
+        "import_as": "casual-cat-outerwear"
+      },
+      {
+        "path": "assets/images/cat-footwear.jpg",
+        "import_as": "casual-cat-footwear"
+      },
+      {
+        "path": "assets/images/cat-accessories.jpg",
+        "import_as": "casual-cat-accessories"
+      },
+      {
+        "path": "assets/images/prod-dress.jpg",
+        "import_as": "casual-prod-dress"
+      },
+      {
+        "path": "assets/images/prod-tshirt.jpg",
+        "import_as": "casual-prod-tshirt"
+      },
+      {
+        "path": "assets/images/prod-jeans.jpg",
+        "import_as": "casual-prod-jeans"
+      },
+      {
+        "path": "assets/images/prod-shorts.jpg",
+        "import_as": "casual-prod-shorts"
+      },
+      {
+        "path": "assets/images/prod-bag.jpg",
+        "import_as": "casual-prod-bag"
+      },
+      {
+        "path": "assets/images/prod-jacket.jpg",
+        "import_as": "casual-prod-jacket"
+      },
+      {
+        "path": "assets/images/prod-sneakers.jpg",
+        "import_as": "casual-prod-sneakers"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Dresses",
+        "slug": "dresses",
+        "image": "casual-cat-dresses"
+      },
+      {
+        "name": "Tops",
+        "slug": "tops",
+        "image": "casual-cat-tops"
+      },
+      {
+        "name": "Bottoms",
+        "slug": "bottoms",
+        "image": "casual-cat-bottoms"
+      },
+      {
+        "name": "Outerwear",
+        "slug": "outerwear",
+        "image": "casual-cat-outerwear"
+      },
+      {
+        "name": "Footwear",
+        "slug": "footwear",
+        "image": "casual-cat-footwear"
+      },
+      {
+        "name": "Accessories",
+        "slug": "accessories",
+        "image": "casual-cat-accessories"
+      }
+    ],
+    "products": [
+      {
+        "name": "Floral Wrap Dress",
+        "summary": "Lightweight midi wrap dress in a vibrant floral print. Flattering V-neckline with adjustable tie waist.",
+        "price": 49.99,
+        "compare_price": 69.99,
+        "category": "dresses",
+        "image": "casual-prod-dress",
+        "stock": 60,
+        "tags": [
+          "dress",
+          "floral",
+          "midi",
+          "summer"
+        ]
+      },
+      {
+        "name": "Classic White T-Shirt",
+        "summary": "100% organic cotton relaxed-fit tee. A wardrobe essential you will reach for every day.",
+        "price": 19.99,
+        "compare_price": 27.99,
+        "category": "tops",
+        "image": "casual-prod-tshirt",
+        "stock": 120,
+        "tags": [
+          "tops",
+          "basics",
+          "cotton",
+          "everyday"
+        ]
+      },
+      {
+        "name": "High-Waist Skinny Jeans",
+        "summary": "Stretch denim with a sculpting high waist. Available in sizes 6-22. Machine washable.",
+        "price": 59.99,
+        "compare_price": 79.99,
+        "category": "bottoms",
+        "image": "casual-prod-jeans",
+        "stock": 80,
+        "tags": [
+          "jeans",
+          "denim",
+          "bottoms",
+          "skinny"
+        ]
+      },
+      {
+        "name": "Casual Chino Shorts",
+        "summary": "Slim-fit cotton-twill shorts with slash pockets. Perfect for warm-weather weekends.",
+        "price": 34.99,
+        "compare_price": 44.99,
+        "category": "bottoms",
+        "image": "casual-prod-shorts",
+        "stock": 75,
+        "tags": [
+          "shorts",
+          "chino",
+          "summer",
+          "casual"
+        ]
+      },
+      {
+        "name": "Leather Crossbody Bag",
+        "summary": "Genuine leather mini crossbody with adjustable strap and gold hardware. Holds phone, keys and cards.",
+        "price": 79.99,
+        "compare_price": 109.99,
+        "category": "accessories",
+        "image": "casual-prod-bag",
+        "stock": 40,
+        "tags": [
+          "bag",
+          "leather",
+          "accessories",
+          "crossbody"
+        ]
+      },
+      {
+        "name": "Quilted Puffer Jacket",
+        "summary": "Lightweight recycled-fill puffer in a sleek cropped silhouette. Wind and water resistant.",
+        "price": 89.99,
+        "compare_price": 119.99,
+        "category": "outerwear",
+        "image": "casual-prod-jacket",
+        "stock": 50,
+        "tags": [
+          "jacket",
+          "puffer",
+          "outerwear",
+          "winter"
+        ]
+      },
+      {
+        "name": "Canvas Sneakers",
+        "summary": "Low-top canvas trainers with cushioned insole and rubber sole. Unisex sizing available.",
+        "price": 44.99,
+        "compare_price": 59.99,
+        "category": "footwear",
+        "image": "casual-prod-sneakers",
+        "stock": 90,
+        "tags": [
+          "sneakers",
+          "canvas",
+          "footwear",
+          "unisex"
+        ]
+      }
+    ],
+    "menus": [
+      {
+        "title": "Primary Menu",
+        "status": "primary",
+        "items": [
+          {
+            "label": "Home",
+            "url": "@url/"
+          },
+          {
+            "label": "Shop",
+            "url": "@url/shop"
+          },
+          {
+            "label": "Contact Us",
+            "url": "@url/contact"
+          }
+        ]
+      },
+      {
+        "title": "Quick Links",
+        "status": "default",
+        "items": [
+          {
+            "label": "Home",
+            "url": "@url/"
+          },
+          {
+            "label": "Shop",
+            "url": "@url/shop"
+          },
+          {
+            "label": "Contact Us",
+            "url": "@url/contact"
+          }
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Shop",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Help",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Why Shop With Us",
+          "footer_badges": {
+            "badge_icon_": [
+              "🚚",
+              "↩️",
+              "🔒",
+              "✨"
+            ],
+            "badge_title_": [
+              "Free Shipping",
+              "Free Returns",
+              "Secure Payment",
+              "Quality Guarantee"
+            ],
+            "badge_sub_": [
+              "On orders over $50",
+              "Within 30 days, no questions",
+              "SSL encrypted checkout",
+              "Every piece inspected before dispatch"
+            ]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "casual-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/page_builder_layout.json"
+      },
+      {
+        "title": "About Us",
+        "slug": "about-us",
+        "page_builder": false,
+        "breadcrumb": true,
+        "layout_file": "assets/page_layout/about-layout.json"
+      },
+      {
+        "title": "Contact",
+        "slug": "contact-us",
+        "page_builder": false,
+        "breadcrumb": true,
+        "layout_file": "assets/page_layout/contact-layout.json"
+      }
+    ]
+  }
+}

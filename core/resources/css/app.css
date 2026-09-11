@@ -1,0 +1,9 @@
+@layer theme, base, components, utilities;
+
+/* Tailwind v4 — utilities only (no preflight reset to avoid conflicts with Bootstrap) */
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/utilities" layer(utilities);
+
+/* Scan Vue component files for Tailwind classes */
+@source "../resources/js/vue/**/*.vue";
+@source "../Modules/Pos/vue/**/*.vue";

@@ -1,0 +1,100 @@
+/* ============================================================
+   VelvetLux — Page Styles (shop, cart, checkout, blog, dashboard)
+   ============================================================ */
+
+/* ── Page Header / Breadcrumb ── */
+.vl-page-header { background: var(--vl-white); border-bottom: 1px solid var(--vl-border); padding: 40px 0 28px; }
+.vl-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--vl-muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+.vl-breadcrumb a { color: var(--vl-champagne); text-decoration: none; }
+.vl-breadcrumb span { color: var(--vl-muted); }
+
+/* ── Sidebar ── */
+.vl-sidebar-card { background: var(--vl-white); border: 1px solid var(--vl-border); padding: 24px; margin-bottom: 16px; }
+.vl-sidebar-title { font-size: 9px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--vl-champagne); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--vl-border); font-family: 'Montserrat', sans-serif; }
+.vl-check-item { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--vl-border); font-size: 13px; color: var(--vl-dark); }
+.vl-check-item label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.vl-check-item input[type=checkbox] { accent-color: var(--vl-champagne); }
+.vl-check-count { font-size: 11px; color: var(--vl-muted); }
+.vl-price-inputs { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.vl-price-inputs input { flex: 1; padding: 8px 12px; background: var(--vl-white); border: 1px solid var(--vl-border); color: var(--vl-dark); font-size: 13px; font-family: inherit; outline: none; width: 100%; }
+.vl-price-inputs span { color: var(--vl-muted); }
+.vl-rating-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 14px; }
+.vl-rating-row input[type=radio] { accent-color: var(--vl-champagne); }
+.vl-rating-stars { color: var(--vl-champagne); }
+
+/* ── Sort Bar ── */
+.vl-sort-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 0 0 14px; border-bottom: 1px solid var(--vl-border); margin-bottom: 24px; }
+.vl-sort-count { font-size: 12px; color: var(--vl-muted); letter-spacing: .5px; }
+.vl-sort-select { padding: 8px 14px; background: var(--vl-white); border: 1px solid var(--vl-border); color: var(--vl-dark); font-size: 12px; font-family: inherit; outline: none; cursor: pointer; }
+
+/* ── Pagination ── */
+.vl-pagination { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 24px; }
+.vl-page-btn { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: var(--vl-white); border: 1px solid var(--vl-border); color: var(--vl-muted); font-size: 12px; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: all .2s; }
+.vl-page-btn.active, .vl-page-btn:hover { background: var(--vl-champagne); border-color: var(--vl-champagne); color: #fff; }
+
+/* ── Cart Table ── */
+.vl-cart-table th { padding: 14px 20px; font-size: 9px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--vl-champagne); font-family: 'Montserrat', sans-serif; border-bottom: 1px solid var(--vl-border); }
+.vl-cart-table td { padding: 20px; border-bottom: 1px solid var(--vl-border); vertical-align: middle; }
+.vl-cart-thumb { width: 64px; height: 80px; overflow: hidden; background: var(--vl-plum-light); flex-shrink: 0; }
+.vl-cart-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.vl-cart-name { font-size: 14px; color: var(--vl-dark); letter-spacing: .3px; }
+.vl-cart-meta { font-size: 11px; color: var(--vl-muted); margin-top: 4px; letter-spacing: .5px; }
+.vl-cart-price { font-size: 14px; color: var(--vl-plum); font-family: 'Montserrat', sans-serif; }
+.vl-qty-stepper { display: flex; align-items: center; border: 1px solid var(--vl-border); width: fit-content; }
+.vl-qty-btn { width: 32px; height: 32px; background: var(--vl-white); border: none; color: var(--vl-muted); cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+.vl-qty-btn:hover { color: var(--vl-champagne); }
+.vl-qty-input { width: 48px; height: 32px; text-align: center; background: transparent; border: none; border-left: 1px solid var(--vl-border); border-right: 1px solid var(--vl-border); color: var(--vl-dark); font-size: 13px; outline: none; }
+.vl-remove-btn { width: 28px; height: 28px; background: transparent; border: 1px solid var(--vl-border); color: var(--vl-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+.vl-remove-btn:hover { border-color: #E53E3E; color: #E53E3E; }
+
+/* ── Summary Card ── */
+.vl-summary-card { background: var(--vl-white); border: 1px solid var(--vl-border); padding: 28px; position: sticky; top: 100px; }
+.vl-summary-title { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: var(--vl-champagne); margin-bottom: 20px; font-family: 'Montserrat', sans-serif; padding-bottom: 16px; border-bottom: 1px solid var(--vl-border); }
+.vl-summary-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--vl-border); font-size: 13px; color: var(--vl-muted); }
+.vl-summary-total { display: flex; justify-content: space-between; padding: 16px 0 0; font-size: 15px; font-weight: 600; color: var(--vl-dark); margin-top: 4px; }
+
+/* ── Product Detail ── */
+.vl-pd-title { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--vl-dark); margin-bottom: 12px; letter-spacing: .5px; }
+.vl-pd-price { font-size: 24px; color: var(--vl-plum); font-family: 'Montserrat', sans-serif; }
+.vl-pd-orig { font-size: 16px; color: var(--vl-muted); text-decoration: line-through; margin-left: 10px; }
+.vl-thumb-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.vl-thumb { width: 72px; height: 90px; border: 1px solid var(--vl-border); overflow: hidden; cursor: pointer; background: var(--vl-plum-light); display: flex; align-items: center; justify-content: center; transition: border-color .2s; }
+.vl-thumb.active, .vl-thumb:hover { border-color: var(--vl-champagne); }
+
+/* ── State/City input overrides ── */
+.single-input { margin-top: 16px; position: relative; border: none !important; border-bottom: none !important; box-shadow: none !important; }
+.single-input::after, .single-input::before { display: none !important; content: none !important; }
+.single-input .label-title { display: block !important; font-size: 10px !important; font-weight: 400 !important; letter-spacing: 2px !important; text-transform: uppercase !important; color: var(--vl-muted) !important; margin-bottom: 8px !important; }
+.single-input .form--control { width: 100% !important; padding: 12px 16px !important; background: var(--vl-white) !important; border: 1px solid var(--vl-border) !important; color: var(--vl-dark) !important; font-size: 14px !important; font-family: inherit !important; outline: none !important; height: auto !important; box-shadow: none !important; border-radius: 0 !important; }
+.single-input .form--control:focus { border-color: var(--vl-champagne) !important; }
+
+/* ── vl-star-filter ── */
+.vl-star-filter { color: var(--vl-champagne); }
+
+/* ── Product detail tabs — force rich-text content to use theme colors ── */
+.vl-tab-panel { color: var(--vl-dark); font-size: 14px; line-height: 1.8; }
+.vl-tab-panel .single-description-tab-content,
+.vl-tab-panel .single-description-tab-content p,
+.vl-tab-panel .single-description-tab-content li,
+.vl-tab-panel .single-description-tab-content span,
+.vl-tab-panel .single-description-tab-content div { color: var(--vl-dark) !important; background: transparent !important; }
+.vl-tab-panel .single-description-tab-content h1,
+.vl-tab-panel .single-description-tab-content h2,
+.vl-tab-panel .single-description-tab-content h3,
+.vl-tab-panel .single-description-tab-content h4,
+.vl-tab-panel .single-description-tab-content h5,
+.vl-tab-panel .single-description-tab-content h6 { color: var(--vl-dark) !important; background: transparent !important; }
+.vl-tab-panel .single-description-tab-content a { color: var(--vl-champagne) !important; }
+.vl-tab-panel .single-description-tab-content ul,
+.vl-tab-panel .single-description-tab-content ol { padding-left: 20px; }
+.size-lists li.disabled { opacity: .4; cursor: not-allowed; pointer-events: none; }
+
+/* ── Support Ticket — dash card, inputs & btn ── */
+.vl-dash-card { background: var(--vl-white,#fafaf8); border: 1px solid var(--vl-border,#e8e2d6); margin-bottom: 24px; }
+.vl-dash-card-header { padding: 16px 20px; border-bottom: 1px solid var(--vl-border,#e8e2d6); font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--vl-dark,#1a1814); display: flex; align-items: center; background: #fdf9f4; }
+.vl-dash-card-body { padding: 24px 20px; }
+.vl-dash-label { display: block; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--vl-muted,#8a7f70); margin-bottom: 6px; }
+.vl-dash-input { width: 100%; padding: 11px 14px; border: 1px solid var(--vl-border,#e8e2d6); background: #fff; color: var(--vl-dark,#1a1814); font-size: 14px; font-family: inherit; outline: none; transition: border-color .2s; }
+.vl-dash-input:focus { border-color: var(--vl-champagne,#B8942E); }
+.vl-btn-primary { background: var(--vl-plum,#6B4E71); color: #fff; border-color: var(--vl-plum,#6B4E71); }
+.vl-btn-primary:hover { background: var(--vl-plum-deep,#553d5a); border-color: var(--vl-plum-deep,#553d5a); color: #fff; }

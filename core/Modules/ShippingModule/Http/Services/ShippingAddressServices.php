@@ -1,0 +1,30 @@
+<?php
+
+namespace Modules\ShippingModule\Http\Services;
+
+use App\Models\UserDeliveryAddress;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Log;
+use Modules\ShippingModule\Entities\ShippingAddress;
+
+class ShippingAddressServices
+{
+    public static function store($data, $isApi = false): JsonResponse
+    {
+        $query = UserDeliveryAddress::updateOrCreate(
+            [
+                'user_id' => $data['user_id']
+            ], $data);
+
+        Log::info('ShippingAddressServices::store response', [
+            'data' => $data,
+            'type' => gettype($data),
+            'query' => $query,
+        ]);
+        return response()->json([
+            'success' => (bool) $query ?? false,
+            'msg' => !empty($query) ? __("Successfully created new shipping address") : __("Failed to create new shipping address"),
+            'data' => $query,
+        ]);
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "id": "page-builder",
+    "name": "Page Builder",
+    "version": "1.1.0",
+    "description": "Drag-and-drop page builder for landlord and tenant layouts",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "both",
+    "pricing": "free",
+    "min_platform_version": "1.0.0",
+    "main": "src/PageBuilderPlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null
+}

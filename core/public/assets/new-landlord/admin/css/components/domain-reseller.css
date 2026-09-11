@@ -1,0 +1,554 @@
+/* ──────────────────────────────────────────────────────────────────
+   Domain Reseller Module – Tailwind-compatible component styles
+   Landlord admin panel · new Tailwind UI
+────────────────────────────────────────────────────────────────── */
+
+/* ── Domain Search ───────────────────────────────────────────── */
+.dr-search-wrap {
+    display: flex;
+    border: 2px solid var(--color-border-main, #e0f0f0);
+    border-radius: 0.875rem;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.dr-search-wrap:focus-within {
+    border-color: var(--color-primary, #1a5c4e);
+    box-shadow: 0 0 0 3px rgba(26, 92, 78, 0.08);
+}
+
+.dr-search-input {
+    flex: 1;
+    padding: 0.875rem 1.25rem;
+    border: none;
+    outline: none;
+    font-size: 0.9375rem;
+    background: var(--color-bg-surface, #fff);
+    color: var(--color-text-main, #1a1816);
+}
+
+.dr-search-input::placeholder {
+    color: var(--color-text-subtle, #9ca3af);
+}
+
+.dr-search-btn {
+    padding: 0.875rem 1.75rem;
+    background: var(--color-primary, #1a5c4e);
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+    transition: background 0.15s;
+}
+
+.dr-search-btn:hover {
+    background: var(--color-primary-hover, #103d34);
+}
+
+/* ── Domain Result Card ──────────────────────────────────────── */
+.dr-result-card {
+    background: var(--color-bg-surface, #fff);
+    border: 1px solid var(--color-border-main, #e0f0f0);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.dr-result-card:hover {
+    box-shadow: 0 4px 16px -4px rgba(45, 106, 79, 0.12);
+}
+
+.dr-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.dr-badge-primary {
+    background: var(--color-primary, #1a5c4e);
+    color: #fff;
+}
+
+.dr-badge-muted {
+    background: var(--color-bg-muted, #edf9f9);
+    color: var(--color-text-muted, #6b7280);
+}
+
+.dr-domain-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-text-dark, #111827);
+    margin: 1rem 0 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.dr-price {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-success, #10b981);
+    margin-bottom: 0.25rem;
+}
+
+.dr-buy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    border-radius: 0.75rem;
+    background: var(--color-primary, #1a5c4e);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.dr-buy-btn:hover {
+    background: var(--color-primary-hover, #103d34);
+    transform: translateY(-1px);
+}
+
+.dr-hint {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted, #6b7280);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border-subtle, #edf9f9);
+}
+
+/* ── Suggestion Grid ─────────────────────────────────────────── */
+.dr-suggestion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.dr-suggestion-card {
+    background: var(--color-bg-surface, #fff);
+    border: 1px solid var(--color-border-main, #e0f0f0);
+    border-radius: 0.875rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.dr-suggestion-card:hover {
+    border-color: var(--color-primary, #1a5c4e);
+    box-shadow: 0 4px 12px rgba(45, 106, 79, 0.10);
+    transform: translateY(-2px);
+}
+
+/* ── Provider Card (Settings Page) ───────────────────────────── */
+.dr-provider-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+}
+
+.dr-provider-card {
+    background: var(--color-bg-surface, #fff);
+    border: 1px solid var(--color-border-main, #e0f0f0);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.dr-provider-card:hover {
+    box-shadow: 0 8px 24px -6px rgba(45, 106, 79, 0.15);
+    transform: translateY(-2px);
+}
+
+.dr-provider-thumb {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-featured, linear-gradient(135deg, #1a3a3a 0%, #0f4f4f 50%, #1a5c4e 100%));
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.dr-provider-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.dr-provider-name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.04em;
+}
+
+.dr-provider-body {
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.dr-provider-meta {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted, #6b7280);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.dr-provider-meta a {
+    color: var(--color-primary, #1a5c4e);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.dr-provider-meta a:hover {
+    text-decoration: underline;
+}
+
+.dr-provider-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* ── Domain Info Bar (WWW badge + domain) ────────────────────── */
+.dr-domain-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--color-bg-secondary, #F0FCFB);
+    border: 1px solid var(--color-border-main, #e0f0f0);
+    border-radius: 0.875rem;
+}
+
+.dr-www {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 0.75rem;
+    background: var(--gradient-featured, linear-gradient(135deg, #1a3a3a, #1a5c4e));
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+}
+
+/* ── Order Summary ───────────────────────────────────────────── */
+.dr-order-summary {
+    background: var(--color-bg-surface, #fff);
+    border: 1px solid var(--color-border-main, #e0f0f0);
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+
+.dr-order-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-dark, #111827);
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-border-main, #e0f0f0);
+    margin-bottom: 1rem;
+}
+
+.dr-order-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+}
+
+.dr-order-label {
+    font-size: 0.875rem;
+    color: var(--color-text-muted, #6b7280);
+}
+
+.dr-order-value {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-text-dark, #111827);
+}
+
+.dr-order-total {
+    border-top: 2px solid var(--color-border-main, #e0f0f0);
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+}
+
+.dr-order-total .dr-order-value {
+    font-size: 1.125rem;
+    color: var(--color-primary, #1a5c4e);
+}
+
+.dr-pay-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.875rem;
+    border-radius: 0.75rem;
+    background: var(--gradient-featured, linear-gradient(135deg, #1a3a3a, #1a5c4e));
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-top: 1.25rem;
+}
+
+.dr-pay-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* ── Agreement Section ───────────────────────────────────────── */
+.dr-agreement-scroll {
+    max-height: 380px;
+    overflow-y: auto;
+    padding: 1.25rem;
+    background: var(--color-bg-secondary, #F0FCFB);
+    border: 1px solid var(--color-border-main, #e0f0f0);
+    border-radius: 0.75rem;
+}
+
+.dr-agreement-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.dr-agreement-scroll::-webkit-scrollbar-thumb {
+    background: var(--color-border-hover, #b0dede);
+    border-radius: 4px;
+}
+
+.dr-agreement-key {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    background: var(--color-primary, #1a5c4e);
+    color: #fff;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border-radius: 0.375rem;
+    margin-bottom: 0.625rem;
+}
+
+/* ── Contact Form Sections ───────────────────────────────────── */
+.dr-contact-section {
+    background: var(--color-bg-secondary, #F0FCFB);
+    border: 1px solid var(--color-border-main, #e0f0f0);
+    border-radius: 0.875rem;
+    overflow: hidden;
+}
+
+.dr-contact-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    transition: background 0.12s;
+}
+
+.dr-contact-header:hover {
+    background: var(--color-bg-muted, #edf9f9);
+}
+
+.dr-contact-body {
+    padding: 1.25rem;
+    border-top: 1px solid var(--color-border-main, #e0f0f0);
+    background: var(--color-bg-surface, #fff);
+}
+
+/* ── Privacy Toggle (small toggle switch) ────────────────────── */
+.dr-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted, #6b7280);
+}
+
+.dr-toggle input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.dr-toggle-track {
+    width: 2.25rem;
+    height: 1.25rem;
+    background: var(--color-border-main, #e0f0f0);
+    border-radius: 9999px;
+    position: relative;
+    transition: background 0.15s;
+    flex-shrink: 0;
+}
+
+.dr-toggle-track::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 1rem;
+    height: 1rem;
+    background: #fff;
+    border-radius: 9999px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: transform 0.15s;
+}
+
+.dr-toggle input:checked + .dr-toggle-track {
+    background: var(--color-primary, #1a5c4e);
+}
+
+.dr-toggle input:checked + .dr-toggle-track::after {
+    transform: translateX(1rem);
+}
+
+/* ── Loader Overlay ──────────────────────────────────────────── */
+.dr-loader-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(4px);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.dr-loader-overlay.active {
+    display: flex;
+}
+
+.dr-loader-spinner {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 3px solid var(--color-border-main, #e0f0f0);
+    border-top-color: var(--color-primary, #1a5c4e);
+    border-radius: 9999px;
+    animation: dr-spin 0.7s linear infinite;
+}
+
+.dr-loader-text {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-text-muted, #6b7280);
+}
+
+@keyframes dr-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Payment Gateway Selector ────────────────────────────────── */
+.dr-gateway-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dr-gateway-list li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--color-border-main, #e0f0f0);
+    border-radius: 0.5rem;
+    height: 50px;
+    width: 100px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.55;
+    transition: all 0.15s;
+}
+
+.dr-gateway-list li:hover {
+    opacity: 0.85;
+    border-color: var(--color-border-hover, #b0dede);
+}
+
+.dr-gateway-list li.selected {
+    opacity: 1;
+    border-color: var(--color-primary, #1a5c4e);
+    box-shadow: 0 0 0 2px rgba(26, 92, 78, 0.12);
+}
+
+.dr-gateway-list li img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* ── Success / Cancel Status Pages ───────────────────────────── */
+.dr-status-card {
+    background: var(--color-bg-surface, #fff);
+    border: 1px solid var(--color-border-main, #e0f0f0);
+    border-radius: 1rem;
+    padding: 2.5rem;
+    text-align: center;
+}
+
+.dr-status-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.dr-status-icon.success {
+    background: var(--color-success-bg, #ecfdf5);
+    color: var(--color-success, #10b981);
+}
+
+.dr-status-icon.danger {
+    background: var(--color-danger-bg, #fef2f2);
+    color: var(--color-danger, #ef4444);
+}
+
+/* ── Form Error State ────────────────────────────────────────── */
+.dr-field-error {
+    font-size: 0.75rem;
+    color: var(--color-danger, #ef4444);
+    margin-top: 0.25rem;
+}
+
+input.dr-has-error,
+select.dr-has-error {
+    border-color: var(--color-danger, #ef4444) !important;
+}

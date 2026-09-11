@@ -1,0 +1,252 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "section-ab001",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-ab001",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-ab001",
+                                "type": "tenant_about_hero"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-ab002",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-ab002",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-ab002",
+                                "type": "tenant_stats_counter"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-ab003",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-ab003",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-ab003",
+                                "type": "tenant_services_strip"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-ab004",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-ab004",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-ab004",
+                                "type": "tenant_testimonials"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-ab005",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-ab005",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-ab005",
+                                "type": "tenant_brand_logos"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "widget-ab001": {
+            "type": "tenant_about_hero",
+            "container_id": "section-ab001",
+            "column_id": "column-ab001",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "image": null
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-ab002": {
+            "type": "tenant_stats_counter",
+            "container_id": "section-ab002",
+            "column_id": "column-ab002",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-ab003": {
+            "type": "tenant_services_strip",
+            "container_id": "section-ab003",
+            "column_id": "column-ab003",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-ab004": {
+            "type": "tenant_testimonials",
+            "container_id": "section-ab004",
+            "column_id": "column-ab004",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "items": {
+                        "testimonials": [
+                            {
+                                "name": "Sarah M.",
+                                "role": "Verified Buyer",
+                                "rating": "5",
+                                "review": "Absolutely love the products! Quality is amazing and delivery was super fast."
+                            },
+                            {
+                                "name": "James K.",
+                                "role": "Regular Customer",
+                                "rating": "5",
+                                "review": "Best online store I've shopped at. Will definitely come back again!"
+                            },
+                            {
+                                "name": "Emma R.",
+                                "role": "New Customer",
+                                "rating": "4",
+                                "review": "Great selection and competitive prices. Very happy with my purchase."
+                            }
+                        ]
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-ab005": {
+            "type": "tenant_brand_logos",
+            "container_id": "section-ab005",
+            "column_id": "column-ab005",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        }
+    }
+}

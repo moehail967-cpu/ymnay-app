@@ -1,0 +1,338 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "Freshmart — Fresh Grocery Delivered"
+      },
+      {
+        "key": "site_tag_line",
+        "value": "Farm fresh, delivered to your door"
+      },
+      {
+        "key": "main_color_one_freshmart",
+        "value": "#2E7D32"
+      },
+      {
+        "key": "main_color_two_freshmart",
+        "value": "#F57C00"
+      },
+      {
+        "key": "font_family",
+        "value": "Inter"
+      },
+      {
+        "key": "site_logo",
+        "value": "@media:freshmart-logo-color"
+      },
+      {
+        "key": "site_white_logo",
+        "value": "@media:freshmart-logo-white"
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/logo-color.svg",
+        "import_as": "freshmart-logo-color"
+      },
+      {
+        "path": "assets/images/logo-white.svg",
+        "import_as": "freshmart-logo-white"
+      },
+      {
+        "path": "assets/images/fresh-produce-hero.jpg",
+        "import_as": "freshmart-hero"
+      },
+      {
+        "path": "assets/images/grapes.jpg",
+        "import_as": "grapes"
+      },
+      {
+        "path": "assets/images/kale-greens.jpg",
+        "import_as": "kale-greens"
+      },
+      {
+        "path": "assets/images/eggs.jpg",
+        "import_as": "eggs"
+      },
+      {
+        "path": "assets/images/grains-bread.jpg",
+        "import_as": "grains-bread"
+      },
+      {
+        "path": "assets/images/fresh-fish.jpg",
+        "import_as": "fresh-fish"
+      },
+      {
+        "path": "assets/images/lemons.jpg",
+        "import_as": "lemons"
+      },
+      {
+        "path": "assets/images/avocado.jpg",
+        "import_as": "avocado"
+      },
+      {
+        "path": "assets/images/strawberries.jpg",
+        "import_as": "strawberries"
+      },
+      {
+        "path": "assets/images/cat-bakery.jpg",
+        "import_as": "cat-bakery"
+      },
+      {
+        "path": "assets/images/cat-beverages.jpg",
+        "import_as": "cat-beverages"
+      },
+      {
+        "path": "assets/images/cat-dairy.jpg",
+        "import_as": "cat-dairy"
+      },
+      {
+        "path": "assets/images/cat-fruits-veg.jpg",
+        "import_as": "cat-fruits-veg"
+      },
+      {
+        "path": "assets/images/cat-meat-fish.jpg",
+        "import_as": "cat-meat-fish"
+      },
+      {
+        "path": "assets/images/cat-pantry.jpg",
+        "import_as": "cat-pantry"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Fresh Fruits & Veg",
+        "slug": "fresh-fruits",
+        "image": "cat-fruits-veg"
+      },
+      {
+        "name": "Dairy & Eggs",
+        "slug": "dairy-eggs",
+        "image": "cat-dairy"
+      },
+      {
+        "name": "Bakery",
+        "slug": "bakery",
+        "image": "cat-bakery"
+      },
+      {
+        "name": "Meat & Seafood",
+        "slug": "meat-seafood",
+        "image": "cat-meat-fish"
+      },
+      {
+        "name": "Beverages",
+        "slug": "beverages",
+        "image": "cat-beverages"
+      },
+      {
+        "name": "Pantry & Snacks",
+        "slug": "snacks",
+        "image": "cat-pantry"
+      }
+    ],
+    "products": [
+      {
+        "name": "Organic Red Grapes (1 bunch)",
+        "summary": "Sweet, seedless organic red grapes. Approx. 500g per bunch.",
+        "price": 1.99,
+        "compare_price": 2.49,
+        "category": "fresh-fruits",
+        "image": "grapes",
+        "stock": 100,
+        "tags": [
+          "organic",
+          "fruit",
+          "grapes"
+        ]
+      },
+      {
+        "name": "Baby Spinach (5 oz)",
+        "summary": "Tender baby spinach leaves, washed and ready to eat.",
+        "price": 3.49,
+        "compare_price": 4.99,
+        "category": "fresh-fruits",
+        "image": "kale-greens",
+        "stock": 80,
+        "tags": [
+          "organic",
+          "leafy",
+          "spinach"
+        ]
+      },
+      {
+        "name": "Free Range Eggs (12)",
+        "summary": "Farm-fresh free range eggs from pasture-raised hens.",
+        "price": 5.99,
+        "compare_price": 7.49,
+        "category": "dairy-eggs",
+        "image": "eggs",
+        "stock": 120,
+        "tags": [
+          "free-range",
+          "eggs",
+          "protein"
+        ]
+      },
+      {
+        "name": "Sourdough Loaf",
+        "summary": "Long-fermented sourdough with a crispy crust. Baked fresh daily.",
+        "price": 4.99,
+        "compare_price": 6.99,
+        "category": "bakery",
+        "image": "grains-bread",
+        "stock": 60,
+        "tags": [
+          "artisan",
+          "bread",
+          "sourdough"
+        ]
+      },
+      {
+        "name": "Atlantic Salmon Fillet",
+        "summary": "Fresh skin-on Atlantic salmon fillet, approx. 200g.",
+        "price": 12.99,
+        "compare_price": 16.99,
+        "category": "meat-seafood",
+        "image": "fresh-fish",
+        "stock": 50,
+        "tags": [
+          "fresh",
+          "fish",
+          "salmon"
+        ]
+      },
+      {
+        "name": "Fresh Lemon Juice (1L)",
+        "summary": "Cold-pressed fresh lemon juice, no added sugar.",
+        "price": 4.49,
+        "compare_price": 5.99,
+        "category": "beverages",
+        "image": "lemons",
+        "stock": 70,
+        "tags": [
+          "fresh",
+          "juice",
+          "lemon"
+        ]
+      },
+      {
+        "name": "Organic Avocado (2 pack)",
+        "summary": "Ripe Hass avocados, ready to eat.",
+        "price": 3.99,
+        "compare_price": 5.49,
+        "category": "fresh-fruits",
+        "image": "avocado",
+        "stock": 90,
+        "tags": [
+          "organic",
+          "avocado",
+          "healthy-fats"
+        ]
+      },
+      {
+        "name": "Fresh Strawberries (400g)",
+        "summary": "Sweet, hand-picked British strawberries.",
+        "price": 3.49,
+        "compare_price": 4.99,
+        "category": "fresh-fruits",
+        "image": "strawberries",
+        "stock": 80,
+        "tags": [
+          "strawberries",
+          "fruit",
+          "fresh"
+        ]
+      }
+    ],
+    "menus": [
+      {
+        "title": "Main Menu",
+        "status": "default",
+        "items": [
+          { "label": "Shop",       "url": "@url/shop" },
+          { "label": "Flash Deals","url": "@url/shop" },
+          { "label": "Organic",    "url": "@url/shop" },
+          { "label": "Blog",       "url": "@url/" },
+          { "label": "Contact",    "url": "@url/contact" }
+        ]
+      },
+      {
+        "title": "Shop Menu",
+        "status": "shop",
+        "items": [
+          { "label": "Vegetables",        "url": "@url/shop" },
+          { "label": "Fruits",            "url": "@url/shop" },
+          { "label": "Dairy & Eggs",      "url": "@url/shop" },
+          { "label": "Meat & Fish",       "url": "@url/shop" },
+          { "label": "Subscription Boxes","url": "@url/shop" }
+        ]
+      },
+      {
+        "title": "Help Menu",
+        "status": "help",
+        "items": [
+          { "label": "Delivery Slots", "url": "@url/" },
+          { "label": "FAQ",            "url": "@url/" },
+          { "label": "Returns",        "url": "@url/" },
+          { "label": "Track Order",    "url": "@url/" },
+          { "label": "Contact",        "url": "@url/contact" }
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Shop",
+          "menu_id": "@menu:shop"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Help",
+          "menu_id": "@menu:help"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Our Promise",
+          "footer_badges": {
+            "badge_icon_":  ["🥦", "🌱", "🚚", "♻️"],
+            "badge_title_": ["Farm Fresh", "Organic Certified", "Same-Day Delivery", "Zero Waste"],
+            "badge_sub_":   ["Direct from farmers", "No harmful pesticides", "Order by 2pm", "Eco-friendly packaging"]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "freshmart-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/page_builder_layout.json"
+      }
+    ]
+  }
+}

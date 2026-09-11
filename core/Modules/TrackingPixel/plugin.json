@@ -1,0 +1,11 @@
+{
+  "id": "tracking-pixel",
+  "name": "Tracking Pixel",
+  "version": "1.0.0",
+  "description": "GA4, GTM, Meta Pixel, Meta Conversions API, TikTok Pixel and TikTok Events API — all channels configured from one admin page.",
+  "type": "tenant",
+  "pricing": "free",
+  "min_platform_version": "2.5.0",
+  "main": "src/TrackingPixelPlugin.php",
+  "author": "Nazmart"
+}

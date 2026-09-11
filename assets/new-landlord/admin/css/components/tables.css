@@ -1,0 +1,467 @@
+/* ──────────────────────────────────────────────────────────────────
+   DataTables – Tailwind-compatible overrides
+   Landlord + Tenant admin panel · new Tailwind UI
+────────────────────────────────────────────────────────────────── */
+
+/* Wrapper */
+.tw-table-wrap {
+    overflow-x: auto;
+}
+
+/* ── Top controls (length + filter) ───────────────────────────── */
+.tw-table-wrap .dataTables_wrapper .dataTables_length,
+.tw-table-wrap .dataTables_wrapper .dataTables_filter {
+    padding: 1rem 1.25rem 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted, #6b7280);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.tw-table-wrap .dataTables_wrapper .dataTables_length label,
+.tw-table-wrap .dataTables_wrapper .dataTables_filter label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted, #6b7280);
+    margin: 0;
+}
+
+/* Length select */
+.tw-table-wrap .dataTables_length select {
+    padding: 0.3rem 0.65rem;
+    font-size: 0.8125rem;
+    border: 1px solid var(--color-border-main, #e5e7eb);
+    border-radius: 0.5rem;
+    background-color: var(--color-bg-surface, #fff);
+    color: var(--color-text-main, #1a1816);
+    width: auto;
+    display: inline-block;
+}
+
+/* Search input */
+.tw-table-wrap .dataTables_filter input {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8125rem;
+    border: 1px solid var(--color-border-main, #e5e7eb);
+    border-radius: 0.5rem;
+    background-color: var(--color-bg-surface, #fff);
+    color: var(--color-text-main, #1a1816);
+    outline: none;
+    min-width: 200px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+.tw-table-wrap .dataTables_filter input:focus {
+    border-color: var(--color-primary, #1a5c4e);
+    box-shadow: 0 0 0 3px rgba(26, 92, 78, 0.08);
+}
+
+/* ── Table ─────────────────────────────────────────────────────── */
+.tw-table-wrap table.dataTable,
+.tw-table-wrap table {
+    border: none !important;
+    width: 100% !important;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Header row */
+.tw-table-wrap table.dataTable thead tr,
+.tw-table-wrap table thead tr {
+    /*border-bottom: 1px solid #d1ece9;*/
+}
+.tw-table-wrap table.dataTable thead th,
+.tw-table-wrap table thead th {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6b7280;
+    border-bottom: none !important;
+    white-space: nowrap;
+}
+
+/* Sorting arrows color */
+.tw-table-wrap table.dataTable thead .sorting::after,
+.tw-table-wrap table.dataTable thead .sorting_asc::after,
+.tw-table-wrap table.dataTable thead .sorting_desc::after {
+    color: var(--color-primary, #1a5c4e);
+    opacity: 0.4;
+}
+.tw-table-wrap table.dataTable thead .sorting_asc::after,
+.tw-table-wrap table.dataTable thead .sorting_desc::after {
+    opacity: 1;
+}
+
+/* Body rows */
+.tw-table-wrap table.dataTable tbody tr,
+.tw-table-wrap table tbody tr {
+    border-bottom: 1px solid #f0f4f4;
+    transition: background-color 0.12s;
+}
+.tw-table-wrap table.dataTable tbody tr:last-child,
+.tw-table-wrap table tbody tr:last-child {
+    border-bottom: none;
+}
+.tw-table-wrap table.dataTable tbody tr:hover,
+.tw-table-wrap table tbody tr:hover {
+    background-color: #f5fbfb !important;
+}
+.tw-table-wrap table.dataTable tbody td,
+.tw-table-wrap table tbody td {
+    padding: 0.875rem 1.25rem;
+    color: var(--color-text-main, #1a1816);
+    vertical-align: middle;
+    border-top: none !important;
+}
+
+/* Stripe override – no Bootstrap stripes */
+.tw-table-wrap table.dataTable.stripe tbody tr.odd,
+.tw-table-wrap table.dataTable.display tbody tr.odd {
+    background-color: transparent;
+}
+
+/* ── Bottom controls (info + pagination) ──────────────────────── */
+.tw-table-wrap .dataTables_wrapper .dataTables_info {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted, #6b7280);
+}
+
+.tw-table-wrap .dataTables_wrapper .dataTables_paginate {
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    justify-content: flex-end;
+}
+
+.tw-table-wrap .dataTables_paginate .paginate_button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    font-size: 0.8125rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border-main, #e5e7eb) !important;
+    color: var(--color-text-main, #1a1816) !important;
+    background: var(--color-bg-surface, #fff) !important;
+    cursor: pointer;
+    transition: all 0.15s;
+    box-shadow: none !important;
+}
+.tw-table-wrap .dataTables_paginate .paginate_button:hover:not(.disabled):not(.current) {
+    background: var(--color-bg-muted, #f3f4f6) !important;
+    border-color: var(--color-primary, #1a5c4e) !important;
+    color: var(--color-primary, #1a5c4e) !important;
+}
+.tw-table-wrap .dataTables_paginate .paginate_button.current,
+.tw-table-wrap .dataTables_paginate .paginate_button.current:hover {
+    background: var(--color-primary, #1a5c4e) !important;
+    border-color: var(--color-primary, #1a5c4e) !important;
+    color: #fff !important;
+}
+.tw-table-wrap .dataTables_paginate .paginate_button.disabled,
+.tw-table-wrap .dataTables_paginate .paginate_button.disabled:hover {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: var(--color-bg-surface, #fff) !important;
+    border-color: var(--color-border-main, #e5e7eb) !important;
+    color: var(--color-text-muted, #6b7280) !important;
+}
+
+/* ── Table row avatar + info ───────────────────────────────────── */
+.tw-cell-user {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+/* Circular avatar — image or initials fallback */
+.tw-avatar {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.tw-avatar-initials {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+    background-color: var(--color-primary, #1a5c4e);
+    text-transform: uppercase;
+}
+
+.tw-cell-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-dark, #111827);
+    line-height: 1.2;
+}
+.tw-cell-sub {
+    font-size: 0.75rem;
+    color: var(--color-text-muted, #9ca3af);
+    line-height: 1.2;
+    margin-top: 0.1rem;
+}
+
+/* Link style for order numbers / IDs */
+.tw-cell-link {
+    font-weight: 600;
+    color: #6366f1;
+    text-decoration: none;
+    transition: color 0.12s;
+}
+.tw-cell-link:hover {
+    color: #4f46e5;
+    text-decoration: underline;
+}
+
+/* ── Status badges with dot (payment / order status) ───────────── */
+/*
+   Usage: <span class="tw-status-dot tw-status-pending">Pending</span>
+*/
+.tw-status-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.tw-status-dot::before {
+    content: '';
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    flex-shrink: 0;
+}
+
+/* colour variants */
+.tw-status-paid        { color: #16a34a; }
+.tw-status-paid::before        { background-color: #16a34a; }
+
+.tw-status-pending     { color: #ea580c; }
+.tw-status-pending::before     { background-color: #ea580c; }
+
+.tw-status-failed      { color: #dc2626; }
+.tw-status-failed::before      { background-color: #dc2626; }
+
+.tw-status-cancelled   { color: #6b7280; }
+.tw-status-cancelled::before   { background-color: #6b7280; }
+
+.tw-status-refunded    { color: #7c3aed; }
+.tw-status-refunded::before    { background-color: #7c3aed; }
+
+.tw-status-processing  { color: #2563eb; }
+.tw-status-processing::before  { background-color: #2563eb; }
+
+/* ── Pill badges (soft/outlined) ───────────────────────────────── */
+/*
+   Usage: <span class="tw-pill tw-pill-success">Delivered</span>
+*/
+.tw-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+/* Soft (outlined) variants */
+.tw-pill-success   { color: #0d9488; background-color: #f0fdfa; border-color: #99f6e4; }
+.tw-pill-danger    { color: #dc2626; background-color: #fef2f2; border-color: #fecaca; }
+.tw-pill-warning   { color: #d97706; background-color: #fffbeb; border-color: #fde68a; }
+.tw-pill-info      { color: #2563eb; background-color: #eff6ff; border-color: #bfdbfe; }
+.tw-pill-purple    { color: #7c3aed; background-color: #f5f3ff; border-color: #ddd6fe; }
+.tw-pill-gray      { color: #6b7280; background-color: #f9fafb; border-color: #e5e7eb; }
+.tw-pill-primary   { color: var(--color-primary, #1a5c4e); background-color: var(--color-primary-soft, #e0f7f4); border-color: #a7f3d0; }
+.tw-pill-orange    { color: #ea580c; background-color: #fff7ed; border-color: #fed7aa; }
+
+/* Solid (filled) variants — use when status needs stronger emphasis */
+.tw-pill-solid-success  { color: #fff; background-color: #0d9488; border-color: #0d9488; }
+.tw-pill-solid-teal     { color: #fff; background-color: #14b8a6; border-color: #14b8a6; }
+.tw-pill-solid-danger   { color: #fff; background-color: #ef4444; border-color: #ef4444; }
+.tw-pill-solid-warning  { color: #fff; background-color: #f59e0b; border-color: #f59e0b; }
+.tw-pill-solid-info     { color: #fff; background-color: #3b82f6; border-color: #3b82f6; }
+.tw-pill-solid-purple   { color: #fff; background-color: #8b5cf6; border-color: #8b5cf6; }
+.tw-pill-solid-gray     { color: #fff; background-color: #9ca3af; border-color: #9ca3af; }
+.tw-pill-solid-primary  { color: #fff; background-color: var(--color-primary, #1a5c4e); border-color: var(--color-primary, #1a5c4e); }
+
+/* ── Three-dot actions button ───────────────────────────────────── */
+.tw-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--color-text-muted, #9ca3af);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0;
+}
+.tw-action-btn:hover {
+    border-color: var(--color-border-main, #e5e7eb);
+    background: var(--color-bg-muted, #f3f4f6);
+    color: var(--color-text-dark, #111827);
+}
+
+/* Inline action buttons (edit / delete) */
+.tw-btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.875rem;
+    height: 1.875rem;
+    border-radius: 0.5rem;
+    font-size: 0.9375rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: 1px solid transparent;
+    text-decoration: none;
+}
+.tw-btn-icon-edit {
+    color: #2563eb;
+    background-color: #eff6ff;
+    border-color: #bfdbfe;
+}
+.tw-btn-icon-edit:hover {
+    background-color: #2563eb;
+    color: #fff;
+}
+.tw-btn-icon-danger {
+    color: #dc2626;
+    background-color: #fef2f2;
+    border-color: #fecaca;
+}
+.tw-btn-icon-danger:hover {
+    background-color: #dc2626;
+    color: #fff;
+}
+.tw-btn-icon-approve {
+    color: #16a34a;
+    background-color: #f0fdf4;
+    border-color: #bbf7d0;
+}
+.tw-btn-icon-approve:hover {
+    background-color: #16a34a;
+    color: #fff;
+}
+.tw-btn-icon-view {
+    color: #6366f1;
+    background-color: #eef2ff;
+    border-color: #c7d2fe;
+}
+.tw-btn-icon-view:hover {
+    background-color: #6366f1;
+    color: #fff;
+}
+
+/* ── Shared form field style used across landlord/tenant role-manage pages ── */
+.lnd-input {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    font-size: 0.875rem;
+    border: 1px solid var(--color-border-main, #e5e7eb);
+    border-radius: 0.5rem;
+    background-color: var(--color-bg-surface, #fff);
+    color: var(--color-text-main, #1a1816);
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+.lnd-input:focus {
+    border-color: var(--color-primary, #1a5c4e);
+    box-shadow: 0 0 0 3px rgba(26, 92, 78, 0.08);
+}
+.lnd-input::placeholder {
+    color: var(--color-text-subtle, #9ca3af);
+}
+
+.lnd-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-dark, #111827);
+    margin-bottom: 0.375rem;
+}
+
+/* ── Permission toggle (role create / edit) ─────────────────────── */
+.perm-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border-main, #e5e7eb);
+    background: var(--color-bg-base, #f9fafb);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-dark, #111827);
+}
+.perm-item:hover {
+    border-color: var(--color-primary, #1a5c4e);
+    background: var(--color-primary-soft, #e0f0f0);
+    color: var(--color-primary, #1a5c4e);
+}
+.perm-item input[type="checkbox"] {
+    accent-color: var(--color-primary, #1a5c4e);
+    width: 0.875rem;
+    height: 0.875rem;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+.perm-item:has(input:checked) {
+    border-color: var(--color-primary, #1a5c4e);
+    background: var(--color-primary-soft, #e0f0f0);
+    color: var(--color-primary, #1a5c4e);
+}
+
+.perm-group-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-brand, #3a6761);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+.perm-group-title::before,
+.perm-group-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-border-main, #e5e7eb);
+}
+.perm-group-title::before { flex: none; width: 1rem; }

@@ -1,0 +1,386 @@
+/* ──────────────────────────────────────────────────────────────────
+   Commission Module – Tailwind-compatible component styles
+   Landlord admin panel · new Tailwind UI
+────────────────────────────────────────────────────────────────── */
+
+/* ── Tab Navigation ───────────────────────────────────────────── */
+.cm-tab-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--color-border-main, #e0f0f0);
+}
+
+.cm-tab-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-muted, #6b7280);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.15s;
+    white-space: nowrap;
+}
+
+.cm-tab-link:hover {
+    color: var(--color-primary, #1a5c4e);
+    background-color: var(--color-bg-muted, #edf9f9);
+}
+
+.cm-tab-link.active {
+    color: var(--color-primary, #1a5c4e);
+    border-bottom-color: var(--color-primary, #1a5c4e);
+}
+
+/* ── Stat Cards ───────────────────────────────────────────────── */
+.cm-stat-card {
+    background: var(--color-bg-surface, #fff);
+    border: 1px solid var(--color-border-main, #e0f0f0);
+    border-radius: 0.875rem;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.2s ease;
+}
+
+.cm-stat-card:hover {
+    box-shadow: 0 4px 16px -4px rgba(45, 106, 79, 0.12);
+    transform: translateY(-2px);
+}
+
+.cm-stat-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.25rem;
+}
+
+.cm-stat-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted, #6b7280);
+    margin-bottom: 0.15rem;
+}
+
+.cm-stat-value {
+    font-size: 1.375rem;
+    font-weight: 800;
+    color: var(--color-text-main, #1a1816);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+/* Featured stat card (dark gradient bg) */
+.cm-stat-featured {
+    background: var(--gradient-featured, linear-gradient(135deg, #1a3a3a 0%, #0f4f4f 50%, #1a5c4e 100%));
+    border: none;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.cm-stat-featured::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -20%;
+    width: 60%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.cm-stat-featured .cm-stat-label { color: rgba(255,255,255,0.55); }
+.cm-stat-featured .cm-stat-value { color: #fff; }
+
+/* ── Filter Panel ─────────────────────────────────────────────── */
+.cm-filter-panel {
+    background: var(--color-bg-surface, #fff);
+    border: 1px solid var(--color-border-main, #e0f0f0);
+    border-radius: 0.875rem;
+    overflow: hidden;
+}
+
+.cm-filter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.875rem 1.25rem;
+    cursor: pointer;
+    transition: background 0.12s;
+}
+
+.cm-filter-header:hover {
+    background: var(--color-bg-muted, #edf9f9);
+}
+
+.cm-filter-body {
+    padding: 1.25rem;
+    border-top: 1px solid var(--color-border-main, #e0f0f0);
+    background: var(--color-bg-secondary, #F0FCFB);
+}
+
+.cm-filter-toggle-icon {
+    transition: transform 0.2s;
+}
+
+.cm-filter-panel[open] .cm-filter-toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* ── Gateway Cards (Withdraw Gateway Builder) ─────────────────── */
+.cm-gateway-card {
+    border: 1px solid var(--color-border-main, #e0f0f0);
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.cm-gateway-card:hover {
+    border-color: var(--color-border-hover, #b0dede);
+    box-shadow: 0 2px 8px rgba(45, 106, 79, 0.08);
+}
+
+.cm-gateway-header {
+    background: var(--color-bg-secondary, #F0FCFB);
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--color-border-main, #e0f0f0);
+}
+
+.cm-gateway-body {
+    padding: 1rem;
+}
+
+/* ── Dynamic Field Items ──────────────────────────────────────── */
+.cm-field-item {
+    background: var(--color-bg-muted, #edf9f9);
+    padding: 0.875rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.625rem;
+    border-left: 3px solid var(--color-primary, #1a5c4e);
+    transition: background 0.12s;
+}
+
+.cm-field-item:hover {
+    background: var(--color-bg-secondary, #F0FCFB);
+}
+
+/* ── Info Cards (Commission Type Explanation) ─────────────────── */
+.cm-info-card {
+    background: var(--color-bg-surface, #fff);
+    border: 1px solid var(--color-border-main, #e0f0f0);
+    border-radius: 0.875rem;
+    padding: 1.25rem;
+    transition: all 0.2s;
+    height: 100%;
+}
+
+.cm-info-card:hover {
+    box-shadow: 0 4px 12px rgba(45, 106, 79, 0.10);
+    transform: translateY(-2px);
+}
+
+.cm-info-card.type-purple { border-left: 4px solid #6c5ce7; }
+.cm-info-card.type-teal   { border-left: 4px solid #0d9488; }
+.cm-info-card.type-amber  { border-left: 4px solid #d97706; }
+
+/* ── Detail Grid (Modal Key-Value Layout) ─────────────────────── */
+.cm-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.cm-detail-row {
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-border-subtle, #edf9f9);
+}
+
+.cm-detail-row:nth-last-child(-n+2) {
+    border-bottom: none;
+}
+
+.cm-detail-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted, #6b7280);
+    margin-bottom: 0.25rem;
+}
+
+.cm-detail-value {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-text-dark, #111827);
+    word-break: break-word;
+}
+
+.cm-detail-full {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 640px) {
+    .cm-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── TW Modal ─────────────────────────────────────────────────── */
+.cm-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+.cm-modal-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cm-modal {
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+.cm-modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.cm-modal-dialog {
+    background: var(--color-bg-surface, #fff);
+    border-radius: 1rem;
+    box-shadow: 0 20px 60px -12px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 540px;
+    max-height: 85vh;
+    overflow-y: auto;
+    transform: translateY(20px) scale(0.98);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cm-modal.active .cm-modal-dialog {
+    transform: translateY(0) scale(1);
+}
+
+.cm-modal-dialog.lg {
+    max-width: 720px;
+}
+
+.cm-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.125rem 1.5rem;
+    border-bottom: 1px solid var(--color-border-main, #e0f0f0);
+}
+
+.cm-modal-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-dark, #111827);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cm-modal-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    border: none;
+    background: transparent;
+    color: var(--color-text-muted, #6b7280);
+    cursor: pointer;
+    font-size: 1.125rem;
+    transition: all 0.12s;
+}
+
+.cm-modal-close:hover {
+    background: var(--color-bg-muted, #edf9f9);
+    color: var(--color-text-dark, #111827);
+}
+
+.cm-modal-body {
+    padding: 1.25rem 1.5rem;
+}
+
+.cm-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--color-border-main, #e0f0f0);
+}
+
+/* ── Duration Select ──────────────────────────────────────────── */
+.cm-duration-select {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.8125rem;
+    border: 1px solid var(--color-border-main, #e0f0f0);
+    border-radius: 0.625rem;
+    background-color: var(--color-bg-surface, #fff);
+    color: var(--color-text-main, #1a1816);
+    outline: none;
+    cursor: pointer;
+    min-width: 140px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.cm-duration-select:focus {
+    border-color: var(--color-primary, #1a5c4e);
+    box-shadow: 0 0 0 3px rgba(26, 92, 78, 0.08);
+}
+
+/* ── Spinner ──────────────────────────────────────────────────── */
+.cm-spinner {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid var(--color-border-main, #e0f0f0);
+    border-top-color: var(--color-primary, #1a5c4e);
+    border-radius: 9999px;
+    animation: cm-spin 0.6s linear infinite;
+}
+
+@keyframes cm-spin {
+    to { transform: rotate(360deg); }
+}

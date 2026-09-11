@@ -1,0 +1,96 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "section-ct001",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-ct001",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-ct001",
+                                "type": "tenant_contact_info_form"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-ct002",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-ct002",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-ct002",
+                                "type": "tenant_google_map_embed"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "widget-ct001": {
+            "type": "tenant_contact_info_form",
+            "container_id": "section-ct001",
+            "column_id": "column-ct001",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-ct002": {
+            "type": "tenant_google_map_embed",
+            "container_id": "section-ct002",
+            "column_id": "column-ct002",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        }
+    }
+}

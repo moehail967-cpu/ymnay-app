@@ -1,0 +1,402 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "section-bp001",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-bp001",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-bp001",
+                                "type": "bookpoint_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-bp002",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-bp002",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-bp002",
+                                "type": "bookpoint_service_features"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#f8f9fa"
+                }
+            },
+            {
+                "id": "section-bp003",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-bp003",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-bp003",
+                                "type": "bookpoint_category_grid"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-bp004",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-bp004",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-bp004",
+                                "type": "bookpoint_featured_products"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-bp005",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-bp005",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-bp005",
+                                "type": "bookpoint_promo_banner"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-bp006",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-bp006",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-bp006",
+                                "type": "bookpoint_brand_logos"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "widget-bp001": {
+            "type": "bookpoint_hero_section",
+            "container_id": "section-bp001",
+            "column_id": "column-bp001",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Find the greatest life books ever written",
+                        "description": "Reading books are good for you because it improves your focus, memory, empathy, and communication skills. It can reduce stress, improve your mental health, and help you live longer.",
+                        "btn_text": "Shop Now",
+                        "btn_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": "#",
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    },
+                    "media": {
+                        "book_image_1": "@media:bookpoint-hero-book1",
+                        "book_image_2": "@media:bookpoint-hero-book2",
+                        "book_image_3": "@media:bookpoint-hero-book3",
+                        "bg_wave_image": null
+                    }
+                },
+                "style": {
+                    "style": {
+                        "panel_color": "#daf2ea",
+                        "padding_top": 0,
+                        "padding_bottom": 0
+                    }
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-bp002": {
+            "type": "bookpoint_service_features",
+            "container_id": "section-bp002",
+            "column_id": "column-bp002",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "Feature1": {
+                        "icon1": "las la-shipping-fast",
+                        "title1": "Free Shipping",
+                        "desc1": "Free delivery on orders above $30"
+                    },
+                    "Feature2": {
+                        "icon2": "las la-money-bill-wave",
+                        "title2": "Money Back",
+                        "desc2": "100% money back guarantee"
+                    },
+                    "Feature3": {
+                        "icon3": "las la-headset",
+                        "title3": "24/7 Support",
+                        "desc3": "Friendly customer support"
+                    },
+                    "Feature4": {
+                        "icon4": "las la-undo",
+                        "title4": "Easy Returns",
+                        "desc4": "Return within 30 days"
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-bp003": {
+            "type": "bookpoint_category_grid",
+            "container_id": "section-bp003",
+            "column_id": "column-bp003",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Explore by Categories",
+                        "show_view_all": "yes",
+                        "limit": 6,
+                        "product_limit": 6
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-bp004": {
+            "type": "bookpoint_featured_products",
+            "container_id": "section-bp004",
+            "column_id": "column-bp004",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "featured_title": "Featured Books",
+                        "featured_count": 6,
+                        "recent_title": "Recently Added",
+                        "recent_count": 8
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-bp005": {
+            "type": "bookpoint_promo_banner",
+            "container_id": "section-bp005",
+            "column_id": "column-bp005",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "banner1": {
+                        "tag1": "40 Life Changing Books",
+                        "title1": "Get special discounts on",
+                        "link1_text": "Browse Now",
+                        "link1_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "image1": "@media:bookpoint-promo-1"
+                    },
+                    "banner2": {
+                        "tag2": "Bestselling Sci-Fi",
+                        "title2": "Lose yourself in another world",
+                        "link2_text": "Browse Now",
+                        "link2_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "image2": "@media:bookpoint-promo-2"
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-bp006": {
+            "type": "bookpoint_brand_logos",
+            "container_id": "section-bp006",
+            "column_id": "column-bp006",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "item_show": 10,
+                        "per_slide": 5
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        }
+    }
+}

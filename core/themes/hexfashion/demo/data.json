@@ -1,0 +1,339 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "HexFashion — Modern Fashion Store"
+      },
+      {
+        "key": "site_description",
+        "value": "Your destination for contemporary fashion and style. New arrivals weekly."
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/hero-banner.jpg",
+        "import_as": "hero-banner"
+      },
+      {
+        "path": "assets/images/banner.jpg",
+        "import_as": "banner"
+      },
+      {
+        "path": "assets/images/promo-banner1.jpg",
+        "import_as": "promo-banner1"
+      },
+      {
+        "path": "assets/images/promo-banner2.jpg",
+        "import_as": "promo-banner2"
+      },
+      {
+        "path": "assets/images/prod-dress.jpg",
+        "import_as": "hexfashion-prod-dress"
+      },
+      {
+        "path": "assets/images/prod-suit.jpg",
+        "import_as": "hexfashion-prod-suit"
+      },
+      {
+        "path": "assets/images/prod-handbag.jpg",
+        "import_as": "hexfashion-prod-handbag"
+      },
+      {
+        "path": "assets/images/prod-heels.jpg",
+        "import_as": "hexfashion-prod-heels"
+      },
+      {
+        "path": "assets/images/prod-watch.jpg",
+        "import_as": "hexfashion-prod-watch"
+      },
+      {
+        "path": "assets/images/prod-sunglasses.jpg",
+        "import_as": "hexfashion-prod-sunglasses"
+      },
+      {
+        "path": "assets/images/prod-scarf.jpg",
+        "import_as": "hexfashion-prod-scarf"
+      },
+      {
+        "path": "assets/images/prod-kids-outfit.jpg",
+        "import_as": "hexfashion-prod-kids-outfit"
+      },
+      {
+        "path": "assets/images/cat-women.jpg",
+        "import_as": "hexfashion-cat-women"
+      },
+      {
+        "path": "assets/images/cat-men.jpg",
+        "import_as": "hexfashion-cat-men"
+      },
+      {
+        "path": "assets/images/cat-kids.jpg",
+        "import_as": "hexfashion-cat-kids"
+      },
+      {
+        "path": "assets/images/cat-shoes.jpg",
+        "import_as": "hexfashion-cat-shoes"
+      },
+      {
+        "path": "assets/images/cat-bags.jpg",
+        "import_as": "hexfashion-cat-bags"
+      },
+      {
+        "path": "assets/images/cat-accessories.jpg",
+        "import_as": "hexfashion-cat-accessories"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Women",
+        "slug": "women",
+        "image": "hexfashion-cat-women"
+      },
+      {
+        "name": "Men",
+        "slug": "men",
+        "image": "hexfashion-cat-men"
+      },
+      {
+        "name": "Kids",
+        "slug": "kids",
+        "image": "hexfashion-cat-kids"
+      },
+      {
+        "name": "Shoes",
+        "slug": "shoes",
+        "image": "hexfashion-cat-shoes"
+      },
+      {
+        "name": "Bags",
+        "slug": "bags",
+        "image": "hexfashion-cat-bags"
+      },
+      {
+        "name": "Accessories",
+        "slug": "accessories",
+        "image": "hexfashion-cat-accessories"
+      }
+    ],
+    "products": [
+      {
+        "name": "Summer Floral Dress",
+        "summary": "Lightweight floral midi dress with adjustable straps. Perfect for warm weather and special occasions.",
+        "price": 89.99,
+        "compare_price": 119.99,
+        "category": "women",
+        "image": "hexfashion-prod-dress",
+        "stock": 50,
+        "tags": [
+          "dress",
+          "floral",
+          "summer",
+          "women"
+        ]
+      },
+      {
+        "name": "Classic Business Suit",
+        "summary": "Slim-fit two-piece suit in premium wool blend. Available in charcoal and navy.",
+        "price": 299.99,
+        "compare_price": 399.99,
+        "category": "men",
+        "image": "hexfashion-prod-suit",
+        "stock": 30,
+        "tags": [
+          "suit",
+          "business",
+          "wool",
+          "men"
+        ]
+      },
+      {
+        "name": "Leather Tote Bag",
+        "summary": "Full-grain leather tote with interior pockets and magnetic closure. Timeless everyday bag.",
+        "price": 149.99,
+        "compare_price": 199.99,
+        "category": "bags",
+        "image": "hexfashion-prod-handbag",
+        "stock": 40,
+        "tags": [
+          "bag",
+          "leather",
+          "tote",
+          "women"
+        ]
+      },
+      {
+        "name": "Block Heel Pumps",
+        "summary": "Classic pointed-toe pumps with a stable block heel. Available in black, nude, and red.",
+        "price": 79.99,
+        "compare_price": 109.99,
+        "category": "shoes",
+        "image": "hexfashion-prod-heels",
+        "stock": 45,
+        "tags": [
+          "shoes",
+          "heels",
+          "pumps",
+          "women"
+        ]
+      },
+      {
+        "name": "Fashion Watch",
+        "summary": "Minimalist stainless steel watch with leather strap. Water resistant to 50m.",
+        "price": 129.99,
+        "compare_price": 169.99,
+        "category": "accessories",
+        "image": "hexfashion-prod-watch",
+        "stock": 35,
+        "tags": [
+          "watch",
+          "accessories",
+          "minimalist",
+          "steel"
+        ]
+      },
+      {
+        "name": "Designer Sunglasses",
+        "summary": "UV400 polarised lenses in an oversized frame. Includes protective case.",
+        "price": 69.99,
+        "compare_price": 89.99,
+        "category": "accessories",
+        "image": "hexfashion-prod-sunglasses",
+        "stock": 60,
+        "tags": [
+          "sunglasses",
+          "accessories",
+          "polarised",
+          "uv400"
+        ]
+      },
+      {
+        "name": "Silk Scarf",
+        "summary": "100% pure silk scarf with hand-rolled edges and vibrant printed pattern.",
+        "price": 49.99,
+        "compare_price": 69.99,
+        "category": "accessories",
+        "image": "hexfashion-prod-scarf",
+        "stock": 55,
+        "tags": [
+          "scarf",
+          "silk",
+          "accessories",
+          "women"
+        ]
+      },
+      {
+        "name": "Kids Party Outfit",
+        "summary": "Adorable party set with embroidered top and matching trousers. Ages 3-10.",
+        "price": 39.99,
+        "compare_price": 54.99,
+        "category": "kids",
+        "image": "hexfashion-prod-kids-outfit",
+        "stock": 70,
+        "tags": [
+          "kids",
+          "party",
+          "outfit",
+          "children"
+        ]
+      }
+    ],
+    "menus": [
+      {
+        "name": "Primary Navigation",
+        "location": "primary",
+        "items": [
+          {
+            "title": "Home",
+            "url": "@url/",
+            "order": 1
+          },
+          {
+            "title": "Shop",
+            "url": "@url/shop",
+            "order": 2
+          },
+          {
+            "title": "About",
+            "url": "@url/about",
+            "order": 3
+          },
+          {
+            "title": "Contact",
+            "url": "@url/contact",
+            "order": 4
+          }
+        ]
+      },
+      {
+        "name": "Footer Navigation",
+        "location": "footer",
+        "items": [
+          {
+            "title": "About",
+            "url": "@url/about",
+            "order": 1
+          },
+          {
+            "title": "Contact",
+            "url": "@url/contact",
+            "order": 2
+          }
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Shop",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Customer Care",
+          "menu_id": "@primary_menu"
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "hexfashion-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/home-layout.json"
+      },
+      {
+        "title": "About Us",
+        "slug": "about-us",
+        "page_builder": false,
+        "breadcrumb": true,
+        "layout_file": "assets/page_layout/about-layout.json"
+      },
+      {
+        "title": "Contact",
+        "slug": "contact-us",
+        "page_builder": false,
+        "breadcrumb": true,
+        "layout_file": "assets/page_layout/contact-layout.json"
+      }
+    ]
+  }
+}

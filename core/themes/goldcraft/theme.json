@@ -1,0 +1,86 @@
+{
+  "name": "GoldCraft",
+  "slug": "goldcraft",
+  "description": "A warm rose-gold artisan jewelry theme. Hand-crafted aesthetic, warm ivory tones, and story-driven product pages for independent jewelers, custom pieces, and artisan accessory brands.",
+  "author": "Nazmart",
+  "version": "1.0.0",
+  "niche": "jewelry",
+  "price": 0,
+  "license": "free",
+  "status": true,
+  "screenshot": [
+    {
+      "primary": "primary.jpg",
+      "sort": "desc"
+    }
+  ],
+  "assets": {
+    "header": {
+      "styles": [
+        "style"
+      ],
+      "rtl_styles": [
+        "rtl"
+      ],
+      "scripts": []
+    },
+    "footer": {
+      "styles": [],
+      "scripts": [
+        "main"
+      ]
+    }
+  },
+  "views": {
+    "navbar": "header/navbar",
+    "footer_widget": "footer/widget-area"
+  },
+  "headerHook": [
+    {
+      "style": [
+        "mdi",
+        "style",
+        "pages"
+      ],
+      "rtl_style": [
+        "rtl"
+      ],
+      "script": [],
+      "blade": [],
+      "navbarArea": "header/navbar",
+      "breadcrumbArea": "header/breadcrumb",
+      "loadCoreStyle": {
+        "line-awesome.min": true,
+        "animate": false,
+        "odometer": false,
+        "magnific-popup": false
+      }
+    }
+  ],
+  "footerHook": [
+    {
+      "style": [],
+      "script": [
+        "main"
+      ],
+      "blade": [],
+      "widgetArea": "footer/widget-area",
+      "loadCoreScript": {
+        "odometer": false,
+        "jquery.syotimer.min": false,
+        "viewport.jquery": false,
+        "wow": false
+      }
+    }
+  ],
+  "demo": {
+    "data": "demo/data.json"
+  },
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2026-04-28",
+      "notes": "Initial release"
+    }
+  ]
+}

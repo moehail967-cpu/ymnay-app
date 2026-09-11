@@ -1,0 +1,4 @@
+/* RTL overrides — glowlab */
+body { direction: rtl; text-align: right; }
+.gl-nav-links { flex-direction: row-reverse; }
+.gl-footer-bottom { flex-direction: row-reverse; }

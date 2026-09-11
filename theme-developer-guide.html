@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nazmart Theme Developer Guide</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/php.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<style>
+  :root {
+    --accent: #c0392b;
+    --accent-light: #fdf3f3;
+    --dark: #1a1a2e;
+    --text: #2d3748;
+    --muted: #718096;
+    --border: #e2e8f0;
+    --code-bg: #f7fafc;
+    --sidebar-w: 280px;
+    --nav-h: 60px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+         color: var(--text); background: #fff; line-height: 1.7; }
+
+  /* ── Top nav ── */
+  .topnav {
+    position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+    background: var(--dark); display: flex; align-items: center; padding: 0 28px;
+    z-index: 100; gap: 16px;
+  }
+  .topnav-logo { color: #fff; font-size: 18px; font-weight: 800; text-decoration: none; }
+  .topnav-logo span { color: var(--accent); }
+  .topnav-badge { background: var(--accent); color: #fff; font-size: 10px;
+                  font-weight: 700; padding: 2px 8px; border-radius: 50px;
+                  letter-spacing: .5px; text-transform: uppercase; }
+  .topnav-right { margin-left: auto; color: rgba(255,255,255,.5); font-size: 13px; }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    position: fixed; top: var(--nav-h); left: 0; bottom: 0; width: var(--sidebar-w);
+    background: var(--dark); overflow-y: auto; padding: 24px 0;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.1) transparent;
+  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 4px; }
+
+  .nav-section { padding: 0 20px 8px; margin-top: 20px;
+                 font-size: 10px; font-weight: 800; letter-spacing: 1.5px;
+                 text-transform: uppercase; color: rgba(255,255,255,.3); }
+  .nav-link {
+    display: block; padding: 7px 20px; font-size: 13px; color: rgba(255,255,255,.65);
+    text-decoration: none; border-left: 3px solid transparent;
+    transition: all .15s; line-height: 1.4;
+  }
+  .nav-link:hover { color: #fff; background: rgba(255,255,255,.06); }
+  .nav-link.active { color: #fff; border-left-color: var(--accent);
+                     background: rgba(192,57,43,.15); }
+  .nav-link.sub { padding-left: 34px; font-size: 12px; }
+
+  /* ── Main content ── */
+  .main {
+    margin-left: var(--sidebar-w); margin-top: var(--nav-h);
+    padding: 48px 60px; max-width: 960px;
+  }
+
+  /* ── Section headings ── */
+  h1 { font-size: 36px; font-weight: 900; color: var(--dark); line-height: 1.2; margin-bottom: 16px; }
+  h2 { font-size: 26px; font-weight: 800; color: var(--dark); margin: 52px 0 16px;
+       padding-top: 16px; border-top: 2px solid var(--border); }
+  h3 { font-size: 18px; font-weight: 700; color: var(--dark); margin: 32px 0 10px; }
+  h4 { font-size: 14px; font-weight: 700; color: var(--dark); margin: 20px 0 8px;
+       text-transform: uppercase; letter-spacing: .5px; }
+
+  p { margin-bottom: 14px; }
+  a { color: var(--accent); }
+  strong { font-weight: 700; }
+  ul, ol { padding-left: 22px; margin-bottom: 14px; }
+  li { margin-bottom: 4px; }
+
+  /* ── Hero ── */
+  .hero { background: linear-gradient(135deg, var(--dark) 0%, #16213e 100%);
+          color: #fff; padding: 52px 60px; margin: calc(-48px) -60px 52px; }
+  .hero h1 { color: #fff; font-size: 42px; }
+  .hero p { color: rgba(255,255,255,.72); font-size: 17px; max-width: 580px; margin-top: 10px; }
+  .hero-meta { display: flex; gap: 24px; margin-top: 24px; }
+  .hero-pill { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+               color: rgba(255,255,255,.8); font-size: 12px; padding: 5px 14px;
+               border-radius: 50px; font-weight: 600; }
+
+  /* ── Callouts ── */
+  .callout { padding: 16px 20px; border-radius: 8px; margin: 20px 0; font-size: 14px; }
+  .callout-info { background: #ebf8ff; border-left: 4px solid #3182ce; }
+  .callout-warn { background: #fffbeb; border-left: 4px solid #d69e2e; }
+  .callout-tip  { background: #f0fff4; border-left: 4px solid #38a169; }
+  .callout-danger { background: var(--accent-light); border-left: 4px solid var(--accent); }
+  .callout strong { display: block; margin-bottom: 4px; }
+
+  /* ── Code blocks ── */
+  pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px;
+        overflow-x: auto; margin: 16px 0; font-size: 13px; line-height: 1.6; }
+  pre code { background: none !important; padding: 0 !important; font-size: 13px; }
+  pre > code.hljs { padding: 20px 22px !important; border-radius: 8px; }
+  code { background: var(--code-bg); border: 1px solid var(--border);
+         padding: 2px 6px; border-radius: 4px; font-size: 12.5px; font-family: 'SF Mono', Consolas, monospace; }
+  pre code { border: none; }
+
+  .filename {
+    background: var(--dark); color: rgba(255,255,255,.7); font-size: 11px;
+    padding: 7px 16px; border-radius: 8px 8px 0 0; font-family: monospace;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .filename + pre { margin-top: 0; border-top: none; border-radius: 0 0 8px 8px; }
+  .filename::before { content: '📄'; }
+
+  /* ── Tables ── */
+  .table-wrap { overflow-x: auto; margin: 16px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th { background: var(--dark); color: rgba(255,255,255,.85); padding: 10px 14px;
+       text-align: left; font-size: 11px; letter-spacing: .5px; text-transform: uppercase; }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:hover td { background: var(--code-bg); }
+  td code { font-size: 12px; }
+
+  /* ── Method cards ── */
+  .method-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                 gap: 12px; margin: 16px 0; }
+  .method-card { background: var(--code-bg); border: 1px solid var(--border);
+                 border-radius: 8px; padding: 14px 16px; }
+  .method-sig { font-family: monospace; font-size: 13px; font-weight: 700;
+                color: var(--dark); margin-bottom: 4px; }
+  .method-sig span { color: var(--accent); }
+  .method-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .method-return { font-size: 11px; color: var(--accent); margin-top: 4px;
+                   font-family: monospace; }
+
+  /* ── File tree ── */
+  .tree { background: var(--dark); color: rgba(255,255,255,.8); border-radius: 8px;
+          padding: 20px 24px; font-family: monospace; font-size: 13px;
+          line-height: 2; margin: 16px 0; }
+  .tree .dir { color: #63b3ed; }
+  .tree .file { color: #68d391; }
+  .tree .comment { color: rgba(255,255,255,.35); }
+  .tree .highlight { color: #f6e05e; }
+
+  /* ── Tag badges ── */
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px;
+         font-weight: 700; margin-right: 4px; text-transform: uppercase; letter-spacing: .3px; }
+  .tag-auto { background: #c6f6d5; color: #276749; }
+  .tag-manual { background: #bee3f8; color: #2a69ac; }
+  .tag-new { background: var(--accent-light); color: var(--accent); }
+
+  /* ── Divider ── */
+  hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; padding: 32px 24px; }
+    .hero { margin: -32px -24px 40px; padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top Nav -->
+<nav class="topnav">
+  <a href="#" class="topnav-logo">Naz<span>mart</span></a>
+  <span class="topnav-badge">Theme Dev Guide</span>
+  <span class="topnav-right">v2.0 — Multi-tenant SaaS</span>
+</nav>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="nav-section">Getting Started</div>
+  <a href="#introduction" class="nav-link">Introduction</a>
+  <a href="#quick-start" class="nav-link">Quick Start</a>
+  <a href="#directory-structure" class="nav-link">Directory Structure</a>
+  <a href="#theme-json" class="nav-link">theme.json Config</a>
+
+  <div class="nav-section">View System</div>
+  <a href="#override-system" class="nav-link">Auto-Override System</a>
+  <a href="#override-frontend" class="nav-link sub">Frontend Pages</a>
+  <a href="#override-modules" class="nav-link sub">Module Pages (Blog etc)</a>
+  <a href="#asset-pipeline" class="nav-link">Asset Pipeline</a>
+  <a href="#fallback-chain" class="nav-link">Fallback Chain</a>
+
+  <div class="nav-section">Helper API</div>
+  <a href="#url-helpers" class="nav-link">URL Helpers</a>
+  <a href="#auth-helpers" class="nav-link">Auth URL Helpers</a>
+  <a href="#auth-page-content-helpers" class="nav-link">Auth Page Content</a>
+  <a href="#shop-url-helpers" class="nav-link">Shop URLs</a>
+  <a href="#blog-url-helpers" class="nav-link">Blog URLs</a>
+  <a href="#render-helpers" class="nav-link">Rendering Helpers</a>
+
+  <div class="nav-section">Context API</div>
+  <a href="#context-overview" class="nav-link">Overview</a>
+  <a href="#blog-context" class="nav-link">Blog Context</a>
+  <a href="#shop-context" class="nav-link">Shop Context</a>
+
+  <div class="nav-section">Wrapper Classes</div>
+  <a href="#wrapper-post" class="nav-link">Blog\Post</a>
+  <a href="#wrapper-category" class="nav-link">Blog\Category</a>
+  <a href="#wrapper-tag" class="nav-link">Blog\Tag</a>
+  <a href="#wrapper-comment" class="nav-link">Blog\Comment</a>
+  <a href="#wrapper-product" class="nav-link">Shop\Product</a>
+  <a href="#wrapper-product-category" class="nav-link">Shop\ProductCategory</a>
+
+  <div class="nav-section">Page Builder</div>
+  <a href="#widgets" class="nav-link">Theme Widgets</a>
+  <a href="#widget-enable" class="nav-link sub">enable() Method</a>
+
+  <div class="nav-section">Examples</div>
+  <a href="#example-blog-list" class="nav-link">Blog List Template</a>
+  <a href="#example-blog-single" class="nav-link">Blog Single Template</a>
+  <a href="#example-shop" class="nav-link">Shop Template</a>
+  <a href="#example-product" class="nav-link">Product Detail Template</a>
+</aside>
+
+<!-- Main Content -->
+<main class="main">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Nazmart Theme Developer Guide</h1>
+    <p>Everything you need to build a fully independent, zero-core-change theme for the Nazmart multi-tenant ecommerce platform.</p>
+    <div class="hero-meta">
+      <span class="hero-pill">🏗 Laravel Multi-Tenant</span>
+      <span class="hero-pill">🎨 Blade Templates</span>
+      <span class="hero-pill">🔌 Zero Core Changes</span>
+      <span class="hero-pill">🔄 Auto Override</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="introduction">Introduction</h2>
+
+  <p>Nazmart is a <strong>multi-tenant Laravel SaaS</strong> platform. Each tenant (shop owner) can activate a theme that controls the entire look and feel of their storefront. Themes live in a dedicated <code>themes/</code> directory at the project root and are completely self-contained — no modifications to the core application are needed.</p>
+
+  <p>Key design principles:</p>
+  <ul>
+    <li><strong>Auto-override</strong> — place a file in the right path and it automatically overrides the default, no registration needed.</li>
+    <li><strong>Fallback chain</strong> — if a theme doesn't provide a view, the system falls back to the default theme, then to core views. Themes only need to ship files that differ from the default.</li>
+    <li><strong>Stable API</strong> — theme templates never import core classes or call raw routes. The <em>Theme Helper API</em> and <em>Context API</em> act as a stable contract layer.</li>
+    <li><strong>WordPress-style template tags</strong> — typed wrapper objects with clean methods replace raw Eloquent models in templates.</li>
+  </ul>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="quick-start">Quick Start</h2>
+
+  <h3>1. Create your theme directory</h3>
+  <pre><code class="language-bash">mkdir -p themes/mytheme/views
+mkdir -p themes/mytheme/assets/css
+mkdir -p themes/mytheme/assets/js
+mkdir -p themes/mytheme/assets/img
+mkdir -p themes/mytheme/screenshot
+mkdir -p themes/mytheme/demo</code></pre>
+
+  <h3>2. Create theme.json</h3>
+  <div class="filename">themes/mytheme/theme.json</div>
+  <pre><code class="language-json">{
+  "name": "My Theme",
+  "slug": "mytheme",
+  "version": "1.0.0",
+  "description": "A beautiful food & restaurant theme",
+  "niche": "restaurant",
+  "status": true,
+  "price": 0,
+  "license": "free",
+  "author": "Your Name",
+  "headerHook": [
+    {
+      "style": ["style"],
+      "rtl_style": [],
+      "script": [],
+      "blade": [],
+      "navbarArea": "navbar",
+      "breadcrumbArea": "breadcrumb",
+      "loadCoreStyle": {}
+    }
+  ],
+  "footerHook": [
+    {
+      "style": [],
+      "script": ["main"],
+      "blade": [],
+      "widgetArea": "widget-area",
+      "loadCoreScript": {}
+    }
+  ],
+  "screenshot": [{ "primary": "screenshot.jpg" }]
+}</code></pre>
+
+  <h3>3. Publish your assets</h3>
+  <pre><code class="language-bash"># Creates a symlink: public/themes/mytheme → ../../themes/mytheme/assets
+php artisan theme:publish mytheme</code></pre>
+
+  <h3>4. Activate for a tenant</h3>
+  <p>In the landlord admin panel → Themes, assign <strong>mytheme</strong> to a tenant. The system will automatically load your views and assets.</p>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="directory-structure">Directory Structure</h2>
+
+  <div class="tree">
+<span class="dir">themes/</span>
+├── <span class="dir">_stubs/</span>                    <span class="comment">← scaffold templates (copied by theme:create)</span>
+├── <span class="dir">default/</span>                   <span class="comment">← canonical fallback theme</span>
+│   ├── <span class="file">theme.json</span>
+│   ├── <span class="dir">views/</span>
+│   │   ├── <span class="dir">frontend/</span>
+│   │   │   ├── <span class="dir">shop/</span>
+│   │   │   ├── <span class="dir">pages/</span>
+│   │   │   └── <span class="dir">partials/</span>
+│   │   ├── <span class="dir">header/</span>
+│   │   └── <span class="dir">footer/</span>
+│   └── <span class="dir">assets/</span>
+│       ├── <span class="dir">css/</span>
+│       └── <span class="dir">js/</span>
+└── <span class="highlight dir">mytheme/</span>               <span class="comment">← your theme</span>
+    ├── <span class="file">theme.json</span>             <span class="comment">← required</span>
+    ├── <span class="dir">views/</span>
+    │   ├── <span class="dir">frontend/</span>             <span class="comment">← overrides theme:: namespace</span>
+    │   │   ├── <span class="dir">shop/</span>
+    │   │   │   ├── <span class="file">all-products.blade.php</span>    <span class="comment">← shop listing</span>
+    │   │   │   ├── <span class="dir">product_details/</span>
+    │   │   │   │   └── <span class="file">product-details.blade.php</span> <span class="comment">← product detail</span>
+    │   │   │   ├── <span class="dir">checkout/</span>
+    │   │   │   │   └── <span class="file">checkout.blade.php</span>        <span class="comment">← checkout</span>
+    │   │   │   └── <span class="dir">cart/</span>
+    │   │   │       └── <span class="file">cart.blade.php</span>            <span class="comment">← cart</span>
+    │   │   └── <span class="dir">pages/</span>
+    │   │       └── <span class="file">contact.blade.php</span>         <span class="comment">← any static page</span>
+    │   ├── <span class="dir">header/</span>                   <span class="comment">← navbar, breadcrumb etc</span>
+    │   │   ├── <span class="file">navbar.blade.php</span>
+    │   │   └── <span class="file">breadcrumb.blade.php</span>
+    │   ├── <span class="dir">footer/</span>
+    │   │   └── <span class="file">widget-area.blade.php</span>
+    │   └── <span class="dir">modules/</span>               <span class="comment">← module view overrides</span>
+    │       └── <span class="dir">blog/</span>               <span class="comment">← overrides blog:: namespace</span>
+    │           └── <span class="dir">tenant/frontend/blog/</span>
+    │               ├── <span class="file">blog-all.blade.php</span>    <span class="comment">← blog listing</span>
+    │               └── <span class="file">blog-single.blade.php</span> <span class="comment">← blog detail</span>
+    ├── <span class="dir">assets/</span>
+    │   ├── <span class="dir">css/</span>
+    │   │   ├── <span class="file">style.css</span>              <span class="comment">← main stylesheet</span>
+    │   │   └── <span class="file">rtl.css</span>               <span class="comment">← RTL support (optional)</span>
+    │   └── <span class="dir">js/</span>
+    │       └── <span class="file">main.js</span>
+    ├── <span class="dir">Widgets/</span>                  <span class="comment">← page builder widgets</span>
+    │   └── <span class="file">HeroSection.php</span>
+    ├── <span class="dir">screenshot/</span>
+    │   └── <span class="file">screenshot.jpg</span>
+    └── <span class="dir">demo/</span>
+        └── <span class="file">data.json</span>             <span class="comment">← demo content import</span>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="theme-json">theme.json Configuration</h2>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Key</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><code>name</code></td><td>string</td><td>✅</td><td>Display name shown in admin panel</td></tr>
+      <tr><td><code>slug</code></td><td>string</td><td>✅</td><td>Unique identifier, matches directory name</td></tr>
+      <tr><td><code>version</code></td><td>string</td><td>✅</td><td>Semantic version e.g. <code>"1.0.0"</code></td></tr>
+      <tr><td><code>description</code></td><td>string</td><td>—</td><td>Short description for marketplace</td></tr>
+      <tr><td><code>niche</code></td><td>string</td><td>—</td><td>Category: <code>restaurant</code>, <code>fashion</code>, <code>electronics</code>…</td></tr>
+      <tr><td><code>status</code></td><td>boolean</td><td>✅</td><td>Must be <code>true</code> for tenant use</td></tr>
+      <tr><td><code>price</code></td><td>number</td><td>—</td><td>Marketplace price (0 = free)</td></tr>
+      <tr><td><code>author</code></td><td>string</td><td>—</td><td>Your name / company</td></tr>
+      <tr><td><code>headerHook</code></td><td>array</td><td>✅</td><td>CSS/JS files and blade areas for the header</td></tr>
+      <tr><td><code>footerHook</code></td><td>array</td><td>✅</td><td>CSS/JS files and blade areas for the footer</td></tr>
+      <tr><td><code>screenshot</code></td><td>array</td><td>—</td><td>Primary screenshot filename in <code>screenshot/</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>headerHook properties</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Property</th><th>Description</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td><code>style</code></td><td>CSS files to load from <code>assets/css/</code> (no extension)</td><td><code>["style", "pages"]</code></td></tr>
+      <tr><td><code>rtl_style</code></td><td>RTL CSS files (loaded when RTL is active)</td><td><code>["rtl"]</code></td></tr>
+      <tr><td><code>script</code></td><td>JS files to load in &lt;head&gt; from <code>assets/js/</code></td><td><code>[]</code></td></tr>
+      <tr><td><code>blade</code></td><td>Blade partials to include in header hook slot</td><td><code>["analytics"]</code></td></tr>
+      <tr><td><code>navbarArea</code></td><td>Blade file for the navbar (inside <code>views/header/</code>)</td><td><code>"navbar"</code></td></tr>
+      <tr><td><code>breadcrumbArea</code></td><td>Blade file for breadcrumbs</td><td><code>"breadcrumb"</code></td></tr>
+      <tr><td><code>loadCoreStyle</code></td><td>Object to exclude specific core CSS files. Set key to <code>false</code> to skip.</td><td><code>{"odometer": false}</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>footerHook properties</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Property</th><th>Description</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td><code>style</code></td><td>CSS files to load before </body></td><td><code>[]</code></td></tr>
+      <tr><td><code>script</code></td><td>JS files to load before </body> from <code>assets/js/</code></td><td><code>["main"]</code></td></tr>
+      <tr><td><code>blade</code></td><td>Blade partials to include in footer hook slot</td><td><code>[]</code></td></tr>
+      <tr><td><code>widgetArea</code></td><td>Blade file for the footer widget columns</td><td><code>"widget-area"</code></td></tr>
+      <tr><td><code>loadCoreScript</code></td><td>Exclude specific core JS. Set key to <code>false</code> to skip.</td><td><code>{"odometer": false}</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="override-system">Auto-Override System</h2>
+
+  <p>Nazmart uses a <strong>file-based auto-override</strong> system. No PHP registration is required — simply place a file at the right path and it will automatically take priority over the default. This works the same way for all page types.</p>
+
+  <div class="callout callout-tip">
+    <strong>✅ Zero configuration needed</strong>
+    Drop a file in the right location and it automatically overrides. The system scans your theme directory on every request activation.
+  </div>
+
+  <h2 id="override-frontend">Frontend Pages (theme:: namespace)</h2>
+
+  <p>All frontend pages are resolved through the <code>theme::</code> Blade namespace with a <strong>fallback chain</strong>. Any file you place inside <code>themes/mytheme/views/</code> automatically overrides the same path in the default theme.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Page</th><th>File to create in your theme</th><th>Blade namespace call</th></tr></thead>
+    <tbody>
+      <tr><td>Shop listing</td><td><code>views/frontend/shop/all-products.blade.php</code></td><td><code>theme::frontend.shop.all-products</code></td></tr>
+      <tr><td>Product detail</td><td><code>views/frontend/shop/product_details/product-details.blade.php</code></td><td><code>theme::frontend.shop.product_details.product-details</code></td></tr>
+      <tr><td>Cart</td><td><code>views/frontend/shop/cart/cart.blade.php</code></td><td><code>theme::frontend.shop.cart.cart</code></td></tr>
+      <tr><td>Checkout</td><td><code>views/frontend/shop/checkout/checkout.blade.php</code></td><td><code>theme::frontend.shop.checkout.checkout</code></td></tr>
+      <tr><td>Navbar</td><td><code>views/header/navbar.blade.php</code></td><td><code>theme::header.navbar</code></td></tr>
+      <tr><td>Breadcrumb</td><td><code>views/header/breadcrumb.blade.php</code></td><td><code>theme::header.breadcrumb</code></td></tr>
+      <tr><td>Footer widgets</td><td><code>views/footer/widget-area.blade.php</code></td><td><code>theme::footer.widget-area</code></td></tr>
+      <tr><td>Contact page</td><td><code>views/frontend/pages/contact.blade.php</code></td><td><code>theme::frontend.pages.contact</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="override-modules">Module Pages (blog::, etc.)</h2>
+
+  <p>Pages rendered by Laravel modules (Blog, etc.) use their own Blade namespaces like <code>blog::</code>. To override these, create files inside <code>views/modules/{module-name}/</code>. The system automatically prepends your theme's path to the module namespace.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Page</th><th>File to create</th><th>Module namespace</th></tr></thead>
+    <tbody>
+      <tr><td>Blog listing</td><td><code>views/modules/blog/tenant/frontend/blog/blog-all.blade.php</code></td><td><code>blog::tenant.frontend.blog.blog-all</code></td></tr>
+      <tr><td>Blog single</td><td><code>views/modules/blog/tenant/frontend/blog/blog-single.blade.php</code></td><td><code>blog::tenant.frontend.blog.blog-single</code></td></tr>
+      <tr><td>Blog category</td><td><code>views/modules/blog/tenant/frontend/blog/blog-category.blade.php</code></td><td><code>blog::tenant.frontend.blog.blog-category</code></td></tr>
+      <tr><td>Blog search</td><td><code>views/modules/blog/tenant/frontend/blog/blog-search.blade.php</code></td><td><code>blog::tenant.frontend.blog.blog-search</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout callout-info">
+    <strong>ℹ How it works internally</strong>
+    When a theme is activated, <code>ThemeManager::registerModuleViewOverrides()</code> scans <code>themes/{slug}/views/modules/</code> and prepends each subdirectory to its matching module namespace using <code>prependNamespace()</code>. The finder cache is flushed so the change takes effect immediately.
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="asset-pipeline">Asset Pipeline</h2>
+
+  <p>Theme assets are served as <strong>static files via a public symlink</strong> — no PHP involved on every request. This enables browser caching and CDN compatibility.</p>
+
+  <pre><code class="language-bash"># Publish (symlink) your theme assets to public/
+php artisan theme:publish mytheme
+
+# Result:
+# public/themes/mytheme/ → ../../themes/mytheme/assets/</code></pre>
+
+  <p>In your <code>theme.json</code>, reference CSS and JS files by name (no path, no extension):</p>
+
+  <pre><code class="language-json">"headerHook": [{ "style": ["style", "pages"] }],
+"footerHook": [{ "script": ["main"] }]</code></pre>
+
+  <p>This loads <code>public/themes/mytheme/css/style.css</code>, <code>pages.css</code>, and <code>main.js</code>.</p>
+
+  <p>To reference assets inside a template, use the <code>theme_asset()</code> helper:</p>
+
+  <pre><code class="language-php">// In a blade template:
+&lt;img src="{{ theme_asset('img/logo.png') }}"&gt;
+// Resolves to: /themes/mytheme/img/logo.png
+// Falls back to: /themes/default/img/logo.png</code></pre>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="fallback-chain">Fallback Chain</h2>
+
+  <p>View resolution follows a three-step fallback for the <code>theme::</code> namespace:</p>
+
+  <ol>
+    <li><strong>Active theme</strong> — <code>themes/{active-slug}/views/</code></li>
+    <li><strong>Default theme</strong> — <code>themes/default/views/</code></li>
+    <li><strong>Core tenant views</strong> — <code>core/resources/views/tenant/</code></li>
+  </ol>
+
+  <p>This means your theme only needs to ship the files that are different. Everything else falls through to the default theme automatically.</p>
+
+  <div class="callout callout-tip">
+    <strong>✅ Ship only your overrides</strong>
+    If your theme has a custom shop page but uses the default checkout, only create <code>views/frontend/shop/all-products.blade.php</code>. The checkout will fall through to the default theme automatically.
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="url-helpers">URL Helpers</h2>
+
+  <p>Always use these helpers instead of calling <code>route()</code> directly. If the core ever renames a route, only the helper needs updating — not your theme files.</p>
+
+  <pre><code class="language-php">// All helpers are globally available in any Blade template or PHP file
+
+theme_home_url()          // Homepage
+theme_shop_url()          // Shop listing page
+theme_cart_url()          // Cart page
+theme_wishlist_url()      // Wishlist page
+theme_checkout_url()      // Checkout page
+theme_order_track_url()   // Order tracking page
+theme_product_url($slug)  // Any product or dynamic-slug page
+theme_asset($path)        // Theme asset URL with fallback</code></pre>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="auth-helpers">Auth URL Helpers</h2>
+
+  <pre><code class="language-php">theme_is_logged_in()      // bool — is the front-end user authenticated?
+theme_auth()              // The auth guard — call ->check(), ->id(), etc.
+theme_current_user()      // Authenticated User model or null
+theme_login_url()         // Login page URL
+theme_register_url()      // Registration page URL
+theme_logout_url()        // Logout URL
+theme_user_dashboard_url() // User dashboard URL</code></pre>
+
+  <h4>Usage example</h4>
+  <pre><code class="language-php">@if(theme_is_logged_in())
+    &lt;a href="{{ theme_user_dashboard_url() }}"&gt;{{ theme_current_user()-&gt;name }}&lt;/a&gt;
+    &lt;a href="{{ theme_logout_url() }}"&gt;Sign Out&lt;/a&gt;
+@else
+    &lt;a href="{{ theme_login_url() }}"&gt;Sign In&lt;/a&gt;
+    &lt;a href="{{ theme_register_url() }}"&gt;Register&lt;/a&gt;
+@endif</code></pre>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="auth-page-content-helpers">Auth Page Content Helpers</h2>
+
+  <p>These helpers read page copy from <strong>Admin → General Settings → Login &amp; Register Page</strong>. Every helper has a smart fallback so pages are never blank out of the box.</p>
+
+  <table>
+    <thead>
+      <tr><th>Function</th><th>Returns</th><th>Static Option Key</th><th>Fallback</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>theme_login_page_headline()</code></td><td><code>string</code></td><td><code>login_page_headline</code></td><td><code>"{site_name} Account"</code></td></tr>
+      <tr><td><code>theme_login_page_subtitle()</code></td><td><code>string</code></td><td><code>login_page_subtitle</code></td><td>"Welcome back. Sign in to access your account."</td></tr>
+      <tr><td><code>theme_login_page_features()</code></td><td><code>string[]</code></td><td><code>login_page_feature_1/2/3</code></td><td>3 default translated bullets</td></tr>
+      <tr><td><code>theme_register_page_headline()</code></td><td><code>string</code></td><td><code>register_page_headline</code></td><td><code>"Join {site_name}"</code></td></tr>
+      <tr><td><code>theme_register_page_subtitle()</code></td><td><code>string</code></td><td><code>register_page_subtitle</code></td><td>"Get access to exclusive deals…"</td></tr>
+      <tr><td><code>theme_register_page_promo_text()</code></td><td><code>string</code></td><td><code>register_page_promo_text</code></td><td>"Members get exclusive pricing…"</td></tr>
+      <tr><td><code>theme_login_page()</code></td><td><code>array</code></td><td>—</td><td>Keys: <code>headline</code>, <code>subtitle</code>, <code>features</code></td></tr>
+      <tr><td><code>theme_register_page()</code></td><td><code>array</code></td><td>—</td><td>Keys: <code>headline</code>, <code>subtitle</code>, <code>promo_text</code></td></tr>
+    </tbody>
+  </table>
+
+  <h4>Usage in login.blade.php</h4>
+  <pre><code class="language-blade">&lt;h2&gt;{{ theme_login_page_headline() }}&lt;/h2&gt;
+&lt;p&gt;{{ theme_login_page_subtitle() }}&lt;/p&gt;
+&lt;ul&gt;
+  @foreach(theme_login_page_features() as $feature)
+    &lt;li&gt;{{ $feature }}&lt;/li&gt;
+  @endforeach
+&lt;/ul&gt;</code></pre>
+
+  <h4>Usage in register.blade.php</h4>
+  <pre><code class="language-blade">&lt;h2&gt;{{ theme_register_page_headline() }}&lt;/h2&gt;
+&lt;p&gt;{{ theme_register_page_subtitle() }}&lt;/p&gt;
+&lt;p&gt;{{ theme_register_page_promo_text() }}&lt;/p&gt;</code></pre>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="shop-url-helpers">Shop URL Helpers</h2>
+
+  <p>AJAX endpoint helpers for cart, wishlist, review, and compare operations:</p>
+
+  <pre><code class="language-php">theme_add_to_cart_url()         // POST — add product to cart
+theme_add_to_wishlist_url()     // POST — add product to wishlist
+theme_buy_now_url()             // POST — buy now (redirect to checkout)
+theme_quick_view_url()          // GET  — product quick view modal
+theme_product_review_url()      // POST — submit a product review
+theme_product_review_more_url() // GET  — load more reviews (AJAX)
+theme_add_to_compare_url()      // POST — add to compare list
+theme_cart_update_url()         // GET  — update cart item quantity
+theme_cart_remove_url()         // GET  — remove item from cart
+theme_cart_clear_url()          // GET  — clear entire cart
+theme_wishlist_remove_url()     // GET  — remove item from wishlist
+theme_wishlist_move_url()       // GET  — move wishlist item to cart
+theme_checkout_state_url()      // GET  — fetch states for country (AJAX)
+theme_apply_coupon_url()        // POST — apply coupon code</code></pre>
+
+  <h4>CSRF helper</h4>
+  <pre><code class="language-php">theme_csrf()        // Token string — use in AJAX data: { _token: '{{ theme_csrf() }}' }
+theme_csrf_field()  // Full hidden input HTML — use in forms: {!! theme_csrf_field() !!}</code></pre>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="blog-url-helpers">Blog URL Helpers</h2>
+
+  <pre><code class="language-php">theme_blog_search_url()          // POST — blog search form action
+theme_blog_comment_store_url()   // POST — submit a comment (AJAX)
+theme_blog_load_comments_url()   // POST — load more comments (AJAX)
+theme_blog_tag_url($tag)         // Tag archive URL (auto-slugifies)
+theme_blog_category_url($slug)   // Category archive URL</code></pre>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="render-helpers">Rendering Helpers</h2>
+
+  <pre><code class="language-php">theme_price($amount)                  // "$ 29.99" — formatted with tenant currency
+theme_product_image($id, $size)       // Image URL string or null. Sizes: 'grid', 'full', 'thumb'
+theme_star_rating($product)           // Star rating HTML markup string
+theme_product_price($product)         // Array: regular_price, sale_price, discount, campaign_name
+theme_share_links($url, $title)       // Social share links HTML
+theme_render_image($id, $class, $size) // Full &lt;img&gt; tag HTML
+theme_static_option($key)             // Tenant setting value by key</code></pre>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="context-overview">Context API — Overview</h2>
+
+  <p>Inspired by WordPress template tags, the Context API provides <strong>typed wrapper objects</strong> automatically injected into the right views. Theme developers work with clean method calls — never raw Eloquent models or array keys.</p>
+
+  <div class="callout callout-info">
+    <strong>ℹ How injection works</strong>
+    <code>BlogComposer</code> is registered for all <code>blog::*</code> views and <code>ShopComposer</code> for all <code>theme::frontend.shop.*</code> views. They run automatically and inject <code>$theme_*</code> Blade variables. You can also call the equivalent helper functions anywhere.
+  </div>
+
+  <div class="callout callout-warning">
+    <strong>⚠ Provider boot order — blog sidebar data</strong>
+    <code>ThemeServiceProvider</code> (an app provider) boots before <code>BlogServiceProvider</code> (a module provider), so <code>BlogComposer</code> runs <em>before</em> the module's own <code>blog::*</code> view composer. As a result, <code>BlogComposer</code> does <strong>not</strong> rely on <code>$data['all_category']</code> being passed by the controller. It self-fetches <code>BlogCategory</code> and <code>BlogTag</code> directly from the database using a <code>!View::shared()</code> guard to avoid duplicate queries.
+    <br><br>
+    <strong>Implication:</strong> <code>theme_blog_categories()</code> and <code>theme_blog_tags()</code> always return data on every <code>blog::*</code> view with no controller changes. If sidebar data is missing, the fix belongs in <code>BlogComposer</code>, not in individual controllers.
+  </div>
+
+  <p>Two ways to access the same data:</p>
+  <pre><code class="language-php">// Option A — Blade variable (injected by composer)
+@foreach($theme_blogs as $post)
+    {{ $post->title() }}
+@endforeach
+
+// Option B — Helper function (works anywhere, even in partials)
+@foreach(theme_blogs() as $post)
+    {{ $post->title() }}
+@endforeach</code></pre>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="blog-context">Blog Context</h2>
+
+  <p>Available in all <code>blog::*</code> views (list, single, category, search).</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Variable / Function</th><th>Type</th><th>Available in</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><code>$theme_blogs</code> / <code>theme_blogs()</code></td><td><code>Collection&lt;Blog\Post&gt;</code></td><td>blog-all, blog-category, blog-search</td><td>Current page posts as Post wrappers</td></tr>
+      <tr><td><code>$theme_blogs_paginator</code> / <code>theme_blogs_paginator()</code></td><td><code>LengthAwarePaginator</code></td><td>blog-all, blog-category</td><td>Raw paginator for <code>->links()</code></td></tr>
+      <tr><td><code>$theme_post</code> / <code>theme_post()</code></td><td><code>Blog\Post</code></td><td>blog-single</td><td>Current post wrapper</td></tr>
+      <tr><td><code>$theme_comments</code> / <code>theme_comments()</code></td><td><code>Collection&lt;Blog\Comment&gt;</code></td><td>blog-single</td><td>Top-level comments</td></tr>
+      <tr><td><code>$theme_comments_count</code> / <code>theme_comments_count()</code></td><td><code>int</code></td><td>blog-single</td><td>Total comment count</td></tr>
+      <tr><td><code>$theme_blog_categories</code> / <code>theme_blog_categories()</code></td><td><code>Collection&lt;Blog\Category&gt;</code></td><td>all blog views</td><td>Sidebar categories</td></tr>
+      <tr><td><code>$theme_blog_tags</code> / <code>theme_blog_tags()</code></td><td><code>Collection&lt;Blog\Tag&gt;</code></td><td>all blog views</td><td>Sidebar tags</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="shop-context">Shop Context</h2>
+
+  <p>Available in all <code>theme::frontend.shop.*</code> views.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Variable / Function</th><th>Type</th><th>Available in</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><code>$theme_products</code> / <code>theme_products()</code></td><td><code>Collection&lt;Shop\Product&gt;</code></td><td>shop listing</td><td>Current page products</td></tr>
+      <tr><td><code>$theme_product</code> / <code>theme_product()</code></td><td><code>Shop\Product</code></td><td>product detail</td><td>Current product wrapper</td></tr>
+      <tr><td><code>$theme_related_products</code> / <code>theme_related_products()</code></td><td><code>Collection&lt;Shop\Product&gt;</code></td><td>product detail</td><td>Related products</td></tr>
+      <tr><td><code>$theme_shop_categories</code> / <code>theme_shop_categories()</code></td><td><code>Collection&lt;Shop\ProductCategory&gt;</code></td><td>shop listing</td><td>Sidebar categories</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="wrapper-post">Wrapper: Blog\Post</h2>
+  <p>Wraps a Blog model. Available as items in <code>theme_blogs()</code> and as <code>theme_post()</code> on the single page.</p>
+
+  <div class="method-grid">
+    <div class="method-card"><div class="method-sig"><span>id</span>()</div><div class="method-desc">Blog post ID</div><div class="method-return">→ int</div></div>
+    <div class="method-card"><div class="method-sig"><span>title</span>()</div><div class="method-desc">Sanitized title string</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>url</span>()</div><div class="method-desc">Full URL to the blog post</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>slug</span>()</div><div class="method-desc">Post slug</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>content</span>()</div><div class="method-desc">Full HTML content (use {!! !!})</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>excerpt</span>($words = 20)</div><div class="method-desc">Truncated plain-text excerpt</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>image_url</span>($size = 'grid')</div><div class="method-desc">Featured image URL or null. Sizes: grid, full, thumb</div><div class="method-return">→ ?string</div></div>
+    <div class="method-card"><div class="method-sig"><span>image_tag</span>($size, $class)</div><div class="method-desc">Full &lt;img&gt; HTML tag</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>author</span>()</div><div class="method-desc">Author display name</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>date</span>($format = 'M d, Y')</div><div class="method-desc">Formatted publish date</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>comment_count</span>()</div><div class="method-desc">Number of approved comments</div><div class="method-return">→ int</div></div>
+    <div class="method-card"><div class="method-sig"><span>comment_url</span>()</div><div class="method-desc">URL anchored to comment section</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>category</span>()</div><div class="method-desc">Category wrapper or null</div><div class="method-return">→ ?Blog\Category</div></div>
+    <div class="method-card"><div class="method-sig"><span>tags</span>()</div><div class="method-desc">Array of Tag wrappers</div><div class="method-return">→ Tag[]</div></div>
+    <div class="method-card"><div class="method-sig"><span>comments</span>()</div><div class="method-desc">Top-level Comment wrappers</div><div class="method-return">→ Comment[]</div></div>
+    <div class="method-card"><div class="method-sig"><span>share_links</span>()</div><div class="method-desc">Social share buttons HTML</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>has_image</span>()</div><div class="method-desc">Post has a featured image</div><div class="method-return">→ bool</div></div>
+    <div class="method-card"><div class="method-sig"><span>has_comments</span>()</div><div class="method-desc">Post has at least one comment</div><div class="method-return">→ bool</div></div>
+    <div class="method-card"><div class="method-sig"><span>has_tags</span>()</div><div class="method-desc">Post has tags</div><div class="method-return">→ bool</div></div>
+    <div class="method-card"><div class="method-sig"><span>raw</span>()</div><div class="method-desc">Underlying Blog Eloquent model</div><div class="method-return">→ Blog</div></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="wrapper-category">Wrapper: Blog\Category</h2>
+  <div class="method-grid">
+    <div class="method-card"><div class="method-sig"><span>id</span>()</div><div class="method-desc">Category ID</div><div class="method-return">→ int</div></div>
+    <div class="method-card"><div class="method-sig"><span>name</span>()</div><div class="method-desc">Category display name</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>url</span>()</div><div class="method-desc">Category archive URL</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>slug</span>()</div><div class="method-desc">Category slug</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>count</span>()</div><div class="method-desc">Number of posts in category</div><div class="method-return">→ int</div></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="wrapper-tag">Wrapper: Blog\Tag</h2>
+  <div class="method-grid">
+    <div class="method-card"><div class="method-sig"><span>name</span>()</div><div class="method-desc">Tag display name</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>slug</span>()</div><div class="method-desc">URL-safe slug</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>url</span>()</div><div class="method-desc">Tag archive URL</div><div class="method-return">→ string</div></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="wrapper-comment">Wrapper: Blog\Comment</h2>
+  <div class="method-grid">
+    <div class="method-card"><div class="method-sig"><span>id</span>()</div><div class="method-desc">Comment ID</div><div class="method-return">→ int</div></div>
+    <div class="method-card"><div class="method-sig"><span>author</span>()</div><div class="method-desc">Commenter display name</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>author_avatar</span>()</div><div class="method-desc">Avatar &lt;img&gt; tag HTML</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>body</span>()</div><div class="method-desc">Comment text (use {!! !!})</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>date</span>($format = 'd F Y')</div><div class="method-desc">Formatted comment date</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>can_reply</span>()</div><div class="method-desc">Current user can reply to this comment</div><div class="method-return">→ bool</div></div>
+    <div class="method-card"><div class="method-sig"><span>replies</span>()</div><div class="method-desc">Child Comment wrappers</div><div class="method-return">→ Comment[]</div></div>
+    <div class="method-card"><div class="method-sig"><span>has_replies</span>()</div><div class="method-desc">Comment has child replies</div><div class="method-return">→ bool</div></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="wrapper-product">Wrapper: Shop\Product</h2>
+  <div class="method-grid">
+    <div class="method-card"><div class="method-sig"><span>id</span>()</div><div class="method-desc">Product ID</div><div class="method-return">→ int</div></div>
+    <div class="method-card"><div class="method-sig"><span>name</span>($words = 0)</div><div class="method-desc">Product name, optionally truncated to N words</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>url</span>()</div><div class="method-desc">Product detail page URL</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>slug</span>()</div><div class="method-desc">Product slug</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>summary</span>()</div><div class="method-desc">Short summary text</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>description</span>()</div><div class="method-desc">Full description HTML</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>image_url</span>($size = 'grid')</div><div class="method-desc">Main image URL or null</div><div class="method-return">→ ?string</div></div>
+    <div class="method-card"><div class="method-sig"><span>image_tag</span>($size, $class)</div><div class="method-desc">Full &lt;img&gt; tag HTML</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>gallery_urls</span>($size)</div><div class="method-desc">Array of gallery image URLs</div><div class="method-return">→ string[]</div></div>
+    <div class="method-card"><div class="method-sig"><span>price</span>()</div><div class="method-desc">Formatted sale/campaign price e.g. "$ 29.99"</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>regular_price</span>()</div><div class="method-desc">Formatted original price or null if no discount</div><div class="method-return">→ ?string</div></div>
+    <div class="method-card"><div class="method-sig"><span>sale_price_raw</span>()</div><div class="method-desc">Numeric sale price</div><div class="method-return">→ float</div></div>
+    <div class="method-card"><div class="method-sig"><span>discount</span>()</div><div class="method-desc">Discount percentage string e.g. "20" or null</div><div class="method-return">→ ?string</div></div>
+    <div class="method-card"><div class="method-sig"><span>is_on_sale</span>()</div><div class="method-desc">Product has an active discount</div><div class="method-return">→ bool</div></div>
+    <div class="method-card"><div class="method-sig"><span>campaign_name</span>()</div><div class="method-desc">Active campaign label or null</div><div class="method-return">→ ?string</div></div>
+    <div class="method-card"><div class="method-sig"><span>has_campaign</span>()</div><div class="method-desc">Product is in an active campaign</div><div class="method-return">→ bool</div></div>
+    <div class="method-card"><div class="method-sig"><span>badge</span>()</div><div class="method-desc">Badge label string or null</div><div class="method-return">→ ?string</div></div>
+    <div class="method-card"><div class="method-sig"><span>stock</span>()</div><div class="method-desc">Available stock count</div><div class="method-return">→ int</div></div>
+    <div class="method-card"><div class="method-sig"><span>in_stock</span>()</div><div class="method-desc">Product is available</div><div class="method-return">→ bool</div></div>
+    <div class="method-card"><div class="method-sig"><span>star_rating</span>()</div><div class="method-desc">Star rating HTML markup</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>category</span>()</div><div class="method-desc">Primary ProductCategory wrapper</div><div class="method-return">→ ?ProductCategory</div></div>
+    <div class="method-card"><div class="method-sig"><span>add_to_cart_url</span>()</div><div class="method-desc">AJAX add-to-cart endpoint</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>add_to_wishlist_url</span>()</div><div class="method-desc">AJAX add-to-wishlist endpoint</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>buy_now_url</span>()</div><div class="method-desc">AJAX buy-now endpoint</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>has_image</span>()</div><div class="method-desc">Product has a main image</div><div class="method-return">→ bool</div></div>
+    <div class="method-card"><div class="method-sig"><span>is_refundable</span>()</div><div class="method-desc">Product is eligible for refund</div><div class="method-return">→ bool</div></div>
+    <div class="method-card"><div class="method-sig"><span>raw</span>()</div><div class="method-desc">Underlying Product Eloquent model</div><div class="method-return">→ object</div></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="wrapper-product-category">Wrapper: Shop\ProductCategory</h2>
+  <div class="method-grid">
+    <div class="method-card"><div class="method-sig"><span>id</span>()</div><div class="method-desc">Category ID</div><div class="method-return">→ int</div></div>
+    <div class="method-card"><div class="method-sig"><span>name</span>()</div><div class="method-desc">Category display name</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>url</span>()</div><div class="method-desc">Category page URL</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>slug</span>()</div><div class="method-desc">Category slug</div><div class="method-return">→ string</div></div>
+    <div class="method-card"><div class="method-sig"><span>count</span>()</div><div class="method-desc">Number of products in category</div><div class="method-return">→ int</div></div>
+    <div class="method-card"><div class="method-sig"><span>image_url</span>($size)</div><div class="method-desc">Category image URL or null</div><div class="method-return">→ ?string</div></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="widgets">Page Builder Widgets</h2>
+
+  <p>Themes can ship their own page builder widgets inside a <code>Widgets/</code> directory. They are auto-discovered on boot — no registration in core files required.</p>
+
+  <h3>File convention</h3>
+  <ul>
+    <li>File: <code>themes/mytheme/Widgets/HeroSection.php</code></li>
+    <li>Namespace: <code>Themes\Mytheme\Widgets\HeroSection</code></li>
+    <li>View: <code>view('theme-mytheme::widgets.hero_section')</code></li>
+  </ul>
+
+  <h3>Minimal widget</h3>
+  <div class="filename">themes/mytheme/Widgets/HeroSection.php</div>
+  <pre><code class="language-php">&lt;?php
+
+namespace Themes\Mytheme\Widgets;
+
+use Xgenious\PageBuilder\Base\BaseWidget;
+
+class HeroSection extends BaseWidget
+{
+    public function name(): string       { return 'Hero Section'; }
+    public function category(): string   { return 'My Theme'; }
+    public function icon(): string       { return 'mdi mdi-image-area'; }
+    public function keywords(): array    { return ['hero', 'banner']; }
+    public function preview(): string    { return 'A full-width hero banner with CTA.'; }
+
+    /**
+     * Return false to hide this widget from tenants not using this theme.
+     * Without this method, the widget shows for all tenants.
+     */
+    public function enable(): bool
+    {
+        return !is_null(tenant()) &amp;&amp; tenant()-&gt;theme_slug === 'mytheme';
+    }
+
+    public function render(): string
+    {
+        return view('theme-mytheme::widgets.hero_section', [
+            'title'    =&gt; $this-&gt;data('title', 'Welcome'),
+            'subtitle' =&gt; $this-&gt;data('subtitle', ''),
+            'cta_text' =&gt; $this-&gt;data('cta_text', 'Shop Now'),
+            'cta_url'  =&gt; $this-&gt;data('cta_url', theme_shop_url()),
+        ])-&gt;render();
+    }
+
+    public function form(): array
+    {
+        return [
+            'title'    =&gt; ['type' =&gt; 'text',  'label' =&gt; 'Heading'],
+            'subtitle' =&gt; ['type' =&gt; 'text',  'label' =&gt; 'Sub-heading'],
+            'cta_text' =&gt; ['type' =&gt; 'text',  'label' =&gt; 'Button Text'],
+            'cta_url'  =&gt; ['type' =&gt; 'text',  'label' =&gt; 'Button URL'],
+        ];
+    }
+}</code></pre>
+
+  <h2 id="widget-enable">The enable() Method</h2>
+
+  <p>Without <code>enable()</code>, a widget appears for <em>all</em> tenants in the page builder panel. Add <code>enable()</code> to scope it to your theme only:</p>
+
+  <pre><code class="language-php">public function enable(): bool
+{
+    // Only show this widget when the tenant is using 'mytheme'
+    return !is_null(tenant()) &amp;&amp; tenant()-&gt;theme_slug === 'mytheme';
+}</code></pre>
+
+  <div class="callout callout-warn">
+    <strong>⚠ Landlord widgets</strong>
+    Widgets in the <code>\landlord\</code> namespace are automatically shown only in the landlord admin and hidden from tenant page builder panels — no <code>enable()</code> needed.
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="example-blog-list">Example: Blog List Template</h2>
+
+  <div class="filename">themes/mytheme/views/modules/blog/tenant/frontend/blog/blog-all.blade.php</div>
+  <pre><code class="language-php">@extends('tenant.frontend.frontend-page-master')
+
+@section('title') {{ __('Blog') }} @endsection
+@section('content')
+
+&lt;!-- Page banner --&gt;
+&lt;div class="my-banner"&gt;
+    &lt;a href="{{ theme_home_url() }}"&gt;Home&lt;/a&gt; / Blog
+&lt;/div&gt;
+
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+
+        &lt;!-- Posts grid --&gt;
+        &lt;div class="col-lg-8"&gt;
+            @forelse(theme_blogs() as $post)
+                &lt;article&gt;
+                    @if($post-&gt;has_image())
+                        &lt;img src="{{ $post-&gt;image_url('grid') }}" alt="{{ $post-&gt;title() }}"&gt;
+                    @endif
+
+                    @if($post-&gt;category())
+                        &lt;a href="{{ $post-&gt;category()-&gt;url() }}"&gt;
+                            {{ $post-&gt;category()-&gt;name() }}
+                        &lt;/a&gt;
+                    @endif
+
+                    &lt;h2&gt;&lt;a href="{{ $post-&gt;url() }}"&gt;{{ $post-&gt;title() }}&lt;/a&gt;&lt;/h2&gt;
+
+                    &lt;p&gt;
+                        {{ $post-&gt;author() }} ·
+                        {{ $post-&gt;date('M d, Y') }} ·
+                        &lt;a href="{{ $post-&gt;comment_url() }}"&gt;
+                            {{ $post-&gt;comment_count() }} comments
+                        &lt;/a&gt;
+                    &lt;/p&gt;
+
+                    &lt;p&gt;{{ $post-&gt;excerpt(25) }}&lt;/p&gt;
+
+                    &lt;a href="{{ $post-&gt;url() }}"&gt;Read More &amp;rarr;&lt;/a&gt;
+                &lt;/article&gt;
+            @empty
+                &lt;p&gt;{{ __('No posts found.') }}&lt;/p&gt;
+            @endforelse
+
+            &lt;!-- Pagination --&gt;
+            @if(theme_blogs_paginator()?-&gt;hasPages())
+                {{ theme_blogs_paginator()-&gt;links() }}
+            @endif
+        &lt;/div&gt;
+
+        &lt;!-- Sidebar --&gt;
+        &lt;div class="col-lg-4"&gt;
+
+            &lt;!-- Search --&gt;
+            &lt;form action="{{ theme_blog_search_url() }}" method="POST"&gt;
+                {!! theme_csrf_field() !!}
+                &lt;input type="text" name="search" placeholder="Search…"&gt;
+                &lt;button type="submit"&gt;Search&lt;/button&gt;
+            &lt;/form&gt;
+
+            &lt;!-- Categories --&gt;
+            @foreach(theme_blog_categories() as $cat)
+                &lt;a href="{{ $cat-&gt;url() }}"&gt;{{ $cat-&gt;name() }} ({{ $cat-&gt;count() }})&lt;/a&gt;
+            @endforeach
+
+            &lt;!-- Tags --&gt;
+            @foreach(theme_blog_tags() as $tag)
+                &lt;a href="{{ $tag-&gt;url() }}"&gt;{{ $tag-&gt;name() }}&lt;/a&gt;
+            @endforeach
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+@endsection</code></pre>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="example-blog-single">Example: Blog Single Template</h2>
+
+  <div class="filename">themes/mytheme/views/modules/blog/tenant/frontend/blog/blog-single.blade.php</div>
+  <pre><code class="language-php">@extends('tenant.frontend.frontend-page-master')
+@section('title') {{ theme_post()-&gt;title() }} @endsection
+@section('content')
+@php $post = theme_post(); @endphp
+
+&lt;article&gt;
+    @if($post-&gt;has_image())
+        &lt;img src="{{ $post-&gt;image_url('full') }}" alt="{{ $post-&gt;title() }}"&gt;
+    @endif
+
+    &lt;h1&gt;{{ $post-&gt;title() }}&lt;/h1&gt;
+
+    &lt;p&gt;
+        By {{ $post-&gt;author() }} ·
+        {{ $post-&gt;date('F d, Y') }} ·
+        {{ theme_comments_count() }} {{ __('Comments') }}
+    &lt;/p&gt;
+
+    &lt;div class="content"&gt;{!! $post-&gt;content() !!}&lt;/div&gt;
+
+    &lt;!-- Tags --&gt;
+    @foreach($post-&gt;tags() as $tag)
+        &lt;a href="{{ $tag-&gt;url() }}"&gt;#{{ $tag-&gt;name() }}&lt;/a&gt;
+    @endforeach
+
+    &lt;!-- Share --&gt;
+    {!! $post-&gt;share_links() !!}
+&lt;/article&gt;
+
+&lt;!-- Comments --&gt;
+&lt;section id="comment-area"&gt;
+    @foreach(theme_comments() as $comment)
+        &lt;div&gt;
+            {!! $comment-&gt;author_avatar() !!}
+            &lt;strong class="title" data-parent_name="{{ $comment-&gt;author() }}"&gt;
+                {{ $comment-&gt;author() }}
+            &lt;/strong&gt;
+            &lt;time&gt;{{ $comment-&gt;date() }}&lt;/time&gt;
+            &lt;p&gt;{!! $comment-&gt;body() !!}&lt;/p&gt;
+
+            @if($comment-&gt;can_reply())
+                &lt;button class="btn-replay" data-comment_id="{{ $comment-&gt;id() }}"&gt;
+                    Reply
+                &lt;/button&gt;
+            @endif
+
+            &lt;!-- Nested replies --&gt;
+            @foreach($comment-&gt;replies() as $reply)
+                &lt;div class="reply"&gt;
+                    &lt;strong&gt;{{ $reply-&gt;author() }}&lt;/strong&gt;
+                    &lt;p&gt;{!! $reply-&gt;body() !!}&lt;/p&gt;
+                &lt;/div&gt;
+            @endforeach
+        &lt;/div&gt;
+    @endforeach
+&lt;/section&gt;
+
+&lt;!-- Comment form --&gt;
+@if(theme_is_logged_in())
+    &lt;!-- Comment form here — see full ChefHome example --&gt;
+@else
+    &lt;a href="{{ theme_login_url() }}"&gt;Sign In to comment&lt;/a&gt;
+@endif
+@endsection</code></pre>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="example-shop">Example: Shop Listing Template</h2>
+
+  <div class="filename">themes/mytheme/views/frontend/shop/all-products.blade.php</div>
+  <pre><code class="language-php">@extends('tenant.frontend.frontend-page-master')
+@section('content')
+
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+
+        &lt;!-- Sidebar --&gt;
+        &lt;div class="col-lg-3"&gt;
+            @foreach(theme_shop_categories() as $cat)
+                &lt;a href="{{ $cat-&gt;url() }}"&gt;
+                    {{ $cat-&gt;name() }} ({{ $cat-&gt;count() }})
+                &lt;/a&gt;
+            @endforeach
+        &lt;/div&gt;
+
+        &lt;!-- Product grid --&gt;
+        &lt;div class="col-lg-9"&gt;
+            &lt;div class="product-grid"&gt;
+                @foreach(theme_products() as $product)
+                    &lt;div class="product-card"&gt;
+
+                        &lt;a href="{{ $product-&gt;url() }}"&gt;
+                            @if($product-&gt;has_image())
+                                &lt;img src="{{ $product-&gt;image_url('grid') }}"
+                                     alt="{{ $product-&gt;name() }}"&gt;
+                            @endif
+                        &lt;/a&gt;
+
+                        &lt;!-- Badge / discount label --&gt;
+                        @if($product-&gt;is_on_sale())
+                            &lt;span class="badge-sale"&gt;{{ $product-&gt;discount() }}% off&lt;/span&gt;
+                        @elseif($product-&gt;has_campaign())
+                            &lt;span class="badge-campaign"&gt;{{ $product-&gt;campaign_name() }}&lt;/span&gt;
+                        @elseif($product-&gt;has_badge())
+                            &lt;span class="badge-label"&gt;{{ $product-&gt;badge() }}&lt;/span&gt;
+                        @endif
+
+                        &lt;h3&gt;&lt;a href="{{ $product-&gt;url() }}"&gt;{{ $product-&gt;name(8) }}&lt;/a&gt;&lt;/h3&gt;
+
+                        {!! $product-&gt;star_rating() !!}
+
+                        &lt;div class="price"&gt;
+                            {{ $product-&gt;price() }}
+                            @if($product-&gt;regular_price())
+                                &lt;del&gt;{{ $product-&gt;regular_price() }}&lt;/del&gt;
+                            @endif
+                        &lt;/div&gt;
+
+                        &lt;!-- Wishlist --&gt;
+                        &lt;button class="wishlist-btn" data-product_id="{{ $product-&gt;id() }}"&gt;
+                            ♡
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                @endforeach
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+@endsection
+@section('scripts')
+&lt;script&gt;
+$(document).on('click', '.wishlist-btn', function() {
+    $.post('{{ theme_add_to_wishlist_url() }}', {
+        _token: '{{ theme_csrf() }}',
+        product_id: $(this).data('product_id')
+    });
+});
+&lt;/script&gt;
+@endsection</code></pre>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <h2 id="example-product">Example: Product Detail Template</h2>
+
+  <div class="filename">themes/mytheme/views/frontend/shop/product_details/product-details.blade.php</div>
+  <pre><code class="language-php">@extends('tenant.frontend.frontend-page-master')
+@section('content')
+@php $product = theme_product(); @endphp
+
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+
+        &lt;!-- Images --&gt;
+        &lt;div class="col-lg-6"&gt;
+            @if($product-&gt;has_image())
+                &lt;img id="main-product-img"
+                     src="{{ $product-&gt;image_url('full') }}"
+                     alt="{{ $product-&gt;name() }}"&gt;
+            @endif
+            &lt;!-- Gallery thumbnails --&gt;
+            @foreach($product-&gt;gallery_urls('thumb') as $url)
+                &lt;img src="{{ $url }}" class="thumb" onclick="switchImage(this)"&gt;
+            @endforeach
+        &lt;/div&gt;
+
+        &lt;!-- Details --&gt;
+        &lt;div class="col-lg-6"&gt;
+            &lt;h1&gt;{{ $product-&gt;name() }}&lt;/h1&gt;
+
+            {!! $product-&gt;star_rating() !!}
+
+            &lt;div id="price"
+                 data-main-price="{{ $product-&gt;sale_price_raw() }}"
+                 data-currency-symbol="{{ theme_static_option('site_currency_symbol') }}"&gt;
+                &lt;span class="sale-price"&gt;{{ $product-&gt;price() }}&lt;/span&gt;
+                @if($product-&gt;regular_price())
+                    &lt;del&gt;{{ $product-&gt;regular_price() }}&lt;/del&gt;
+                @endif
+            &lt;/div&gt;
+
+            &lt;div id="stock"&gt;
+                @if($product-&gt;in_stock())
+                    &lt;span class="in-stock"&gt;In Stock ({{ $product-&gt;stock() }})&lt;/span&gt;
+                @else
+                    &lt;span class="out-of-stock"&gt;Out of Stock&lt;/span&gt;
+                @endif
+            &lt;/div&gt;
+
+            &lt;!-- Cart form — include the core partial which handles variants --&gt;
+            @include(include_theme_path('shop.partials.product-partials.product-options'))
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Related products --&gt;
+    @if(theme_related_products()-&gt;isNotEmpty())
+    &lt;div class="related"&gt;
+        &lt;h2&gt;{{ __('Related Products') }}&lt;/h2&gt;
+        &lt;div class="row"&gt;
+            @foreach(theme_related_products() as $related)
+                &lt;div class="col-md-3"&gt;
+                    &lt;a href="{{ $related-&gt;url() }}"&gt;
+                        &lt;img src="{{ $related-&gt;image_url() }}" alt="{{ $related-&gt;name() }}"&gt;
+                        &lt;p&gt;{{ $related-&gt;name(6) }}&lt;/p&gt;
+                        &lt;p&gt;{{ $related-&gt;price() }}&lt;/p&gt;
+                    &lt;/a&gt;
+                &lt;/div&gt;
+            @endforeach
+        &lt;/div&gt;
+    &lt;/div&gt;
+    @endif
+&lt;/div&gt;
+@endsection</code></pre>
+
+  <hr>
+  <p style="color:var(--muted);font-size:13px;text-align:center;">
+    Nazmart Theme Developer Guide · Built with ❤ for third-party theme developers ·
+    Questions? Open an issue on the project repository.
+  </p>
+
+</main>
+
+<script>
+  hljs.highlightAll();
+
+  // Active nav link on scroll
+  const links = document.querySelectorAll('.nav-link');
+  const headings = document.querySelectorAll('h2[id], h3[id]');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  headings.forEach(h => observer.observe(h));
+</script>
+</body>
+</html>

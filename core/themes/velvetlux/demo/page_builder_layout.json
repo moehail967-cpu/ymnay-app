@@ -1,0 +1,230 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "container-1783334567761",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783334567761",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783334590590",
+                                "type": "velvetlux_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#1A0820"
+                }
+            },
+            {
+                "id": "section-1783334591918",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783334591918",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783334591918",
+                                "type": "velvetlux_category_grid"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#F8F5F2"
+                }
+            },
+            {
+                "id": "section-1783334593243",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783334593243",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783334593243",
+                                "type": "velvetlux_featured_products"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#FFFFFF"
+                }
+            },
+            {
+                "id": "section-1783334596976",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783334596976",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783334596976",
+                                "type": "velvetlux_promo_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#5C1F6B"
+                }
+            },
+            {
+                "id": "section-1783334594682",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783334594682",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783334594682",
+                                "type": "velvetlux_newsletter"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#F8F5F2"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "widget-1783334590590": {
+            "type": "velvetlux_hero_section",
+            "container_id": "container-1783334567761",
+            "column_id": "column-1783334567761",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "hero_image": "@media:velvetlux-hero"
+                    },
+                    "content": {}
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1783334591918": {
+            "type": "velvetlux_category_grid",
+            "container_id": "section-1783334591918",
+            "column_id": "column-1783334591918",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1783334593243": {
+            "type": "velvetlux_featured_products",
+            "container_id": "section-1783334593243",
+            "column_id": "column-1783334593243",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1783334596976": {
+            "type": "velvetlux_promo_section",
+            "container_id": "section-1783334596976",
+            "column_id": "column-1783334596976",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1783334594682": {
+            "type": "velvetlux_newsletter",
+            "container_id": "section-1783334594682",
+            "column_id": "column-1783334594682",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        }
+    }
+}

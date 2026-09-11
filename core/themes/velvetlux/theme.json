@@ -1,0 +1,84 @@
+{
+  "name": "VelvetLux",
+  "slug": "velvetlux",
+  "description": "Ultra-premium luxury fashion theme with deep plum and champagne palette. Editorial hero sections, sophisticated typography, and high-fashion product presentation for luxury apparel and accessories brands.",
+  "author": "Nazmart",
+  "version": "1.0.0",
+  "niche": "luxury-fashion",
+  "price": 39,
+  "license": "premium",
+  "status": true,
+  "screenshot": [
+    {
+      "primary": "primary.jpg",
+      "sort": "desc"
+    }
+  ],
+  "assets": {
+    "header": {
+      "styles": [
+        "style"
+      ],
+      "rtl_styles": [
+        "rtl"
+      ],
+      "scripts": []
+    },
+    "footer": {
+      "styles": [],
+      "scripts": [
+        "main"
+      ]
+    }
+  },
+  "views": {
+    "navbar": "header/navbar",
+    "footer_widget": "footer/widget-area"
+  },
+  "headerHook": [
+    {
+      "style": [
+        "style",
+        "pages"
+      ],
+      "rtl_style": [
+        "rtl"
+      ],
+      "script": [],
+      "blade": [],
+      "navbarArea": "header/navbar",
+      "breadcrumbArea": "header/breadcrumb",
+      "loadCoreStyle": {
+        "animate": false,
+        "odometer": false,
+        "magnific-popup": false
+      }
+    }
+  ],
+  "footerHook": [
+    {
+      "style": [],
+      "script": [
+        "main"
+      ],
+      "blade": [],
+      "widgetArea": "footer/widget-area",
+      "loadCoreScript": {
+        "odometer": false,
+        "jquery.syotimer.min": false,
+        "viewport.jquery": false,
+        "wow": false
+      }
+    }
+  ],
+  "demo": {
+    "data": "demo/data.json"
+  },
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2026-04-28",
+      "notes": "Initial release"
+    }
+  ]
+}

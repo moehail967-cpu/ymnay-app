@@ -1,0 +1,347 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "container-1782898708582",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1782898708582",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1782898711799",
+                                "type": "glowlab_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1782900557234",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1782900557234",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1782900557234",
+                                "type": "glowlab_category_grid"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1782901751297",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1782901751297",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1782901751297",
+                                "type": "glowlab_featured_products"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1782900561994",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1782900561994",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1782900561994",
+                                "type": "glowlab_promo_banner"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1782898718450",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1782898718450",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1782898718450",
+                                "type": "glowlab_newsletter"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "widget-1782898711799": {
+            "type": "glowlab_hero_section",
+            "container_id": "container-1782898708582",
+            "column_id": "column-1782898708582",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "hero_image": "@media:glowlab-hero"
+                    },
+                    "content": {
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button2_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1782898718450": {
+            "type": "glowlab_newsletter",
+            "container_id": "section-1782898718450",
+            "column_id": "column-1782898718450",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1782900557234": {
+            "type": "glowlab_category_grid",
+            "container_id": "section-1782900557234",
+            "column_id": "column-1782900557234",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1782900561994": {
+            "type": "glowlab_promo_banner",
+            "container_id": "section-1782900561994",
+            "column_id": "column-1782900561994",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button2_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1782901751297": {
+            "type": "glowlab_featured_products",
+            "container_id": "section-1782901751297",
+            "column_id": "column-1782901751297",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "view_all_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        }
+    }
+}

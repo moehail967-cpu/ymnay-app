@@ -1,0 +1,294 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "GoldCraft Artisan Jewelry"
+      },
+      {
+        "key": "site_description",
+        "value": "Handcrafted fine jewellery since 1984. Ethically sourced gemstones, recycled precious metals, and a lifetime guarantee on all pieces."
+      },
+      {
+        "key": "site_logo",
+        "value": "@media:goldcraft-logo-color"
+      },
+      {
+        "key": "site_white_logo",
+        "value": "@media:goldcraft-logo-white"
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/logo-color.svg",
+        "import_as": "goldcraft-logo-color"
+      },
+      {
+        "path": "assets/images/logo-white.svg",
+        "import_as": "goldcraft-logo-white"
+      },
+      {
+        "path": "assets/images/jewellery-hero.jpg",
+        "import_as": "goldcraft-hero"
+      },
+      {
+        "path": "assets/images/rose-gold.jpg",
+        "import_as": "rose-gold"
+      },
+      {
+        "path": "assets/images/diamond-earrings.jpg",
+        "import_as": "diamond-earrings"
+      },
+      {
+        "path": "assets/images/necklace.jpg",
+        "import_as": "necklace"
+      },
+      {
+        "path": "assets/images/gold-bracelet.jpg",
+        "import_as": "gold-bracelet"
+      },
+      {
+        "path": "assets/images/crystal-pendant.jpg",
+        "import_as": "crystal-pendant"
+      },
+      {
+        "path": "assets/images/diamond-ring.jpg",
+        "import_as": "diamond-ring"
+      },
+      {
+        "path": "assets/images/celestial-star-necklace.jpg",
+        "import_as": "celestial-star-necklace"
+      },
+      {
+        "path": "assets/images/heart-jewellery.jpg",
+        "import_as": "heart-jewellery"
+      },
+      {
+        "path": "assets/images/pendant.jpg",
+        "import_as": "pendant"
+      },
+      {
+        "path": "assets/images/cat-bracelets.jpg",
+        "import_as": "cat-bracelets"
+      },
+      {
+        "path": "assets/images/cat-earrings.jpg",
+        "import_as": "cat-earrings"
+      },
+      {
+        "path": "assets/images/cat-gifts.jpg",
+        "import_as": "cat-gifts"
+      },
+      {
+        "path": "assets/images/cat-necklaces.jpg",
+        "import_as": "cat-necklaces"
+      },
+      {
+        "path": "assets/images/cat-rings.jpg",
+        "import_as": "cat-rings"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Rings",
+        "slug": "rings",
+        "image": "cat-rings"
+      },
+      {
+        "name": "Earrings",
+        "slug": "earrings",
+        "image": "cat-earrings"
+      },
+      {
+        "name": "Necklaces",
+        "slug": "necklaces",
+        "image": "cat-necklaces"
+      },
+      {
+        "name": "Bracelets",
+        "slug": "bracelets",
+        "image": "cat-bracelets"
+      },
+      {
+        "name": "Pendant",
+        "slug": "pendant",
+        "image": "pendant"
+      },
+      {
+        "name": "Gift Sets",
+        "slug": "gift-sets",
+        "image": "cat-gifts"
+      }
+    ],
+    "products": [
+      {
+        "name": "Rose Gold Solitaire Ring",
+        "summary": "Delicate 14k rose gold band with a round brilliant diamond.",
+        "price": 280.0,
+        "compare_price": 350.0,
+        "category": "rings",
+        "image": "rose-gold",
+        "stock": 60,
+        "tags": ["rose-gold", "solitaire", "handmade"]
+      },
+      {
+        "name": "Pearl Strand Necklace 18k",
+        "summary": "Freshwater pearl strand on an 18k gold chain, 45cm.",
+        "price": 420.0,
+        "compare_price": 520.0,
+        "category": "necklaces",
+        "image": "necklace",
+        "stock": 40,
+        "tags": ["pearl", "necklace", "18k"]
+      },
+      {
+        "name": "Diamond Teardrop Studs",
+        "summary": "0.20ct natural diamond teardrop studs in 18k white gold.",
+        "price": 360.0,
+        "compare_price": null,
+        "category": "earrings",
+        "image": "diamond-earrings",
+        "stock": 50,
+        "tags": ["diamond", "studs", "earrings"]
+      },
+      {
+        "name": "Gold Link Tennis Bracelet",
+        "summary": "14k gold paperclip-chain tennis bracelet, 18cm.",
+        "price": 580.0,
+        "compare_price": null,
+        "category": "bracelets",
+        "image": "gold-bracelet",
+        "stock": 35,
+        "tags": ["gold", "tennis", "bracelet"]
+      },
+      {
+        "name": "Crystal Quartz Pendant",
+        "summary": "Natural clear quartz crystal set in recycled sterling silver.",
+        "price": 79.0,
+        "compare_price": 99.0,
+        "category": "pendant",
+        "image": "crystal-pendant",
+        "stock": 45,
+        "tags": ["crystal", "quartz", "pendant"]
+      },
+      {
+        "name": "Diamond Solitaire Ring",
+        "summary": "0.25ct natural diamond solitaire in 18k white gold.",
+        "price": 699.0,
+        "compare_price": 899.0,
+        "category": "rings",
+        "image": "diamond-ring",
+        "stock": 20,
+        "tags": ["diamond", "solitaire", "engagement"]
+      },
+      {
+        "name": "Celestial Star Necklace",
+        "summary": "Dainty star and moon pendant on a delicate gold chain.",
+        "price": 69.0,
+        "compare_price": 89.0,
+        "category": "necklaces",
+        "image": "celestial-star-necklace",
+        "stock": 70,
+        "tags": ["celestial", "star", "moon"]
+      },
+      {
+        "name": "Heart Locket Necklace",
+        "summary": "Vintage-style heart locket, fits two photos, gold plated.",
+        "price": 89.0,
+        "compare_price": 119.0,
+        "category": "gift-sets",
+        "image": "heart-jewellery",
+        "stock": 50,
+        "tags": ["locket", "heart", "gift"]
+      }
+    ],
+    "menus": [
+      {
+        "title": "Quick Links",
+        "status": "default",
+        "items": [
+          { "label": "Home",      "url": "@url/" },
+          { "label": "Shop",      "url": "@url/shop" },
+          { "label": "Rings",     "url": "@url/shop?category=rings" },
+          { "label": "Necklaces", "url": "@url/shop?category=necklaces" },
+          { "label": "Contact",   "url": "@url/contact" }
+        ]
+      },
+      {
+        "title": "Collections Menu",
+        "status": "collections",
+        "items": [
+          { "label": "Rings",      "url": "@url/shop?category=rings" },
+          { "label": "Necklaces",  "url": "@url/shop?category=necklaces" },
+          { "label": "Bracelets",  "url": "@url/shop?category=bracelets" },
+          { "label": "Earrings",   "url": "@url/shop?category=earrings" },
+          { "label": "Gift Sets",  "url": "@url/shop?category=gift-sets" }
+        ]
+      },
+      {
+        "title": "Services Menu",
+        "status": "services",
+        "items": [
+          { "label": "Bespoke Commissions", "url": "@url/contact" },
+          { "label": "Ring Sizing",         "url": "@url/contact" },
+          { "label": "Engraving",           "url": "@url/contact" },
+          { "label": "Jewellery Cleaning",  "url": "@url/contact" },
+          { "label": "Valuations",          "url": "@url/contact" }
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Collections",
+          "menu_id": "@menu:collections"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Services",
+          "menu_id": "@menu:services"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Our Craft",
+          "footer_badges": {
+            "badge_icon_":  ["💎", "✋", "🔒", "♻️"],
+            "badge_title_": ["Solid Gold", "Handcrafted", "Insured Delivery", "Ethical Sourcing"],
+            "badge_sub_":   ["Hallmark certified", "Each piece unique", "Fully secured", "Conflict-free metals"]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "goldcraft-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/home-layout.json"
+      }
+    ]
+  }
+}

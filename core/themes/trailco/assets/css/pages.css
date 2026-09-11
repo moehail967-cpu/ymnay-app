@@ -1,0 +1,128 @@
+/* ============================================================
+   Trailco — Default Page Styles (shop, cart, checkout)
+   Loaded before theme CSS so theme overrides take precedence.
+   ============================================================ */
+
+/* Shop page layout compatibility */
+.shop-area { padding-top: 60px; padding-bottom: 60px; }
+.shop-contents-wrapper { display: flex; gap: 24px; }
+.shop-sidebar { min-width: 260px; }
+.product-grid-wrapper { flex: 1; }
+
+/* Cart & Checkout */
+.cart-area { padding-top: 60px; padding-bottom: 60px; }
+.checkout-area { padding-top: 60px; padding-bottom: 60px; }
+
+/* Product single */
+.single-product-details-area { padding-top: 60px; padding-bottom: 60px; }
+
+/* Price range slider — Bootstrap 5 compatible */
+.price-range-slider .noUi-connect { background: var(--tc-olive); }
+.price-range-slider .noUi-handle { border-color: var(--tc-olive); }
+
+/* Filter sidebar */
+.widget-box { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; border: 1px solid #f0f0f0; }
+.widget-box .widget-title { font-size: 15px; font-weight: 700; color: #1a2e1a; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--tc-olive); }
+
+/* Add to cart button */
+.add-to-cart-btn { background: var(--tc-olive); color: #fff; border: none; padding: 6px 24px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: opacity .2s; }
+.add-to-cart-btn:hover { opacity: .85; }
+
+/* Rating stars */
+.rating-star .las.la-star,
+.rating-star .las.la-star-half-alt { color: #f59e0b; }
+.rating-star .lar.la-star { color: #d1d5db; }
+
+/* ── Checkout: state-city-input component overrides ── */
+.single-input { margin-top: 16px; position: relative; border: none !important; border-bottom: none !important; }
+.single-input::after,
+.single-input::before { display: none !important; content: none !important; }
+.single-input .label-title {
+    display: block !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: .5px !important;
+    color: var(--tr-stone) !important;
+    margin-bottom: 6px !important;
+}
+.single-input .form--control {
+    width: 100% !important;
+    padding: 10px 14px !important;
+    border: 1.5px solid var(--tr-border) !important;
+    border-radius: var(--tr-radius) !important;
+    font-size: 14px !important;
+    font-family: inherit !important;
+    outline: none !important;
+    background: #fff !important;
+    transition: border-color .2s !important;
+    color: var(--tr-bark) !important;
+    height: auto !important;
+    box-shadow: none !important;
+}
+.single-input .form--control:focus {
+    border-color: var(--tr-olive) !important;
+    box-shadow: none !important;
+}
+
+/* ── State / City row (checkout) ── */
+.tr-state-city-row {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+}
+.tr-state-city-row .single-input {
+    flex: 1;
+    min-width: 0;
+    border: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+.tr-state-city-row .single-input::after,
+.tr-state-city-row .single-input::before {
+    display: none !important;
+    content: none !important;
+}
+
+/* Live search dropdowns */
+.live-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: #fff;
+    border: 1.5px solid var(--tr-olive);
+    border-top: none;
+    border-radius: 0 0 var(--tr-radius) var(--tr-radius);
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+.live-dropdown li,
+.live-dropdown .dropdown-item {
+    padding: 9px 14px;
+    font-size: 13px;
+    color: var(--tr-bark);
+    cursor: pointer;
+    list-style: none;
+    border-bottom: 1px solid var(--tr-border);
+    transition: background .15s;
+}
+.live-dropdown li:hover,
+.live-dropdown .dropdown-item:hover { background: var(--tr-cream); color: var(--tr-olive); }
+.live-dropdown li:last-child,
+.live-dropdown .dropdown-item:last-child { border-bottom: none; }
+.size-lists li.disabled { opacity: .4; cursor: not-allowed; pointer-events: none; }
+
+/* Hide star-rating plugin tooltip in review form */
+[data-star-rating] .gl-star-rating--stars[aria-label]:after,
+[data-star-rating] .gl-star-rating--stars[aria-label]:before { display: none !important; }
+
+/* ── Support Ticket — dash card ── */
+.tr-dash-card { background: #fff; border: 1.5px solid var(--tr-border); border-radius: var(--tr-radius); overflow: hidden; margin-bottom: 20px; }
+.tr-dash-card-header { padding: 14px 20px; border-bottom: 1.5px solid var(--tr-border); font-weight: 700; color: #333; display: flex; align-items: center; background: #f9f5f1; }
+.tr-dash-card-body { padding: 24px 20px; }
+.tc-tab-nav { overflow-x: auto; scrollbar-width: none; }
+.tc-tab-nav::-webkit-scrollbar { display: none; }

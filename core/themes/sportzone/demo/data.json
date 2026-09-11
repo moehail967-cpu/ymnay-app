@@ -1,0 +1,285 @@
+{
+  "sections": {
+    "settings": [
+      { "key": "site_title",       "value": "SportZone Athletics" },
+      { "key": "site_description", "value": "Gear up for your best performance with premium sports equipment." },
+      { "key": "site_logo",        "value": "@media:sportzone-logo-color" },
+      { "key": "site_white_logo",  "value": "@media:sportzone-logo-white" }
+    ],
+
+    "media": [
+      { "path": "assets/images/logo-color.svg",    "import_as": "sportzone-logo-color" },
+      { "path": "assets/images/logo-white.svg",    "import_as": "sportzone-logo-white" },
+      { "path": "assets/images/sportzone-hero.jpg","import_as": "sportzone-hero" },
+      { "path": "assets/images/soccer-ball.jpg",   "import_as": "soccer-ball" },
+      { "path": "assets/images/running-shoes.jpg", "import_as": "running-shoes" },
+      { "path": "assets/images/gym-weights.jpg",   "import_as": "gym-weights" },
+      { "path": "assets/images/basketball.jpg",    "import_as": "basketball" },
+      { "path": "assets/images/sports-shirt.jpg",  "import_as": "sports-shirt" },
+      { "path": "assets/images/tennis-racket.jpg", "import_as": "tennis-racket" },
+      { "path": "assets/images/swim-gear.jpg",     "import_as": "swim-gear" },
+      { "path": "assets/images/sports-watch.jpg",  "import_as": "sports-watch" },
+      { "path": "assets/images/boxing-gloves.jpg", "import_as": "boxing-gloves" },
+      { "path": "assets/images/yoga-mat.jpg",      "import_as": "yoga-mat" },
+      { "path": "assets/images/cycling-bike.jpg",  "import_as": "cycling-bike" },
+      { "path": "assets/images/badminton.jpg",     "import_as": "badminton" },
+      { "path": "assets/images/running-shorts.jpg","import_as": "running-shorts" },
+      { "path": "assets/images/shoe-closeup.jpg",  "import_as": "shoe-closeup" },
+      { "path": "assets/images/trail-boots.jpg",   "import_as": "trail-boots" },
+      { "path": "assets/images/sports-socks.jpg",  "import_as": "sports-socks" },
+      { "path": "assets/images/shoe-box.jpg",      "import_as": "shoe-box" },
+      { "path": "assets/images/runner-action.jpg", "import_as": "runner-action" },
+      { "path": "assets/images/cat-football.jpg",  "import_as": "cat-football" },
+      { "path": "assets/images/cat-gym.jpg",       "import_as": "cat-gym" },
+      { "path": "assets/images/cat-running.jpg",   "import_as": "cat-running" },
+      { "path": "assets/images/cat-swimming.jpg",  "import_as": "cat-swimming" },
+      { "path": "assets/images/cat-cycling.jpg",   "import_as": "cat-cycling" },
+      { "path": "assets/images/cat-clothing.jpg",  "import_as": "cat-clothing" }
+    ],
+
+    "categories": [
+      { "name": "Football",   "slug": "football",   "image": "cat-football" },
+      { "name": "Running",    "slug": "running",    "image": "cat-running" },
+      { "name": "Gym",        "slug": "gym",        "image": "cat-gym" },
+      { "name": "Basketball", "slug": "basketball" },
+      { "name": "Tennis",     "slug": "tennis" },
+      { "name": "Swimming",   "slug": "swimming",   "image": "cat-swimming" },
+      { "name": "Cycling",    "slug": "cycling",    "image": "cat-cycling" },
+      { "name": "Outdoor",    "slug": "outdoor" }
+    ],
+
+    "products": [
+      {
+        "name": "Match Pro Football",
+        "summary": "FIFA-approved match ball, 32-panel design, butyl bladder for consistent air retention.",
+        "price": 58.00,
+        "compare_price": 42.00,
+        "category": "football",
+        "image": "soccer-ball",
+        "stock": 120,
+        "sold_count": 834,
+        "tags": ["football", "match-ball", "fifa"]
+      },
+      {
+        "name": "Speed Runner X3",
+        "summary": "Carbon-fibre plate midsole, 4mm heel drop, ultra-responsive foam for race day.",
+        "price": 159.99,
+        "compare_price": 128.00,
+        "category": "running",
+        "image": "running-shoes",
+        "stock": 80,
+        "sold_count": 612,
+        "tags": ["running", "shoes", "carbon-plate"]
+      },
+      {
+        "name": "Adjustable Dumbbell Set",
+        "summary": "5–32kg quick-release dial system, replaces 9 pairs, compact chrome finish.",
+        "price": 299.99,
+        "compare_price": 189.00,
+        "category": "gym",
+        "image": "gym-weights",
+        "stock": 40,
+        "sold_count": 421,
+        "tags": ["dumbbells", "adjustable", "home-gym"]
+      },
+      {
+        "name": "Court King Basketball",
+        "summary": "Indoor/outdoor composite leather, size 7, deep channel grip-optimised surface.",
+        "price": 69.99,
+        "compare_price": 55.00,
+        "category": "basketball",
+        "image": "basketball",
+        "stock": 75,
+        "sold_count": 588,
+        "tags": ["basketball", "size-7", "indoor-outdoor"]
+      },
+      {
+        "name": "Pro Compression Shirt",
+        "summary": "Moisture-wicking Dri-FIT fabric, UV50+ protection, ergonomic slim fit.",
+        "price": 64.99,
+        "compare_price": 48.00,
+        "category": "gym",
+        "image": "sports-shirt",
+        "stock": 150,
+        "sold_count": 376,
+        "tags": ["compression", "shirt", "training"]
+      },
+      {
+        "name": "Power Racket Pro",
+        "summary": "300g carbon-graphite frame, 100in² head, pre-strung poly gut, includes cover.",
+        "price": 139.99,
+        "compare_price": 95.00,
+        "category": "tennis",
+        "image": "tennis-racket",
+        "stock": 50,
+        "sold_count": 297,
+        "tags": ["tennis", "racket", "carbon"]
+      },
+      {
+        "name": "Elite Swim Goggles",
+        "summary": "Anti-fog UV400 lenses, hydrodynamic low-profile frame, silicone strap.",
+        "price": 39.99,
+        "compare_price": 28.00,
+        "category": "swimming",
+        "image": "swim-gear",
+        "stock": 90,
+        "sold_count": 743,
+        "tags": ["swim", "goggles", "uv-protection"]
+      },
+      {
+        "name": "GPS Sports Watch",
+        "summary": "Multi-sport GPS, optical heart rate, 20h battery, 5ATM water resistance.",
+        "price": 249.99,
+        "compare_price": 149.00,
+        "category": "outdoor",
+        "image": "sports-watch",
+        "stock": 35,
+        "sold_count": 512,
+        "tags": ["gps", "watch", "heart-rate"]
+      },
+      {
+        "name": "Pro Boxing Gloves 12oz",
+        "summary": "Multi-layer foam padding, genuine leather outer shell, velcro wrist closure.",
+        "price": 79.99,
+        "compare_price": 56.00,
+        "category": "gym",
+        "image": "boxing-gloves",
+        "stock": 60,
+        "sold_count": 0,
+        "tags": ["boxing", "gloves", "training"]
+      },
+      {
+        "name": "Non-Slip Yoga Mat 6mm",
+        "summary": "Eco-friendly TPE, 183×61cm, alignment lines, carry strap included.",
+        "price": 49.99,
+        "compare_price": 34.00,
+        "category": "gym",
+        "image": "yoga-mat",
+        "stock": 100,
+        "sold_count": 0,
+        "tags": ["yoga", "mat", "eco"]
+      },
+      {
+        "name": "Trail Cycling Bike 29\"",
+        "summary": "Alloy hardtail frame, Shimano 21-speed, hydraulic disc brakes, 29\" wheels.",
+        "price": 899.99,
+        "compare_price": 649.00,
+        "category": "cycling",
+        "image": "cycling-bike",
+        "stock": 15,
+        "sold_count": 0,
+        "tags": ["bike", "mountain", "shimano"]
+      },
+      {
+        "name": "Badminton Racket Set",
+        "summary": "2 carbon rackets + 3 feather shuttlecocks, full-cover carry bag, ideal for pairs.",
+        "price": 59.99,
+        "compare_price": 42.00,
+        "category": "outdoor",
+        "image": "badminton",
+        "stock": 70,
+        "sold_count": 0,
+        "tags": ["badminton", "racket", "set"]
+      },
+      {
+        "name": "Running Shorts Pro",
+        "summary": "4-way stretch recycled fabric, built-in liner, reflective trim, zip pocket.",
+        "price": 44.99,
+        "compare_price": 32.00,
+        "category": "running",
+        "image": "running-shorts",
+        "stock": 110,
+        "sold_count": 0,
+        "tags": ["shorts", "running", "recycled"]
+      },
+      {
+        "name": "Trail Running Boots",
+        "summary": "Vibram outsole, waterproof Gore-Tex lining, rock plate, high-ankle support.",
+        "price": 189.99,
+        "compare_price": 139.00,
+        "category": "running",
+        "image": "trail-boots",
+        "stock": 45,
+        "sold_count": 0,
+        "tags": ["trail", "boots", "waterproof"]
+      },
+      {
+        "name": "Performance Sports Socks",
+        "summary": "Cushioned sole, arch compression, anti-blister stitching, 3-pack.",
+        "price": 19.99,
+        "compare_price": 14.00,
+        "category": "running",
+        "image": "sports-socks",
+        "stock": 200,
+        "sold_count": 0,
+        "tags": ["socks", "compression", "running"]
+      },
+      {
+        "name": "Sports Duffle Bag 40L",
+        "summary": "Water-resistant 600D polyester, separate shoe compartment, wet/dry pockets.",
+        "price": 89.99,
+        "compare_price": 62.00,
+        "category": "outdoor",
+        "image": "shoe-box",
+        "stock": 65,
+        "sold_count": 0,
+        "tags": ["bag", "duffle", "waterproof"]
+      }
+    ],
+
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Products",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Support",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Our Standards",
+          "footer_badges": {
+            "badge_icon_":  ["⚽", "🏅", "✅", "🚚"],
+            "badge_title_": ["Performance Tested", "Officially Licensed", "Safety Certified", "Fast Dispatch"],
+            "badge_sub_":   ["Pro-grade quality", "Brand authentic", "CE marked", "Next-day available"]
+          }
+        }
+      }
+    ],
+
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "sportzone-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/home-layout.json"
+      }
+    ]
+  }
+}

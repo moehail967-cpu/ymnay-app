@@ -1,0 +1,216 @@
+{
+  "sections": {
+    "settings": [
+      { "key": "site_title",        "value": "TrailCo Outdoor" },
+      { "key": "site_description",  "value": "Built for the wild. Gear that goes where you go." },
+      { "key": "site_logo",         "value": "@media:trailco-logo-color" },
+      { "key": "site_white_logo",   "value": "@media:trailco-logo-white" },
+      { "key": "footer_description","value": "Outfitting adventurers since 1998. We only sell gear we'd trust on any trail — tested by our team of guides, climbers, and explorers." }
+    ],
+    "media": [
+      { "path": "assets/images/logo-color.svg",     "import_as": "trailco-logo-color" },
+      { "path": "assets/images/logo-white.svg",     "import_as": "trailco-logo-white" },
+      { "path": "assets/images/trailco-hero.jpg",   "import_as": "trailco-hero" },
+      { "path": "assets/images/hiking-boots.jpg",   "import_as": "hiking-boots" },
+      { "path": "assets/images/hiking-pack.jpg",    "import_as": "hiking-pack" },
+      { "path": "assets/images/tent-camping.jpg",   "import_as": "tent-camping" },
+      { "path": "assets/images/outdoor-jacket.jpg", "import_as": "outdoor-jacket" },
+      { "path": "assets/images/headlamp.jpg",       "import_as": "headlamp" },
+      { "path": "assets/images/climbing-gear.jpg",  "import_as": "climbing-gear" },
+      { "path": "assets/images/mountain-bike.jpg",  "import_as": "mountain-bike" },
+      { "path": "assets/images/trail-map.jpg",      "import_as": "trail-map" },
+      { "path": "assets/images/trail-runners.jpg",  "import_as": "trail-runners" },
+      { "path": "assets/images/trekking-poles.jpg", "import_as": "trekking-poles" },
+      { "path": "assets/images/gps-watch.jpg",      "import_as": "gps-watch" },
+      { "path": "assets/images/water-bottle.jpg",   "import_as": "water-bottle" },
+      { "path": "assets/images/cat-climbing.jpg",   "import_as": "cat-climbing" },
+      { "path": "assets/images/cat-clothing.jpg",   "import_as": "cat-clothing" },
+      { "path": "assets/images/cat-packs.jpg",      "import_as": "cat-packs" },
+      { "path": "assets/images/cat-shelter.jpg",    "import_as": "cat-shelter" },
+      { "path": "assets/images/cat-footwear.jpg",   "import_as": "cat-footwear" },
+      { "path": "assets/images/cat-navigation.jpg", "import_as": "cat-navigation" }
+    ],
+    "categories": [
+      { "name": "Hiking",     "slug": "hiking",     "image": "cat-packs" },
+      { "name": "Camping",    "slug": "camping",    "image": "cat-shelter" },
+      { "name": "Climbing",   "slug": "climbing",   "image": "cat-climbing" },
+      { "name": "Cycling",    "slug": "cycling",    "image": "mountain-bike" },
+      { "name": "Clothing",   "slug": "clothing",   "image": "cat-clothing" },
+      { "name": "Navigation", "slug": "navigation", "image": "cat-navigation" }
+    ],
+    "products": [
+      {
+        "name": "Alpine Pro Hiking Boots",
+        "summary": "Grippy Vibram outsole, waterproof membrane, 8mm drop, wide toe box for all-day comfort on rugged trails.",
+        "price": 185.00,
+        "compare_price": 230.00,
+        "category": "hiking",
+        "image": "hiking-boots",
+        "stock": 70,
+        "sold_count": 142,
+        "tags": ["boots","hiking","waterproof"]
+      },
+      {
+        "name": "Summit 65L Expedition Pack",
+        "summary": "Adjustable Airspeed suspension, built-in raincover, hydration compatible — your basecamp-to-summit solution.",
+        "price": 220.00,
+        "category": "hiking",
+        "image": "hiking-pack",
+        "stock": 40,
+        "sold_count": 98,
+        "tags": ["backpack","65l","expedition"]
+      },
+      {
+        "name": "2-Person Ultralight Tent",
+        "summary": "1.8kg double-wall tent, 3-season, 4000mm HH fly, sets up in 5 minutes. Perfect for fast-and-light adventures.",
+        "price": 295.00,
+        "category": "camping",
+        "image": "tent-camping",
+        "stock": 35,
+        "sold_count": 77,
+        "tags": ["tent","camping","ultralight"]
+      },
+      {
+        "name": "Goose Down Parka",
+        "summary": "900-fill power down, -30 rated, packable, windproof shell. Rated by our guides for extreme winter expeditions.",
+        "price": 320.00,
+        "compare_price": 420.00,
+        "category": "clothing",
+        "image": "outdoor-jacket",
+        "stock": 45,
+        "sold_count": 113,
+        "tags": ["jacket","down","winter"]
+      },
+      {
+        "name": "700 Lumen Trail Headlamp",
+        "summary": "800 lumens, IPX8 waterproof, USB-C charge, red night-vision mode. Weighs just 85g.",
+        "price": 68.00,
+        "category": "camping",
+        "image": "headlamp",
+        "stock": 80,
+        "sold_count": 204,
+        "tags": ["headlamp","rechargeable","camping"]
+      },
+      {
+        "name": "Dynamic Climbing Rope 60m",
+        "summary": "UIAA-certified 9.5mm dynamic rope, dry-treated core. Lightweight 60m for sport and trad climbing.",
+        "price": 145.00,
+        "compare_price": 185.00,
+        "category": "climbing",
+        "image": "climbing-gear",
+        "stock": 25,
+        "sold_count": 56,
+        "tags": ["rope","climbing","dry","uiaa"]
+      },
+      {
+        "name": "MTB Helmet Pro Fit",
+        "summary": "MIPS-equipped trail helmet, 23 vents, BOA dial-fit system, visor included. Meets CPSC and CE EN1078.",
+        "price": 89.00,
+        "category": "cycling",
+        "image": "mountain-bike",
+        "stock": 60,
+        "sold_count": 89,
+        "tags": ["helmet","mtb","mips","cycling"]
+      },
+      {
+        "name": "GPS Handheld Navigator",
+        "summary": "Multi-band GPS + GLONASS, topographic maps preloaded, 14-day battery life with solar charging.",
+        "price": 198.00,
+        "category": "navigation",
+        "image": "trail-map",
+        "stock": 30,
+        "sold_count": 45,
+        "tags": ["gps","navigation","topographic","solar"]
+      }
+    ],
+    "menus": [
+      {
+        "title": "Main Navigation",
+        "status": "active",
+        "items": [
+          { "label": "Hiking",   "url": "@url/shop?category=hiking" },
+          { "label": "Camping",  "url": "@url/shop?category=camping" },
+          { "label": "Climbing", "url": "@url/shop?category=climbing" },
+          { "label": "Cycling",  "url": "@url/shop?category=cycling" },
+          { "label": "Clothing", "url": "@url/shop?category=clothing" },
+          { "label": "Sale",     "url": "@url/shop" }
+        ]
+      },
+      {
+        "title": "Footer Shop Links",
+        "status": "shop",
+        "items": [
+          { "label": "Hiking",   "url": "@url/shop?category=hiking" },
+          { "label": "Camping",  "url": "@url/shop?category=camping" },
+          { "label": "Climbing", "url": "@url/shop?category=climbing" },
+          { "label": "Cycling",  "url": "@url/shop?category=cycling" },
+          { "label": "Clothing", "url": "@url/shop?category=clothing" }
+        ]
+      },
+      {
+        "title": "Footer Help Links",
+        "status": "help",
+        "items": [
+          { "label": "Gear Guides", "url": "@url/page/gear-guides" },
+          { "label": "Size Charts", "url": "@url/page/size-charts" },
+          { "label": "Returns",     "url": "@url/page/returns" },
+          { "label": "Track Order", "url": "@url/page/track-order" },
+          { "label": "Contact",     "url": "@url/contact" }
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Shop",
+          "menu_id": "@menu:shop"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Help",
+          "menu_id": "@menu:help"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Trail Ready",
+          "footer_badges": {
+            "badge_icon_":  ["🏔️", "🌿", "🔧", "🚚"],
+            "badge_title_": ["Performance Tested", "Eco Friendly", "Durable Build", "Fast Delivery"],
+            "badge_sub_":   ["Extreme condition rated", "Sustainable gear", "Built to last seasons", "Ready for your next trail"]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "trailco-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/home-layout.json"
+      }
+    ]
+  }
+}

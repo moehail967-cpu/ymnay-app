@@ -1,0 +1,229 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "section-1782887435280",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1782887435280",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1782887435280",
+                                "type": "fitpeak_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "transparent"
+                }
+            },
+            {
+                "id": "section-1782890420456",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1782890420456",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1782890420456",
+                                "type": "fitpeak_category_grid"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1782887439094",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1782887439094",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1782887439094",
+                                "type": "fitpeak_featured_products"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1782887440797",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1782887440797",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1782887440797",
+                                "type": "fitpeak_promo_banner"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1782887442304",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1782887442304",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1782887442304",
+                                "type": "fitpeak_newsletter"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "widget-1782887435280": {
+            "type": "fitpeak_hero_section",
+            "container_id": "section-1782887435280",
+            "column_id": "column-1782887435280",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "product_image": "@media:fitpeak-hero"
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1782887439094": {
+            "type": "fitpeak_featured_products",
+            "container_id": "section-1782887439094",
+            "column_id": "column-1782887439094",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1782887440797": {
+            "type": "fitpeak_promo_banner",
+            "container_id": "section-1782887440797",
+            "column_id": "column-1782887440797",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1782887442304": {
+            "type": "fitpeak_newsletter",
+            "container_id": "section-1782887442304",
+            "column_id": "column-1782887442304",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1782890420456": {
+            "type": "fitpeak_category_grid",
+            "container_id": "section-1782890420456",
+            "column_id": "column-1782890420456",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        }
+    }
+}

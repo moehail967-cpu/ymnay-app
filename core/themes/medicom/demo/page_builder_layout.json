@@ -1,0 +1,353 @@
+{
+    "version": "1.0",
+    "theme": "medicom",
+    "description": "Default homepage layout for Medicom",
+    "content": {
+        "containers": [
+            {
+                "id": "c_MII5mDVf",
+                "columns": [
+                    {
+                        "id": "col_Lkaj9nbn",
+                        "width": 12,
+                        "widgets": [
+                            {
+                                "id": "w_6NDivSW4",
+                                "type": "tenant_hero_section"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "c_alvxpCNp",
+                "columns": [
+                    {
+                        "id": "col_Bi8KpIO0",
+                        "width": 12,
+                        "widgets": [
+                            {
+                                "id": "w_8dhNr6Hc",
+                                "type": "tenant_services_strip"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "c_ahQeWPuh",
+                "columns": [
+                    {
+                        "id": "col_V6QJy5QS",
+                        "width": 12,
+                        "widgets": [
+                            {
+                                "id": "w_ZoUGoMud",
+                                "type": "tenant_featured_products"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "c_2c1xfjAN",
+                "columns": [
+                    {
+                        "id": "col_9zsaNSo1",
+                        "width": 12,
+                        "widgets": [
+                            {
+                                "id": "w_IhEGSnm4",
+                                "type": "tenant_category_grid"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "c_HuzeA0Qi",
+                "columns": [
+                    {
+                        "id": "col_U9jGr9jn",
+                        "width": 12,
+                        "widgets": [
+                            {
+                                "id": "w_QO9k7qil",
+                                "type": "tenant_products_by_category"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "c_LnxwgX74",
+                "columns": [
+                    {
+                        "id": "col_cURj5Niw",
+                        "width": 12,
+                        "widgets": [
+                            {
+                                "id": "w_yQiGl5PX",
+                                "type": "tenant_testimonials"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "c_SP6AgiaA",
+                "columns": [
+                    {
+                        "id": "col_kDoIl1AH",
+                        "width": 12,
+                        "widgets": [
+                            {
+                                "id": "w_OHOxDhba",
+                                "type": "tenant_newsletter"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "widgets": [
+        {
+            "widget_id": "w_6NDivSW4",
+            "widget_type": "tenant_hero_section",
+            "container_id": "c_MII5mDVf",
+            "column_id": "col_Lkaj9nbn",
+            "sort_order": 0,
+            "general_settings": {
+                "content": {
+                    "title": "Welcome to Our Store",
+                    "subtitle": "Discover amazing products at great prices.",
+                    "button_text": "Shop Now",
+                    "button_url": "#",
+                    "secondary_button_text": "View All Products",
+                    "secondary_button_url": "#"
+                },
+                "media": {
+                    "hero_image": null,
+                    "background_image": null,
+                    "background_color": "#f8f9fa"
+                }
+            },
+            "style_settings": {
+                "spacing": {
+                    "padding_top": 80,
+                    "padding_bottom": 80
+                }
+            },
+            "is_visible": true,
+            "is_enabled": true
+        },
+        {
+            "widget_id": "w_8dhNr6Hc",
+            "widget_type": "tenant_services_strip",
+            "container_id": "c_alvxpCNp",
+            "column_id": "col_Bi8KpIO0",
+            "sort_order": 1,
+            "general_settings": {
+                "items": {
+                    "services": [
+                        {
+                            "icon": "las la-truck",
+                            "title": "Free Shipping",
+                            "description": "On orders over $50"
+                        },
+                        {
+                            "icon": "las la-shield-alt",
+                            "title": "Secure Payment",
+                            "description": "100% secure checkout"
+                        },
+                        {
+                            "icon": "las la-undo",
+                            "title": "Easy Returns",
+                            "description": "30-day return policy"
+                        },
+                        {
+                            "icon": "las la-headset",
+                            "title": "24/7 Support",
+                            "description": "Always here to help"
+                        }
+                    ]
+                }
+            },
+            "style_settings": {
+                "style": {
+                    "background_color": "#ffffff"
+                },
+                "spacing": {
+                    "padding_top": 50,
+                    "padding_bottom": 50
+                }
+            },
+            "is_visible": true,
+            "is_enabled": true
+        },
+        {
+            "widget_id": "w_ZoUGoMud",
+            "widget_type": "tenant_featured_products",
+            "container_id": "c_ahQeWPuh",
+            "column_id": "col_V6QJy5QS",
+            "sort_order": 2,
+            "general_settings": {
+                "content": {
+                    "title": "Featured Products",
+                    "subtitle": "",
+                    "view_all_text": "View All",
+                    "view_all_url": "#"
+                },
+                "query": {
+                    "item_count": 8,
+                    "sort_by": "latest",
+                    "columns": "4"
+                }
+            },
+            "style_settings": {
+                "spacing": {
+                    "padding_top": 80,
+                    "padding_bottom": 80
+                }
+            },
+            "is_visible": true,
+            "is_enabled": true
+        },
+        {
+            "widget_id": "w_IhEGSnm4",
+            "widget_type": "tenant_category_grid",
+            "container_id": "c_2c1xfjAN",
+            "column_id": "col_9zsaNSo1",
+            "sort_order": 3,
+            "general_settings": {
+                "content": {
+                    "title": "Shop by Category",
+                    "subtitle": "",
+                    "view_all_text": "View All",
+                    "view_all_url": "#"
+                },
+                "query": {
+                    "item_count": 6,
+                    "columns": "6",
+                    "show_count": false
+                }
+            },
+            "style_settings": {
+                "spacing": {
+                    "padding_top": 80,
+                    "padding_bottom": 80
+                }
+            },
+            "is_visible": true,
+            "is_enabled": true
+        },
+        {
+            "widget_id": "w_QO9k7qil",
+            "widget_type": "tenant_products_by_category",
+            "container_id": "c_HuzeA0Qi",
+            "column_id": "col_U9jGr9jn",
+            "sort_order": 4,
+            "general_settings": {
+                "content": {
+                    "title": "Shop by Category",
+                    "view_all_text": "View All",
+                    "view_all_url": "#"
+                },
+                "query": {
+                    "item_count": 8,
+                    "show_all_tab": true,
+                    "max_categories": 5,
+                    "columns": "4"
+                }
+            },
+            "style_settings": {
+                "spacing": {
+                    "padding_top": 80,
+                    "padding_bottom": 80
+                }
+            },
+            "is_visible": true,
+            "is_enabled": true
+        },
+        {
+            "widget_id": "w_yQiGl5PX",
+            "widget_type": "tenant_testimonials",
+            "container_id": "c_LnxwgX74",
+            "column_id": "col_cURj5Niw",
+            "sort_order": 5,
+            "general_settings": {
+                "header": {
+                    "title": "What Our Customers Say",
+                    "subtitle": ""
+                },
+                "items": {
+                    "testimonials": [
+                        {
+                            "name": "Sarah M.",
+                            "role": "Verified Buyer",
+                            "rating": "5",
+                            "review": "Absolutely love the products! Quality is amazing and delivery was super fast."
+                        },
+                        {
+                            "name": "James K.",
+                            "role": "Regular Customer",
+                            "rating": "5",
+                            "review": "Best online store I've shopped at. Will definitely come back again!"
+                        },
+                        {
+                            "name": "Emma R.",
+                            "role": "New Customer",
+                            "rating": "4",
+                            "review": "Great selection and competitive prices. Very happy with my purchase."
+                        },
+                        {
+                            "name": "David L.",
+                            "role": "Verified Buyer",
+                            "rating": "5",
+                            "review": "Fast shipping, excellent product quality, and wonderful customer service!"
+                        }
+                    ]
+                }
+            },
+            "style_settings": {
+                "style": {
+                    "background_color": "#f8f9fa"
+                },
+                "spacing": {
+                    "padding_top": 80,
+                    "padding_bottom": 80
+                }
+            },
+            "is_visible": true,
+            "is_enabled": true
+        },
+        {
+            "widget_id": "w_OHOxDhba",
+            "widget_type": "tenant_newsletter",
+            "container_id": "c_SP6AgiaA",
+            "column_id": "col_kDoIl1AH",
+            "sort_order": 6,
+            "general_settings": {
+                "content": {
+                    "title": "Stay in the Loop",
+                    "subtitle": "Subscribe for exclusive deals, new arrivals, and insider tips.",
+                    "placeholder": "Enter your email address",
+                    "button_text": "Subscribe"
+                }
+            },
+            "style_settings": {
+                "style": {
+                    "background_color": "",
+                    "text_color": "#ffffff"
+                },
+                "spacing": {
+                    "padding_top": 80,
+                    "padding_bottom": 80
+                }
+            },
+            "is_visible": true,
+            "is_enabled": true
+        }
+    ]
+}

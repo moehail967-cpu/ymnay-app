@@ -1,0 +1,449 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "Maison Home Décor"
+      },
+      {
+        "key": "site_description",
+        "value": "Curated home décor for living spaces that tell your story."
+      },
+      {
+        "key": "site_logo",
+        "value": "@media:maison-logo-color"
+      },
+      {
+        "key": "site_white_logo",
+        "value": "@media:maison-logo-white"
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/logo-color.svg",
+        "import_as": "maison-logo-color"
+      },
+      {
+        "path": "assets/images/logo-white.svg",
+        "import_as": "maison-logo-white"
+      },
+      {
+        "path": "assets/images/throw-pillow.jpg",
+        "import_as": "throw-pillow"
+      },
+      {
+        "path": "assets/images/floor-lamp.jpg",
+        "import_as": "floor-lamp"
+      },
+      {
+        "path": "assets/images/wall-art.jpg",
+        "import_as": "wall-art"
+      },
+      {
+        "path": "assets/images/accent-chair.jpg",
+        "import_as": "accent-chair"
+      },
+      {
+        "path": "assets/images/coffee-table.jpg",
+        "import_as": "coffee-table"
+      },
+      {
+        "path": "assets/images/ceramic-vase.jpg",
+        "import_as": "ceramic-vase"
+      },
+      {
+        "path": "assets/images/indoor-plant.jpg",
+        "import_as": "indoor-plant"
+      },
+      {
+        "path": "assets/images/wall-mirror.jpg",
+        "import_as": "wall-mirror"
+      },
+      {
+        "path": "assets/images/sofa.jpg",
+        "import_as": "sofa"
+      },
+      {
+        "path": "assets/images/bedroom-set.jpg",
+        "import_as": "bedroom-set"
+      },
+      {
+        "path": "assets/images/wooden-shelf.jpg",
+        "import_as": "wooden-shelf"
+      },
+      {
+        "path": "assets/images/cookware-set.jpg",
+        "import_as": "cookware-set"
+      },
+      {
+        "path": "assets/images/plant-greenery.jpg",
+        "import_as": "plant-greenery"
+      },
+      {
+        "path": "assets/images/bathroom-decor.jpg",
+        "import_as": "bathroom-decor"
+      },
+      {
+        "path": "assets/images/cat-art.jpg",
+        "import_as": "cat-art"
+      },
+      {
+        "path": "assets/images/cat-bedroom.jpg",
+        "import_as": "cat-bedroom"
+      },
+      {
+        "path": "assets/images/cat-kitchen.jpg",
+        "import_as": "cat-kitchen"
+      },
+      {
+        "path": "assets/images/cat-lighting.jpg",
+        "import_as": "cat-lighting"
+      },
+      {
+        "path": "assets/images/cat-living-room.jpg",
+        "import_as": "cat-living-room"
+      },
+      {
+        "path": "assets/images/cat-outdoor.jpg",
+        "import_as": "cat-outdoor"
+      },
+      {
+        "path": "assets/images/cat-garden.jpg",
+        "import_as": "cat-garden"
+      },
+      {
+        "path": "assets/images/maison-hero.jpg",
+        "import_as": "maison-hero-image"
+      },
+      {
+        "path": "assets/images/promo-banner.png",
+        "import_as": "maison-promo-image"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Living Room",
+        "slug": "living-room",
+        "image": "cat-living-room"
+      },
+      {
+        "name": "Bedroom",
+        "slug": "bedroom",
+        "image": "cat-bedroom"
+      },
+      {
+        "name": "Kitchen",
+        "slug": "kitchen",
+        "image": "cat-kitchen"
+      },
+      {
+        "name": "Lighting",
+        "slug": "lighting",
+        "image": "cat-lighting"
+      },
+      {
+        "name": "Decorative",
+        "slug": "decorative",
+        "image": "cat-art"
+      },
+      {
+        "name": "Outdoor",
+        "slug": "outdoor",
+        "image": "cat-outdoor"
+      },
+      {
+        "name": "Garden",
+        "slug": "garden",
+        "image": "cat-garden"
+      }
+    ],
+    "products": [
+      {
+        "name": "Linen Throw Cushion",
+        "summary": "Belgian linen cushion cover with feather-down insert, 50×50cm.",
+        "price": 34.99,
+        "compare_price": 44.99,
+        "category": "living-room",
+        "image": "throw-pillow",
+        "stock": 80,
+        "tags": [
+          "linen",
+          "cushion",
+          "neutral"
+        ]
+      },
+      {
+        "name": "Ceramic Arc Floor Lamp",
+        "summary": "Matte ceramic base with a linen shade, E27 bulb compatible.",
+        "price": 189.99,
+        "compare_price": 249.99,
+        "category": "lighting",
+        "image": "floor-lamp",
+        "stock": 30,
+        "tags": [
+          "ceramic",
+          "lamp",
+          "artisan"
+        ]
+      },
+      {
+        "name": "Woven Macramé Wall Art",
+        "summary": "Hand-knotted cotton macramé, 60×90cm, natural white.",
+        "price": 119.99,
+        "compare_price": 159.99,
+        "category": "bedroom",
+        "image": "wall-art",
+        "stock": 40,
+        "tags": [
+          "wall-art",
+          "woven",
+          "bohemian"
+        ]
+      },
+      {
+        "name": "Velvet Accent Armchair",
+        "summary": "Mid-century modern velvet chair in dusty pink with gold legs.",
+        "price": 349.99,
+        "compare_price": 449.99,
+        "category": "living-room",
+        "image": "accent-chair",
+        "stock": 20,
+        "tags": [
+          "armchair",
+          "velvet",
+          "accent"
+        ]
+      },
+      {
+        "name": "Marble Effect Coffee Table",
+        "summary": "Sintered stone top with a black powder-coated steel frame.",
+        "price": 299.99,
+        "compare_price": 389.99,
+        "category": "living-room",
+        "image": "coffee-table",
+        "stock": 15,
+        "tags": [
+          "coffee-table",
+          "marble",
+          "modern"
+        ]
+      },
+      {
+        "name": "Handmade Ceramic Vase Set (3)",
+        "summary": "Set of 3 hand-thrown stoneware vases in matte earth tones.",
+        "price": 79.99,
+        "compare_price": 99.99,
+        "category": "decorative",
+        "image": "ceramic-vase",
+        "stock": 50,
+        "tags": [
+          "vase",
+          "ceramic",
+          "handmade"
+        ]
+      },
+      {
+        "name": "Indoor Potted Fiddle Leaf Fig",
+        "summary": "Lush fiddle leaf fig in a ceramic pot, approx. 80cm tall.",
+        "price": 89.99,
+        "compare_price": 119.99,
+        "category": "decorative",
+        "image": "indoor-plant",
+        "stock": 25,
+        "tags": [
+          "plant",
+          "indoor",
+          "green"
+        ]
+      },
+      {
+        "name": "Arched Gold Wall Mirror",
+        "summary": "Arch-shaped mirror with a slim brushed gold frame, 60×120cm.",
+        "price": 159.99,
+        "compare_price": 199.99,
+        "category": "decorative",
+        "image": "wall-mirror",
+        "stock": 35,
+        "tags": [
+          "mirror",
+          "gold",
+          "arch"
+        ]
+      },
+      {
+        "name": "3-Seat Linen Sofa",
+        "summary": "Solid oak frame with removable natural linen upholstery, 220cm wide.",
+        "price": 899.99,
+        "compare_price": 1149.99,
+        "category": "living-room",
+        "image": "sofa",
+        "stock": 10,
+        "tags": [
+          "sofa",
+          "linen",
+          "oak"
+        ]
+      },
+      {
+        "name": "Bedroom Furniture Set",
+        "summary": "Matching 3-piece set: bed frame, bedside tables and dresser in matte white.",
+        "price": 1299.99,
+        "compare_price": 1699.99,
+        "category": "bedroom",
+        "image": "bedroom-set",
+        "stock": 8,
+        "tags": [
+          "bedroom",
+          "furniture",
+          "set"
+        ]
+      },
+      {
+        "name": "Floating Wooden Shelf",
+        "summary": "Solid walnut floating shelf with invisible brackets, 90cm.",
+        "price": 69.99,
+        "compare_price": 89.99,
+        "category": "bedroom",
+        "image": "wooden-shelf",
+        "stock": 45,
+        "tags": [
+          "shelf",
+          "walnut",
+          "storage"
+        ]
+      },
+      {
+        "name": "Ceramic Cookware Set (5-piece)",
+        "summary": "Non-stick ceramic coated pots and pans in warm terracotta tones.",
+        "price": 149.99,
+        "compare_price": 199.99,
+        "category": "kitchen",
+        "image": "cookware-set",
+        "stock": 22,
+        "tags": [
+          "cookware",
+          "ceramic",
+          "kitchen"
+        ]
+      },
+      {
+        "name": "Trailing Pothos Arrangement",
+        "summary": "Lush trailing pothos in a hand-painted ceramic pot, ready to hang.",
+        "price": 44.99,
+        "compare_price": 59.99,
+        "category": "garden",
+        "image": "plant-greenery",
+        "stock": 30,
+        "tags": [
+          "plant",
+          "hanging",
+          "green"
+        ]
+      },
+      {
+        "name": "Spa Bathroom Décor Set",
+        "summary": "Curated set of towel hooks, a soap dispenser and a tray in brushed brass.",
+        "price": 59.99,
+        "compare_price": 79.99,
+        "category": "decorative",
+        "image": "bathroom-decor",
+        "stock": 28,
+        "tags": [
+          "bathroom",
+          "brass",
+          "spa"
+        ]
+      }
+    ],
+    "menus": [
+      {
+        "title": "Main Menu",
+        "status": "default",
+        "items": [
+          { "label": "Shop",        "url": "@url/shop" },
+          { "label": "Living Room", "url": "@url/shop" },
+          { "label": "Bedroom",     "url": "@url/shop" },
+          { "label": "Lighting",    "url": "@url/shop" },
+          { "label": "Outdoor",     "url": "@url/shop" },
+          { "label": "Contact",     "url": "@url/contact" }
+        ]
+      },
+      {
+        "title": "Shop Menu",
+        "status": "shop",
+        "items": [
+          { "label": "Living Room", "url": "@url/shop" },
+          { "label": "Bedroom",     "url": "@url/shop" },
+          { "label": "Kitchen",     "url": "@url/shop" },
+          { "label": "Lighting",    "url": "@url/shop" },
+          { "label": "Decorative",  "url": "@url/shop" },
+          { "label": "Outdoor",     "url": "@url/shop" }
+        ]
+      },
+      {
+        "title": "Help Menu",
+        "status": "help",
+        "items": [
+          { "label": "Delivery Info",          "url": "@url/" },
+          { "label": "Returns & Exchanges",    "url": "@url/" },
+          { "label": "Track Order",            "url": "@url/" },
+          { "label": "Design Consultation",    "url": "@url/" },
+          { "label": "Contact",                "url": "@url/contact" }
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Shop",
+          "menu_id": "@menu:shop"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Help",
+          "menu_id": "@menu:help"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Our Promise",
+          "footer_badges": {
+            "badge_icon_":  ["🛋️", "🌿", "🚚", "🔧"],
+            "badge_title_": ["Quality Craftsmanship", "Sustainable Materials", "White Glove Delivery", "Expert Assembly"],
+            "badge_sub_":   ["Built to last", "FSC certified wood", "In-home placement", "Professional fitting"]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "maison-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/home-layout.json"
+      }
+    ]
+  }
+}

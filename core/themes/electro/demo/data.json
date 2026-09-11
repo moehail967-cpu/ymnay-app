@@ -1,0 +1,398 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "Electro Store"
+      },
+      {
+        "key": "site_description",
+        "value": "Your one-stop destination for the latest electronics and gadgets."
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/hero-banner.jpg",
+        "import_as": "electro-hero-banner"
+      },
+      {
+        "path": "assets/images/category_banner_1.jpg",
+        "import_as": "electro-coll-phone"
+      },
+      {
+        "path": "assets/images/category_banner_2.jpg",
+        "import_as": "electro-coll-watch"
+      },
+      {
+        "path": "assets/images/category_banner_3.jpg",
+        "import_as": "electro-coll-laptop"
+      },
+      {
+        "path": "assets/images/promo_banner1.jpg",
+        "import_as": "electro-camp-1"
+      },
+      {
+        "path": "assets/images/promo_banner2.jpg",
+        "import_as": "electro-camp-2"
+      },
+      {
+        "path": "assets/images/new_release_banner.jpg",
+        "import_as": "electro-promo-banner"
+      },
+      {
+        "path": "assets/images/cat-audio.jpg",
+        "import_as": "electro-cat-audio"
+      },
+      {
+        "path": "assets/images/cat-cameras.jpg",
+        "import_as": "electro-cat-cameras"
+      },
+      {
+        "path": "assets/images/cat-gaming.jpg",
+        "import_as": "electro-cat-gaming"
+      },
+      {
+        "path": "assets/images/cat-laptops.jpg",
+        "import_as": "electro-cat-laptops"
+      },
+      {
+        "path": "assets/images/cat-phones.jpg",
+        "import_as": "electro-cat-phones"
+      },
+      {
+        "path": "assets/images/cat-smart-home.jpg",
+        "import_as": "electro-cat-smart-home"
+      },
+      {
+        "path": "assets/images/prod-camera.jpg",
+        "import_as": "electro-prod-camera"
+      },
+      {
+        "path": "assets/images/prod-headphones.jpg",
+        "import_as": "electro-prod-headphones"
+      },
+      {
+        "path": "assets/images/prod-keyboard.jpg",
+        "import_as": "electro-prod-keyboard"
+      },
+      {
+        "path": "assets/images/prod-laptop.jpg",
+        "import_as": "electro-prod-laptop"
+      },
+      {
+        "path": "assets/images/prod-smartphone.jpg",
+        "import_as": "electro-prod-smartphone"
+      },
+      {
+        "path": "assets/images/prod-smartwatch.jpg",
+        "import_as": "electro-prod-smartwatch"
+      },
+      {
+        "path": "assets/images/prod-speaker.jpg",
+        "import_as": "electro-prod-speaker"
+      },
+      {
+        "path": "assets/images/prod-tablet.jpg",
+        "import_as": "electro-prod-tablet"
+      },
+      {
+        "path": "assets/images/brand-samsung.svg",
+        "import_as": "electro-brand-samsung"
+      },
+      {
+        "path": "assets/images/brand-apple.svg",
+        "import_as": "electro-brand-apple"
+      },
+      {
+        "path": "assets/images/brand-sony.svg",
+        "import_as": "electro-brand-sony"
+      },
+      {
+        "path": "assets/images/brand-lg.svg",
+        "import_as": "electro-brand-lg"
+      },
+      {
+        "path": "assets/images/brand-dell.svg",
+        "import_as": "electro-brand-dell"
+      },
+      {
+        "path": "assets/images/brand-asus.svg",
+        "import_as": "electro-brand-asus"
+      }
+    ],
+    "brands": [
+      {
+        "name": "Samsung",
+        "slug": "samsung",
+        "url": "https://www.samsung.com",
+        "image": "electro-brand-samsung"
+      },
+      {
+        "name": "Apple",
+        "slug": "apple",
+        "url": "https://www.apple.com",
+        "image": "electro-brand-apple"
+      },
+      {
+        "name": "Sony",
+        "slug": "sony",
+        "url": "https://www.sony.com",
+        "image": "electro-brand-sony"
+      },
+      {
+        "name": "LG",
+        "slug": "lg",
+        "url": "https://www.lg.com",
+        "image": "electro-brand-lg"
+      },
+      {
+        "name": "Dell",
+        "slug": "dell",
+        "url": "https://www.dell.com",
+        "image": "electro-brand-dell"
+      },
+      {
+        "name": "ASUS",
+        "slug": "asus",
+        "url": "https://www.asus.com",
+        "image": "electro-brand-asus"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Audio",
+        "slug": "audio",
+        "image": "electro-cat-audio"
+      },
+      {
+        "name": "Cameras",
+        "slug": "cameras",
+        "image": "electro-cat-cameras"
+      },
+      {
+        "name": "Gaming",
+        "slug": "gaming",
+        "image": "electro-cat-gaming"
+      },
+      {
+        "name": "Laptops",
+        "slug": "laptops",
+        "image": "electro-cat-laptops"
+      },
+      {
+        "name": "Phones",
+        "slug": "phones",
+        "image": "electro-cat-phones"
+      },
+      {
+        "name": "Smart Home",
+        "slug": "smart-home",
+        "image": "electro-cat-smart-home"
+      }
+    ],
+    "products": [
+      {
+        "name": "Pro Mirrorless Camera",
+        "summary": "Full-frame mirrorless with 45MP sensor and 4K video recording.",
+        "price": 2499.99,
+        "compare_price": 2999.99,
+        "category": "cameras",
+        "image": "electro-prod-camera",
+        "stock": 15,
+        "sold_count": 42,
+        "tags": [
+          "camera",
+          "mirrorless",
+          "photography"
+        ]
+      },
+      {
+        "name": "Noise-Cancelling Headphones",
+        "summary": "Industry-leading ANC with 30-hour battery and premium sound.",
+        "price": 349.99,
+        "compare_price": 449.99,
+        "category": "audio",
+        "image": "electro-prod-headphones",
+        "stock": 40,
+        "sold_count": 128,
+        "tags": [
+          "headphones",
+          "anc",
+          "audio"
+        ]
+      },
+      {
+        "name": "Mechanical Gaming Keyboard",
+        "summary": "RGB backlit mechanical keyboard with tactile blue switches.",
+        "price": 129.99,
+        "compare_price": 169.99,
+        "category": "gaming",
+        "image": "electro-prod-keyboard",
+        "stock": 55,
+        "sold_count": 87,
+        "tags": [
+          "keyboard",
+          "gaming",
+          "mechanical"
+        ]
+      },
+      {
+        "name": "UltraSlim Laptop 14\"",
+        "summary": "Intel Core i7, 16GB RAM, 512GB SSD — built for productivity.",
+        "price": 1299.99,
+        "compare_price": 1599.99,
+        "category": "laptops",
+        "image": "electro-prod-laptop",
+        "stock": 20,
+        "sold_count": 65,
+        "tags": [
+          "laptop",
+          "ultrabook",
+          "intel"
+        ]
+      },
+      {
+        "name": "Flagship Smartphone Pro",
+        "summary": "6.7\" AMOLED, triple camera, 5000mAh fast-charge battery.",
+        "price": 899.99,
+        "compare_price": 1099.99,
+        "category": "phones",
+        "image": "electro-prod-smartphone",
+        "stock": 30,
+        "sold_count": 200,
+        "tags": [
+          "smartphone",
+          "5g",
+          "amoled"
+        ]
+      },
+      {
+        "name": "Smart Health Watch",
+        "summary": "Health tracking, GPS, 7-day battery and always-on display.",
+        "price": 249.99,
+        "compare_price": 329.99,
+        "category": "smart-home",
+        "image": "electro-prod-smartwatch",
+        "stock": 35,
+        "sold_count": 93,
+        "tags": [
+          "smartwatch",
+          "fitness",
+          "gps"
+        ]
+      },
+      {
+        "name": "Portable Bluetooth Speaker",
+        "summary": "360° surround sound, IP67 waterproof, 20-hour playtime.",
+        "price": 89.99,
+        "compare_price": 119.99,
+        "category": "audio",
+        "image": "electro-prod-speaker",
+        "stock": 60,
+        "sold_count": 155,
+        "tags": [
+          "speaker",
+          "bluetooth",
+          "waterproof"
+        ]
+      },
+      {
+        "name": "Pro Drawing Tablet 11\"",
+        "summary": "2560×1600 OLED display, 120Hz refresh for digital creators.",
+        "price": 699.99,
+        "compare_price": 849.99,
+        "category": "laptops",
+        "image": "electro-prod-tablet",
+        "stock": 25,
+        "sold_count": 48,
+        "tags": [
+          "tablet",
+          "drawing",
+          "oled"
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Quick Links",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Support",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Why Choose Us",
+          "footer_badges": {
+            "badge_icon_": [
+              "🚚",
+              "🔒",
+              "↩️",
+              "🎧"
+            ],
+            "badge_title_": [
+              "Free Shipping",
+              "Secure Payment",
+              "Easy Returns",
+              "24/7 Support"
+            ],
+            "badge_sub_": [
+              "On orders over $99",
+              "SSL encrypted checkout",
+              "30-day return policy",
+              "Expert help anytime"
+            ]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "electro-home",
+        "page_builder": 1,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/page_builder_layout.json"
+      },
+      {
+        "title": "About Us",
+        "slug": "about-us",
+        "page_builder": false,
+        "breadcrumb": true,
+        "layout_file": "assets/page_layout/about-layout.json"
+      },
+      {
+        "title": "Contact",
+        "slug": "contact-us",
+        "page_builder": false,
+        "breadcrumb": true,
+        "layout_file": "assets/page_layout/contact-layout.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,293 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "section-1782886946921",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1782886946921",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1782886946921",
+                                "type": "drivekit_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-cats-9786578f",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-cats-94095b58",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-cats-acb4ac63",
+                                "type": "drivekit_category_grid"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "contentWidth": "full_width",
+                    "backgroundColor": "var(--dk-surface)"
+                }
+            },
+            {
+                "id": "section-products-941e8dab",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-products-ccc4f903",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-products-b42e509d",
+                                "type": "drivekit_featured_products"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "contentWidth": "full_width",
+                    "backgroundColor": "var(--dk-carbon)"
+                }
+            },
+            {
+                "id": "section-promo-e7a29582",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-promo-66f33d5b",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-promo-a8139f95",
+                                "type": "drivekit_promo_banner"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "contentWidth": "full_width",
+                    "backgroundColor": "var(--dk-bg)"
+                }
+            },
+            {
+                "id": "section-blog-d462c606",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-blog-d210ccab",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-blog-bbd3d94b",
+                                "type": "drivekit_latest_blog_posts"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "contentWidth": "full_width",
+                    "backgroundColor": "var(--dk-surface)"
+                }
+            },
+            {
+                "id": "section-news-6953b28d",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-news-fbe0c68d",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-news-0cefa36e",
+                                "type": "drivekit_newsletter"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "contentWidth": "full_width",
+                    "backgroundColor": "var(--dk-surface)"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "widget-cats-acb4ac63": {
+            "type": "drivekit_category_grid",
+            "container_id": "section-cats-9786578f",
+            "column_id": "column-cats-94095b58",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": [],
+                "advanced": [],
+                "responsive": {}
+            }
+        },
+        "widget-products-b42e509d": {
+            "type": "drivekit_featured_products",
+            "container_id": "section-products-941e8dab",
+            "column_id": "column-products-ccc4f903",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": [],
+                "advanced": [],
+                "responsive": {}
+            }
+        },
+        "widget-promo-a8139f95": {
+            "type": "drivekit_promo_banner",
+            "container_id": "section-promo-e7a29582",
+            "column_id": "column-promo-66f33d5b",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": [],
+                "advanced": [],
+                "responsive": {}
+            }
+        },
+        "widget-blog-bbd3d94b": {
+            "type": "drivekit_latest_blog_posts",
+            "container_id": "section-blog-d462c606",
+            "column_id": "column-blog-d210ccab",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": [],
+                "advanced": [],
+                "responsive": {}
+            }
+        },
+        "widget-news-0cefa36e": {
+            "type": "drivekit_newsletter",
+            "container_id": "section-news-6953b28d",
+            "column_id": "column-news-fbe0c68d",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": [],
+                "advanced": [],
+                "responsive": {}
+            }
+        },
+        "widget-1782886946921": {
+            "type": "drivekit_hero_section",
+            "container_id": "section-1782886946921",
+            "column_id": "column-1782886946921",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "hero_image": "@media:garage-hero"
+                    },
+                    "content": {
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button2_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        }
+    }
+}

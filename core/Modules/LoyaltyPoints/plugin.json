@@ -1,0 +1,15 @@
+{
+    "id": "loyalty-points",
+    "name": "Loyalty Points",
+    "version": "1.0.0",
+    "description": "Reward customers with points on every purchase. Redeem points for discounts at checkout.",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "tenant",
+    "pricing": "free",
+    "min_platform_version": "2.5.0",
+    "main": "src/LoyaltyPointsPlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null
+}

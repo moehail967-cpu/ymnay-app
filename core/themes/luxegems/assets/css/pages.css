@@ -1,0 +1,42 @@
+/* ============================================================
+   Luxegems — Default Page Styles (shop, cart, checkout)
+   Loaded before theme CSS so theme overrides take precedence.
+   ============================================================ */
+
+/* Shop page layout compatibility */
+.shop-area { padding-top: 60px; padding-bottom: 60px; }
+.shop-contents-wrapper { display: flex; gap: 24px; }
+.shop-sidebar { min-width: 260px; }
+.product-grid-wrapper { flex: 1; }
+
+/* Cart & Checkout */
+.cart-area { padding-top: 60px; padding-bottom: 60px; }
+.checkout-area { padding-top: 60px; padding-bottom: 60px; }
+
+/* Product single */
+.single-product-details-area { padding-top: 60px; padding-bottom: 60px; }
+
+/* Price range slider — Bootstrap 5 compatible */
+.price-range-slider .noUi-connect { background: #c084fc; }
+.price-range-slider .noUi-handle { border-color: #c084fc; }
+
+/* Filter sidebar */
+.widget-box { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; border: 1px solid #f0f0f0; }
+.widget-box .widget-title { font-size: 15px; font-weight: 700; color: #1a0a2e; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #c084fc; }
+
+/* Add to cart button */
+.add-to-cart-btn { color: var(--lg-gold);  border: 1px solid var(--lg-gold); padding: 6px 24px;  font-weight: 600; cursor: pointer; transition: opacity .2s; }
+.add-to-cart-btn:hover { opacity: .85; }
+
+/* Rating stars */
+.rating-star .las.la-star,
+.rating-star .las.la-star-half-alt { color: #f59e0b; }
+.rating-star .lar.la-star { color: #d1d5db; }
+.size-lists li.disabled { opacity: .4; cursor: not-allowed; pointer-events: none; }
+
+/* ── Support Ticket — dash card & btn ── */
+.lg-dash-card { background: #fff; border: 1px solid var(--lg-border,#e5c97e); padding: 24px; margin-bottom: 20px; }
+.lg-dash-card-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #1a1a1a; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--lg-border,#e5c97e); display: block; }
+.lg-dash-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 32px; font-size: 11px; font-weight: 600; cursor: pointer; border: 1px solid transparent; transition: all .3s; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; font-family: inherit; }
+.lg-dash-btn-primary { background: var(--lg-gold,#c8a84b); color: #000; border-color: var(--lg-gold,#c8a84b); }
+.lg-dash-btn-primary:hover { opacity: .88; }

@@ -1,0 +1,15 @@
+{
+    "id": "sms-gateway",
+    "name": "SMS Gateway",
+    "version": "2.0.0",
+    "description": "",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "both",
+    "pricing": "free",
+    "min_platform_version": "1.0.0",
+    "main": "src/SmsGatewayPlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null
+}

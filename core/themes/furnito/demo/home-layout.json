@@ -1,0 +1,371 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "section-fn-hero",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-fn-hero",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-fn-hero", "type": "furnito_hero_section" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": { "margin": "0", "padding": "0", "backgroundColor": "#EEF3F7" }
+            },
+            {
+                "id": "section-fn-banners-trendy",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-fn-banners-trendy",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-fn-banners", "type": "furnito_category_banners" },
+                            { "id": "widget-fn-trendy",  "type": "furnito_trendy_products"  }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": { "margin": "0", "padding": "0", "backgroundColor": "#ffffff" }
+            },
+            {
+                "id": "section-fn-cats",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-fn-cats",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-fn-cats", "type": "furnito_category_grid" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": { "margin": "0", "padding": "0", "backgroundColor": "#f8f5f0" }
+            },
+            {
+                "id": "section-fn-store",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-fn-store",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-fn-store", "type": "furnito_our_store" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": { "margin": "0", "padding": "0", "backgroundColor": "#ffffff" }
+            },
+            {
+                "id": "section-fn-featured",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-fn-featured",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-fn-featured", "type": "furnito_featured_products" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": { "margin": "0", "padding": "0", "backgroundColor": "#f8f5f0" }
+            },
+            {
+                "id": "section-fn-arrival",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-fn-arrival",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-fn-arrival", "type": "furnito_new_arrival" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": { "margin": "0", "padding": "0", "backgroundColor": "#1a1a1a" }
+            },
+            {
+                "id": "section-fn-brands",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-fn-brands",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-fn-brands", "type": "furnito_brand_logos" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": { "margin": "0", "padding": "0", "backgroundColor": "#ffffff" }
+            },
+            {
+                "id": "section-fn-reviews-features",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-fn-reviews-features",
+                        "width": "100%",
+                        "widgets": [
+                            { "id": "widget-fn-reviews",  "type": "furnito_testimonials"    },
+                            { "id": "widget-fn-features", "type": "furnito_service_features" }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": { "margin": "0", "padding": "0", "backgroundColor": "#f8f5f0" }
+            }
+        ]
+    },
+    "widgets": {
+        "widget-fn-hero": {
+            "type": "furnito_hero_section",
+            "container_id": "section-fn-hero",
+            "column_id": "column-fn-hero",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "slides": {
+                        "slides": [
+                            {
+                                "title": "Crafted for Living",
+                                "description": "Discover premium furniture that transforms your home into a sanctuary of comfort and style.",
+                                "button_text": "Shop Now",
+                                "button_url": "/shop",
+                                "hero_image": "@media:furnito-hero-banner"
+                            },
+                            {
+                                "title": "Rest in Elegance",
+                                "description": "Explore our bedroom collection — beds, wardrobes, and storage designed for restful living.",
+                                "button_text": "View Bedroom",
+                                "button_url": "/shop",
+                                "hero_image": "@media:furnito-hero-banner"
+                            }
+                        ]
+                    }
+                },
+                "style": { "margin": "0", "padding": "0" }
+            }
+        },
+        "widget-fn-banners": {
+            "type": "furnito_category_banners",
+            "container_id": "section-fn-banners-trendy",
+            "column_id": "column-fn-banners-trendy",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "banner_1": {
+                        "title": "Living Room",
+                        "subtitle": "Modern comfort & style",
+                        "btn_text": "Shop Now",
+                        "btn_url": "/shop",
+                        "bg_color": "#e8ddd2",
+                        "image": "@media:furnito-cat-banner-1"
+                    },
+                    "banner_2": {
+                        "title": "Bedroom",
+                        "subtitle": "Rest in elegance",
+                        "btn_text": "Shop Now",
+                        "btn_url": "/shop",
+                        "bg_color": "#d4e0d9",
+                        "image": "@media:furnito-cat-banner-2"
+                    }
+                },
+                "style": { "margin": "0", "padding": "0" }
+            }
+        },
+        "widget-fn-trendy": {
+            "type": "furnito_trendy_products",
+            "container_id": "section-fn-banners-trendy",
+            "column_id": "column-fn-banners-trendy",
+            "sort_order": 1,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Trendy Products",
+                        "subtitle": "Discover our most popular furniture pieces this season.",
+                        "grid_count": 4,
+                        "thumb_count": 6
+                    }
+                },
+                "style": { "margin": "0", "padding": "0" }
+            }
+        },
+        "widget-fn-cats": {
+            "type": "furnito_category_grid",
+            "container_id": "section-fn-cats",
+            "column_id": "column-fn-cats",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Shop by Room",
+                        "subtitle": "Find the perfect furniture for every space in your home.",
+                        "category_count": 6
+                    }
+                },
+                "style": { "margin": "0", "padding": "0" }
+            }
+        },
+        "widget-fn-store": {
+            "type": "furnito_our_store",
+            "container_id": "section-fn-store",
+            "column_id": "column-fn-store",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Our Store",
+                        "subtitle": "Browse our curated collection of premium furniture.",
+                        "tab_1_label": "Sale",
+                        "tab_2_label": "Popular",
+                        "tab_3_label": "New",
+                        "product_limit": 8
+                    }
+                },
+                "style": { "margin": "0", "padding": "0" }
+            }
+        },
+        "widget-fn-featured": {
+            "type": "furnito_featured_products",
+            "container_id": "section-fn-featured",
+            "column_id": "column-fn-featured",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Featured Collection",
+                        "subtitle": "Hand-picked pieces that define contemporary living.",
+                        "product_count": 8
+                    }
+                },
+                "style": { "margin": "0", "padding": "0" }
+            }
+        },
+        "widget-fn-arrival": {
+            "type": "furnito_new_arrival",
+            "container_id": "section-fn-arrival",
+            "column_id": "column-fn-arrival",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "eyebrow": "New Arrival",
+                        "year": "2025",
+                        "title": "New Arrival",
+                        "description": "Discover our latest collection of premium furniture, crafted for modern living.",
+                        "button_text": "Shop Now",
+                        "button_url": "/shop"
+                    },
+                    "media": {
+                        "image": "@media:furnito-new-arrival"
+                    }
+                },
+                "style": { "margin": "0", "padding": "0" }
+            }
+        },
+        "widget-fn-brands": {
+            "type": "furnito_brand_logos",
+            "container_id": "section-fn-brands",
+            "column_id": "column-fn-brands",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Our Brands",
+                        "per_slide": 6,
+                        "brand_count": 0
+                    }
+                },
+                "style": { "margin": "0", "padding": "0" }
+            }
+        },
+        "widget-fn-reviews": {
+            "type": "furnito_testimonials",
+            "container_id": "section-fn-reviews-features",
+            "column_id": "column-fn-reviews-features",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "review_1_text": "The quality of the furniture exceeded my expectations. Every piece is crafted with care and attention to detail.",
+                        "review_1_name": "Sarah Mitchell",
+                        "review_1_stars": 5,
+                        "review_2_text": "Beautiful designs and sturdy construction. My living room has been completely transformed with Furnito pieces.",
+                        "review_2_name": "James Hartwell",
+                        "review_2_stars": 5,
+                        "review_3_text": "Fast delivery and the assembly team were professional. I could not be happier with my bedroom furniture.",
+                        "review_3_name": "Emily Chen",
+                        "review_3_stars": 4
+                    }
+                },
+                "style": { "margin": "0", "padding": "0" }
+            }
+        },
+        "widget-fn-features": {
+            "type": "furnito_service_features",
+            "container_id": "section-fn-reviews-features",
+            "column_id": "column-fn-reviews-features",
+            "sort_order": 1,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "feature_1_icon": "las la-truck",
+                        "feature_1_title": "Free Delivery",
+                        "feature_1_desc": "On orders over $200",
+                        "feature_2_icon": "las la-undo",
+                        "feature_2_title": "Easy Returns",
+                        "feature_2_desc": "30-day return policy",
+                        "feature_3_icon": "las la-tools",
+                        "feature_3_title": "Assembly Service",
+                        "feature_3_desc": "Professional setup",
+                        "feature_4_icon": "las la-shield-alt",
+                        "feature_4_title": "Quality Guarantee",
+                        "feature_4_desc": "5-year warranty"
+                    }
+                },
+                "style": { "margin": "0", "padding": "0" }
+            }
+        }
+    }
+}

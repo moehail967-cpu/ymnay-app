@@ -1,0 +1,4 @@
+/* RTL overrides — pharmacy */
+body { direction: rtl; text-align: right; }
+.ph-nav-links { flex-direction: row-reverse; }
+.ph-footer-bottom { flex-direction: row-reverse; }

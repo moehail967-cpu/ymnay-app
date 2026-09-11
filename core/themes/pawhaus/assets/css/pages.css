@@ -1,0 +1,49 @@
+/* ============================================================
+   Pawhaus — Default Page Styles (shop, cart, checkout)
+   Loaded before theme CSS so theme overrides take precedence.
+   ============================================================ */
+
+/* Shop page layout compatibility */
+.shop-area { padding-top: 60px; padding-bottom: 60px; }
+.shop-contents-wrapper { display: flex; gap: 24px; }
+.shop-sidebar { min-width: 260px; }
+.product-grid-wrapper { flex: 1; }
+
+/* Cart & Checkout */
+.cart-area { padding-top: 60px; padding-bottom: 60px; }
+.checkout-area { padding-top: 60px; padding-bottom: 60px; }
+
+/* Product single */
+.single-product-details-area { padding-top: 60px; padding-bottom: 60px; }
+
+/* Price range slider — Bootstrap 5 compatible */
+.price-range-slider .noUi-connect { background: var(--ph-terra); }
+.price-range-slider .noUi-handle { border-color: var(--ph-terra); }
+
+/* Filter sidebar */
+.widget-box { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; border: 1px solid #f0f0f0; }
+.widget-box .widget-title { font-size: 15px; font-weight: 700; color: #1a3a1a; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--ph-terra); }
+
+/* Add to cart button */
+.add-to-cart-btn { background: var(--ph-terra); color: #fff; border: none; padding: 6px 24px; border-radius:var(--ph-radius-xl); font-weight: 600; cursor: pointer; transition: opacity .2s; }
+.add-to-cart-btn:hover { opacity: .85; }
+
+/* Rating stars */
+.rating-star .las.la-star,
+.rating-star .las.la-star-half-alt { color: #f59e0b; }
+.rating-star .lar.la-star { color: #d1d5db; }
+
+/* Blog single — social share icons */
+.ph-share-list { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.ph-share-list li { list-style: none; }
+.ph-share-list li a { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--ph-border); color: var(--ph-muted); font-size: 15px; text-decoration: none; transition: all .2s; }
+.ph-share-list li a:hover,
+.ph-share-list li a.facebook:hover { background: #1877f2; border-color: #1877f2; color: #fff; }
+.ph-share-list li a.twitter:hover { background: #1da1f2; border-color: #1da1f2; color: #fff; }
+.ph-share-list li a.linkedin:hover { background: #0a66c2; border-color: #0a66c2; color: #fff; }
+.ph-share-list li a.pinterest:hover { background: #e60023; border-color: #e60023; color: #fff; }
+
+/* ── Support Ticket — dash card ── */
+.ph-dash-card { background: #fff; border: 1.5px solid var(--ph-border,#e5e7eb); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+.ph-dash-card-title { font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 0; display: flex; align-items: center; gap: 8px; padding-bottom: 14px; border-bottom: 1.5px solid var(--ph-border,#e5e7eb); }
+.ph-dash-card-title i { color: var(--ph-terra,#c0734a); }

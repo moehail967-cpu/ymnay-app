@@ -1,0 +1,306 @@
+{
+    "29LT Bukra": {
+        "variants": [
+            "0,500",
+            "0,700",
+            "1,700",
+            "0,300",
+            "0,400"
+        ],
+        "files": {
+            "0,500": "29LT Bukra/29lt-bukra-medium.woff2",
+            "0,700": "29LT Bukra/29ltbukrabold.woff2",
+            "1,700": "29LT Bukra/29ltbukrabolditalic.woff2",
+            "0,300": "29LT Bukra/29ltbukralight.woff2",
+            "0,400": "29LT Bukra/29ltbukraregular.woff2"
+        }
+    },
+    "ABC Ginto Discord Nord": {
+        "variants": [
+            "1,900",
+            "0,700",
+            "1,700"
+        ],
+        "files": {
+            "1,900": "ABC Ginto Discord Nord/ABCGintoDiscordNord-BlackItalic.woff2",
+            "0,700": "ABC Ginto Discord Nord/ABCGintoDiscordNord-Bold.woff2",
+            "1,700": "ABC Ginto Discord Nord/ABCGintoDiscordNord-BoldItalic.woff2"
+        }
+    },
+    "AlhurraTxtlight": {
+        "variants": [
+            "0,700",
+            "0,300",
+            "0,400"
+        ],
+        "files": {
+            "0,700": "AlhurraTxtlight/AlHurra Font Bold.woff2",
+            "0,300": "AlhurraTxtlight/AlHurra Font Light.woff2",
+            "0,400": "AlhurraTxtlight/AlHurra Font Regular.woff2"
+        }
+    },
+    "Hacen Saudi Arabia": {
+        "variants": [
+            "0,400",
+            "0,400"
+        ],
+        "files": {
+            "0,400": "Hacen Saudi Arabia/ArbFONTS-Hacen-Saudi-Arabia.woff2"
+        }
+    },
+    "Hala": {
+        "variants": [
+            "0,700"
+        ],
+        "files": {
+            "0,700": "Hala/Hala Bold.woff2"
+        }
+    },
+    "IBM Plex Sans Arabic": {
+        "variants": [
+            "0,700",
+            "0,200",
+            "0,300",
+            "0,500",
+            "0,400",
+            "0,600",
+            "0,100"
+        ],
+        "files": {
+            "0,700": "IBM Plex Sans Arabic/IBMPlexSansArabic-Bold.woff2",
+            "0,200": "IBM Plex Sans Arabic/IBMPlexSansArabic-ExtraLight.woff2",
+            "0,300": "IBM Plex Sans Arabic/IBMPlexSansArabic-Light.woff2",
+            "0,500": "IBM Plex Sans Arabic/IBMPlexSansArabic-Medium.woff2",
+            "0,400": "IBM Plex Sans Arabic/IBMPlexSansArabic-Regular.woff2",
+            "0,600": "IBM Plex Sans Arabic/IBMPlexSansArabic-SemiBold.woff2",
+            "0,100": "IBM Plex Sans Arabic/IBMPlexSansArabic-Thin.woff2"
+        }
+    },
+    "Kufam": {
+        "variants": [
+            "0,900",
+            "1,900",
+            "0,700",
+            "1,700",
+            "0,800",
+            "1,800",
+            "1,400",
+            "1,400",
+            "0,500",
+            "1,500",
+            "0,400",
+            "0,600",
+            "1,600",
+            "0,400"
+        ],
+        "files": {
+            "0,900": "Kufam/Kufam-Black.woff2",
+            "1,900": "Kufam/Kufam-BlackItalic.woff2",
+            "0,700": "Kufam/Kufam-Bold.woff2",
+            "1,700": "Kufam/Kufam-BoldItalic.woff2",
+            "0,800": "Kufam/Kufam-ExtraBold.woff2",
+            "1,800": "Kufam/Kufam-ExtraBoldItalic.woff2",
+            "1,400": "Kufam/Kufam-Italic-VariableFont_wght.woff2",
+            "0,500": "Kufam/Kufam-Medium.woff2",
+            "1,500": "Kufam/Kufam-MediumItalic.woff2",
+            "0,400": "Kufam/Kufam-VariableFont_wght.woff2",
+            "0,600": "Kufam/Kufam-SemiBold.woff2",
+            "1,600": "Kufam/Kufam-SemiBoldItalic.woff2"
+        }
+    },
+    "Madani Arabic": {
+        "variants": [
+            "0,900",
+            "0,700",
+            "0,700",
+            "0,300",
+            "0,300",
+            "0,500",
+            "0,400",
+            "0,700",
+            "0,100",
+            "0,400"
+        ],
+        "files": {
+            "0,900": "Madani Arabic/Madani Arabic Black.woff2",
+            "0,700": "Madani Arabic/Madani Arabic Semi Bold.woff2",
+            "0,300": "Madani Arabic/Madani Arabic Light.woff2",
+            "0,500": "Madani Arabic/Madani Arabic Medium.woff2",
+            "0,400": "Madani Arabic/Madani Arabic Variable.woff2",
+            "0,100": "Madani Arabic/Madani Arabic Thin.woff2"
+        }
+    },
+    "Montserrat Arabic": {
+        "variants": [
+            "0,900",
+            "0,700",
+            "0,800",
+            "0,275",
+            "0,300",
+            "0,500",
+            "0,400",
+            "0,600",
+            "0,250"
+        ],
+        "files": {
+            "0,900": "Montserrat Arabic/Montserrat-Arabic Black 900.woff2",
+            "0,700": "Montserrat Arabic/Montserrat-Arabic Bold 700.woff2",
+            "0,800": "Montserrat Arabic/Montserrat-Arabic ExtraBold 800.woff2",
+            "0,275": "Montserrat Arabic/Montserrat-Arabic ExtraLight 275.woff2",
+            "0,300": "Montserrat Arabic/Montserrat-Arabic Light 300.woff2",
+            "0,500": "Montserrat Arabic/Montserrat-Arabic Medium 500.woff2",
+            "0,400": "Montserrat Arabic/Montserrat-Arabic Regular 400.woff2",
+            "0,600": "Montserrat Arabic/Montserrat-Arabic SemiBold 600.woff2",
+            "0,250": "Montserrat Arabic/Montserrat-Arabic Thin 250.woff2"
+        }
+    },
+    "Neo Sans Arabic": {
+        "variants": [
+            "0,400",
+            "0,400",
+            "0,900",
+            "0,700",
+            "0,300",
+            "0,500",
+            "0,950",
+            "0,500"
+        ],
+        "files": {
+            "0,400": "Neo Sans Arabic/NeoSansArabic.woff2",
+            "0,900": "Neo Sans Arabic/NeoSansArabicBlack.woff2",
+            "0,700": "Neo Sans Arabic/NeoSansArabicBold.woff2",
+            "0,300": "Neo Sans Arabic/NeoSansArabicLight.woff2",
+            "0,500": "Neo Sans Arabic/Neo_Sans_Medium.woff2",
+            "0,950": "Neo Sans Arabic/NeoSansArabicUltra.woff2"
+        }
+    },
+    "Norsal": {
+        "variants": [
+            "0,900",
+            "1,900",
+            "0,700",
+            "1,700",
+            "0,800",
+            "1,800",
+            "0,200",
+            "1,200",
+            "0,300",
+            "1,300",
+            "0,500",
+            "1,500",
+            "0,400",
+            "1,400",
+            "0,600",
+            "1,600",
+            "0,100",
+            "1,100",
+            "0,400",
+            "0,400"
+        ],
+        "files": {
+            "0,900": "Norsal/alfont_com_Norsal-Black.woff2",
+            "1,900": "Norsal/alfont_com_Norsal-BlackItalic.woff2",
+            "0,700": "Norsal/alfont_com_Norsal-Bold.woff2",
+            "1,700": "Norsal/alfont_com_Norsal-BoldItalic.woff2",
+            "0,800": "Norsal/alfont_com_Norsal-ExtraBold.woff2",
+            "1,800": "Norsal/alfont_com_Norsal-ExtraBoldItalic.woff2",
+            "0,200": "Norsal/alfont_com_Norsal-ExtraLight.woff2",
+            "1,200": "Norsal/alfont_com_Norsal-ExtraLightItalic.woff2",
+            "0,300": "Norsal/alfont_com_Norsal-Light.woff2",
+            "1,300": "Norsal/alfont_com_Norsal-LightItalic.woff2",
+            "0,500": "Norsal/alfont_com_Norsal-Medium.woff2",
+            "1,500": "Norsal/alfont_com_Norsal-MediumItalic.woff2",
+            "0,400": "Norsal/alfont_com_NorsalGX (1).woff2",
+            "1,400": "Norsal/alfont_com_Norsal-RegularItalic.woff2",
+            "0,600": "Norsal/alfont_com_Norsal-SemiBold.woff2",
+            "1,600": "Norsal/alfont_com_Norsal-SemiBoldItalic.woff2",
+            "0,100": "Norsal/alfont_com_Norsal-Thin.woff2",
+            "1,100": "Norsal/alfont_com_Norsal-ThinItalic.woff2"
+        }
+    },
+    "Palestine": {
+        "variants": [
+            "0,400"
+        ],
+        "files": {
+            "0,400": "Palestine/Palestine-Regular.woff2"
+        }
+    },
+    "Poetry": {
+        "variants": [
+            "0,500"
+        ],
+        "files": {
+            "0,500": "Poetry/Poetry Medium.woff2"
+        }
+    },
+    "Shorooq": {
+        "variants": [
+            "0,400"
+        ],
+        "files": {
+            "0,400": "Shorooq/Shorooq.woff2"
+        }
+    },
+    "Sultan Display": {
+        "variants": [
+            "1,400"
+        ],
+        "files": {
+            "1,400": "Sultan Display/SultanDisplayItalic-2.woff2"
+        }
+    },
+    "The Year of The Camel": {
+        "variants": [
+            "0,700",
+            "0,800",
+            "0,200",
+            "0,300",
+            "0,500",
+            "0,400",
+            "0,100"
+        ],
+        "files": {
+            "0,700": "The Year of The Camel/ArbFONTS-TheYearofTheCamel-Bold.woff2",
+            "0,800": "The Year of The Camel/ArbFONTS-TheYearofTheCamel-ExtraBold.woff2",
+            "0,200": "The Year of The Camel/ArbFONTS-TheYearofTheCamel-ExtraLight.woff2",
+            "0,300": "The Year of The Camel/ArbFONTS-TheYearofTheCamel-Light.woff2",
+            "0,500": "The Year of The Camel/ArbFONTS-TheYearofTheCamel-Medium.woff2",
+            "0,400": "The Year of The Camel/ArbFONTS-TheYearofTheCamel-Regular.woff2",
+            "0,100": "The Year of The Camel/ArbFONTS-TheYearofTheCamel-Thin.woff2"
+        }
+    },
+    "URW DIN Arabic": {
+        "variants": [
+            "0,400",
+            "0,600",
+            "0,500",
+            "0,500",
+            "0,100",
+            "0,200"
+        ],
+        "files": {
+            "0,400": "URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-1.woff2",
+            "0,600": "URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-Demi.woff2",
+            "0,500": "URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-SemiCond-Medium.woff2",
+            "0,100": "URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-Thin-1.woff2",
+            "0,200": "URW DIN Arabic/alfont_com_AlFont_com_URW-DIN-Arabic-XLight-1.woff2"
+        }
+    },
+    "Ya Modern Pro": {
+        "variants": [
+            "0,700"
+        ],
+        "files": {
+            "0,700": "Ya Modern Pro/Ya-ModernPro-Bold.woff2"
+        }
+    },
+    "Zain": {
+        "variants": [
+            "0,400"
+        ],
+        "files": {
+            "0,400": "Zain/alfont_com_zain-mob-long500.woff2"
+        }
+    }
+}

@@ -1,0 +1,1 @@
+{"name":"POS","short_name":"P","start_url":"/index.php","background_color":"#ef6b6b","description":"PWA for Nazmart POS Application","display":"standalone","theme_color":"#ef6b6b","icons":[{"src":"logo.png","sizes":"30x30","type":"image/png","purpose":"any maskable"}]}

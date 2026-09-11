@@ -1,0 +1,198 @@
+/* ══════════════════════════════════════════════════════════════
+   DigitalProduct Module Styles
+   Reuses from product.css: product-wizard, product-section-title,
+   product-search-panel, product-pagination, product-status-dropdown,
+   product-nav-buttons, badge-select-item, variant-repeater-btn,
+   product-table-img-wrap, product-row-warning, product-loading-icon
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── File Upload (drag-drop area) ─────────────────────────── */
+.dp-file-upload {
+    max-width: 420px;
+}
+
+.dp-file-upload__drop-area {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-secondary);
+    border: 2px dashed var(--color-border-main);
+    border-radius: 0.75rem;
+    transition: all 0.25s;
+    cursor: pointer;
+}
+
+.dp-file-upload__drop-area:hover,
+.dp-file-upload__drop-area.is-active {
+    border-color: var(--color-primary);
+    background: var(--color-primary-soft);
+}
+
+.dp-file-upload__icon {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.625rem;
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    transition: all 0.2s;
+}
+
+.dp-file-upload__drop-area:hover .dp-file-upload__icon,
+.dp-file-upload__drop-area.is-active .dp-file-upload__icon {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.dp-file-upload__msg {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+}
+
+.dp-file-upload__input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.dp-file-upload__input:focus {
+    outline: none;
+}
+
+.dp-file-upload__delete {
+    display: none;
+    position: absolute;
+    right: 0.75rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background: var(--color-danger-bg);
+    color: var(--color-danger);
+    border: none;
+    font-size: 0.75rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.dp-file-upload__delete:hover {
+    background: var(--color-danger);
+    color: #fff;
+}
+
+/* ── Star Ratings (review page) ───────────────────────────── */
+.dp-star {
+    color: var(--color-border-main);
+    font-size: 1rem;
+}
+
+.dp-star.checked {
+    color: var(--color-warning);
+}
+
+/* ── Meta SEO Tab Buttons ─────────────────────────────────── */
+.dp-meta-tabs {
+    display: flex;
+    gap: 0.375rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--color-border-main);
+    padding-bottom: 0.75rem;
+}
+
+.dp-meta-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.875rem;
+    border: 1px solid var(--color-border-main);
+    border-radius: 0.5rem;
+    background: var(--color-bg-surface);
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.dp-meta-tab:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.dp-meta-tab.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+}
+
+/* ── Custom Additional Field Repeater ─────────────────────── */
+.dp-custom-field-row {
+    display: grid;
+    grid-template-columns: 5fr 5fr 2fr;
+    gap: 0.75rem;
+    align-items: start;
+    margin-bottom: 0.625rem;
+}
+
+@media (max-width: 640px) {
+    .dp-custom-field-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Form Validation States ───────────────────────────────── */
+.lnd-input.is-invalid {
+    border-color: var(--color-danger, #ef4444) !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08) !important;
+}
+
+.lnd-input.is-valid {
+    border-color: var(--color-success, #22c55e) !important;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.06) !important;
+}
+
+.note-editor.is-invalid {
+    border: 1px solid var(--color-danger, #ef4444) !important;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08) !important;
+}
+
+.slug-field-wrapper.has-field-error .slug-display,
+.slug-field-wrapper.has-field-error .slug-input {
+    border-color: var(--color-danger, #ef4444) !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08) !important;
+}
+
+.dp-field-error {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--color-danger, #ef4444);
+    font-size: 0.72rem;
+    font-weight: 500;
+    margin-top: 0.375rem;
+    line-height: 1.4;
+}
+
+.dp-field-error::before {
+    content: '\F0028';
+    font-family: 'Material Design Icons';
+    font-size: 0.875rem;
+    flex-shrink: 0;
+}

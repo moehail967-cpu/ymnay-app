@@ -1,0 +1,65 @@
+:root {
+    /* Brand Colors */
+    --color-primary: #1a5c4e;
+    --color-primary-hover: #103d34;
+    --color-primary-soft: #e0f0f0;
+    --color-primary-soft-hover: #adebeb;
+    
+    /* Backgrounds */
+    --color-bg-base: #f8fbfa;
+    --color-bg-surface: #ffffff;
+    --color-bg-secondary: #F0FCFB;
+    --color-bg-sidebar: #E7F7F7;
+    --color-bg-muted: #edf9f9;
+    
+    /* Text Colors */
+    --color-text-main: #1a1816;
+    --color-text-dark: #111827;
+    --color-text-muted: #6b7280;
+    --color-text-subtle: #9ca3af;
+    --color-text-brand: #3a6761;
+    
+    /* Borders */
+    --color-border-main: #e0f0f0;
+    --color-border-subtle: #edf9f9;
+    --color-border-hover: #b0dede;
+    --color-sidebar-hover: #b0dede;
+    
+    /* Semantic Colors */
+    --color-success: #10b981;
+    --color-success-bg: #ecfdf5;
+    --color-danger: #ef4444;
+    --color-danger-bg: #fef2f2;
+    --color-warning: #f59e0b;
+    --color-warning-bg: #fffbeb;
+    --color-info: #3b82f6;
+    --color-info-bg: #eff6ff;
+    
+    /* Featured Card Gradient */
+    --gradient-featured: linear-gradient(135deg, #1a3a3a 0%, #0f4f4f 50%, #1a5c4e 100%);
+    
+    /* Elevation Shims */
+    --shadow-main: 0 8px 30px -6px rgba(45, 106, 79, 0.12);
+}
+
+/* Dark Mode Overrides */
+[data-theme='dark'] {
+    --color-bg-base: #0f172a;
+    --color-bg-surface: #1e293b;
+    --color-bg-secondary: #1e293b;
+    --color-bg-sidebar: #1e293b;
+    --color-bg-muted: #334155;
+    
+    --color-text-main: #f8fafc;
+    --color-text-dark: #f1f5f9;
+    --color-text-muted: #94a3b8;
+    --color-text-subtle: #64748b;
+    --color-text-brand: #64d2ff;
+    
+    --color-border-main: #334155;
+    --color-border-subtle: #1e293b;
+    --color-border-hover: #475569;
+    --color-sidebar-hover: #334155;
+    
+    --shadow-main: 0 8px 30px -6px rgba(0, 0, 0, 0.4);
+}

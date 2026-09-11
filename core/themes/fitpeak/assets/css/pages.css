@@ -1,0 +1,34 @@
+/* ============================================================
+   Fitpeak — Default Page Styles (shop, cart, checkout)
+   Loaded before theme CSS so theme overrides take precedence.
+   ============================================================ */
+
+/* Shop page layout compatibility */
+.shop-area { padding-top: 60px; padding-bottom: 60px; }
+.shop-contents-wrapper { display: flex; gap: 24px; }
+.shop-sidebar { min-width: 260px; }
+.product-grid-wrapper { flex: 1; }
+
+/* Cart & Checkout */
+.cart-area { padding-top: 60px; padding-bottom: 60px; }
+.checkout-area { padding-top: 60px; padding-bottom: 60px; }
+
+/* Product single */
+.single-product-details-area { padding-top: 60px; padding-bottom: 60px; }
+
+/* Price range slider — Bootstrap 5 compatible */
+.price-range-slider .noUi-connect { background: var(--fp-green); }
+.price-range-slider .noUi-handle { border-color: var(--fp-green); }
+
+/* Filter sidebar */
+.widget-box { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; border: 1px solid #f0f0f0; }
+.widget-box .widget-title { font-size: 15px; font-weight: 700; color: #1a1a2e; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--fp-green); }
+
+/* Add to cart button */
+.add-to-cart-btn { background: var(--fp-green); color: #000; border: none; padding: 6px 24px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: opacity .2s; }
+.add-to-cart-btn:hover { opacity: .85; }
+
+/* Rating stars */
+.rating-star .las.la-star,
+.rating-star .las.la-star-half-alt { color: #f59e0b; }
+.rating-star .lar.la-star { color: #d1d5db; }

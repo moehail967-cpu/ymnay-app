@@ -1,0 +1,4 @@
+/* RTL overrides — tinynest */
+body { direction: rtl; text-align: right; }
+.tn-nav-links { flex-direction: row-reverse; }
+.tn-footer-bottom { flex-direction: row-reverse; }

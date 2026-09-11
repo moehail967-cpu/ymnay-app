@@ -1,0 +1,4 @@
+/* RTL overrides — pawhaus */
+body { direction: rtl; text-align: right; }
+.pw-nav-links { flex-direction: row-reverse; }
+.pw-footer-bottom { flex-direction: row-reverse; }

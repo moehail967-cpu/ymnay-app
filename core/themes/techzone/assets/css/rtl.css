@@ -1,0 +1,7 @@
+/* Techzone — RTL overrides */
+body[dir="rtl"] .tz-hero-content { padding-right: 52px; padding-left: 0; }
+body[dir="rtl"] .tz-hero-device  { right: auto; left: 40px; }
+body[dir="rtl"] .tz-product-badge { left: auto; right: 10px; }
+body[dir="rtl"] .tz-quick-actions { right: auto; left: 10px; transform: translateX(-8px); }
+body[dir="rtl"] .tz-product-card:hover .tz-quick-actions { transform: translateX(0); }
+body[dir="rtl"] .tz-footer-link { text-align: right; }

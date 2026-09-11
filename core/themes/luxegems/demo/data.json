@@ -1,0 +1,357 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "LuxeGems Fine Jewelry"
+      },
+      {
+        "key": "site_description",
+        "value": "Timeless pieces crafted with exceptional diamonds and precious metals."
+      },
+      {
+        "key": "site_logo",
+        "value": "@media:luxegems-logo-color"
+      },
+      {
+        "key": "site_white_logo",
+        "value": "@media:luxegems-logo-white"
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/logo-color.svg",
+        "import_as": "luxegems-logo-color"
+      },
+      {
+        "path": "assets/images/logo-white.svg",
+        "import_as": "luxegems-logo-white"
+      },
+      {
+        "path": "assets/images/diamond-ring.jpg",
+        "import_as": "diamond-ring"
+      },
+      {
+        "path": "assets/images/pearl-necklace.jpg",
+        "import_as": "pearl-necklace"
+      },
+      {
+        "path": "assets/images/luxury-watch.jpg",
+        "import_as": "luxury-watch"
+      },
+      {
+        "path": "assets/images/ruby-cocktail-ring.jpg",
+        "import_as": "ruby-ring"
+      },
+      {
+        "path": "assets/images/emerald-ring.jpg",
+        "import_as": "emerald-ring"
+      },
+      {
+        "path": "assets/images/skeleton-watch.jpg",
+        "import_as": "skeleton-watch"
+      },
+      {
+        "path": "assets/images/blue-sapphire.jpg",
+        "import_as": "blue-sapphire"
+      },
+      {
+        "path": "assets/images/diamond-earrings.jpg",
+        "import_as": "diamond-earrings"
+      },
+      {
+        "path": "assets/images/loose-diamond.jpg",
+        "import_as": "loose-diamond"
+      },
+      {
+        "path": "assets/images/amethyst-pendant.jpg",
+        "import_as": "amethyst-pendant"
+      },
+      {
+        "path": "assets/images/cat-custom.jpg",
+        "import_as": "cat-custom"
+      },
+      {
+        "path": "assets/images/cat-diamonds.jpg",
+        "import_as": "cat-diamonds"
+      },
+      {
+        "path": "assets/images/cat-emeralds.jpg",
+        "import_as": "cat-emeralds"
+      },
+      {
+        "path": "assets/images/cat-rubies.jpg",
+        "import_as": "cat-rubies"
+      },
+      {
+        "path": "assets/images/cat-sapphires.jpg",
+        "import_as": "cat-sapphires"
+      },
+      {
+        "path": "assets/images/cat-watches.jpg",
+        "import_as": "cat-watches"
+      },
+      {
+        "path": "assets/images/luxegems-hero.jpg",
+        "import_as": "luxegems-hero-right"
+      },
+      {
+        "path": "assets/images/promo-banner.png",
+        "import_as": "luxegems-promo-image"
+      },
+      {
+        "path": "assets/images/diamond-necklace.jpg",
+        "import_as": "diamond-necklace"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Rings",
+        "slug": "rings",
+        "image": "cat-sapphires"
+      },
+      {
+        "name": "Necklaces",
+        "slug": "necklaces",
+        "image": "diamond-necklace"
+      },
+      {
+        "name": "Watches",
+        "slug": "watches",
+        "image": "cat-watches"
+      },
+      {
+        "name": "Earrings",
+        "slug": "earrings",
+        "image": "diamond-earrings"
+      },
+      {
+        "name": "Bracelets",
+        "slug": "bracelets",
+        "image": "cat-custom"
+      },
+      {
+        "name": "Gemstones",
+        "slug": "gemstones",
+        "image": "cat-diamonds"
+      }
+    ],
+    "products": [
+      {
+        "name": "Diamond Solitaire Ring",
+        "summary": "1.0ct round brilliant diamond set in 18k white gold, GIA certified.",
+        "price": 2499.0,
+        "compare_price": 2999.0,
+        "category": "rings",
+        "image": "diamond-ring",
+        "stock": 15,
+        "tags": [
+          "diamond",
+          "engagement",
+          "18k-gold"
+        ]
+      },
+      {
+        "name": "Pearl Strand Necklace",
+        "summary": "18\" freshwater pearl strand with 18k gold toggle clasp.",
+        "price": 899.0,
+        "compare_price": 1199.0,
+        "category": "necklaces",
+        "image": "pearl-necklace",
+        "stock": 20,
+        "tags": [
+          "pearl",
+          "classic",
+          "elegant"
+        ]
+      },
+      {
+        "name": "Swiss Automatic Watch",
+        "summary": "ETA 2824 movement, sapphire crystal, 50m water resistant.",
+        "price": 3299.0,
+        "compare_price": 3999.0,
+        "category": "watches",
+        "image": "luxury-watch",
+        "stock": 10,
+        "tags": [
+          "swiss",
+          "automatic",
+          "luxury"
+        ]
+      },
+      {
+        "name": "Ruby Cocktail Ring",
+        "summary": "2.5ct Burmese ruby surrounded by pavé diamonds in 18k yellow gold.",
+        "price": 4999.0,
+        "compare_price": 6499.0,
+        "category": "rings",
+        "image": "ruby-ring",
+        "stock": 8,
+        "tags": [
+          "ruby",
+          "cocktail",
+          "18k-gold"
+        ]
+      },
+      {
+        "name": "Emerald Cut Emerald Ring",
+        "summary": "1.8ct Colombian emerald in a platinum four-claw setting.",
+        "price": 3799.0,
+        "compare_price": 4799.0,
+        "category": "rings",
+        "image": "emerald-ring",
+        "stock": 10,
+        "tags": [
+          "emerald",
+          "platinum",
+          "colombian"
+        ]
+      },
+      {
+        "name": "Skeleton Tourbillon Watch",
+        "summary": "Hand-wound tourbillon movement, open-work dial, alligator strap.",
+        "price": 8999.0,
+        "compare_price": 11999.0,
+        "category": "watches",
+        "image": "skeleton-watch",
+        "stock": 5,
+        "tags": [
+          "tourbillon",
+          "skeleton",
+          "luxury"
+        ]
+      },
+      {
+        "name": "Blue Sapphire Pendant",
+        "summary": "3ct Ceylon sapphire drop pendant on an 18k white gold chain.",
+        "price": 2199.0,
+        "compare_price": 2799.0,
+        "category": "necklaces",
+        "image": "blue-sapphire",
+        "stock": 12,
+        "tags": [
+          "sapphire",
+          "pendant",
+          "ceylon"
+        ]
+      },
+      {
+        "name": "Diamond Drop Earrings",
+        "summary": "0.8ct total weight diamond drops in 18k white gold with secure lever backs.",
+        "price": 1299.0,
+        "compare_price": 1699.0,
+        "category": "earrings",
+        "image": "diamond-earrings",
+        "stock": 18,
+        "tags": [
+          "diamond",
+          "drop",
+          "earrings"
+        ]
+      },
+      {
+        "name": "Loose Round Brilliant Diamond",
+        "summary": "GIA certified 0.5ct E/VS1 round brilliant loose diamond — ideal for bespoke commissions.",
+        "price": 1899.0,
+        "compare_price": 2399.0,
+        "category": "gemstones",
+        "image": "loose-diamond",
+        "stock": 6,
+        "tags": [
+          "diamond",
+          "loose",
+          "gia"
+        ]
+      }
+    ],
+    "menus": [
+      {
+        "title": "Main Menu",
+        "status": "default",
+        "items": [
+          { "label": "Diamonds",    "url": "@url/shop?category=rings" },
+          { "label": "Watches",     "url": "@url/shop?category=watches" },
+          { "label": "Collections", "url": "@url/shop" },
+          { "label": "Gemstones",   "url": "@url/shop?category=gemstones" },
+          { "label": "Bespoke",     "url": "@url/contact" },
+          { "label": "About",       "url": "@url/contact" }
+        ]
+      },
+      {
+        "title": "Collections Menu",
+        "status": "collections",
+        "items": [
+          { "label": "Diamonds",         "url": "@url/shop?category=rings" },
+          { "label": "Watches",          "url": "@url/shop?category=watches" },
+          { "label": "Engagement Rings", "url": "@url/shop?category=rings" },
+          { "label": "Gemstones",        "url": "@url/shop?category=gemstones" },
+          { "label": "Bespoke",          "url": "@url/contact" }
+        ]
+      },
+      {
+        "title": "Services Menu",
+        "status": "services",
+        "items": [
+          { "label": "Private Appointments", "url": "@url/contact" },
+          { "label": "Insurance Valuation",  "url": "@url/contact" },
+          { "label": "Resizing & Repair",    "url": "@url/contact" },
+          { "label": "Trade-In Programme",   "url": "@url/contact" },
+          { "label": "Contact",              "url": "@url/contact" }
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Collections",
+          "menu_id": "@menu:collections"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Services",
+          "menu_id": "@menu:services"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Our Craft",
+          "footer_badges": {
+            "badge_icon_":  ["💎", "✋", "🔒", "♻️"],
+            "badge_title_": ["Certified Gems", "Handcrafted", "Insured Delivery", "Ethically Sourced"],
+            "badge_sub_":   ["GIA graded stones", "Master artisans", "Fully secured", "Conflict-free gems"]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "luxegems-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/home-layout.json"
+      }
+    ]
+  }
+}

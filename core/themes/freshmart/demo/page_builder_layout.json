@@ -1,0 +1,229 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "42adde5c-0634-4ecb-a1c6-d60eaac5149d",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "f2201ed5-b3be-4598-b033-f00e3a26c54a",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "531f8903-570e-4476-93aa-373d3db1d14e",
+                                "type": "freshmart_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "850c8c27-0c63-42f4-ad9e-60c3a84cb601",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "ab024b46-e0da-4786-9cb0-4cf520257aea",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "8961a4d7-dde7-4d9a-bfc3-8d0b3a4f93f9",
+                                "type": "freshmart_category_grid"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "423c6fde-f5ba-432d-95f8-1fc76b4750dc",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "7844b5e1-4d9d-4f65-8e75-1d21c0675868",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "cbd07bb2-d9c6-41ec-b888-61e96cec412e",
+                                "type": "freshmart_featured_products"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "transparent"
+                }
+            },
+            {
+                "id": "46e39c8d-e071-40d9-bb7f-fa3dc42dc27a",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "6820dfcb-b307-4509-9682-1fe36439d03e",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "f2b8d421-f106-4987-b349-7a7d905dcda3",
+                                "type": "freshmart_promo_banner"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "e1759e7d-fe18-42e6-85d5-cdb25ad2f057",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "bc9ea20b-351d-46e6-84bd-f4c4e531e3a8",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "a5f37d4a-f45e-40df-9417-e72ec3096012",
+                                "type": "freshmart_newsletter"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "8961a4d7-dde7-4d9a-bfc3-8d0b3a4f93f9": {
+            "type": "freshmart_category_grid",
+            "container_id": "850c8c27-0c63-42f4-ad9e-60c3a84cb601",
+            "column_id": "ab024b46-e0da-4786-9cb0-4cf520257aea",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "cbd07bb2-d9c6-41ec-b888-61e96cec412e": {
+            "type": "freshmart_featured_products",
+            "container_id": "423c6fde-f5ba-432d-95f8-1fc76b4750dc",
+            "column_id": "7844b5e1-4d9d-4f65-8e75-1d21c0675868",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "a5f37d4a-f45e-40df-9417-e72ec3096012": {
+            "type": "freshmart_newsletter",
+            "container_id": "e1759e7d-fe18-42e6-85d5-cdb25ad2f057",
+            "column_id": "bc9ea20b-351d-46e6-84bd-f4c4e531e3a8",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "531f8903-570e-4476-93aa-373d3db1d14e": {
+            "type": "freshmart_hero_section",
+            "container_id": "42adde5c-0634-4ecb-a1c6-d60eaac5149d",
+            "column_id": "f2201ed5-b3be-4598-b033-f00e3a26c54a",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "product_image": "@media:freshmart-hero"
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "f2b8d421-f106-4987-b349-7a7d905dcda3": {
+            "type": "freshmart_promo_banner",
+            "container_id": "46e39c8d-e071-40d9-bb7f-fa3dc42dc27a",
+            "column_id": "6820dfcb-b307-4509-9682-1fe36439d03e",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        }
+    }
+}

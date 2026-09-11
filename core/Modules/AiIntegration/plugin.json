@@ -1,0 +1,16 @@
+{
+    "id": "ai-integration",
+    "name": "AI Integration",
+    "version": "1.0.0",
+    "description": "Generate product, blog, and page descriptions using OpenAI, DeepSeek, or Gemini.",
+    "author": "Xgenious",
+    "author_url": "https://xgenious.com",
+    "type": "tenant",
+    "pricing": "free",
+    "min_platform_version": "2.5.0",
+    "main": "src/AiIntegrationPlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null,
+    "settings_route": "tenant.admin.ai-integration.settings"
+}

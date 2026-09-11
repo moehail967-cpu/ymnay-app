@@ -1,0 +1,268 @@
+/* ── AI Integration Plugin ──────────────────────────────────────────────── */
+
+/* ── Standalone bar injected above each supported editor ── */
+.ai-bar-wrap {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 6px;
+}
+
+.ai-bar-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6366f1;
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+    white-space: nowrap;
+}
+
+.ai-bar-btn:hover {
+    background: #6366f1;
+    color: #fff;
+    border-color: #6366f1;
+    box-shadow: 0 2px 8px rgba(99,102,241,0.25);
+}
+
+.ai-bar-btn i {
+    font-size: 14px;
+    line-height: 1;
+}
+
+/* Toolbar button */
+.ai-note-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6366f1;
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+    line-height: 24px;
+}
+
+.ai-note-btn:hover {
+    background: #6366f1;
+    color: #fff;
+    border-color: #6366f1;
+}
+
+.ai-note-btn i {
+    font-size: 14px;
+    line-height: 1;
+}
+
+/* Modal overlay */
+#aiModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    align-items: center;
+    justify-content: center;
+}
+
+#aiModalOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal box */
+#aiModalBox {
+    position: relative;
+    z-index: 1000000;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+    width: 90%;
+    max-width: 640px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: aiModalIn 0.18s ease;
+}
+
+@keyframes aiModalIn {
+    from { opacity: 0; transform: translateY(-16px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Modal header */
+.ai-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.ai-modal-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #111;
+}
+
+.ai-modal-title .ai-icon-wrap {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #eef2ff;
+    color: #6366f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.ai-modal-close {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: none;
+    background: #f3f4f6;
+    color: #6b7280;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: background 0.12s;
+}
+
+.ai-modal-close:hover { background: #e5e7eb; }
+
+/* Modal body */
+.ai-modal-body {
+    padding: 20px;
+}
+
+.ai-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.ai-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 14px;
+}
+
+.ai-form-group label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.ai-input,
+.ai-select,
+.ai-textarea {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 13px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.12s;
+    background: #fff;
+    color: #111;
+}
+
+.ai-input:focus,
+.ai-select:focus,
+.ai-textarea:focus {
+    border-color: #6366f1;
+}
+
+.ai-textarea {
+    min-height: 70px;
+    resize: vertical;
+}
+
+/* Generate button */
+.ai-generate-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 20px;
+    background: #6366f1;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+    width: 100%;
+    justify-content: center;
+}
+
+.ai-generate-btn:hover  { background: #4f46e5; }
+.ai-generate-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Preview area */
+#aiPreview {
+    display: none;
+    margin-top: 14px;
+    padding: 14px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #374151;
+    max-height: 260px;
+    overflow-y: auto;
+    line-height: 1.6;
+}
+
+/* Insert button */
+#aiInsertBtn {
+    display: none;
+    margin-top: 10px;
+    width: 100%;
+    padding: 9px 20px;
+    background: #059669;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+#aiInsertBtn:hover { background: #047857; }
+
+/* Provider badge in modal */
+.ai-provider-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    background: #eef2ff;
+    color: #6366f1;
+    border: 1px solid #c7d2fe;
+}

@@ -1,0 +1,325 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "DriveKit Auto Parts"
+      },
+      {
+        "key": "site_description",
+        "value": "OEM-quality parts and accessories for every make and model."
+      },
+      {
+        "key": "site_logo",
+        "value": "@media:drivekit-logo-color"
+      },
+      {
+        "key": "site_white_logo",
+        "value": "@media:drivekit-logo-white"
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/logo-color.svg",
+        "import_as": "drivekit-logo-color"
+      },
+      {
+        "path": "assets/images/logo-white.svg",
+        "import_as": "drivekit-logo-white"
+      },
+      {
+        "path": "assets/images/air-intake.jpg",
+        "import_as": "air-intake"
+      },
+      {
+        "path": "assets/images/led-headlight.jpg",
+        "import_as": "led-headlight"
+      },
+      {
+        "path": "assets/images/car-body.jpg",
+        "import_as": "car-body"
+      },
+      {
+        "path": "assets/images/car-battery.jpg",
+        "import_as": "car-battery"
+      },
+      {
+        "path": "assets/images/exhaust-tip.jpg",
+        "import_as": "exhaust-tip"
+      },
+      {
+        "path": "assets/images/obd-scanner.jpg",
+        "import_as": "obd-scanner"
+      },
+      {
+        "path": "assets/images/car-polish.jpg",
+        "import_as": "car-polish"
+      },
+      {
+        "path": "assets/images/jump-starter.jpg",
+        "import_as": "jump-starter"
+      },
+      {
+        "path": "assets/images/cat-electronics.jpg",
+        "import_as": "cat-electronics"
+      },
+      {
+        "path": "assets/images/cat-engine.jpg",
+        "import_as": "cat-engine"
+      },
+      {
+        "path": "assets/images/cat-exterior.jpg",
+        "import_as": "cat-exterior"
+      },
+      {
+        "path": "assets/images/cat-interior.jpg",
+        "import_as": "cat-interior"
+      },
+      {
+        "path": "assets/images/cat-tools.jpg",
+        "import_as": "cat-tools"
+      },
+      {
+        "path": "assets/images/cat-tyres.jpg",
+        "import_as": "cat-tyres"
+      },
+      {
+        "path": "assets/images/garage-hero.jpg",
+        "import_as": "garage-hero"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Engine Parts",
+        "slug": "engine-parts",
+        "image": "cat-engine"
+      },
+      {
+        "name": "Exterior",
+        "slug": "exterior",
+        "image": "cat-exterior"
+      },
+      {
+        "name": "Interior",
+        "slug": "interior",
+        "image": "cat-interior"
+      },
+      {
+        "name": "Electronics",
+        "slug": "electronics",
+        "image": "cat-electronics"
+      },
+      {
+        "name": "Tools",
+        "slug": "tools",
+        "image": "cat-tools"
+      },
+      {
+        "name": "Wheels & Tyres",
+        "slug": "wheels-tyres",
+        "image": "cat-tyres"
+      }
+    ],
+    "products": [
+      {
+        "name": "Performance Air Filter",
+        "summary": "High-flow cotton gauze filter for increased horsepower and airflow.",
+        "price": 49.99,
+        "compare_price": 64.99,
+        "category": "engine-parts",
+        "image": "air-intake",
+        "stock": 80,
+        "tags": [
+          "air-filter",
+          "performance",
+          "oem"
+        ]
+      },
+      {
+        "name": "LED Headlight Kit",
+        "summary": "6000K white LED conversion kit, plug-and-play, 2-year warranty.",
+        "price": 129.99,
+        "compare_price": 169.99,
+        "category": "exterior",
+        "image": "led-headlight",
+        "stock": 50,
+        "tags": [
+          "led",
+          "headlights",
+          "bright"
+        ]
+      },
+      {
+        "name": "Universal Seat Cover Set",
+        "summary": "PU leather seat covers, full set, fits most vehicles.",
+        "price": 89.99,
+        "compare_price": 119.99,
+        "category": "interior",
+        "image": "car-body",
+        "stock": 60,
+        "tags": [
+          "seat-cover",
+          "leather",
+          "universal"
+        ]
+      },
+      {
+        "name": "Car Battery 60Ah AGM",
+        "summary": "Maintenance-free AGM battery, 3-year guarantee.",
+        "price": 149.99,
+        "compare_price": 189.99,
+        "category": "engine-parts",
+        "image": "car-battery",
+        "stock": 40,
+        "tags": [
+          "battery",
+          "agm",
+          "engine"
+        ]
+      },
+      {
+        "name": "Stainless Exhaust Tip",
+        "summary": "304 stainless steel dual-wall exhaust tip, universal fit.",
+        "price": 39.99,
+        "compare_price": 54.99,
+        "category": "exterior",
+        "image": "exhaust-tip",
+        "stock": 70,
+        "tags": [
+          "exhaust",
+          "stainless",
+          "exterior"
+        ]
+      },
+      {
+        "name": "OBD-II Bluetooth Scanner",
+        "summary": "Reads & clears engine fault codes, live data, compatible with iOS and Android.",
+        "price": 59.99,
+        "compare_price": 79.99,
+        "category": "electronics",
+        "image": "obd-scanner",
+        "stock": 55,
+        "tags": [
+          "obd",
+          "scanner",
+          "diagnostics"
+        ]
+      },
+      {
+        "name": "Professional Car Polish Kit",
+        "summary": "3-stage compound, polish and wax system for showroom finish.",
+        "price": 34.99,
+        "compare_price": 44.99,
+        "category": "tools",
+        "image": "car-polish",
+        "stock": 90,
+        "tags": [
+          "polish",
+          "wax",
+          "detailing"
+        ]
+      },
+      {
+        "name": "Portable Jump Starter 1500A",
+        "summary": "Lithium jump starter with USB-C power bank and LED torch.",
+        "price": 79.99,
+        "compare_price": 99.99,
+        "category": "tools",
+        "image": "jump-starter",
+        "stock": 45,
+        "tags": [
+          "jump-starter",
+          "portable",
+          "lithium"
+        ]
+      }
+    ],
+    "menus": [
+      {
+        "title": "Quick Links",
+        "status": "default",
+        "items": [
+          { "label": "Home",       "url": "@url/" },
+          { "label": "Shop",       "url": "@url/shop" },
+          { "label": "Contact Us", "url": "@url/contact" },
+          { "label": "About",      "url": "@url/about" }
+        ]
+      },
+      {
+        "title": "Shop",
+        "status": "shop",
+        "items": [
+          { "label": "Engine Parts", "url": "@url/shop" },
+          { "label": "Electrical",   "url": "@url/shop" },
+          { "label": "Tyres",        "url": "@url/shop" },
+          { "label": "Tools",        "url": "@url/shop" },
+          { "label": "Performance",  "url": "@url/shop" }
+        ]
+      },
+      {
+        "title": "Help",
+        "status": "help",
+        "items": [
+          { "label": "Part Finder",    "url": "@url/" },
+          { "label": "Trade Account",  "url": "@url/" },
+          { "label": "Returns",        "url": "@url/" },
+          { "label": "Track Order",    "url": "@url/" },
+          { "label": "Contact",        "url": "@url/contact" }
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Shop",
+          "menu_id": "@menu:shop"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Help",
+          "menu_id": "@menu:help"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Why DrivKit",
+          "footer_badges": {
+            "badge_icon_":  ["🔧", "🚗", "✅", "🚚"],
+            "badge_title_": ["OEM Quality", "Expert Fitment", "Warranty", "Fast Delivery"],
+            "badge_sub_":   ["Manufacturer-grade parts", "Precise specifications", "12-month guarantee", "Same-day dispatch"]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "drivekit-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/page_builder_layout.json"
+      }
+    ]
+  }
+}

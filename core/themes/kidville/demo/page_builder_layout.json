@@ -1,0 +1,386 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "594dc5a9-0b97-4692-8996-3d6e1b2185a0",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "6d68e923-3fb6-468d-bcef-5a366479ab37",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "30a879bf-966c-4a10-9831-137cd5265e6a",
+                                "type": "kidville_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#FFFDE7"
+                }
+            },
+            {
+                "id": "0f3c5513-b631-40c7-adfe-bf66921c0235",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "1c4f867e-f308-4a70-a614-7de8107b2075",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "03350e94-7245-4b87-a85f-d6605aeeea3e",
+                                "type": "kidville_category_grid"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#FFFEF8"
+                }
+            },
+            {
+                "id": "5a878656-43a1-4935-9472-cee77b3a0ccf",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "e28478bf-51c5-421c-a64a-7f8f944cd849",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "f1f49e01-ec8f-4fe1-beb5-0213db13f81a",
+                                "type": "kidville_featured_products"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#FFFDE7"
+                }
+            },
+            {
+                "id": "5981963b-d04b-4ef2-9989-769f86ad6696",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "d0ec0e7d-2d47-4bad-9786-4eb5b33bf6a0",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "b6ba8896-9bb5-4c69-a2cd-9e01c8679baa",
+                                "type": "kidville_promo_banner"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#1565C0"
+                }
+            },
+            {
+                "id": "9fccd203-0baf-4560-8df9-0c270d8483d2",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "d67f8dcf-a3fd-42bf-a51f-887656498855",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "89e808ab-8b1d-4322-8680-fb7b9a5f8a38",
+                                "type": "kidville_newsletter"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#FFFFFF"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "30a879bf-966c-4a10-9831-137cd5265e6a": {
+            "type": "kidville_hero_section",
+            "container_id": "594dc5a9-0b97-4692-8996-3d6e1b2185a0",
+            "column_id": "6d68e923-3fb6-468d-bcef-5a366479ab37",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "hero_image_right": {
+                            "id": 1018,
+                            "alt": null,
+                            "url": "https:\/\/kids.nazmart.test\/assets\/tenant\/uploads\/media-uploader\/kids\/hero1782986499.jpg",
+                            "size": "72.64 KB",
+                            "title": "hero.jpg",
+                            "filename": "hero1782986499.jpg",
+                            "mime_type": "image\/jpg"
+                        }
+                    },
+                    "content": {
+                        "title": "Play, Learn<br>& <span class=\"kv-red\">Grow<\/span> with <span class=\"kv-blue\">Joy<\/span>!",
+                        "subtitle": "The best toys, games, and kids fashion for every age. Safe, fun, and educational!",
+                        "badge_text": "🎁 New Arrivals Every Week",
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button2_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button_text": "Shop All Toys",
+                        "button2_text": "Gift Finder"
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "03350e94-7245-4b87-a85f-d6605aeeea3e": {
+            "type": "kidville_category_grid",
+            "container_id": "0f3c5513-b631-40c7-adfe-bf66921c0235",
+            "column_id": "1c4f867e-f308-4a70-a614-7de8107b2075",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Find What Kids <span class=\"kv-red\">Love<\/span>!",
+                        "subtitle": "Explore our world of fun and discovery.",
+                        "item_count": 6,
+                        "section_tag": "Shop Categories"
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "f1f49e01-ec8f-4fe1-beb5-0213db13f81a": {
+            "type": "kidville_featured_products",
+            "container_id": "5a878656-43a1-4935-9472-cee77b3a0ccf",
+            "column_id": "e28478bf-51c5-421c-a64a-7f8f944cd849",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "query": {
+                        "sort_by": "latest",
+                        "item_count": 8
+                    },
+                    "content": {
+                        "tag": "Hot Picks",
+                        "title": "Most Popular Toys 🐰",
+                        "view_all_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "b6ba8896-9bb5-4c69-a2cd-9e01c8679baa": {
+            "type": "kidville_promo_banner",
+            "container_id": "5981963b-d04b-4ef2-9989-769f86ad6696",
+            "column_id": "d0ec0e7d-2d47-4bad-9786-4eb5b33bf6a0",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "text": "Tell us their age and interests, and we'll pick the perfect toy. Our gift finder makes gifting easy and fun!",
+                        "icon1": "🎁",
+                        "icon2": "🧸",
+                        "icon3": "🎮",
+                        "title": "Need Help Finding the Perfect <span>Gift?<\/span> 🎁",
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button2_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button_text": "Use Gift Finder",
+                        "button2_text": null
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "89e808ab-8b1d-4322-8680-fb7b9a5f8a38": {
+            "type": "kidville_newsletter",
+            "container_id": "9fccd203-0baf-4560-8df9-0c270d8483d2",
+            "column_id": "d67f8dcf-a3fd-42bf-a51f-887656498855",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "Get Kids' Deals First! 🎉",
+                        "subtitle": "Join our parent community for exclusive discounts, new arrival alerts, and parenting tips.",
+                        "button_text": "Subscribe"
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        }
+    }
+}

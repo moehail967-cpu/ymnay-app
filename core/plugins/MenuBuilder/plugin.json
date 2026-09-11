@@ -1,0 +1,15 @@
+{
+    "id": "menu-builder",
+    "name": "Menu Builder",
+    "version": "1.0.0",
+    "description": "Drag-and-drop mega menu builder for tenant storefronts",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "both",
+    "pricing": "free",
+    "min_platform_version": "1.0.0",
+    "main": "src/MenuBuilderPlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null
+}

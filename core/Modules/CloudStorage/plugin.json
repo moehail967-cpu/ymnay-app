@@ -1,0 +1,15 @@
+{
+    "id": "cloud-storage",
+    "name": "Cloud Storage",
+    "version": "1.0.2",
+    "description": "",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "landlord",
+    "pricing": "free",
+    "min_platform_version": "1.0.0",
+    "main": "src/CloudStoragePlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null
+}

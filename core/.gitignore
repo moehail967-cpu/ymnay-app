@@ -1,0 +1,18 @@
+# Shared repository rules live in ../.gitignore. Paths here are core-relative.
+/vendor/
+/node_modules/
+/.env
+/.env.*
+!/.env.example
+/auth.json
+/.phpunit.result.cache
+/.phpunit.cache/
+/bootstrap/cache/*
+!/bootstrap/cache/.gitignore
+/storage/**
+!/storage/**/
+!/storage/**/.gitignore
+/public/build/
+/public/hot
+/public/storage
+/public/themes/

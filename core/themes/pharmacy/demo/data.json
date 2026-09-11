@@ -1,0 +1,435 @@
+{
+  "sections": {
+    "settings": [
+      {
+        "key": "site_title",
+        "value": "Pharmacy Health Store"
+      },
+      {
+        "key": "site_description",
+        "value": "Your trusted source for vitamins, wellness products and healthcare essentials."
+      },
+      {
+        "key": "site_logo",
+        "value": "@media:pharmacy-logo-color"
+      },
+      {
+        "key": "site_white_logo",
+        "value": "@media:pharmacy-logo-white"
+      }
+    ],
+    "media": [
+      {
+        "path": "assets/images/logo-color.svg",
+        "import_as": "pharmacy-logo-color"
+      },
+      {
+        "path": "assets/images/logo-white.svg",
+        "import_as": "pharmacy-logo-white"
+      },
+      {
+        "path": "assets/images/pharmacy-hero.jpg",
+        "import_as": "pharmacy-hero"
+      },
+      {
+        "path": "assets/images/multivitamin.jpg",
+        "import_as": "multivitamin"
+      },
+      {
+        "path": "assets/images/omega3-fish-oil.jpg",
+        "import_as": "omega3-fish-oil"
+      },
+      {
+        "path": "assets/images/herbal-supplement.jpg",
+        "import_as": "herbal-supplement"
+      },
+      {
+        "path": "assets/images/heart-health.jpg",
+        "import_as": "heart-health"
+      },
+      {
+        "path": "assets/images/sleep-supplement.jpg",
+        "import_as": "sleep-supplement"
+      },
+      {
+        "path": "assets/images/first-aid-kit.jpg",
+        "import_as": "first-aid-kit"
+      },
+      {
+        "path": "assets/images/pills-tablets.jpg",
+        "import_as": "pills-tablets"
+      },
+      {
+        "path": "assets/images/baby-formula.jpg",
+        "import_as": "baby-formula"
+      },
+      {
+        "path": "assets/images/cat-vitamins.jpg",
+        "import_as": "cat-vitamins"
+      },
+      {
+        "path": "assets/images/cat-first-aid.jpg",
+        "import_as": "cat-first-aid"
+      },
+      {
+        "path": "assets/images/cat-baby.jpg",
+        "import_as": "cat-baby"
+      },
+      {
+        "path": "assets/images/herbal-supplement.jpg",
+        "import_as": "cat-supplements"
+      },
+      {
+        "path": "assets/images/heart-health.jpg",
+        "import_as": "cat-heart-health"
+      },
+      {
+        "path": "assets/images/sleep-supplement.jpg",
+        "import_as": "cat-sleep-calm"
+      },
+      {
+        "path": "assets/images/blood-pressure.jpg",
+        "import_as": "blood-pressure"
+      },
+      {
+        "path": "assets/images/stethoscope.jpg",
+        "import_as": "stethoscope"
+      },
+      {
+        "path": "assets/images/prescription-pad.jpg",
+        "import_as": "prescription-pad"
+      },
+      {
+        "path": "assets/images/vaccine-injection.jpg",
+        "import_as": "vaccine-injection"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Vitamins",
+        "slug": "vitamins",
+        "image": "cat-vitamins"
+      },
+      {
+        "name": "Supplements",
+        "slug": "supplements",
+        "image": "cat-supplements"
+      },
+      {
+        "name": "Heart Health",
+        "slug": "heart-health",
+        "image": "cat-heart-health"
+      },
+      {
+        "name": "Sleep & Calm",
+        "slug": "sleep-calm",
+        "image": "cat-sleep-calm"
+      },
+      {
+        "name": "First Aid",
+        "slug": "first-aid",
+        "image": "cat-first-aid"
+      },
+      {
+        "name": "Baby & Family",
+        "slug": "baby-family",
+        "image": "cat-baby"
+      }
+    ],
+    "products": [
+      {
+        "name": "Vitamin D3 + K2 2000IU",
+        "summary": "High-strength vitamin D3 with K2 for bone and immune support.",
+        "price": 19.99,
+        "compare_price": 14.99,
+        "category": "vitamins",
+        "image": "multivitamin",
+        "stock": 150,
+        "sold_count": 842,
+        "tags": [
+          "vitamin-d",
+          "immune",
+          "bone"
+        ]
+      },
+      {
+        "name": "Omega-3 Fish Oil 1000mg (90 Caps)",
+        "summary": "Triple-strength EPA/DHA, enteric coated for zero fishy aftertaste.",
+        "price": 29.99,
+        "compare_price": 22.99,
+        "category": "supplements",
+        "image": "omega3-fish-oil",
+        "stock": 120,
+        "sold_count": 614,
+        "tags": [
+          "omega-3",
+          "fish-oil",
+          "heart-health"
+        ]
+      },
+      {
+        "name": "Collagen Peptides Powder 300g",
+        "summary": "Hydrolysed collagen with vitamin C, supports skin, hair and joints.",
+        "price": 54.99,
+        "compare_price": 39.99,
+        "category": "supplements",
+        "image": "herbal-supplement",
+        "stock": 90,
+        "sold_count": 389,
+        "tags": [
+          "collagen",
+          "anti-aging",
+          "joints"
+        ]
+      },
+      {
+        "name": "Heart Health Complex",
+        "summary": "CoQ10, magnesium and hawthorn berry blend for cardiovascular health.",
+        "price": 39.99,
+        "compare_price": 29.99,
+        "category": "heart-health",
+        "image": "heart-health",
+        "stock": 100,
+        "sold_count": 521,
+        "tags": [
+          "coq10",
+          "magnesium",
+          "cardiovascular"
+        ]
+      },
+      {
+        "name": "Sleep & Calm Formula",
+        "summary": "Magnesium glycinate, L-theanine and chamomile for restful sleep.",
+        "price": 34.99,
+        "compare_price": 24.99,
+        "category": "sleep-calm",
+        "image": "sleep-supplement",
+        "stock": 110,
+        "sold_count": 476,
+        "tags": [
+          "sleep",
+          "magnesium",
+          "calm"
+        ]
+      },
+      {
+        "name": "Deluxe First Aid Kit 100pc",
+        "summary": "Comprehensive first aid kit for home and travel, CE marked.",
+        "price": 27.99,
+        "compare_price": 19.99,
+        "category": "first-aid",
+        "image": "first-aid-kit",
+        "stock": 80,
+        "sold_count": 298,
+        "tags": [
+          "first-aid",
+          "emergency",
+          "kit"
+        ]
+      },
+      {
+        "name": "Daily Multivitamin (90 Tabs)",
+        "summary": "Complete A-Z multivitamin and mineral formula, one tablet daily.",
+        "price": 17.99,
+        "compare_price": 12.99,
+        "category": "vitamins",
+        "image": "pills-tablets",
+        "stock": 200,
+        "sold_count": 733,
+        "tags": [
+          "multivitamin",
+          "daily",
+          "az"
+        ]
+      },
+      {
+        "name": "Infant Formula Stage 1 (800g)",
+        "summary": "First-stage infant formula with DHA, ARA and prebiotics, 0-6 months.",
+        "price": 42.99,
+        "compare_price": 32.99,
+        "category": "baby-family",
+        "image": "baby-formula",
+        "stock": 60,
+        "sold_count": 187,
+        "tags": [
+          "baby",
+          "formula",
+          "infant"
+        ]
+      },
+      {
+        "name": "Vitamin C 1000mg Effervescent (60 Tabs)",
+        "summary": "High-dose vitamin C with zinc and rose hip — immune support in a fizzy tablet.",
+        "price": 16.99,
+        "compare_price": 12.99,
+        "category": "vitamins",
+        "image": "pills-tablets",
+        "stock": 180,
+        "sold_count": 0,
+        "tags": [
+          "vitamin-c",
+          "zinc",
+          "immune"
+        ]
+      },
+      {
+        "name": "Probiotic 50 Billion CFU (30 Caps)",
+        "summary": "Multi-strain probiotic with prebiotic fibre for gut health and digestion.",
+        "price": 34.99,
+        "compare_price": 27.99,
+        "category": "supplements",
+        "image": "herbal-supplement",
+        "stock": 95,
+        "sold_count": 0,
+        "tags": [
+          "probiotic",
+          "gut-health",
+          "digestion"
+        ]
+      },
+      {
+        "name": "Turmeric & Black Pepper 500mg (90 Caps)",
+        "summary": "Standardised curcumin with BioPerine for enhanced absorption and joint comfort.",
+        "price": 22.99,
+        "compare_price": 17.99,
+        "category": "supplements",
+        "image": "herbal-supplement",
+        "stock": 140,
+        "sold_count": 0,
+        "tags": [
+          "turmeric",
+          "curcumin",
+          "anti-inflammatory"
+        ]
+      },
+      {
+        "name": "Biotin 10000mcg — Hair, Skin & Nails",
+        "summary": "Maximum-strength biotin to support keratin production and healthy hair growth.",
+        "price": 18.99,
+        "compare_price": 13.99,
+        "category": "vitamins",
+        "image": "multivitamin",
+        "stock": 165,
+        "sold_count": 0,
+        "tags": [
+          "biotin",
+          "hair",
+          "nails"
+        ]
+      },
+      {
+        "name": "Digital Blood Pressure Monitor (Arm Cuff)",
+        "summary": "Clinically validated upper arm BP monitor with irregular heartbeat detection.",
+        "price": 49.99,
+        "compare_price": 39.99,
+        "category": "first-aid",
+        "image": "blood-pressure",
+        "stock": 55,
+        "sold_count": 0,
+        "tags": [
+          "blood-pressure",
+          "monitor",
+          "hypertension"
+        ]
+      },
+      {
+        "name": "Glucosamine & Chondroitin 1500mg",
+        "summary": "Joint support complex with MSM, hyaluronic acid and vitamin D3.",
+        "price": 32.99,
+        "compare_price": 26.99,
+        "category": "heart-health",
+        "image": "stethoscope",
+        "stock": 75,
+        "sold_count": 0,
+        "tags": [
+          "glucosamine",
+          "joints",
+          "mobility"
+        ]
+      },
+      {
+        "name": "Zinc & Selenium Immunity Complex",
+        "summary": "Zinc bisglycinate with selenium and vitamins C & D for year-round immunity.",
+        "price": 14.99,
+        "compare_price": 10.99,
+        "category": "vitamins",
+        "image": "pills-tablets",
+        "stock": 200,
+        "sold_count": 0,
+        "tags": [
+          "zinc",
+          "selenium",
+          "immunity"
+        ]
+      },
+      {
+        "name": "Vitamin B12 Methylcobalamin 1000mcg",
+        "summary": "Active form B12 sublingual spray for fast absorption — energy and nerve support.",
+        "price": 19.99,
+        "compare_price": 14.99,
+        "category": "vitamins",
+        "image": "vaccine-injection",
+        "stock": 130,
+        "sold_count": 0,
+        "tags": [
+          "b12",
+          "methylcobalamin",
+          "energy"
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Products",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Support",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Our Standards",
+          "footer_badges": {
+            "badge_icon_":  ["✅", "🔬", "🔒", "🚚"],
+            "badge_title_": ["Pharmacist Verified", "Lab Tested", "Secure Packaging", "Discreet Delivery"],
+            "badge_sub_":   ["Expert approved", "Quality assured", "Tamper-evident", "Private packaging"]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "pharmacy-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/home-layout.json"
+      }
+    ]
+  }
+}

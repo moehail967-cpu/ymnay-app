@@ -1,0 +1,250 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "section-1783407324184",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783407324184",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783407324184",
+                                "type": "trailco_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1783407326546",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783407326546",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783407326546",
+                                "type": "trailco_category_grid"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "transparent"
+                }
+            },
+            {
+                "id": "section-1783408245309",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783408245309",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783408245309",
+                                "type": "trailco_featured_products"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1783408254222",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783408254222",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783408254222",
+                                "type": "trailco_promo_banner"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "section-1783408256265",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1783408256265",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1783408256265",
+                                "type": "trailco_newsletter"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "widget-1783407324184": {
+            "type": "trailco_hero_section",
+            "container_id": "section-1783407324184",
+            "column_id": "column-1783407324184",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1783407326546": {
+            "type": "trailco_category_grid",
+            "container_id": "section-1783407326546",
+            "column_id": "column-1783407326546",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1783408245309": {
+            "type": "trailco_featured_products",
+            "container_id": "section-1783408245309",
+            "column_id": "column-1783408245309",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "view_all_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": null,
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1783408254222": {
+            "type": "trailco_promo_banner",
+            "container_id": "section-1783408254222",
+            "column_id": "column-1783408254222",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        },
+        "widget-1783408256265": {
+            "type": "trailco_newsletter",
+            "container_id": "section-1783408256265",
+            "column_id": "column-1783408256265",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        }
+    }
+}

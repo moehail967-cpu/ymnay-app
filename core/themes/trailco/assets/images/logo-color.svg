@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4E6B3C;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#8B6914;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon circle -->
+  <circle cx="44" cy="40" r="26" fill="url(#grad)" opacity="0.12"/>
+  <circle cx="44" cy="40" r="22" fill="url(#grad)"/>
+
+  <!-- Icon -->
+  <text x="44" y="47" font-size="18" text-anchor="middle" dominant-baseline="middle"
+        font-family="Segoe UI Emoji, Apple Color Emoji, sans-serif">🏔</text>
+
+  <!-- Brand name -->
+  <text x="82" y="34" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="700"
+        fill="#4E6B3C" letter-spacing="-0.5">Trail<tspan fill="#8B6914">Co</tspan></text>
+
+  <!-- Tagline -->
+  <text x="83" y="54" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-weight="400"
+        fill="#4E6B3C" opacity="0.7" letter-spacing="2.5">OUTDOOR GEAR</text>
+
+  <!-- Accent underline -->
+  <line x1="82" y1="59" x2="156" y2="59" stroke="url(#grad)" stroke-width="1.5" opacity="0.55"/>
+</svg>

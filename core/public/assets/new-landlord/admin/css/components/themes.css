@@ -1,0 +1,180 @@
+/* ══════════════════════════════════════════════════════════════════
+   Theme Card — All Themes page
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── Card container ──────────────────────────────────────────────── */
+.theme-card {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: var(--color-bg-surface, #fff);
+    border: 1px solid var(--color-border-main, #e0f0f0);
+    box-shadow: 0 2px 12px -2px rgba(0,0,0,.05);
+    transition: transform 0.28s cubic-bezier(.22,.61,.36,1), box-shadow 0.28s ease;
+}
+.theme-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px -10px rgba(0,0,0,.12);
+}
+
+/* ── Image area ──────────────────────────────────────────────────── */
+.theme-card-img {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+    background: var(--color-bg-secondary, #F0FCFB);
+}
+.theme-card-img img {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    pointer-events: none;                    /* clicks pass through to buttons */
+    transition: transform 6s cubic-bezier(.25,.46,.45,.94);
+}
+.theme-card:hover .theme-card-img img {
+    transform: translateY(calc(-100% + 320px));
+}
+.theme-card:hover .theme-card-img img.no-scroll {
+    transform: none;
+}
+
+/* ── Hover gradient overlay ──────────────────────────────────────── */
+.theme-card-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(15,23,42,.65) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+.theme-card:hover .theme-card-gradient { opacity: 1; }
+
+/* ── Hover action buttons ────────────────────────────────────────── */
+.theme-card-hover-actions {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 2;
+}
+.theme-card:hover .theme-card-hover-actions {
+    opacity: 1;
+    transform: translateY(0);
+}
+.hover-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    flex: 1;
+    padding: 0.5rem 1rem;
+    border-radius: 0.625rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+    white-space: nowrap;
+}
+.hover-action-btn.btn-preview {
+    background: #fff;
+    color: var(--color-text-dark, #111827);
+    box-shadow: 0 2px 8px rgba(0,0,0,.10);
+}
+.hover-action-btn.btn-preview:hover { background: var(--color-bg-muted, #edf9f9); }
+.hover-action-btn.btn-edit {
+    background: rgba(255,255,255,.18);
+    color: #fff;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,.22);
+}
+.hover-action-btn.btn-edit:hover { background: rgba(255,255,255,.30); }
+
+/* ── Card footer ─────────────────────────────────────────────────── */
+.theme-card-footer {
+    padding: 0.875rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+.theme-card.is-active .theme-card-footer {
+    background: var(--color-primary-soft, #e0f0f0);
+}
+
+/* ── Status pill ─────────────────────────────────────────────────── */
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.3125rem 0.875rem;
+    border-radius: 2rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+.status-pill.pill-active {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #fff;
+    box-shadow: 0 2px 10px -2px rgba(16,185,129,.45);
+}
+.status-pill.pill-active:hover {
+    box-shadow: 0 4px 16px -2px rgba(16,185,129,.55);
+    transform: scale(1.03);
+}
+.status-pill.pill-active .pill-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 6px rgba(255,255,255,.8);
+    animation: activePulse 2s ease-in-out infinite;
+}
+@keyframes activePulse {
+    0%, 100% { box-shadow: 0 0 4px rgba(255,255,255,.5); }
+    50%      { box-shadow: 0 0 10px rgba(255,255,255,1); }
+}
+.status-pill.pill-inactive {
+    background: #f1f5f9;
+    color: #94a3b8;
+    border: 1px solid #e2e8f0;
+}
+.status-pill.pill-inactive:hover {
+    background: #e2e8f0;
+    color: #64748b;
+}
+.status-pill.pill-inactive .pill-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #cbd5e1;
+}
+
+/* ── Active-card top ribbon ──────────────────────────────────────── */
+.active-ribbon {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #10b981, #34d399, #10b981);
+    z-index: 3;
+}
+
+/* ── Extra-large modal dialog (themes) ───────────────────────────── */
+.cm-modal-dialog.xl {
+    max-width: 1024px;
+}
+
+/* ── 3-col on xl ─────────────────────────────────────────────────── */
+@media (min-width: 1280px) {
+    .theme-grid { grid-template-columns: repeat(3, 1fr); }
+}

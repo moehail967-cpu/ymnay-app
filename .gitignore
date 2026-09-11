@@ -1,0 +1,74 @@
+# Private environment and credentials (safe templates remain versioned).
+.env
+.env.*
+*.env
+!.env.example
+!**/.env.example
+auth.json
+.npmrc
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+
+# Installed dependencies; bundled public libraries remain source assets.
+/vendor/
+/core/vendor/
+**/node_modules/
+
+# Reproducible build output and generated publication links.
+/_build/
+/themes
+/core/public/build/
+/core/public/hot
+/core/public/storage
+/core/public/themes/
+
+# Laravel runtime. Keep directory placeholders, never tenant data.
+/core/bootstrap/cache/*
+!/core/bootstrap/cache/.gitignore
+/core/storage/**
+!/core/storage/**/
+!/core/storage/**/.gitignore
+.phpunit.result.cache
+.phpunit.cache/
+*.log
+
+# Customer uploads and payment proofs in both supported web-root layouts.
+/assets/uploads/
+/assets/landlord/uploads/*
+/assets/tenant/uploads/*
+/core/public/assets/uploads/
+/core/public/assets/landlord/uploads/*
+/core/public/assets/tenant/uploads/*
+# Shipped UI icons/default artwork are application assets, not user media.
+!/assets/landlord/uploads/icon/
+!/assets/tenant/uploads/icon/
+!/assets/landlord/uploads/default-uploads/
+!/assets/tenant/uploads/default-uploads/
+!/core/public/assets/landlord/uploads/icon/
+!/core/public/assets/tenant/uploads/icon/
+!/core/public/assets/landlord/uploads/default-uploads/
+!/core/public/assets/tenant/uploads/default-uploads/
+
+# Backups, exports, operating-system and editor residue.
+*.sql
+*.sql.*
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.bak
+*.bak_*
+*.backup*
+*.tmp
+*.temp
+.DS_Store
+__MACOSX/
+.idea/
+.vscode/
+Thumbs.db
+npm-debug.log*
+yarn-error.log*

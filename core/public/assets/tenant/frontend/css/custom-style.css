@@ -1,0 +1,185 @@
+/*
+ * Tenant Frontend — Shared Custom Styles
+ *
+ * Loaded on every tenant frontend page (after theme CSS) so themes can rely
+ * on these without coding them individually.
+ *
+ * Sections:
+ *   1. Navigation menu + dropdown (theme_nav_menu / theme_mobile_nav_menu)
+ */
+
+/* ── 1. Navigation menu ──────────────────────────────────────────────────── */
+
+/*
+ * Base structure produced by render_frontend_menu():
+ *
+ *   <ul class="theme-nav-menu">
+ *     <li>                              ← plain item
+ *       <a href="...">Link</a>
+ *     </li>
+ *     <li class="menu-item-has-children">   ← has dropdown
+ *       <a href="...">Parent</a>
+ *       <ul class="sub-menu">
+ *         <li><a href="...">Child</a></li>
+ *       </ul>
+ *     </li>
+ *   </ul>
+ *
+ * Theme overrides: target `.theme-nav-menu li > a` or `.theme-nav-menu .sub-menu`
+ * inside their own scoped wrapper (.ch-nav-links, .my-nav, etc.).
+ */
+
+.theme-nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0;
+}
+
+/* ── top-level items ── */
+.theme-nav-menu > li {
+    position: relative;
+}
+
+.theme-nav-menu > li > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+
+.theme-nav-menu > li > a:hover,
+.theme-nav-menu > li.current-menu-item > a {
+    color: inherit;
+    opacity: 0.85;
+}
+
+/* ── dropdown indicator chevron ── */
+.theme-nav-menu > li.menu-item-has-children > a::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 4px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
+    vertical-align: middle;
+    transition: transform 0.2s ease;
+}
+
+.theme-nav-menu > li.menu-item-has-children:hover > a::after {
+    transform: rotate(180deg);
+}
+
+/* ── dropdown panel ── */
+.theme-nav-menu .sub-menu {
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    min-width: 200px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 1050;
+}
+
+/* keep open while cursor travels from trigger to panel */
+.theme-nav-menu > li.menu-item-has-children::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 8px;
+}
+
+.theme-nav-menu > li.menu-item-has-children:hover > .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.theme-nav-menu .sub-menu li {
+    position: relative;
+}
+
+.theme-nav-menu .sub-menu li a {
+    display: block;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s, padding-left 0.15s;
+}
+
+.theme-nav-menu .sub-menu li a:hover {
+    background: rgba(0, 0, 0, 0.04);
+    padding-left: 26px;
+}
+
+/* nested sub-menu */
+.theme-nav-menu .sub-menu .sub-menu {
+    top: 0;
+    left: 100%;
+    margin-left: 4px;
+    border-radius: 8px;
+}
+
+.theme-nav-menu .sub-menu li.menu-item-has-children > a::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    float: right;
+    margin-top: 6px;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 5px solid currentColor;
+}
+
+.theme-nav-menu .sub-menu li.menu-item-has-children:hover > .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Save for Later button in cart table */
+.btn-save-later { background: none; border: none; padding: 0 6px; cursor: pointer; font-size: 1.1rem; color: #9ca3af; line-height: 1; vertical-align: middle; transition: color .2s; }
+.btn-save-later:hover { color: #e11d48; }
+.btn-save-later i.las { color: #e11d48; }
+
+/* Wishlist page — stock badge */
+.wl-stock-badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 20px; margin-top: 4px; }
+.wl-in-stock  { background: #dcfce7; color: #15803d; }
+.wl-out-stock { background: #fee2e2; color: #b91c1c; }
+
+/* Wishlist page — action cell */
+.wl-action-cell { display: flex; align-items: center; gap: 10px; }
+.wl-atc-btn { display: inline-flex; align-items: center; gap: 5px; padding: 6px 14px; font-size: 13px; font-weight: 600; border: none; border-radius: 6px; cursor: pointer; background: #1a1a2e; color: #fff; white-space: nowrap; transition: background .2s; }
+.wl-atc-btn:hover:not(:disabled) { background: #16213e; }
+.wl-atc-disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* Wishlist active heart — works across all themes & icon sets */
+.add-to-wishlist-btn.wl-added,
+.add-to-wishlist-btn.wl-added i { color: #e11d48 !important; }

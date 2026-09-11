@@ -1,0 +1,15 @@
+{
+    "id": "pos",
+    "name": "Point of Sale",
+    "version": "1.2.3",
+    "description": "",
+    "author": "Xgenious",
+    "author_url": "",
+    "type": "tenant",
+    "pricing": "free",
+    "min_platform_version": "1.0.0",
+    "main": "src/PosPlugin.php",
+    "requires": [],
+    "update_server": null,
+    "purchase_url": null
+}

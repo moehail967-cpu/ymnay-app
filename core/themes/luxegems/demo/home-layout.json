@@ -1,0 +1,335 @@
+{
+    "format": "xg_page_builder_v2",
+    "version": "1.0",
+    "content": {
+        "containers": [
+            {
+                "id": "b8af2c3a-e14b-4f6d-a51c-424877bec475",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "aa702b09-432c-46fd-b3e2-2b24d94e66c4",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "4c451672-9f03-4de2-8528-b06579abbd2f",
+                                "type": "luxegems_hero_section"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#111111"
+                }
+            },
+            {
+                "id": "section-1782994203048",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "column-1782994203048",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "widget-1782994203048",
+                                "type": "luxegems_category_grid"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#ffffff"
+                }
+            },
+            {
+                "id": "5f272dd5-6ef0-4012-9e51-3d9aa5d8c3cb",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "1ee723ee-1ceb-446c-8889-a4ab908c33de",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "cf6aa85e-28e9-4cf7-857e-6b21c3a54207",
+                                "type": "luxegems_featured_products"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#080808"
+                }
+            },
+            {
+                "id": "ce03d6ec-f9a2-473d-a451-711cdbdb8581",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "bd987558-5883-41fd-b4f8-5f03233d0a34",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "b56f5daa-abdd-4620-8ee8-fb561cbefaa1",
+                                "type": "luxegems_promo_banner"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#111111"
+                }
+            },
+            {
+                "id": "f834835f-e004-4834-b0db-ab2976b762a1",
+                "type": "section",
+                "columns": [
+                    {
+                        "id": "5f0c4c1f-b917-49c8-860c-2bf1ea31195b",
+                        "width": "100%",
+                        "widgets": [
+                            {
+                                "id": "db2a0b01-ecef-4d0d-ab11-9b526445352f",
+                                "type": "luxegems_newsletter"
+                            }
+                        ],
+                        "settings": []
+                    }
+                ],
+                "settings": {
+                    "margin": "0px",
+                    "padding": "0px",
+                    "backgroundColor": "#111111"
+                }
+            }
+        ]
+    },
+    "widgets": {
+        "4c451672-9f03-4de2-8528-b06579abbd2f": {
+            "type": "luxegems_hero_section",
+            "container_id": "b8af2c3a-e14b-4f6d-a51c-424877bec475",
+            "column_id": "aa702b09-432c-46fd-b3e2-2b24d94e66c4",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "media": {
+                        "product_image": "@media:luxegems-hero-right"
+                    },
+                    "content": {
+                        "title": "RARE GEMS.<br>CRAFTED FOR",
+                        "subtitle": "The world's most extraordinary diamonds, sapphires, and emeralds, set by master artisans. Every piece comes with a certificate of authenticity.",
+                        "button_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": "#",
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button2_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": "#",
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        },
+                        "button_text": "EXPLORE COLLECTIONS",
+                        "button2_text": "BOOK APPOINTMENT",
+                        "title_accent": "ETERNITY."
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "cf6aa85e-28e9-4cf7-857e-6b21c3a54207": {
+            "type": "luxegems_featured_products",
+            "container_id": "5f272dd5-6ef0-4012-9e51-3d9aa5d8c3cb",
+            "column_id": "1ee723ee-1ceb-446c-8889-a4ab908c33de",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "query": {
+                        "sort_by": "latest",
+                        "item_count": 8
+                    },
+                    "content": {
+                        "title": "Featured Pieces",
+                        "view_all_url": {
+                            "id": null,
+                            "rel": [],
+                            "url": "#",
+                            "text": null,
+                            "type": "external",
+                            "class": null,
+                            "title": null,
+                            "target": "_self",
+                            "utm_parameters": {
+                                "utm_term": null,
+                                "utm_medium": null,
+                                "utm_source": null,
+                                "utm_content": null,
+                                "utm_campaign": null
+                            },
+                            "custom_attributes": [],
+                            "responsive_behavior": {
+                                "mobile_target": "_self",
+                                "desktop_target": "_self"
+                            }
+                        }
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "b56f5daa-abdd-4620-8ee8-fb561cbefaa1": {
+            "type": "luxegems_promo_banner",
+            "container_id": "ce03d6ec-f9a2-473d-a451-711cdbdb8581",
+            "column_id": "bd987558-5883-41fd-b4f8-5f03233d0a34",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "text": "Commission your unique piece. Our master jewellers work with you from design concept to the final creation. Every detail considered, every stone hand-selected.",
+                        "title": "BESPOKE. ONE-OF-A-<strong>KIND.<\/strong>",
+                        "button_url": {
+                            "url": "#",
+                            "type": "external",
+                            "target": "_self"
+                        },
+                        "promo_image": "@media:luxegems-promo-image",
+                        "promo_icon": "💎",
+                        "button2_url": {
+                            "url": "#",
+                            "type": "external",
+                            "target": "_self"
+                        },
+                        "button_text": "BEGIN YOUR JOURNEY",
+                        "button2_text": null
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "db2a0b01-ecef-4d0d-ab11-9b526445352f": {
+            "type": "luxegems_newsletter",
+            "container_id": "f834835f-e004-4834-b0db-ab2976b762a1",
+            "column_id": "5f0c4c1f-b917-49c8-860c-2bf1ea31195b",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": {
+                    "content": {
+                        "title": "PRIVATE COLLECTION PREVIEWS",
+                        "subtitle": "Receive exclusive first access to new arrivals, private viewings, and curated gemstone selection guides.",
+                        "button_text": "SUBSCRIBE"
+                    }
+                },
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": []
+            }
+        },
+        "widget-1782994203048": {
+            "type": "luxegems_category_grid",
+            "container_id": "section-1782994203048",
+            "column_id": "column-1782994203048",
+            "sort_order": 0,
+            "is_visible": true,
+            "is_enabled": true,
+            "version": "1.0.0",
+            "settings": {
+                "general": [],
+                "style": {
+                    "margin": "0",
+                    "padding": "0"
+                },
+                "advanced": {
+                    "customCSS": null,
+                    "cssClasses": null
+                },
+                "responsive": {}
+            }
+        }
+    }
+}

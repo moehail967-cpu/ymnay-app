@@ -1,0 +1,4 @@
+/* RTL overrides — drivekit */
+body { direction: rtl; text-align: right; }
+.dk-nav-links { flex-direction: row-reverse; }
+.dk-footer-bottom { flex-direction: row-reverse; }

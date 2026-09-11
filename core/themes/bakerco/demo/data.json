@@ -1,0 +1,132 @@
+{
+  "sections": {
+    "settings": [
+      { "key": "site_title", "value": "BakerCo Artisan Bakery" },
+      { "key": "site_description", "value": "Hand-crafted breads, pastries and cakes baked fresh daily." },
+      { "key": "site_logo", "value": "@media:bakerco-logo-color" },
+      { "key": "site_white_logo", "value": "@media:bakerco-logo-white" }
+    ],
+    "media": [
+      { "path": "assets/images/logo-color.svg",          "import_as": "bakerco-logo-color" },
+      { "path": "assets/images/logo-white.svg",          "import_as": "bakerco-logo-white" },
+      { "path": "assets/images/artisan-bread-hero.jpg",  "import_as": "bakerco-hero" },
+      { "path": "assets/images/sourdough-bread.jpg",   "import_as": "sourdough-bread" },
+      { "path": "assets/images/croissant.jpg",         "import_as": "croissant" },
+      { "path": "assets/images/strawberry-cake.jpg",   "import_as": "strawberry-cake" },
+      { "path": "assets/images/apple-pie.jpg",         "import_as": "apple-pie" },
+      { "path": "assets/images/chocolate-eclair.jpg",  "import_as": "chocolate-eclair" },
+      { "path": "assets/images/glazed-donuts.jpg",     "import_as": "glazed-donuts" },
+      { "path": "assets/images/lemon-cake-slice.jpg",  "import_as": "lemon-cake-slice" },
+      { "path": "assets/images/red-velvet-cupcakes.jpg","import_as": "red-velvet-cupcakes" },
+      { "path": "assets/images/cat-breads.jpg",        "import_as": "cat-breads" },
+      { "path": "assets/images/cat-cakes.jpg",         "import_as": "cat-cakes" },
+      { "path": "assets/images/cat-pastries.jpg",      "import_as": "cat-pastries" },
+      { "path": "assets/images/cat-cookies.jpg",       "import_as": "cat-cookies" },
+      { "path": "assets/images/cat-desserts.jpg",      "import_as": "cat-desserts" },
+      { "path": "assets/images/cat-seasonal.jpg",      "import_as": "cat-seasonal" }
+    ],
+    "categories": [
+      { "name": "Cakes",     "slug": "cakes",     "image": "cat-cakes" },
+      { "name": "Pastries",  "slug": "pastries",  "image": "cat-pastries" },
+      { "name": "Breads",    "slug": "breads",    "image": "cat-breads" },
+      { "name": "Cookies",   "slug": "cookies",   "image": "cat-cookies" },
+      { "name": "Desserts",  "slug": "desserts",  "image": "cat-desserts" },
+      { "name": "Seasonal",  "slug": "seasonal",  "image": "cat-seasonal" }
+    ],
+    "products": [
+      {
+        "name": "Sourdough Loaf", "summary": "Classic long-fermented sourdough with a crispy crust.",
+        "price": 7.99, "compare_price": 9.99, "category": "breads",
+        "image": "sourdough-bread", "stock": 50, "tags": ["sourdough","artisan","fresh"]
+      },
+      {
+        "name": "Croissant Box (6)", "summary": "Buttery, flaky all-butter French croissants.",
+        "price": 12.99, "compare_price": 15.99, "category": "pastries",
+        "image": "croissant", "stock": 40, "tags": ["croissant","french","butter"]
+      },
+      {
+        "name": "Custom Birthday Cake", "summary": "Personalised layered cake — your choice of flavour and decoration.",
+        "price": 49.99, "compare_price": 65.99, "category": "cakes",
+        "image": "strawberry-cake", "stock": 20, "tags": ["custom","birthday","celebration"]
+      },
+      {
+        "name": "Classic Apple Pie", "summary": "Warm apple filling with cinnamon in a buttery shortcrust pastry.",
+        "price": 18.99, "compare_price": 24.99, "category": "cakes",
+        "image": "apple-pie", "stock": 30, "tags": ["apple","pie","classic"]
+      },
+      {
+        "name": "Chocolate Éclair Box (4)", "summary": "Choux pastry filled with vanilla cream, topped with dark chocolate.",
+        "price": 14.99, "compare_price": 19.99, "category": "pastries",
+        "image": "chocolate-eclair", "stock": 35, "tags": ["eclair","chocolate","choux"]
+      },
+      {
+        "name": "Glazed Donuts (12)", "summary": "Soft, pillowy donuts with a classic sugar glaze.",
+        "price": 16.99, "compare_price": 21.99, "category": "cookies",
+        "image": "glazed-donuts", "stock": 60, "tags": ["donut","glazed","sweet"]
+      },
+      {
+        "name": "Lemon Drizzle Cake Slice", "summary": "Zesty lemon sponge with a sticky lemon syrup glaze.",
+        "price": 5.99, "compare_price": 7.99, "category": "cakes",
+        "image": "lemon-cake-slice", "stock": 45, "tags": ["lemon","cake","citrus"]
+      },
+      {
+        "name": "Red Velvet Cupcakes (6)", "summary": "Velvety red sponge with cream cheese frosting.",
+        "price": 19.99, "compare_price": 26.99, "category": "cakes",
+        "image": "red-velvet-cupcakes", "stock": 40, "tags": ["red-velvet","cupcakes","cream-cheese"]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBrandWidget",
+        "widget_order": 1,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBrandWidget",
+        "widget_settings": {}
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 2,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Quick Links",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterNavWidget",
+        "widget_order": 3,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
+        "widget_settings": {
+          "title": "Help",
+          "menu_id": "@primary_menu"
+        }
+      },
+      {
+        "widget_location": "footer",
+        "widget_name": "GlobalFooterBadgesWidget",
+        "widget_order": 4,
+        "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
+        "widget_settings": {
+          "title": "Our Promise",
+          "footer_badges": {
+            "badge_icon_":  ["🌾", "🥚", "♻️", "🏠"],
+            "badge_title_": ["Fresh Daily", "Natural Ingredients", "Eco Packaging", "Local Bakery"],
+            "badge_sub_":   ["Baked every morning", "No artificial additives", "100% recyclable", "Supporting our community"]
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "slug": "bakerco-home",
+        "page_builder": true,
+        "breadcrumb": false,
+        "set_as_home": true,
+        "layout_file": "demo/page_builder_layout.json"
+      }
+    ]
+  }
+}

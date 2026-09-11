@@ -1,0 +1,211 @@
+/* ── Form Builder ─────────────────────────────────── */
+
+/* Sortable field list */
+.fb-field-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-height: 60px;
+}
+
+.fb-field-list.main-fields {
+    border: 2px dashed var(--color-border-main);
+    border-radius: 12px;
+    padding: 8px;
+    background: var(--color-bg-secondary);
+    min-height: 120px;
+}
+
+/* Individual field item */
+.fb-field-item {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-main);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.15s ease;
+}
+
+.fb-field-item:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.fb-field-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Field header (clickable) */
+.fb-field-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.fb-field-header .fb-drag-handle {
+    color: var(--color-text-muted);
+    cursor: move;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.fb-field-header .fb-type-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    flex: 1;
+    min-width: 0;
+}
+
+.fb-field-header .fb-placeholder-name {
+    font-weight: 400;
+    color: var(--color-text-muted);
+}
+
+.fb-field-header .fb-remove-btn {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: 1px solid var(--color-danger-bg);
+    background: var(--color-danger-bg);
+    color: var(--color-danger);
+    font-size: 12px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.15s ease;
+}
+
+.fb-field-header .fb-remove-btn:hover {
+    background: var(--color-danger);
+    color: #fff;
+}
+
+.fb-field-header .fb-toggle-icon {
+    color: var(--color-text-muted);
+    font-size: 14px;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.fb-field-item.is-open .fb-toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Field body (expandable) */
+.fb-field-body {
+    display: none;
+    padding: 12px;
+    border-top: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-secondary);
+}
+
+.fb-field-item.is-open .fb-field-body {
+    display: block;
+}
+
+/* Available fields palette */
+.fb-available-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.fb-available-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-main);
+    border-radius: 10px;
+    cursor: grab;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.fb-available-item:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary-bg);
+    color: var(--color-primary);
+}
+
+.fb-available-item:active {
+    cursor: grabbing;
+}
+
+.fb-available-item i {
+    font-size: 16px;
+    color: var(--color-text-muted);
+}
+
+.fb-available-item:hover i {
+    color: var(--color-primary);
+}
+
+/* Sortable placeholder */
+.fb-field-list .sortable-placeholder,
+.fb-field-list .ui-sortable-placeholder {
+    border: 2px dashed var(--color-primary);
+    border-radius: 10px;
+    background: var(--color-primary-bg);
+    margin-bottom: 8px;
+    min-height: 48px;
+    visibility: visible !important;
+}
+
+/* Toggle switch for required field */
+.fb-toggle-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.fb-toggle-switch input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 36px;
+    height: 20px;
+    background: var(--color-border-main);
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    flex-shrink: 0;
+}
+
+.fb-toggle-switch input[type="checkbox"]::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.fb-toggle-switch input[type="checkbox"]:checked {
+    background: var(--color-primary);
+}
+
+.fb-toggle-switch input[type="checkbox"]:checked::after {
+    transform: translateX(16px);
+}
+
+.fb-toggle-switch .fb-toggle-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+}

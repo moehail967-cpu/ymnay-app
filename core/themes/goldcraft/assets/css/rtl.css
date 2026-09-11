@@ -1,0 +1,4 @@
+/* RTL overrides — goldcraft */
+body { direction: rtl; text-align: right; }
+.gc-nav-links { flex-direction: row-reverse; }
+.gc-footer-bottom { flex-direction: row-reverse; }

@@ -1,0 +1,197 @@
+schema_version: 1
+entities:
+- name: Tenant
+  model: core/app/Models/Tenant.php
+  table: tenants
+  owner: central
+  relationships:
+  - belongs to central owner
+  - has domains
+  - owns separate tenant database
+  statuses: null
+  tenant_scoped: false
+  important_files:
+  - core/app/Models/Tenant.php
+  evidence: VERIFIED model declarations; relations are logical, not guaranteed database FKs
+- name: User
+  model: core/app/Models/User.php
+  table: users
+  owner: current central or tenant context
+  relationships:
+  - central owner tenants/payment logs; tenant buyer usage
+  statuses: null
+  tenant_scoped: context-dependent
+  important_files:
+  - core/app/Models/User.php
+  evidence: VERIFIED model declarations; relations are logical, not guaranteed database FKs
+- name: Admin
+  model: core/app/Models/Admin.php
+  table: admins
+  owner: current central or tenant context
+  relationships:
+  - Spatie roles/permissions
+  statuses: null
+  tenant_scoped: context-dependent
+  important_files:
+  - core/app/Models/Admin.php
+  evidence: VERIFIED model declarations; relations are logical, not guaranteed database FKs
+- name: PaymentLogs
+  model: core/app/Models/PaymentLogs.php
+  table: payment_logs
+  owner: explicit CentralConnection
+  relationships:
+  - user
+  - tenant
+  - price plan
+  statuses:
+    payment_status:
+    - pending
+    - complete
+    note: not an exhaustive enum
+  tenant_scoped: false
+  important_files:
+  - core/app/Models/PaymentLogs.php
+  evidence: VERIFIED model declarations; relations are logical, not guaranteed database FKs
+- name: PricePlan
+  model: core/app/Models/PricePlan.php
+  table: price_plans
+  owner: central
+  relationships:
+  - plan entitlement records
+  - subscription payment logs
+  statuses: null
+  tenant_scoped: false
+  important_files:
+  - core/app/Models/PricePlan.php
+  evidence: VERIFIED model declarations; relations are logical, not guaranteed database FKs
+- name: Product
+  model: core/Modules/Product/Entities/Product.php
+  table: products
+  owner: tenant
+  relationships:
+  - inventory
+  - variants
+  - categories
+  - gallery
+  - slug/meta
+  statuses:
+    status: product status ID
+  tenant_scoped: true
+  important_files:
+  - core/Modules/Product/Entities/Product.php
+  evidence: VERIFIED model declarations; relations are logical, not guaranteed database FKs
+- name: ProductOrder
+  model: core/app/Models/ProductOrder.php
+  table: product_orders
+  owner: explicit TenantConnection
+  relationships:
+  - buyer
+  - order lines
+  statuses:
+    payment_status:
+    - pending
+    - success
+    status:
+    - complete
+    - cancel
+    note: selected consumed values, not exhaustive
+  tenant_scoped: true
+  important_files:
+  - core/app/Models/ProductOrder.php
+  evidence: VERIFIED model declarations; relations are logical, not guaranteed database FKs
+- name: OrderProducts
+  model: core/app/Models/OrderProducts.php
+  table: order_products
+  owner: active tenant context
+  relationships:
+  - order
+  - product
+  - variant
+  statuses: null
+  tenant_scoped: true
+  important_files:
+  - core/app/Models/OrderProducts.php
+  evidence: VERIFIED model declarations; relations are logical, not guaranteed database FKs
+- name: Page
+  model: core/app/Models/Page.php
+  table: pages
+  owner: current context
+  relationships:
+  - slug/meta
+  - legacy/new builder content
+  statuses:
+    builder_flags:
+    - page_builder
+    - use_page_builder
+  tenant_scoped: context-dependent
+  important_files:
+  - core/app/Models/Page.php
+  evidence: VERIFIED model declarations; relations are logical, not guaranteed database FKs
+- name: PageBuilder
+  model: core/app/Models/PageBuilder.php
+  table: page_builders
+  owner: current context
+  relationships:
+  - legacy page/addon content
+  statuses: null
+  tenant_scoped: context-dependent
+  important_files:
+  - core/app/Models/PageBuilder.php
+  evidence: VERIFIED model declarations; relations are logical, not guaranteed database FKs
+- name: StaticOption
+  model: core/app/Models/StaticOption.php
+  table: static_options
+  owner: current context
+  relationships:
+  - name/value settings
+  statuses: null
+  tenant_scoped: context-dependent
+  important_files:
+  - core/app/Models/StaticOption.php
+  evidence: VERIFIED model declarations; relations are logical, not guaranteed database FKs
+- name: StaticOptionCentral
+  model: core/app/Models/StaticOptionCentral.php
+  table: static_option_centrals
+  owner: explicit central
+  relationships:
+  - central settings
+  statuses: null
+  tenant_scoped: false
+  important_files:
+  - core/app/Models/StaticOptionCentral.php
+  evidence: VERIFIED model declarations; relations are logical, not guaranteed database FKs
+- name: MediaUploader
+  model: core/app/Models/MediaUploader.php
+  table: media_uploaders
+  owner: current context
+  relationships:
+  - media metadata, disk files separate
+  statuses: null
+  tenant_scoped: context-dependent
+  important_files:
+  - core/app/Models/MediaUploader.php
+  evidence: VERIFIED model declarations; relations are logical, not guaranteed database FKs
+- name: PaymentGateway
+  model: core/app/Models/PaymentGateway.php
+  table: payment_gateways
+  owner: tenant usage
+  relationships:
+  - tenant gateway configuration
+  statuses: null
+  tenant_scoped: true
+  important_files:
+  - core/app/Models/PaymentGateway.php
+  evidence: VERIFIED model declarations; relations are logical, not guaranteed database FKs
+- name: Language
+  model: core/app/Models/Language.php
+  table: languages
+  owner: current context
+  relationships:
+  - language settings/catalog selection
+  statuses: null
+  tenant_scoped: context-dependent
+  important_files:
+  - core/app/Models/Language.php
+  evidence: VERIFIED model declarations; relations are logical, not guaranteed database FKs
+schema_source: core/database/migrations plus module migration paths in core/config/tenancy.php
+live_schema_parity: null

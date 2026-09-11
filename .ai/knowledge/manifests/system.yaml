@@ -1,0 +1,93 @@
+schema_version: 1
+evidence_baseline: 60ba2c68e09ed367026ac62c55a666a72fba900d
+system_name: Ymnay
+system_type: Multi-tenant ecommerce SaaS
+evidence: VERIFIED source declarations, except explicit provenance fields
+framework:
+  name: Laravel
+  version: 12.61.0
+  source: core/composer.lock
+php:
+  constraint: ^8.3
+  source: core/composer.json
+  server_version: 8.4.24
+  server_evidence: OWNER-CONFIRMED
+database:
+  configured_default: mysql
+  source: core/config/database.php
+  server_version: MySQL 8.4.10-10
+  server_evidence: OWNER-CONFIRMED
+database_engine:
+  value: InnoDB
+  evidence: OWNER-CONFIRMED
+architecture:
+  laravel_root: core
+  document_entry: index.php
+  backend: Controllers/services/actions/traits/Eloquent; existing Kernel/provider skeleton
+  frontend: Blade + Bootstrap/jQuery; selected Vue 3 and Tailwind 4 via Vite
+tenancy_strategy: database-per-tenant with central database
+tenancy_sources:
+- core/config/tenancy.php
+- core/app/Providers/TenancyServiceProvider.php
+- core/app/Models/Tenant.php
+main_actors:
+- central account owner
+- central admin
+- tenant admin/store owner
+- tenant storefront customer
+- public visitor
+main_modules:
+- AbandonedCart
+- Affiliate
+- AiIntegration
+- Attributes
+- Badge
+- Blog
+- Campaign
+- CartDiscount
+- CloudStorage
+- CommissionManage
+- CountryManage
+- CouponManage
+- CpanelAutomation
+- DigitalProduct
+- DomainReseller
+- FeedSync
+- FomoNotifications
+- GdprExport
+- Integrations
+- Inventory
+- LoyaltyPoints
+- MobileApp
+- MultiCurrency
+- MultiLingual
+- NewsLetter
+- PluginManage
+- Pos
+- Product
+- ProductBadges
+- ProductBundles
+- ProductQA
+- RefundModule
+- SalesReport
+- Service
+- ShippingModule
+- ShippingPlugin
+- SiteAnalytics
+- SiteWayPaymentGateway
+- SmsGateway
+- SupportTicket
+- TaxModule
+- ThemeManage
+- TierPricing
+- TrackingPixel
+- Wallet
+- WebHook
+- WooCommerce
+effective_runtime:
+  cache: null
+  session: null
+  queue: null
+  active_integrations: null
+  host_cron: null
+known_unknowns: ../UNKNOWNS.md

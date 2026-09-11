@@ -1,0 +1,2067 @@
+schema_version: 1
+baseline: 60ba2c68e09ed367026ac62c55a666a72fba900d
+inventory_scope: 47 core/Modules directories; separate core plugin engines documented in MODULES.md
+evidence: VERIFIED static paths/imports/literal schema; purpose/risk INFERRED; no active-runtime certification
+modules:
+- id: abandoned-cart
+  name: AbandonedCart
+  purpose: Capture and recover abandoned carts
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/AbandonedCart
+  registration:
+  - core/Modules/AbandonedCart/plugin.json
+  routes:
+  - core/Modules/AbandonedCart/src/AbandonedCartPlugin.php
+  controllers:
+  - core/Modules/AbandonedCart/Http/Controllers/Admin/AbandonedCartController.php
+  models: []
+  tables:
+  - abandoned_carts
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/AbandonedCart/database/migrations/2026_04_30_100001_create_abandoned_carts_table.php
+  services: []
+  frontend:
+  - core/Modules/AbandonedCart/resources/views
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: affiliate
+  name: Affiliate
+  purpose: Affiliate enrollment, commissions and payouts
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/Affiliate
+  registration:
+  - core/Modules/Affiliate/plugin.json
+  routes:
+  - core/Modules/Affiliate/src/AffiliatePlugin.php
+  controllers:
+  - core/Modules/Affiliate/Http/Controllers/AffiliateAdminController.php
+  - core/Modules/Affiliate/Http/Controllers/AffiliateFrontendController.php
+  models: []
+  tables:
+  - affiliate_commissions
+  - affiliate_payouts
+  - affiliates
+  - users
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/Affiliate/database/migrations/2026_04_30_300001_create_affiliate_tables.php
+  - core/Modules/Affiliate/database/migrations/2026_05_11_000001_add_referred_by_affiliate_to_users.php
+  services: []
+  frontend:
+  - core/Modules/Affiliate/resources/views
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: ai-integration
+  name: AiIntegration
+  purpose: Provider-backed product/blog/page content generation
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/AiIntegration
+  registration:
+  - core/Modules/AiIntegration/plugin.json
+  routes:
+  - core/Modules/AiIntegration/src/AiIntegrationPlugin.php
+  controllers:
+  - core/Modules/AiIntegration/Http/Controllers/AiIntegrationController.php
+  models: []
+  tables: []
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources: []
+  services:
+  - core/Modules/AiIntegration/Services/AiService.php
+  frontend:
+  - core/Modules/AiIntegration/resources/views
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: attributes
+  name: Attributes
+  purpose: Catalog categories, brands, tags and attributes
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/Attributes
+  registration:
+  - core/Modules/Attributes/module.json
+  routes:
+  - core/Modules/Attributes/Routes/api.php
+  - core/Modules/Attributes/Routes/web.php
+  controllers:
+  - core/Modules/Attributes/Http/Controllers/AttributesController.php
+  - core/Modules/Attributes/Http/Controllers/BrandController.php
+  - core/Modules/Attributes/Http/Controllers/CategoryController.php
+  - core/Modules/Attributes/Http/Controllers/ChildCategoryController.php
+  - core/Modules/Attributes/Http/Controllers/ColorController.php
+  - core/Modules/Attributes/Http/Controllers/DeliveryOptionController.php
+  - core/Modules/Attributes/Http/Controllers/SizeController.php
+  - core/Modules/Attributes/Http/Controllers/SubCategoryController.php
+  - core/Modules/Attributes/Http/Controllers/TagController.php
+  - core/Modules/Attributes/Http/Controllers/UnitController.php
+  models:
+  - core/Modules/Attributes/Entities/Brand.php
+  - core/Modules/Attributes/Entities/Category.php
+  - core/Modules/Attributes/Entities/ChildCategory.php
+  - core/Modules/Attributes/Entities/Color.php
+  - core/Modules/Attributes/Entities/DeliveryOption.php
+  - core/Modules/Attributes/Entities/ProductAttribute.php
+  - core/Modules/Attributes/Entities/Size.php
+  - core/Modules/Attributes/Entities/SubCategory.php
+  - core/Modules/Attributes/Entities/Tag.php
+  - core/Modules/Attributes/Entities/Unit.php
+  tables:
+  - categories
+  - product_child_categories
+  - product_sub_categories
+  - product_tags
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/Attributes/Database/Migrations/2023_04_03_160409_add_type_column_to_product_tags_table.php
+  - core/Modules/Attributes/Database/Migrations/2023_07_10_111355_change_child_category_id_column_to_product_child_categories_table.php
+  - core/Modules/Attributes/Database/Migrations/2023_07_10_111355_change_sub_category_id_column_to_product_sub_categories_table.php
+  - core/Modules/Attributes/Entities/Category.php
+  services: []
+  frontend:
+  - core/Modules/Attributes/resources/views
+  - core/Modules/Attributes/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/Attributes/Http/Controllers/CategoryController.php
+    - core/Modules/Attributes/Http/Controllers/ChildCategoryController.php
+    - core/Modules/Attributes/Http/Controllers/ColorController.php
+    - core/Modules/Attributes/Http/Controllers/SizeController.php
+    - core/Modules/Attributes/Http/Controllers/SubCategoryController.php
+    - core/Modules/Attributes/Http/Controllers/TagController.php
+    - core/Modules/Attributes/Http/Controllers/UnitController.php
+    - core/Modules/Attributes/Http/Requests/BrandStoreRequest.php
+    - core/Modules/Attributes/Http/Requests/ChildCategoryStoreRequest.php
+    - core/Modules/Attributes/Http/Requests/ChildCategoryUpdateRequest.php
+    - core/Modules/Attributes/Http/Requests/StoreCategoryRequest.php
+    - core/Modules/Attributes/Http/Requests/StoreSubCategoryRequest.php
+    - core/Modules/Attributes/Http/Requests/UpdateBrandRequest.php
+    - core/Modules/Attributes/Http/Requests/UpdateCategoryRequest.php
+    - core/Modules/Attributes/Http/Requests/UpdateSubCategoryRequest.php
+    - core/Modules/Attributes/Http/Requests/UpdateTagRequest.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Product
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: badge
+  name: Badge
+  purpose: Catalog badge management
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/Badge
+  registration:
+  - core/Modules/Badge/module.json
+  routes:
+  - core/Modules/Badge/Routes/api.php
+  - core/Modules/Badge/Routes/web.php
+  controllers:
+  - core/Modules/Badge/Http/Controllers/BadgeController.php
+  models:
+  - core/Modules/Badge/Entities/Badge.php
+  tables:
+  - badges
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/Badge/Entities/Badge.php
+  services: []
+  frontend:
+  - core/Modules/Badge/resources/views
+  - core/Modules/Badge/resources/assets
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: blog
+  name: Blog
+  purpose: Blog posts and categories
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/Blog
+  registration:
+  - core/Modules/Blog/module.json
+  routes:
+  - core/Modules/Blog/Routes/api.php
+  - core/Modules/Blog/Routes/landlord.php
+  - core/Modules/Blog/Routes/web.php
+  controllers:
+  - core/Modules/Blog/Http/Controllers/Landlord/Admin/BlogCategoryController.php
+  - core/Modules/Blog/Http/Controllers/Landlord/Admin/BlogController.php
+  - core/Modules/Blog/Http/Controllers/Landlord/Admin/BlogTagController.php
+  - core/Modules/Blog/Http/Controllers/Landlord/Frontend/BlogController.php
+  - core/Modules/Blog/Http/Controllers/Landlord/Frontend/NewBlogController.php
+  - core/Modules/Blog/Http/Controllers/Tenant/Frontend/BlogController.php
+  models:
+  - core/Modules/Blog/Entities/Blog.php
+  - core/Modules/Blog/Entities/BlogCategory.php
+  - core/Modules/Blog/Entities/BlogComment.php
+  - core/Modules/Blog/Entities/BlogTag.php
+  tables:
+  - blog_categories
+  - blog_comments
+  - blog_tags
+  - blogs
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/Blog/Database/Migrations/2022_03_12_081230_create_blogs_table.php
+  - core/Modules/Blog/Database/Migrations/2022_03_12_081651_create_blog_categories_table.php
+  - core/Modules/Blog/Database/Migrations/2022_03_20_054850_create_blog_comments.php
+  - core/Modules/Blog/Entities/Blog.php
+  - core/Modules/Blog/Entities/BlogCategory.php
+  - core/Modules/Blog/Entities/BlogComment.php
+  - core/Modules/Blog/Entities/BlogTag.php
+  services: []
+  frontend:
+  - core/Modules/Blog/resources/views
+  - core/Modules/Blog/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/Blog/Http/Controllers/Landlord/Admin/BlogCategoryController.php
+    - core/Modules/Blog/Http/Controllers/Landlord/Admin/BlogController.php
+    - core/Modules/Blog/Http/Controllers/Landlord/Admin/BlogTagController.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: campaign
+  name: Campaign
+  purpose: Campaign pricing and product associations
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/Campaign
+  registration:
+  - core/Modules/Campaign/module.json
+  routes:
+  - core/Modules/Campaign/Routes/api.php
+  - core/Modules/Campaign/Routes/web.php
+  controllers:
+  - core/Modules/Campaign/Http/Controllers/CampaignController.php
+  - core/Modules/Campaign/Http/Controllers/FrontendCampaignController.php
+  models:
+  - core/Modules/Campaign/Entities/Campaign.php
+  - core/Modules/Campaign/Entities/CampaignProduct.php
+  - core/Modules/Campaign/Entities/CampaignSoldProduct.php
+  tables:
+  - campaign_products
+  - campaign_sold_products
+  - campaigns
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/Campaign/Database/Migrations/2021_09_30_062810_create_campaigns_table.php
+  - core/Modules/Campaign/Database/Migrations/2021_09_30_063002_create_campaign_products_table.php
+  - core/Modules/Campaign/Database/Migrations/2021_09_30_063022_create_campaign_sold_products_table.php
+  - core/Modules/Campaign/Database/Migrations/2022_08_29_052956_add_column_to_campaigns_table.php
+  - core/Modules/Campaign/Database/Migrations/2023_08_27_173602_add_campaign_id_column_to_campaign_sold_products_table.php
+  - core/Modules/Campaign/Database/Migrations/2026_05_10_000002_move_sold_count_to_campaign_products.php
+  - core/Modules/Campaign/Database/Migrations/2026_05_10_000003_add_discount_fields_to_campaigns.php
+  services: []
+  frontend:
+  - core/Modules/Campaign/resources/views
+  - core/Modules/Campaign/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/Campaign/Http/Controllers/CampaignController.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Product
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: cart-discount
+  name: CartDiscount
+  purpose: Cart-level discount rules
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/CartDiscount
+  registration:
+  - core/Modules/CartDiscount/plugin.json
+  routes:
+  - core/Modules/CartDiscount/src/CartDiscountPlugin.php
+  controllers:
+  - core/Modules/CartDiscount/Http/Controllers/CartDiscountApiController.php
+  - core/Modules/CartDiscount/Http/Controllers/CartDiscountController.php
+  models: []
+  tables: []
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources: []
+  services: []
+  frontend:
+  - core/Modules/CartDiscount/resources/views
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: cloud-storage
+  name: CloudStorage
+  purpose: Configure remote media disks
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/CloudStorage
+  registration:
+  - core/Modules/CloudStorage/module.json
+  - core/Modules/CloudStorage/plugin.json
+  routes:
+  - core/Modules/CloudStorage/Routes/api.php
+  - core/Modules/CloudStorage/Routes/web.php
+  - core/Modules/CloudStorage/src/CloudStoragePlugin.php
+  controllers:
+  - core/Modules/CloudStorage/Http/Controllers/CloudStorageController.php
+  models: []
+  tables: []
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources: []
+  services: []
+  frontend:
+  - core/Modules/CloudStorage/resources/views
+  - core/Modules/CloudStorage/resources/assets
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: commission-manage
+  name: CommissionManage
+  purpose: Order commissions and settlement
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/CommissionManage
+  registration:
+  - core/Modules/CommissionManage/module.json
+  - core/Modules/CommissionManage/plugin.json
+  routes:
+  - core/Modules/CommissionManage/Routes/api.php
+  - core/Modules/CommissionManage/Routes/web.php
+  - core/Modules/CommissionManage/src/CommissionManagePlugin.php
+  controllers:
+  - core/Modules/CommissionManage/Http/Controllers/BuyerCommissionPaymentController.php
+  - core/Modules/CommissionManage/Http/Controllers/CommissionManageController.php
+  - core/Modules/CommissionManage/Http/Controllers/CommissionPaymentLogController.php
+  - core/Modules/CommissionManage/Http/Controllers/TenantCommissionController.php
+  - core/Modules/CommissionManage/Http/Controllers/WithdrawGatewayController.php
+  models:
+  - core/Modules/CommissionManage/Entities/CommissionHistory.php
+  - core/Modules/CommissionManage/Entities/CommissionPaymentLog.php
+  - core/Modules/CommissionManage/Entities/CommissionSelectedGateway.php
+  - core/Modules/CommissionManage/Entities/CommissionSetting.php
+  - core/Modules/CommissionManage/Entities/TenantWithdrawRequest.php
+  - core/Modules/CommissionManage/Entities/WithdrawGateway.php
+  tables:
+  - commission_histories
+  - commission_payment_logs
+  - commission_selected_gateways
+  - commission_settings
+  - tenant_withdraw_requests
+  - withdraw_gateways
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/CommissionManage/Database/Migrations/2025_10_26_112313_create_commission_settings_table.php
+  - core/Modules/CommissionManage/Database/Migrations/2025_10_27_105706_create_commission_histories_table.php
+  - core/Modules/CommissionManage/Database/Migrations/2025_11_06_123039_create_tenant_withdraw_requests_table.php
+  - core/Modules/CommissionManage/Database/Migrations/2025_11_09_142409_create_commission_selected_gateways.php
+  - core/Modules/CommissionManage/Database/Migrations/2025_11_12_171111_create_commission_payment_logs_table.php
+  - core/Modules/CommissionManage/Database/Migrations/2025_11_18_103959_create_withdraw_gateways_table.php
+  services:
+  - core/Modules/CommissionManage/Http/Services/CommissionCalculatorService.php
+  frontend:
+  - core/Modules/CommissionManage/resources/views
+  - core/Modules/CommissionManage/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/CommissionManage/Http/Requests/CommissionSettingRequest.php
+    effective_matrix: null
+  jobs: []
+  events:
+  - core/Modules/CommissionManage/Events/OrderCompleted.php
+  - core/Modules/CommissionManage/Listeners/CreateCommissionRecord.php
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Wallet
+  risk_level: high
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: country-manage
+  name: CountryManage
+  purpose: Country/state/city reference data
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/CountryManage
+  registration:
+  - core/Modules/CountryManage/module.json
+  routes:
+  - core/Modules/CountryManage/Routes/api.php
+  - core/Modules/CountryManage/Routes/web.php
+  controllers:
+  - core/Modules/CountryManage/Http/Controllers/Tenant/Admin/AdminUserController.php
+  - core/Modules/CountryManage/Http/Controllers/Tenant/Admin/CityController.php
+  - core/Modules/CountryManage/Http/Controllers/Tenant/Admin/CountryManageController.php
+  - core/Modules/CountryManage/Http/Controllers/Tenant/Admin/ImportController.php
+  - core/Modules/CountryManage/Http/Controllers/Tenant/Admin/StateController.php
+  models:
+  - core/Modules/CountryManage/Entities/City.php
+  - core/Modules/CountryManage/Entities/Country.php
+  - core/Modules/CountryManage/Entities/State.php
+  tables: []
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources: []
+  services: []
+  frontend:
+  - core/Modules/CountryManage/resources/views
+  - core/Modules/CountryManage/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/CountryManage/Http/Controllers/Tenant/Admin/CityController.php
+    - core/Modules/CountryManage/Http/Controllers/Tenant/Admin/CountryManageController.php
+    - core/Modules/CountryManage/Http/Controllers/Tenant/Admin/StateController.php
+    - core/Modules/CountryManage/Http/Requests/StoreCountryManageRequest.php
+    - core/Modules/CountryManage/Http/Requests/StoreStateRequest.php
+    - core/Modules/CountryManage/Http/Requests/UpdateCountryManageRequest.php
+    - core/Modules/CountryManage/Http/Requests/UpdateStateRequest.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - ShippingModule
+    - TaxModule
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: coupon-manage
+  name: CouponManage
+  purpose: Product coupons and usage
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/CouponManage
+  registration:
+  - core/Modules/CouponManage/module.json
+  routes:
+  - core/Modules/CouponManage/Routes/api.php
+  - core/Modules/CouponManage/Routes/web.php
+  controllers:
+  - core/Modules/CouponManage/Http/Controllers/AdminCouponController.php
+  - core/Modules/CouponManage/Http/Controllers/CouponController.php
+  models:
+  - core/Modules/CouponManage/Entities/CouponUsage.php
+  - core/Modules/CouponManage/Entities/ProductCoupon.php
+  tables:
+  - coupon_usages
+  - product_coupons
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/CouponManage/Database/Migrations/2021_10_22_045634_create_product_coupons_table.php
+  - core/Modules/CouponManage/Database/Migrations/2025_07_22_154931_add_columns_to_product_coupons.php
+  - core/Modules/CouponManage/Database/Migrations/2025_07_23_140341_create_coupon_usages_table.php
+  services: []
+  frontend:
+  - core/Modules/CouponManage/resources/views
+  - core/Modules/CouponManage/resources/assets
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Attributes
+    - Product
+  risk_level: high
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: cpanel-automation
+  name: CpanelAutomation
+  purpose: Control-panel provisioning integration
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/CpanelAutomation
+  registration:
+  - core/Modules/CpanelAutomation/module.json
+  - core/Modules/CpanelAutomation/plugin.json
+  routes:
+  - core/Modules/CpanelAutomation/Routes/api.php
+  - core/Modules/CpanelAutomation/Routes/web.php
+  - core/Modules/CpanelAutomation/src/CpanelAutomationPlugin.php
+  controllers:
+  - core/Modules/CpanelAutomation/Http/Controllers/Admin/LandlordSettingsController.php
+  - core/Modules/CpanelAutomation/Http/Controllers/CpanelAutomationController.php
+  models: []
+  tables: []
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources: []
+  services:
+  - core/Modules/CpanelAutomation/Http/Services/CpanelHelper.php
+  frontend:
+  - core/Modules/CpanelAutomation/resources/views
+  - core/Modules/CpanelAutomation/resources/assets
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: high
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: digital-product
+  name: DigitalProduct
+  purpose: Digital catalog/download purchase functions
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/DigitalProduct
+  registration:
+  - core/Modules/DigitalProduct/module.json
+  routes:
+  - core/Modules/DigitalProduct/Routes/api.php
+  - core/Modules/DigitalProduct/Routes/web.php
+  controllers:
+  - core/Modules/DigitalProduct/Http/Controllers/CategoryBasedSubChildCategoryController.php
+  - core/Modules/DigitalProduct/Http/Controllers/DigitalAuthorController.php
+  - core/Modules/DigitalProduct/Http/Controllers/DigitalLanguageController.php
+  - core/Modules/DigitalProduct/Http/Controllers/DigitalProductCategoryController.php
+  - core/Modules/DigitalProduct/Http/Controllers/DigitalProductChildCategoryController.php
+  - core/Modules/DigitalProduct/Http/Controllers/DigitalProductController.php
+  - core/Modules/DigitalProduct/Http/Controllers/DigitalProductSubCategoryController.php
+  - core/Modules/DigitalProduct/Http/Controllers/DigitalProductTypeController.php
+  - core/Modules/DigitalProduct/Http/Controllers/DigitalTaxController.php
+  models:
+  - core/Modules/DigitalProduct/Entities/AdditionalCustomField.php
+  - core/Modules/DigitalProduct/Entities/AdditionalField.php
+  - core/Modules/DigitalProduct/Entities/DigitalAuthor.php
+  - core/Modules/DigitalProduct/Entities/DigitalCategories.php
+  - core/Modules/DigitalProduct/Entities/DigitalChildCategories.php
+  - core/Modules/DigitalProduct/Entities/DigitalLanguage.php
+  - core/Modules/DigitalProduct/Entities/DigitalProduct.php
+  - core/Modules/DigitalProduct/Entities/DigitalProductCategories.php
+  - core/Modules/DigitalProduct/Entities/DigitalProductChildCategories.php
+  - core/Modules/DigitalProduct/Entities/DigitalProductDownload.php
+  - core/Modules/DigitalProduct/Entities/DigitalProductGallery.php
+  - core/Modules/DigitalProduct/Entities/DigitalProductLanguage.php
+  - core/Modules/DigitalProduct/Entities/DigitalProductRefundPolicies.php
+  - core/Modules/DigitalProduct/Entities/DigitalProductReviews.php
+  - core/Modules/DigitalProduct/Entities/DigitalProductSubCategories.php
+  - core/Modules/DigitalProduct/Entities/DigitalProductTags.php
+  - core/Modules/DigitalProduct/Entities/DigitalProductType.php
+  - core/Modules/DigitalProduct/Entities/DigitalSubCategories.php
+  - core/Modules/DigitalProduct/Entities/DigitalTax.php
+  tables:
+  - additional_custom_fields
+  - additional_fields
+  - digital_authors
+  - digital_categories
+  - digital_child_categories
+  - digital_languages
+  - digital_product_categories
+  - digital_product_child_categories
+  - digital_product_downloads
+  - digital_product_galleries
+  - digital_product_languages
+  - digital_product_refund_policies
+  - digital_product_reviews
+  - digital_product_sub_categories
+  - digital_product_tags
+  - digital_product_taxes
+  - digital_product_types
+  - digital_products
+  - digital_sub_categories
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/DigitalProduct/Database/Migrations/2023_03_23_101223_create_digital_product_types_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_03_23_113223_create_digital_categories_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_03_23_113230_create_digital_sub_categories_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_03_23_113236_create_digital_child_categories_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_04_103100_create_digital_product_taxes_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_04_103101_create_digital_products_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_04_103159_create_digital_product_additional_fields_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_04_103201_create_digital_product_additional_custom_fields_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_04_103202_create_digital_product_downloads_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_04_103203_create_digital_product_child_categories_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_04_103206_create_digital_product_sub_categories_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_04_103207_create_digital_product_categories_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_04_115313_create_digital_authors_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_09_161554_create_digital_product_tags_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_10_113450_create_digital_product_refund_policies_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_10_174335_add_status_column_to_digital_products_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_11_123551_create_digital_product_galleries_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_12_010953_add_soft_delete_column_to_digital_products_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_12_131007_add_product_type_column_to_digital_products_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_17_020429_create_digital_languages_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_17_021123_create_digital_product_languages_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_17_023708_modify_language_column_to_additional_fields_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_17_151739_create_digital_product_reviews_table.php
+  - core/Modules/DigitalProduct/Database/Migrations/2023_04_18_161847_add_user_id_column_to_digital_product_downloads_table.php
+  - core/Modules/DigitalProduct/Entities/DigitalAuthor.php
+  - core/Modules/DigitalProduct/Entities/DigitalCategories.php
+  - core/Modules/DigitalProduct/Entities/DigitalProduct.php
+  - core/Modules/DigitalProduct/Entities/DigitalProductCategories.php
+  - core/Modules/DigitalProduct/Entities/DigitalProductChildCategories.php
+  - core/Modules/DigitalProduct/Entities/DigitalProductRefundPolicies.php
+  - core/Modules/DigitalProduct/Entities/DigitalProductSubCategories.php
+  - core/Modules/DigitalProduct/Entities/DigitalProductType.php
+  - core/Modules/DigitalProduct/Entities/DigitalSubCategories.php
+  - core/Modules/DigitalProduct/Entities/DigitalTax.php
+  services:
+  - core/Modules/DigitalProduct/Http/Services/Admin/AdminDigitalProductServices.php
+  - core/Modules/DigitalProduct/Http/Services/DigitalType.php
+  - core/Modules/DigitalProduct/Http/Traits/DigitalProductGlobalTrait.php
+  - core/Modules/DigitalProduct/Http/Traits/ProductSearchTrait.php
+  frontend:
+  - core/Modules/DigitalProduct/resources/views
+  - core/Modules/DigitalProduct/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/DigitalProduct/Http/Requests/DigitalProductRequest.php
+    - core/Modules/DigitalProduct/Http/Requests/DigitalProductUpdateRequest.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Attributes
+    - Badge
+    - Product
+  risk_level: high
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: domain-reseller
+  name: DomainReseller
+  purpose: Domain availability and purchase integration
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/DomainReseller
+  registration:
+  - core/Modules/DomainReseller/module.json
+  - core/Modules/DomainReseller/plugin.json
+  routes:
+  - core/Modules/DomainReseller/Routes/api.php
+  - core/Modules/DomainReseller/Routes/web.php
+  - core/Modules/DomainReseller/src/DomainResellerPlugin.php
+  controllers:
+  - core/Modules/DomainReseller/Http/Controllers/DomainResellerController.php
+  - core/Modules/DomainReseller/Http/Controllers/PaymentLogController.php
+  models:
+  - core/Modules/DomainReseller/Entities/DomainPaymentLog.php
+  tables:
+  - domain_payment_logs
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/DomainReseller/Database/Migrations/2024_01_21_212237_create_domain_payment_logs_table.php
+  - core/Modules/DomainReseller/Entities/DomainPaymentLog.php
+  services:
+  - core/Modules/DomainReseller/Http/Services/DomainService.php
+  - core/Modules/DomainReseller/Http/Services/Providers/GoDaddy.php
+  frontend:
+  - core/Modules/DomainReseller/resources/views
+  - core/Modules/DomainReseller/resources/assets
+  - core/Modules/DomainReseller/assets
+  permissions:
+    check_sources:
+    - core/Modules/DomainReseller/Http/Requests/CheckoutRequest.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: high
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: feed-sync
+  name: FeedSync
+  purpose: Generate product catalog feeds
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/FeedSync
+  registration:
+  - core/Modules/FeedSync/plugin.json
+  routes:
+  - core/Modules/FeedSync/src/FeedSyncPlugin.php
+  controllers:
+  - core/Modules/FeedSync/Http/Controllers/FeedController.php
+  models:
+  - core/Modules/FeedSync/Models/FeedSyncCache.php
+  tables:
+  - feed_sync_cache
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/FeedSync/Models/FeedSyncCache.php
+  - core/Modules/FeedSync/database/migrations/2026_05_10_000001_create_feed_sync_cache_table.php
+  services:
+  - core/Modules/FeedSync/Services/FacebookFeedGenerator.php
+  - core/Modules/FeedSync/Services/GoogleFeedGenerator.php
+  frontend:
+  - core/Modules/FeedSync/resources/views
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs:
+  - core/Modules/FeedSync/Jobs/RegenerateFeedJob.php
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Product
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: fomo-notifications
+  name: FomoNotifications
+  purpose: Storefront sales/social-proof notifications
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/FomoNotifications
+  registration:
+  - core/Modules/FomoNotifications/plugin.json
+  routes:
+  - core/Modules/FomoNotifications/src/FomoNotificationsPlugin.php
+  controllers:
+  - core/Modules/FomoNotifications/Http/Controllers/FomoApiController.php
+  - core/Modules/FomoNotifications/Http/Controllers/FomoController.php
+  models:
+  - core/Modules/FomoNotifications/Models/FomoSyntheticEntry.php
+  tables:
+  - fomo_synthetic_entries
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/FomoNotifications/Models/FomoSyntheticEntry.php
+  - core/Modules/FomoNotifications/database/migrations/2026_05_10_000001_create_fomo_synthetic_entries_table.php
+  services: []
+  frontend:
+  - core/Modules/FomoNotifications/resources/views
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: gdpr-export
+  name: GdprExport
+  purpose: Data export request handling
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/GdprExport
+  registration:
+  - core/Modules/GdprExport/plugin.json
+  routes:
+  - core/Modules/GdprExport/src/GdprExportPlugin.php
+  controllers:
+  - core/Modules/GdprExport/Http/Controllers/GdprAdminController.php
+  - core/Modules/GdprExport/Http/Controllers/GdprFrontendController.php
+  models: []
+  tables:
+  - gdpr_export_requests
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/GdprExport/database/migrations/2026_04_30_200001_create_gdpr_export_requests_table.php
+  services: []
+  frontend:
+  - core/Modules/GdprExport/resources/views
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: integrations
+  name: Integrations
+  purpose: Integration settings interface
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/Integrations
+  registration:
+  - core/Modules/Integrations/module.json
+  - core/Modules/Integrations/plugin.json
+  routes:
+  - core/Modules/Integrations/Routes/api.php
+  - core/Modules/Integrations/Routes/web.php
+  - core/Modules/Integrations/src/IntegrationsPlugin.php
+  controllers:
+  - core/Modules/Integrations/Http/Controllers/IntegrationsController.php
+  models: []
+  tables: []
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources: []
+  services: []
+  frontend:
+  - core/Modules/Integrations/resources/views
+  - core/Modules/Integrations/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/Integrations/Http/Controllers/IntegrationsController.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - PluginManage
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: inventory
+  name: Inventory
+  purpose: Stock administration
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/Inventory
+  registration:
+  - core/Modules/Inventory/module.json
+  routes:
+  - core/Modules/Inventory/Routes/api.php
+  - core/Modules/Inventory/Routes/web.php
+  controllers:
+  - core/Modules/Inventory/Http/Controllers/InventoryController.php
+  models: []
+  tables: []
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources: []
+  services:
+  - core/Modules/Inventory/Http/Services/Backend/InventoryServices.php
+  frontend:
+  - core/Modules/Inventory/resources/views
+  - core/Modules/Inventory/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/Inventory/Http/Controllers/InventoryController.php
+    - core/Modules/Inventory/Http/Requests/UpdateInventoryRequest.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Attributes
+    - Badge
+    - Product
+  risk_level: high
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: loyalty-points
+  name: LoyaltyPoints
+  purpose: Customer loyalty ledger
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/LoyaltyPoints
+  registration:
+  - core/Modules/LoyaltyPoints/plugin.json
+  routes:
+  - core/Modules/LoyaltyPoints/src/LoyaltyPointsPlugin.php
+  controllers:
+  - core/Modules/LoyaltyPoints/Http/Controllers/Admin/LoyaltyController.php
+  - core/Modules/LoyaltyPoints/Http/Controllers/Api/LoyaltyApiController.php
+  - core/Modules/LoyaltyPoints/Http/Controllers/LoyaltyFrontendController.php
+  models:
+  - core/Modules/LoyaltyPoints/Models/LoyaltyTransaction.php
+  tables:
+  - loyalty_transactions
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/LoyaltyPoints/Models/LoyaltyTransaction.php
+  - core/Modules/LoyaltyPoints/database/migrations/2026_05_10_200001_create_loyalty_transactions_table.php
+  - core/Modules/LoyaltyPoints/database/migrations/2026_05_12_000001_fix_loyalty_transactions_tenant_id.php
+  services: []
+  frontend:
+  - core/Modules/LoyaltyPoints/resources/views
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: mobile-app
+  name: MobileApp
+  purpose: Central and tenant mobile/API handlers
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/MobileApp
+  registration:
+  - core/Modules/MobileApp/module.json
+  routes:
+  - core/Modules/MobileApp/Routes/api.php
+  - core/Modules/MobileApp/Routes/web.php
+  controllers:
+  - core/Modules/MobileApp/Http/Controllers/AdminMobileController.php
+  - core/Modules/MobileApp/Http/Controllers/Api/V1/CategoryController.php
+  - core/Modules/MobileApp/Http/Controllers/Api/V1/ChildCategoryController.php
+  - core/Modules/MobileApp/Http/Controllers/Api/V1/CountryController.php
+  - core/Modules/MobileApp/Http/Controllers/Api/V1/LanguageController.php
+  - core/Modules/MobileApp/Http/Controllers/Api/V1/MobileSliderController.php
+  - core/Modules/MobileApp/Http/Controllers/Api/V1/SiteSettingsController.php
+  - core/Modules/MobileApp/Http/Controllers/Api/V1/SubCategoryController.php
+  - core/Modules/MobileApp/Http/Controllers/Api/V1/UserController.php
+  - core/Modules/MobileApp/Http/Controllers/CampaignController.php
+  - core/Modules/MobileApp/Http/Controllers/FeaturedProductController.php
+  - core/Modules/MobileApp/Http/Controllers/MobileCampaignController.php
+  - core/Modules/MobileApp/Http/Controllers/MobileController.php
+  - core/Modules/MobileApp/Http/Controllers/MobileFeaturedProductController.php
+  - core/Modules/MobileApp/Http/Controllers/MobileIntroApiController.php
+  - core/Modules/MobileApp/Http/Controllers/MobileIntrosController.php
+  - core/Modules/MobileApp/Http/Controllers/MobileSliderController.php
+  - core/Modules/MobileApp/Http/Controllers/ProductController.php
+  models:
+  - core/Modules/MobileApp/Entities/MobileCampaign.php
+  - core/Modules/MobileApp/Entities/MobileFeaturedProduct.php
+  - core/Modules/MobileApp/Entities/MobileIntro.php
+  - core/Modules/MobileApp/Entities/MobileSlider.php
+  tables:
+  - mobile_campaigns
+  - mobile_featured_products
+  - mobile_intros
+  - mobile_sliders
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/MobileApp/Database/Migrations/2023_01_23_165036_create_mobile_intros_table.php
+  - core/Modules/MobileApp/Database/Migrations/2023_02_23_112920_create_mobile_sliders_table.php
+  - core/Modules/MobileApp/Database/Migrations/2023_02_30_122734_create_mobile_campaigns_table.php
+  - core/Modules/MobileApp/Database/Migrations/2023_02_30_122802_create_mobile_featured_products_table.php
+  services:
+  - core/Modules/MobileApp/Http/Services/Api/ApiProductServices.php
+  - core/Modules/MobileApp/Http/Services/Api/MobileCheckoutServices.php
+  - core/Modules/MobileApp/Http/Services/Api/MobileFeaturedProductService.php
+  - core/Modules/MobileApp/Http/Services/Api/ProductServices.php
+  - core/Modules/MobileApp/Http/Services/Api/UserServices.php
+  frontend:
+  - core/Modules/MobileApp/resources/views
+  - core/Modules/MobileApp/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/MobileApp/Http/Requests/Api/MobileCheckoutFormRequest.php
+    - core/Modules/MobileApp/Http/Requests/MobileSlider/StoreMobileSliderRequest.php
+    - core/Modules/MobileApp/Http/Requests/StoreMobileFeaturedProductRequest.php
+    - core/Modules/MobileApp/Http/Requests/StoreMobileIntroRequest.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Attributes
+    - Campaign
+    - CountryManage
+    - CouponManage
+    - Product
+    - RefundModule
+    - ShippingModule
+    - TaxModule
+  risk_level: high
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: multi-currency
+  name: MultiCurrency
+  purpose: Currency selection/rates and geolocation
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/MultiCurrency
+  registration:
+  - core/Modules/MultiCurrency/plugin.json
+  routes:
+  - core/Modules/MultiCurrency/src/MultiCurrencyPlugin.php
+  controllers:
+  - core/Modules/MultiCurrency/Http/Controllers/Admin/TenantCurrencyController.php
+  - core/Modules/MultiCurrency/Http/Controllers/Frontend/CurrencySwitchController.php
+  models:
+  - core/Modules/MultiCurrency/Models/Currency.php
+  - core/Modules/MultiCurrency/Models/TenantCurrency.php
+  tables:
+  - mc_currencies
+  - mc_tenant_currencies
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/MultiCurrency/Models/Currency.php
+  - core/Modules/MultiCurrency/Models/TenantCurrency.php
+  - core/Modules/MultiCurrency/database/migrations/2026_04_30_400001_create_currencies_table.php
+  - core/Modules/MultiCurrency/database/migrations/2026_05_16_400002_drop_tenant_id_from_mc_tenant_currencies.php
+  services:
+  - core/Modules/MultiCurrency/Services/GeoDetector.php
+  frontend:
+  - core/Modules/MultiCurrency/resources/views
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: multi-lingual
+  name: MultiLingual
+  purpose: Stored translations and provider-backed translation
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/MultiLingual
+  registration:
+  - core/Modules/MultiLingual/plugin.json
+  routes:
+  - core/Modules/MultiLingual/src/MultiLingualPlugin.php
+  controllers:
+  - core/Modules/MultiLingual/Http/Controllers/MultiLingualController.php
+  models:
+  - core/Modules/MultiLingual/Models/MlTranslation.php
+  tables:
+  - ml_translations
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/MultiLingual/Models/MlTranslation.php
+  - core/Modules/MultiLingual/database/migrations/2026_05_16_000001_create_ml_translations_table.php
+  services:
+  - core/Modules/MultiLingual/Services/TranslateAiService.php
+  - core/Modules/MultiLingual/Services/TranslationService.php
+  frontend:
+  - core/Modules/MultiLingual/resources/views
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: news-letter
+  name: NewsLetter
+  purpose: Newsletter subscribers and mail management
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/NewsLetter
+  registration:
+  - core/Modules/NewsLetter/module.json
+  routes:
+  - core/Modules/NewsLetter/Routes/api.php
+  - core/Modules/NewsLetter/Routes/web.php
+  controllers:
+  - core/Modules/NewsLetter/Http/Controllers/AdminNewsLetterController.php
+  - core/Modules/NewsLetter/Http/Controllers/NewsLetterController.php
+  models:
+  - core/Modules/NewsLetter/Entities/NewsLetter.php
+  tables:
+  - newsletters
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/NewsLetter/Database/Migrations/2020_02_04_010636_create_newsletters_table.php
+  - core/Modules/NewsLetter/Database/Migrations/2021_07_23_183955_add_new_column_to_newsletters_table.php
+  - core/Modules/NewsLetter/Entities/NewsLetter.php
+  services: []
+  frontend:
+  - core/Modules/NewsLetter/resources/views
+  - core/Modules/NewsLetter/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/NewsLetter/Http/Controllers/AdminNewsLetterController.php
+    - core/Modules/NewsLetter/Http/Requests/AdminSendAllEmailRequest.php
+    - core/Modules/NewsLetter/Http/Requests/AdminSendMailReqeuest.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: plugin-manage
+  name: PluginManage
+  purpose: Plugin catalog/lifecycle administration
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/PluginManage
+  registration:
+  - core/Modules/PluginManage/module.json
+  - core/Modules/PluginManage/plugin.json
+  routes:
+  - core/Modules/PluginManage/Routes/api.php
+  - core/Modules/PluginManage/Routes/web.php
+  - core/Modules/PluginManage/src/PluginManagePlugin.php
+  controllers:
+  - core/Modules/PluginManage/Http/Controllers/PluginManageController.php
+  models: []
+  tables: []
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources: []
+  services: []
+  frontend:
+  - core/Modules/PluginManage/resources/views
+  - core/Modules/PluginManage/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/PluginManage/Http/Controllers/PluginManageController.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: high
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: pos
+  name: Pos
+  purpose: Point-of-sale order operations
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/Pos
+  registration:
+  - core/Modules/Pos/module.json
+  - core/Modules/Pos/plugin.json
+  routes:
+  - core/Modules/Pos/Routes/api.php
+  - core/Modules/Pos/Routes/web.php
+  - core/Modules/Pos/src/PosPlugin.php
+  controllers:
+  - core/Modules/Pos/Http/Controllers/PosController.php
+  - core/Modules/Pos/Http/Controllers/PosFrontendController.php
+  models: []
+  tables: []
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources: []
+  services:
+  - core/Modules/Pos/Services/CustomerServices.php
+  - core/Modules/Pos/Services/FrontendInventoryService.php
+  - core/Modules/Pos/Services/OrderCheckoutService.php
+  - core/Modules/Pos/Services/OrderService.php
+  - core/Modules/Pos/Services/OrderShippingChargeService.php
+  - core/Modules/Pos/Services/OrderTaxService.php
+  - core/Modules/Pos/Traits/OrderDetailsTrait.php
+  - core/Modules/Pos/Traits/OrderMailTrait.php
+  - core/Modules/Pos/Traits/OrderTrack.php
+  - core/Modules/Pos/Traits/OrderTrait.php
+  - core/Modules/Pos/Traits/StoreOrderTrait.php
+  frontend:
+  - core/Modules/Pos/resources/views
+  - core/Modules/Pos/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/Pos/Http/Controllers/PosController.php
+    - core/Modules/Pos/Http/Requests/AddNewCustomerRequest.php
+    - core/Modules/Pos/Http/Requests/PosGatewayRequest.php
+    - core/Modules/Pos/Http/Requests/PosOrderRequest.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Attributes
+    - Campaign
+    - CountryManage
+    - MobileApp
+    - Order
+    - Product
+    - ShippingModule
+    - TaxModule
+    - Wallet
+  risk_level: high
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: product
+  name: Product
+  purpose: Catalog and inventory persistence
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/Product
+  registration:
+  - core/Modules/Product/module.json
+  routes:
+  - core/Modules/Product/Routes/api.php
+  - core/Modules/Product/Routes/web.php
+  controllers:
+  - core/Modules/Product/Http/Controllers/CategoryController.php
+  - core/Modules/Product/Http/Controllers/ProductController.php
+  - core/Modules/Product/Http/Controllers/ProductImportController.php
+  models:
+  - core/Modules/Product/Entities/Product.php
+  - core/Modules/Product/Entities/ProductAttribute.php
+  - core/Modules/Product/Entities/ProductCategory.php
+  - core/Modules/Product/Entities/ProductChildCategory.php
+  - core/Modules/Product/Entities/ProductColor.php
+  - core/Modules/Product/Entities/ProductCreatedBy.php
+  - core/Modules/Product/Entities/ProductCustomSpecification.php
+  - core/Modules/Product/Entities/ProductDeliveryOption.php
+  - core/Modules/Product/Entities/ProductGallery.php
+  - core/Modules/Product/Entities/ProductInventory.php
+  - core/Modules/Product/Entities/ProductInventoryDetail.php
+  - core/Modules/Product/Entities/ProductInventoryDetailAttribute.php
+  - core/Modules/Product/Entities/ProductMetaInfo.php
+  - core/Modules/Product/Entities/ProductSellInfo.php
+  - core/Modules/Product/Entities/ProductShippingReturnPolicy.php
+  - core/Modules/Product/Entities/ProductSize.php
+  - core/Modules/Product/Entities/ProductSubCategory.php
+  - core/Modules/Product/Entities/ProductTag.php
+  - core/Modules/Product/Entities/ProductUnit.php
+  - core/Modules/Product/Entities/ProductUom.php
+  tables:
+  - product_attributes
+  - product_created_by
+  - product_galleries
+  - product_inventory_details
+  - product_shipping_return_policies
+  - product_uom
+  - products
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/Product/Database/Migrations/2023_04_04_163632_add_type_column_to_product_galleries_table.php
+  - core/Modules/Product/Database/Migrations/2023_06_10_122659_add_two_column_for_advance_tax_system_to_products_table.php
+  - core/Modules/Product/Database/Migrations/2026_05_11_000001_add_variant_columns_to_products_and_inventory_details.php
+  - core/Modules/Product/Entities/ProductAttribute.php
+  - core/Modules/Product/Entities/ProductCreatedBy.php
+  - core/Modules/Product/Entities/ProductShippingReturnPolicy.php
+  - core/Modules/Product/Entities/ProductUom.php
+  services:
+  - core/Modules/Product/Http/Services/Admin/AdminProductServices.php
+  - core/Modules/Product/Http/Services/Vendor/VendorProductServices.php
+  - core/Modules/Product/Http/Traits/ProductGlobalTrait.php
+  - core/Modules/Product/Http/Traits/ProductSearchTrait.php
+  - core/Modules/Product/Services/Web/FrontendProductServices.php
+  frontend:
+  - core/Modules/Product/resources/views
+  - core/Modules/Product/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/Product/Http/Requests/ProductStoreRequest.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Attributes
+    - Badge
+    - Campaign
+    - MobileApp
+    - RefundModule
+    - TaxModule
+  risk_level: high
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: product-badges
+  name: ProductBadges
+  purpose: Rule-driven storefront product badges
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/ProductBadges
+  registration:
+  - core/Modules/ProductBadges/plugin.json
+  routes:
+  - core/Modules/ProductBadges/src/ProductBadgesPlugin.php
+  controllers: []
+  models: []
+  tables: []
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources: []
+  services: []
+  frontend: []
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: product-bundles
+  name: ProductBundles
+  purpose: Product bundle definitions/items
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/ProductBundles
+  registration:
+  - core/Modules/ProductBundles/plugin.json
+  routes:
+  - core/Modules/ProductBundles/src/ProductBundlesPlugin.php
+  controllers:
+  - core/Modules/ProductBundles/Http/Controllers/Admin/BundleController.php
+  - core/Modules/ProductBundles/Http/Controllers/Api/BundleApiController.php
+  models: []
+  tables:
+  - product_bundle_items
+  - product_bundles
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/ProductBundles/database/migrations/2026_05_10_230001_create_product_bundles_tables.php
+  services: []
+  frontend:
+  - core/Modules/ProductBundles/resources/views
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: product-qa
+  name: ProductQA
+  purpose: Product questions and answers
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/ProductQA
+  registration:
+  - core/Modules/ProductQA/plugin.json
+  routes:
+  - core/Modules/ProductQA/src/ProductQAPlugin.php
+  controllers:
+  - core/Modules/ProductQA/Http/Controllers/Admin/QAController.php
+  - core/Modules/ProductQA/Http/Controllers/Frontend/QAFrontendController.php
+  models: []
+  tables:
+  - product_questions
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/ProductQA/database/migrations/2026_05_10_250001_create_product_questions_table.php
+  services: []
+  frontend:
+  - core/Modules/ProductQA/resources/views
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: refund-module
+  name: RefundModule
+  purpose: Refund request management
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/RefundModule
+  registration:
+  - core/Modules/RefundModule/module.json
+  routes:
+  - core/Modules/RefundModule/Routes/api.php
+  - core/Modules/RefundModule/Routes/web.php
+  controllers:
+  - core/Modules/RefundModule/Http/Controllers/RefundChatController.php
+  - core/Modules/RefundModule/Http/Controllers/RefundModuleController.php
+  - core/Modules/RefundModule/Http/Controllers/admin/AdminRefundChatController.php
+  - core/Modules/RefundModule/Http/Controllers/admin/AdminRefundController.php
+  models:
+  - core/Modules/RefundModule/Entities/RefundChat.php
+  - core/Modules/RefundModule/Entities/RefundChatMessage.php
+  - core/Modules/RefundModule/Entities/RefundProduct.php
+  tables:
+  - refund_chat
+  - refund_messages
+  - refund_products
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/RefundModule/Database/Migrations/2022_12_27_170130_create_refund_products_table.php
+  - core/Modules/RefundModule/Database/Migrations/2022_12_27_170430_create_refund_chat_table.php
+  - core/Modules/RefundModule/Database/Migrations/2022_12_27_170609_create_refund_messages_table.php
+  - core/Modules/RefundModule/Database/Migrations/2022_12_28_130726_add_status_column_to_refund_products_table.php
+  - core/Modules/RefundModule/Entities/RefundChat.php
+  - core/Modules/RefundModule/Entities/RefundChatMessage.php
+  - core/Modules/RefundModule/Entities/RefundProduct.php
+  services: []
+  frontend:
+  - core/Modules/RefundModule/resources/views
+  - core/Modules/RefundModule/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/RefundModule/Http/Controllers/admin/AdminRefundChatController.php
+    - core/Modules/RefundModule/Http/Controllers/admin/AdminRefundController.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Campaign
+    - CountryManage
+    - Product
+    - TaxModule
+    - Wallet
+  risk_level: high
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: sales-report
+  name: SalesReport
+  purpose: Sales reporting
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/SalesReport
+  registration:
+  - core/Modules/SalesReport/module.json
+  routes:
+  - core/Modules/SalesReport/Routes/api.php
+  - core/Modules/SalesReport/Routes/web.php
+  controllers:
+  - core/Modules/SalesReport/Http/Controllers/Tenant/SalesReportController.php
+  models: []
+  tables: []
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources: []
+  services:
+  - core/Modules/SalesReport/Http/Services/SalesReport.php
+  frontend:
+  - core/Modules/SalesReport/resources/views
+  - core/Modules/SalesReport/resources/assets
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Campaign
+    - Product
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: service
+  name: Service
+  purpose: Service content management
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/Service
+  registration:
+  - core/Modules/Service/module.json
+  routes:
+  - core/Modules/Service/Routes/api.php
+  - core/Modules/Service/Routes/web.php
+  controllers:
+  - core/Modules/Service/Http/Controllers/Tenant/Admin/ServiceCategoryController.php
+  - core/Modules/Service/Http/Controllers/Tenant/Admin/ServiceController.php
+  - core/Modules/Service/Http/Controllers/Tenant/Frontend/ServiceController.php
+  models:
+  - core/Modules/Service/Entities/Service.php
+  - core/Modules/Service/Entities/ServiceCategory.php
+  tables:
+  - service_categories
+  - services
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/Service/Database/Migrations/2022_04_02_052148_create_services_table.php
+  - core/Modules/Service/Database/Migrations/2022_04_07_050407_create_service_categories_table.php
+  services: []
+  frontend:
+  - core/Modules/Service/resources/views
+  - core/Modules/Service/resources/assets
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Blog
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: shipping-module
+  name: ShippingModule
+  purpose: Shipping zones, methods and addresses
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/ShippingModule
+  registration:
+  - core/Modules/ShippingModule/module.json
+  routes:
+  - core/Modules/ShippingModule/Routes/api.php
+  - core/Modules/ShippingModule/Routes/web.php
+  controllers:
+  - core/Modules/ShippingModule/Http/Controllers/ShippingMethodController.php
+  - core/Modules/ShippingModule/Http/Controllers/ZoneController.php
+  models:
+  - core/Modules/ShippingModule/Entities/ShippingAddress.php
+  - core/Modules/ShippingModule/Entities/ShippingMethod.php
+  - core/Modules/ShippingModule/Entities/ShippingMethodOption.php
+  - core/Modules/ShippingModule/Entities/UserShippingAddress.php
+  - core/Modules/ShippingModule/Entities/Zone.php
+  - core/Modules/ShippingModule/Entities/ZoneRegion.php
+  tables:
+  - shipping_addresses
+  - shipping_method_options
+  - shipping_methods
+  - user_shipping_addresses
+  - zone_regions
+  - zones
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/ShippingModule/Database/Migrations/2021_09_25_111709_create_shipping_methods_table.php
+  - core/Modules/ShippingModule/Database/Migrations/2021_09_28_111119_create_shipping_method_options_table.php
+  - core/Modules/ShippingModule/Database/Migrations/2021_09_28_111509_create_zones_table.php
+  - core/Modules/ShippingModule/Database/Migrations/2021_09_28_111609_create_zone_regions_table.php
+  - core/Modules/ShippingModule/Database/Migrations/2021_09_28_111909_create_shipping_addresses_table.php
+  - core/Modules/ShippingModule/Database/Migrations/2021_09_28_112709_create_user_shipping_addresses_table.php
+  - core/Modules/ShippingModule/Database/Migrations/2021_09_29_112509_add_coupon_column_to_shipping_method_options_table.php
+  services:
+  - core/Modules/ShippingModule/Http/Services/ShippingAddressServices.php
+  frontend:
+  - core/Modules/ShippingModule/resources/views
+  - core/Modules/ShippingModule/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/ShippingModule/Http/Controllers/ShippingMethodController.php
+    - core/Modules/ShippingModule/Http/Controllers/ZoneController.php
+    - core/Modules/ShippingModule/Http/Requests/StoreShippingAddressRequest.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - CountryManage
+    - CouponManage
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: shipping-plugin
+  name: ShippingPlugin
+  purpose: External shipping providers
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/ShippingPlugin
+  registration:
+  - core/Modules/ShippingPlugin/module.json
+  - core/Modules/ShippingPlugin/plugin.json
+  routes:
+  - core/Modules/ShippingPlugin/Routes/api.php
+  - core/Modules/ShippingPlugin/Routes/web.php
+  - core/Modules/ShippingPlugin/src/ShippingPluginPlugin.php
+  controllers:
+  - core/Modules/ShippingPlugin/Http/Controllers/ShippingPluginController.php
+  - core/Modules/ShippingPlugin/Http/Controllers/ShippingPluginFrontendController.php
+  models:
+  - core/Modules/ShippingPlugin/Entities/ShippingApiOrderStatus.php
+  tables:
+  - shipping_api_order_statuses
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/ShippingPlugin/Database/Migrations/2023_12_27_151555_create_shipping_api_order_statuses_table.php
+  - core/Modules/ShippingPlugin/Entities/ShippingApiOrderStatus.php
+  services:
+  - core/Modules/ShippingPlugin/Http/Services/AuthorizationService.php
+  - core/Modules/ShippingPlugin/Http/Services/Gateways/DHL.php
+  - core/Modules/ShippingPlugin/Http/Services/Gateways/ShipRocket.php
+  - core/Modules/ShippingPlugin/Http/Services/ShippingService.php
+  frontend:
+  - core/Modules/ShippingPlugin/resources/views
+  - core/Modules/ShippingPlugin/resources/assets
+  - core/Modules/ShippingPlugin/assets
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Product
+  risk_level: high
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: site-analytics
+  name: SiteAnalytics
+  purpose: Site analytics collection/display
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/SiteAnalytics
+  registration:
+  - core/Modules/SiteAnalytics/module.json
+  - core/Modules/SiteAnalytics/plugin.json
+  routes:
+  - core/Modules/SiteAnalytics/Routes/api.php
+  - core/Modules/SiteAnalytics/Routes/web.php
+  - core/Modules/SiteAnalytics/src/SiteAnalyticsPlugin.php
+  controllers:
+  - core/Modules/SiteAnalytics/Http/Controllers/Admin/SiteAnalyticsSettingsController.php
+  - core/Modules/SiteAnalytics/Http/Controllers/SiteAnalyticsController.php
+  models:
+  - core/Modules/SiteAnalytics/Entities/PageView.php
+  tables:
+  - page_views
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/SiteAnalytics/Database/Migrations/2020_01_01_100000_create_page_views_table.php
+  - core/Modules/SiteAnalytics/Database/Migrations/2020_02_14_200000_add_session_to_page_views_table.php
+  - core/Modules/SiteAnalytics/Database/Migrations/2023_09_23_100000_add_utm_columns_to_page_views_table.php
+  services:
+  - core/Modules/SiteAnalytics/Http/Services/SiteAnalyticsService.php
+  frontend:
+  - core/Modules/SiteAnalytics/resources/views
+  - core/Modules/SiteAnalytics/resources/assets
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: siteway-payment-gateway
+  name: SiteWayPaymentGateway
+  purpose: SiteWay payment integration
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/SiteWayPaymentGateway
+  registration:
+  - core/Modules/SiteWayPaymentGateway/module.json
+  - core/Modules/SiteWayPaymentGateway/plugin.json
+  routes:
+  - core/Modules/SiteWayPaymentGateway/Routes/api.php
+  - core/Modules/SiteWayPaymentGateway/Routes/web.php
+  - core/Modules/SiteWayPaymentGateway/src/SiteWayPaymentGatewayPlugin.php
+  controllers:
+  - core/Modules/SiteWayPaymentGateway/Http/Controllers/SiteWayPaymentGatewayAdminPanelController.php
+  - core/Modules/SiteWayPaymentGateway/Http/Controllers/SiteWayPaymentGatewayController.php
+  models: []
+  tables: []
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources: []
+  services: []
+  frontend:
+  - core/Modules/SiteWayPaymentGateway/resources/views
+  - core/Modules/SiteWayPaymentGateway/resources/assets
+  - core/Modules/SiteWayPaymentGateway/assets
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - CommissionManage
+    - Wallet
+  risk_level: high
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: sms-gateway
+  name: SmsGateway
+  purpose: OTP and SMS gateway operations
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/SmsGateway
+  registration:
+  - core/Modules/SmsGateway/module.json
+  - core/Modules/SmsGateway/plugin.json
+  routes:
+  - core/Modules/SmsGateway/Routes/api.php
+  - core/Modules/SmsGateway/Routes/web.php
+  - core/Modules/SmsGateway/src/SmsGatewayPlugin.php
+  controllers:
+  - core/Modules/SmsGateway/Http/Controllers/SmsGatewayController.php
+  - core/Modules/SmsGateway/Http/Controllers/admin/LandlordSettingsController.php
+  - core/Modules/SmsGateway/Http/Controllers/frontend/LandlordFrontendController.php
+  - core/Modules/SmsGateway/Http/Controllers/frontend/TenantFrontendController.php
+  models:
+  - core/Modules/SmsGateway/Entities/SmsGateway.php
+  - core/Modules/SmsGateway/Entities/UserOtp.php
+  tables:
+  - sms_gateways
+  - user_otps
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/SmsGateway/Database/Migrations/2023_10_10_140950_create_sms_gateways_table.php
+  - core/Modules/SmsGateway/Database/Migrations/2023_10_11_174429_create_user_otps_table.php
+  - core/Modules/SmsGateway/Database/Migrations/2023_10_12_191802_add_user_type_column_to_user_otps_table.php
+  - core/Modules/SmsGateway/Entities/UserOtp.php
+  services:
+  - core/Modules/SmsGateway/Http/Services/OtpTraitService.php
+  - core/Modules/SmsGateway/Http/Traits/OtpGlobalTrait.php
+  frontend:
+  - core/Modules/SmsGateway/resources/views
+  - core/Modules/SmsGateway/resources/assets
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: support-ticket
+  name: SupportTicket
+  purpose: Support tickets/messages
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/SupportTicket
+  registration:
+  - core/Modules/SupportTicket/module.json
+  routes:
+  - core/Modules/SupportTicket/Routes/api.php
+  - core/Modules/SupportTicket/Routes/web.php
+  controllers:
+  - core/Modules/SupportTicket/Http/Controllers/Landlord/Admin/SupportDepartmentController.php
+  - core/Modules/SupportTicket/Http/Controllers/Landlord/Admin/SupportTicketController.php
+  - core/Modules/SupportTicket/Http/Controllers/Tenant/Admin/SupportDepartmentController.php
+  - core/Modules/SupportTicket/Http/Controllers/Tenant/Admin/SupportTicketController.php
+  models: []
+  tables: []
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources: []
+  services: []
+  frontend:
+  - core/Modules/SupportTicket/resources/views
+  - core/Modules/SupportTicket/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/SupportTicket/Http/Controllers/Landlord/Admin/SupportDepartmentController.php
+    - core/Modules/SupportTicket/Http/Controllers/Landlord/Admin/SupportTicketController.php
+    - core/Modules/SupportTicket/Http/Controllers/Tenant/Admin/SupportDepartmentController.php
+    - core/Modules/SupportTicket/Http/Controllers/Tenant/Admin/SupportTicketController.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Service
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: tax-module
+  name: TaxModule
+  purpose: Tax classes/options
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/TaxModule
+  registration:
+  - core/Modules/TaxModule/module.json
+  routes:
+  - core/Modules/TaxModule/Routes/api.php
+  - core/Modules/TaxModule/Routes/web.php
+  controllers:
+  - core/Modules/TaxModule/Http/Controllers/AdminTaxController.php
+  - core/Modules/TaxModule/Http/Controllers/CountryTaxController.php
+  - core/Modules/TaxModule/Http/Controllers/StateTaxController.php
+  - core/Modules/TaxModule/Http/Controllers/TaxModuleController.php
+  models:
+  - core/Modules/TaxModule/Entities/CountryTax.php
+  - core/Modules/TaxModule/Entities/StateTax.php
+  - core/Modules/TaxModule/Entities/TaxClass.php
+  - core/Modules/TaxModule/Entities/TaxClassOption.php
+  tables:
+  - country_taxes
+  - state_taxes
+  - tax_class_options
+  - tax_classes
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/TaxModule/Database/Migrations/2021_09_27_111452_create_country_taxes_table.php
+  - core/Modules/TaxModule/Database/Migrations/2021_09_27_111509_create_state_taxes_table.php
+  - core/Modules/TaxModule/Database/Migrations/2023_06_06_182114_create_tax_classes_table.php
+  - core/Modules/TaxModule/Database/Migrations/2023_06_06_182409_create_tax_class_options_table.php
+  services:
+  - core/Modules/TaxModule/Services/CalculateTaxBasedOnCustomerAddress.php
+  - core/Modules/TaxModule/Services/CalculateTaxServices.php
+  - core/Modules/TaxModule/Traits/CalculateTaxClassTrait.php
+  - core/Modules/TaxModule/Traits/TaxCalculatorTrait.php
+  frontend:
+  - core/Modules/TaxModule/resources/views
+  - core/Modules/TaxModule/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/TaxModule/Http/Controllers/CountryTaxController.php
+    - core/Modules/TaxModule/Http/Controllers/StateTaxController.php
+    - core/Modules/TaxModule/Http/Requests/StoreCountryTax.php
+    - core/Modules/TaxModule/Http/Requests/StoreCountryTaxRequest.php
+    - core/Modules/TaxModule/Http/Requests/StoreTaxOptionPostRequest.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - CountryManage
+    - Product
+  risk_level: high
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: theme-manage
+  name: ThemeManage
+  purpose: Theme marketplace/management
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/ThemeManage
+  registration:
+  - core/Modules/ThemeManage/module.json
+  routes:
+  - core/Modules/ThemeManage/Routes/api.php
+  - core/Modules/ThemeManage/Routes/web.php
+  controllers:
+  - core/Modules/ThemeManage/Http/Controllers/ThemeManageController.php
+  models: []
+  tables: []
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources: []
+  services: []
+  frontend:
+  - core/Modules/ThemeManage/resources/views
+  - core/Modules/ThemeManage/resources/assets
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: tier-pricing
+  name: TierPricing
+  purpose: Quantity-tier product pricing
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/TierPricing
+  registration:
+  - core/Modules/TierPricing/plugin.json
+  routes:
+  - core/Modules/TierPricing/src/TierPricingPlugin.php
+  controllers:
+  - core/Modules/TierPricing/Http/Controllers/Admin/TierPricingController.php
+  - core/Modules/TierPricing/Http/Controllers/Api/TierPricingApiController.php
+  models: []
+  tables:
+  - product_tier_prices
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/TierPricing/database/migrations/2026_05_10_240001_create_product_tier_prices_table.php
+  services: []
+  frontend:
+  - core/Modules/TierPricing/resources/views
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: tracking-pixel
+  name: TrackingPixel
+  purpose: Client/server marketing conversion events
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/TrackingPixel
+  registration:
+  - core/Modules/TrackingPixel/plugin.json
+  routes:
+  - core/Modules/TrackingPixel/src/TrackingPixelPlugin.php
+  controllers:
+  - core/Modules/TrackingPixel/Http/Controllers/TrackingPixelController.php
+  models:
+  - core/Modules/TrackingPixel/Models/TrackingPixelEventLog.php
+  tables:
+  - tracking_pixel_event_log
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/TrackingPixel/Models/TrackingPixelEventLog.php
+  - core/Modules/TrackingPixel/database/migrations/2026_05_10_000001_create_tracking_pixel_event_log_table.php
+  services: []
+  frontend:
+  - core/Modules/TrackingPixel/resources/views
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs:
+  - core/Modules/TrackingPixel/Jobs/SendServerConversionJob.php
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports: []
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: wallet
+  name: Wallet
+  purpose: Wallet balances, ledger and subscription renewal
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/Wallet
+  registration:
+  - core/Modules/Wallet/module.json
+  routes:
+  - core/Modules/Wallet/Routes/api.php
+  - core/Modules/Wallet/Routes/web.php
+  controllers:
+  - core/Modules/Wallet/Http/Controllers/Backend/WalletController.php
+  - core/Modules/Wallet/Http/Controllers/Frontend/BuyerWalletController.php
+  - core/Modules/Wallet/Http/Controllers/Frontend/BuyerWalletPaymentController.php
+  - core/Modules/Wallet/Http/Controllers/WalletController.php
+  models:
+  - core/Modules/Wallet/Entities/Wallet.php
+  - core/Modules/Wallet/Entities/WalletHistory.php
+  - core/Modules/Wallet/Entities/WalletSettings.php
+  - core/Modules/Wallet/Entities/WalletTenantList.php
+  tables:
+  - wallet_histories
+  - wallet_settings
+  - wallet_tenant_lists
+  - wallets
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/Wallet/Database/Migrations/2022_11_02_060742_create_wallets_table.php
+  - core/Modules/Wallet/Database/Migrations/2022_11_02_061244_create_wallet_histories_table.php
+  - core/Modules/Wallet/Database/Migrations/2022_12_06_061244_create_wallet_settings_table.php
+  - core/Modules/Wallet/Database/Migrations/2022_12_06_082355_create_wallet_tenant_lists_table.php
+  - core/Modules/Wallet/Database/Migrations/2022_12_28_153554_add_unique_key_column_to_wallets_table.php
+  services:
+  - core/Modules/Wallet/Http/Services/WalletService.php
+  frontend:
+  - core/Modules/Wallet/resources/views
+  - core/Modules/Wallet/resources/assets
+  permissions:
+    check_sources:
+    - core/Modules/Wallet/Http/Controllers/Backend/WalletController.php
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - CommissionManage
+  risk_level: high
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: web-hook
+  name: WebHook
+  purpose: Webhook configuration and selected event dispatch
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/WebHook
+  registration:
+  - core/Modules/WebHook/module.json
+  - core/Modules/WebHook/plugin.json
+  routes:
+  - core/Modules/WebHook/Routes/api.php
+  - core/Modules/WebHook/Routes/web.php
+  - core/Modules/WebHook/src/WebHookPlugin.php
+  controllers:
+  - core/Modules/WebHook/Http/Controllers/WebHookController.php
+  - core/Modules/WebHook/Http/Controllers/WebhookManageController.php
+  models:
+  - core/Modules/WebHook/Entities/Webhook.php
+  - core/Modules/WebHook/Entities/WebhookEvents.php
+  - core/Modules/WebHook/Entities/WebhookLog.php
+  tables:
+  - webhook_events
+  - webhook_logs
+  - webhooks
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources:
+  - core/Modules/WebHook/Database/Migrations/2023_06_12_231851_create_webhooks_table.php
+  - core/Modules/WebHook/Database/Migrations/2023_06_12_235711_create_webhook_events_table.php
+  - core/Modules/WebHook/Database/Migrations/2023_06_12_235711_create_webhook_logs_table.php
+  services:
+  - core/Modules/WebHook/Http/Services/WooCommerceService.php
+  frontend:
+  - core/Modules/WebHook/resources/views
+  - core/Modules/WebHook/resources/assets
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events:
+  - core/Modules/WebHook/Events/WebhookEventFire.php
+  - core/Modules/WebHook/Listeners/WebhookSubscriptionEvents.php
+  - core/Modules/WebHook/Listeners/WebhookUsersEvents.php
+  - core/Modules/WebHook/Listeners/WebhookWalletEvents.php
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Attributes
+    - Product
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []
+- id: woo-commerce
+  name: WooCommerce
+  purpose: WooCommerce store integration/import
+  purpose_evidence: INFERRED from source responsibilities
+  source_root: core/Modules/WooCommerce
+  registration:
+  - core/Modules/WooCommerce/module.json
+  - core/Modules/WooCommerce/plugin.json
+  routes:
+  - core/Modules/WooCommerce/Routes/api.php
+  - core/Modules/WooCommerce/Routes/web.php
+  - core/Modules/WooCommerce/src/WooCommercePlugin.php
+  controllers:
+  - core/Modules/WooCommerce/Http/Controllers/WooCommerceController.php
+  models: []
+  tables: []
+  table_evidence: VERIFIED literal schema create/alter or model table declarations; not complete runtime schema
+  table_sources: []
+  services:
+  - core/Modules/WooCommerce/Http/Services/WooCommerceService.php
+  frontend:
+  - core/Modules/WooCommerce/resources/views
+  - core/Modules/WooCommerce/resources/assets
+  permissions:
+    check_sources: []
+    effective_matrix: null
+  jobs: []
+  events: []
+  dependencies:
+    manifest_requires: []
+    module_imports:
+    - Attributes
+    - Product
+  risk_level: medium
+  risk_evidence: INFERRED from shared data/integration impact
+  tests: []

@@ -1,0 +1,253 @@
+schema_version: 1
+integrations:
+- id: payments
+  provider: Xgenious multi-gateway adapters
+  purpose: Plan/store payment
+  direction: outbound and inbound callbacks
+  implementation_files:
+  - core/app/Helpers/Payment/PaymentGatewayCredential.php
+  - core/app/Actions/Payment
+  environment_variables: []
+  webhooks: core/routes/web.php and core/routes/tenant.php
+  authentication: Gateway-specific settings/signature/token
+  jobs: []
+  failure_handling: Pending/failure branches; per-provider verification unknown
+  retry_behavior: null
+  enabled_in_production: null
+  evidence: VERIFIED implementation/configuration presence only; see INTEGRATIONS.md for caveats
+- id: mail
+  provider: SMTP, Mailgun, Postmark, SES
+  purpose: Transactional mail
+  direction: outbound
+  implementation_files:
+  - core/config/mail.php
+  - core/config/services.php
+  - core/app/Mail
+  environment_variables:
+  - MAIL_MAILER
+  - MAIL_HOST
+  - MAIL_PORT
+  - MAIL_USERNAME
+  - MAIL_PASSWORD
+  - MAIL_ENCRYPTION
+  - MAILGUN_DOMAIN
+  - MAILGUN_SECRET
+  - MAILGUN_ENDPOINT
+  - POSTMARK_TOKEN
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY
+  - AWS_DEFAULT_REGION
+  webhooks: null
+  authentication: SMTP/service credentials plus DB overrides
+  jobs: []
+  failure_handling: Caller-specific catches/jobs; delivery unknown
+  retry_behavior: null
+  enabled_in_production: null
+  evidence: VERIFIED implementation/configuration presence only; see INTEGRATIONS.md for caveats
+- id: sms
+  provider: Twilio, MSG91, Sendra
+  purpose: OTP and notifications
+  direction: outbound
+  implementation_files:
+  - core/Modules/SmsGateway/Http/Traits/OtpGlobalTrait.php
+  - core/Modules/SmsGateway/Http/Services/OtpTraitService.php
+  environment_variables: []
+  webhooks: null
+  authentication: Gateway settings token/API credentials
+  jobs: []
+  failure_handling: Sendra template timeout/catch; send-path delivery unknown
+  retry_behavior: null
+  enabled_in_production: null
+  evidence: VERIFIED implementation/configuration presence only; see INTEGRATIONS.md for caveats
+- id: storage
+  provider: S3, Wasabi, Cloudflare R2
+  purpose: Media/object storage
+  direction: outbound upload/download
+  implementation_files:
+  - core/config/filesystems.php
+  - core/app/Http/Middleware/Tenant/TenantConfigMiddleware.php
+  environment_variables:
+  - FILESYSTEM_DRIVER
+  - FILESYSTEM_CLOUD
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY
+  - AWS_DEFAULT_REGION
+  - AWS_BUCKET
+  - AWS_URL
+  - AWS_ENDPOINT
+  - AWS_USE_PATH_STYLE_ENDPOINT
+  webhooks: null
+  authentication: request signing
+  jobs: []
+  failure_handling: Driver throw option and caller-dependent handling
+  retry_behavior: null
+  enabled_in_production: null
+  evidence: VERIFIED implementation/configuration presence only; see INTEGRATIONS.md for caveats
+- id: shipping
+  provider: DHL, ShipRocket
+  purpose: Shipment/rate operations
+  direction: outbound
+  implementation_files:
+  - core/Modules/ShippingPlugin/Http/Services/ShippingService.php
+  - core/Modules/ShippingPlugin/Http/Services/AuthorizationService.php
+  environment_variables: []
+  webhooks: null
+  authentication: Provider credentials/token workflow
+  jobs: []
+  failure_handling: Selected API order status persistence; retries unknown
+  retry_behavior: null
+  enabled_in_production: null
+  evidence: VERIFIED implementation/configuration presence only; see INTEGRATIONS.md for caveats
+- id: domains
+  provider: GoDaddy
+  purpose: Domains/DNS
+  direction: outbound
+  implementation_files:
+  - core/Modules/DomainReseller/Http/Services/Providers/GoDaddy.php
+  environment_variables: []
+  webhooks: null
+  authentication: sso-key header from central settings
+  jobs: []
+  failure_handling: retry_on_failure option exists; effective retries unverified
+  retry_behavior: null
+  enabled_in_production: null
+  evidence: VERIFIED implementation/configuration presence only; see INTEGRATIONS.md for caveats
+- id: cpanel
+  provider: cPanel API
+  purpose: Database/domain provisioning
+  direction: outbound
+  implementation_files:
+  - core/Modules/CpanelAutomation/Http/Services/CpanelHelper.php
+  environment_variables: []
+  webhooks: null
+  authentication: Account/API token settings
+  jobs: []
+  failure_handling: Selected provisioning path can fail; not automatic native fallback
+  retry_behavior: null
+  enabled_in_production: null
+  evidence: VERIFIED implementation/configuration presence only; see INTEGRATIONS.md for caveats
+- id: woocommerce
+  provider: WooCommerce REST
+  purpose: Import/store integration
+  direction: outbound
+  implementation_files:
+  - core/Modules/WooCommerce/Http/Services/WooCommerceService.php
+  environment_variables: []
+  webhooks: null
+  authentication: Consumer SDK credentials
+  jobs: []
+  failure_handling: Caller-specific; retry behavior unknown
+  retry_behavior: null
+  enabled_in_production: null
+  evidence: VERIFIED implementation/configuration presence only; see INTEGRATIONS.md for caveats
+- id: webhooks
+  provider: Subscriber HTTP endpoints
+  purpose: User events
+  direction: outbound
+  implementation_files:
+  - core/Modules/WebHook/Listeners/WebhookUsersEvents.php
+  - core/Modules/WebHook/Listeners/WebhookWalletEvents.php
+  - core/Modules/WebHook/Listeners/WebhookSubscriptionEvents.php
+  environment_variables:
+  - APP_NAME
+  webhooks: User listener dispatch active; wallet/subscription dispatch commented
+  authentication: Spatie useSecret(APP_NAME) in current user dispatch
+  jobs: []
+  failure_handling: Queue/provider failure semantics unverified
+  retry_behavior: null
+  enabled_in_production: null
+  evidence: VERIFIED implementation/configuration presence only; see INTEGRATIONS.md for caveats
+- id: ai-content
+  provider: OpenAI, DeepSeek, Gemini
+  purpose: Content/translation
+  direction: outbound
+  implementation_files:
+  - core/Modules/AiIntegration/Services/AiService.php
+  - core/Modules/MultiLingual/Services/TranslateAiService.php
+  environment_variables: []
+  webhooks: null
+  authentication: Bearer token or query API key from module settings
+  jobs: []
+  failure_handling: AiService timeout30; non-OK exception
+  retry_behavior: null
+  enabled_in_production: null
+  evidence: VERIFIED implementation/configuration presence only; see INTEGRATIONS.md for caveats
+- id: tracking
+  provider: GA4, GTM, Meta, TikTok
+  purpose: Marketing conversions
+  direction: browser and outbound server
+  implementation_files:
+  - core/Modules/TrackingPixel/src/TrackingPixelPlugin.php
+  - core/Modules/TrackingPixel/Jobs/SendServerConversionJob.php
+  environment_variables: []
+  webhooks: null
+  authentication: Plugin IDs/tokens
+  jobs:
+  - core/Modules/TrackingPixel/Jobs/SendServerConversionJob.php
+  failure_handling: Job catches provider failures; declared retry may not apply
+  retry_behavior: null
+  enabled_in_production: null
+  evidence: VERIFIED implementation/configuration presence only; see INTEGRATIONS.md for caveats
+- id: currency
+  provider: ExchangeRate-API and MaxMind GeoLite2
+  purpose: Rates/geolocation
+  direction: outbound rates and local database
+  implementation_files:
+  - core/Modules/MultiCurrency/src/MultiCurrencyPlugin.php
+  - core/Modules/MultiCurrency/Services/GeoDetector.php
+  environment_variables: []
+  webhooks: null
+  authentication: Rate API key query; local GeoLite2 file
+  jobs: []
+  failure_handling: Rate timeout10; missing geolocation file supported
+  retry_behavior: null
+  enabled_in_production: null
+  evidence: VERIFIED implementation/configuration presence only; see INTEGRATIONS.md for caveats
+- id: feeds
+  provider: Google and Meta feed consumers
+  purpose: Catalog XML feeds
+  direction: incoming feed retrieval
+  implementation_files:
+  - core/Modules/FeedSync/src/FeedSyncPlugin.php
+  - core/Modules/FeedSync/Jobs/RegenerateFeedJob.php
+  environment_variables: []
+  webhooks: null
+  authentication: Published route contract; inspect access rules
+  jobs:
+  - core/Modules/FeedSync/Jobs/RegenerateFeedJob.php
+  failure_handling: Job generation; consumer delivery unknown
+  retry_behavior: null
+  enabled_in_production: null
+  evidence: VERIFIED implementation/configuration presence only; see INTEGRATIONS.md for caveats
+- id: siteway
+  provider: SiteWay
+  purpose: Gateway operations
+  direction: outbound and callback
+  implementation_files:
+  - core/Modules/SiteWayPaymentGateway/Http/Controllers
+  environment_variables: []
+  webhooks: null
+  authentication: Module-specific configuration; exact authentication unknown
+  jobs: []
+  failure_handling: Needs provider-specific verification
+  retry_behavior: null
+  enabled_in_production: null
+  evidence: VERIFIED implementation/configuration presence only; see INTEGRATIONS.md for caveats
+- id: platform-services
+  provider: Xgenious platform services and reCAPTCHA config
+  purpose: Licensing/updates and anti-bot capability
+  direction: configuration/caller-dependent
+  implementation_files:
+  - core/composer.json
+  - core/config/services.php
+  - core/app/Providers
+  environment_variables:
+  - RECAPTCHA_SITE_KEY
+  - RECAPTCHA_SECRET_KEY
+  webhooks: null
+  authentication: License settings; CAPTCHA keys
+  jobs: []
+  failure_handling: Actual caller coverage/retries unknown
+  retry_behavior: null
+  enabled_in_production: null
+  evidence: VERIFIED implementation/configuration presence only; see INTEGRATIONS.md for caveats

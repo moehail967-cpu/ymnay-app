@@ -1,0 +1,277 @@
+schema_version: 1
+workflows:
+- id: W01
+  name: Registration and subscription
+  actor: visitor/central user
+  trigger: native registration or plan payment
+  preconditions:
+  - Validated identity, plan, payment inputs
+  states:
+  - pending
+  - complete
+  steps:
+  - User
+  - plan
+  - PaymentLogs
+  - payment review/IPN
+  - W02
+  database_effects:
+  - users
+  - payment_logs
+  events:
+  - TenantRegisterEvent
+  jobs: []
+  notifications: Core mail
+  failure_states:
+  - validation/gateway/pending approval
+  related_modules:
+  - Wallet
+  sources:
+  - core/routes/web.php
+  - core/app/Http/Controllers/Landlord/Frontend/PaymentLogController.php
+  evidence: VERIFIED control path; descriptive state labels are not database enums; completion untested
+- id: W02
+  name: Tenant provisioning
+  actor: qualified central owner/admin
+  trigger: TenantCreated
+  preconditions:
+  - Eligible trial/payment/admin creation
+  states:
+  - creating
+  - ready; not an asserted DB enum
+  steps:
+  - Create DB
+  - migrate
+  - domain/info
+  - seed
+  - copy/media/mail
+  database_effects:
+  - tenants
+  - domains
+  - tenant database
+  events:
+  - TenantCreated
+  jobs:
+  - core/app/Jobs
+  notifications: new store mail
+  failure_states:
+  - DB/migration/seed/copy failure
+  related_modules:
+  - CpanelAutomation
+  - ThemeManage
+  sources:
+  - core/app/Providers/TenancyServiceProvider.php
+  - core/database/seeders/TenantDatabaseSeeder.php
+  evidence: VERIFIED control path; descriptive state labels are not database enums; completion untested
+- id: W03
+  name: Product save
+  actor: tenant admin
+  trigger: product store/update route
+  preconditions:
+  - Domain/admin/package and request validation
+  states:
+  - product status ID
+  steps:
+  - ProductController
+  - AdminProductServices
+  - ProductGlobalTrait
+  database_effects:
+  - products
+  - product_inventories
+  - product_inventory_details
+  - catalog relations
+  events: []
+  jobs: []
+  notifications: observer-dependent
+  failure_states:
+  - validation/slug/relation failure
+  related_modules:
+  - Product
+  - Inventory
+  - Attributes
+  - Badge
+  sources:
+  - core/Modules/Product/Routes/web.php
+  - core/Modules/Product/Http/Traits/ProductGlobalTrait.php
+  evidence: VERIFIED control path; descriptive state labels are not database enums; completion untested
+- id: W04
+  name: Store checkout
+  actor: tenant buyer
+  trigger: checkout POST
+  preconditions:
+  - Cart and validated customer/shipping/payment fields
+  states:
+  - pending
+  - success
+  steps:
+  - Create user/address
+  - order/lines
+  - hooks
+  - stock/gateway
+  - result
+  database_effects:
+  - product_orders
+  - order_products
+  - inventory
+  events:
+  - nazmart:before_order_create
+  - nazmart:after_order_create
+  jobs: []
+  notifications: order/gateway path-dependent
+  failure_states:
+  - validation/payment/stock/replay risks
+  related_modules:
+  - Product
+  - ShippingModule
+  - TaxModule
+  - CouponManage
+  sources:
+  - core/routes/tenant.php
+  - core/app/Http/Services/ProductCheckoutService.php
+  - core/app/Http/Services/CheckoutToPaymentService.php
+  evidence: VERIFIED control path; descriptive state labels are not database enums; completion untested
+- id: W05
+  name: Order review
+  actor: tenant admin
+  trigger: change_status
+  preconditions:
+  - Tenant admin and validated transition
+  states:
+  - success payment
+  - complete/cancel fulfillment
+  steps:
+  - Update status
+  - hooks
+  - stock/commission
+  - mail
+  database_effects:
+  - product_orders
+  - inventory
+  - commission records
+  events:
+  - OrderCompleted
+  jobs: []
+  notifications: order mail
+  failure_states:
+  - transition/notification failure
+  related_modules:
+  - CommissionManage
+  - Inventory
+  sources:
+  - core/app/Http/Controllers/Tenant/Admin/OrderManageController.php
+  evidence: VERIFIED control path; descriptive state labels are not database enums; completion untested
+- id: W06
+  name: Expiry and renewal
+  actor: scheduler/tenant requester
+  trigger: daily command or protected request
+  preconditions:
+  - Existing expiry/trial/payment/wallet state
+  states:
+  - expired access
+  - renewed; descriptive labels
+  steps:
+  - Notice
+  - optional wallet renewal; middleware access decision
+  database_effects:
+  - payment_logs
+  - wallet records
+  - tenants
+  events: []
+  jobs: []
+  notifications: expiry/removal warning mail
+  failure_states:
+  - insufficient funds/cron/delivery
+  related_modules:
+  - Wallet
+  sources:
+  - core/app/Console/Kernel.php
+  - core/app/Console/Commands
+  evidence: VERIFIED control path; descriptive state labels are not database enums; completion untested
+- id: W07
+  name: Custom domains
+  actor: central or tenant admin
+  trigger: domain request/update
+  preconditions:
+  - Ownership, unique host and domain validation
+  states:
+  - request/mapping; exact status values require handler review
+  steps:
+  - Controller
+  - domain records
+  - request resolver
+  database_effects:
+  - custom_domains
+  - domains
+  events: []
+  jobs: []
+  notifications: null
+  failure_states:
+  - DNS/SSL/conflicting mapping
+  related_modules:
+  - DomainReseller
+  - CpanelAutomation
+  sources:
+  - core/app/Http/Controllers/Tenant/Admin/CustomDomainController.php
+  - core/app/Http/Controllers/Landlord/Admin/CustomDomainController.php
+  evidence: VERIFIED control path; descriptive state labels are not database enums; completion untested
+- id: W08
+  name: Theme and page editing
+  actor: context admin
+  trigger: theme import or builder save
+  preconditions:
+  - Owning context/page and recognized format
+  states:
+  - selected theme
+  - saved page
+  steps:
+  - Select/import
+  - activate
+  - editor/content
+  - render
+  database_effects:
+  - pages
+  - page_builder_content
+  - page_builder_widgets
+  - tenants
+  events:
+  - TenancyInitialized
+  jobs: []
+  notifications: null
+  failure_states:
+  - partial import/format/save failure
+  related_modules:
+  - ThemeManage
+  sources:
+  - core/app/Services/ThemeManager.php
+  - core/app/Services/ThemeDemoImporter.php
+  - core/app/Http/Controllers/CustomPageBuilderController.php
+  evidence: VERIFIED control path; descriptive state labels are not database enums; completion untested
+- id: W09
+  name: Plugin lifecycle
+  actor: admin/tenant bootstrap
+  trigger: manage plugin or initialize tenant
+  preconditions:
+  - Manifest, status and context checks
+  states:
+  - active/inactive
+  steps:
+  - Discover
+  - register
+  - status/override
+  - boot hooks/routes/schema
+  database_effects:
+  - plugin_tenant_overrides
+  - plugin options
+  - plugin-owned schema
+  events:
+  - TenancyInitialized
+  jobs: []
+  notifications: null
+  failure_states:
+  - dependency/schema/cache failure
+  related_modules:
+  - PluginManage
+  sources:
+  - core/app/PluginSystem/PluginManager.php
+  - core/app/Providers/PluginServiceProvider.php
+  evidence: VERIFIED control path; descriptive state labels are not database enums; completion untested

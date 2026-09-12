@@ -7,12 +7,20 @@ on:
         description: "Tracked GitHub Issue number"
         required: true
         type: string
+      mode:
+        description: "Preflight checks only, or deploy to Production"
+        required: true
+        default: preflight
+        type: choice
+        options:
+          - preflight
+          - deploy
       expected_sha:
         description: "Optional expected main commit SHA (full or prefix)"
         required: false
         type: string
       confirm:
-        description: "Type DEPLOY to confirm Production deployment"
+        description: "Type PREFLIGHT or DEPLOY to match the selected mode"
         required: true
         type: string
 
@@ -26,7 +34,10 @@ concurrency:
 
 jobs:
   deploy:
-    if: ${{ github.ref == 'refs/heads/main' && inputs.confirm == 'DEPLOY' }}
+    if: >-
+      ${{ github.ref == 'refs/heads/main' &&
+          ((inputs.mode == 'preflight' && inputs.confirm == 'PREFLIGHT') ||
+           (inputs.mode == 'deploy' && inputs.confirm == 'DEPLOY')) }}
     runs-on: ubuntu-latest
     environment: production
 
@@ -99,7 +110,32 @@ jobs:
           ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" \
             "test -d '$APP_ROOT/core' && test -f '$APP_ROOT/core/artisan' && test -f '$APP_ROOT/core/.env' && command -v php >/dev/null && command -v composer >/dev/null && command -v rsync >/dev/null"
 
+      - name: Comment preflight success
+        if: ${{ success() && inputs.mode == 'preflight' }}
+        shell: bash
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "PRODUCTION DEPLOYMENT PREFLIGHT: PASS
+
+Main commit checked: \`${{ steps.revision.outputs.sha }}\`
+SSH / target / PHP / Composer / rsync: PASS
+Frontend build: PASS
+Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+
+No Production files or database schema were changed by preflight mode."
+
+      - name: Comment preflight failure
+        if: ${{ failure() && inputs.mode == 'preflight' }}
+        shell: bash
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "PRODUCTION DEPLOYMENT PREFLIGHT: FAIL
+
+Candidate commit: \`${{ steps.revision.outputs.sha }}\`
+Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+
+No deployment was attempted. Review the failed step before retrying."
+
       - name: Comment deployment start
+        if: ${{ inputs.mode == 'deploy' }}
         shell: bash
         run: |
           gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "DEPLOYMENT STARTED
@@ -110,12 +146,14 @@ Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
 Authorized manual deployment from \`main\`."
 
       - name: Upload deployment filter
+        if: ${{ inputs.mode == 'deploy' }}
         shell: bash
         run: |
           set -euo pipefail
           scp -i "$HOME/.ssh/id_deploy" -P "$PORT" .deployment/rsync-filter.rules "$PROD_USER@$PROD_HOST:/tmp/ymnay-rsync-filter.rules"
 
       - name: Create filtered source backup
+        if: ${{ inputs.mode == 'deploy' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -131,11 +169,13 @@ Authorized manual deployment from \`main\`."
           "
 
       - name: Enable Laravel maintenance mode
+        if: ${{ inputs.mode == 'deploy' }}
         shell: bash
         run: |
           ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" "cd '$APP_ROOT/core' && php artisan down --retry=60 || true"
 
       - name: Sync approved source and build output
+        if: ${{ inputs.mode == 'deploy' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -145,6 +185,7 @@ Authorized manual deployment from \`main\`."
             ./ "$PROD_USER@$PROD_HOST:$APP_ROOT/"
 
       - name: Install production PHP dependencies and clear caches
+        if: ${{ inputs.mode == 'deploy' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -158,13 +199,14 @@ Authorized manual deployment from \`main\`."
           "
 
       - name: Public health check
+        if: ${{ inputs.mode == 'deploy' }}
         shell: bash
         run: |
           set -euo pipefail
           curl -fLsS --retry 4 --retry-delay 5 --connect-timeout 15 --max-time 30 "$HEALTH_URL" >/dev/null
 
       - name: Comment deployment success
-        if: success()
+        if: ${{ success() && inputs.mode == 'deploy' }}
         shell: bash
         run: |
           gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "DEPLOYMENT SUCCESS
@@ -177,13 +219,13 @@ Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
 Update the Issue TASK CONTROL status to \`DEPLOYED\`, then \`DONE\` when any required post-deploy verification is complete."
 
       - name: Ensure application exits maintenance mode
-        if: always()
+        if: ${{ always() && inputs.mode == 'deploy' }}
         shell: bash
         run: |
           ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" "cd '$APP_ROOT/core' && php artisan up || true" || true
 
       - name: Comment deployment failure
-        if: failure()
+        if: ${{ failure() && inputs.mode == 'deploy' }}
         shell: bash
         run: |
           BACKUP_PATH="$(ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" 'cat /tmp/ymnay-last-backup-path 2>/dev/null || true' || true)"

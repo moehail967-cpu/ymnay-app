@@ -17,13 +17,15 @@ Do not infer that an unregistered name is an agent. Do not copy project knowledg
 
 ## Default team workflow
 
-When all stages are required:
+When all stages and a Production release are required:
 
 ```text
-Owner → `@Adam` → `@Nour` → `@Omar` → `@Salem` → Owner / DONE
+Owner → `@Adam` → `@Nour` → `@Omar` → `@Salem` → Owner deployment approval → GitHub Actions deployment → DONE
 ```
 
 Roles may be skipped when the task does not require them. Direct owner invocation remains allowed.
+
+QA `PASS` does not itself authorize Production deployment. Production deployment and rollback remain owner-gated and follow `../deployment/README.md`.
 
 ## Routing rules
 
@@ -32,6 +34,7 @@ Roles may be skipped when the task does not require them. Direct owner invocatio
 - A selected agent must stay inside its Allowed actions and Forbidden actions.
 - If the task requires work outside the selected agent's role, the agent prepares a handoff instead of silently changing roles.
 - All tracked/substantial team work follows `../task-management/README.md`.
+- Production deployment/rollback follows `../deployment/README.md`.
 - The GitHub Issue is the canonical task-status/ownership timeline; `.ai/work/` stores persistent deliverables, not competing status.
 - Global rules in `../PROJECT-RULES.md` always apply.
 - The shared project knowledge in `../knowledge/` remains the source of project facts; this registry is only for identity, routing, and team workflow.

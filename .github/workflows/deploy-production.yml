@@ -114,36 +114,45 @@ jobs:
         if: ${{ success() && inputs.mode == 'preflight' }}
         shell: bash
         run: |
-          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "PRODUCTION DEPLOYMENT PREFLIGHT: PASS
+          cat > "$RUNNER_TEMP/deploy-comment.md" <<EOF
+          PRODUCTION DEPLOYMENT PREFLIGHT: PASS
 
-Main commit checked: \`${{ steps.revision.outputs.sha }}\`
-SSH / target / PHP / Composer / rsync: PASS
-Frontend build: PASS
-Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          Main commit checked: `${{ steps.revision.outputs.sha }}`
+          SSH / target / PHP / Composer / rsync: PASS
+          Frontend build: PASS
+          Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
 
-No Production files or database schema were changed by preflight mode."
+          No Production files or database schema were changed by preflight mode.
+          EOF
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/deploy-comment.md"
 
       - name: Comment preflight failure
         if: ${{ failure() && inputs.mode == 'preflight' }}
         shell: bash
         run: |
-          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "PRODUCTION DEPLOYMENT PREFLIGHT: FAIL
+          cat > "$RUNNER_TEMP/deploy-comment.md" <<EOF
+          PRODUCTION DEPLOYMENT PREFLIGHT: FAIL
 
-Candidate commit: \`${{ steps.revision.outputs.sha }}\`
-Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          Candidate commit: `${{ steps.revision.outputs.sha }}`
+          Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
 
-No deployment was attempted. Review the failed step before retrying."
+          No deployment was attempted. Review the failed step before retrying.
+          EOF
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/deploy-comment.md"
 
       - name: Comment deployment start
         if: ${{ inputs.mode == 'deploy' }}
         shell: bash
         run: |
-          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "DEPLOYMENT STARTED
+          cat > "$RUNNER_TEMP/deploy-comment.md" <<EOF
+          DEPLOYMENT STARTED
 
-Environment: Production
-Commit: \`${{ steps.revision.outputs.sha }}\`
-Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
-Authorized manual deployment from \`main\`."
+          Environment: Production
+          Commit: `${{ steps.revision.outputs.sha }}`
+          Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          Authorized manual deployment from `main`.
+          EOF
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/deploy-comment.md"
 
       - name: Upload deployment filter
         if: ${{ inputs.mode == 'deploy' }}
@@ -209,14 +218,17 @@ Authorized manual deployment from \`main\`."
         if: ${{ success() && inputs.mode == 'deploy' }}
         shell: bash
         run: |
-          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "DEPLOYMENT SUCCESS
+          cat > "$RUNNER_TEMP/deploy-comment.md" <<EOF
+          DEPLOYMENT SUCCESS
 
-Environment: Production
-Deployed commit: \`${{ steps.revision.outputs.sha }}\`
-Health check: PASS — $HEALTH_URL
-Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          Environment: Production
+          Deployed commit: `${{ steps.revision.outputs.sha }}`
+          Health check: PASS — $HEALTH_URL
+          Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
 
-Update the Issue TASK CONTROL status to \`DEPLOYED\`, then \`DONE\` when any required post-deploy verification is complete."
+          Update the Issue TASK CONTROL status to `DEPLOYED`, then `DONE` when any required post-deploy verification is complete.
+          EOF
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/deploy-comment.md"
 
       - name: Ensure application exits maintenance mode
         if: ${{ always() && inputs.mode == 'deploy' }}
@@ -229,11 +241,14 @@ Update the Issue TASK CONTROL status to \`DEPLOYED\`, then \`DONE\` when any req
         shell: bash
         run: |
           BACKUP_PATH="$(ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" 'cat /tmp/ymnay-last-backup-path 2>/dev/null || true' || true)"
-          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "DEPLOYMENT FAILED
+          cat > "$RUNNER_TEMP/deploy-comment.md" <<EOF
+          DEPLOYMENT FAILED
 
-Environment: Production
-Candidate commit: \`${{ steps.revision.outputs.sha }}\`
-Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
-Backup candidate: \`${BACKUP_PATH:-unknown}\`
+          Environment: Production
+          Candidate commit: `${{ steps.revision.outputs.sha }}`
+          Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          Backup candidate: `${BACKUP_PATH:-unknown}`
 
-Set the task status to \`DEPLOY_FAILED\`. Do not improvise a database rollback. If source rollback is required, use \`ROLLBACK_REQUIRED\` and obtain explicit owner authorization."
+          Set the task status to `DEPLOY_FAILED`. Do not improvise a database rollback. If source rollback is required, use `ROLLBACK_REQUIRED` and obtain explicit owner authorization.
+          EOF
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/deploy-comment.md"

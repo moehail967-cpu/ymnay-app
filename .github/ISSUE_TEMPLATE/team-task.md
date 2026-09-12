@@ -1,7 +1,6 @@
 ---
 name: Ymnay Team Task
 about: Track product, design, engineering, QA, or cross-agent work
-name: team-task
 title: "[TASK] "
 labels: ""
 assignees: ""

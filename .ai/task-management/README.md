@@ -4,13 +4,16 @@ This is the authoritative task-management protocol for the Ymnay AI team.
 
 ## System of record
 
-- **GitHub Issue** = canonical task record, current owner, status, review routing, and timeline.
+- **GitHub Issue** = canonical task record, current owner, status, review routing, deployment state, and timeline.
 - **`.ai/work/<issue-number>-<slug>/`** = persistent work package and task deliverables when files/artifacts are needed.
 - **Git branch / PR / commit** = implementation evidence for engineering work.
+- **GitHub Actions deployment run** = Production deployment evidence when a task is released.
 - **GitHub Projects** = optional visual board/view over Issues; it must not become a second source of truth.
 - **ChatGPT** = conversational/reporting interface; reports should be generated from current GitHub Issues and repository artifacts, not stale chat memory.
 
 Do not maintain a parallel Google Sheet as an authoritative task tracker.
+
+Production deployment rules are defined in `.ai/deployment/README.md`.
 
 ## Which work must be tracked
 
@@ -20,6 +23,7 @@ Create or use a GitHub Issue for any substantial task that produces one or more 
 - UI/UX design or review artifacts;
 - application code, migration, test, branch, PR, or commit;
 - QA/review verdict;
+- Production deployment/rollback;
 - cross-agent handoff;
 - owner decision that blocks or changes implementation.
 
@@ -41,6 +45,7 @@ Review Required: NO
 Reviewer: —
 Work Package: —
 Branch / PR: —
+Deployment: —
 Last Updated By: Owner
 ```
 
@@ -55,6 +60,7 @@ Project-agent handles such as `@Adam` are written in backticks inside GitHub tas
 - **Reviewer** — required reviewer when `Review Required: YES`.
 - **Work Package** — path under `.ai/work/` when persistent artifacts exist.
 - **Branch / PR** — engineering branch/PR when relevant.
+- **Deployment** — Production workflow/run/commit state when deployment is relevant.
 - **Last Updated By** — owner or registered project-agent handle that last changed the task state.
 
 ## Canonical statuses
@@ -72,10 +78,17 @@ Use only these lifecycle states unless the owner explicitly adds another:
 | `READY_FOR_DEVELOPMENT` | Requirements/design are settled enough for engineering. |
 | `READY_FOR_QA` | Engineering implementation and its own verification are complete. |
 | `QA_FAILED` | QA found at least one blocker; normally routes back to engineering/design/product owner of the defect. |
-| `DONE` | Required review is complete and task is accepted for the agreed scope. |
+| `READY_FOR_DEPLOYMENT` | QA/acceptance gate is complete and the exact candidate revision is waiting for owner Production authorization. |
+| `DEPLOYING` | Owner-authorized Production deployment is currently running. |
+| `DEPLOYED` | Candidate revision was deployed and the deployment health check passed. |
+| `DEPLOY_FAILED` | Production deployment failed; Issue remains open and evidence must be recorded. |
+| `ROLLBACK_REQUIRED` | Production source rollback is required and needs explicit owner authorization. |
+| `DONE` | Required review/release work for the agreed scope is complete and accepted. |
 | `CANCELLED` | Owner cancelled the task or it is intentionally not planned. |
 
-`DONE` is normally set after `@Salem` returns `PASS`, or after the owner explicitly accepts a `PASS WITH ISSUES` outcome.
+For a code change intended for Production, QA `PASS` normally moves the task to `READY_FOR_DEPLOYMENT`, not directly to `DONE`. `DONE` follows successful deployment/post-deploy acceptance unless the owner explicitly says deployment is not part of that task.
+
+For analysis/design/documentation-only work with no Production release, `DONE` may follow the required review/owner acceptance directly.
 
 ## Starting work
 
@@ -170,7 +183,7 @@ Next Action:
 - ...
 ```
 
-Never claim an attachment, screenshot, test, branch, or artifact exists unless it actually exists and is linked or named precisely.
+Never claim an attachment, screenshot, test, branch, deployment, or artifact exists unless it actually exists and is linked or named precisely.
 
 ## Work-package convention
 
@@ -199,7 +212,7 @@ Create only files that are actually needed. Do not create empty folders or fake 
 
 ## Role routing
 
-Default team flow when all stages are needed:
+Default team flow when all stages and Production release are needed:
 
 ```text
 Owner
@@ -207,6 +220,8 @@ Owner
   → `@Nour`  UI / UX design
   → `@Omar`  implementation
   → `@Salem` QA / review
+  → Owner deployment approval
+  → GitHub Actions Production deployment
   → Owner / DONE
 ```
 
@@ -218,7 +233,8 @@ Routing rules:
 - interface/design work → `@Nour`;
 - implementation/fix → `@Omar`;
 - independent verification/retest → `@Salem`;
-- strategic/business acceptance or production authorization → Owner.
+- Production deployment/rollback authorization → Owner;
+- strategic/business acceptance → Owner.
 
 ## QA loop
 
@@ -232,6 +248,63 @@ If Salem returns `FAIL`:
 
 A code change alone does not close a QA finding.
 
+If Salem returns `PASS` for a code change that must go live:
+
+1. set `Status: READY_FOR_DEPLOYMENT`;
+2. set `Current Agent: Owner`;
+3. record the exact reviewed `main` commit/revision intended for Production;
+4. keep the Issue open;
+5. wait for explicit owner deployment authorization.
+
+A QA `PASS` is not deployment authorization.
+
+## Deployment lifecycle
+
+Deployment follows `.ai/deployment/README.md`.
+
+Before deployment:
+
+- implementation must be merged/available on canonical `main` at the exact reviewed revision;
+- QA/owner acceptance required by scope must be recorded;
+- schema/worker/service operational requirements must be identified;
+- owner must explicitly authorize Production deployment.
+
+When deployment starts:
+
+```text
+Status: DEPLOYING
+Current Agent: Owner
+Deployment: <workflow run / commit>
+```
+
+On workflow success:
+
+```text
+Status: DEPLOYED
+Current Agent: Owner
+Deployment: Production / <commit> / health check PASS
+```
+
+Then complete any requested post-deploy check. If none remains, set `DONE` and close the Issue.
+
+On workflow failure:
+
+```text
+Status: DEPLOY_FAILED
+Current Agent: Owner
+```
+
+Attach/link the failed workflow evidence and route diagnosis to `@Omar` or the appropriate role. Do not silently retry or alter Production state outside the approved protocol.
+
+If rollback is required:
+
+```text
+Status: ROLLBACK_REQUIRED
+Current Agent: Owner
+```
+
+Rollback needs a new explicit owner authorization. Database rollback must never be inferred from source rollback.
+
 ## Issue closure
 
 Close the GitHub Issue only when:
@@ -239,9 +312,10 @@ Close the GitHub Issue only when:
 - task is `DONE` or `CANCELLED`;
 - required handoffs/reviews are recorded;
 - material deliverables are linked;
-- no known blocking issue remains for the agreed scope.
+- no known blocking issue remains for the agreed scope;
+- if Production deployment was part of scope, deployment/post-deploy acceptance is complete.
 
-Do not close an Issue simply because one agent finished their stage.
+Do not close an Issue simply because one agent finished their stage or QA passed.
 
 ## Reporting
 
@@ -250,9 +324,11 @@ The owner should be able to ask questions such as:
 - "ما المهام الموجودة عند عمر؟"
 - "ايش المهام المتوقفة؟"
 - "ايش ينتظر مراجعتي؟"
+- "ايش جاهز للنشر؟"
+- "ايش تم نشره على Production؟"
 - "أعطني تقرير الفريق اليوم."
 
-A repository-aware assistant should answer from current GitHub Issues plus linked work artifacts.
+A repository-aware assistant should answer from current GitHub Issues plus linked work/deployment artifacts.
 
 Useful report groupings:
 
@@ -260,7 +336,8 @@ Useful report groupings:
 - by `Status`;
 - `NEEDS_REVIEW` / `BLOCKED` tasks;
 - `READY_FOR_QA` and `QA_FAILED` tasks;
-- recently completed `DONE` tasks.
+- `READY_FOR_DEPLOYMENT`, `DEPLOY_FAILED`, and `ROLLBACK_REQUIRED` tasks;
+- recently completed `DEPLOYED` / `DONE` tasks.
 
 Do not infer task state from chat history when the GitHub Issue says otherwise.
 
@@ -274,6 +351,8 @@ Product
 Design
 Development
 QA
+Ready for Deployment
+Deploying / Deployment Issue
 Needs Review / Blocked
 Done
 ```
@@ -283,6 +362,8 @@ The board mirrors Issues. Updating the board must never replace updating the can
 ## Data and security
 
 Task records and work packages must not contain secrets, credentials, private keys, production `.env` values, payment credentials, or unnecessary customer data.
+
+Deployment secrets live only in authorized GitHub Actions secret storage/server configuration, never in Issues or `.ai/` files.
 
 Screenshots must avoid or redact sensitive customer/business data where practical.
 

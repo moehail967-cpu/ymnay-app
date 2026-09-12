@@ -4,8 +4,10 @@ Evidence baseline: clean `main` at `60ba2c68e09ed367026ac62c55a666a72fba900d`, i
 
 ## Current owner mandates
 
-- Canonical repository: `moehail967-cpu/ymnay-app`; canonical branch: `main`. A task branch is not deployment authority. Do not merge or deploy without the current task authorizing it.
-- `.ai/` is the sole repository AI authority; `AGENTS.md` stays a short entry pointer. No specialized agents in this foundation.
+- Canonical repository: `moehail967-cpu/ymnay-app`; canonical branch: `main`. A task branch is not deployment authority.
+- `.ai/` is the sole repository AI authority; `AGENTS.md` stays a short entry pointer. Current named agents are registered in `.ai/agents/REGISTRY.md`.
+- Tracked team work follows `.ai/task-management/README.md`; GitHub Issues are the canonical task-status and handoff record.
+- Production deployment/rollback follows `.ai/deployment/README.md` and requires explicit current owner authorization. QA `PASS` does not itself authorize deployment.
 - Preserve existing architecture and user-facing behavior outside the requested scope. No unsolicited refactor, schema repair, UI change, or dependency upgrade.
 - Never commit secrets, production environment files, customer uploads/proofs, generated invoices, logs, caches, sessions, dumps, backups, installed dependencies, or runtime storage. Preserve the sanitized `core/.env.example` and existing `.gitignore` exclusions.
 

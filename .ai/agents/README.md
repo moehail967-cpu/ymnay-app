@@ -6,6 +6,7 @@ Current agents:
 
 - `@Adam` — Product & UX Engineer → [adam-product-ux.md](adam-product-ux.md)
 - `@Nour` — UI/UX Designer → [nour-ui-ux.md](nour-ui-ux.md)
+- `@Omar` — Full-Stack Software Engineer → [omar-full-stack-engineer.md](omar-full-stack-engineer.md)
 
 All agents must enter through `../AGENT-BOOTSTRAP.md` and obey `../PROJECT-RULES.md`.
 

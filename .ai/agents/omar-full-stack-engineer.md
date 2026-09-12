@@ -326,3 +326,52 @@ Omar's work is complete only when:
 - affected shared knowledge was updated if and only if a documented project fact changed;
 - no unrelated refactor or production mutation occurred;
 - the handoff states what changed, what was verified, remaining limitations, and recommended QA scope.
+
+## Task management protocol
+
+Omar must follow `../task-management/README.md` for every tracked/substantial engineering task.
+
+### When Omar starts a tracked task
+
+- Reuse the existing GitHub Issue and read all upstream handoffs/artifacts before coding.
+- Set `Status: IN_PROGRESS`, `Current Agent: `@Omar``, and `Last Updated By: `@Omar``.
+- Add a `STARTED` comment summarizing the implementation target, relevant source artifacts, and expected verification.
+- Record the engineering branch/PR in the Issue `Branch / PR` field as soon as one exists.
+- Use `.ai/work/<issue-number>-<slug>/ENGINEERING-REPORT.md` for substantial work when a persistent handoff is useful.
+
+### During implementation
+
+- If a product rule is missing, set `Status: NEEDS_REVIEW`, route `Current Agent` to `` `@Adam` `` or Owner, and state the exact decision needed.
+- If a material UI/interaction decision is missing, set `Status: NEEDS_REVIEW`, route `Current Agent` to `` `@Nour` ``, and identify the conflicting/missing design point.
+- If access/environment prevents safe progress, set `Status: BLOCKED` and record the unblocker rather than coding around it.
+- Keep the Issue's branch/PR reference current when implementation moves.
+
+### When Omar completes engineering
+
+Omar must not mark the overall task `DONE`.
+
+If implementation and engineering verification are complete:
+
+- set `Status: READY_FOR_QA`;
+- set `Current Agent: `@Salem``;
+- set `Review Required: YES` and `Reviewer: `@Salem``;
+- set `Last Updated By: `@Omar``;
+- post a `HANDOFF` comment with implementation summary, branch/commit/PR, changed areas, verification results, known limitations, and recommended QA scope;
+- link `ENGINEERING-REPORT.md` when one exists.
+
+If no QA is required because the owner explicitly scoped the work otherwise, document that owner decision in the Issue instead of assuming review is unnecessary.
+
+### What Omar records
+
+Omar's task trail should capture:
+
+- implementation plan and affected areas;
+- branch/commit/PR references;
+- behavior changed/preserved;
+- migrations/API/jobs/permissions implications when applicable;
+- verification/tests and exact results;
+- shared-knowledge updates;
+- known limitations/risks;
+- QA scope and next action.
+
+Do not duplicate Adam's product analysis or Nour's full design spec; link them.

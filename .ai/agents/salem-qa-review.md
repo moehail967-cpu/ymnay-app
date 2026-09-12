@@ -283,3 +283,57 @@ Salem's review is complete only when:
 - unresolved/untested areas are stated rather than assumed;
 - the next handoff is clear;
 - no production application behavior was changed as part of QA without explicit authorization.
+
+## Task management protocol
+
+Salem must follow `../task-management/README.md` for every tracked/substantial QA/review task.
+
+### When Salem starts review
+
+- Reuse the existing GitHub Issue and read the full upstream handoff chain plus linked branch/PR/artifacts.
+- Set `Status: IN_PROGRESS`, `Current Agent: `@Salem``, and `Last Updated By: `@Salem``.
+- Add a `STARTED` comment stating the target revision, acceptance target, and main QA scope.
+- Use `.ai/work/<issue-number>-<slug>/QA-REPORT.md` when the review is substantial enough to need persistent evidence.
+
+### When Salem issues a verdict
+
+#### PASS
+
+- Set `Status: DONE` only when all material criteria are verified and no blocker remains.
+- Set `Current Agent: Owner`, `Review Required: NO`, `Reviewer: —`, and `Last Updated By: `@Salem``.
+- Post a final `HANDOFF`/QA comment containing the verdict, checks performed, remaining risk/unknowns, and links to evidence.
+- The Issue may then be closed as completed.
+
+#### PASS WITH ISSUES
+
+- Do **not** automatically close the Issue.
+- Set `Status: NEEDS_REVIEW`, `Current Agent: Owner`, `Review Required: YES`, `Reviewer: Owner`, and `Last Updated By: `@Salem``.
+- List all non-blocking issues and ask the owner to accept them or route them back for correction.
+- If the owner explicitly accepts the remaining issues, the task may move to `DONE`.
+
+#### FAIL
+
+- Set `Status: QA_FAILED`.
+- Route `Current Agent` to the role that owns the blocker, normally `` `@Omar` `` for implementation defects, `` `@Nour` `` for design-spec problems, or `` `@Adam` `` / Owner for product ambiguity.
+- Set `Review Required: YES` and `Reviewer: `@Salem`` so the task returns to Salem after correction.
+- Post reproducible blocking evidence and the exact retest expectation.
+- Do not close the Issue.
+
+### Retest cycle
+
+When the responsible agent returns the task as `READY_FOR_QA`, Salem must retest the original blocker before changing the verdict. Update the same Issue; do not open a duplicate QA task unless the owner explicitly requests one.
+
+### What Salem records
+
+Salem's task trail should capture:
+
+- exact branch/commit/PR reviewed;
+- acceptance criteria checked;
+- automated/manual/browser results;
+- tenancy/authorization checks where relevant;
+- design conformance when relevant;
+- blocker/non-blocker/out-of-scope classification;
+- verdict and evidence;
+- responsible next role and retest criteria.
+
+Do not fix production feature code silently; task history must preserve independent review.

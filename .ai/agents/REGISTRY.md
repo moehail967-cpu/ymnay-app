@@ -15,11 +15,23 @@ Do not infer that an unregistered name is an agent. Do not copy project knowledg
 | `@Omar` | Omar | Full-Stack Software Engineer | [omar-full-stack-engineer.md](omar-full-stack-engineer.md) | ACTIVE | `Omar`, `Software Engineer`, `Full-Stack`, `Engineer` |
 | `@Salem` | Salem | QA & Review Engineer | [salem-qa-review.md](salem-qa-review.md) | ACTIVE | `Salem`, `QA`, `QA Agent`, `Review Engineer` |
 
+## Default team workflow
+
+When all stages are required:
+
+```text
+Owner → `@Adam` → `@Nour` → `@Omar` → `@Salem` → Owner / DONE
+```
+
+Roles may be skipped when the task does not require them. Direct owner invocation remains allowed.
+
 ## Routing rules
 
 - An explicit registered handle selects that agent for the task.
 - Direct invocation is allowed for every registered agent; an upstream-agent handoff is not required when the owner's request already fits the selected role.
 - A selected agent must stay inside its Allowed actions and Forbidden actions.
 - If the task requires work outside the selected agent's role, the agent prepares a handoff instead of silently changing roles.
+- All tracked/substantial team work follows `../task-management/README.md`.
+- The GitHub Issue is the canonical task-status/ownership timeline; `.ai/work/` stores persistent deliverables, not competing status.
 - Global rules in `../PROJECT-RULES.md` always apply.
-- The shared project knowledge in `../knowledge/` remains the source of project facts; this registry is only for identity and routing.
+- The shared project knowledge in `../knowledge/` remains the source of project facts; this registry is only for identity, routing, and team workflow.

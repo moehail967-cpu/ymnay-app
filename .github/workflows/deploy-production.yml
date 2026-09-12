@@ -114,13 +114,13 @@ jobs:
         if: ${{ success() && inputs.mode == 'preflight' }}
         shell: bash
         run: |
-          cat > "$RUNNER_TEMP/deploy-comment.md" <<EOF
+          cat > "$RUNNER_TEMP/deploy-comment.md" <<'EOF'
           PRODUCTION DEPLOYMENT PREFLIGHT: PASS
 
           Main commit checked: `${{ steps.revision.outputs.sha }}`
           SSH / target / PHP / Composer / rsync: PASS
           Frontend build: PASS
-          Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          Workflow: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
           No Production files or database schema were changed by preflight mode.
           EOF
@@ -130,11 +130,11 @@ jobs:
         if: ${{ failure() && inputs.mode == 'preflight' }}
         shell: bash
         run: |
-          cat > "$RUNNER_TEMP/deploy-comment.md" <<EOF
+          cat > "$RUNNER_TEMP/deploy-comment.md" <<'EOF'
           PRODUCTION DEPLOYMENT PREFLIGHT: FAIL
 
           Candidate commit: `${{ steps.revision.outputs.sha }}`
-          Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          Workflow: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
           No deployment was attempted. Review the failed step before retrying.
           EOF
@@ -144,12 +144,12 @@ jobs:
         if: ${{ inputs.mode == 'deploy' }}
         shell: bash
         run: |
-          cat > "$RUNNER_TEMP/deploy-comment.md" <<EOF
+          cat > "$RUNNER_TEMP/deploy-comment.md" <<'EOF'
           DEPLOYMENT STARTED
 
           Environment: Production
           Commit: `${{ steps.revision.outputs.sha }}`
-          Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          Workflow: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           Authorized manual deployment from `main`.
           EOF
           gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/deploy-comment.md"
@@ -218,13 +218,13 @@ jobs:
         if: ${{ success() && inputs.mode == 'deploy' }}
         shell: bash
         run: |
-          cat > "$RUNNER_TEMP/deploy-comment.md" <<EOF
+          cat > "$RUNNER_TEMP/deploy-comment.md" <<'EOF'
           DEPLOYMENT SUCCESS
 
           Environment: Production
           Deployed commit: `${{ steps.revision.outputs.sha }}`
-          Health check: PASS — $HEALTH_URL
-          Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          Health check: PASS — https://ymnay.com/
+          Workflow: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
           Update the Issue TASK CONTROL status to `DEPLOYED`, then `DONE` when any required post-deploy verification is complete.
           EOF
@@ -241,14 +241,15 @@ jobs:
         shell: bash
         run: |
           BACKUP_PATH="$(ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" 'cat /tmp/ymnay-last-backup-path 2>/dev/null || true' || true)"
-          cat > "$RUNNER_TEMP/deploy-comment.md" <<EOF
+          cat > "$RUNNER_TEMP/deploy-comment.md" <<'EOF'
           DEPLOYMENT FAILED
 
           Environment: Production
           Candidate commit: `${{ steps.revision.outputs.sha }}`
-          Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
-          Backup candidate: `${BACKUP_PATH:-unknown}`
-
+          Workflow: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          EOF
+          printf 'Backup candidate: `%s`\n\n' "${BACKUP_PATH:-unknown}" >> "$RUNNER_TEMP/deploy-comment.md"
+          cat >> "$RUNNER_TEMP/deploy-comment.md" <<'EOF'
           Set the task status to `DEPLOY_FAILED`. Do not improvise a database rollback. If source rollback is required, use `ROLLBACK_REQUIRED` and obtain explicit owner authorization.
           EOF
           gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/deploy-comment.md"

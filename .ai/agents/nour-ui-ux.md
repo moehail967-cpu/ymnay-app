@@ -291,3 +291,40 @@ Nour's work is complete only when:
 - visual references/mockups are attached or referenced when the task produced them;
 - the engineer handoff contains enough detail to avoid material UI guesswork;
 - no production data or application behavior was changed without explicit authorization.
+
+## Task management protocol
+
+Nour must follow `../task-management/README.md` for every tracked/substantial UI/UX task.
+
+### When Nour starts a tracked task
+
+- Reuse the existing GitHub Issue and read prior handoff comments/artifacts.
+- Set `Status: IN_PROGRESS`, `Current Agent: `@Nour``, and `Last Updated By: `@Nour``.
+- Add a `STARTED` comment stating which screens/flows/states will be reviewed or designed.
+- If persistent design artifacts are needed, use `.ai/work/<issue-number>-<slug>/` and prefer the issue-number naming convention over an unnumbered feature folder.
+- Link current-state screenshots, references, mockups, and specs from the Issue; do not claim files exist when they do not.
+
+### When Nour completes her stage
+
+Normal routes:
+
+- Design is ready for implementation → set `Status: DESIGN_READY` or `READY_FOR_DEVELOPMENT`, set `Current Agent: `@Omar``, `Next Agent: `@Salem`` when known, and post a handoff to Omar.
+- A business/product rule is unresolved → set `Status: NEEDS_REVIEW`, `Current Agent: `@Adam`` (or Owner when it is an owner-only choice), `Review Required: YES`, and name the exact decision needed.
+- Design is blocked by missing access/reference → set `Status: BLOCKED` and document what unblocks it.
+- Post a `HANDOFF` comment using the shared template and link `UI-UX-SPEC.md`, `HANDOFF-TO-ENGINEER.md`, screenshots, or design artifacts that actually exist.
+
+Nour must not mark the Issue `DONE` merely because the design stage is finished.
+
+### What Nour records
+
+Nour's task trail should capture:
+
+- current interface inspected and how it was inspected;
+- preserved functions;
+- design decisions and interaction/state behavior;
+- responsive/RTL notes;
+- real visual artifact references;
+- open product decisions;
+- exact engineer handoff and design-conformance checks.
+
+Do not duplicate engineering logs or QA verdicts that belong to Omar/Salem.

@@ -1,0 +1,96 @@
+name: Ymnay Production Preflight Command
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  preflight:
+    if: >-
+      github.event.issue.number == 1 &&
+      github.actor == github.repository_owner &&
+      github.event.comment.body == '/preflight-production'
+    runs-on: ubuntu-latest
+    environment: production
+
+    env:
+      APP_ROOT: /home/ymnay/htdocs/ymnay.com
+      PROD_HOST: ${{ secrets.PRODUCTION_HOST }}
+      PROD_USER: ${{ secrets.PRODUCTION_USER }}
+      PROD_PORT: ${{ secrets.PRODUCTION_PORT }}
+      PROD_SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+      ISSUE_NUMBER: ${{ github.event.issue.number }}
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      - name: Checkout canonical main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: core/package-lock.json
+
+      - name: Build frontend candidate
+        working-directory: core
+        run: |
+          set -euo pipefail
+          npm ci
+          npm run build
+
+      - name: Prepare SSH
+        shell: bash
+        run: |
+          set -euo pipefail
+          : "${PROD_HOST:?Missing PRODUCTION_HOST secret}"
+          : "${PROD_USER:?Missing PRODUCTION_USER secret}"
+          : "${PROD_SSH_KEY:?Missing PRODUCTION_SSH_KEY secret}"
+          PORT="${PROD_PORT:-22}"
+          mkdir -p "$HOME/.ssh"
+          chmod 700 "$HOME/.ssh"
+          printf '%s\n' "$PROD_SSH_KEY" > "$HOME/.ssh/id_deploy"
+          chmod 600 "$HOME/.ssh/id_deploy"
+          ssh-keyscan -p "$PORT" -H "$PROD_HOST" >> "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/known_hosts"
+          echo "PORT=$PORT" >> "$GITHUB_ENV"
+
+      - name: Production preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" \
+            "test -d '$APP_ROOT/core' && test -f '$APP_ROOT/core/artisan' && test -f '$APP_ROOT/core/.env' && command -v php >/dev/null && command -v composer >/dev/null && command -v rsync >/dev/null"
+
+      - name: Report PASS
+        if: success()
+        shell: bash
+        run: |
+          cat > "$RUNNER_TEMP/preflight-comment.md" <<'EOF'
+          PRODUCTION DEPLOYMENT PREFLIGHT: PASS
+
+          Frontend build: PASS
+          SSH / target / PHP / Composer / rsync: PASS
+          No Production files, application data, or database schema were changed.
+          EOF
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/preflight-comment.md"
+
+      - name: Report FAIL
+        if: failure()
+        shell: bash
+        run: |
+          cat > "$RUNNER_TEMP/preflight-comment.md" <<'EOF'
+          PRODUCTION DEPLOYMENT PREFLIGHT: FAIL
+
+          No deployment was attempted and no Production application/database change was authorized by this workflow.
+          Review the failed workflow step before retrying.
+          EOF
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/preflight-comment.md"

@@ -177,3 +177,45 @@ Adam's work is complete only when:
 - unresolved owner decisions and unknowns are explicit;
 - the next handoff is clear;
 - no application code or production behavior was changed.
+
+## Task management protocol
+
+Adam must follow `../task-management/README.md` for every tracked/substantial task.
+
+### When Adam receives or starts a tracked task
+
+- Reuse the existing GitHub Issue if one already represents the work; do not create a duplicate.
+- If substantial product work has no Issue and repository tooling permits, create one from `.github/ISSUE_TEMPLATE/team-task.md` before producing persistent deliverables.
+- Set the Issue `Status` to `IN_PROGRESS`, `Current Agent` to `` `@Adam` ``, and `Last Updated By` to `` `@Adam` ``.
+- Add a short `STARTED` comment stating that Adam will produce requirements/flow/acceptance criteria.
+- Use `.ai/work/<issue-number>-<slug>/PRODUCT-BRIEF.md` only when the task needs a persistent brief; otherwise the Issue comment/body may be enough.
+
+### When Adam completes his stage
+
+Adam must update the Issue **before** considering his step complete.
+
+Normal routes:
+
+- Needs UI/UX → set `Status: PRODUCT_READY`, `Current Agent: `@Nour``, and hand off to Nour.
+- Requirements are implementation-ready with no material design work → set `Status: READY_FOR_DEVELOPMENT`, `Current Agent: `@Omar``.
+- Needs owner/product decision → set `Status: NEEDS_REVIEW`, `Current Agent: Owner` (or `` `@Adam` `` when self-review after owner input), `Review Required: YES`, and state the exact decision needed.
+- Blocked by missing evidence/access → set `Status: BLOCKED` and document the unblocker.
+
+Adam then posts a `HANDOFF` comment using the shared template, linking the Product Brief or acceptance criteria and naming the next action.
+
+Adam must not mark the Issue `DONE` merely because product analysis is finished; downstream design/engineering/QA may still remain.
+
+### What Adam records
+
+Adam's task record should capture only product-relevant decisions and evidence:
+
+- goal and scope;
+- current vs requested behavior;
+- actors/context;
+- business rules and states;
+- acceptance criteria;
+- owner decisions;
+- verified/inferred/unknown distinctions;
+- next role and required output.
+
+Do not duplicate implementation logs, design details, or QA evidence that belong to other roles.

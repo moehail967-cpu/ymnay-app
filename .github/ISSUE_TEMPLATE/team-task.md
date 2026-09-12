@@ -1,6 +1,6 @@
 ---
 name: Ymnay Team Task
-about: Track product, design, engineering, QA, or cross-agent work
+about: Track product, design, engineering, QA, deployment, or cross-agent work
 title: "[TASK] "
 labels: ""
 assignees: ""
@@ -17,6 +17,7 @@ Review Required: NO
 Reviewer: —  
 Work Package: —  
 Branch / PR: —  
+Deployment: —  
 Last Updated By: Owner
 
 ## Goal
@@ -49,4 +50,5 @@ Last Updated By: Owner
 
 ## Notes
 
-Task lifecycle and handoff rules: `.ai/task-management/README.md`
+Task lifecycle and handoff rules: `.ai/task-management/README.md`  
+Production deployment protocol: `.ai/deployment/README.md`

@@ -4,7 +4,7 @@ This is the canonical registry for named project agents. A named agent is active
 
 ## Invocation convention
 
-When a repository-aware task explicitly addresses a registered handle (for example `@Adam` or `@Nour`) or clearly asks to work with that named agent, load that agent's definition and follow its role for the current task. The explicit current user instruction still has highest project-level authority.
+When a repository-aware task explicitly addresses a registered handle (for example `@Adam`, `@Nour`, or `@Omar`) or clearly asks to work with that named agent, load that agent's definition and follow its role for the current task. The explicit current user instruction still has highest project-level authority.
 
 Do not infer that an unregistered name is an agent. Do not copy project knowledge into agent definitions; agents read the shared knowledge base through `../AGENT-BOOTSTRAP.md`.
 
@@ -12,6 +12,7 @@ Do not infer that an unregistered name is an agent. Do not copy project knowledg
 |---|---|---|---|---|---|
 | `@Adam` | Adam | Product & UX Engineer | [adam-product-ux.md](adam-product-ux.md) | ACTIVE | `Adam`, `Product/UX`, `Product Agent` |
 | `@Nour` | Nour | UI/UX Designer | [nour-ui-ux.md](nour-ui-ux.md) | ACTIVE | `Nour`, `UI/UX`, `Designer`, `UI/UX Designer` |
+| `@Omar` | Omar | Full-Stack Software Engineer | [omar-full-stack-engineer.md](omar-full-stack-engineer.md) | ACTIVE | `Omar`, `Software Engineer`, `Full-Stack`, `Engineer` |
 
 ## Routing rules
 

@@ -7,12 +7,15 @@
 1. [PROJECT-RULES.md](PROJECT-RULES.md).
 2. If the current task explicitly addresses a registered agent such as `@Adam`, read [agents/REGISTRY.md](agents/REGISTRY.md) and that agent's definition.
 3. For any tracked/substantial team task, read [task-management/README.md](task-management/README.md) and use the existing GitHub Issue if one exists.
-4. Read [knowledge/INDEX.md](knowledge/INDEX.md).
-5. Read only the shared knowledge files required by the selected agent and the current task.
+4. If the task includes Production deployment, rollback, migrations, service restart, or another live operational action, read [deployment/README.md](deployment/README.md) before acting.
+5. Read [knowledge/INDEX.md](knowledge/INDEX.md).
+6. Read only the shared knowledge files required by the selected agent and the current task.
 
 When a user explicitly addresses a registered handle, use that agent for the current task and stay inside its role, allowed actions, forbidden actions, handoff rules, quality gates, and task-management responsibilities. If a requested action is outside that role, prepare the proper handoff instead of silently changing roles. An unregistered name is not a project agent.
 
-For tracked work, the GitHub Issue is the canonical task record. Agents must keep its `TASK CONTROL` block current, add `STARTED`/`HANDOFF` comments at lifecycle transitions, and link real work-package/branch/PR artifacts. Do not infer current task ownership/status from chat memory when GitHub says otherwise.
+For tracked work, the GitHub Issue is the canonical task record. Agents must keep its `TASK CONTROL` block current, add `STARTED`/`HANDOFF` comments at lifecycle transitions, and link real work-package/branch/PR/deployment artifacts. Do not infer current task ownership/status from chat memory when GitHub says otherwise.
+
+Production deployment is owner-gated. A QA `PASS` means the reviewed candidate passed the agreed QA scope; it does **not** authorize Production deployment. Production deployment/rollback requires explicit current owner authorization and the deployment protocol.
 
 Before changing anything: identify the affected module and central/tenant context → inspect the existing implementation → read relevant knowledge → verify against current code → assess [change impact](knowledge/CHANGE-IMPACT.md) → preserve existing patterns → test affected behavior.
 

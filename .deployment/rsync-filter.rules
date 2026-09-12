@@ -1,0 +1,58 @@
+# Deployment sync filters. Excluded paths are preserved on Production because rsync uses --delete without --delete-excluded.
+- /.git/
+- /.github/
+- /.ai/
+- /.env
+- /.env.*
+- /core/.env
+- /core/.env.*
+- /vendor/
+- /core/vendor/
+- /**/node_modules/
+- /core/storage/***
+- /core/bootstrap/cache/***
+- /core/public/storage
+- /core/public/themes/***
+- /themes
+- /assets/uploads/***
+
+# Preserve runtime uploads while still allowing shipped UI/default assets to deploy.
++ /assets/landlord/uploads/
++ /assets/landlord/uploads/icon/
++ /assets/landlord/uploads/icon/***
++ /assets/landlord/uploads/default-uploads/
++ /assets/landlord/uploads/default-uploads/***
+- /assets/landlord/uploads/***
+
++ /assets/tenant/uploads/
++ /assets/tenant/uploads/icon/
++ /assets/tenant/uploads/icon/***
++ /assets/tenant/uploads/default-uploads/
++ /assets/tenant/uploads/default-uploads/***
+- /assets/tenant/uploads/***
+
++ /core/public/assets/landlord/uploads/
++ /core/public/assets/landlord/uploads/icon/
++ /core/public/assets/landlord/uploads/icon/***
++ /core/public/assets/landlord/uploads/default-uploads/
++ /core/public/assets/landlord/uploads/default-uploads/***
+- /core/public/assets/landlord/uploads/***
+
++ /core/public/assets/tenant/uploads/
++ /core/public/assets/tenant/uploads/icon/
++ /core/public/assets/tenant/uploads/icon/***
++ /core/public/assets/tenant/uploads/default-uploads/
++ /core/public/assets/tenant/uploads/default-uploads/***
+- /core/public/assets/tenant/uploads/***
+
+# Local/editor/runtime residue.
+- *.log
+- *.sql
+- *.sql.*
+- *.bak
+- *.backup*
+- *.tmp
+- *.temp
+- /.DS_Store
+- /.idea/
+- /.vscode/

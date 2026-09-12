@@ -6,6 +6,16 @@
 - /.env.*
 - /core/.env
 - /core/.env.*
+
+# Server/hosting-managed paths that must not be deleted by application sync.
+- /.well-known/***
+- /cgi-bin/***
+- /.user.ini
+- /php.ini
+- /error_log
+- /logs/***
+
+# Installed dependencies/runtime state are handled separately or preserved in place.
 - /vendor/
 - /core/vendor/
 - /**/node_modules/

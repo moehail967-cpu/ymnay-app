@@ -7,6 +7,7 @@ These are source/model/migration facts, not a dump of the deployed database. A r
 | Data family | Models / tables | Ownership and relationships |
 |---|---|---|
 | Central accounts | `core/app/Models/User.php` → `users`; Admin → `admins` | Central owners have many tenants/payment logs. User is soft-deleted. Both models are also used in tenant context |
+| Store onboarding | `StoreOnboardingRequest.php` → `store_onboarding_requests` | Central resumable request keyed by UUID; optional user/plan/tenant links, plan snapshot, chosen theme/store/subdomain and `draft`/`account_verified`/`provisioning`/`ready`/`failed` status |
 | Tenants/domains | `Tenant.php`, `UserDomain.php`, `CustomDomain.php`; `tenants`, `domains`, `custom_domains` | String tenant key; `tenants.user_id`; incoming host mapping via domains; custom-domain workflow is separate |
 | Subscription ledger | `PaymentLogs.php` → `payment_logs` | Explicit CentralConnection; user, tenant, plan; payment/status/expiry/renewal/recurring fields |
 | Plan entitlements | `PricePlan.php`, `PlanFeature.php`, `PlanTheme.php`, `PlanPaymentGateway.php` | `price_plans`, `plan_features`, `plan_themes`, `plan_payment_gateways`; do not assume removed plan-plugin entitlement tables remain active |
@@ -34,6 +35,7 @@ Model paths above are under `core/app/Models` unless otherwise qualified. Additi
 | inventory details link product and inventory; product FK cascade | `core/database/migrations/tenant/2022_08_01_104531_create_product_inventory_details_table.php` |
 | order_products.order_id FK → product_orders.id, cascade; product/variant in initial migration are integers without FKs | `core/database/migrations/tenant/2022_10_16_174456_create_order_products_table.php` |
 | New builder content/widget relationships and indexes | `core/database/migrations/tenant/2024_01_01_000001_create_page_builder_content_table.php`, `core/database/migrations/tenant/2024_01_01_000002_create_page_builder_widgets_table.php` |
+| store_onboarding_requests UUID primary key; nullable central user/plan FKs; subdomain and tenant lookup indexes | `core/database/migrations/2026_09_14_000001_create_store_onboarding_requests_table.php` |
 
 ```mermaid
 erDiagram

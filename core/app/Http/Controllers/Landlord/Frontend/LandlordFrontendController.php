@@ -30,6 +30,7 @@ use App\Models\Page;
 use App\Models\PaymentGateway;
 use App\Models\PaymentLogs;
 use App\Models\PricePlan;
+use App\Models\StoreOnboardingRequest;
 use App\Models\Tenant;
 use App\Models\TenantUniqueKey;
 use App\Models\Themes;
@@ -109,10 +110,14 @@ class LandlordFrontendController extends Controller
     -------------------------- */
     public function verify_user_email()
     {
-        if (empty(get_static_option('user_email_verify_status')) || Auth::guard('web')->user()) {
-            if (Auth::guard('web')->user()->email_verified == 1) {
-                return redirect()->route('landlord.user.home');
-            }
+        $user = Auth::guard('web')->user();
+        if (!$user) {
+            return redirect()->route('landlord.user.login');
+        }
+        if (empty(get_static_option('user_email_verify_status')) || $user->email_verified == 1) {
+            return session('store_onboarding_request_id')
+                ? redirect()->route('landlord.store.onboarding', ['step' => 5])
+                : redirect()->route('landlord.user.home');
         }
 
         //return view('landlord.frontend.auth.email-verify');
@@ -130,9 +135,13 @@ class LandlordFrontendController extends Controller
         }
 
         $user_info->email_verified = 1;
+        $user_info->email_verify_token = null;
         $user_info->save();
+        $this->claimStoreOnboardingRequest($user_info, 'account_verified');
 
-        return redirect()->route('landlord.user.home');
+        return session('store_onboarding_request_id')
+            ? redirect()->route('landlord.store.onboarding', ['step' => 5])
+            : redirect()->route('landlord.user.home');
     }
 
     public function resend_verify_user_email(Request $request)
@@ -182,7 +191,12 @@ class LandlordFrontendController extends Controller
             $type = 'email';
         }
         if (Auth::guard('web')->attempt([ $type => $request->username, 'password' => $request->password], $request->get('remember'))) {
+            $request->session()->regenerate();
             $loggedInUser = Auth::guard('web')->user();
+            $this->claimStoreOnboardingRequest($loggedInUser);
+            $redirectUrl = session('store_onboarding_request_id')
+                ? route('landlord.store.onboarding', ['step' => 5])
+                : route('landlord.user.home');
             return response()->json([
                 'msg'        => __('Login Success Redirecting'),
                 'type'       => 'success',
@@ -191,6 +205,7 @@ class LandlordFrontendController extends Controller
                 'name'       => $loggedInUser->name,
                 'email'      => $loggedInUser->email,
                 'csrf_token' => csrf_token(), // Session regenerates on login — return fresh token
+                'redirect_url' => $redirectUrl,
             ]);
         }
         return response()->json([
@@ -344,7 +359,7 @@ class LandlordFrontendController extends Controller
             'name'            => ['required', 'string', 'max:191'],
             'email'           => ['required', 'string', 'email', 'max:191', 'unique:users'],
             'phone'           => ['required', 'string', 'regex:/^[0-9+]+$/', 'unique:users,mobile'],
-            'username'        => ['required', 'string', 'max:191', 'unique:users'],
+            'username'        => ['nullable', 'string', 'max:191', 'unique:users'],
             'password'        => ['required', 'string', 'min:8', 'confirmed'],
             'terms_condition' => ['required'],
         ], [
@@ -359,7 +374,7 @@ class LandlordFrontendController extends Controller
             'name'       => $request->name,
             'email'      => $request->email,
             'phone'      => $request->phone,
-            'username'   => $request->username,
+            'username'   => $request->filled('username') ? $request->username : $this->generateInternalUsername(),
             'password'   => Hash::make($request->password),
             'country'    => $request->country ?? '',
             'city'       => $request->city ?? '',
@@ -395,6 +410,8 @@ class LandlordFrontendController extends Controller
             'type'   => 'success',
             'msg'    => __('OTP sent to your email. Please check your inbox.'),
             'email'  => $request->email,
+            'expires_in' => 300,
+            'retry_after' => 60,
         ]);
     }
 
@@ -445,6 +462,15 @@ class LandlordFrontendController extends Controller
         }
 
         // OTP correct — create the user now (email already verified by OTP)
+        if (User::where('email', $pending['email'])->orWhere('mobile', $pending['phone'])->exists()) {
+            session()->forget('pending_registration');
+            return response()->json([
+                'type' => 'danger',
+                'msg' => __('An account already exists with these details. Please sign in or recover access.'),
+                'status' => 'account_exists',
+            ], 422);
+        }
+
         $user = User::create([
             'name'           => $pending['name'],
             'email'          => $pending['email'],
@@ -461,7 +487,12 @@ class LandlordFrontendController extends Controller
         session()->forget('pending_registration');
 
         Auth::guard('web')->login($user);
+        $request->session()->regenerate();
+        $this->claimStoreOnboardingRequest($user, 'account_verified');
         session()->save(); // Force write before returning JSON so next request reads auth state
+        $redirectUrl = session('store_onboarding_request_id')
+            ? route('landlord.store.onboarding', ['step' => 5])
+            : route('landlord.user.home');
 
         return response()->json([
             'status'     => 'valid',
@@ -471,7 +502,27 @@ class LandlordFrontendController extends Controller
             'name'       => $user->name,
             'email'      => $user->email,
             'csrf_token' => csrf_token(),
+            'redirect_url' => $redirectUrl,
         ]);
+    }
+
+    private function generateInternalUsername(): string
+    {
+        do {
+            $username = 'ymnay_' . Str::lower(Str::random(12));
+        } while (User::where('username', $username)->exists());
+
+        return $username;
+    }
+
+    private function claimStoreOnboardingRequest(User $user, string $status = 'draft'): void
+    {
+        $requestId = session('store_onboarding_request_id');
+        if (!$requestId) return;
+
+        StoreOnboardingRequest::whereKey($requestId)
+            ->whereNull('user_id')
+            ->update(['user_id' => $user->id, 'status' => $status]);
     }
 
     public function resend_registration_otp(Request $request)
@@ -492,7 +543,8 @@ class LandlordFrontendController extends Controller
             return response()->json([
                 'type' => 'warning',
                 'msg'  => sprintf(__('Please wait %d seconds before resending.'), $wait),
-            ]);
+                'retry_after' => $wait,
+            ], 429);
         }
 
         // Generate fresh OTP and reset expiry + attempts
@@ -525,6 +577,8 @@ class LandlordFrontendController extends Controller
             'type'   => 'success',
             'msg'    => __('A new OTP has been sent to your email.'),
             'status' => 'resent',
+            'expires_in' => 300,
+            'retry_after' => 60,
         ]);
     }
 

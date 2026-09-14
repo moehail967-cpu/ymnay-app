@@ -24,6 +24,26 @@ entities:
   important_files:
   - core/app/Models/User.php
   evidence: VERIFIED model declarations; relations are logical, not guaranteed database FKs
+- name: StoreOnboardingRequest
+  model: core/app/Models/StoreOnboardingRequest.php
+  table: store_onboarding_requests
+  owner: explicit central
+  relationships:
+  - optional central user
+  - selected price plan
+  - resulting tenant identifier
+  statuses:
+    status:
+    - draft
+    - account_verified
+    - provisioning
+    - ready
+    - failed
+  tenant_scoped: false
+  important_files:
+  - core/app/Models/StoreOnboardingRequest.php
+  - core/database/migrations/2026_09_14_000001_create_store_onboarding_requests_table.php
+  evidence: VERIFIED model and migration declarations; runtime migration/application untested
 - name: Admin
   model: core/app/Models/Admin.php
   table: admins

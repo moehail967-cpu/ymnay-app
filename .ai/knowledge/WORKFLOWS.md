@@ -5,7 +5,7 @@ VERIFIED control paths below; successful end-to-end execution and provider deliv
 ## W01 — central registration and subscription purchase
 
 - Actor/trigger: visitor or central user enters native registration/plan checkout in `core/routes/web.php`; selected plan and request validation are prerequisites.
-- Chain: LandlordFrontendController registration/OTP/user checks → plan view → PaymentLogController::order_payment_form → PaymentLogs → gateway/manual result → subscription approval/provisioning. `/plan-order` redirects to pricing; `/plan-order/{id}` is native purchase entry. The removed custom wizard is not part of this baseline.
+- Chain: LandlordFrontendController registration/OTP/user checks → plan view → PaymentLogController::order_payment_form → PaymentLogs → gateway/manual result → subscription approval/provisioning. `/plan-order` redirects to pricing; `/plan-order/{id}` is the native paid purchase entry. The separate self-service trial wizard is W10.
 - Effects/states: central users, payment_logs and selected price_plans; paid flows start pending, completed gateway result uses payment_status `complete`. Manual payment remains pending for review; free/trial branches differ.
 - Notifications/side effects: core mail and tenant registration event when eligible; tenant creation is W02. Failed validation, gateway failure or pending approval must not be equated with an activated store.
 - Source: `core/app/Http/Controllers/Landlord/Frontend/LandlordFrontendController.php`, `core/app/Http/Controllers/Landlord/Frontend/PaymentLogController.php`, `core/app/Actions/Payment/PaymentGateways.php`.
@@ -69,3 +69,11 @@ VERIFIED control paths below; successful end-to-end execution and provider deliv
 - Chain: PluginServiceProvider → PluginManager registration/status/overrides → plugin main class → hooks/routes/assets/settings/scheduler. Some schema checks execute during tenant boot.
 - Effects: module/plugin status/options/tenant override and plugin-owned schema where applicable. A manifest/route existing is not proof of active entitlement. Compatibility/failure-cache issues: UNKNOWN-007.
 - Source: `core/app/Providers/PluginServiceProvider.php`, `core/app/PluginSystem/PluginManager.php`, `core/app/PluginSystem/PluginBase.php`, `core/Modules/PluginManage`.
+
+## W10 — self-service store onboarding trial
+
+- Actor/trigger: visitor or verified central user enters `/create-store`; an active trial-enabled plan, allowed theme, valid unclaimed subdomain and trial-eligible central account are prerequisites.
+- Chain: StoreOnboardingController records plan/theme/store data in StoreOnboardingRequest → LandlordFrontendController OTP registration or login claims the request → review compares the saved plan snapshot with current price/trial data → completion locks the central user/request → TenantRegisterEvent runs W02 → TenantTrialPaymentLog records the trial → tenant store title is set → a signed tenant admin URL is returned.
+- Effects/states: central `store_onboarding_requests` moves through `draft`, `account_verified`, `provisioning`, `ready` or `failed`; tenant/domain and trial payment effects belong to W02/current trial action. A ready or failed request can be resumed without storing passwords or OTPs in the onboarding row.
+- Failure/idempotency: user/request row locks reject concurrent provisioning and other-account trials; existing owned tenant/trial records are reused on retry. Provisioning is a synchronous multi-database pipeline and is not atomic across all effects; failures retain a reference and safe retry state.
+- Source: `core/routes/web.php`, `core/app/Http/Controllers/Landlord/Frontend/StoreOnboardingController.php`, `core/app/Http/Controllers/Landlord/Frontend/LandlordFrontendController.php`, `core/app/Models/StoreOnboardingRequest.php`, `core/app/Actions/Tenant/TenantTrialPaymentLog.php`.

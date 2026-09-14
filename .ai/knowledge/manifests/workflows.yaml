@@ -275,3 +275,47 @@ workflows:
   - core/app/PluginSystem/PluginManager.php
   - core/app/Providers/PluginServiceProvider.php
   evidence: VERIFIED control path; descriptive state labels are not database enums; completion untested
+- id: W10
+  name: Self-service store onboarding trial
+  actor: visitor/central user
+  trigger: /create-store
+  preconditions:
+  - Active trial-enabled plan and allowed theme
+  - Valid unclaimed subdomain
+  - Verified trial-eligible central account
+  states:
+  - draft
+  - account_verified
+  - provisioning
+  - ready
+  - failed
+  steps:
+  - plan/theme/store request
+  - registration or login
+  - email verification
+  - plan snapshot review
+  - locked provisioning claim
+  - W02 and trial log
+  - signed dashboard redirect
+  database_effects:
+  - store_onboarding_requests
+  - users
+  - tenants
+  - domains
+  - payment_logs
+  - tenant static_options
+  events:
+  - TenantRegisterEvent
+  jobs:
+  - TenantCreated pipeline jobs
+  notifications: registration OTP and new store mail
+  failure_states:
+  - validation/eligibility/plan-change/provisioning failure
+  related_modules:
+  - ThemeManage
+  sources:
+  - core/routes/web.php
+  - core/app/Http/Controllers/Landlord/Frontend/StoreOnboardingController.php
+  - core/app/Http/Controllers/Landlord/Frontend/LandlordFrontendController.php
+  - core/app/Models/StoreOnboardingRequest.php
+  evidence: VERIFIED source control path; migration, mail delivery and end-to-end tenant creation untested

@@ -59,6 +59,10 @@
 
     <link rel="stylesheet" href="{{versioned_asset('assets/new-landlord/css/style.css')}}">
 
+    @if(request()->routeIs('landlord.homepage') || request()->routeIs('landlord.store.*'))
+        <link rel="stylesheet" href="{{versioned_asset('assets/new-landlord/css/ymnay-public.css')}}">
+    @endif
+
     @if(\App\Facades\GlobalLanguage::user_lang_dir() == 'rtl')
         <link rel="stylesheet" href="{{asset('assets/landlord/frontend/css/rtl.css')}}">
     @endif
@@ -85,5 +89,4 @@
 <body>
 {!! renderBodyStartHooks() !!}
 @include('tenant.frontend.partials.loader')
-
 

@@ -48,4 +48,28 @@ class StoreOnboardingMarkupTest extends TestCase
         $this->assertStringNotContainsString('Estimated:', $this->markup);
         $this->assertStringNotContainsString('opSetProgress', $this->markup);
     }
+
+    public function test_mobile_progress_and_collapsible_summary_are_available(): void
+    {
+        $this->assertStringContainsString('الخطوة {{$step}} من 5', $this->markup);
+        $summary = file_get_contents(
+            dirname(__DIR__, 2) . '/resources/views/landlord/frontend/onboarding/summary.blade.php'
+        );
+        $this->assertStringContainsString('<details', $summary);
+    }
+
+    public function test_subdomain_and_password_controls_have_expected_states(): void
+    {
+        $this->assertStringContainsString("route('landlord.subdomain.check')", $this->markup);
+        $this->assertStringContainsString('aria-live="polite"', $this->markup);
+        $this->assertStringContainsString('data-password-toggle=', $this->markup);
+        $this->assertStringContainsString('pattern="[0-9]{6}"', $this->markup);
+    }
+
+    public function test_theme_preview_does_not_select_the_theme(): void
+    {
+        $this->assertStringContainsString('data-onboarding-theme-preview', $this->markup);
+        $this->assertStringContainsString('event.stopPropagation()', $this->markup);
+        $this->assertStringContainsString('<dialog', $this->markup);
+    }
 }

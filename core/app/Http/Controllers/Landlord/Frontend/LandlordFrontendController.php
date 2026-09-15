@@ -47,7 +47,6 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use JetBrains\PhpStorm\NoReturn;
-use Xgenious\PageBuilder\Services\PageBuilderRenderService;
 use function Laravel\Prompts\alert;
 use function view;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
@@ -62,16 +61,26 @@ class LandlordFrontendController extends Controller
     {
         $id = get_static_option('home_page');
         $page_post = Page::where('id', $id)->first();
-        if ($page_post->use_page_builder) {
-            $pageBuilderService = app(PageBuilderRenderService::class);
-            $renderable_object = $pageBuilderService->renderPage($page_post,true);
-            $page_post->rendered_content  = $renderable_object['html'];
-            $page_post->pagebuilder_generated_styles = $renderable_object['css'] ?? '';
+        if ($page_post) {
+            $this->setMetaDataInfo($page_post);
         }
 
+        $plans = PricePlan::query()
+            ->with(['plan_features', 'plan_themes'])
+            ->where('status', 1)
+            ->orderBy('type')
+            ->orderBy('id')
+            ->get();
 
-        $this->setMetaDataInfo($page_post);
-        return view(self::BASE_VIEW_PATH . 'frontend-home', compact('page_post'));
+        $themes = collect(getPricePlanBasedAllThemeData(getAllThemeSlug()))->values();
+        $featuredThemes = $themes->take(3)->values();
+
+        return view(self::BASE_VIEW_PATH . 'frontend-home', compact(
+            'page_post',
+            'plans',
+            'themes',
+            'featuredThemes'
+        ));
     }
 
     /* -------------------------

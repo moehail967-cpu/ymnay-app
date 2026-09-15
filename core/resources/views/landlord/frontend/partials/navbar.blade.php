@@ -1,3 +1,6 @@
+@if(request()->routeIs('landlord.homepage') || request()->routeIs('landlord.store.*'))
+    @include('landlord.frontend.partials.ymnay-navbar')
+@else
 @php
     $currentPath = request()->path();
     $isHomePage = in_array($currentPath, ['/', 'home', 'home-2']);
@@ -126,3 +129,4 @@
         </div>
     </div>
 </header>
+@endif

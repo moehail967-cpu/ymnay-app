@@ -4,6 +4,7 @@ VERIFIED source entry points. Paths in the Logic column are relative to `core/`;
 
 | Feature | Route source / context | Logic → data | Presentation / verification |
 |---|---|---|---|
+| Central public landing | `core/routes/web.php`: `/`, C | `LandlordFrontendController::homepage` → active PricePlan relations + active ThemeManager registry; configured home Page supplies SEO metadata only | Dedicated `landlord/frontend/frontend-home.blade.php` with `ymnay-*` navbar/footer and `ymnay-public.css/js`; plan CTA posts to W10, theme preview never selects |
 | Central login/register | `core/routes/web.php`, C/U | `app/Http/Controllers/Landlord/Frontend/LandlordFrontendController.php` → User, OTP/registration and token login; StoreOnboardingController claims the resumable request after login/verification | `core/resources/views/landlord/frontend/user` and `landlord/frontend/onboarding`; inspect actual return view before editing |
 | Admin login | web.php / tenant.php, C or T then admin session | `app/Http/Controllers/Landlord/Admin/Auth/AdminLoginController.php` → Admin | `core/resources/views/landlord/admin/auth`; shared even in tenant context |
 | Tenant customer login | tenant.php, T/U | `app/Http/Controllers/Tenant/Frontend/TenantFrontendController.php` → tenant User | Active theme first, core tenant frontend fallback |

@@ -46,7 +46,16 @@ $assert(! empty($tenant->unique_key), 'Tenant login key is missing.');
 $assert((int) $trial->user_id === (int) $onboarding->user_id, 'Trial belongs to a different user.');
 $assert((int) $trial->package_id === (int) $onboarding->plan_id, 'Trial belongs to a different plan.');
 $assert($trial->theme_slug === $onboarding->theme_slug, 'Trial theme differs from the request.');
-$assert(Storage::exists('g01-browser-store/g01-proof.txt'), 'Delayed tenant file copy did not finish.');
+$tenantFileExists = static function (Tenant $fileTenant): bool {
+    try {
+        tenancy()->initialize($fileTenant);
+
+        return Storage::exists($fileTenant->id.'/g01-proof.txt');
+    } finally {
+        tenancy()->end();
+    }
+};
+$assert($tenantFileExists($tenant), 'Delayed tenant file copy did not finish.');
 $assert(
     is_file(base_path('assets/tenant/uploads/media-uploader/g01-browser-store/g01-proof.txt')),
     'Legacy tenant media copy did not finish.'
@@ -63,7 +72,7 @@ $assert($raceRequests->where('status', 'ready')->count() === 1, 'Parallel addres
 $assert($raceRequests->where('status', '!=', 'ready')->count() === 1, 'Parallel address race did not safely reject one loser.');
 $raceWinner = $raceRequests->firstWhere('status', 'ready');
 $assert((int) $raceTenant->user_id === (int) $raceWinner->user_id, 'Race tenant belongs to the losing account.');
-$assert(Storage::exists('g01-race-store/g01-proof.txt'), 'Race tenant file copy did not finish.');
+$assert($tenantFileExists($raceTenant), 'Race tenant file copy did not finish.');
 $nativeTenant = Tenant::findOrFail('g01-native-store');
 $assert($nativeTenant->domain?->domain === 'g01-native-store.localhost', 'Native tenant domain is missing.');
 $assert(! empty($nativeTenant->unique_key), 'Native tenant login key is missing.');
@@ -71,7 +80,7 @@ $assert(
     PaymentLogs::where('tenant_id', $nativeTenant->id)->where('status', 'complete')->exists(),
     'Native path payment fixture was not preserved.'
 );
-$assert(Storage::exists('g01-native-store/g01-proof.txt'), 'Native tenant file copy did not finish.');
+$assert($tenantFileExists($nativeTenant), 'Native tenant file copy did not finish.');
 
 try {
     tenancy()->initialize($tenant);

@@ -163,7 +163,9 @@ jobs:
         run: |
           set -o pipefail
           sudo chown -R "$(id -u):$(id -g)" storage
+          sudo chown -R "$(id -u):$(id -g)" assets/tenant/uploads
           php ../.ai/work/4-store-onboarding/g01/native-path.php 2>&1 | tee "$RUNNER_TEMP/g01-native-path.json"
+          php -r '$data=json_decode(file_get_contents($argv[1]), true, 512, JSON_THROW_ON_ERROR); exit(($data["native_pipeline"] ?? false) ? 0 : 1);' "$RUNNER_TEMP/g01-native-path.json"
 
       - name: Drain tenant file queue and verify provisioned state
         working-directory: core
@@ -172,6 +174,7 @@ jobs:
           sleep 3
           php artisan queue:work tenant_file_sync --stop-when-empty --sleep=1 --max-time=120
           php ../.ai/work/4-store-onboarding/g01/verify.php 2>&1 | tee "$RUNNER_TEMP/g01-provisioning-verification.json"
+          php -r '$data=json_decode(file_get_contents($argv[1]), true, 512, JSON_THROW_ON_ERROR); exit(($data["file_queue_drained"] ?? false) ? 0 : 1);' "$RUNNER_TEMP/g01-provisioning-verification.json"
 
       - name: Attach Nour's approved visual references
         run: |

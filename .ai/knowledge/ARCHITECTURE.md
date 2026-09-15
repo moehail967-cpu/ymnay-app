@@ -48,6 +48,8 @@ Source: `core/app/Providers/ThemeServiceProvider.php`, `core/app/Services/ThemeM
 
 `AppServiceProvider` registers central/tenant editor paths and the renderer binding. `core/plugins/WidgetBuilder` supplies widget classes/views; themes add their own widgets. Inspect page flags and stored format first; preserve widget type/settings keys. Do not infer an old custom history extension exists because a vendor history endpoint still exists.
 
+The central `/` route is a deliberate exception: its configured `Page` record supplies SEO metadata, while the official YMNAY landing sections are rendered by the dedicated `landlord/frontend/frontend-home.blade.php` source. Other central and tenant pages retain their existing Page Builder/dynamic-page behavior.
+
 Source: `core/app/Providers/AppServiceProvider.php`, `core/app/Providers/CustomPageBuilderServiceProvider.php`, `core/app/Http/Controllers/FilteredWidgetController.php`, `core/app/Services/CustomPageBuilderRenderService.php`, `core/database/migrations/tenant/2024_01_01_000001_create_page_builder_content_table.php`, `core/database/migrations/tenant/2024_01_01_000002_create_page_builder_widgets_table.php`.
 
 ## VERIFIED — extensibility

@@ -38,23 +38,27 @@ class TenancyServiceProvider extends ServiceProvider
             // Tenant events
             Events\CreatingTenant::class => [],
             Events\TenantCreated::class => [
-                JobPipeline::make([
-
-                    CreateDatabaseWithFallback::class,
-                    TenantMigrateDatabseJob::class,
-                    TenantCacheClearJob::class,
-                    TenantDomainCreateJob::class,
-                    TenantInformationUpdateJob::class,
-                    TenantSeedDatabaseJob::class,
-                    \App\Jobs\TenantFileSycnForNewTenant::class,
-                    NewShopCreatedEmailNotificationJob::class
-
-                    // Your own jobs to prepare the tenant.
-                    // Provision API keys, create S3 buckets, anything you want!
-
-                ])->send(function (Events\TenantCreated $event) {
-                    return $event->tenant;
-                })->shouldBeQueued(false), // `false` by default, but you probably want to make this `true` for production.
+                function (Events\TenantCreated $event): void {
+                    $requestId = $event->tenant->getInternal('onboarding_request_id');
+                    if ($requestId) {
+                        $request = \App\Models\StoreOnboardingRequest::findOrFail($requestId);
+                        app(\App\Services\Onboarding\StoreOnboardingProvisioner::class)->resume($event->tenant, $request);
+                        return;
+                    }
+                    // Native paid/admin creation retains its existing pipeline unchanged.
+                    $native = JobPipeline::make([
+                        CreateDatabaseWithFallback::class,
+                        TenantMigrateDatabseJob::class,
+                        TenantCacheClearJob::class,
+                        TenantDomainCreateJob::class,
+                        TenantInformationUpdateJob::class,
+                        TenantSeedDatabaseJob::class,
+                        \App\Jobs\TenantFileSycnForNewTenant::class,
+                        NewShopCreatedEmailNotificationJob::class,
+                    ])->send(fn (Events\TenantCreated $created) => $created->tenant)
+                        ->shouldBeQueued(false)->toListener();
+                    $native($event);
+                },
             ],
             Events\SavingTenant::class => [],
             Events\TenantSaved::class => [],

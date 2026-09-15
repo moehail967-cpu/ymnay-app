@@ -30,6 +30,7 @@ use App\Models\Page;
 use App\Models\PaymentGateway;
 use App\Models\PaymentLogs;
 use App\Models\PricePlan;
+use App\Models\StoreOnboardingRequest;
 use App\Models\Tenant;
 use App\Models\TenantUniqueKey;
 use App\Models\Themes;
@@ -46,7 +47,6 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use JetBrains\PhpStorm\NoReturn;
-use Xgenious\PageBuilder\Services\PageBuilderRenderService;
 use function Laravel\Prompts\alert;
 use function view;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
@@ -61,16 +61,26 @@ class LandlordFrontendController extends Controller
     {
         $id = get_static_option('home_page');
         $page_post = Page::where('id', $id)->first();
-        if ($page_post->use_page_builder) {
-            $pageBuilderService = app(PageBuilderRenderService::class);
-            $renderable_object = $pageBuilderService->renderPage($page_post,true);
-            $page_post->rendered_content  = $renderable_object['html'];
-            $page_post->pagebuilder_generated_styles = $renderable_object['css'] ?? '';
+        if ($page_post) {
+            $this->setMetaDataInfo($page_post);
         }
 
+        $plans = PricePlan::query()
+            ->with(['plan_features', 'plan_themes'])
+            ->where('status', 1)
+            ->orderBy('type')
+            ->orderBy('id')
+            ->get();
 
-        $this->setMetaDataInfo($page_post);
-        return view(self::BASE_VIEW_PATH . 'frontend-home', compact('page_post'));
+        $themes = collect(getPricePlanBasedAllThemeData(getAllThemeSlug()))->values();
+        $featuredThemes = $themes->take(3)->values();
+
+        return view(self::BASE_VIEW_PATH . 'frontend-home', compact(
+            'page_post',
+            'plans',
+            'themes',
+            'featuredThemes'
+        ));
     }
 
     /* -------------------------
@@ -109,10 +119,14 @@ class LandlordFrontendController extends Controller
     -------------------------- */
     public function verify_user_email()
     {
-        if (empty(get_static_option('user_email_verify_status')) || Auth::guard('web')->user()) {
-            if (Auth::guard('web')->user()->email_verified == 1) {
-                return redirect()->route('landlord.user.home');
-            }
+        $user = Auth::guard('web')->user();
+        if (!$user) {
+            return redirect()->route('landlord.user.login');
+        }
+        if (empty(get_static_option('user_email_verify_status')) || $user->email_verified == 1) {
+            return session('store_onboarding_request_id')
+                ? redirect()->route('landlord.store.onboarding', ['step' => 5])
+                : redirect()->route('landlord.user.home');
         }
 
         //return view('landlord.frontend.auth.email-verify');
@@ -130,9 +144,13 @@ class LandlordFrontendController extends Controller
         }
 
         $user_info->email_verified = 1;
+        $user_info->email_verify_token = null;
         $user_info->save();
+        $this->claimStoreOnboardingRequest($user_info, 'account_verified');
 
-        return redirect()->route('landlord.user.home');
+        return session('store_onboarding_request_id')
+            ? redirect()->route('landlord.store.onboarding', ['step' => 5])
+            : redirect()->route('landlord.user.home');
     }
 
     public function resend_verify_user_email(Request $request)
@@ -182,7 +200,12 @@ class LandlordFrontendController extends Controller
             $type = 'email';
         }
         if (Auth::guard('web')->attempt([ $type => $request->username, 'password' => $request->password], $request->get('remember'))) {
+            $request->session()->regenerate();
             $loggedInUser = Auth::guard('web')->user();
+            $this->claimStoreOnboardingRequest($loggedInUser);
+            $redirectUrl = session('store_onboarding_request_id')
+                ? route('landlord.store.onboarding', ['step' => 5])
+                : route('landlord.user.home');
             return response()->json([
                 'msg'        => __('Login Success Redirecting'),
                 'type'       => 'success',
@@ -191,6 +214,7 @@ class LandlordFrontendController extends Controller
                 'name'       => $loggedInUser->name,
                 'email'      => $loggedInUser->email,
                 'csrf_token' => csrf_token(), // Session regenerates on login — return fresh token
+                'redirect_url' => $redirectUrl,
             ]);
         }
         return response()->json([
@@ -344,7 +368,7 @@ class LandlordFrontendController extends Controller
             'name'            => ['required', 'string', 'max:191'],
             'email'           => ['required', 'string', 'email', 'max:191', 'unique:users'],
             'phone'           => ['required', 'string', 'regex:/^[0-9+]+$/', 'unique:users,mobile'],
-            'username'        => ['required', 'string', 'max:191', 'unique:users'],
+            'username'        => ['nullable', 'string', 'max:191', 'unique:users'],
             'password'        => ['required', 'string', 'min:8', 'confirmed'],
             'terms_condition' => ['required'],
         ], [
@@ -359,7 +383,7 @@ class LandlordFrontendController extends Controller
             'name'       => $request->name,
             'email'      => $request->email,
             'phone'      => $request->phone,
-            'username'   => $request->username,
+            'username'   => $request->filled('username') ? $request->username : $this->generateInternalUsername(),
             'password'   => Hash::make($request->password),
             'country'    => $request->country ?? '',
             'city'       => $request->city ?? '',
@@ -395,6 +419,8 @@ class LandlordFrontendController extends Controller
             'type'   => 'success',
             'msg'    => __('OTP sent to your email. Please check your inbox.'),
             'email'  => $request->email,
+            'expires_in' => 300,
+            'retry_after' => 60,
         ]);
     }
 
@@ -445,6 +471,15 @@ class LandlordFrontendController extends Controller
         }
 
         // OTP correct — create the user now (email already verified by OTP)
+        if (User::where('email', $pending['email'])->orWhere('mobile', $pending['phone'])->exists()) {
+            session()->forget('pending_registration');
+            return response()->json([
+                'type' => 'danger',
+                'msg' => __('An account already exists with these details. Please sign in or recover access.'),
+                'status' => 'account_exists',
+            ], 422);
+        }
+
         $user = User::create([
             'name'           => $pending['name'],
             'email'          => $pending['email'],
@@ -461,7 +496,12 @@ class LandlordFrontendController extends Controller
         session()->forget('pending_registration');
 
         Auth::guard('web')->login($user);
+        $request->session()->regenerate();
+        $this->claimStoreOnboardingRequest($user, 'account_verified');
         session()->save(); // Force write before returning JSON so next request reads auth state
+        $redirectUrl = session('store_onboarding_request_id')
+            ? route('landlord.store.onboarding', ['step' => 5])
+            : route('landlord.user.home');
 
         return response()->json([
             'status'     => 'valid',
@@ -471,7 +511,27 @@ class LandlordFrontendController extends Controller
             'name'       => $user->name,
             'email'      => $user->email,
             'csrf_token' => csrf_token(),
+            'redirect_url' => $redirectUrl,
         ]);
+    }
+
+    private function generateInternalUsername(): string
+    {
+        do {
+            $username = 'ymnay_' . Str::lower(Str::random(12));
+        } while (User::where('username', $username)->exists());
+
+        return $username;
+    }
+
+    private function claimStoreOnboardingRequest(User $user, string $status = 'draft'): void
+    {
+        $requestId = session('store_onboarding_request_id');
+        if (!$requestId) return;
+
+        StoreOnboardingRequest::whereKey($requestId)
+            ->whereNull('user_id')
+            ->update(['user_id' => $user->id, 'status' => $status]);
     }
 
     public function resend_registration_otp(Request $request)
@@ -492,7 +552,8 @@ class LandlordFrontendController extends Controller
             return response()->json([
                 'type' => 'warning',
                 'msg'  => sprintf(__('Please wait %d seconds before resending.'), $wait),
-            ]);
+                'retry_after' => $wait,
+            ], 429);
         }
 
         // Generate fresh OTP and reset expiry + attempts
@@ -525,6 +586,8 @@ class LandlordFrontendController extends Controller
             'type'   => 'success',
             'msg'    => __('A new OTP has been sent to your email.'),
             'status' => 'resent',
+            'expires_in' => 300,
+            'retry_after' => 60,
         ]);
     }
 
@@ -550,10 +613,10 @@ class LandlordFrontendController extends Controller
 
         if (!empty($user_info)) {
             $token_id = Str::random(30);
-            $existing_token = DB::table('password_resets')->where('email', $user_info->email)->delete();
-            if (empty($existing_token)) {
-                DB::table('password_resets')->insert(['email' => $user_info->email, 'token' => $token_id]);
-            }
+            DB::table('password_resets')->updateOrInsert(
+                ['email' => $user_info->email],
+                ['token' => $token_id, 'created_at' => now()]
+            );
             $message = __('Here is you password reset link, If you did not request to reset your password just ignore this mail.') . '<br> <a class="btn" href="' . route('landlord.user.reset.password', ['user' => $user_info->username, 'token' => $token_id]) . '" style="color:white;background:gray">' . __('Click Reset Password') . '</a>';
             $data = [
                 'username' => $user_info->username,
@@ -603,6 +666,10 @@ class LandlordFrontendController extends Controller
         if (!empty($token_iinfo)) {
             $user_info->password = Hash::make($request->password);
             $user_info->save();
+            DB::table('password_resets')->where([
+                'email' => $user_info->email,
+                'token' => $request->token,
+            ])->delete();
             return redirect()->route('landlord.user.login')->with(['msg' => __('Password Changed Successfully'), 'type' => 'success']);
         }
         return redirect()->back()->with(['msg' => __('Somethings Going Wrong! Please Try Again or Check Your Old Password'), 'type' => 'danger']);

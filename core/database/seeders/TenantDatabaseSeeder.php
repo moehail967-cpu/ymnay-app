@@ -22,6 +22,7 @@ use Database\Seeders\Tenant\TestimonialSeed;
 use Database\Seeders\Tenant\ProductSeed;
 use App\Contracts\ThemeDemoSeederContract;
 use App\Services\ThemeDemoImporter;
+use App\Services\Onboarding\OnboardingThemeDemoImporter;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -64,8 +65,12 @@ class TenantDatabaseSeeder extends Seeder
 
         // Step 1 — generic importer: media, settings, categories, products, menus, pages, widgets
         try {
-            (new ThemeDemoImporter($themeSlug))->import();
+            $importer = config('ymnay.onboarding_strict_seed', false)
+                ? new OnboardingThemeDemoImporter($themeSlug)
+                : new ThemeDemoImporter($themeSlug);
+            $importer->import();
         } catch (\Throwable $e) {
+            if (config('ymnay.onboarding_strict_seed', false)) throw $e;
             \Log::error("ThemeDemoImporter failed during tenant seed [{$themeSlug}]: " . $e->getMessage());
         }
 
@@ -76,6 +81,7 @@ class TenantDatabaseSeeder extends Seeder
             try {
                 (new $class())->run();
             } catch (\Throwable $e) {
+                if (config('ymnay.onboarding_strict_seed', false)) throw $e;
                 \Log::error("ThemeDemoSeeder failed during tenant seed [{$themeSlug}]: " . $e->getMessage());
             }
         }

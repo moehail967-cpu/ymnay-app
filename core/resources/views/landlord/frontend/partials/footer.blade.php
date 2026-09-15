@@ -51,6 +51,9 @@
 {{--</footer>--}}
 {{-- NEW FOOTER END --}}
 
+@if(request()->routeIs('landlord.homepage'))
+    @include('landlord.frontend.partials.ymnay-footer')
+@elseif(!request()->routeIs('landlord.store.*'))
 <footer class="pt-[60px] sm:pt-[80px] lg:pt-[120px] pb-8" style="background-color: var(--section-bg-6, #E5EFF8)">
     <div class="container mx-auto px-8 sm:px-6 lg:px-8">
 
@@ -81,6 +84,7 @@
 
     </div>
 </footer>
+@endif
 
 
 <div class="back-to-top">
@@ -170,6 +174,10 @@ $(document).on('submit', '.contact-two-form', function (e) {
 
 
 <script src="{{asset('assets/new-landlord/js/main.js')}}"></script>
+
+@if(request()->routeIs('landlord.homepage') || request()->routeIs('landlord.store.*'))
+    <script src="{{versioned_asset('assets/new-landlord/js/ymnay-public.js')}}"></script>
+@endif
 
 
 

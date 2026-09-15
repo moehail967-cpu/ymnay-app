@@ -22,8 +22,11 @@ class MediaSeed extends Seeder
         $this->seedMediaUploaderFiles();
 
         // coping media
-        $source_dir = 'assets/tenant/seeder-files/all-media';
-        $destination_dir = 'assets/tenant/uploads/media-uploader/' . tenant()->id;
+        // Seed commands may be launched from HTTP workers, queues, or a CLI whose
+        // current directory is not the Laravel base path. Resolve both locations
+        // explicitly so provisioning does not depend on process cwd.
+        $source_dir = base_path('assets/tenant/seeder-files/all-media');
+        $destination_dir = base_path('assets/tenant/uploads/media-uploader/' . tenant()->id);
         $this->recursive_files_copy($source_dir, $destination_dir);
     }
 

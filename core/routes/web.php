@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Landlord\Frontend\PaymentLogController;
 use App\Http\Controllers\Landlord\Frontend\TenantUpgradeCheckoutController;
+use App\Http\Controllers\Landlord\Frontend\StoreOnboardingController;
 use Modules\CommissionManage\Http\Controllers\BuyerCommissionPaymentController;
 use Modules\CommissionManage\Http\Controllers\TenantCommissionController;
 use Modules\SiteAnalytics\Http\Middleware\Analytics;
@@ -103,15 +104,28 @@ Route::middleware(['maintenance_mode','landlord_glvar'])->get('/landlord/tenant-
 
 
 //LANDLORD HOME PAGE FRONTEND TENANT LOGIN - REGISTRATION
+Route::middleware(['landlord_glvar','set_lang','maintenance_mode'])->name('landlord.store.')->prefix('create-store')->group(function () {
+    Route::get('/', [StoreOnboardingController::class, 'index'])->name('onboarding');
+    Route::post('/plan', [StoreOnboardingController::class, 'selectPlan'])->name('onboarding.plan');
+    Route::post('/theme', [StoreOnboardingController::class, 'selectTheme'])->name('onboarding.theme');
+    Route::post('/details', [StoreOnboardingController::class, 'storeDetails'])->name('onboarding.details');
+    Route::post('/plan-change', [StoreOnboardingController::class, 'acknowledgePlanChange'])->name('onboarding.plan-change');
+    Route::get('/verify-email', [StoreOnboardingController::class, 'verificationForm'])->middleware('auth:web')->name('onboarding.email.verify');
+    Route::post('/verify-email', [StoreOnboardingController::class, 'verifyEmail'])->middleware(['auth:web', 'throttle:10,1'])->name('onboarding.email.verify.submit');
+    Route::get('/verify-email/resend', [StoreOnboardingController::class, 'resendVerificationEmail'])->middleware(['auth:web', 'throttle:5,1'])->name('onboarding.email.verify.resend');
+    Route::get('/status', [StoreOnboardingController::class, 'status'])->middleware('auth:web')->name('onboarding.status');
+    Route::post('/complete', [StoreOnboardingController::class, 'complete'])->middleware(['auth:web', 'throttle:5,1'])->name('onboarding.complete');
+});
+
 Route::middleware(['landlord_glvar','set_lang','maintenance_mode'])->controller(\App\Http\Controllers\Landlord\Frontend\LandlordFrontendController::class)->name('landlord.')->group(function () {
     Route::get('/login', 'showTenantLoginForm')->name('user.login');
     Route::post('store-login','ajax_login')->name('user.ajax.login');
     Route::get('/register','showTenantRegistrationForm')->name('user.register');
     Route::post('/register-store','tenant_user_create')->name('user.register.store');
     // OTP-gated registration used only by the order-page modal
-    Route::post('/register-store-otp','tenant_user_create_otp')->name('user.register.otp.store');
-    Route::post('/register-otp-verify','verify_registration_otp')->name('user.register.otp.verify');
-    Route::post('/register-otp-resend','resend_registration_otp')->name('user.register.otp.resend');
+    Route::post('/register-store-otp','tenant_user_create_otp')->middleware('throttle:5,1')->name('user.register.otp.store');
+    Route::post('/register-otp-verify','verify_registration_otp')->middleware('throttle:10,1')->name('user.register.otp.verify');
+    Route::post('/register-otp-resend','resend_registration_otp')->middleware('throttle:5,1')->name('user.register.otp.resend');
     Route::get('/logout','tenant_logout')->name('user.logout');
 
     Route::get('/login/forget-password','showUserForgetPasswordForm')->name('user.forget.password');

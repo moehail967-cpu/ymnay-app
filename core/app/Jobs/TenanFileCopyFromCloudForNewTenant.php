@@ -33,10 +33,14 @@ class TenanFileCopyFromCloudForNewTenant implements ShouldQueue
      */
     public function handle()
     {
-        Tenancy::initialize($this->tenantId);
+        // Read from central storage before the filesystem bootstrapper changes
+        // the disk root to the tenant-specific location.
+        $contents = Storage::get($this->pathname);
         $move_path = str_replace('seeder-files/all-media',$this->tenantId,$this->pathname);
+
         try {
-            Storage::copy($this->pathname,$move_path);
+            Tenancy::initialize($this->tenantId);
+            Storage::put($move_path, $contents);
             $file_name = pathinfo($this->pathname,PATHINFO_BASENAME);
             //todo:: change database connection to tenant
             //todo:: update database to use this file from the cloud
@@ -48,9 +52,8 @@ class TenanFileCopyFromCloudForNewTenant implements ShouldQueue
                 'load_from' => 1
             ]);
 
-        }catch (\Exception $e){
-
+        } finally {
+            Tenancy::end();
         }
-
     }
 }

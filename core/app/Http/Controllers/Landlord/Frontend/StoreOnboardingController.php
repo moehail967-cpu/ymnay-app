@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Landlord\Frontend;
 
 use App\Actions\Tenant\TenantTrialPaymentLog;
 use App\Events\TenantRegisterEvent;
+use App\Helpers\EmailHelpers\VerifyUserMailSend;
 use App\Services\Onboarding\StoreOnboardingProvisioner;
 use App\Services\Onboarding\RecoveryRequired;
 use App\Models\StaticOptionCentral;
@@ -136,6 +137,96 @@ class StoreOnboardingController extends Controller
 
         $nextStep = Auth::guard('web')->check() && Auth::guard('web')->user()->email_verified ? 5 : 4;
         return redirect()->route('landlord.store.onboarding', ['step' => $nextStep]);
+    }
+
+    public function verificationForm(Request $request): View|RedirectResponse
+    {
+        $user = Auth::guard('web')->user();
+        abort_unless($user, 401);
+
+        $onboarding = $this->requireCurrentRequest($request);
+        abort_unless((int) $onboarding->user_id === (int) $user->id, 403);
+
+        if ($user->email_verified) {
+            return redirect()->route('landlord.store.onboarding', ['step' => 5]);
+        }
+
+        abort_unless(in_array($onboarding->status, ['draft', 'account_verified', 'failed'], true), 409);
+
+        if (empty($user->email_verify_token)) {
+            VerifyUserMailSend::sendMail($user);
+        }
+
+        return view('landlord.frontend.dashboard.email-verify', [
+            'verifyAction' => route('landlord.store.onboarding.email.verify.submit'),
+            'resendUrl' => route('landlord.store.onboarding.email.verify.resend'),
+        ]);
+    }
+
+    public function verifyEmail(Request $request): RedirectResponse
+    {
+        $user = Auth::guard('web')->user();
+        abort_unless($user, 401);
+
+        $onboarding = $this->requireCurrentRequest($request);
+        $validated = $request->validate(['verify_code' => ['required', 'string']]);
+
+        $verified = $onboarding->getConnection()->transaction(function () use ($onboarding, $user, $validated) {
+            // Match completion's lock order so verification cannot race a provisioning claim.
+            $lockedUser = User::on($onboarding->getConnectionName())
+                ->whereKey($user->id)
+                ->lockForUpdate()
+                ->firstOrFail();
+            $lockedRequest = StoreOnboardingRequest::whereKey($onboarding->id)
+                ->lockForUpdate()
+                ->firstOrFail();
+
+            abort_unless((int) $lockedRequest->user_id === (int) $lockedUser->id, 403);
+            abort_unless(in_array($lockedRequest->status, ['draft', 'account_verified', 'failed'], true), 409);
+
+            if ($lockedUser->email_verified) return true;
+
+            $expected = (string) $lockedUser->email_verify_token;
+            if ($expected === '' || !hash_equals($expected, (string) $validated['verify_code'])) {
+                return false;
+            }
+
+            $lockedUser->forceFill([
+                'email_verified' => 1,
+                'email_verify_token' => null,
+            ])->save();
+
+            if ($lockedRequest->status === 'draft') {
+                $lockedRequest->update(['status' => 'account_verified']);
+            }
+
+            return true;
+        });
+
+        if (!$verified) {
+            return back()->with(['msg' => __('enter a valid verify code'), 'type' => 'danger']);
+        }
+
+        return redirect()->route('landlord.store.onboarding', ['step' => 5]);
+    }
+
+    public function resendVerificationEmail(Request $request): RedirectResponse
+    {
+        $user = Auth::guard('web')->user();
+        abort_unless($user, 401);
+
+        $onboarding = $this->requireCurrentRequest($request);
+        abort_unless((int) $onboarding->user_id === (int) $user->id, 403);
+
+        if ($user->email_verified) {
+            return redirect()->route('landlord.store.onboarding', ['step' => 5]);
+        }
+
+        abort_unless(in_array($onboarding->status, ['draft', 'account_verified', 'failed'], true), 409);
+        VerifyUserMailSend::sendMail($user);
+
+        return redirect()->route('landlord.store.onboarding.email.verify')
+            ->with(['msg' => __('Verify mail send'), 'type' => 'success']);
     }
 
     public function acknowledgePlanChange(Request $request): RedirectResponse

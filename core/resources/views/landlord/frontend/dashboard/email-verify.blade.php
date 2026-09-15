@@ -31,7 +31,7 @@
         <x-error-msg-tw/>
 
         <!-- Form -->
-        <form action="{{route('landlord.user.email.verify')}}" method="post" enctype="multipart/form-data" class="flex flex-col gap-5">
+        <form action="{{$verifyAction ?? route('landlord.user.email.verify')}}" method="post" enctype="multipart/form-data" class="flex flex-col gap-5">
             @csrf
 
             <!-- Verify Code -->
@@ -55,7 +55,7 @@
             <!-- Resend -->
             <p class="text-center text-gray-600">
                 {{__('Did not get the code?')}}
-                <a href="{{route('landlord.user.email.verify.resend')}}" id="send" class="text-sectionC font-semibold hover:text-teal-800">{{__('Resend Code')}}</a>
+                <a href="{{$resendUrl ?? route('landlord.user.email.verify.resend')}}" id="send" class="text-sectionC font-semibold hover:text-teal-800">{{__('Resend Code')}}</a>
             </p>
         </form>
 

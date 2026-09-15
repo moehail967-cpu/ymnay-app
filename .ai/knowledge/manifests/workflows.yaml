@@ -293,7 +293,7 @@ workflows:
   steps:
   - plan/theme/store request with central row-locked mutations
   - registration or login
-  - email verification
+  - onboarding-owned email verification for an existing unverified account, independent of the legacy global flag
   - plan snapshot review independent of JSON key order
   - central user and request lock plus final saved-input validation
   - marked TenantRegisterEvent and checkpointed provisioning
@@ -313,7 +313,7 @@ workflows:
   jobs:
   - Existing database, cache, seed, file-dispatch and mail jobs reused by W10
   - Child file-copy work remains asynchronous
-  notifications: registration OTP; welcome mail cannot fail a ready store
+  notifications: registration or onboarding verification OTP; welcome mail cannot fail a ready store
   failure_states:
   - validation/eligibility/plan-change/provisioning failure
   - provisioning/ready earlier-step mutations rejected

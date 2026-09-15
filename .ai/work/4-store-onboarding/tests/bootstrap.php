@@ -23,11 +23,14 @@ use Illuminate\Support\Str;
 class FixtureState {
     public static ?User $user = null;
     public static bool $failDomain = false, $failSeed = false, $failMail = false;
-    public static int $databaseCalls = 0, $migrationCalls = 0, $seedCalls = 0, $fileCalls = 0, $mailCalls = 0;
+    public static int $databaseCalls = 0, $migrationCalls = 0, $seedCalls = 0, $fileCalls = 0, $mailCalls = 0, $verificationMailCalls = 0;
 }
 function getAllThemeSlug() { return ['theme-a', 'theme-b']; }
 function getPricePlanBasedAllThemeData($slugs) { return array_map(fn ($slug) => (object) ['slug' => $slug], $slugs); }
 function tenant_url_with_protocol($domain) { return 'https://' . $domain; }
+function get_static_option($key, $default = null) { return $default; }
+function get_static_option_central($key, $default = null) { return $default; }
+function site_title() { return 'Ymnay QA'; }
 function update_static_option($key, $value) {
     if (!tenancy()->initialized) throw new RuntimeException('Fixture option write escaped tenant context.');
     return DB::connection('tenant')->table('static_options')->updateOrInsert(['option_name' => $key], ['option_value' => $value]);
@@ -53,7 +56,7 @@ $app->instance('config', new Repository([
     'cache' => ['default' => 'array', 'stores' => ['array' => ['driver' => 'array']]],
     'logging' => ['default' => 'fixture', 'channels' => ['fixture' => ['driver' => 'monolog', 'handler' => \Monolog\Handler\StreamHandler::class, 'handler_with' => ['stream' => 'php://stderr']]]],
     'session' => ['driver' => 'array', 'lifetime' => 120, 'encrypt' => false, 'cookie' => 'ymnay_fixture', 'path' => '/', 'http_only' => true, 'same_site' => 'lax'],
-    'view' => ['paths' => [], 'compiled' => sys_get_temp_dir()],
+    'view' => ['paths' => [$core . '/resources/views'], 'compiled' => sys_get_temp_dir()],
     'hashing' => ['driver' => 'bcrypt', 'bcrypt' => ['rounds' => 4]],
     'auth' => ['defaults' => ['guard' => 'web'], 'guards' => ['web' => ['driver' => 'session', 'provider' => 'users']],
         'providers' => ['users' => ['driver' => 'eloquent', 'model' => User::class]]],
@@ -81,10 +84,17 @@ Auth::swap(new class {
     public function check() { return (bool) $this->user(); }
 });
 Cookie::swap(new class { public function queue(...$args) {} public function forget($name) { return $name; } });
+\Illuminate\Support\Facades\Mail::swap(new class {
+    public function to($email) { return $this; }
+    public function send($message) { FixtureState::$verificationMailCalls++; }
+});
 Request::macro('validate', function (array $rules, ...$args) {
     return \Illuminate\Support\Facades\Validator::make($this->all(), $rules, ...$args)->validate();
 });
 $app['router']->get('/create-store', fn () => 'fixture')->name('landlord.store.onboarding');
+$app['router']->get('/create-store/verify-email', fn () => 'fixture')->name('landlord.store.onboarding.email.verify');
+$app['router']->post('/create-store/verify-email', fn () => 'fixture')->name('landlord.store.onboarding.email.verify.submit');
+$app['router']->get('/create-store/verify-email/resend', fn () => 'fixture')->name('landlord.store.onboarding.email.verify.resend');
 $app['router']->getRoutes()->refreshNameLookups();
 $app->instance('migrator', new class { public function getMigrationFiles($paths) { return ['qa_fixture' => __FILE__]; } });
 
@@ -139,7 +149,8 @@ $app->bindMethod([\App\Jobs\NewShopCreatedEmailNotificationJob::class, 'handle']
 // Disposable central schema. Only the actual onboarding migration is executed from the application.
 Schema::create('users', function (Blueprint $t) {
     $t->id(); foreach (['name','email','username'] as $key) $t->string($key);
-    $t->integer('email_verified')->default(1); $t->integer('has_subdomain')->default(0); $t->softDeletes(); $t->timestamps();
+    $t->integer('email_verified')->default(1); $t->string('email_verify_token')->nullable();
+    $t->integer('has_subdomain')->default(0); $t->softDeletes(); $t->timestamps();
 });
 Schema::create('price_plans', function (Blueprint $t) {
     $t->id(); $t->string('title'); $t->string('price'); $t->integer('type'); $t->integer('status');

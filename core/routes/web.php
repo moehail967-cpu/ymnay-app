@@ -110,6 +110,9 @@ Route::middleware(['landlord_glvar','set_lang','maintenance_mode'])->name('landl
     Route::post('/theme', [StoreOnboardingController::class, 'selectTheme'])->name('onboarding.theme');
     Route::post('/details', [StoreOnboardingController::class, 'storeDetails'])->name('onboarding.details');
     Route::post('/plan-change', [StoreOnboardingController::class, 'acknowledgePlanChange'])->name('onboarding.plan-change');
+    Route::get('/verify-email', [StoreOnboardingController::class, 'verificationForm'])->middleware('auth:web')->name('onboarding.email.verify');
+    Route::post('/verify-email', [StoreOnboardingController::class, 'verifyEmail'])->middleware(['auth:web', 'throttle:10,1'])->name('onboarding.email.verify.submit');
+    Route::get('/verify-email/resend', [StoreOnboardingController::class, 'resendVerificationEmail'])->middleware(['auth:web', 'throttle:5,1'])->name('onboarding.email.verify.resend');
     Route::get('/status', [StoreOnboardingController::class, 'status'])->middleware('auth:web')->name('onboarding.status');
     Route::post('/complete', [StoreOnboardingController::class, 'complete'])->middleware(['auth:web', 'throttle:5,1'])->name('onboarding.complete');
 });

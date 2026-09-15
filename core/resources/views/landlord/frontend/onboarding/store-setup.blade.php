@@ -122,7 +122,7 @@
                             <a class="ym-btn ym-primary" href="{{route('landlord.store.onboarding',['step'=>5])}}">متابعة إلى المراجعة</a>
                         @else
                             <div class="ym-alert ym-warning">يجب التحقق من بريدك قبل المتابعة.</div>
-                            <a class="ym-btn ym-primary" href="{{route('landlord.user.email.verify')}}">تحقق من البريد</a>
+                            <a class="ym-btn ym-primary" href="{{route('landlord.store.onboarding.email.verify')}}">تحقق من البريد</a>
                         @endif
                     @else
                         <div class="ym-auth-tabs"><button type="button" class="ym-btn ym-primary" data-auth="register">حساب جديد</button><button type="button" class="ym-btn ym-secondary" data-auth="login">تسجيل الدخول</button></div>

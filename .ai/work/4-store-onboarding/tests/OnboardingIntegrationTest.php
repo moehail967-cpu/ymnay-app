@@ -29,7 +29,7 @@ final class OnboardingIntegrationTest extends TestCase
         Schema::enableForeignKeyConstraints();
         FixtureState::$user = null;
         FixtureState::$failDomain = FixtureState::$failSeed = FixtureState::$failMail = false;
-        FixtureState::$databaseCalls = FixtureState::$migrationCalls = FixtureState::$seedCalls = FixtureState::$fileCalls = FixtureState::$mailCalls = 0;
+        FixtureState::$databaseCalls = FixtureState::$migrationCalls = FixtureState::$seedCalls = FixtureState::$fileCalls = FixtureState::$mailCalls = FixtureState::$verificationMailCalls = 0;
     }
 
     private function fixture(string $status = 'account_verified', int $userId = 7): array
@@ -105,6 +105,117 @@ final class OnboardingIntegrationTest extends TestCase
         DB::table('users')->where('id', $u->id)->update(['email_verified' => 0]);
         self::assertSame(422, $c->complete($r)->getStatusCode());
         $this->noSideEffects();
+    }
+
+    public function testUnverifiedOnboardingCanReachVerificationForEitherGlobalFlagValue(): void
+    {
+        foreach (['', '1'] as $flag) {
+            [$c, $r, $o, $p, $u] = $this->fixture('draft', $flag === '' ? 7 : 8);
+            StaticOptionCentral::updateOrCreate(
+                ['option_name' => 'user_email_verify_status'],
+                ['option_value' => $flag]
+            );
+            $u->update(['email_verified' => 0, 'email_verify_token' => null]);
+            FixtureState::$user = $u->fresh();
+
+            $response = $c->verificationForm($r);
+
+            self::assertSame('landlord.frontend.dashboard.email-verify', $response->name());
+            self::assertSame(route('landlord.store.onboarding.email.verify.submit'), $response->getData()['verifyAction']);
+            self::assertSame(route('landlord.store.onboarding.email.verify.resend'), $response->getData()['resendUrl']);
+            self::assertNotEmpty($u->fresh()->email_verify_token);
+        }
+        self::assertSame(2, FixtureState::$verificationMailCalls);
+    }
+
+    public function testCorrectExistingAccountCodeVerifiesAndReturnsToPreservedRequest(): void
+    {
+        [$c, $r, $o, $p, $u] = $this->fixture('draft');
+        $u->update(['email_verified' => 0, 'email_verify_token' => 'correct-code']);
+        FixtureState::$user = $u->fresh();
+        $r = $this->request($o, ['verify_code' => 'correct-code']);
+
+        $response = $c->verifyEmail($r);
+
+        self::assertStringContainsString('/create-store?step=5', $response->getTargetUrl());
+        self::assertSame(1, $u->fresh()->email_verified);
+        self::assertNull($u->fresh()->email_verify_token);
+        self::assertSame('account_verified', $o->fresh()->status);
+        self::assertSame($o->id, $r->session()->get('store_onboarding_request_id'));
+    }
+
+    public function testIncorrectExistingAccountCodeCannotAdvanceOrVerify(): void
+    {
+        [$c, $r, $o, $p, $u] = $this->fixture('draft');
+        $u->update(['email_verified' => 0, 'email_verify_token' => 'correct-code']);
+        FixtureState::$user = $u->fresh();
+        $r = $this->request($o, ['verify_code' => 'wrong-code']);
+        $r->headers->set('referer', 'https://example.invalid/create-store/verify-email');
+
+        $c->verifyEmail($r);
+
+        self::assertSame(0, $u->fresh()->email_verified);
+        self::assertSame('correct-code', $u->fresh()->email_verify_token);
+        self::assertSame('draft', $o->fresh()->status);
+        $this->noSideEffects();
+    }
+
+    public function testVerificationResendRotatesCodeWithoutLosingRequest(): void
+    {
+        [$c, $r, $o, $p, $u] = $this->fixture('draft');
+        $u->update(['email_verified' => 0, 'email_verify_token' => 'old-code']);
+        FixtureState::$user = $u->fresh();
+
+        $response = $c->resendVerificationEmail($r);
+
+        self::assertSame(route('landlord.store.onboarding.email.verify'), $response->getTargetUrl());
+        self::assertNotSame('old-code', $u->fresh()->email_verify_token);
+        self::assertSame(1, FixtureState::$verificationMailCalls);
+        self::assertSame($o->id, $r->session()->get('store_onboarding_request_id'));
+    }
+
+    public function testVerifiedAccountSkipsVerificationAndNoMailIsSent(): void
+    {
+        [$c, $r] = $this->fixture('account_verified');
+
+        $response = $c->verificationForm($r);
+
+        self::assertStringContainsString('/create-store?step=5', $response->getTargetUrl());
+        self::assertSame(0, FixtureState::$verificationMailCalls);
+    }
+
+    public function testVerificationRejectsGuestMissingRequestAndForeignRequest(): void
+    {
+        [$c, $r, $o] = $this->fixture('draft');
+        FixtureState::$user = null;
+        try { $c->verificationForm($r); self::fail('Guest reached onboarding verification'); }
+        catch (\Symfony\Component\HttpKernel\Exception\HttpException $e) { self::assertSame(401, $e->getStatusCode()); }
+
+        FixtureState::$user = User::forceCreate(['id' => 9, 'name' => 'Other Fixture',
+            'username' => 'other-verification', 'email' => 'other-verification@example.invalid', 'email_verified' => 0]);
+        try { $c->verificationForm($r); self::fail('Foreign request reached onboarding verification'); }
+        catch (\Symfony\Component\HttpKernel\Exception\HttpException $e) { self::assertSame(404, $e->getStatusCode()); }
+
+        $sessionless = Request::create('https://example.invalid/create-store/verify-email', 'GET');
+        $session = new Store('qa-sessionless', new ArraySessionHandler(60));
+        $session->start();
+        $sessionless->setLaravelSession($session);
+        FixtureState::$user = User::find(9);
+        try { $c->verificationForm($sessionless); self::fail('Missing request reached onboarding verification'); }
+        catch (\Symfony\Component\HttpKernel\Exception\HttpException $e) { self::assertSame(404, $e->getStatusCode()); }
+    }
+
+    public function testProductionRouteAndStepFourUseDedicatedOnboardingVerification(): void
+    {
+        $root = dirname(__DIR__, 4);
+        $routes = file_get_contents($root . '/core/routes/web.php');
+        $view = file_get_contents($root . '/core/resources/views/landlord/frontend/onboarding/store-setup.blade.php');
+
+        self::assertStringContainsString("[StoreOnboardingController::class, 'verificationForm']", $routes);
+        self::assertStringContainsString("[StoreOnboardingController::class, 'verifyEmail']", $routes);
+        self::assertStringContainsString("[StoreOnboardingController::class, 'resendVerificationEmail']", $routes);
+        self::assertStringContainsString("middleware(['auth:web', 'throttle:10,1'])", $routes);
+        self::assertStringContainsString("route('landlord.store.onboarding.email.verify')", $view);
     }
 
     public function testChangedPlanRequiresAcknowledgement(): void

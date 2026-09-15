@@ -117,15 +117,17 @@ jobs:
       - name: Start real HTTP application
         working-directory: core
         run: |
-          sudo -E php artisan serve --host=0.0.0.0 --port=80 > "$RUNNER_TEMP/application-server.log" 2>&1 &
-          php artisan serve --host=0.0.0.0 --port=8080 > "$RUNNER_TEMP/application-server-8080.log" 2>&1 &
+          sudo -E php artisan serve --host=127.0.0.1 --port=80 > "$RUNNER_TEMP/application-server.log" 2>&1 &
+          php artisan serve --host=127.0.0.1 --port=8080 > "$RUNNER_TEMP/application-server-8080.log" 2>&1 &
           for attempt in {1..30}; do
-            if curl --fail --silent http://localhost/create-store >/dev/null \
-              && curl --fail --silent http://localhost:8080/create-store >/dev/null; then
+            if curl --resolve localhost:80:127.0.0.1 --fail --silent http://localhost/create-store >/dev/null \
+              && curl --resolve localhost:8080:127.0.0.1 --fail --silent http://localhost:8080/create-store >/dev/null; then
               exit 0
             fi
             sleep 1
           done
+          curl --resolve localhost:80:127.0.0.1 --silent --output /dev/null --write-out 'port80=%{http_code}\n' http://localhost/create-store || true
+          curl --resolve localhost:8080:127.0.0.1 --silent --output /dev/null --write-out 'port8080=%{http_code}\n' http://localhost:8080/create-store || true
           cat "$RUNNER_TEMP/application-server.log"
           cat "$RUNNER_TEMP/application-server-8080.log"
           exit 1
@@ -137,6 +139,10 @@ jobs:
           G01_MAILPIT_URL: http://127.0.0.1:8025
           G01_EVIDENCE_DIR: ${{ runner.temp }}/g01-browser-evidence
         run: node e2e.mjs
+
+      - name: Exercise native paid/admin creation path without a gateway
+        working-directory: core
+        run: php ../.ai/work/4-store-onboarding/g01/native-path.php 2>&1 | tee "$RUNNER_TEMP/g01-native-path.json"
 
       - name: Drain tenant file queue and verify provisioned state
         working-directory: core
@@ -166,6 +172,7 @@ jobs:
             ${{ runner.temp }}/g01-browser-evidence
             ${{ runner.temp }}/g01-visual-reference
             ${{ runner.temp }}/g01-provisioning-verification.json
+            ${{ runner.temp }}/g01-native-path.json
             core/storage/logs/laravel.log
             core/public/build/manifest.json
           if-no-files-found: ignore

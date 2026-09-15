@@ -60,6 +60,14 @@ $assert($raceRequests->where('status', '!=', 'ready')->count() === 1, 'Parallel 
 $raceWinner = $raceRequests->firstWhere('status', 'ready');
 $assert((int) $raceTenant->user_id === (int) $raceWinner->user_id, 'Race tenant belongs to the losing account.');
 $assert(Storage::exists('g01-race-store/g01-proof.txt'), 'Race tenant file copy did not finish.');
+$nativeTenant = Tenant::findOrFail('g01-native-store');
+$assert($nativeTenant->domain?->domain === 'g01-native-store.localhost', 'Native tenant domain is missing.');
+$assert(! empty($nativeTenant->unique_key), 'Native tenant login key is missing.');
+$assert(
+    PaymentLogs::where('tenant_id', $nativeTenant->id)->where('status', 'complete')->exists(),
+    'Native path payment fixture was not preserved.'
+);
+$assert(Storage::exists('g01-native-store/g01-proof.txt'), 'Native tenant file copy did not finish.');
 
 try {
     tenancy()->initialize($tenant);
@@ -96,6 +104,20 @@ try {
     tenancy()->end();
 }
 
+try {
+    tenancy()->initialize($nativeTenant);
+    $nativeDb = DB::connection('tenant');
+    $nativeDbName = $nativeDb->getDatabaseName();
+    $assert(
+        ! in_array($nativeDbName, [$centralDbName, $tenantDbName, $raceDbName], true),
+        'Native tenant database is not isolated.'
+    );
+    $nativeAdmin = Admin::on('tenant')->first();
+    $assert($nativeAdmin !== null && $nativeAdmin->hasRole('Super Admin'), 'Native tenant administrator is missing.');
+} finally {
+    tenancy()->end();
+}
+
 echo json_encode([
     'request_reference' => $onboarding->id,
     'tenant' => $tenant->id,
@@ -111,6 +133,12 @@ echo json_encode([
         'tenant_database' => $raceDbName,
         'ready_requests' => 1,
         'rejected_requests' => 1,
+    ],
+    'native_path' => [
+        'tenant' => $nativeTenant->id,
+        'tenant_database' => $nativeDbName,
+        'gateway_or_charge_used' => false,
+        'tenant_admin_ready' => true,
     ],
     'synthetic_only' => true,
 ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE).PHP_EOL;

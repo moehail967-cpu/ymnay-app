@@ -1,0 +1,24 @@
+{
+  "application_candidate": "5a7013b04c70fbe2ce474f53b491326b2aca89b1",
+  "qa_tested_head": "e67c1766a59b7ed5150ee94fb5f597ce1edc36a4",
+  "qa_test_merge": "f8531d892f253368936a6c1a5dd9c561cead6c69",
+  "run_id": 35009713722,
+  "job_id": 104518332586,
+  "artifact_id": 10412429959,
+  "artifact_sha256": "fa0c2c1c9ee58501945e311f827c31e9c2d7c810c1295858bbc1c530f5a7098b",
+  "overall_verdict": "FAIL",
+  "blocking_finding": "B05",
+  "b04_disposition": "PASS for the tested original controller-level regression, not full browser or whole-feature acceptance",
+  "phpunit": {"tests": 36, "assertions": 258, "passed": 34, "failures": 2, "errors": 0, "skipped": 0},
+  "original_suite": {"tests": 28, "assertions": 182, "failures": 0, "errors": 0, "skipped": 0},
+  "independent_suite": {"tests": 8, "assertions": 76, "failures": 2, "errors": 0, "skipped": 0},
+  "stage_checks": {"passed": 12, "failed": 0},
+  "failed_tests": ["testTransport550FailureMustNotShowSuccess", "testTransport553FailureMustNotShowSuccess"],
+  "mail_failure_observations": [
+    {"transport_exception_code": 550, "attempted_sends": 1, "flash_type": "success", "flash_message": "Verify mail send", "token_rotated_despite_failed_send": true, "next_form": "landlord.frontend.dashboard.email-verify", "email_verified": 0, "request_status": "draft", "request_preserved": true},
+    {"transport_exception_code": 553, "attempted_sends": 1, "flash_type": "success", "flash_message": "Verify mail send", "token_rotated_despite_failed_send": true, "next_form": "landlord.frontend.dashboard.email-verify", "email_verified": 0, "request_status": "draft", "request_preserved": true}
+  ],
+  "method": "Real current application code + Laravel/Stancl/MySQL fixture; explicit auth/cookie/theme/tenant-content/file/mail adapters. Injected transport exceptions, not actual SMTP or full HTTP/browser E2E.",
+  "report": "https://github.com/moehail967-cpu/ymnay-app/blob/a1320ee998b3a93d7ad150b6fa7d3e4e39ab294c/.ai/work/4-store-onboarding/QA-RETEST-5a7013b.md",
+  "production_changed": false
+}

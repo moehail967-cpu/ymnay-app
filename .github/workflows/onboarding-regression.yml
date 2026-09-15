@@ -59,20 +59,22 @@ jobs:
           php -l core/app/Listeners/TenantDomainCreate.php
           php -l core/app/Providers/TenancyServiceProvider.php
           php -l core/database/seeders/TenantDatabaseSeeder.php
+          php -l .ai/work/4-store-onboarding/tests/SalemB04ReviewTest.php
       - name: Check durable stage decisions
         run: php .ai/work/4-store-onboarding/tests/stages-regression.php > "$RUNNER_TEMP/stage-results.json"
-      - name: Run real Laravel components and MySQL regression fixture
+      - name: Run original and independent Salem regressions
         run: |
           "$YMNAY_TEST_FIXTURE/vendor/bin/phpunit" --no-configuration --colors=never \
             --log-junit "$RUNNER_TEMP/onboarding-junit.xml" \
-            .ai/work/4-store-onboarding/tests/OnboardingIntegrationTest.php
+            .ai/work/4-store-onboarding/tests
       - name: Upload non-sensitive test evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: onboarding-regression-${{ github.sha }}
+          name: salem-b04-regression-${{ github.sha }}
           path: |
             ${{ runner.temp }}/stage-results.json
             ${{ runner.temp }}/onboarding-junit.xml
             ${{ runner.temp }}/dependency-audit.json
+            ${{ runner.temp }}/salem-b04-observations.json
           if-no-files-found: ignore

@@ -107,7 +107,8 @@ final class SalemB04ReviewTest extends TestCase
     public function testSuccessfulCodePreservesEverySelectionWithoutCreatingStore(): void
     {
         [$c, $o, $u] = $this->fixture();
-        $before = $o->only(['id', 'user_id', 'plan_id', 'theme_slug', 'store_name', 'subdomain', 'plan_snapshot']);
+        // Compare two database reads: MySQL may canonicalize JSON object-key ordering.
+        $before = $o->fresh()->only(['id', 'user_id', 'plan_id', 'theme_slug', 'store_name', 'subdomain', 'plan_snapshot']);
         $r = $this->request($o, ['verify_code' => 'FixtureA1']);
         $response = $c->verifyEmail($r);
         self::assertStringContainsString('/create-store?step=5', $response->getTargetUrl());

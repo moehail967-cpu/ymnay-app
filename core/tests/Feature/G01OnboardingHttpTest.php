@@ -12,6 +12,13 @@ use Tests\TestCase;
 
 class G01OnboardingHttpTest extends TestCase
 {
+    public function test_onboarding_entry_renders_through_the_full_http_stack(): void
+    {
+        $this->get(route('landlord.store.onboarding'))
+            ->assertOk()
+            ->assertSee('name="plan_id"', false);
+    }
+
     public function test_existing_unverified_account_uses_onboarding_verification_routes(): void
     {
         Mail::fake();

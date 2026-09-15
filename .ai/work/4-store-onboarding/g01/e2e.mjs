@@ -159,7 +159,7 @@ try {
   };
 
   const raceOne = await loginRaceUser('http://localhost', 'g01-race-1@example.test');
-  const raceTwo = await loginRaceUser('http://localhost:8080', 'g01-race-2@example.test');
+  const raceTwo = await loginRaceUser('http://localhost', 'g01-race-2@example.test');
   const submitComplete = racePage => racePage.evaluate(async () => {
     const csrf = document.querySelector('meta[name="csrf-token"]')?.content;
     const response = await fetch('/create-store/complete', {

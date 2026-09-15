@@ -140,7 +140,12 @@ try {
       throw new Error(`Primary provisioning failed: ${await page.locator('#complete-message').innerText()}`);
     }),
   ]);
+  await page.locator('.dash-card').first().waitFor({ timeout: 30000 });
+  if (await page.locator('.dash-card').count() < 4) {
+    throw new Error('Token login did not render the tenant dashboard.');
+  }
   check('full-provisioning-and-token-login', page.url().replace(/token-login\/[^/]+/, 'token-login/[redacted]'));
+  check('tenant-dashboard-rendered-without-exception');
   await page.screenshot({ path: `${evidenceDir}/tenant-dashboard.png`, fullPage: true });
 
   const loginRaceUser = async (url, email) => {

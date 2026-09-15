@@ -747,16 +747,22 @@ function get_tenant_storage_info($format = 'kb')
 {
     $file_size = 0;
     $tenant = tenant()->id;
-    $scan_path = Storage::disk("root_url")->allFiles('assets/tenant/uploads/media-uploader/' . $tenant);
+    $disk = Storage::disk("root_url");
+    $scan_path = $disk->allFiles('assets/tenant/uploads/media-uploader/' . $tenant);
 
     foreach ($scan_path as $file) {
-        clearstatcache();
         $exploded = explode('/', $file);
         if ($exploded[count($exploded) - 1] === '.DS_Store' || $file === 'NAN') {
             continue;
         }
 
-        $file_size += filesize($file);
+        // Storage paths are relative to the configured disk root, not the PHP
+        // worker's current directory. Files may also disappear during a scan.
+        try {
+            $file_size += $disk->size($file);
+        } catch (\Throwable) {
+            continue;
+        }
     }
 
     if (strtolower($format) == 'kb') {
@@ -3153,4 +3159,3 @@ function walletAmountAfterOrder($productOrder, $setting)
     // No commission
 //    return $productOrder->total_amount;
 }
-

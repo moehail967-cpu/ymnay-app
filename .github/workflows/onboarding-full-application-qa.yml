@@ -91,10 +91,10 @@ jobs:
       - name: Boot actual application and migrate disposable central database
         working-directory: core
         run: |
-          php artisan about --only=environment
-          php artisan route:list --name=landlord.store.onboarding --json > "$RUNNER_TEMP/onboarding-routes.json"
-          php artisan migrate:fresh --force
-          php ../.ai/work/4-store-onboarding/g01/prepare.php > "$RUNNER_TEMP/g01-prepare.json"
+          php artisan about --only=environment 2>&1 | tee "$RUNNER_TEMP/application-about.txt"
+          php artisan migrate:fresh --force -vvv 2>&1 | tee "$RUNNER_TEMP/central-migrations.txt"
+          php ../.ai/work/4-store-onboarding/g01/prepare.php 2>&1 | tee "$RUNNER_TEMP/g01-prepare.json"
+          php artisan route:list --name=landlord.store.onboarding --json 2>&1 | tee "$RUNNER_TEMP/onboarding-routes.json"
 
       - name: Build actual frontend assets
         working-directory: core
@@ -113,6 +113,8 @@ jobs:
           name: onboarding-full-app-preflight-${{ github.sha }}
           path: |
             ${{ runner.temp }}/candidate-sha.txt
+            ${{ runner.temp }}/application-about.txt
+            ${{ runner.temp }}/central-migrations.txt
             ${{ runner.temp }}/onboarding-routes.json
             ${{ runner.temp }}/g01-prepare.json
             ${{ runner.temp }}/full-project-junit.xml

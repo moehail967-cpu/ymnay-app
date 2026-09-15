@@ -68,7 +68,10 @@ try {
       await p.screenshot({ path: `${dir}/salem-${name}-limits.png`, fullPage: true });
       await p.locator('input[name="plan_id"]').first().check();
       await Promise.all([p.waitForURL(/step=2/), p.locator('form[action$="/create-store/plan"] button[type="submit"]').click()]);
-      record(`${name}: three actual theme choices`, await p.locator('input[name="theme_slug"]').count() === 3);
+      // Count only selectable radios in the actual theme form, not unrelated hidden modal inputs.
+      const choices = await p.locator('form[action$="/create-store/theme"] input[type="radio"][name="theme_slug"]').evaluateAll(nodes => nodes.map(n => n.value).sort());
+      const allNamedInputs = await p.locator('input[name="theme_slug"]').evaluateAll(nodes => nodes.map(n => ({ type: n.type, form_action: n.form ? new URL(n.form.action).pathname : null })));
+      record(`${name}: three actual theme choices`, JSON.stringify(choices) === JSON.stringify(['aromatic','bakerco','hexfashion']), { choices, all_named_inputs: allNamedInputs });
       await p.locator('input[name="theme_slug"][value="hexfashion"]').check();
       await Promise.all([p.waitForURL(/step=3/), p.locator('form[action$="/create-store/theme"] button[type="submit"]').click()]);
       await Promise.all([p.waitForURL(/step=1/), p.locator('.ym-progress a[href*="step=1"]').click()]);
@@ -104,6 +107,7 @@ try {
     const secondLink = await requestReset(p, email);
     const secondPassword = 'Salem-G01-Recovered-B!';
     const secondRedirect = await useReset(p, secondLink, secondPassword);
+    if (!secondRedirect) await p.screenshot({ path: `${dir}/salem-second-password-reset-rejected.png`, fullPage: true });
     const secondLogin = await login(p, email, secondPassword);
     record('a second requested reset link is usable and changes the password', secondRedirect && secondLogin.status === 'valid', { reset_mail_captured: true, redirect_to_login: secondRedirect, login: secondLogin });
     // Record whether a failed latest reset left the prior password intact, without exposing passwords or reset tokens.

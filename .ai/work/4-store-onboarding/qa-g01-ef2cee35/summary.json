@@ -1,0 +1,41 @@
+{
+  "reviewer": "@Salem",
+  "application_candidate": "ef2cee35d42d6834d3ca8acda019d79628faf68b",
+  "qa_test_candidate": "330854ad159fb56fce2cdff888c6a9a408a5645f",
+  "overall_verdict": "FAIL",
+  "environment_availability": "G01 resolved; actual isolated application runs",
+  "findings": {
+    "B06": "Fixed header obstructs all five progress-marker centers on desktop and mobile",
+    "B07": "Plan-selection cards omit configured limits required by the approved flow"
+  },
+  "full_application": {
+    "run_id": 35028050058, "job_id": 104583570764, "result": "success",
+    "artifact_id": 10421315402,
+    "sha256": "18a3aeb38d8cae6cb21c994431845257822d0338281bd63c7055b562dff2aae1",
+    "project_tests": 18, "assertions": 55, "failures": 0, "errors": 0, "skipped": 0
+  },
+  "isolated_regression": {
+    "run_id": 35028050127, "job_id": 104583579038, "result": "success",
+    "artifact_id": 10420083922,
+    "sha256": "677d45866f446474eb485bf0b305c60f480730b255335f6593834137733bca96",
+    "tests": 32, "assertions": 230, "failures": 0, "errors": 0, "skipped": 0,
+    "separate_stage_checks_passed": 12
+  },
+  "independent_browser": {
+    "run_id": 35029830955, "job_id": 104585469804, "result": "failure",
+    "artifact_id": 10420988254,
+    "sha256": "9ad558116dc7f2469c6ee0f8beae6995b215828670938eae6d38e7f8d19d26a7",
+    "checks": 12, "passed": 10, "failed": 2, "instrumentation_errors": 0,
+    "original_browser_suite_completed": true,
+    "later_native_queue_steps": "skipped in this run; passed in separate full-application rerun",
+    "desktop": {"width": 1440, "height": 900, "marker_top": 48, "marker_bottom": 82, "marker_center_y": 65, "covered_markers": 5},
+    "mobile": {"width": 390, "height": 844, "marker_top": 28, "marker_bottom": 62, "marker_center_y": 45, "covered_markers": 5}
+  },
+  "remaining_evidence": ["effective SAR fixture presentation", "representative multi-plan and multi-theme layout", "browser session expiry and password-recovery resumption", "same-request parallel HTTP completion", "broader cross-tenant access denial", "remaining mobile verification/review/loading states", "existing-installation migration impact"],
+  "registration_otp_expiry_http_test": "PASS; not wholly untested",
+  "illustrated_marketing_rail": "not a standalone blocker; written specification takes precedence",
+  "report": "https://github.com/moehail967-cpu/ymnay-app/blob/536e838c59147c1e432b2de9c02810672255da1e/.ai/work/4-store-onboarding/QA-G01-ef2cee35.md",
+  "next_agent": "@Omar",
+  "reviewer_after_fixes": "@Salem",
+  "production_changed": false
+}

@@ -160,11 +160,16 @@ jobs:
 
       - name: Exercise native paid/admin creation path without a gateway
         working-directory: core
-        run: php ../.ai/work/4-store-onboarding/g01/native-path.php 2>&1 | tee "$RUNNER_TEMP/g01-native-path.json"
+        run: |
+          set -o pipefail
+          sudo chown -R "$(id -u):$(id -g)" storage
+          php ../.ai/work/4-store-onboarding/g01/native-path.php 2>&1 | tee "$RUNNER_TEMP/g01-native-path.json"
 
       - name: Drain tenant file queue and verify provisioned state
         working-directory: core
         run: |
+          set -o pipefail
+          sleep 3
           php artisan queue:work tenant_file_sync --stop-when-empty --sleep=1 --max-time=120
           php ../.ai/work/4-store-onboarding/g01/verify.php 2>&1 | tee "$RUNNER_TEMP/g01-provisioning-verification.json"
 

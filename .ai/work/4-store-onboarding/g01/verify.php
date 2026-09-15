@@ -47,6 +47,10 @@ $assert((int) $trial->user_id === (int) $onboarding->user_id, 'Trial belongs to 
 $assert((int) $trial->package_id === (int) $onboarding->plan_id, 'Trial belongs to a different plan.');
 $assert($trial->theme_slug === $onboarding->theme_slug, 'Trial theme differs from the request.');
 $assert(Storage::exists('g01-browser-store/g01-proof.txt'), 'Delayed tenant file copy did not finish.');
+$assert(
+    is_file(base_path('assets/tenant/uploads/media-uploader/g01-browser-store/g01-proof.txt')),
+    'Legacy tenant media copy did not finish.'
+);
 $assert(DB::table('file_sync_jobs')->count() === 0, 'Tenant file queue was not drained.');
 
 $raceTenant = Tenant::findOrFail('g01-race-store');

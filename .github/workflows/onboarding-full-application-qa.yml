@@ -11,6 +11,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: onboarding-full-application-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   full-application:
     runs-on: ubuntu-24.04
@@ -25,6 +29,13 @@ jobs:
           - 3306:3306
         options: >-
           --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s --health-timeout=5s --health-retries=12
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd="redis-cli ping"
           --health-interval=10s --health-timeout=5s --health-retries=12
       mailpit:
         image: axllent/mailpit:v1.27
@@ -46,7 +57,12 @@ jobs:
       DB_USERNAME: root
       DB_PASSWORD: g01-isolated-only
       TENANT_DATABASE_PREFIX: ymnay_g01_tenant_
-      CACHE_DRIVER: file
+      # Tenancy's CacheTenancyBootstrapper scopes entries with tags; use the same
+      # tag-capable class of cache store required by the real application.
+      CACHE_DRIVER: redis
+      REDIS_HOST: 127.0.0.1
+      REDIS_PORT: 6379
+      REDIS_CACHE_DB: 1
       SESSION_DRIVER: file
       QUEUE_CONNECTION: sync
       FILESYSTEM_DRIVER: local
@@ -68,7 +84,7 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
-          extensions: bcmath, ctype, curl, dom, fileinfo, gd, intl, mbstring, openssl, pdo_mysql, tokenizer, xml, zip
+          extensions: bcmath, ctype, curl, dom, fileinfo, gd, intl, mbstring, openssl, pdo_mysql, redis, tokenizer, xml, zip
           tools: composer:v2
           coverage: none
 

@@ -36,7 +36,7 @@ jobs:
           persist-credentials: false
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.3'
+          php-version: '8.4'
           extensions: pdo_mysql, mbstring, xml, intl, curl, zip
           tools: composer:v2
           coverage: none
@@ -44,7 +44,12 @@ jobs:
         run: |
           echo "YMNAY_TEST_FIXTURE=$RUNNER_TEMP/ymnay-onboarding" >> "$GITHUB_ENV"
           YMNAY_TEST_FIXTURE="$RUNNER_TEMP/ymnay-onboarding" python .ai/work/4-store-onboarding/tests/prepare-fixture.py
-          composer update --working-dir="$RUNNER_TEMP/ymnay-onboarding" --no-scripts --no-plugins --no-interaction --prefer-dist
+          # Reproduce the existing application lock in an isolated test fixture only.
+          # Do not upgrade application dependencies or disable malware/platform checks.
+          COMPOSER_POLICY_ADVISORIES_BLOCK=0 composer update --working-dir="$RUNNER_TEMP/ymnay-onboarding" --no-scripts --no-plugins --no-interaction --prefer-dist
+      - name: Record existing dependency advisories (not a release security PASS)
+        continue-on-error: true
+        run: composer audit --working-dir="$YMNAY_TEST_FIXTURE" --format=json > "$RUNNER_TEMP/dependency-audit.json"
       - name: Check source syntax
         run: |
           php -l core/app/Http/Controllers/Landlord/Frontend/StoreOnboardingController.php
@@ -68,4 +73,5 @@ jobs:
           path: |
             ${{ runner.temp }}/stage-results.json
             ${{ runner.temp }}/onboarding-junit.xml
+            ${{ runner.temp }}/dependency-audit.json
           if-no-files-found: ignore

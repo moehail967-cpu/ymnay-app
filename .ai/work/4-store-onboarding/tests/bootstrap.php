@@ -44,13 +44,13 @@ $app->instance('config', new Repository([
         'charset' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'prefix' => '', 'strict' => true,
     ]]],
     'tenancy' => ['tenant_model' => Tenant::class, 'domain_model' => \Stancl\Tenancy\Database\Models\Domain::class,
-        'id_generator' => null, 'central_domains' => ['example.invalid'], 'routes' => false, 'features' => [],
+        'id_generator' => \Stancl\Tenancy\UUIDGenerator::class, 'central_domains' => ['example.invalid'], 'routes' => false, 'features' => [],
         'bootstrappers' => [\Stancl\Tenancy\Bootstrappers\DatabaseTenancyBootstrapper::class],
         'database' => ['central_connection' => 'central', 'prefix' => 'ymnayqa_', 'suffix' => '',
             'managers' => ['mysql' => \Stancl\Tenancy\TenantDatabaseManagers\MySQLDatabaseManager::class]],
         'migration_parameters' => ['--path' => ['fixture-only'], '--realpath' => true]],
     'cache' => ['default' => 'array', 'stores' => ['array' => ['driver' => 'array']]],
-    'logging' => ['default' => 'null', 'channels' => ['null' => ['driver' => 'monolog', 'handler' => \Monolog\Handler\NullHandler::class]]],
+    'logging' => ['default' => 'fixture', 'channels' => ['fixture' => ['driver' => 'monolog', 'handler' => \Monolog\Handler\StreamHandler::class, 'handler_with' => ['stream' => 'php://stderr']]]],
     'session' => ['driver' => 'array', 'lifetime' => 120, 'encrypt' => false, 'cookie' => 'ymnay_fixture', 'path' => '/', 'http_only' => true, 'same_site' => 'lax'],
     'view' => ['paths' => [], 'compiled' => sys_get_temp_dir()],
     'hashing' => ['driver' => 'bcrypt', 'bcrypt' => ['rounds' => 4]],
@@ -84,6 +84,7 @@ Request::macro('validate', function (array $rules, ...$args) {
     return \Illuminate\Support\Facades\Validator::make($this->all(), $rules, ...$args)->validate();
 });
 $app['router']->get('/create-store', fn () => 'fixture')->name('landlord.store.onboarding');
+$app['router']->getRoutes()->refreshNameLookups();
 $app->instance('migrator', new class { public function getMigrationFiles($paths) { return ['qa_fixture' => __FILE__]; } });
 
 // Candidate event routing, including the actual opt-in TenantCreated closure.

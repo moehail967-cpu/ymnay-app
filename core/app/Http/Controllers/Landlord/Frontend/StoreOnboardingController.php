@@ -56,7 +56,7 @@ class StoreOnboardingController extends Controller
         $maxStep = $this->maxStep($onboarding, $user);
         $step = max(1, min((int) $request->integer('step', $maxStep), $maxStep));
         $planChanged = $plan && $onboarding
-            ? $this->planSnapshot($plan) !== ($onboarding->plan_snapshot ?? [])
+            ? $this->planHasChanged($plan, $onboarding)
             : false;
         $trialEligible = $user && $plan && $plan->has_trial && (int) $plan->trial_days > 0
             && !$this->hasOtherTrial($user->id, $onboarding?->tenant_id);
@@ -259,7 +259,7 @@ class StoreOnboardingController extends Controller
             if (!$plan || !$plan->has_trial || (int) $plan->trial_days < 1) {
                 return response()->json(['message' => __('The free trial is not available for this plan.')], 422);
             }
-            if ($this->planSnapshot($plan) !== ($locked->plan_snapshot ?? [])) {
+            if ($this->planHasChanged($plan, $locked)) {
                 return response()->json([
                     'message' => __('The plan details changed. Review the update before continuing.'),
                     'status' => 'plan_changed',
@@ -422,6 +422,16 @@ class StoreOnboardingController extends Controller
         if (!$onboarding->store_name || !$onboarding->subdomain) return 3;
         if (!$user || !$user->email_verified || (int) $onboarding->user_id !== (int) $user->id) return 4;
         return 5;
+    }
+
+    private function planHasChanged(PricePlan $plan, StoreOnboardingRequest $onboarding): bool
+    {
+        // MySQL JSON normalizes object-key order. Compare values/types, not storage ordering.
+        $current = $this->planSnapshot($plan);
+        $saved = $onboarding->plan_snapshot ?? [];
+        ksort($current);
+        ksort($saved);
+        return $current !== $saved;
     }
 
     private function planSnapshot(PricePlan $plan): array

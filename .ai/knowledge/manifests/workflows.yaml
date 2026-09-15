@@ -33,7 +33,7 @@ workflows:
 - id: W02
   name: Tenant provisioning
   actor: qualified central owner/admin
-  trigger: TenantCreated
+  trigger: TenantCreated without a W10 onboarding marker
   preconditions:
   - Eligible trial/payment/admin creation
   states:
@@ -62,7 +62,7 @@ workflows:
   sources:
   - core/app/Providers/TenancyServiceProvider.php
   - core/database/seeders/TenantDatabaseSeeder.php
-  evidence: VERIFIED control path; descriptive state labels are not database enums; completion untested
+  evidence: VERIFIED native control path; W10 is the opt-in checkpointed exception; descriptive state labels are not database enums; native completion untested
 - id: W03
   name: Product save
   actor: tenant admin
@@ -281,8 +281,9 @@ workflows:
   trigger: /create-store
   preconditions:
   - Active trial-enabled plan and allowed theme
-  - Valid unclaimed subdomain
+  - Complete saved store data and current valid available address
   - Verified trial-eligible central account
+  - Failed partial resume must match request origin and owner
   states:
   - draft
   - account_verified
@@ -290,32 +291,47 @@ workflows:
   - ready
   - failed
   steps:
-  - plan/theme/store request
+  - plan/theme/store request with central row-locked mutations
   - registration or login
   - email verification
-  - plan snapshot review
-  - locked provisioning claim
-  - W02 and trial log
-  - signed dashboard redirect
+  - plan snapshot review independent of JSON key order
+  - central user and request lock plus final saved-input validation
+  - marked TenantRegisterEvent and checkpointed provisioning
+  - readiness verification before atomic trial log and tenant synchronization
+  - signed dashboard redirect and independent welcome mail
   database_effects:
   - store_onboarding_requests
   - users
-  - tenants
+  - tenants and existing tenants.data origin/checkpoint metadata
   - domains
+  - tenant_unique_keys
   - payment_logs
-  - tenant static_options
+  - tenant database and static_options
   events:
-  - TenantRegisterEvent
+  - TenantRegisterEvent with optional onboarding request id
+  - TenantCreated selects native W02 or marked checkpointed service
   jobs:
-  - TenantCreated pipeline jobs
-  notifications: registration OTP and new store mail
+  - Existing database, cache, seed, file-dispatch and mail jobs reused by W10
+  - Child file-copy work remains asynchronous
+  notifications: registration OTP; welcome mail cannot fail a ready store
   failure_states:
   - validation/eligibility/plan-change/provisioning failure
+  - provisioning/ready earlier-step mutations rejected
+  - uncertain non-repeatable stages require recovery inspection, not blind replay
+  - legacy partial adoption restricted to provably unseeded owned tenants
   related_modules:
   - ThemeManage
+  - CpanelAutomation
   sources:
   - core/routes/web.php
   - core/app/Http/Controllers/Landlord/Frontend/StoreOnboardingController.php
   - core/app/Http/Controllers/Landlord/Frontend/LandlordFrontendController.php
   - core/app/Models/StoreOnboardingRequest.php
-  evidence: VERIFIED source control path; migration, mail delivery and end-to-end tenant creation untested
+  - core/app/Services/Onboarding/StoreOnboardingProvisioner.php
+  - core/app/Services/Onboarding/ProvisioningStages.php
+  - core/app/Services/Onboarding/OnboardingThemeDemoImporter.php
+  - core/app/Events/TenantRegisterEvent.php
+  - core/app/Listeners/TenantDomainCreate.php
+  - core/app/Providers/TenancyServiceProvider.php
+  - core/database/seeders/TenantDatabaseSeeder.php
+  evidence: VERIFIED source control path; isolated real-framework/MySQL fixture has synthetic tenant schema/seed/auth/mail adapters; full application migration/theme/mail/browser behavior is not certified

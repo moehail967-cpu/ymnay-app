@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 use App\Models\StaticOption;
 use App\Models\StaticOptionCentral;
+use App\Models\StoreOnboardingRequest;
+use App\Models\User;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 if (getenv('YMNAY_G01') !== '1' || getenv('APP_ENV') !== 'testing') {
     fwrite(STDERR, "G01 preparation is restricted to the disposable testing environment.\n");
@@ -67,6 +71,40 @@ DB::table('plan_themes')->insert([
     'updated_at' => now(),
 ]);
 
+$plan = App\Models\PricePlan::findOrFail($planId);
+$planSnapshot = [
+    'id' => (int) $plan->id,
+    'title' => (string) $plan->title,
+    'price' => (string) $plan->price,
+    'type' => (int) $plan->type,
+    'has_trial' => (bool) $plan->has_trial,
+    'trial_days' => (int) $plan->trial_days,
+    'updated_at' => optional($plan->updated_at)->toISOString(),
+];
+
+$raceRequests = [];
+foreach ([1, 2] as $number) {
+    $user = User::create([
+        'name' => "G01 Race User {$number}",
+        'email' => "g01-race-{$number}@example.test",
+        'username' => "g01_race_{$number}",
+        'mobile' => "96650000000{$number}",
+        'password' => Hash::make('G01-Isolated-Password!'),
+        'email_verified' => 1,
+    ]);
+    $request = StoreOnboardingRequest::create([
+        'id' => (string) Str::uuid(),
+        'user_id' => $user->id,
+        'plan_id' => $plan->id,
+        'theme_slug' => 'hexfashion',
+        'store_name' => "G01 Race Store {$number}",
+        'subdomain' => 'g01-race-store',
+        'status' => 'account_verified',
+        'plan_snapshot' => $planSnapshot,
+    ]);
+    $raceRequests[] = ['email' => $user->email, 'request_reference' => $request->id];
+}
+
 $proofDirectory = storage_path('app/seeder-files/all-media');
 if (! is_dir($proofDirectory) && ! mkdir($proofDirectory, 0775, true) && ! is_dir($proofDirectory)) {
     throw new RuntimeException("Could not create the isolated file evidence directory.");
@@ -99,5 +137,6 @@ echo json_encode([
     'theme' => 'hexfashion',
     'mail_host' => config('mail.mailers.smtp.host'),
     'onboarding_routes' => $onboardingRoutes,
+    'parallel_address_race' => $raceRequests,
     'synthetic_only' => true,
 ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES).PHP_EOL;

@@ -49,6 +49,18 @@ $assert($trial->theme_slug === $onboarding->theme_slug, 'Trial theme differs fro
 $assert(Storage::exists('g01-browser-store/g01-proof.txt'), 'Delayed tenant file copy did not finish.');
 $assert(DB::table('file_sync_jobs')->count() === 0, 'Tenant file queue was not drained.');
 
+$raceTenant = Tenant::findOrFail('g01-race-store');
+$raceRequests = StoreOnboardingRequest::query()
+    ->where('subdomain', 'g01-race-store')
+    ->orderBy('created_at')
+    ->get();
+$assert($raceRequests->count() === 2, 'Parallel address race requests are missing.');
+$assert($raceRequests->where('status', 'ready')->count() === 1, 'Parallel address race did not produce exactly one winner.');
+$assert($raceRequests->where('status', '!=', 'ready')->count() === 1, 'Parallel address race did not safely reject one loser.');
+$raceWinner = $raceRequests->firstWhere('status', 'ready');
+$assert((int) $raceTenant->user_id === (int) $raceWinner->user_id, 'Race tenant belongs to the losing account.');
+$assert(Storage::exists('g01-race-store/g01-proof.txt'), 'Race tenant file copy did not finish.');
+
 try {
     tenancy()->initialize($tenant);
     $tenantDb = DB::connection('tenant');
@@ -71,6 +83,19 @@ try {
     tenancy()->end();
 }
 
+try {
+    tenancy()->initialize($raceTenant);
+    $raceDb = DB::connection('tenant');
+    $raceDbName = $raceDb->getDatabaseName();
+    $assert($raceDbName !== $tenantDbName && $raceDbName !== $centralDbName, 'Race tenant database is not isolated.');
+    $assert(
+        $raceDb->table('static_options')->where('option_name', 'site_title')->value('option_value') === $raceWinner->store_name,
+        'The winning request did not own the race tenant title.'
+    );
+} finally {
+    tenancy()->end();
+}
+
 echo json_encode([
     'request_reference' => $onboarding->id,
     'tenant' => $tenant->id,
@@ -81,5 +106,11 @@ echo json_encode([
     'provisioning_stages' => $stages,
     'file_queue_drained' => true,
     'tenant_admin_ready' => true,
+    'parallel_address_race' => [
+        'tenant' => $raceTenant->id,
+        'tenant_database' => $raceDbName,
+        'ready_requests' => 1,
+        'rejected_requests' => 1,
+    ],
     'synthetic_only' => true,
 ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE).PHP_EOL;

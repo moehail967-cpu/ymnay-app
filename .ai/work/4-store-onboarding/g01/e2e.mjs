@@ -37,6 +37,7 @@ try {
     locale: 'ar-SA',
   });
   const page = await desktop.newPage();
+  page.setDefaultTimeout(15 * 60 * 1000);
 
   await page.goto(baseUrl, { waitUntil: 'networkidle' });
   await page.locator('#ym-hero-title').waitFor();
@@ -136,6 +137,46 @@ try {
   await page.waitForURL(/g01-browser-store\.localhost/, { timeout: 15 * 60 * 1000, waitUntil: 'domcontentloaded' });
   check('full-provisioning-and-token-login', page.url().replace(/token-login\/[^/]+/, 'token-login/[redacted]'));
   await page.screenshot({ path: `${evidenceDir}/tenant-dashboard.png`, fullPage: true });
+
+  const loginRaceUser = async (url, email) => {
+    const context = await browser.newContext({ locale: 'ar-SA' });
+    const racePage = await context.newPage();
+    racePage.setDefaultTimeout(15 * 60 * 1000);
+    await racePage.goto(`${url}/login`, { waitUntil: 'domcontentloaded' });
+    const login = await racePage.evaluate(async ({ email }) => {
+      const csrf = document.querySelector('meta[name="csrf-token"]')?.content;
+      const response = await fetch('/store-login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': csrf },
+        body: JSON.stringify({ username: email, password: 'G01-Isolated-Password!' }),
+      });
+      return { status: response.status, body: await response.json() };
+    }, { email });
+    if (login.status !== 200 || login.body.status !== 'valid') throw new Error(`Race login failed for ${email}.`);
+    await racePage.goto(`${url}/create-store?step=5`, { waitUntil: 'domcontentloaded' });
+    await racePage.locator('#complete-btn').waitFor();
+    return { context, page: racePage };
+  };
+
+  const raceOne = await loginRaceUser('http://localhost', 'g01-race-1@example.test');
+  const raceTwo = await loginRaceUser('http://localhost:8080', 'g01-race-2@example.test');
+  const submitComplete = racePage => racePage.evaluate(async () => {
+    const csrf = document.querySelector('meta[name="csrf-token"]')?.content;
+    const response = await fetch('/create-store/complete', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': csrf },
+      body: JSON.stringify({ terms_condition: true }),
+    });
+    return { status: response.status, body: await response.json() };
+  });
+  const raceResults = await Promise.all([submitComplete(raceOne.page), submitComplete(raceTwo.page)]);
+  const raceStatuses = raceResults.map(result => result.status).sort((a, b) => a - b);
+  if (JSON.stringify(raceStatuses) !== JSON.stringify([200, 422])) {
+    throw new Error(`Parallel address race produced unexpected statuses: ${raceStatuses.join(',')}`);
+  }
+  check('parallel-address-race-one-winner', raceResults.map(result => ({ status: result.status, state: result.body.status })));
+  await raceOne.context.close();
+  await raceTwo.context.close();
 
   await fs.writeFile(`${evidenceDir}/browser-report.json`, `${JSON.stringify(report, null, 2)}\n`);
   await desktop.close();

@@ -105,15 +105,20 @@ foreach ([1, 2] as $number) {
     $raceRequests[] = ['email' => $user->email, 'request_reference' => $request->id];
 }
 
-$proofDirectory = storage_path('app/seeder-files/all-media');
-if (! is_dir($proofDirectory) && ! mkdir($proofDirectory, 0775, true) && ! is_dir($proofDirectory)) {
-    throw new RuntimeException("Could not create the isolated file evidence directory.");
-}
+$proofContents = "synthetic G01 file; no production data\n";
+foreach ([
+    // Exercises the asynchronous Storage-based tenant file copy.
+    storage_path('app/seeder-files/all-media'),
+    // The legacy MediaSeed expects the distribution's optional demo-media bundle.
+    // Supply one synthetic fixture so a source checkout can exercise the copy path.
+    base_path('assets/tenant/seeder-files/all-media'),
+] as $proofDirectory) {
+    if (! is_dir($proofDirectory) && ! mkdir($proofDirectory, 0775, true) && ! is_dir($proofDirectory)) {
+        throw new RuntimeException("Could not create the isolated file evidence directory: {$proofDirectory}");
+    }
 
-file_put_contents(
-    $proofDirectory.'/g01-proof.txt',
-    "synthetic G01 file; no production data\n"
-);
+    file_put_contents($proofDirectory.'/g01-proof.txt', $proofContents);
+}
 
 $onboardingRoutes = collect(app('router')->getRoutes()->getRoutes())
     ->filter(fn ($route) => str_starts_with((string) $route->getName(), 'landlord.store.onboarding'))

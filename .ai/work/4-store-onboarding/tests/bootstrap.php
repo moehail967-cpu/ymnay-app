@@ -23,6 +23,7 @@ use Illuminate\Support\Str;
 class FixtureState {
     public static ?User $user = null;
     public static bool $failDomain = false, $failSeed = false, $failMail = false;
+    public static ?int $verificationMailFailureCode = null;
     public static int $databaseCalls = 0, $migrationCalls = 0, $seedCalls = 0, $fileCalls = 0, $mailCalls = 0, $verificationMailCalls = 0;
 }
 function getAllThemeSlug() { return ['theme-a', 'theme-b']; }
@@ -86,7 +87,12 @@ Auth::swap(new class {
 Cookie::swap(new class { public function queue(...$args) {} public function forget($name) { return $name; } });
 \Illuminate\Support\Facades\Mail::swap(new class {
     public function to($email) { return $this; }
-    public function send($message) { FixtureState::$verificationMailCalls++; }
+    public function send($message) {
+        FixtureState::$verificationMailCalls++;
+        if (FixtureState::$verificationMailFailureCode !== null) {
+            throw new RuntimeException('Injected verification mail failure', FixtureState::$verificationMailFailureCode);
+        }
+    }
 });
 Request::macro('validate', function (array $rules, ...$args) {
     return \Illuminate\Support\Facades\Validator::make($this->all(), $rules, ...$args)->validate();

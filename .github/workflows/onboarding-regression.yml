@@ -54,6 +54,7 @@ jobs:
         run: |
           php -l core/routes/web.php
           php -l core/app/Http/Controllers/Landlord/Frontend/StoreOnboardingController.php
+          php -l core/app/Helpers/EmailHelpers/VerifyUserMailSend.php
           find core/app/Services/Onboarding -name '*.php' -exec php -l {} \;
           php -l core/app/Events/TenantRegisterEvent.php
           php -l core/app/Listeners/TenantDomainCreate.php

@@ -153,13 +153,18 @@ class StoreOnboardingController extends Controller
 
         abort_unless(in_array($onboarding->status, ['draft', 'account_verified', 'failed'], true), 409);
 
+        $verificationMailFailed = false;
         if (empty($user->email_verify_token)) {
-            VerifyUserMailSend::sendMail($user);
+            $verificationMailFailed = !VerifyUserMailSend::sendMailForOnboarding($user);
         }
+
+        $verificationMailFailed = $verificationMailFailed
+            || (bool) $request->session()->get('verification_mail_failed', false);
 
         return view('landlord.frontend.dashboard.email-verify', [
             'verifyAction' => route('landlord.store.onboarding.email.verify.submit'),
             'resendUrl' => route('landlord.store.onboarding.email.verify.resend'),
+            'verificationMailFailed' => $verificationMailFailed,
         ]);
     }
 
@@ -223,7 +228,14 @@ class StoreOnboardingController extends Controller
         }
 
         abort_unless(in_array($onboarding->status, ['draft', 'account_verified', 'failed'], true), 409);
-        VerifyUserMailSend::sendMail($user);
+        if (!VerifyUserMailSend::sendMailForOnboarding($user)) {
+            return redirect()->route('landlord.store.onboarding.email.verify')
+                ->with([
+                    'msg' => __('We could not send the verification code. Please try again.'),
+                    'type' => 'danger',
+                    'verification_mail_failed' => true,
+                ]);
+        }
 
         return redirect()->route('landlord.store.onboarding.email.verify')
             ->with(['msg' => __('Verify mail send'), 'type' => 'success']);

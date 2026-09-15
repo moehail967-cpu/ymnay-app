@@ -293,7 +293,7 @@ workflows:
   steps:
   - plan/theme/store request with central row-locked mutations
   - registration or login
-  - onboarding-owned email verification for an existing unverified account, independent of the legacy global flag
+  - onboarding-owned email verification for an existing unverified account, independent of the legacy global flag, with explicit delivery result and failed-token rollback
   - plan snapshot review independent of JSON key order
   - central user and request lock plus final saved-input validation
   - marked TenantRegisterEvent and checkpointed provisioning
@@ -316,6 +316,7 @@ workflows:
   notifications: registration or onboarding verification OTP; welcome mail cannot fail a ready store
   failure_states:
   - validation/eligibility/plan-change/provisioning failure
+  - verification mail rejection reports a safe retryable failure and preserves the previous usable token/request
   - provisioning/ready earlier-step mutations rejected
   - uncertain non-repeatable stages require recovery inspection, not blind replay
   - legacy partial adoption restricted to provably unseeded owned tenants
@@ -326,6 +327,7 @@ workflows:
   - core/routes/web.php
   - core/app/Http/Controllers/Landlord/Frontend/StoreOnboardingController.php
   - core/app/Http/Controllers/Landlord/Frontend/LandlordFrontendController.php
+  - core/app/Helpers/EmailHelpers/VerifyUserMailSend.php
   - core/app/Models/StoreOnboardingRequest.php
   - core/app/Services/Onboarding/StoreOnboardingProvisioner.php
   - core/app/Services/Onboarding/ProvisioningStages.php

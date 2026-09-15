@@ -29,6 +29,7 @@ final class OnboardingIntegrationTest extends TestCase
         Schema::enableForeignKeyConstraints();
         FixtureState::$user = null;
         FixtureState::$failDomain = FixtureState::$failSeed = FixtureState::$failMail = false;
+        FixtureState::$verificationMailFailureCode = null;
         FixtureState::$databaseCalls = FixtureState::$migrationCalls = FixtureState::$seedCalls = FixtureState::$fileCalls = FixtureState::$mailCalls = FixtureState::$verificationMailCalls = 0;
     }
 
@@ -172,6 +173,88 @@ final class OnboardingIntegrationTest extends TestCase
         self::assertNotSame('old-code', $u->fresh()->email_verify_token);
         self::assertSame(1, FixtureState::$verificationMailCalls);
         self::assertSame($o->id, $r->session()->get('store_onboarding_request_id'));
+    }
+
+    public function testInitialVerificationMailFailureIsVisibleAndKeepsRequestRetryable(): void
+    {
+        [$c, $r, $o, $p, $u] = $this->fixture('draft');
+        $u->update(['email_verified' => 0, 'email_verify_token' => null]);
+        FixtureState::$user = $u->fresh();
+        FixtureState::$verificationMailFailureCode = 550;
+
+        $response = $c->verificationForm($r);
+
+        self::assertSame('landlord.frontend.dashboard.email-verify', $response->name());
+        self::assertTrue($response->getData()['verificationMailFailed']);
+        self::assertNull($u->fresh()->email_verify_token);
+        self::assertSame('draft', $o->fresh()->status);
+        self::assertSame($o->id, $r->session()->get('store_onboarding_request_id'));
+        self::assertSame(1, FixtureState::$verificationMailCalls);
+        $this->noSideEffects();
+    }
+
+    public function testVerificationResendFailuresAreDangerousAndPreserveThePreviousCode(): void
+    {
+        foreach ([550, 553] as $code) {
+            [$c, $r, $o, $p, $u] = $this->fixture('draft', $code);
+            $u->update(['email_verified' => 0, 'email_verify_token' => 'still-usable-code']);
+            FixtureState::$user = $u->fresh();
+            FixtureState::$verificationMailFailureCode = $code;
+
+            $response = $c->resendVerificationEmail($r);
+
+            self::assertSame('danger', $response->getSession()->get('type'));
+            self::assertTrue($response->getSession()->get('verification_mail_failed'));
+            self::assertSame('still-usable-code', $u->fresh()->email_verify_token);
+            self::assertSame('draft', $o->fresh()->status);
+            self::assertSame($o->id, $r->session()->get('store_onboarding_request_id'));
+            $this->noSideEffects();
+
+            FixtureState::$verificationMailFailureCode = null;
+        }
+        self::assertSame(2, FixtureState::$verificationMailCalls);
+    }
+
+    public function testVerificationCanRecoverAfterMailFailureWithoutAcceptingTheOldCode(): void
+    {
+        [$c, $r, $o, $p, $u] = $this->fixture('draft');
+        $u->update(['email_verified' => 0, 'email_verify_token' => 'old-code']);
+        FixtureState::$user = $u->fresh();
+        FixtureState::$verificationMailFailureCode = 550;
+
+        $c->resendVerificationEmail($r);
+        self::assertSame('old-code', $u->fresh()->email_verify_token);
+
+        FixtureState::$verificationMailFailureCode = null;
+        $success = $c->resendVerificationEmail($r);
+        $replacement = $u->fresh()->email_verify_token;
+        self::assertSame('success', $success->getSession()->get('type'));
+        self::assertNotSame('old-code', $replacement);
+
+        $c->verifyEmail($this->request($o, ['verify_code' => 'old-code']));
+        self::assertSame(0, $u->fresh()->email_verified);
+        $c->verifyEmail($this->request($o, ['verify_code' => $replacement]));
+        self::assertSame(1, $u->fresh()->email_verified);
+        self::assertNull($u->fresh()->email_verify_token);
+        self::assertSame('account_verified', $o->fresh()->status);
+        $this->noSideEffects();
+    }
+
+    public function testPreviouslyDeliveredCodeRemainsUsableWhenResendFails(): void
+    {
+        [$c, $r, $o, $p, $u] = $this->fixture('draft');
+        $u->update(['email_verified' => 0, 'email_verify_token' => 'previous-code']);
+        FixtureState::$user = $u->fresh();
+        FixtureState::$verificationMailFailureCode = 553;
+
+        $c->resendVerificationEmail($r);
+        $response = $c->verifyEmail($this->request($o, ['verify_code' => 'previous-code']));
+
+        self::assertStringContainsString('/create-store?step=5', $response->getTargetUrl());
+        self::assertSame(1, $u->fresh()->email_verified);
+        self::assertNull($u->fresh()->email_verify_token);
+        self::assertSame('account_verified', $o->fresh()->status);
+        $this->noSideEffects();
     }
 
     public function testVerifiedAccountSkipsVerificationAndNoMailIsSent(): void

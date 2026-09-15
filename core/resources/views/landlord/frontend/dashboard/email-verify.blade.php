@@ -19,15 +19,26 @@
 
         <!-- Title -->
         <h1 class="text-3xl font-urbanist font-bold text-secondary mb-2 text-center">{{__('Verify Your Email')}}</h1>
-        <p class="text-sub2Title mb-4 text-center">{{__('Check your mail for the verification code.')}}</p>
+        <p class="text-sub2Title mb-4 text-center">
+            {{($verificationMailFailed ?? false)
+                ? __('Use the resend option to try sending a new verification code.')
+                : __('Check your mail for the verification code.')}}
+        </p>
 
-        <!-- Info Alert -->
-        <div class="bg-yellow-50 border border-yellow-200 text-yellow-700 rounded-xl px-4 py-3 mb-6 text-sm text-center">
-            <i class="ti tabler-alert-triangle text-base"></i>
-            {{__('A verification code has been sent to your email address.')}}
-        </div>
+        <!-- Delivery Alert -->
+        @if($verificationMailFailed ?? false)
+            <div class="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 mb-6 text-sm text-center" role="alert">
+                <i class="ti tabler-alert-triangle text-base"></i>
+                {{__('We could not send the verification code. Please try again.')}}
+            </div>
+        @else
+            <div class="bg-yellow-50 border border-yellow-200 text-yellow-700 rounded-xl px-4 py-3 mb-6 text-sm text-center">
+                <i class="ti tabler-alert-triangle text-base"></i>
+                {{__('A verification code has been sent to your email address.')}}
+            </div>
+            <x-flash-msg-tw/>
+        @endif
 
-        <x-flash-msg-tw/>
         <x-error-msg-tw/>
 
         <!-- Form -->

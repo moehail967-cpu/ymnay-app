@@ -77,6 +77,20 @@ file_put_contents(
     "synthetic G01 file; no production data\n"
 );
 
+$onboardingRoutes = collect(app('router')->getRoutes()->getRoutes())
+    ->filter(fn ($route) => str_starts_with((string) $route->getName(), 'landlord.store.onboarding'))
+    ->map(fn ($route) => [
+        'name' => $route->getName(),
+        'methods' => $route->methods(),
+        'uri' => $route->uri(),
+    ])
+    ->values()
+    ->all();
+
+if (count($onboardingRoutes) !== 10) {
+    throw new RuntimeException('The full application did not register all onboarding routes.');
+}
+
 echo json_encode([
     'environment' => app()->environment(),
     'central_database' => DB::connection()->getDatabaseName(),
@@ -84,5 +98,6 @@ echo json_encode([
     'trial_days' => 37,
     'theme' => 'hexfashion',
     'mail_host' => config('mail.mailers.smtp.host'),
+    'onboarding_routes' => $onboardingRoutes,
     'synthetic_only' => true,
 ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES).PHP_EOL;

@@ -22,7 +22,7 @@ class G01OnboardingHttpTest extends TestCase
             ->withSession(['store_onboarding_request_id' => $onboarding->id])
             ->get(route('landlord.store.onboarding.email.verify'))
             ->assertOk()
-            ->assertSee('Verification Code');
+            ->assertSee('name="verify_code"', false);
 
         $token = (string) $user->fresh()->email_verify_token;
         $this->assertNotSame('', $token);

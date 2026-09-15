@@ -134,7 +134,12 @@ try {
 
   await page.locator('#final-terms').check();
   await page.locator('#complete-btn').click();
-  await page.waitForURL(/g01-browser-store\.localhost/, { timeout: 15 * 60 * 1000, waitUntil: 'domcontentloaded' });
+  await Promise.race([
+    page.waitForURL(/g01-browser-store\.localhost/, { timeout: 15 * 60 * 1000, waitUntil: 'domcontentloaded' }),
+    page.locator('#complete-message .ym-error').waitFor({ timeout: 15 * 60 * 1000 }).then(async () => {
+      throw new Error(`Primary provisioning failed: ${await page.locator('#complete-message').innerText()}`);
+    }),
+  ]);
   check('full-provisioning-and-token-login', page.url().replace(/token-login\/[^/]+/, 'token-login/[redacted]'));
   await page.screenshot({ path: `${evidenceDir}/tenant-dashboard.png`, fullPage: true });
 

@@ -12,6 +12,7 @@ if (getenv('YMNAY_G01') !== '1' || getenv('APP_ENV') !== 'testing') {
     exit(2);
 }
 
+require __DIR__.'/../../../../core/vendor/autoload.php';
 $app = require __DIR__.'/../../../../core/bootstrap/app.php';
 $app->make(Kernel::class)->bootstrap();
 

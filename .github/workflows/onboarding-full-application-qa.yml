@@ -91,6 +91,7 @@ jobs:
       - name: Boot actual application and migrate disposable central database
         working-directory: core
         run: |
+          set -o pipefail
           php artisan about --only=environment 2>&1 | tee "$RUNNER_TEMP/application-about.txt"
           php artisan migrate:fresh --force -vvv 2>&1 | tee "$RUNNER_TEMP/central-migrations.txt"
           php ../.ai/work/4-store-onboarding/g01/prepare.php 2>&1 | tee "$RUNNER_TEMP/g01-prepare.json"

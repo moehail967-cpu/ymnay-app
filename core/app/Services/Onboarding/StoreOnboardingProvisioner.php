@@ -135,7 +135,7 @@ class StoreOnboardingProvisioner
         return $this->inTenant($tenant, function () {
             $connection = DB::connection('tenant');
             // Do not infer that a missing admin means all seeds failed. Inspect every application table.
-            foreach ($connection->getSchemaBuilder()->getTables() as $table) {
+            foreach ($connection->getSchemaBuilder()->getTables($connection->getDatabaseName()) as $table) {
                 if (in_array($table['name'], ['migrations', 'sqlite_sequence'], true)) continue;
                 if ($connection->table($table['name'])->exists()) return false;
             }

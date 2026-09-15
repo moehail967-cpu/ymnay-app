@@ -161,6 +161,10 @@ Schema::create('users', function (Blueprint $t) {
 Schema::create('price_plans', function (Blueprint $t) {
     $t->id(); $t->string('title'); $t->string('price'); $t->integer('type'); $t->integer('status');
     $t->boolean('has_trial'); $t->integer('trial_days'); $t->timestamps();
+    $t->integer('product_permission_feature')->nullable();
+    $t->integer('page_permission_feature')->nullable();
+    $t->integer('blog_permission_feature')->nullable();
+    $t->integer('storage_permission_feature')->nullable();
 });
 Schema::create('plan_themes', function (Blueprint $t) { $t->id(); $t->unsignedBigInteger('plan_id'); $t->string('theme_slug'); $t->integer('status'); $t->timestamps(); });
 Schema::create('tenants', function (Blueprint $t) {

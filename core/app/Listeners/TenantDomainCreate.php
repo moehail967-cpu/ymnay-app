@@ -20,6 +20,18 @@ class TenantDomainCreate
 
     public function handle(TenantRegisterEvent $event)
     {
+        if ($event->onboarding_request_id !== null) {
+            $tenant = new Tenant([
+                'id' => $event->subdomain,
+                'user_id' => $event->user_info->id,
+                'theme_slug' => $event->theme,
+            ]);
+            // Save the origin with the tenant row BEFORE the synchronous created-event pipeline.
+            $tenant->setInternal('onboarding_request_id', $event->onboarding_request_id);
+            if (!$tenant->save()) throw new \RuntimeException('Tenant could not be saved.');
+            return; // The checkpointed pipeline owns the login key for this flow.
+        }
+
         $tenant = Tenant::create([
             'id' => $event->subdomain, 
             'user_id' => $event->user_info->id,

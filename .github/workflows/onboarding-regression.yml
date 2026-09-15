@@ -1,0 +1,71 @@
+name: Onboarding isolated regression
+on:
+  pull_request:
+    paths:
+      - 'core/app/**'
+      - 'core/database/**'
+      - '.ai/work/4-store-onboarding/tests/**'
+      - '.github/workflows/onboarding-regression.yml'
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: isolated-fixture-only
+          MYSQL_DATABASE: ymnay_onboarding_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s --health-timeout=5s --health-retries=10
+    env:
+      YMNAY_TEST_ALLOW_DISPOSABLE_DB: '1'
+      YMNAY_TEST_DB: ymnay_onboarding_test
+      YMNAY_TEST_HOST: 127.0.0.1
+      YMNAY_TEST_PASSWORD: isolated-fixture-only
+      CENTRAL_DOMAIN: example.invalid
+      APP_ENV: testing
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: pdo_mysql, mbstring, xml, intl, curl, zip
+          tools: composer:v2
+          coverage: none
+      - name: Prepare pinned isolated dependencies
+        run: |
+          echo "YMNAY_TEST_FIXTURE=$RUNNER_TEMP/ymnay-onboarding" >> "$GITHUB_ENV"
+          YMNAY_TEST_FIXTURE="$RUNNER_TEMP/ymnay-onboarding" python .ai/work/4-store-onboarding/tests/prepare-fixture.py
+          composer update --working-dir="$RUNNER_TEMP/ymnay-onboarding" --no-scripts --no-plugins --no-interaction --prefer-dist
+      - name: Check source syntax
+        run: |
+          php -l core/app/Http/Controllers/Landlord/Frontend/StoreOnboardingController.php
+          find core/app/Services/Onboarding -name '*.php' -exec php -l {} \;
+          php -l core/app/Events/TenantRegisterEvent.php
+          php -l core/app/Listeners/TenantDomainCreate.php
+          php -l core/app/Providers/TenancyServiceProvider.php
+          php -l core/database/seeders/TenantDatabaseSeeder.php
+      - name: Check durable stage decisions
+        run: php .ai/work/4-store-onboarding/tests/stages-regression.php > "$RUNNER_TEMP/stage-results.json"
+      - name: Run real Laravel components and MySQL regression fixture
+        run: |
+          "$YMNAY_TEST_FIXTURE/vendor/bin/phpunit" --no-configuration --colors=never \
+            --log-junit "$RUNNER_TEMP/onboarding-junit.xml" \
+            .ai/work/4-store-onboarding/tests/OnboardingIntegrationTest.php
+      - name: Upload non-sensitive test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: onboarding-regression-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/stage-results.json
+            ${{ runner.temp }}/onboarding-junit.xml
+          if-no-files-found: ignore

@@ -36,7 +36,8 @@ class TenantFileSycnForNewTenant implements ShouldQueue
     {
         /* file sync test */
         $allFiles = Cache::remember(CacheKeyEnums::ALL_AWS_S3_DEMO_IMAGES_FILES->value, 300 * 60,function (){
-            return  Storage::allFiles('/seeder-files/all-media');
+            // Flysystem paths are relative to the configured disk root.
+            return Storage::allFiles('seeder-files/all-media');
         });
 
         $tenantKey = $this->tenant->id;

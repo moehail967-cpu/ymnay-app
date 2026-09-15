@@ -1,0 +1,121 @@
+name: Onboarding full application QA
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'core/**'
+      - '.ai/work/4-store-onboarding/g01/**'
+      - '.github/workflows/onboarding-full-application-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  full-application:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: g01-isolated-only
+          MYSQL_DATABASE: ymnay_g01_central
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s --health-timeout=5s --health-retries=12
+      mailpit:
+        image: axllent/mailpit:v1.27
+        ports:
+          - 1025:1025
+          - 8025:8025
+        options: >-
+          --health-cmd="wget -q -O- http://127.0.0.1:8025/livez || exit 1"
+          --health-interval=10s --health-timeout=5s --health-retries=12
+    env:
+      APP_ENV: testing
+      APP_DEBUG: 'true'
+      APP_URL: http://localhost
+      CENTRAL_DOMAIN: localhost
+      DB_CONNECTION: mysql
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_DATABASE: ymnay_g01_central
+      DB_USERNAME: root
+      DB_PASSWORD: g01-isolated-only
+      TENANT_DATABASE_PREFIX: ymnay_g01_tenant_
+      CACHE_DRIVER: file
+      SESSION_DRIVER: file
+      QUEUE_CONNECTION: sync
+      FILESYSTEM_DRIVER: local
+      MAIL_MAILER: smtp
+      MAIL_HOST: 127.0.0.1
+      MAIL_PORT: 1025
+      MAIL_ENCRYPTION: 'null'
+      MAIL_FROM_ADDRESS: qa@example.test
+      MAIL_FROM_NAME: Ymnay-G01
+      TELESCOPE_ENABLED: 'false'
+      YMNAY_G01: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: bcmath, ctype, curl, dom, fileinfo, gd, intl, mbstring, openssl, pdo_mysql, tokenizer, xml, zip
+          tools: composer:v2
+          coverage: none
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: core/package-lock.json
+
+      - name: Record exact candidate and create isolated environment
+        working-directory: core
+        run: |
+          mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs
+          cp .env.example .env
+          php -r '$p=".env"; $s=file_get_contents($p); $s=preg_replace("/^APP_KEY=.*$/m", "APP_KEY=base64:".base64_encode(random_bytes(32)), $s); file_put_contents($p,$s);'
+          git rev-parse HEAD > "$RUNNER_TEMP/candidate-sha.txt"
+
+      - name: Install the actual application dependencies
+        working-directory: core
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Boot actual application and migrate disposable central database
+        working-directory: core
+        run: |
+          php artisan about --only=environment
+          php artisan route:list --name=landlord.store.onboarding --json > "$RUNNER_TEMP/onboarding-routes.json"
+          php artisan migrate:fresh --force
+          php ../.ai/work/4-store-onboarding/g01/prepare.php > "$RUNNER_TEMP/g01-prepare.json"
+
+      - name: Build actual frontend assets
+        working-directory: core
+        run: |
+          npm ci --no-audit --no-fund
+          npm run build
+
+      - name: Run existing full-project test suites
+        working-directory: core
+        run: php artisan test --log-junit "$RUNNER_TEMP/full-project-junit.xml"
+
+      - name: Upload non-sensitive full-application preflight evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: onboarding-full-app-preflight-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/candidate-sha.txt
+            ${{ runner.temp }}/onboarding-routes.json
+            ${{ runner.temp }}/g01-prepare.json
+            ${{ runner.temp }}/full-project-junit.xml
+            core/storage/logs/laravel.log
+            core/public/build/manifest.json
+          if-no-files-found: ignore

@@ -1,0 +1,148 @@
+{
+    "candidate": "b7d0a52ef23e6b1620509c49e62f1ef86f4bf70b",
+    "source_blob": "ce4dc666de41d21266acbf549533b6ab36a30365",
+    "php": "8.4.23",
+    "method": "Actual controller with in-memory dependency doubles; not Laravel/DB/E2E/locking coverage",
+    "results": [
+        {
+            "id": "C01",
+            "case": "Unverified account does not start provisioning",
+            "acceptance_result": "PASS",
+            "observed": {
+                "http": 422,
+                "events": 0
+            }
+        },
+        {
+            "id": "C02",
+            "case": "Changed plan snapshot requires review",
+            "acceptance_result": "PASS",
+            "observed": {
+                "http": 409,
+                "status": "plan_changed",
+                "events": 0
+            }
+        },
+        {
+            "id": "C03",
+            "case": "Repeated completion of ready request avoids duplicate side effects",
+            "acceptance_result": "PASS",
+            "observed": {
+                "first": "ready",
+                "second": "ready",
+                "events": 1,
+                "trial_calls": 1
+            }
+        },
+        {
+            "id": "C04",
+            "case": "Another account cannot use the bound onboarding request",
+            "acceptance_result": "PASS",
+            "observed": {
+                "http": 404,
+                "events": 0
+            }
+        },
+        {
+            "id": "C05",
+            "case": "Trial on another store denies creation",
+            "acceptance_result": "PASS",
+            "observed": {
+                "http": 422,
+                "events": 0
+            }
+        },
+        {
+            "id": "C06-selectPlan",
+            "case": "Provisioning request must not be mutable via selectPlan",
+            "acceptance_result": "FAIL",
+            "observed": {
+                "before": "provisioning",
+                "after": "draft",
+                "theme": "theme-a",
+                "subdomain": "qa-store"
+            }
+        },
+        {
+            "id": "C06-selectTheme",
+            "case": "Provisioning request must not be mutable via selectTheme",
+            "acceptance_result": "FAIL",
+            "observed": {
+                "before": "provisioning",
+                "after": "draft",
+                "theme": "theme-b",
+                "subdomain": "qa-store"
+            }
+        },
+        {
+            "id": "C06-storeDetails",
+            "case": "Provisioning request must not be mutable via storeDetails",
+            "acceptance_result": "FAIL",
+            "observed": {
+                "before": "provisioning",
+                "after": "draft",
+                "theme": "theme-a",
+                "subdomain": "changed-store"
+            }
+        },
+        {
+            "id": "C07",
+            "case": "Completed request must not revert to draft when selecting a theme",
+            "acceptance_result": "FAIL",
+            "observed": {
+                "before": "ready",
+                "after": "draft",
+                "theme": "theme-b",
+                "tenant_id": "qa-store"
+            }
+        },
+        {
+            "id": "C08",
+            "case": "Missing store details must be rejected before dispatch",
+            "acceptance_result": "FAIL",
+            "observed": {
+                "http": 422,
+                "events": [
+                    {
+                        "subdomain": null,
+                        "theme": "theme-a"
+                    }
+                ],
+                "validator_fields": [
+                    "terms_condition"
+                ]
+            }
+        },
+        {
+            "id": "C09",
+            "case": "Partial creation before domain must resume the missing pipeline",
+            "acceptance_result": "FAIL",
+            "observed": {
+                "attempts": [
+                    422,
+                    422,
+                    422
+                ],
+                "states": [
+                    "failed",
+                    "failed",
+                    "failed"
+                ],
+                "pipeline_dispatches": 1,
+                "trial_calls": 1,
+                "last_error": "Tenant provisioning did not produce a domain and login key."
+            }
+        },
+        {
+            "id": "C10",
+            "case": "Final creation must honor newly reserved subdomain",
+            "acceptance_result": "FAIL",
+            "observed": {
+                "http": 200,
+                "status": "ready",
+                "events": 1,
+                "forbidden_option_read": false
+            }
+        }
+    ]
+}

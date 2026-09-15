@@ -71,6 +71,34 @@ async function waitForMailCount(recipient, minimum) {
   return capturedMailCount(recipient);
 }
 
+async function latestResetUrl(recipient, excludedUrls = []) {
+  for (let attempt = 0; attempt < 30; attempt += 1) {
+    const list = await fetch(`${mailpitUrl}/api/v1/messages`).then(response => response.json());
+    const messages = (list.messages || []).filter(item =>
+      JSON.stringify(item.To || item.to || '').includes(recipient)
+    );
+    for (const message of messages) {
+      const id = message.ID || message.Id || message.id;
+      const body = await fetch(`${mailpitUrl}/api/v1/message/${id}`).then(response => response.json());
+      const content = `${body.Text || ''}\n${body.HTML || ''}`;
+      const match = content.match(/https?:\/\/[^"'\s<]+\/login\/reset-password\/[^"'\s<]+/);
+      if (match && !excludedUrls.includes(match[0])) return match[0];
+    }
+    await new Promise(resolve => setTimeout(resolve, 250));
+  }
+  throw new Error(`No new password-reset URL was captured by Mailpit for ${recipient}.`);
+}
+
+async function submitPasswordReset(page, resetUrl, password) {
+  await page.goto(resetUrl, { waitUntil: 'domcontentloaded' });
+  await page.locator('#newPass').fill(password);
+  await page.locator('#confirmPass').fill(password);
+  await Promise.all([
+    page.waitForNavigation({ waitUntil: 'domcontentloaded' }),
+    page.locator('button[type="submit"]').click(),
+  ]);
+}
+
 const browser = await chromium.launch({ headless: true });
 try {
   const desktop = await browser.newContext({
@@ -303,6 +331,81 @@ try {
   }
   check('existing-account-verification-initial-send-and-resend', { firstDeliveryCount, resentDeliveryCount });
   await existingContext.close();
+
+  const recoveryEmail = 'g01-password-recovery@example.test';
+  const recoveryContext = await browser.newContext({ locale: 'ar-SA' });
+  const recoveryPage = await recoveryContext.newPage();
+  recoveryPage.setDefaultTimeout(30000);
+  await recoveryPage.goto(`${baseUrl}/create-store`, { waitUntil: 'networkidle' });
+  await recoveryPage.locator('input[name="plan_id"]').first().check();
+  await Promise.all([
+    recoveryPage.waitForURL(/step=2/),
+    recoveryPage.locator('form[action$="/create-store/plan"] button[type="submit"]').click(),
+  ]);
+  await recoveryPage.locator('input[name="theme_slug"][value="hexfashion"]').check();
+  await Promise.all([
+    recoveryPage.waitForURL(/step=3/),
+    recoveryPage.locator('form[action$="/create-store/theme"] button[type="submit"]').click(),
+  ]);
+  await recoveryPage.locator('#store_name').fill('G01 Password Recovery Store');
+  await recoveryPage.locator('#subdomain').fill('g01-password-recovery');
+  await Promise.all([
+    recoveryPage.waitForURL(/step=4/),
+    recoveryPage.locator('form[action$="/create-store/details"] button[type="submit"]').click(),
+  ]);
+
+  await recoveryPage.goto(`${baseUrl}/login/forget-password`, { waitUntil: 'domcontentloaded' });
+  await recoveryPage.locator('input[name="username"]').fill(recoveryEmail);
+  await Promise.all([
+    recoveryPage.waitForNavigation({ waitUntil: 'domcontentloaded' }),
+    recoveryPage.locator('#send').click(),
+  ]);
+  const firstResetUrl = await latestResetUrl(recoveryEmail);
+
+  await recoveryPage.locator('input[name="username"]').fill(recoveryEmail);
+  await Promise.all([
+    recoveryPage.waitForNavigation({ waitUntil: 'domcontentloaded' }),
+    recoveryPage.locator('#send').click(),
+  ]);
+  const secondResetUrl = await latestResetUrl(recoveryEmail, [firstResetUrl]);
+  if (firstResetUrl === secondResetUrl) throw new Error('A repeated recovery request reused the first reset URL.');
+
+  await submitPasswordReset(recoveryPage, firstResetUrl, 'G01-Stale-Recovery!');
+  if (await recoveryPage.locator('i.tabler-circle-check').count() > 0) {
+    throw new Error('The superseded password-reset URL was accepted.');
+  }
+  await submitPasswordReset(recoveryPage, secondResetUrl, 'G01-Recovered-Password-1!');
+  if (!recoveryPage.url().endsWith('/login')) throw new Error('The replacement reset URL was not accepted.');
+
+  await recoveryPage.goto(`${baseUrl}/login/forget-password`, { waitUntil: 'domcontentloaded' });
+  await recoveryPage.locator('input[name="username"]').fill(recoveryEmail);
+  await Promise.all([
+    recoveryPage.waitForNavigation({ waitUntil: 'domcontentloaded' }),
+    recoveryPage.locator('#send').click(),
+  ]);
+  const thirdResetUrl = await latestResetUrl(recoveryEmail, [firstResetUrl, secondResetUrl]);
+  await submitPasswordReset(recoveryPage, thirdResetUrl, 'G01-Recovered-Password-2!');
+
+  const recoveredLogin = await recoveryPage.evaluate(async ({ email }) => {
+    const csrf = document.querySelector('meta[name="csrf-token"]')?.content;
+    const response = await fetch('/store-login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': csrf },
+      body: JSON.stringify({ username: email, password: 'G01-Recovered-Password-2!' }),
+    });
+    return { status: response.status, body: await response.json() };
+  }, { email: recoveryEmail });
+  if (recoveredLogin.status !== 200 || recoveredLogin.body.status !== 'valid'
+      || !recoveredLogin.body.redirect_url?.includes('/create-store?step=5')) {
+    throw new Error(`Recovered account did not resume onboarding: ${JSON.stringify(recoveredLogin)}`);
+  }
+  await recoveryPage.goto(recoveredLogin.body.redirect_url, { waitUntil: 'networkidle' });
+  const recoveredSummary = await recoveryPage.locator('.ym-summary').first().innerText();
+  for (const expected of ['G01 Password Recovery Store', 'g01-password-recovery', 'hexfashion']) {
+    if (!recoveredSummary.includes(expected)) throw new Error(`Password recovery lost onboarding choice: ${expected}`);
+  }
+  check('repeated-password-recovery-replaces-consumes-and-resumes-onboarding');
+  await recoveryContext.close();
 
   const loginRaceUser = async (url, email) => {
     const context = await browser.newContext({ locale: 'ar-SA' });

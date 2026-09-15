@@ -132,6 +132,15 @@ StoreOnboardingRequest::create([
     'plan_snapshot' => $planSnapshot,
 ]);
 
+$passwordRecoveryUser = User::create([
+    'name' => 'G01 Password Recovery',
+    'email' => 'g01-password-recovery@example.test',
+    'username' => 'g01_password_recovery',
+    'mobile' => '966500000008',
+    'password' => Hash::make('G01-Isolated-Password!'),
+    'email_verified' => 1,
+]);
+
 $raceRequests = [];
 foreach ([1, 2] as $number) {
     $user = User::create([
@@ -191,6 +200,7 @@ echo json_encode([
     'plan_ids' => $planIds,
     'theme_slugs' => array_keys($themeFixtures),
     'existing_unverified_email' => $existingUnverified->email,
+    'password_recovery_email' => $passwordRecoveryUser->email,
     'trial_days' => 37,
     'theme' => 'hexfashion',
     'mail_host' => config('mail.mailers.smtp.host'),

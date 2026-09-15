@@ -2,10 +2,12 @@
 
 namespace Tests\Feature;
 
+use App\Mail\AdminResetEmail;
 use App\Mail\BasicMail;
 use App\Models\PricePlan;
 use App\Models\StoreOnboardingRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -97,6 +99,79 @@ class G01OnboardingHttpTest extends TestCase
             ->withSession(['store_onboarding_request_id' => $onboarding->id])
             ->postJson(route('landlord.store.onboarding.complete'), ['terms_condition' => true])
             ->assertNotFound();
+    }
+
+    public function test_repeated_password_recovery_replaces_and_consumes_tokens_without_losing_onboarding(): void
+    {
+        Mail::fake();
+        $user = $this->user('password-recovery', true);
+        $plan = PricePlan::query()->where('status', 1)->firstOrFail();
+        $onboarding = StoreOnboardingRequest::create([
+            'id' => (string) Str::uuid(),
+            'user_id' => $user->id,
+            'plan_id' => $plan->id,
+            'theme_slug' => 'hexfashion',
+            'store_name' => 'G01 Password Recovery Store',
+            'subdomain' => 'g01-recovery-'.Str::lower(Str::random(8)),
+            'status' => 'account_verified',
+        ]);
+        $preservedChoices = $onboarding->only([
+            'plan_id', 'theme_slug', 'store_name', 'subdomain', 'status',
+        ]);
+
+        $this->post(route('landlord.user.forget.password'), ['username' => $user->email])
+            ->assertRedirect();
+        $firstToken = (string) DB::table('password_resets')->where('email', $user->email)->value('token');
+        $this->assertNotSame('', $firstToken);
+
+        $this->post(route('landlord.user.forget.password'), ['username' => $user->email])
+            ->assertRedirect();
+        $secondToken = (string) DB::table('password_resets')->where('email', $user->email)->value('token');
+        $this->assertNotSame($firstToken, $secondToken);
+        $this->assertSame(1, DB::table('password_resets')->where('email', $user->email)->count());
+
+        $this->post(route('landlord.user.reset.password.change'), [
+            'token' => $firstToken,
+            'username' => $user->username,
+            'password' => 'G01-Stale-Recovery!',
+            'password_confirmation' => 'G01-Stale-Recovery!',
+        ])->assertRedirect();
+        $this->assertTrue(Hash::check('G01-Isolated-Password!', $user->fresh()->password));
+
+        $this->post(route('landlord.user.reset.password.change'), [
+            'token' => $secondToken,
+            'username' => $user->username,
+            'password' => 'G01-Recovered-Password-1!',
+            'password_confirmation' => 'G01-Recovered-Password-1!',
+        ])->assertRedirect(route('landlord.user.login'));
+        $this->assertTrue(Hash::check('G01-Recovered-Password-1!', $user->fresh()->password));
+        $this->assertSame(0, DB::table('password_resets')->where('email', $user->email)->count());
+
+        $this->post(route('landlord.user.forget.password'), ['username' => $user->email])
+            ->assertRedirect();
+        $thirdToken = (string) DB::table('password_resets')->where('email', $user->email)->value('token');
+        $this->assertNotSame('', $thirdToken);
+
+        $this->post(route('landlord.user.reset.password.change'), [
+            'token' => $thirdToken,
+            'username' => $user->username,
+            'password' => 'G01-Recovered-Password-2!',
+            'password_confirmation' => 'G01-Recovered-Password-2!',
+        ])->assertRedirect(route('landlord.user.login'));
+        $this->assertTrue(Hash::check('G01-Recovered-Password-2!', $user->fresh()->password));
+        $this->assertSame(0, DB::table('password_resets')->where('email', $user->email)->count());
+
+        $this->withSession(['store_onboarding_request_id' => $onboarding->id])
+            ->postJson(route('landlord.user.ajax.login'), [
+                'username' => $user->email,
+                'password' => 'G01-Recovered-Password-2!',
+            ])
+            ->assertOk()
+            ->assertJson(['status' => 'valid'])
+            ->assertJsonPath('redirect_url', route('landlord.store.onboarding', ['step' => 5]));
+
+        $this->assertSame($preservedChoices, $onboarding->fresh()->only(array_keys($preservedChoices)));
+        Mail::assertSent(AdminResetEmail::class, 3);
     }
 
     private function user(string $prefix, bool $verified): User

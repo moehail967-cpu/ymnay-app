@@ -613,10 +613,10 @@ class LandlordFrontendController extends Controller
 
         if (!empty($user_info)) {
             $token_id = Str::random(30);
-            $existing_token = DB::table('password_resets')->where('email', $user_info->email)->delete();
-            if (empty($existing_token)) {
-                DB::table('password_resets')->insert(['email' => $user_info->email, 'token' => $token_id]);
-            }
+            DB::table('password_resets')->updateOrInsert(
+                ['email' => $user_info->email],
+                ['token' => $token_id, 'created_at' => now()]
+            );
             $message = __('Here is you password reset link, If you did not request to reset your password just ignore this mail.') . '<br> <a class="btn" href="' . route('landlord.user.reset.password', ['user' => $user_info->username, 'token' => $token_id]) . '" style="color:white;background:gray">' . __('Click Reset Password') . '</a>';
             $data = [
                 'username' => $user_info->username,
@@ -666,6 +666,10 @@ class LandlordFrontendController extends Controller
         if (!empty($token_iinfo)) {
             $user_info->password = Hash::make($request->password);
             $user_info->save();
+            DB::table('password_resets')->where([
+                'email' => $user_info->email,
+                'token' => $request->token,
+            ])->delete();
             return redirect()->route('landlord.user.login')->with(['msg' => __('Password Changed Successfully'), 'type' => 'success']);
         }
         return redirect()->back()->with(['msg' => __('Somethings Going Wrong! Please Try Again or Check Your Old Password'), 'type' => 'danger']);

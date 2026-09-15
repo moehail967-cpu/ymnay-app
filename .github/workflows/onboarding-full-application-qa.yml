@@ -137,6 +137,11 @@ jobs:
           G01_EVIDENCE_DIR: ${{ runner.temp }}/g01-browser-evidence
         run: node e2e.mjs
 
+      - name: Print isolated application diagnostics on failure
+        if: failure()
+        working-directory: core
+        run: tail -n 240 storage/logs/laravel.log || true
+
       - name: Exercise native paid/admin creation path without a gateway
         working-directory: core
         run: php ../.ai/work/4-store-onboarding/g01/native-path.php 2>&1 | tee "$RUNNER_TEMP/g01-native-path.json"

@@ -18,9 +18,9 @@ Source: `core/composer.lock`, `core/config/tenancy.php`, `core/app/Models/Tenant
 | Central access inside tenant | `PaymentLogs` explicitly uses CentralConnection; ordinary User/Admin/OrderProducts models do not | `core/app/Models/PaymentLogs.php`, `User.php`, `Admin.php`, `OrderProducts.php` in that directory |
 | Explicit tenant model | `ProductOrder` uses TenantConnection | `core/app/Models/ProductOrder.php` |
 
-## VERIFIED — lifecycle
+## VERIFIED — native lifecycle
 
-Tenant creation triggers this **synchronous** pipeline (`shouldBeQueued(false)`), even though several classes implement ShouldQueue:
+Tenant creation without a W10 onboarding marker triggers this **synchronous** pipeline (`shouldBeQueued(false)`), even though several classes implement ShouldQueue:
 
 `CreateDatabaseWithFallback → TenantMigrateDatabseJob → TenantCacheClearJob → TenantDomainCreateJob → TenantInformationUpdateJob → TenantSeedDatabaseJob → TenantFileSycnForNewTenant → NewShopCreatedEmailNotificationJob`.
 
@@ -29,6 +29,18 @@ The database job chooses cPanel only when the central option enables it; otherwi
 Tenant migrations use explicit module paths followed by `database/migrations/tenant`. Several module migrations alter tenant-core tables, so configuration order alone is not proof a blank database can be built successfully. Seeding runs `TenantDatabaseSeeder` then theme import. `TenancyEnded` reverts context. Tenant deletion runs `DeleteDatabaseWithFallback` synchronously and can destroy the tenant DB.
 
 Source: `core/app/Providers/TenancyServiceProvider.php`, `core/app/Jobs`, `core/config/tenancy.php`, `core/database/seeders/TenantDatabaseSeeder.php`.
+
+## VERIFIED source — W10 checkpointed onboarding exception
+
+The optional fourth `TenantRegisterEvent` argument identifies a `StoreOnboardingRequest`. `TenantDomainCreate` persists that origin in the new tenant's existing JSON data before the synchronous `TenantCreated` event. Only marked tenants use `StoreOnboardingProvisioner`; native purchase/admin creation retains the pipeline above.
+
+W10 records `running`/`done` checkpoints for database, migrations, domain, seed, login key, store title and file dispatch. Before recording readiness it checks the database connection, required migration repository entries, seeded administrator role, domain, matching login key and title. The original trial action runs afterward inside a central transaction; retries reuse a matching trial without extending its dates. Welcome mail failure is independent of ready state.
+
+A verifier can reconcile a completed side effect whose checkpoint was interrupted. Safe domain/key/title stages can be retried. Uncertain seeding, incomplete interrupted migrations, cPanel user/grant operations or partial file dispatch require inspection rather than blind replay. Legacy unmarked partial tenants are adoptable only when origin/ownership checks pass and the database is absent or has no application rows outside migration bookkeeping. This is not automatic recovery of arbitrary existing tenant data and is not an authorization to repair Production.
+
+Checkpoint writes merge the existing central `tenants.data` under a row lock. Where Stancl virtual attributes coexist with physical columns, login-key and trial writes keep both representations synchronized instead of saving a stale model over them. No additional migration is introduced for these checkpoint fields. Manual tenant context switches are restored in `finally` blocks. The existing child file-copy queue remains asynchronous; dispatch completion is not proof all files were copied.
+
+Source: `core/app/Services/Onboarding/StoreOnboardingProvisioner.php`, `ProvisioningStages.php`, `RecoveryRequired.php`, `OnboardingThemeDemoImporter.php` in that directory; `core/app/Events/TenantRegisterEvent.php`, `core/app/Listeners/TenantDomainCreate.php`, `core/app/Providers/TenancyServiceProvider.php`, `core/database/seeders/TenantDatabaseSeeder.php`. Full application migration/theme/queue/browser verification remains a QA gate; source behavior and isolated fixture checks are not an end-to-end certification.
 
 ## VERIFIED — access and domains
 

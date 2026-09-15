@@ -8,6 +8,7 @@ use App\Models\StoreOnboardingRequest;
 use App\Models\Tenant;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 if (getenv('YMNAY_G01') !== '1' || getenv('APP_ENV') !== 'testing') {
@@ -84,6 +85,27 @@ $assert($tenantFileExists($nativeTenant), 'Native tenant file copy did not finis
 
 try {
     tenancy()->initialize($tenant);
+    Cache::put('g01-tenant-isolation-probe', 'browser-tenant', 300);
+} finally {
+    tenancy()->end();
+}
+try {
+    tenancy()->initialize($raceTenant);
+    $assert(Cache::get('g01-tenant-isolation-probe') === null, 'Race tenant read the browser tenant cache value.');
+    Cache::put('g01-tenant-isolation-probe', 'race-tenant', 300);
+    $assert(! Storage::exists($tenant->id.'/g01-proof.txt'), 'Race tenant storage exposed the browser tenant file.');
+} finally {
+    tenancy()->end();
+}
+try {
+    tenancy()->initialize($tenant);
+    $assert(Cache::get('g01-tenant-isolation-probe') === 'browser-tenant', 'Browser tenant cache scope was overwritten by another tenant.');
+} finally {
+    tenancy()->end();
+}
+
+try {
+    tenancy()->initialize($tenant);
     $tenantDb = DB::connection('tenant');
     $centralDbName = (string) config('database.connections.mysql.database');
     $tenantDbName = $tenantDb->getDatabaseName();
@@ -141,6 +163,8 @@ echo json_encode([
     'provisioning_stages' => $stages,
     'file_queue_drained' => true,
     'tenant_admin_ready' => true,
+    'tenant_cache_isolated' => true,
+    'tenant_storage_isolated' => true,
     'parallel_address_race' => [
         'tenant' => $raceTenant->id,
         'tenant_database' => $raceDbName,

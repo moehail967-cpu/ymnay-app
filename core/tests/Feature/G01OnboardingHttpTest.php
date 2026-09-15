@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Mail\BasicMail;
+use App\Models\PricePlan;
 use App\Models\StoreOnboardingRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -14,9 +15,18 @@ class G01OnboardingHttpTest extends TestCase
 {
     public function test_onboarding_entry_renders_through_the_full_http_stack(): void
     {
-        $this->get(route('landlord.store.onboarding'))
+        $response = $this->get(route('landlord.store.onboarding'))
             ->assertOk()
             ->assertSee('name="plan_id"', false);
+
+        $plans = PricePlan::query()->where('status', 1)->orderBy('id')->get();
+        $this->assertGreaterThanOrEqual(3, $plans->count());
+        foreach ($plans as $plan) {
+            foreach (['product_permission_feature', 'page_permission_feature', 'blog_permission_feature'] as $limit) {
+                $response->assertSee((int) $plan->{$limit} === -1 ? 'غير محدود' : (string) $plan->{$limit});
+            }
+        }
+        $response->assertSee('ر.س');
     }
 
     public function test_existing_unverified_account_uses_onboarding_verification_routes(): void

@@ -546,6 +546,10 @@ class StoreOnboardingController extends Controller
             'type' => (int) $plan->type,
             'has_trial' => (bool) $plan->has_trial,
             'trial_days' => (int) $plan->trial_days,
+            'product_limit' => $plan->product_permission_feature === null ? null : (int) $plan->product_permission_feature,
+            'page_limit' => $plan->page_permission_feature === null ? null : (int) $plan->page_permission_feature,
+            'blog_limit' => $plan->blog_permission_feature === null ? null : (int) $plan->blog_permission_feature,
+            'storage_limit' => $plan->storage_permission_feature === null ? null : (int) $plan->storage_permission_feature,
             'updated_at' => optional($plan->updated_at)->toISOString(),
         ];
     }

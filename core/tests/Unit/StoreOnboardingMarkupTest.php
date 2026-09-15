@@ -72,4 +72,16 @@ class StoreOnboardingMarkupTest extends TestCase
         $this->assertStringContainsString('event.stopPropagation()', $this->markup);
         $this->assertStringContainsString('<dialog', $this->markup);
     }
+
+    public function test_fixed_header_clearance_and_data_driven_plan_limits_are_present(): void
+    {
+        $this->assertStringContainsString('padding:104px 16px 48px', $this->markup);
+        $this->assertStringContainsString('padding:88px 16px 28px', $this->markup);
+        $this->assertStringContainsString('product_permission_feature', $this->markup);
+        $this->assertStringContainsString('page_permission_feature', $this->markup);
+        $this->assertStringContainsString('blog_permission_feature', $this->markup);
+        $this->assertStringContainsString('storage_permission_feature', $this->markup);
+        $this->assertStringContainsString('data-plan-limit=', $this->markup);
+        $this->assertStringContainsString('غير محدود', $this->markup);
+    }
 }

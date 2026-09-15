@@ -311,6 +311,19 @@ final class OnboardingIntegrationTest extends TestCase
         $this->noSideEffects();
     }
 
+    public function testChangedPlanLimitsRequireAcknowledgement(): void
+    {
+        [$controller, $request, $onboarding, $plan] = $this->fixture();
+        $plan->update(['product_permission_feature' => 275]);
+
+        $response = $controller->complete($request);
+
+        self::assertSame(409, $response->getStatusCode());
+        self::assertSame('plan_changed', $response->getData(true)['status']);
+        self::assertSame('account_verified', $onboarding->fresh()->status);
+        $this->noSideEffects();
+    }
+
     public function testAnotherAccountsClaimedAddressIsRejected(): void
     {
         [$c, $r, $o] = $this->fixture();

@@ -4,7 +4,7 @@
 
 @section('style')
 <style>
-    .ym-onboarding{direction:rtl;background:#f6f8ff;min-height:calc(100vh - 72px);padding:48px 16px;color:#0f172a}
+    .ym-onboarding{direction:rtl;background:#f6f8ff;min-height:100vh;padding:104px 16px 48px;color:#0f172a}
     .ym-shell{max-width:1200px;margin:auto}.ym-progress{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:32px}
     .ym-progress a,.ym-progress span{display:flex;align-items:center;gap:8px;color:#64748b;text-decoration:none;font-size:14px}
     .ym-dot{display:grid;place-items:center;width:34px;height:34px;border:2px solid #d8dfec;border-radius:50%;background:#fff;font-weight:700}
@@ -14,6 +14,7 @@
     .ym-option{position:relative;text-align:right;width:100%;height:100%;background:#fff;border:2px solid #d8dfec;border-radius:16px;padding:20px;cursor:pointer;transition:.18s}
     .ym-option:hover,.ym-option:focus-within{border-color:#4338ca;box-shadow:0 8px 28px rgba(67,56,202,.10)}
     .ym-option input{position:absolute;top:16px;left:16px;width:20px;height:20px;accent-color:#4338ca}
+    .ym-plan-limits{display:grid;gap:8px;list-style:none;margin:16px 0 0;padding:14px 0 0;border-top:1px solid #e2e8f0;color:#334155;font-size:14px}.ym-plan-limits li{display:flex;align-items:center;justify-content:space-between;gap:12px}.ym-plan-limits li::before{content:'✓';color:#4338ca;font-weight:900}.ym-plan-limit-label{margin-inline-end:auto}.ym-plan-limit-value{font-weight:800;color:#0f172a}
     .ym-theme-image{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:12px;background:#eef2ff;margin-bottom:14px}
     .ym-field{margin-bottom:18px}.ym-field label{display:block;font-weight:600;margin-bottom:8px}.ym-field input{width:100%;height:50px;border:1px solid #64748b;border-radius:12px;padding:0 14px;background:#fff}
     .ym-field input:focus{outline:2px solid #4338ca;outline-offset:3px}.ym-ltr{direction:ltr;text-align:left}.ym-help{font-size:14px;color:#64748b;margin-top:7px}
@@ -29,7 +30,7 @@
     .ym-theme-preview-dialog{width:min(1050px,calc(100% - 32px));max-height:calc(100vh - 32px);padding:0;border:0;border-radius:16px;box-shadow:0 30px 90px rgba(15,23,42,.35);direction:rtl}.ym-theme-preview-dialog::backdrop{background:rgba(15,23,42,.72)}.ym-preview-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid #d8dfec}.ym-preview-head h2{margin:0;font-size:20px}.ym-preview-head button{width:42px;height:42px;border:0;border-radius:10px;background:#eef2ff;font-size:25px;cursor:pointer}.ym-preview-tools{display:flex;gap:8px;justify-content:center;padding:12px;background:#f6f8ff}.ym-preview-tools button,.ym-preview-tools a{padding:8px 12px;color:#3730a3;background:#fff;border:1px solid #d8dfec;border-radius:9px;text-decoration:none;font:inherit;font-weight:700;cursor:pointer}.ym-preview-tools button.active{color:#fff;background:#4338ca}.ym-preview-canvas{width:calc(100% - 32px);height:620px;margin:16px auto;overflow:auto;border:1px solid #d8dfec;border-radius:12px;background:#e2e8f0;transition:width .2s}.ym-preview-canvas.mobile{width:min(390px,calc(100% - 32px))}.ym-preview-canvas img{display:block;width:100%;height:auto;min-height:100%;object-fit:cover;object-position:top}
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
     @media(max-width:1199px){.ym-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:767px){.ym-onboarding{min-height:calc(100vh - 64px);padding:28px 16px}.ym-mobile-step{display:block;margin:0 0 10px;color:#4338ca;font-size:14px;font-weight:800}.ym-progress{grid-template-columns:repeat(5,1fr);margin-bottom:24px}.ym-progress .ym-label{display:none}.ym-progress a,.ym-progress span{justify-content:center}.ym-grid,.ym-theme-grid,.ym-layout{grid-template-columns:1fr}.ym-card{padding:20px}.ym-title{font-size:26px}.ym-actions{flex-direction:column}.ym-btn{width:100%}.ym-layout>.ym-summary{display:none}.ym-summary-mobile{display:block;order:-1}.ym-preview-canvas{height:520px}}
+    @media(max-width:767px){.ym-onboarding{padding:88px 16px 28px}.ym-mobile-step{display:block;margin:0 0 10px;color:#4338ca;font-size:14px;font-weight:800}.ym-progress{grid-template-columns:repeat(5,1fr);margin-bottom:24px}.ym-progress .ym-label{display:none}.ym-progress a,.ym-progress span{justify-content:center}.ym-grid,.ym-theme-grid,.ym-layout{grid-template-columns:1fr}.ym-card{padding:20px}.ym-title{font-size:26px}.ym-actions{flex-direction:column}.ym-btn{width:100%}.ym-layout>.ym-summary{display:none}.ym-summary-mobile{display:block;order:-1}.ym-preview-canvas{height:520px}}
 </style>
 @endsection
 
@@ -62,11 +63,29 @@
                 <form method="post" action="{{route('landlord.store.onboarding.plan')}}">@csrf
                     <div class="ym-grid">
                         @foreach($plans as $item)
+                            @php
+                                $limits = collect([
+                                    ['label' => 'المنتجات', 'value' => $item->product_permission_feature],
+                                    ['label' => 'الصفحات', 'value' => $item->page_permission_feature],
+                                    ['label' => 'المدونة', 'value' => $item->blog_permission_feature],
+                                    ['label' => 'التخزين', 'value' => $item->storage_permission_feature, 'unit' => 'MB'],
+                                ])->filter(fn ($limit) => $limit['value'] !== null);
+                            @endphp
                             <label class="ym-option">
                                 <input type="radio" name="plan_id" value="{{$item->id}}" @checked($onboarding?->plan_id === $item->id) required>
                                 <h2>{{$item->title}}</h2>
                                 <p><strong>{!! amount_with_currency_symbol($item->price) !!}</strong> / {{[0=>'شهريًا',1=>'سنويًا',2=>'مدى الحياة'][$item->type] ?? ''}}</p>
                                 @if($item->has_trial && (int)$item->trial_days > 0)<p class="ym-success">{{$item->trial_days}} يوم تجربة مجانية</p>@endif
+                                @if($limits->isNotEmpty())
+                                    <ul class="ym-plan-limits" aria-label="حدود الباقة">
+                                        @foreach($limits as $limit)
+                                            <li data-plan-limit="{{$limit['label']}}">
+                                                <span class="ym-plan-limit-label">{{$limit['label']}}</span>
+                                                <span class="ym-plan-limit-value">{{(int)$limit['value'] === -1 ? 'غير محدود' : $limit['value'].(!empty($limit['unit']) ? ' '.$limit['unit'] : '')}}</span>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
                             </label>
                         @endforeach
                     </div>

@@ -35,6 +35,7 @@ function update_static_option($key, $value) {
 
 $core = dirname(__DIR__, 4) . '/core';
 $app = new Application($core);
+$app->instance('env', 'testing');
 $app->instance('config', new Repository([
     'app' => ['env' => 'testing', 'debug' => false, 'locale' => 'en', 'fallback_locale' => 'en',
         'timezone' => 'UTC', 'url' => 'https://example.invalid', 'key' => 'base64:' . base64_encode(random_bytes(32)), 'cipher' => 'AES-256-CBC'],

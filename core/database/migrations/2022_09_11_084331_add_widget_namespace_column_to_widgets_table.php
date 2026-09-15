@@ -13,7 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        if(!Schema::hasColumn('widgets', 'widget_namespace')) {
+        // Widgets are tenant-owned. Some legacy installs loaded this duplicate
+        // migration centrally, where the table intentionally does not exist.
+        if (Schema::hasTable('widgets') && !Schema::hasColumn('widgets', 'widget_namespace')) {
             Schema::table('widgets', function (Blueprint $table) {
                 $table->string("widget_namespace")->nullable();
             });
@@ -27,7 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
-        if(Schema::hasColumn('widgets', 'widget_namespace')) {
+        if (Schema::hasTable('widgets') && Schema::hasColumn('widgets', 'widget_namespace')) {
             Schema::table('widgets', function (Blueprint $table) {
                 $table->dropColumn('widget_namespace');
             });

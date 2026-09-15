@@ -1,0 +1,44 @@
+{
+  "reviewer": "@Salem",
+  "candidate": "88a1b1368b82406cafccb6b8309938494a847e5e",
+  "ci_application_head": "9f9ce6436152a7147426ecf563dec0cd339de522",
+  "ci_synthetic_merge": "5985eb4af0cb2be38e20cab6f152140fa085bc29",
+  "candidate_diff_from_ci_head": [".ai/work/4-store-onboarding/QA-REMEDIATION.md"],
+  "salem_requested_ci_rerun": {
+    "run_id": 34921075207,
+    "job_id": 104233431067,
+    "conclusion": "success",
+    "artifact_id": 10378817046,
+    "artifact_sha256_verified_locally": "20240c3f6d86735553db0fcf8582755698b3def3749272e5f1574bbb0a748a2f",
+    "phpunit": {"tests": 21, "assertions": 147, "failures": 0, "errors": 0, "skipped": 0},
+    "durable_stage_cases": {"passed": 12, "failed": 0},
+    "scope": "Real Laravel/Stancl components and MySQL; auth lookup, cookies, theme data, tenant schema/seed contents, files and mail use fixture adapters. Not complete application/HTTP/OTP/browser E2E."
+  },
+  "verification_excerpt_repro": {
+    "runtime": "PHP 8.4.23",
+    "scope": "Verbatim method excerpts with explicit dependency doubles; not a full controller load or HTTP/Laravel/E2E",
+    "cases": 5,
+    "passed": 4,
+    "failed": 1,
+    "exit_code": 1,
+    "failing_case": "Existing unverified account within onboarding while user_email_verify_status is empty",
+    "expected": "Render email verification form while retaining onboarding request",
+    "actual": "Redirect to landlord.store.onboarding?step=5; maxStep limits rendering to step=4; UI offers the same verification link",
+    "three_click_trace": [
+      {"requested_step": 5, "rendered_step": 4, "next_ui_action": "landlord.user.email.verify"},
+      {"requested_step": 5, "rendered_step": 4, "next_ui_action": "landlord.user.email.verify"},
+      {"requested_step": 5, "rendered_step": 4, "next_ui_action": "landlord.user.email.verify"}
+    ],
+    "note": "A repeated user-action dead end, not an automatically observed HTTP redirect loop. Production setting was not read. Frozen excerpt evidence must not be used to certify a future revision."
+  },
+  "source_blobs": {
+    "StoreOnboardingController.php": "0044044738d14d0cfa73235cb97fd8245d02b378",
+    "StoreOnboardingProvisioner.php": "bbb2d1585c53a7dfa63aa8d65fb3f607bc9b6136",
+    "LandlordFrontendController.php": "ba1b4afbafed30f0bcd5b4ee24b4259137235e7b",
+    "store-setup.blade.php": "d0344575209814575469190b99146f78c1b32498",
+    "OnboardingIntegrationTest.php": "3b45167e294f7ad37e07713ee3088bd44f004ff6"
+  },
+  "verdict": "FAIL",
+  "current_blocker": "B04",
+  "production_changed": false
+}

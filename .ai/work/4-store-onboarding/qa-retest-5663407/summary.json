@@ -1,0 +1,31 @@
+{
+  "application_candidate": "5663407c3c83ad51210312e80beeb6ba1a6fa1a2",
+  "qa_tested_head": "69a02cef252ef6d4bd6dd99cdef90b8e0c6d1d22",
+  "qa_branch": "qa/4-salem-5663407",
+  "qa_pr": 7,
+  "qa_pr_closed_without_merge": true,
+  "run_id": 35014669177,
+  "job_id": 104534964232,
+  "artifact_id": 10414702416,
+  "artifact_sha256": "149bb33a1cc89107db107e894643077e49dc0c9c54825c55377aa1c1a828b385",
+  "b05_verdict": "PASS for independently retested delivery-failure and recovery scope",
+  "whole_feature_acceptance": "NOT APPROVED; BLOCKED by outstanding full-application environment and acceptance evidence, not a new B05 failure",
+  "phpunit": {"tests": 44, "assertions": 365, "failures": 0, "errors": 0, "skipped": 0},
+  "original_engineer_suite": {"tests": 32, "assertions": 230, "failures": 0, "errors": 0, "skipped": 0},
+  "historical_salem_suite": {"tests": 8, "assertions": 76, "failures": 0, "errors": 0, "skipped": 0},
+  "supplementary_salem_suite": {"tests": 4, "assertions": 59, "failures": 0, "errors": 0, "skipped": 0},
+  "stage_checks": {"passed": 12, "failed": 0},
+  "historical_guard_update": "Only two verified source blob constants and candidate metadata changed; original assertions unchanged. Original test blob 7f35e9c339e076b3828979d38b737d057fdeb373. Guard-only diff retained in artifact.",
+  "mail_failure_observations": [
+    {"transport_exception_code": 550, "attempted_sends": 1, "flash_type": "danger", "flash_message": "We could not send the verification code. Please try again.", "token_rotated_despite_failed_send": false, "email_verified": 0, "request_status": "draft", "request_preserved": true},
+    {"transport_exception_code": 553, "attempted_sends": 1, "flash_type": "danger", "flash_message": "We could not send the verification code. Please try again.", "token_rotated_despite_failed_send": false, "email_verified": 0, "request_status": "draft", "request_preserved": true}
+  ],
+  "initial_failure": {"visible": true, "token_remains_null": true, "request_unchanged": true, "recovery_test_passed": true},
+  "blade_check": "Actual delivery-notice fragment compiled and rendered for both failure and success. Not full page or browser.",
+  "method": "Current real controller/helper/models + Laravel/Stancl/MySQL fixture; declared auth/cookie/theme/tenant-content/file/mail adapters; injected transport, not real SMTP or complete HTTP/browser.",
+  "remaining_blocker": "G01: full-application runtime/HTTP/OTP/session/provisioning/dashboard/isolation/build and desktop/mobile/RTL acceptance evidence unavailable",
+  "next_owner": "@Omar to supply isolated full-application QA candidate/evidence, then @Salem",
+  "browser_attempt": "Opera list-tabs returned Browser not connected",
+  "report": "https://github.com/moehail967-cpu/ymnay-app/blob/edf78abbdbc517e012511630def9a5fd7692f73e/.ai/work/4-store-onboarding/QA-RETEST-5663407.md",
+  "production_changed": false
+}

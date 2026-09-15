@@ -61,6 +61,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
           persist-credentials: false
 
       - uses: shivammathur/setup-php@v2
@@ -107,6 +109,37 @@ jobs:
         working-directory: core
         run: php artisan test --log-junit "$RUNNER_TEMP/full-project-junit.xml"
 
+      - name: Install isolated browser runtime
+        working-directory: .ai/work/4-store-onboarding/g01
+        run: |
+          npm install --ignore-scripts --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Start real HTTP application
+        working-directory: core
+        run: |
+          sudo -E php artisan serve --host=0.0.0.0 --port=80 > "$RUNNER_TEMP/application-server.log" 2>&1 &
+          for attempt in {1..30}; do
+            curl --fail --silent http://localhost/create-store >/dev/null && exit 0
+            sleep 1
+          done
+          cat "$RUNNER_TEMP/application-server.log"
+          exit 1
+
+      - name: Exercise browser, session, OTP mail and complete provisioning
+        working-directory: .ai/work/4-store-onboarding/g01
+        env:
+          G01_BASE_URL: http://localhost
+          G01_MAILPIT_URL: http://127.0.0.1:8025
+          G01_EVIDENCE_DIR: ${{ runner.temp }}/g01-browser-evidence
+        run: node e2e.mjs
+
+      - name: Attach Nour's approved visual references
+        run: |
+          git worktree add --detach "$RUNNER_TEMP/nour-reference" dfc56d81afb448a8432675d64d22c16340502164
+          mkdir -p "$RUNNER_TEMP/g01-visual-reference"
+          cp "$RUNNER_TEMP/nour-reference/.ai/work/4-store-onboarding/designs/"*.png "$RUNNER_TEMP/g01-visual-reference/"
+
       - name: Upload non-sensitive full-application preflight evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -119,6 +152,9 @@ jobs:
             ${{ runner.temp }}/onboarding-routes.json
             ${{ runner.temp }}/g01-prepare.json
             ${{ runner.temp }}/full-project-junit.xml
+            ${{ runner.temp }}/application-server.log
+            ${{ runner.temp }}/g01-browser-evidence
+            ${{ runner.temp }}/g01-visual-reference
             core/storage/logs/laravel.log
             core/public/build/manifest.json
           if-no-files-found: ignore

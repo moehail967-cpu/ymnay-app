@@ -12,6 +12,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Stancl\Tenancy\Contracts\TenantWithDatabase;
 
@@ -35,10 +36,29 @@ class TenantFileSycnForNewTenant implements ShouldQueue
     public function handle()
     {
         /* file sync test */
-        $allFiles = Cache::remember(CacheKeyEnums::ALL_AWS_S3_DEMO_IMAGES_FILES->value, 300 * 60,function (){
+        $cacheKey = CacheKeyEnums::ALL_AWS_S3_DEMO_IMAGES_FILES->value;
+        $allFiles = Cache::get($cacheKey);
+        if (! is_array($allFiles) || $allFiles === []) {
             // Flysystem paths are relative to the configured disk root.
-            return Storage::allFiles('seeder-files/all-media');
-        });
+            $allFiles = Storage::allFiles('seeder-files/all-media');
+
+            // Local/VPS source checkouts may use the local disk before the
+            // filesystem manager has reverted from a tenant HTTP request.
+            if ($allFiles === []) {
+                $localRoot = base_path('storage/app/seeder-files/all-media');
+                if (is_dir($localRoot)) {
+                    $allFiles = collect(File::allFiles($localRoot))
+                        ->map(fn ($file) => 'seeder-files/all-media/'.str_replace('\\', '/', $file->getRelativePathname()))
+                        ->all();
+                }
+            }
+
+            // Never cache an empty discovery result for hours; a restored
+            // source disk must be discoverable by a safe retry.
+            if ($allFiles !== []) {
+                Cache::put($cacheKey, $allFiles, 300 * 60);
+            }
+        }
 
         $tenantKey = $this->tenant->id;
         //todo get folder name

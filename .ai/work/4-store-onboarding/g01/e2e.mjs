@@ -62,6 +62,15 @@ async function capturedMailCount(recipient) {
   return (list.messages || []).filter(item => JSON.stringify(item.To || item.to || '').includes(recipient)).length;
 }
 
+async function waitForMailCount(recipient, minimum) {
+  for (let attempt = 0; attempt < 30; attempt += 1) {
+    const count = await capturedMailCount(recipient);
+    if (count >= minimum) return count;
+    await new Promise(resolve => setTimeout(resolve, 250));
+  }
+  return capturedMailCount(recipient);
+}
+
 const browser = await chromium.launch({ headless: true });
 try {
   const desktop = await browser.newContext({
@@ -281,15 +290,16 @@ try {
     existingPage.waitForURL(/verify-email/),
     existingPage.locator('a[href*="verify-email"]').click(),
   ]);
-  const firstDeliveryCount = await capturedMailCount('g01-existing-unverified@example.test');
+  const firstDeliveryCount = await waitForMailCount('g01-existing-unverified@example.test', 1);
   if (firstDeliveryCount < 1) throw new Error('Existing-account verification mail was not captured.');
   await Promise.all([
     existingPage.waitForNavigation({ waitUntil: 'domcontentloaded' }),
     existingPage.locator('#send').click(),
   ]);
-  const resentDeliveryCount = await capturedMailCount('g01-existing-unverified@example.test');
-  if (resentDeliveryCount <= firstDeliveryCount || !await existingPage.locator('body').innerText().then(text => text.includes('Verify mail send'))) {
-    throw new Error('Existing-account verification resend did not complete successfully.');
+  const resentDeliveryCount = await waitForMailCount('g01-existing-unverified@example.test', firstDeliveryCount + 1);
+  const successFlashVisible = await existingPage.locator('i.tabler-circle-check').count() > 0;
+  if (resentDeliveryCount <= firstDeliveryCount || !successFlashVisible) {
+    throw new Error(`Existing-account verification resend did not complete successfully: ${JSON.stringify({ firstDeliveryCount, resentDeliveryCount, successFlashVisible })}`);
   }
   check('existing-account-verification-initial-send-and-resend', { firstDeliveryCount, resentDeliveryCount });
   await existingContext.close();

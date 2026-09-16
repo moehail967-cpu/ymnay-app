@@ -183,6 +183,25 @@ jobs:
           EOF
           gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/deploy-comment.md"
 
+      - name: Repair known production ownership
+        if: ${{ inputs.mode == 'deploy' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" "
+            set -e
+            DEPLOY_OWNER=\$(id -un)
+            DEPLOY_GROUP=\$(id -gn)
+            sudo -n chown \"\$DEPLOY_OWNER:\$DEPLOY_GROUP\" \
+              '$APP_ROOT/core/resources/lang/ar' \
+              '$APP_ROOT/core/resources/lang/ar/wizard.php'
+            test -w '$APP_ROOT/core/resources/lang/ar'
+            test -w '$APP_ROOT/core/resources/lang/ar/wizard.php'
+            stat -c '%U:%G %a %A %n' \
+              '$APP_ROOT/core/resources/lang/ar' \
+              '$APP_ROOT/core/resources/lang/ar/wizard.php'
+          "
+
       - name: Upload deployment filter
         if: ${{ inputs.mode == 'deploy' }}
         shell: bash

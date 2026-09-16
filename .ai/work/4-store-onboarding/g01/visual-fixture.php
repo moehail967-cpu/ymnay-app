@@ -10,10 +10,10 @@ use App\Models\PricePlan;
 use App\Models\Tenant;
 use App\Models\User;
 use Illuminate\Contracts\Console\Kernel;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use Xgenious\PageBuilder\Models\PageBuilderWidget;
 
@@ -38,26 +38,9 @@ if (($argv[1] ?? '') === 'preview-image') {
     exit(0);
 }
 
-// The existing landlord dynamic-page footer and landlord widget admin routes
-// read the legacy widgets table. A fresh central migration set omits its CREATE.
-// Supply only that explicitly declared installed-schema fixture here, after all
-// original G01 gates, on the exact disposable central database guarded above.
-// Columns match tenant/2020_06_14_081955_create_widgets_table.php plus the
-// guarded central namespace migration. No production/tenant schema is changed.
-$legacyWidgetsFixture = !Schema::hasTable('widgets');
-if ($legacyWidgetsFixture) {
-    Schema::create('widgets', static function (Blueprint $table): void {
-        $table->id();
-        $table->string('widget_area')->nullable();
-        $table->integer('widget_order')->nullable();
-        $table->string('widget_location')->nullable();
-        $table->text('widget_name');
-        $table->longText('widget_content');
-        $table->string('widget_namespace')->nullable();
-        $table->timestamps();
-    });
-}
-
+// Keep the real fresh central schema. The application now renders its native
+// landlord footer fallback when legacy widgets are absent; do not add a table
+// that would bypass that regression check.
 $set('site_title', 'YMNAY');
 $set('site_ar_title', 'يمناي');
 $set('main_color_one', '#4338CA');
@@ -126,12 +109,25 @@ try {
     if (!str_starts_with(DB::connection('tenant')->getDatabaseName(), 'ymnay_g01_tenant_')) throw new RuntimeException('Unexpected preview database.');
     DB::table('languages')->update(['default' => 0]);
     DB::table('languages')->updateOrInsert(['slug' => 'ar'], ['name' => 'Arabic', 'direction' => 1, 'default' => 1, 'status' => 1, 'created_at' => now(), 'updated_at' => now()]);
+    Cache::forget('lang_key');
     update_static_option('site_title', 'عِطري — متجر العطور');
     update_static_option('site_announcement_text', 'متجر عربي تجريبي للمراجعة البصرية');
+    $labels = ['Home' => 'الرئيسية', 'Shop' => 'المتجر', 'About Us' => 'من نحن', 'Contact Us' => 'تواصل معنا', 'Categories' => 'الأقسام', 'Blog' => 'المدونة', 'Digital Product' => 'المنتجات الرقمية'];
+    $localizeMenu = static function (array $items) use (&$localizeMenu, $labels): array {
+        foreach ($items as &$item) {
+            $name = $item['pname'] ?? '';
+            if (is_string($name) && isset($labels[$name])) {
+                $item['menulabel'] = $labels[$name];
+                $item['pname'] = $labels[$name];
+            }
+            if (isset($item['children']) && is_array($item['children'])) $item['children'] = $localizeMenu($item['children']);
+        }
+        unset($item);
+        return $items;
+    };
     foreach (\App\Models\Menu::all() as $menu) {
-        $content = (string) $menu->content;
-        $content = str_replace(['Home', 'Shop', 'About Us', 'Contact Us', 'Categories', 'Blog'], ['الرئيسية', 'المتجر', 'من نحن', 'تواصل معنا', 'الأقسام', 'المدونة'], $content);
-        $menu->update(['content' => $content]);
+        $items = json_decode((string) $menu->content, true);
+        if (is_array($items)) $menu->update(['content' => json_encode($localizeMenu($items), JSON_UNESCAPED_UNICODE)]);
     }
     $home = Page::findOrFail((int) get_static_option('home_page'));
     $widget = PageBuilderWidget::where('page_id', $home->id)->where('widget_type', 'aromatic_hero_section')->firstOrFail();
@@ -141,15 +137,29 @@ try {
         'subtitle' => 'تشكيلة من العطور والهدايا المختارة لتناسب ذوقك وكل مناسباتك.',
         'button_text' => 'تسوق المجموعة', 'button_url' => '/shop', 'button2_text' => 'تعرف علينا', 'button2_url' => '/about',
     ]);
+    // Use the actual repository image through the published theme asset path,
+    // not a broken exported media URL or a replacement illustration.
+    if (!is_file(public_path('themes/aromatic/images/hero-banner.png'))) {
+        throw new RuntimeException('The native published Aromatic hero asset is missing.');
+    }
+    $settings['media']['hero_image'] = ['url' => '/themes/aromatic/images/hero-banner.png'];
     $widget->update(['general_settings' => $settings]);
+    // The deployed document root exposes /assets outside core/public. Artisan's
+    // isolated root is core/public: copy the real imported preview media there.
+    $imported = global_assets_path('assets/tenant/uploads/media-uploader/g01-visual-preview');
+    $served = public_path('assets/tenant/uploads/media-uploader/g01-visual-preview');
+    if (is_dir($imported) && $imported !== $served && !File::copyDirectory($imported, $served)) {
+        throw new RuntimeException('Could not expose native preview media to the isolated HTTP root.');
+    }
 } finally {
     tenancy()->end();
 }
 file_put_contents($out.'/fixture.json', json_encode([
     'synthetic_only' => true, 'production_mutations' => false,
     'source' => 'Four explicitly representative review plans consistent with the read-only public plan presentation; SAR and the 60-day trial follow owner decisions. Names, prices, limits and legal pages are review inputs, not a Production database snapshot.',
-    'legacy_widgets_schema_fixture' => $legacyWidgetsFixture,
-    'legacy_widgets_scope' => 'Empty installed-schema fixture for existing landlord footer; not a production migration or proof of fresh-install completeness.',
+    'legacy_widgets_schema_fixture' => false,
+    'legacy_widgets_scope' => 'No fabricated widgets table; actual application fresh-central policy fallback is exercised.',
+    'preview_content_fixture' => 'Arabic menu labels and hero content, actual published repository hero image, native imported media exposed to the disposable Artisan document root. Not a change to tenant theme source.',
     'plans' => $fixtures, 'plan_ids' => $ids, 'trial_days' => 60,
     'arabic_preview' => 'http://g01-visual-preview.localhost', 'theme' => 'Actual repository aromatic theme, native provisioning, Arabic hero configured in disposable tenant DB.',
 ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));

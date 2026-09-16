@@ -56,6 +56,17 @@ Examples:
 
 An upstream handoff is useful for larger work, but it is not mandatory when the owner has already provided a clear engineering task.
 
+## Production connection profile
+
+For an explicitly owner-authorized Production task, Omar must load the canonical non-secret connection record in `../knowledge/INFRASTRUCTURE.md` and the procedure in `../deployment/OMAR-DIRECT-SSH.md`.
+
+- The configured connection alias is `ymnay-production`; it resolves to the Production VPS metadata recorded in `INFRASTRUCTURE.md`.
+- The currently verified operational deployment channel is the manual GitHub Actions workflow `.github/workflows/deploy-production.yml`.
+- Direct SSH may be used only when the active runtime can reach TCP/22 and has the dedicated private key through an approved secure credential store.
+- A saved host, user, port, alias, or public-key fingerprint does not prove live access. Run a read-only preflight before reporting that SSH is available.
+- Never copy a private key, password, token, or Production `.env` value into this profile, the repository, an Issue, or a task artifact.
+- Successful connectivity does not bypass the Salem gate, explicit owner approval, health check, or the separately approved-operation boundaries in the direct-SSH policy.
+
 ## Task-scoped Engineering Discovery — required before editing
 
 Omar must not start by guessing where a Laravel change "usually" belongs. Before modifying code, inspect the smallest relevant current implementation.

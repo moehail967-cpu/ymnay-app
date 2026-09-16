@@ -11,6 +11,24 @@ Production web root: `/home/ymnay/htdocs/ymnay.com`; Laravel root: `/home/ymnay/
 | PHP settings | memory 768M; execution 600s; upload 512M; POST 256M; display_errors Off | Owner-supplied web/runtime values; CLI may differ; POST limit is lower than upload limit |
 | Extensions | redis, memcached, PDO/pdo_mysql/mysqli, curl, openssl, mbstring, intl, imagick, gd, sockets, sodium, xml, zip, OPcache | Installed capability only, not proof each is used |
 
+## OWNER-CONFIRMED — Omar Production access profile — 2026-09-16
+
+This section records non-secret connection metadata only. It does not prove that every execution environment can reach the server or possesses the matching private key.
+
+| Field | Value | Operational boundary |
+|---|---|---|
+| SSH alias | `ymnay-production` | Convenience alias; the active runtime must have its own secure SSH configuration |
+| Host | `148.230.114.69` | Production VPS |
+| Port | `22` | Direct outbound TCP/22 is blocked in the current ChatGPT cloud runtime |
+| User | `root` | Administrative access; use only with explicit owner authorization and the direct-SSH policy |
+| Authorized key identity | `codex-ymnay-deploy-2026-09-16` | Public fingerprint: `SHA256:UrphjzYtIVL6DV898caxiqBNuXttrTHJklXv5EEscJs` |
+| Web root | `/home/ymnay/htdocs/ymnay.com` | Root HTTP entry remains the repository root `index.php` |
+| Laravel root | `/home/ymnay/htdocs/ymnay.com/core` | Run Laravel commands from this directory only when specifically authorized |
+| Health URL | `https://ymnay.com/` | Public post-deployment health target |
+| Current verified deployment channel | `.github/workflows/deploy-production.yml` | Manual GitHub Actions workflow; successful run `35156339983` deployed commit `e1a4e6ebc522f2e8f2961424222d0c4803c04add` |
+
+The private key, passwords, tokens, and Production environment values must remain outside Git and `.ai/`. Before claiming direct SSH access, perform a read-only connection check from the active runtime. Follow `../deployment/OMAR-DIRECT-SSH.md`; connection metadata alone is not deployment authorization.
+
 ## VERIFIED — source/lock configuration
 
 | Concern | Actual source contract | Effective use |
@@ -43,4 +61,4 @@ Run from `core/` in an authorized non-production environment:
 | Tenant seeds | `php artisan tenants:seed --tenants=TENANT_ID` | Mutating demo/accounts/settings; never a diagnostic on live data |
 | Worker/scheduler | `php artisan queue:work`; `php artisan schedule:run` | Can send mail, charge wallets, change data; not a read-only health check |
 
-Node 22.23.2/npm 10.9.8 successfully built the approved baseline in isolated preparation; no repository `engines` or team-pinned Node policy was found. Lock uses Vite 6.4.1/plugin-vue 5.2.4. No tracked CI/deployment workflow or production supervisor configuration was established. Deployment, cache clearing and worker restart need a separate scoped task, not automatic execution from these examples.
+Node 22.23.2/npm 10.9.8 successfully built the approved baseline in isolated preparation; no repository `engines` or team-pinned Node policy was found. Lock uses Vite 6.4.1/plugin-vue 5.2.4. A tracked manual Production deployment workflow now exists at `.github/workflows/deploy-production.yml` and was verified by successful run `35156339983`. Deployment still requires the release gate and explicit owner authorization in `.ai/deployment/README.md`; migrations, `.env` changes, rollback, cache clearing beyond the approved workflow, and service restarts remain separately scoped operations. Direct SSH reachability depends on the active runtime's network and secure key availability.

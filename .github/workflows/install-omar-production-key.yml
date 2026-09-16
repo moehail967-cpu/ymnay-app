@@ -1,0 +1,76 @@
+name: Install Omar Production SSH Key
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  install-key:
+    if: >-
+      github.event.issue.number == 11 &&
+      github.actor == github.repository_owner &&
+      github.event.comment.body == '/install-omar-production-key'
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      PROD_HOST: ${{ secrets.PRODUCTION_HOST }}
+      PROD_USER: ${{ secrets.PRODUCTION_USER }}
+      PROD_PORT: ${{ secrets.PRODUCTION_PORT }}
+      PROD_SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+      OMAR_PUBLIC_KEY: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDuXTGkmNPkj3Jq+U84pXM4wSchgoYbetb+TVNk6T92+ omar-ymnay-production-20260917'
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Prepare existing Production SSH credential
+        shell: bash
+        run: |
+          set -euo pipefail
+          : "${PROD_HOST:?Missing PRODUCTION_HOST secret}"
+          : "${PROD_USER:?Missing PRODUCTION_USER secret}"
+          : "${PROD_SSH_KEY:?Missing PRODUCTION_SSH_KEY secret}"
+          PORT="${PROD_PORT:-22}"
+          mkdir -p "$HOME/.ssh"
+          chmod 700 "$HOME/.ssh"
+          printf '%s\n' "$PROD_SSH_KEY" > "$HOME/.ssh/id_existing_deploy"
+          chmod 600 "$HOME/.ssh/id_existing_deploy"
+          ssh-keyscan -p "$PORT" -H "$PROD_HOST" >> "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/known_hosts"
+          echo "PORT=$PORT" >> "$GITHUB_ENV"
+
+      - name: Authorize Omar public key without removing existing keys
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s\n' "$OMAR_PUBLIC_KEY" | ssh -i "$HOME/.ssh/id_existing_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" 'set -eu; umask 077; mkdir -p "$HOME/.ssh"; touch "$HOME/.ssh/authorized_keys"; read -r NEWKEY; grep -Fqx "$NEWKEY" "$HOME/.ssh/authorized_keys" || printf "%s\n" "$NEWKEY" >> "$HOME/.ssh/authorized_keys"; chmod 700 "$HOME/.ssh"; chmod 600 "$HOME/.ssh/authorized_keys"; grep -Fqx "$NEWKEY" "$HOME/.ssh/authorized_keys"'
+
+      - name: Verify target only
+        shell: bash
+        run: |
+          set -euo pipefail
+          ssh -i "$HOME/.ssh/id_existing_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" "test -d /home/ymnay/htdocs/ymnay.com/core && test -f /home/ymnay/htdocs/ymnay.com/core/artisan"
+
+      - name: Report PASS
+        if: success()
+        shell: bash
+        run: |
+          cat > "$RUNNER_TEMP/result.md" <<'EOF'
+          OMAR DIRECT SSH ACCESS SETUP: PASS
+
+          Dedicated Omar public key was added without removing existing authorized keys.
+          No application deployment, migration, database change, or .env change was performed.
+          EOF
+          gh issue comment 11 --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/result.md"
+
+      - name: Report FAIL
+        if: failure()
+        shell: bash
+        run: |
+          cat > "$RUNNER_TEMP/result.md" <<'EOF'
+          OMAR DIRECT SSH ACCESS SETUP: FAIL
+
+          No application deployment was authorized by this setup workflow.
+          EOF
+          gh issue comment 11 --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/result.md"

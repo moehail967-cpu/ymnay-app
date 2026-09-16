@@ -96,9 +96,15 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          trap 'ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" "rm -f /tmp/ymnay-recover-failed-store-onboarding.php" || true' EXIT
           ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" \
             "cd '$APP_ROOT/core' && RECOVERY_CONFIRM='RECOVER_FAILED_ONBOARDING' EXPECTED_FAILED_AT='$EXPECTED_FAILED_AT' php /tmp/ymnay-recover-failed-store-onboarding.php"
+
+      - name: Remove temporary recovery script
+        if: always()
+        shell: bash
+        run: |
+          ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" \
+            "rm -f /tmp/ymnay-recover-failed-store-onboarding.php" || true
 
       - name: Public application health check
         shell: bash

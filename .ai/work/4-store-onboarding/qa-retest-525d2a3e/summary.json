@@ -1,0 +1,58 @@
+{
+  "application_candidate": "525d2a3e2d5143179a53e220bddcb44fd8e016b7",
+  "application_parent": "f4816dcff241e7958f48a6b0fab1a551e1f2f5fa",
+  "qa_tested_head": "4de6a5713cbff9d71b0931c39f7808083c4057ad",
+  "qa_branch": "qa/4-salem-b08-525d2a3e",
+  "qa_pr": 10,
+  "b08_verdict": "PASS",
+  "new_blocking_findings": [],
+  "whole_issue_status": "NEEDS_REVIEW: final visual-conformance/owner acceptance remains; not READY_FOR_DEPLOYMENT",
+  "full_application": {
+    "run_id": 35036619841,
+    "job_id": 104612223782,
+    "result": "success",
+    "artifact_id": 10423704545,
+    "zip_sha256": "66051f970ef7602ed58e7203caaf04317bbe598594779d3dcb350923bb84c446",
+    "phpunit": {"tests": 20, "assertions": 97, "failures": 0, "errors": 0, "skipped": 0},
+    "original_browser_checks": 28,
+    "browser_error": null
+  },
+  "isolated_regression": {
+    "run_id": 35036619971,
+    "job_id": 104612257028,
+    "result": "success",
+    "artifact_id": 10423742838,
+    "zip_sha256": "e25127d21bb4a57d204087af81d9bc5854d12ca18a4045bae41de7dd58d4a9e7",
+    "phpunit": {"tests": 33, "assertions": 237, "failures": 0, "errors": 0, "skipped": 0},
+    "stage_checks": {"passed": 12, "failed": 0, "scope": "in-memory checkpoint storage"}
+  },
+  "independent_browser": {
+    "run_id": 35038481267,
+    "job_id": 104612822121,
+    "result": "success",
+    "artifact_id": 10424626140,
+    "zip_sha256": "6b7e560153415642684cf9f389a636e1c208dae15743d5a7ee459294f1c6cd75",
+    "historical_ui": {"passed": 12, "failed": 0, "errors": 0},
+    "historical_acceptance_and_recovery": {"passed": 13, "failed": 0, "errors": 0},
+    "new_lifecycle": {"passed": 6, "failed": 0, "errors": 0},
+    "total_independent_checks": 31,
+    "original_engineer_browser_also_completed": true,
+    "native_and_file_queue_steps_also_completed": true,
+    "historical_assertions_unchanged": true,
+    "historical_count_note": "Failure-only prior-password diagnostic did not run because the second reset succeeded; no assertion removed."
+  },
+  "verified_b08_paths": [
+    "historical second recovery after completed first reset now succeeds",
+    "new issuance before use replaces the previous link",
+    "superseded link cannot change password",
+    "latest replacement authenticates",
+    "consumed link replay rejected without overwriting current password",
+    "subsequent recovery after completion succeeds",
+    "verified account resumes step five with same owned draft and choices"
+  ],
+  "scope": "Real current application/Chromium/HTTP/Mailpit and disposable MySQL/Redis. Sequential reset lifecycle; not production SMTP, all concurrent reset scenarios, or comprehensive security/visual release certification.",
+  "report": "https://github.com/moehail967-cpu/ymnay-app/blob/6714cab369eba59fd407c4ce656fa1206c6607c0/.ai/work/4-store-onboarding/QA-RETEST-525d2a3e.md",
+  "production_changed": false,
+  "application_source_changed_by_qa": false,
+  "merge_or_deployment_authorized": false
+}

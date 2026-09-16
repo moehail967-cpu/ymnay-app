@@ -192,9 +192,11 @@ jobs:
             set -e
             DEPLOY_OWNER=\$(id -un)
             DEPLOY_GROUP=\$(id -gn)
-            sudo -n chown \"\$DEPLOY_OWNER:\$DEPLOY_GROUP\" \
-              '$APP_ROOT/core/resources/lang/ar' \
-              '$APP_ROOT/core/resources/lang/ar/wizard.php'
+            if [ ! -w '$APP_ROOT/core/resources/lang/ar' ] || [ ! -w '$APP_ROOT/core/resources/lang/ar/wizard.php' ]; then
+              sudo -n chown \"\$DEPLOY_OWNER:\$DEPLOY_GROUP\" \
+                '$APP_ROOT/core/resources/lang/ar' \
+                '$APP_ROOT/core/resources/lang/ar/wizard.php'
+            fi
             test -w '$APP_ROOT/core/resources/lang/ar'
             test -w '$APP_ROOT/core/resources/lang/ar/wizard.php'
             stat -c '%U:%G %a %A %n' \

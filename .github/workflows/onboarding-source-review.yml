@@ -1,0 +1,35 @@
+name: Onboarding scoped source review
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/onboarding-source-review.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  source-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Package only tracked task-scoped source, never runtime state
+        run: |
+          git rev-parse HEAD > "$RUNNER_TEMP/source-candidate.txt"
+          git archive --format=tar.gz --output="$RUNNER_TEMP/onboarding-scoped-source.tar.gz" HEAD \
+            .ai .github core/app core/config core/routes core/resources core/tests \
+            core/database core/themes core/public/assets/new-landlord \
+            core/composer.json core/composer.lock core/phpunit.xml core/.env.example
+      - uses: actions/upload-artifact@v4
+        with:
+          name: onboarding-scoped-source-${{ github.event.pull_request.head.sha }}
+          path: |
+            ${{ runner.temp }}/source-candidate.txt
+            ${{ runner.temp }}/onboarding-scoped-source.tar.gz
+          if-no-files-found: error
+          retention-days: 7

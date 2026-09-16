@@ -110,6 +110,35 @@ jobs:
           ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" \
             "test -d '$APP_ROOT/core' && test -f '$APP_ROOT/core/artisan' && test -f '$APP_ROOT/core/.env' && command -v php >/dev/null && command -v composer >/dev/null && command -v rsync >/dev/null"
 
+      - name: Inspect production deployment permissions
+        shell: bash
+        run: |
+          set -euo pipefail
+          ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" "
+            set -e
+            echo 'Deployment identity:'
+            id
+            for TARGET in \
+              '$APP_ROOT' \
+              '$APP_ROOT/core' \
+              '$APP_ROOT/core/.phpunit.cache' \
+              '$APP_ROOT/core/.phpunit.cache/test-results' \
+              '$APP_ROOT/core/resources/lang/ar' \
+              '$APP_ROOT/core/resources/lang/ar/wizard.php'
+            do
+              if [ -e \"\$TARGET\" ]; then
+                stat -c '%U:%G %a %A %n' \"\$TARGET\"
+                if [ -w \"\$TARGET\" ]; then
+                  echo \"WRITABLE \$TARGET\"
+                else
+                  echo \"NOT_WRITABLE \$TARGET\"
+                fi
+              else
+                echo \"MISSING \$TARGET\"
+              fi
+            done
+          "
+
       - name: Comment preflight success
         if: ${{ success() && inputs.mode == 'preflight' }}
         shell: bash

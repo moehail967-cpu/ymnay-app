@@ -38,6 +38,17 @@ if (($argv[1] ?? '') === 'preview-image') {
     exit(0);
 }
 
+// Production's public root exposes repository /assets, whereas artisan serve
+// uses core/public. Serve the same tracked distribution bytes in this isolated
+// runner, including jQuery and the dashboard CSS. Never replace scripts with
+// mocks or suppress the browser's JavaScript error assertions.
+$distributionAssets = global_assets_path('assets');
+$httpAssets = public_path('assets');
+if (!is_dir($distributionAssets)) throw new RuntimeException('Distribution assets are missing.');
+if ($distributionAssets !== $httpAssets && !File::copyDirectory($distributionAssets, $httpAssets)) {
+    throw new RuntimeException('Could not expose distribution assets to the disposable HTTP root.');
+}
+
 // Keep the real fresh central schema. The application now renders its native
 // landlord footer fallback when legacy widgets are absent; do not add a table
 // that would bypass that regression check.
@@ -159,6 +170,7 @@ file_put_contents($out.'/fixture.json', json_encode([
     'source' => 'Four explicitly representative review plans consistent with the read-only public plan presentation; SAR and the 60-day trial follow owner decisions. Names, prices, limits and legal pages are review inputs, not a Production database snapshot.',
     'legacy_widgets_schema_fixture' => false,
     'legacy_widgets_scope' => 'No fabricated widgets table; actual application fresh-central policy fallback is exercised.',
+    'distribution_asset_mirror' => 'Unmodified distribution assets copied to the isolated Artisan HTTP root; no production mutation or mocked JavaScript.',
     'preview_content_fixture' => 'Arabic menu labels and hero content, actual published repository hero image, native imported media exposed to the disposable Artisan document root. Not a change to tenant theme source.',
     'plans' => $fixtures, 'plan_ids' => $ids, 'trial_days' => 60,
     'arabic_preview' => 'http://g01-visual-preview.localhost', 'theme' => 'Actual repository aromatic theme, native provisioning, Arabic hero configured in disposable tenant DB.',

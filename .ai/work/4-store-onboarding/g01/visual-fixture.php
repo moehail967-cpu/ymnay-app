@@ -52,7 +52,7 @@ if (!empty($identity['logo_file'])) {
     $set('site_white_logo', $logo->id);
 }
 foreach (['terms_condition' => 'الشروط والأحكام', 'privacy_policy' => 'سياسة الخصوصية'] as $key => $title) {
-    $page = Page::create(['title' => $title, 'slug' => 'visual-'.$key, 'page_content' => '<p>صفحة تجريبية لاختبار فتح الرابط وحفظ النموذج. ليست صياغة قانونية أو سياسة منشورة.</p>', 'status' => 1, 'visibility' => 1]);
+    $page = Page::create(['title' => $title, 'slug' => 'visual-'.$key, 'page_content' => '<p>صفحة تجريبية لاختبار فتح الرابط وحفظ النموذج. ليست صياغة قانونية أو سياسة منشورة.</p>', 'status' => 1, 'visibility' => 0]);
     $page->slug()->create(['slug' => $page->slug]);
     $set($key, $page->id);
 }
@@ -119,7 +119,7 @@ try {
 }
 file_put_contents($out.'/fixture.json', json_encode([
     'synthetic_only' => true, 'production_mutations' => false,
-    'source' => 'Four explicitly representative review plans based on owner-confirmed SAR names/prices/60-day trial; limits and legal pages are test fixtures, not a Production snapshot.',
+    'source' => 'Four explicitly representative review plans consistent with the read-only public plan presentation; SAR and the 60-day trial follow owner decisions. Names, prices, limits and legal pages are review inputs, not a Production database snapshot.',
     'plans' => $fixtures, 'plan_ids' => $ids, 'trial_days' => 60,
     'arabic_preview' => 'http://g01-visual-preview.localhost', 'theme' => 'Actual repository aromatic theme, native provisioning, Arabic hero configured in disposable tenant DB.',
 ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));

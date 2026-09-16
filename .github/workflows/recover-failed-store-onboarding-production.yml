@@ -1,0 +1,128 @@
+name: Recover Failed Store Onboarding Production
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: "Tracked GitHub Issue number"
+        required: true
+        default: "4"
+        type: string
+      expected_failed_at:
+        description: "Exact diagnosed failed request timestamp in UTC"
+        required: true
+        default: "2026-09-16T23:29:01Z"
+        type: string
+      expected_sha:
+        description: "Exact deployed main commit SHA"
+        required: true
+        type: string
+      confirm:
+        description: "Type RECOVER_FAILED_ONBOARDING"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: ymnay-production-onboarding-recovery
+  cancel-in-progress: false
+
+jobs:
+  recover:
+    if: ${{ github.ref == 'refs/heads/main' && inputs.confirm == 'RECOVER_FAILED_ONBOARDING' }}
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      APP_ROOT: /home/ymnay/htdocs/ymnay.com
+      PROD_HOST: ${{ secrets.PRODUCTION_HOST }}
+      PROD_USER: ${{ secrets.PRODUCTION_USER }}
+      PROD_PORT: ${{ secrets.PRODUCTION_PORT }}
+      PROD_SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+      ISSUE_NUMBER: ${{ inputs.issue_number }}
+      EXPECTED_FAILED_AT: ${{ inputs.expected_failed_at }}
+      EXPECTED_SHA: ${{ inputs.expected_sha }}
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      - name: Checkout canonical main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Validate exact recovery candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          SHA="$(git rev-parse HEAD)"
+          [[ "$ISSUE_NUMBER" =~ ^[0-9]+$ ]]
+          [[ "$EXPECTED_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$SHA" == "$EXPECTED_SHA" ]]
+          [[ "$EXPECTED_FAILED_AT" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$ ]]
+          test -f .deployment/recover-failed-store-onboarding.php
+          test -f core/database/seeders/Tenant/MediaSeed.php
+
+      - name: Prepare SSH
+        shell: bash
+        run: |
+          set -euo pipefail
+          : "${PROD_HOST:?Missing PRODUCTION_HOST secret}"
+          : "${PROD_USER:?Missing PRODUCTION_USER secret}"
+          : "${PROD_SSH_KEY:?Missing PRODUCTION_SSH_KEY secret}"
+          PORT="${PROD_PORT:-22}"
+          mkdir -p "$HOME/.ssh"
+          chmod 700 "$HOME/.ssh"
+          printf '%s\n' "$PROD_SSH_KEY" > "$HOME/.ssh/id_deploy"
+          chmod 600 "$HOME/.ssh/id_deploy"
+          ssh-keyscan -p "$PORT" -H "$PROD_HOST" >> "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/known_hosts"
+          echo "PORT=$PORT" >> "$GITHUB_ENV"
+
+      - name: Verify deployed fix and upload guarded recovery
+        shell: bash
+        run: |
+          set -euo pipefail
+          LOCAL_HASH="$(sha256sum core/database/seeders/Tenant/MediaSeed.php | awk '{print $1}')"
+          REMOTE_HASH="$(ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" "sha256sum '$APP_ROOT/core/database/seeders/Tenant/MediaSeed.php' | cut -d ' ' -f1")"
+          [[ "$LOCAL_HASH" == "$REMOTE_HASH" ]]
+          scp -i "$HOME/.ssh/id_deploy" -P "$PORT" \
+            .deployment/recover-failed-store-onboarding.php \
+            "$PROD_USER@$PROD_HOST:/tmp/ymnay-recover-failed-store-onboarding.php"
+
+      - name: Backup, delete the diagnosed partial tenant, and reset its request
+        shell: bash
+        run: |
+          set -euo pipefail
+          trap 'ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" "rm -f /tmp/ymnay-recover-failed-store-onboarding.php" || true' EXIT
+          ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" \
+            "cd '$APP_ROOT/core' && RECOVERY_CONFIRM='RECOVER_FAILED_ONBOARDING' EXPECTED_FAILED_AT='$EXPECTED_FAILED_AT' php /tmp/ymnay-recover-failed-store-onboarding.php"
+
+      - name: Public application health check
+        shell: bash
+        run: curl --fail --silent --show-error --location --max-time 30 https://ymnay.com/ >/dev/null
+
+      - name: Record successful recovery
+        if: success()
+        shell: bash
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "PRODUCTION ONBOARDING RECOVERY: PASS
+
+          - Exact deployed MediaSeed matched commit \`$EXPECTED_SHA\`.
+          - A targeted backup was created before deletion.
+          - Only the diagnosed failed partial tenant and its database were deleted.
+          - The existing onboarding request was reset to \`account_verified\` for a clean retry.
+          - Public health check: PASS.
+          - Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+
+      - name: Record failed recovery
+        if: failure()
+        shell: bash
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "PRODUCTION ONBOARDING RECOVERY: FAIL
+
+          A safety guard or recovery step failed. Do not retry blindly; inspect the failed step first.
+
+          Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"

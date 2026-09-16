@@ -18,42 +18,58 @@ class MediaSeed extends Seeder
 {
     public function run()
     {
-        // seeding media files into database
-        $this->seedMediaUploaderFiles();
+        // The HTTP entry and published assets live one level above Laravel's
+        // base path. Use the project's canonical helper instead of core/assets.
+        $source_dir = global_assets_path('assets/tenant/seeder-files/all-media');
+        $destination_dir = global_assets_path('assets/tenant/uploads/media-uploader/' . tenant()->id);
 
-        // coping media
-        // Seed commands may be launched from HTTP workers, queues, or a CLI whose
-        // current directory is not the Laravel base path. Resolve both locations
-        // explicitly so provisioning does not depend on process cwd.
-        $source_dir = base_path('assets/tenant/seeder-files/all-media');
-        $destination_dir = base_path('assets/tenant/uploads/media-uploader/' . tenant()->id);
+        // Validate the distribution bundle before inserting media metadata. A
+        // missing bundle must leave the tenant database safe for inspection.
+        if (! is_dir($source_dir) || ! is_readable($source_dir)) {
+            throw new \RuntimeException('Tenant demo media source is unavailable.');
+        }
+
         $this->recursive_files_copy($source_dir, $destination_dir);
+
+        // Seed metadata only after the matching files were copied successfully.
+        $this->seedMediaUploaderFiles();
     }
 
     private function recursive_files_copy($source_dir, $destination_dir)
     {
         // Open the source folder / directory
         $dir = opendir($source_dir);
-
-        // Create a destination folder / directory if not exist
-        @mkdir($destination_dir, 0777, true);
-
-        // Loop through the files in source directory
-        while ($file = readdir($dir)) {
-            // Skip . and ..
-            if (($file != '.') && ($file != '..')) {
-                // Check if it's folder / directory or file
-                if (is_dir($source_dir . '/' . $file)) {
-                    // Recursively calling this function for sub directory
-                    $this->recursive_files_copy($source_dir . '/' . $file, $destination_dir . '/' . $file);
-                } else {
-                    // Copying the files
-                    copy($source_dir . '/' . $file, $destination_dir . '/' . $file);
-                }
-            }
+        if ($dir === false) {
+            throw new \RuntimeException('Tenant demo media source could not be opened.');
         }
 
-        closedir($dir);
+        try {
+            // Create a destination folder / directory if not exist
+            if (! is_dir($destination_dir)
+                && ! mkdir($destination_dir, 0777, true)
+                && ! is_dir($destination_dir)) {
+                throw new \RuntimeException('Tenant media destination could not be created.');
+            }
+
+            // Loop through the files in source directory
+            while (($file = readdir($dir)) !== false) {
+                // Skip . and ..
+                if (($file != '.') && ($file != '..')) {
+                    // Check if it's folder / directory or file
+                    if (is_dir($source_dir . '/' . $file)) {
+                        // Recursively calling this function for sub directory
+                        $this->recursive_files_copy($source_dir . '/' . $file, $destination_dir . '/' . $file);
+                    } else {
+                        // Copying the files
+                        if (! copy($source_dir . '/' . $file, $destination_dir . '/' . $file)) {
+                            throw new \RuntimeException('Tenant demo media file could not be copied.');
+                        }
+                    }
+                }
+            }
+        } finally {
+            closedir($dir);
+        }
     }
 
     private function seedMediaUploaderFiles()

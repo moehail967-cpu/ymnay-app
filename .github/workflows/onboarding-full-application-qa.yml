@@ -1,0 +1,235 @@
+name: Onboarding full application QA
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'core/**'
+      - '.ai/work/4-store-onboarding/g01/**'
+      - '.github/workflows/onboarding-full-application-qa.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: onboarding-full-application-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  full-application:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: g01-isolated-only
+          MYSQL_DATABASE: ymnay_g01_central
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s --health-timeout=5s --health-retries=12
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd="redis-cli ping"
+          --health-interval=10s --health-timeout=5s --health-retries=12
+      mailpit:
+        image: axllent/mailpit:v1.27
+        ports:
+          - 1025:1025
+          - 8025:8025
+        options: >-
+          --health-cmd="wget -q -O- http://127.0.0.1:8025/livez || exit 1"
+          --health-interval=10s --health-timeout=5s --health-retries=12
+    env:
+      APP_ENV: testing
+      APP_DEBUG: 'true'
+      APP_URL: http://localhost
+      CENTRAL_DOMAIN: localhost
+      DB_CONNECTION: mysql
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_DATABASE: ymnay_g01_central
+      DB_USERNAME: root
+      DB_PASSWORD: g01-isolated-only
+      TENANT_DATABASE_PREFIX: ymnay_g01_tenant_
+      # Tenancy's CacheTenancyBootstrapper scopes entries with tags; use the same
+      # tag-capable class of cache store required by the real application.
+      CACHE_DRIVER: redis
+      REDIS_HOST: 127.0.0.1
+      REDIS_PORT: 6379
+      REDIS_CACHE_DB: 1
+      SESSION_DRIVER: file
+      QUEUE_CONNECTION: sync
+      FILESYSTEM_DRIVER: local
+      MAIL_MAILER: smtp
+      MAIL_HOST: 127.0.0.1
+      MAIL_PORT: 1025
+      MAIL_ENCRYPTION: 'null'
+      MAIL_FROM_ADDRESS: qa@example.test
+      MAIL_FROM_NAME: Ymnay-G01
+      TELESCOPE_ENABLED: 'false'
+      YMNAY_G01: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: bcmath, ctype, curl, dom, fileinfo, gd, intl, mbstring, openssl, pdo_mysql, redis, tokenizer, xml, zip
+          tools: composer:v2
+          coverage: none
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: core/package-lock.json
+
+      - name: Record exact candidate and create isolated environment
+        working-directory: core
+        run: |
+          mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs
+          cp .env.example .env
+          php -r '$p=".env"; $s=file_get_contents($p); $s=preg_replace("/^APP_KEY=.*$/m", "APP_KEY=base64:".base64_encode(random_bytes(32)), $s); file_put_contents($p,$s);'
+          git rev-parse HEAD > "$RUNNER_TEMP/candidate-sha.txt"
+
+      - name: Install the actual application dependencies
+        working-directory: core
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Boot actual application and migrate disposable central database
+        working-directory: core
+        run: |
+          set -o pipefail
+          php artisan about --only=environment 2>&1 | tee "$RUNNER_TEMP/application-about.txt"
+          php artisan migrate:fresh --force -vvv 2>&1 | tee "$RUNNER_TEMP/central-migrations.txt"
+          php ../.ai/work/4-store-onboarding/g01/prepare.php 2>&1 | tee "$RUNNER_TEMP/g01-prepare.json"
+
+      - name: Build actual frontend assets
+        working-directory: core
+        run: |
+          npm ci --no-audit --no-fund
+          npm run build
+
+      - name: Run existing full-project test suites
+        working-directory: core
+        run: php artisan test --log-junit "$RUNNER_TEMP/full-project-junit.xml"
+
+      - name: Install isolated browser runtime
+        working-directory: .ai/work/4-store-onboarding/g01
+        run: |
+          npm install --ignore-scripts --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Start real HTTP application
+        working-directory: core
+        run: |
+          PHP_CLI_SERVER_WORKERS=4 sudo -E php artisan serve --host=127.0.0.1 --port=80 > "$RUNNER_TEMP/application-server.log" 2>&1 &
+          for attempt in {1..30}; do
+            if curl --resolve localhost:80:127.0.0.1 --fail --silent http://localhost/create-store >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          curl --resolve localhost:80:127.0.0.1 --silent --output /dev/null --write-out 'port80=%{http_code}\n' http://localhost/create-store || true
+          cat "$RUNNER_TEMP/application-server.log"
+          tail -n 160 storage/logs/laravel.log || true
+          exit 1
+
+      - name: Exercise browser, session, OTP mail and complete provisioning
+        working-directory: .ai/work/4-store-onboarding/g01
+        env:
+          G01_BASE_URL: http://localhost
+          G01_MAILPIT_URL: http://127.0.0.1:8025
+          G01_EVIDENCE_DIR: ${{ runner.temp }}/g01-browser-evidence
+        run: node e2e.mjs
+
+      - name: Print isolated application diagnostics on failure
+        if: failure()
+        working-directory: core
+        run: tail -n 240 storage/logs/laravel.log || true
+
+      - name: Exercise native paid/admin creation path without a gateway
+        working-directory: core
+        run: |
+          set -o pipefail
+          # The isolated port-80 HTTP process runs as root. Restore runner ownership
+          # before CLI importers use the same disposable asset/cache directories.
+          for directory in storage assets public/assets ../assets; do
+            if [ -d "$directory" ]; then
+              sudo chown -R "$(id -u):$(id -g)" "$directory"
+            fi
+          done
+          php ../.ai/work/4-store-onboarding/g01/native-path.php 2>&1 | tee "$RUNNER_TEMP/g01-native-path.json"
+          php -r '$data=json_decode(file_get_contents($argv[1]), true, 512, JSON_THROW_ON_ERROR); exit(($data["native_pipeline"] ?? false) ? 0 : 1);' "$RUNNER_TEMP/g01-native-path.json"
+
+      - name: Drain tenant file queue and verify provisioned state
+        working-directory: core
+        run: |
+          set -o pipefail
+          sleep 3
+          php artisan queue:work tenant_file_sync --stop-when-empty --sleep=1 --max-time=120
+          php ../.ai/work/4-store-onboarding/g01/verify.php 2>&1 | tee "$RUNNER_TEMP/g01-provisioning-verification.json"
+          php -r '$data=json_decode(file_get_contents($argv[1]), true, 512, JSON_THROW_ON_ERROR); exit(($data["file_queue_drained"] ?? false) ? 0 : 1);' "$RUNNER_TEMP/g01-provisioning-verification.json"
+
+      - name: Capture Nour V01-V05 representative visual acceptance evidence
+        working-directory: .ai/work/4-store-onboarding/g01
+        env:
+          G01_BASE_URL: http://localhost
+          G01_MAILPIT_URL: http://127.0.0.1:8025
+          G01_VISUAL_DIR: ${{ runner.temp }}/g01-visual-review
+          G01_CANDIDATE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          for directory in assets core/assets core/public/assets core/storage; do
+            if [ -d "$GITHUB_WORKSPACE/$directory" ]; then
+              sudo chown -R "$(id -u):$(id -g)" "$GITHUB_WORKSPACE/$directory"
+            fi
+          done
+          node visual-review.mjs
+
+      - name: Attach Nour's approved visual references
+        if: always()
+        run: |
+          git worktree add --detach "$RUNNER_TEMP/nour-reference" dfc56d81afb448a8432675d64d22c16340502164
+          mkdir -p "$RUNNER_TEMP/g01-visual-reference"
+          cp "$RUNNER_TEMP/nour-reference/.ai/work/4-store-onboarding/designs/"*.png "$RUNNER_TEMP/g01-visual-reference/"
+
+      - name: Package tracked visual-review sources for reproducible inspection
+        if: always()
+        run: |
+          git archive --format=tar.gz --output="$RUNNER_TEMP/visual-review-sources.tar.gz" HEAD \
+            .ai/work/4-store-onboarding/g01 \
+            .github/workflows/onboarding-full-application-qa.yml \
+            core/resources/views/landlord/frontend/onboarding \
+            core/tests/Feature/OnboardingVisualContractTest.php
+
+      - name: Upload non-sensitive full-application preflight evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: onboarding-full-app-preflight-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/candidate-sha.txt
+            ${{ runner.temp }}/application-about.txt
+            ${{ runner.temp }}/central-migrations.txt
+            ${{ runner.temp }}/g01-prepare.json
+            ${{ runner.temp }}/full-project-junit.xml
+            ${{ runner.temp }}/application-server.log
+            ${{ runner.temp }}/g01-browser-evidence
+            ${{ runner.temp }}/g01-visual-reference
+            ${{ runner.temp }}/g01-visual-review
+            ${{ runner.temp }}/visual-review-sources.tar.gz
+            ${{ runner.temp }}/g01-provisioning-verification.json
+            ${{ runner.temp }}/g01-native-path.json
+            core/storage/logs/laravel.log
+            core/public/build/manifest.json
+          if-no-files-found: ignore

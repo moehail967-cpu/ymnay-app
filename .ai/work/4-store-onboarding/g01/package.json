@@ -1,0 +1,8 @@
+{
+  "name": "ymnay-g01-browser-evidence",
+  "private": true,
+  "version": "1.0.0",
+  "devDependencies": {
+    "playwright": "1.55.0"
+  }
+}

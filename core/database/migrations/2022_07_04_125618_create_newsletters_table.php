@@ -13,6 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
+        // The Newsletter module owns the same central table on installations where
+        // module migrations are loaded before the application's migrations.
+        if (Schema::hasTable('newsletters')) {
+            return;
+        }
+
         Schema::create('newsletters', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();

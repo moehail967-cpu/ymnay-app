@@ -13,11 +13,13 @@ class TenantRegisterEvent
     public $user_info;
     public $subdomain;
     public $theme;
-    public function __construct(User $user, $subdomain, $theme = 'hexfashion')
+    public ?string $onboarding_request_id;
+    public function __construct(User $user, $subdomain, $theme = 'hexfashion', ?string $onboardingRequestId = null)
     {
         $this->user_info = $user;
         $this->subdomain = $subdomain;
         $this->theme = $theme;
+        $this->onboarding_request_id = $onboardingRequestId;
 
         Session::put('theme', $theme);
     }

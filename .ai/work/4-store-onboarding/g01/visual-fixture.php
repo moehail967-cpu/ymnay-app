@@ -106,7 +106,8 @@ try {
         $content = str_replace(['Home', 'Shop', 'About Us', 'Contact Us', 'Categories', 'Blog'], ['الرئيسية', 'المتجر', 'من نحن', 'تواصل معنا', 'الأقسام', 'المدونة'], $content);
         $menu->update(['content' => $content]);
     }
-    $widget = PageBuilderWidget::where('widget_type', 'aromatic_hero_section')->firstOrFail();
+    $home = Page::findOrFail((int) get_static_option('home_page'));
+    $widget = PageBuilderWidget::where('page_id', $home->id)->where('widget_type', 'aromatic_hero_section')->firstOrFail();
     $settings = $widget->general_settings ?? [];
     $settings['content'] = array_merge($settings['content'] ?? [], [
         'section_tag' => 'عطور تعبّر عنك', 'title' => 'اكتشف عطرك<br>المميز',

@@ -21,6 +21,8 @@
 - /**/node_modules/
 - /core/storage/***
 - /core/bootstrap/cache/***
+- /.phpunit.cache/***
+- /core/.phpunit.cache/***
 - /core/public/storage
 - /core/public/themes/***
 - /themes

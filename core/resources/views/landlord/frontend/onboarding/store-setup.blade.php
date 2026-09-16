@@ -13,6 +13,10 @@
     .ym-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}.ym-theme-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
     .ym-option{position:relative;text-align:right;width:100%;height:100%;background:#fff;border:2px solid #d8dfec;border-radius:16px;padding:20px;cursor:pointer;transition:.18s}
     .ym-option:hover,.ym-option:focus-within{border-color:#4338ca;box-shadow:0 8px 28px rgba(67,56,202,.10)}
+    .ym-option:has(input:checked),.ym-option.is-selected{border-color:#4338ca;background:#f6f8ff;box-shadow:0 0 0 1px rgba(67,56,202,.08)}
+    .ym-selected-indicator{display:block;min-height:26px;margin-bottom:10px;padding-inline-end:28px;visibility:hidden;color:#4338ca;font-size:14px;font-weight:700}
+    .ym-option:has(input:checked) .ym-selected-indicator,.ym-option.is-selected .ym-selected-indicator{visibility:visible}
+    .ym-option>label{display:block;cursor:pointer}.ym-option:focus-within{outline:2px solid #4338ca;outline-offset:3px}
     .ym-option input{position:absolute;top:16px;left:16px;width:20px;height:20px;accent-color:#4338ca}
     .ym-plan-limits{display:grid;gap:8px;list-style:none;margin:16px 0 0;padding:14px 0 0;border-top:1px solid #e2e8f0;color:#334155;font-size:14px}.ym-plan-limits li{display:flex;align-items:center;justify-content:space-between;gap:12px}.ym-plan-limits li::before{content:'✓';color:#4338ca;font-weight:900}.ym-plan-limit-label{margin-inline-end:auto}.ym-plan-limit-value{font-weight:800;color:#0f172a}
     .ym-theme-image{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:12px;background:#eef2ff;margin-bottom:14px}
@@ -24,6 +28,8 @@
     .ym-primary{background:#4338ca;color:#fff}.ym-primary:hover{background:#3730a3}.ym-secondary{background:#eef2ff;color:#3730a3}.ym-btn:disabled{opacity:.55;cursor:not-allowed}
     .ym-alert{border-radius:12px;padding:14px 16px;margin-bottom:18px}.ym-error{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}.ym-warning{background:#fffbeb;color:#92400e;border:1px solid #fde68a}.ym-success{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0}
     .ym-layout{display:grid;grid-template-columns:minmax(0,720px) minmax(260px,320px);gap:32px;justify-content:center}.ym-summary{align-self:start}.ym-summary dl{margin:0}.ym-summary div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid #e2e8f0}.ym-summary dt{color:#64748b}.ym-summary dd{margin:0;font-weight:600;text-align:left}
+    .ym-summary dd{min-width:0;overflow-wrap:anywhere}.ym-summary-value{display:block}.ym-summary-edit{display:inline-flex;align-items:center;min-height:44px;color:#4338ca;text-decoration:underline;font-size:14px;font-weight:500}.ym-summary-edit:focus-visible,.ym-policy-link:focus-visible{outline:2px solid #4338ca;outline-offset:3px}
+    .ym-consent{display:flex;align-items:flex-start;gap:10px;line-height:1.8}.ym-consent input{flex:0 0 auto;width:20px;height:20px;margin-top:5px;accent-color:#4338ca}.ym-policy-link{color:#4338ca;text-decoration:underline}.ym-policy-unavailable{color:#64748b}.ym-auth-secondary-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}.ym-auth-tabs[hidden]{display:none}
     .ym-summary-mobile,.ym-mobile-step{display:none}.ym-summary-mobile summary{font-weight:800;cursor:pointer}.ym-summary-mobile .ym-summary{margin-top:14px;padding:0;border:0;box-shadow:none}
     .ym-auth-tabs{display:flex;gap:8px;margin-bottom:18px}.ym-auth-tabs button{flex:1}.ym-panel[hidden]{display:none}.ym-title{font-size:32px;line-height:1.4;margin:0 0 8px}.ym-lead{color:#475569;margin:0 0 24px}
     .ym-overlay{display:none;position:fixed;inset:0;z-index:99999;background:rgba(255,255,255,.97);align-items:center;justify-content:center;padding:20px}.ym-overlay.active{display:flex}.ym-spinner{width:54px;height:54px;border:5px solid #eef2ff;border-top-color:#4338ca;border-radius:50%;animation:ym-spin .8s linear infinite;margin:0 auto 20px}@keyframes ym-spin{to{transform:rotate(360deg)}}
@@ -73,6 +79,7 @@
                             @endphp
                             <label class="ym-option">
                                 <input type="radio" name="plan_id" value="{{$item->id}}" @checked($onboarding?->plan_id === $item->id) required>
+                                <span class="ym-selected-indicator"><span aria-hidden="true">✓</span> {{__('محددة')}}</span>
                                 <h2>{{$item->title}}</h2>
                                 <p><strong>{!! amount_with_currency_symbol($item->price) !!}</strong> / {{[0=>'شهريًا',1=>'سنويًا',2=>'مدى الحياة'][$item->type] ?? ''}}</p>
                                 @if($item->has_trial && (int)$item->trial_days > 0)<p class="ym-success">{{$item->trial_days}} يوم تجربة مجانية</p>@endif
@@ -109,6 +116,7 @@
                             <div class="ym-option">
                                 <label>
                                     <input type="radio" name="theme_slug" value="{{$theme->slug}}" @checked($onboarding?->theme_slug === $theme->slug) required>
+                                    <span class="ym-selected-indicator"><span aria-hidden="true">✓</span> {{__('محددة')}}</span>
                                     <img class="ym-theme-image" src="{{$image}}" alt="{{__('Preview of')}} {{$name}}">
                                     <strong>{{$name}}</strong>
                                 </label>
@@ -132,9 +140,16 @@
                 @include('landlord.frontend.onboarding.summary')
             </div>
         @elseif($step === 4)
+            @php
+                // Restore only non-sensitive fields. Never serialize the pending session/OTP/password.
+                $pendingRegistration = !$user ? session('pending_registration', []) : [];
+                $pendingOtp = !empty($pendingRegistration['email']) && (int)($pendingRegistration['expires_at'] ?? 0) >= now()->timestamp;
+                $retryAfter = $pendingOtp ? max(0, 60 - (now()->timestamp - (int)($pendingRegistration['last_sent'] ?? 0))) : 0;
+            @endphp
             <div class="ym-layout">
                 <section class="ym-card">
-                    <h1 class="ym-title">أنشئ حسابك</h1><p class="ym-lead">سنرسل رمز التحقق إلى بريدك، ثم تنتقل إلى مراجعة الاشتراك.</p>
+                    <h1 class="ym-title" id="auth-title">{{$user ? __('حسابك') : ($pendingOtp ? __('تحقق من بريدك') : __('أنشئ حسابك'))}}</h1>
+                    <p class="ym-lead" id="auth-lead">{{$pendingOtp ? __('أدخل الرمز المرسل إلى بريدك الإلكتروني للمتابعة.') : __('سنرسل رمز التحقق إلى بريدك، ثم تنتقل إلى مراجعة الاشتراك.')}}</p>
                     @if($user)
                         @if($user->email_verified)
                             <div class="ym-alert ym-success">تم التحقق من الحساب: <span class="ym-ltr">{{$user->email}}</span></div>
@@ -144,20 +159,21 @@
                             <a class="ym-btn ym-primary" href="{{route('landlord.store.onboarding.email.verify')}}">تحقق من البريد</a>
                         @endif
                     @else
-                        <div class="ym-auth-tabs"><button type="button" class="ym-btn ym-primary" data-auth="register">حساب جديد</button><button type="button" class="ym-btn ym-secondary" data-auth="login">تسجيل الدخول</button></div>
+                        <div class="ym-auth-tabs" id="auth-tabs" @if($pendingOtp) hidden @endif><button type="button" class="ym-btn ym-primary" data-auth="register">حساب جديد</button><button type="button" class="ym-btn ym-secondary" data-auth="login">تسجيل الدخول</button></div>
                         <div id="auth-message" aria-live="polite"></div>
-                        <form id="register-panel" class="ym-panel">
-                            <div class="ym-field"><label for="reg_name">الاسم الثلاثي</label><input id="reg_name" autocomplete="name" maxlength="191" required></div>
-                            <div class="ym-field"><label for="reg_email">البريد الإلكتروني</label><input class="ym-ltr" id="reg_email" type="email" autocomplete="email" required></div>
-                            <div class="ym-field"><label for="reg_phone">رقم الهاتف</label><input class="ym-ltr" id="reg_phone" type="tel" autocomplete="tel" required></div>
+                        <form id="register-panel" class="ym-panel" @if($pendingOtp) hidden @endif>
+                            <div class="ym-field"><label for="reg_name">الاسم الثلاثي</label><input id="reg_name" value="{{$pendingRegistration['name'] ?? ''}}" autocomplete="name" maxlength="191" required></div>
+                            <div class="ym-field"><label for="reg_email">البريد الإلكتروني</label><input class="ym-ltr" id="reg_email" value="{{$pendingRegistration['email'] ?? ''}}" type="email" autocomplete="email" required></div>
+                            <div class="ym-field"><label for="reg_phone">رقم الهاتف</label><input class="ym-ltr" id="reg_phone" value="{{$pendingRegistration['phone'] ?? ''}}" type="tel" autocomplete="tel" required></div>
                             <div class="ym-field"><label for="reg_password">كلمة المرور</label><div class="ym-password-wrap"><input class="ym-ltr" id="reg_password" type="password" autocomplete="new-password" minlength="8" required><button class="ym-password-toggle" type="button" data-password-toggle="reg_password" aria-label="إظهار كلمة المرور">إظهار</button></div></div>
                             <div class="ym-field"><label for="reg_password_confirmation">تأكيد كلمة المرور</label><div class="ym-password-wrap"><input class="ym-ltr" id="reg_password_confirmation" type="password" autocomplete="new-password" minlength="8" required><button class="ym-password-toggle" type="button" data-password-toggle="reg_password_confirmation" aria-label="إظهار تأكيد كلمة المرور">إظهار</button></div></div>
-                            <label><input id="reg_terms" type="checkbox" required> أوافق على الشروط والأحكام</label>
+                            <div class="ym-consent"><input id="reg_terms" type="checkbox" aria-labelledby="reg-consent" required><span id="reg-consent">{{__('أوافق على')}} @include('landlord.frontend.onboarding.policy-links')</span></div>
                             <div class="ym-actions"><a class="ym-btn ym-secondary" href="{{route('landlord.store.onboarding',['step'=>3])}}">رجوع</a><button id="register-btn" class="ym-btn ym-primary" type="submit">إرسال رمز التحقق</button></div>
                         </form>
-                        <form id="otp-panel" class="ym-panel" hidden>
-                            <div class="ym-field"><label for="otp">رمز التحقق</label><input class="ym-ltr" id="otp" inputmode="numeric" autocomplete="one-time-code" minlength="6" maxlength="6" pattern="[0-9]{6}" required><p class="ym-help">أرسلنا الرمز إلى <span id="otp-email" class="ym-ltr"></span></p></div>
+                        <form id="otp-panel" class="ym-panel" data-retry-after="{{$retryAfter}}" @if(!$pendingOtp) hidden @endif>
+                            <div class="ym-field"><label for="otp">رمز التحقق</label><input class="ym-ltr" id="otp" inputmode="numeric" autocomplete="one-time-code" minlength="6" maxlength="6" pattern="[0-9]{6}" required><p class="ym-help">أرسلنا الرمز إلى <span id="otp-email" class="ym-ltr">{{$pendingOtp ? $pendingRegistration['email'] : ''}}</span></p></div>
                             <div class="ym-actions"><button id="resend-btn" class="ym-btn ym-secondary" type="button" disabled>إعادة الإرسال</button><button class="ym-btn ym-primary" type="submit">تحقق وتابع</button></div>
+                            <div class="ym-auth-secondary-actions"><button id="edit-email-btn" class="ym-btn ym-secondary" type="button">{{__('تعديل البريد')}}</button><a class="ym-btn ym-secondary" href="{{route('landlord.store.onboarding',['step'=>3])}}">{{__('رجوع إلى بيانات المتجر')}}</a></div>
                         </form>
                         <form id="login-panel" class="ym-panel" hidden>
                             <div class="ym-field"><label for="login_email">البريد الإلكتروني</label><input class="ym-ltr" id="login_email" type="email" autocomplete="email" required></div>
@@ -191,7 +207,7 @@
                         <a class="ym-btn ym-secondary" href="{{route('landlord.user.home')}}">العودة إلى حسابي</a>
                     @else
                         <div class="ym-alert ym-success"><strong>المطلوب الآن: {!! amount_with_currency_symbol(0) !!}</strong><br>لا يلزم دفع رسوم الاشتراك لبدء التجربة المؤهلة.</div>
-                        <label><input id="final-terms" type="checkbox"> أوافق على الشروط والأحكام</label>
+                        <div class="ym-consent"><input id="final-terms" type="checkbox" aria-labelledby="final-consent"><span id="final-consent">{{__('أوافق على')}} @include('landlord.frontend.onboarding.policy-links')</span></div>
                         <div id="complete-message" aria-live="polite"></div>
                         <div class="ym-actions"><a class="ym-btn ym-secondary" href="{{route('landlord.store.onboarding',['step'=>3])}}">تعديل بيانات المتجر</a><button id="complete-btn" class="ym-btn ym-primary" type="button">إنشاء المتجر</button></div>
                     @endif
@@ -286,24 +302,72 @@ document.addEventListener('DOMContentLoaded', () => {
         themeCanvas.classList.toggle('mobile', button.dataset.onboardingPreviewSize === 'mobile');
     }));
 
-    document.querySelectorAll('[data-auth]').forEach(button => button.addEventListener('click', () => {
-        const selected = button.dataset.auth;
-        document.getElementById('register-panel').hidden = selected !== 'register';
-        document.getElementById('login-panel').hidden = selected !== 'login';
-        document.getElementById('otp-panel').hidden = true;
-    }));
+    const selectionRadios = document.querySelectorAll('.ym-option input[type="radio"]');
+    const updateSelectedCards = () => selectionRadios.forEach(radio => radio.closest('.ym-option').classList.toggle('is-selected', radio.checked));
+    selectionRadios.forEach(radio => radio.addEventListener('change', updateSelectedCards));
+    updateSelectedCards();
+    window.addEventListener('pageshow', updateSelectedCards);
 
     const register = document.getElementById('register-panel');
+    const otp = document.getElementById('otp-panel');
+    const clearSecrets = () => {
+        ['reg_password', 'reg_password_confirmation', 'login_password', 'otp'].forEach(id => {
+            const input = document.getElementById(id);
+            if(input) {
+                input.value = '';
+                if(id !== 'otp') input.type = 'password';
+            }
+        });
+        document.querySelectorAll('[data-password-toggle]').forEach(button => {
+            button.textContent = 'إظهار';
+            button.setAttribute('aria-label', 'إظهار كلمة المرور');
+        });
+    };
+    const showAuthPanel = selected => {
+        ['register', 'login', 'otp'].forEach(name => {
+            const panel = document.getElementById(`${name}-panel`);
+            if(panel) panel.hidden = name !== selected;
+        });
+        const titles = {register:'أنشئ حسابك', login:'تسجيل الدخول', otp:'تحقق من بريدك'};
+        const leads = {register:'سنرسل رمز التحقق إلى بريدك، ثم تنتقل إلى مراجعة الاشتراك.', login:'ادخل إلى حسابك لمتابعة إنشاء متجرك بنفس الاختيارات.', otp:'أدخل الرمز المرسل إلى بريدك الإلكتروني للمتابعة.'};
+        document.getElementById('auth-title').textContent = titles[selected];
+        document.getElementById('auth-lead').textContent = leads[selected];
+        document.getElementById('auth-tabs').hidden = selected === 'otp';
+        document.querySelectorAll('[data-auth]').forEach(button => {
+            button.classList.toggle('ym-primary', button.dataset.auth === selected);
+            button.classList.toggle('ym-secondary', button.dataset.auth !== selected);
+        });
+        message?.replaceChildren();
+        clearSecrets();
+    };
+    document.querySelectorAll('[data-auth]').forEach(button => button.addEventListener('click', () => showAuthPanel(button.dataset.auth)));
+    document.getElementById('edit-email-btn')?.addEventListener('click', () => {
+        showAuthPanel('register');
+        showMessage('عدّل بريدك ثم أعد إدخال كلمة المرور لإرسال رمز جديد. اختيارات متجرك محفوظة.', 'warning');
+        document.getElementById('reg_email').focus();
+    });
     let resendTimer;
+    let otpBusy = false;
+    let resendAvailableAt = 0;
     const beginCooldown = seconds => {
         const button = document.getElementById('resend-btn');
-        clearInterval(resendTimer); button.disabled = true;
-        let left = seconds;
-        const tick = () => { button.textContent = left > 0 ? `إعادة الإرسال (${left})` : 'إعادة الإرسال'; button.disabled = left > 0; left--; };
-        tick(); resendTimer = setInterval(() => { tick(); if(left < 0) clearInterval(resendTimer); }, 1000);
+        clearInterval(resendTimer);
+        resendAvailableAt = Date.now() + Math.max(0, Number(seconds) || 0) * 1000;
+        const tick = () => {
+            const left = Math.max(0, Math.ceil((resendAvailableAt - Date.now()) / 1000));
+            button.textContent = left > 0 ? `إعادة الإرسال (${left})` : 'إعادة الإرسال';
+            button.disabled = left > 0 || otpBusy;
+            if(left === 0) clearInterval(resendTimer);
+        };
+        tick(); resendTimer = setInterval(tick, 1000);
     };
+    if(otp && !otp.hidden) beginCooldown(Number(otp.dataset.retryAfter) || 0);
     if(register) register.addEventListener('submit', async event => {
         event.preventDefault();
+        const button = document.getElementById('register-btn');
+        if(button.disabled) return;
+        button.disabled = true;
+        document.querySelectorAll('[data-auth]').forEach(tab => tab.disabled = true);
         try {
             const data = await request('{{route('landlord.user.register.otp.store')}}', {
                 name:document.getElementById('reg_name').value,
@@ -315,29 +379,48 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             if(data.status !== 'otp_sent') throw {json:data};
             document.getElementById('otp-email').textContent = data.email;
-            register.hidden = true; document.getElementById('otp-panel').hidden = false;
+            showAuthPanel('otp');
             beginCooldown(data.retry_after || 60); document.getElementById('otp').focus();
         } catch(error) { showMessage(Object.values(error.json?.errors || {}).flat().join('\n') || error.json?.msg || 'تعذر إرسال رمز التحقق.'); }
+        finally {
+            button.disabled = false;
+            document.querySelectorAll('[data-auth]').forEach(tab => tab.disabled = false);
+        }
     });
-
-    const otp = document.getElementById('otp-panel');
+    const setOtpBusy = busy => {
+        otpBusy = busy;
+        otp?.querySelectorAll('button:not(#resend-btn)').forEach(button => button.disabled = busy);
+        const resendButton = document.getElementById('resend-btn');
+        if(resendButton) resendButton.disabled = busy || Date.now() < resendAvailableAt;
+    };
     if(otp) otp.addEventListener('submit', async event => {
         event.preventDefault();
+        if(otpBusy) return;
+        setOtpBusy(true);
         try {
             const data = await request('{{route('landlord.user.register.otp.verify')}}', {otp:document.getElementById('otp').value});
             if(data.status !== 'valid' || !data.redirect_url) throw {json:data};
             window.location.assign(data.redirect_url);
         }
-        catch(error) { showMessage(error.json?.msg || 'رمز التحقق غير صحيح.'); }
+        catch(error) {
+            if(error.json?.status === 'expired') showAuthPanel('register');
+            showMessage(error.json?.msg || 'رمز التحقق غير صحيح.');
+        } finally { setOtpBusy(false); }
     });
     const resend = document.getElementById('resend-btn');
     if(resend) resend.addEventListener('click', async () => {
+        if(otpBusy || resend.disabled) return;
+        setOtpBusy(true);
         try {
             const data = await request('{{route('landlord.user.register.otp.resend')}}', {});
             if(data.status !== 'resent') throw {json:data};
             beginCooldown(data.retry_after || 60); showMessage(data.msg, 'success');
         }
-        catch(error) { showMessage(error.json?.msg || 'تعذر إعادة إرسال الرمز.'); }
+        catch(error) {
+            if(error.json?.status === 'expired') showAuthPanel('register');
+            if(error.json?.retry_after) beginCooldown(error.json.retry_after);
+            showMessage(error.json?.msg || 'تعذر إعادة إرسال الرمز.');
+        } finally { setOtpBusy(false); }
     });
 
     const login = document.getElementById('login-panel');

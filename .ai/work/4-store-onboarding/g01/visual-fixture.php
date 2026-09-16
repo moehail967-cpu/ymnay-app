@@ -10,8 +10,10 @@ use App\Models\PricePlan;
 use App\Models\Tenant;
 use App\Models\User;
 use Illuminate\Contracts\Console\Kernel;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use Xgenious\PageBuilder\Models\PageBuilderWidget;
 
@@ -34,6 +36,26 @@ $set = static function (string $key, mixed $value): void {
 if (($argv[1] ?? '') === 'preview-image') {
     $set('aromatic_theme_image', url('/assets/landlord/uploads/media-uploader/visual-aromatic.png'));
     exit(0);
+}
+
+// The existing landlord dynamic-page footer and landlord widget admin routes
+// read the legacy widgets table. A fresh central migration set omits its CREATE.
+// Supply only that explicitly declared installed-schema fixture here, after all
+// original G01 gates, on the exact disposable central database guarded above.
+// Columns match tenant/2020_06_14_081955_create_widgets_table.php plus the
+// guarded central namespace migration. No production/tenant schema is changed.
+$legacyWidgetsFixture = !Schema::hasTable('widgets');
+if ($legacyWidgetsFixture) {
+    Schema::create('widgets', static function (Blueprint $table): void {
+        $table->id();
+        $table->string('widget_area')->nullable();
+        $table->integer('widget_order')->nullable();
+        $table->string('widget_location')->nullable();
+        $table->text('widget_name');
+        $table->longText('widget_content');
+        $table->string('widget_namespace')->nullable();
+        $table->timestamps();
+    });
 }
 
 $set('site_title', 'YMNAY');
@@ -121,6 +143,8 @@ try {
 file_put_contents($out.'/fixture.json', json_encode([
     'synthetic_only' => true, 'production_mutations' => false,
     'source' => 'Four explicitly representative review plans consistent with the read-only public plan presentation; SAR and the 60-day trial follow owner decisions. Names, prices, limits and legal pages are review inputs, not a Production database snapshot.',
+    'legacy_widgets_schema_fixture' => $legacyWidgetsFixture,
+    'legacy_widgets_scope' => 'Empty installed-schema fixture for existing landlord footer; not a production migration or proof of fresh-install completeness.',
     'plans' => $fixtures, 'plan_ids' => $ids, 'trial_days' => 60,
     'arabic_preview' => 'http://g01-visual-preview.localhost', 'theme' => 'Actual repository aromatic theme, native provisioning, Arabic hero configured in disposable tenant DB.',
 ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));

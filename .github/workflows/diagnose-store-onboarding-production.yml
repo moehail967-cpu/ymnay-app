@@ -1,0 +1,61 @@
+name: Diagnose Store Onboarding Production
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type DIAGNOSE_ONBOARDING to run read-only diagnostics"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ymnay-production-onboarding-diagnostics
+  cancel-in-progress: false
+
+jobs:
+  diagnose:
+    if: ${{ github.ref == 'refs/heads/main' && inputs.confirm == 'DIAGNOSE_ONBOARDING' }}
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      APP_ROOT: /home/ymnay/htdocs/ymnay.com
+      PROD_HOST: ${{ secrets.PRODUCTION_HOST }}
+      PROD_USER: ${{ secrets.PRODUCTION_USER }}
+      PROD_PORT: ${{ secrets.PRODUCTION_PORT }}
+      PROD_SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+
+    steps:
+      - name: Prepare SSH
+        shell: bash
+        run: |
+          set -euo pipefail
+          : "${PROD_HOST:?Missing PRODUCTION_HOST secret}"
+          : "${PROD_USER:?Missing PRODUCTION_USER secret}"
+          : "${PROD_SSH_KEY:?Missing PRODUCTION_SSH_KEY secret}"
+          PORT="${PROD_PORT:-22}"
+          mkdir -p "$HOME/.ssh"
+          chmod 700 "$HOME/.ssh"
+          printf '%s\n' "$PROD_SSH_KEY" > "$HOME/.ssh/id_deploy"
+          chmod 600 "$HOME/.ssh/id_deploy"
+          ssh-keyscan -p "$PORT" -H "$PROD_HOST" >> "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/known_hosts"
+          echo "PORT=$PORT" >> "$GITHUB_ENV"
+
+      - name: Inspect latest failed onboarding request
+        shell: bash
+        run: |
+          set -euo pipefail
+          ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" "cd '$APP_ROOT/core' && bash -se" <<'REMOTE'
+            set -e
+            test -f artisan
+            test -f storage/logs/laravel.log
+            php artisan tinker --execute='$request = \\App\\Models\\StoreOnboardingRequest::query()->where("status", "failed")->latest("updated_at")->first(); if (!$request) { echo "NO_FAILED_REQUEST\\n"; } else { echo "REQUEST_STATUS=" . $request->status . "\\n"; echo "FAILED_AT=" . optional($request->updated_at)->toISOString() . "\\n"; $tenant = $request->subdomain ? \\App\\Models\\Tenant::find($request->subdomain) : null; echo "TENANT_PRESENT=" . ($tenant ? "yes" : "no") . "\\n"; echo "TENANT_DATABASE_PRESENT=" . ($tenant && $tenant->database()->manager()->databaseExists($tenant->database()->getName()) ? "yes" : "no") . "\\n"; echo "STAGES=" . json_encode($tenant ? (array) $tenant->getInternal("onboarding_stages") : [], JSON_UNESCAPED_SLASHES) . "\\n"; }'
+            echo 'RECENT_PROVISIONING_ERRORS_BEGIN'
+            grep 'Store onboarding provisioning failed' storage/logs/laravel.log \
+              | tail -n 5 \
+              | sed -E 's/"onboarding_id":"[^"]+"/"onboarding_id":"[redacted]"/g; s/"user_id":[0-9]+/"user_id":"[redacted]"/g; s/"subdomain":"[^"]+"/"subdomain":"[redacted]"/g'
+            echo 'RECENT_PROVISIONING_ERRORS_END'
+          REMOTE

@@ -1,0 +1,53 @@
+name: Install Omar Production SSH Key v2
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  install-key:
+    if: github.event.issue.number == 11 && github.actor == github.repository_owner && github.event.comment.body == '/install-omar-production-key-v2'
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      PROD_HOST: ${{ secrets.PRODUCTION_HOST }}
+      PROD_USER: ${{ secrets.PRODUCTION_USER }}
+      PROD_PORT: ${{ secrets.PRODUCTION_PORT }}
+      PROD_SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+      OMAR_PUBLIC_KEY: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDuXTGkmNPkj3Jq+U84pXM4wSchgoYbetb+TVNk6T92+ omar-ymnay-production-20260917'
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Prepare SSH
+        shell: bash
+        run: |
+          set -euo pipefail
+          PORT="${PROD_PORT:-22}"
+          mkdir -p "$HOME/.ssh"
+          chmod 700 "$HOME/.ssh"
+          printf '%s\n' "$PROD_SSH_KEY" > "$HOME/.ssh/id_existing_deploy"
+          chmod 600 "$HOME/.ssh/id_existing_deploy"
+          ssh-keyscan -p "$PORT" -H "$PROD_HOST" >> "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/known_hosts"
+          echo "PORT=$PORT" >> "$GITHUB_ENV"
+      - name: Add Omar public key
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s\n' "$OMAR_PUBLIC_KEY" | ssh -i "$HOME/.ssh/id_existing_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" 'set -eu; umask 077; mkdir -p "$HOME/.ssh"; touch "$HOME/.ssh/authorized_keys"; read -r NEWKEY; grep -Fqx "$NEWKEY" "$HOME/.ssh/authorized_keys" || printf "%s\n" "$NEWKEY" >> "$HOME/.ssh/authorized_keys"; chmod 700 "$HOME/.ssh"; chmod 600 "$HOME/.ssh/authorized_keys"; grep -Fqx "$NEWKEY" "$HOME/.ssh/authorized_keys"'
+      - name: Verify target
+        shell: bash
+        run: |
+          ssh -i "$HOME/.ssh/id_existing_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" "test -f /home/ymnay/htdocs/ymnay.com/core/artisan"
+      - name: Report result
+        if: always()
+        shell: bash
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then
+            gh issue comment 11 --repo "$GITHUB_REPOSITORY" --body 'OMAR SSH KEY V2: PASS — dedicated public key installed; no application/database deployment performed.'
+          else
+            gh issue comment 11 --repo "$GITHUB_REPOSITORY" --body 'OMAR SSH KEY V2: FAIL — no application deployment was authorized.'
+          fi

@@ -202,7 +202,16 @@ try {
   check('actual-repository-template-rendered-with-declared-arabic-content');
 
   for (const [kind, viewport] of [['desktop', { width: 1440, height: 900 }], ['mobile', { width: 390, height: 844 }]]) {
-    const context = await browser.newContext({ viewport, locale: 'ar-YE', isMobile: kind === 'mobile' });
+    // Each viewport is an independent synthetic visitor. Give it a reserved
+    // documentation address so earlier G01 scenarios do not consume its real
+    // registration throttle budget through the shared localhost proxy IP.
+    const clientIp = kind === 'mobile' ? '192.0.2.42' : '192.0.2.41';
+    const context = await browser.newContext({
+      viewport,
+      locale: 'ar-YE',
+      isMobile: kind === 'mobile',
+      extraHTTPHeaders: { 'X-Forwarded-For': clientIp },
+    });
     const page = await context.newPage();
     page.setDefaultTimeout(30000);
     const errors = [];
@@ -254,7 +263,10 @@ try {
       await page.locator('#reg_password').fill(password);
       await page.locator('#reg_password_confirmation').fill(password);
       await page.locator('#reg_terms').check();
+      const responsePromise = page.waitForResponse(response => response.url().endsWith('/register-store-otp') && response.request().method() === 'POST');
       await page.locator('#register-btn').click();
+      const response = await responsePromise;
+      if (!response.ok()) throw new Error(`${kind} registration OTP request failed with HTTP ${response.status()}: ${(await response.text()).slice(0, 500)}`);
       await page.locator('#otp-panel:not([hidden])').waitFor();
       assert.equal(await page.locator('#auth-title').innerText(), 'تحقق من بريدك');
     };

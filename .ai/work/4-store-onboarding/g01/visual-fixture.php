@@ -123,7 +123,7 @@ try {
     Cache::forget('lang_key');
     update_static_option('site_title', 'عِطري — متجر العطور');
     update_static_option('site_announcement_text', 'متجر عربي تجريبي للمراجعة البصرية');
-    $labels = ['Home' => 'الرئيسية', 'Shop' => 'المتجر', 'About Us' => 'من نحن', 'Contact Us' => 'تواصل معنا', 'Categories' => 'الأقسام', 'Blog' => 'المدونة', 'Digital Product' => 'المنتجات الرقمية'];
+    $labels = ['Home' => 'الرئيسية', 'Shop' => 'المتجر', 'About Us' => 'من نحن', 'Contact' => 'تواصل معنا', 'Contact Us' => 'تواصل معنا', 'Categories' => 'الأقسام', 'Blog' => 'المدونة', 'Digital Product' => 'المنتجات الرقمية'];
     // Seeded menu items refer to page IDs and have no pname. Their labels
     // come from the actual Page title, so localize that content as well.
     $labels['Digital Products'] = 'المنتجات الرقمية';

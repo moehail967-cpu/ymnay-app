@@ -56,15 +56,21 @@ jobs:
         if: success()
         shell: bash
         run: |
-          gh issue comment 11 --repo "$GITHUB_REPOSITORY" --body "OMAR DIRECT SSH ACCESS SETUP: PASS
+          cat > "$RUNNER_TEMP/omar-access.md" <<'EOF'
+          OMAR DIRECT SSH ACCESS SETUP: PASS
 
-Dedicated Omar public key was added to the authorized Production deploy user without removing existing keys.
-No application deployment, migration, database change, or .env change was performed."
+          Dedicated Omar public key was added to the authorized Production deploy user without removing existing keys.
+          No application deployment, migration, database change, or .env change was performed.
+          EOF
+          gh issue comment 11 --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/omar-access.md"
 
       - name: Report failure
         if: failure()
         shell: bash
         run: |
-          gh issue comment 11 --repo "$GITHUB_REPOSITORY" --body "OMAR DIRECT SSH ACCESS SETUP: FAIL
+          cat > "$RUNNER_TEMP/omar-access.md" <<'EOF'
+          OMAR DIRECT SSH ACCESS SETUP: FAIL
 
-No application deployment was authorized by this setup workflow. Review the failed step before retrying."
+          No application deployment was authorized by this setup workflow. Review the failed step before retrying.
+          EOF
+          gh issue comment 11 --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/omar-access.md"

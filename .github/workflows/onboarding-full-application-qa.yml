@@ -176,6 +176,15 @@ jobs:
           php ../.ai/work/4-store-onboarding/g01/verify.php 2>&1 | tee "$RUNNER_TEMP/g01-provisioning-verification.json"
           php -r '$data=json_decode(file_get_contents($argv[1]), true, 512, JSON_THROW_ON_ERROR); exit(($data["file_queue_drained"] ?? false) ? 0 : 1);' "$RUNNER_TEMP/g01-provisioning-verification.json"
 
+      - name: Capture Nour V01-V05 representative visual acceptance evidence
+        working-directory: .ai/work/4-store-onboarding/g01
+        env:
+          G01_BASE_URL: http://localhost
+          G01_MAILPIT_URL: http://127.0.0.1:8025
+          G01_VISUAL_DIR: ${{ runner.temp }}/g01-visual-review
+          G01_CANDIDATE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: node visual-review.mjs
+
       - name: Attach Nour's approved visual references
         run: |
           git worktree add --detach "$RUNNER_TEMP/nour-reference" dfc56d81afb448a8432675d64d22c16340502164
@@ -196,6 +205,7 @@ jobs:
             ${{ runner.temp }}/application-server.log
             ${{ runner.temp }}/g01-browser-evidence
             ${{ runner.temp }}/g01-visual-reference
+            ${{ runner.temp }}/g01-visual-review
             ${{ runner.temp }}/g01-provisioning-verification.json
             ${{ runner.temp }}/g01-native-path.json
             core/storage/logs/laravel.log

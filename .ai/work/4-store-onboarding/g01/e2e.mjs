@@ -164,6 +164,7 @@ try {
   check('representative-multi-theme-layout');
 
   await page.locator('input[name="theme_slug"][value="hexfashion"]').check();
+  const selectedThemeDisplayName = await page.locator('.ym-option:has(input[value="hexfashion"]) strong').innerText();
   await Promise.all([
     page.waitForURL(/step=3/),
     page.locator('form[action$="/create-store/theme"] button[type="submit"]').click(),
@@ -253,7 +254,7 @@ try {
   check('valid-otp-auth-session-and-review');
 
   const summary = await page.locator('.ym-summary').first().innerText();
-  for (const expected of ['متجر G01 المعزول', 'g01-browser-store', 'hexfashion']) {
+  for (const expected of ['متجر G01 المعزول', 'g01-browser-store', selectedThemeDisplayName]) {
     if (!summary.includes(expected)) throw new Error(`Review did not preserve: ${expected}`);
   }
   check('review-values-preserved');
@@ -401,7 +402,7 @@ try {
   }
   await recoveryPage.goto(recoveredLogin.body.redirect_url, { waitUntil: 'networkidle' });
   const recoveredSummary = await recoveryPage.locator('.ym-summary').first().innerText();
-  for (const expected of ['G01 Password Recovery Store', 'g01-password-recovery', 'hexfashion']) {
+  for (const expected of ['G01 Password Recovery Store', 'g01-password-recovery', selectedThemeDisplayName]) {
     if (!recoveredSummary.includes(expected)) throw new Error(`Password recovery lost onboarding choice: ${expected}`);
   }
   check('repeated-password-recovery-replaces-consumes-and-resumes-onboarding');

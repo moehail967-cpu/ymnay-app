@@ -53,6 +53,16 @@ jobs:
             test -f artisan
             test -f storage/logs/laravel.log
             php artisan tinker --execute='$request = \App\Models\StoreOnboardingRequest::query()->where("status", "failed")->latest("updated_at")->first(); if (!$request) { echo "NO_FAILED_REQUEST\\n"; } else { echo "REQUEST_STATUS=" . $request->status . "\\n"; echo "FAILED_AT=" . optional($request->updated_at)->toISOString() . "\\n"; $tenant = $request->subdomain ? \App\Models\Tenant::find($request->subdomain) : null; echo "TENANT_PRESENT=" . ($tenant ? "yes" : "no") . "\\n"; echo "TENANT_DATABASE_PRESENT=" . ($tenant && $tenant->database()->manager()->databaseExists($tenant->database()->getName()) ? "yes" : "no") . "\\n"; echo "STAGES=" . json_encode($tenant ? (array) $tenant->getInternal("onboarding_stages") : [], JSON_UNESCAPED_SLASHES) . "\\n"; }'
+            echo 'ASSET_PATHS_BEGIN'
+            for path in assets/tenant/seeder-files/all-media ../assets/tenant/seeder-files/all-media; do
+              if [ -d "$path" ]; then
+                printf 'PRESENT %s files=%s\n' "$path" "$(find "$path" -type f | wc -l)"
+              else
+                printf 'MISSING %s\n' "$path"
+              fi
+            done
+            echo 'ASSET_PATHS_END'
+            php artisan tinker --execute='$request = \App\Models\StoreOnboardingRequest::query()->where("status", "failed")->latest("updated_at")->first(); $tenant = $request && $request->subdomain ? \App\Models\Tenant::find($request->subdomain) : null; if ($tenant) { tenancy()->initialize($tenant); try { foreach (["admins", "languages", "menus", "pages", "media_uploaders"] as $table) { $schema = \Illuminate\Support\Facades\DB::connection("tenant")->getSchemaBuilder(); echo "TABLE_" . strtoupper($table) . "=" . ($schema->hasTable($table) ? \Illuminate\Support\Facades\DB::connection("tenant")->table($table)->count() : "missing") . "\\n"; } } finally { tenancy()->end(); } }'
             echo 'RECENT_PROVISIONING_ERRORS_BEGIN'
             grep 'Store onboarding provisioning failed' storage/logs/laravel.log \
               | tail -n 5 \

@@ -1,0 +1,64 @@
+name: Install Omar Current Session SSH Key
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  install:
+    if: >-
+      github.event.issue.number == 11 &&
+      github.actor == github.repository_owner &&
+      github.event.comment.body == '/install-omar-current-session-key'
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      PROD_HOST: ${{ secrets.PRODUCTION_HOST }}
+      PROD_USER: ${{ secrets.PRODUCTION_USER }}
+      PROD_PORT: ${{ secrets.PRODUCTION_PORT }}
+      PROD_SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+      OMAR_PUBLIC_KEY: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIODfk6IrNgBcPcOagt5GEUtgQ4w+s9Nkxwfx5Z8eiNDx codex-ymnay-deploy-2026-09-16'
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Prepare SSH
+        shell: bash
+        run: |
+          set -euo pipefail
+          : "${PROD_HOST:?Missing PRODUCTION_HOST secret}"
+          : "${PROD_USER:?Missing PRODUCTION_USER secret}"
+          : "${PROD_SSH_KEY:?Missing PRODUCTION_SSH_KEY secret}"
+          PORT="${PROD_PORT:-22}"
+          mkdir -p "$HOME/.ssh"
+          chmod 700 "$HOME/.ssh"
+          printf '%s\n' "$PROD_SSH_KEY" > "$HOME/.ssh/id_deploy"
+          chmod 600 "$HOME/.ssh/id_deploy"
+          ssh-keyscan -p "$PORT" -H "$PROD_HOST" >> "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/known_hosts"
+          echo "PORT=$PORT" >> "$GITHUB_ENV"
+
+      - name: Add Omar current-session public key
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s\n' "$OMAR_PUBLIC_KEY" | ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" 'set -eu; umask 077; mkdir -p "$HOME/.ssh"; touch "$HOME/.ssh/authorized_keys"; read -r NEWKEY; grep -Fqx "$NEWKEY" "$HOME/.ssh/authorized_keys" || printf "%s\n" "$NEWKEY" >> "$HOME/.ssh/authorized_keys"; chmod 700 "$HOME/.ssh"; chmod 600 "$HOME/.ssh/authorized_keys"; grep -Fqx "$NEWKEY" "$HOME/.ssh/authorized_keys"'
+
+      - name: Verify target only
+        shell: bash
+        run: |
+          set -euo pipefail
+          ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" 'test -f /home/ymnay/htdocs/ymnay.com/core/artisan'
+
+      - name: Report
+        if: always()
+        shell: bash
+        run: |
+          if [[ "${{ job.status }}" == "success" ]]; then
+            MSG='OMAR CURRENT SESSION SSH KEY: PASS — public key installed; no application/database deployment performed.'
+          else
+            MSG='OMAR CURRENT SESSION SSH KEY: FAIL — review workflow; no deployment was authorized.'
+          fi
+          gh issue comment 11 --repo "$GITHUB_REPOSITORY" --body "$MSG"

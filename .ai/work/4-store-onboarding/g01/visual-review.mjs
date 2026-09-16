@@ -130,7 +130,7 @@ try {
     await publicPage.screenshot({ path: path.join(out, 'public-brand-source.png') });
     await publicPage.goto('https://ymnay.com/login', { waitUntil: 'domcontentloaded', timeout: 60000 });
     await publicPage.evaluate(() => document.fonts.ready);
-    const innerLogo = await publicPage.evaluate(() => [...document.querySelectorAll('nav img,header img,.logo-wrapper img,.navbar-brand img')]
+    const innerLogo = await publicPage.evaluate(() => [...document.querySelectorAll('.auth-logo img,nav img,header img,.logo-wrapper img,.navbar-brand img')]
       .find(img => img.getBoundingClientRect().width > 35 && img.getBoundingClientRect().height > 10 && img.naturalWidth > 0)?.currentSrc);
     assert.ok(innerLogo, 'The public inner-page logo could not be observed.');
     observed.logo_url = innerLogo;

@@ -124,6 +124,13 @@ try {
     update_static_option('site_title', 'عِطري — متجر العطور');
     update_static_option('site_announcement_text', 'متجر عربي تجريبي للمراجعة البصرية');
     $labels = ['Home' => 'الرئيسية', 'Shop' => 'المتجر', 'About Us' => 'من نحن', 'Contact Us' => 'تواصل معنا', 'Categories' => 'الأقسام', 'Blog' => 'المدونة', 'Digital Product' => 'المنتجات الرقمية'];
+    // Seeded menu items refer to page IDs and have no pname. Their labels
+    // come from the actual Page title, so localize that content as well.
+    $labels['Digital Products'] = 'المنتجات الرقمية';
+    foreach (Page::all() as $page) {
+        $title = trim((string) $page->title);
+        if (isset($labels[$title])) $page->update(['title' => $labels[$title]]);
+    }
     $localizeMenu = static function (array $items) use (&$localizeMenu, $labels): array {
         foreach ($items as &$item) {
             $name = $item['pname'] ?? '';

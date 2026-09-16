@@ -162,8 +162,13 @@ jobs:
         working-directory: core
         run: |
           set -o pipefail
-          sudo chown -R "$(id -u):$(id -g)" storage
-          sudo chown -R "$(id -u):$(id -g)" assets/tenant/uploads
+          # The isolated port-80 HTTP process runs as root. Restore runner ownership
+          # before CLI importers use the same disposable asset/cache directories.
+          for directory in storage assets public/assets ../assets; do
+            if [ -d "$directory" ]; then
+              sudo chown -R "$(id -u):$(id -g)" "$directory"
+            fi
+          done
           php ../.ai/work/4-store-onboarding/g01/native-path.php 2>&1 | tee "$RUNNER_TEMP/g01-native-path.json"
           php -r '$data=json_decode(file_get_contents($argv[1]), true, 512, JSON_THROW_ON_ERROR); exit(($data["native_pipeline"] ?? false) ? 0 : 1);' "$RUNNER_TEMP/g01-native-path.json"
 
@@ -183,13 +188,29 @@ jobs:
           G01_MAILPIT_URL: http://127.0.0.1:8025
           G01_VISUAL_DIR: ${{ runner.temp }}/g01-visual-review
           G01_CANDIDATE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-        run: node visual-review.mjs
+        run: |
+          for directory in assets core/assets core/public/assets core/storage; do
+            if [ -d "$GITHUB_WORKSPACE/$directory" ]; then
+              sudo chown -R "$(id -u):$(id -g)" "$GITHUB_WORKSPACE/$directory"
+            fi
+          done
+          node visual-review.mjs
 
       - name: Attach Nour's approved visual references
+        if: always()
         run: |
           git worktree add --detach "$RUNNER_TEMP/nour-reference" dfc56d81afb448a8432675d64d22c16340502164
           mkdir -p "$RUNNER_TEMP/g01-visual-reference"
           cp "$RUNNER_TEMP/nour-reference/.ai/work/4-store-onboarding/designs/"*.png "$RUNNER_TEMP/g01-visual-reference/"
+
+      - name: Package tracked visual-review sources for reproducible inspection
+        if: always()
+        run: |
+          git archive --format=tar.gz --output="$RUNNER_TEMP/visual-review-sources.tar.gz" HEAD \
+            .ai/work/4-store-onboarding/g01 \
+            .github/workflows/onboarding-full-application-qa.yml \
+            core/resources/views/landlord/frontend/onboarding \
+            core/tests/Feature/OnboardingVisualContractTest.php
 
       - name: Upload non-sensitive full-application preflight evidence
         if: always()
@@ -206,6 +227,7 @@ jobs:
             ${{ runner.temp }}/g01-browser-evidence
             ${{ runner.temp }}/g01-visual-reference
             ${{ runner.temp }}/g01-visual-review
+            ${{ runner.temp }}/visual-review-sources.tar.gz
             ${{ runner.temp }}/g01-provisioning-verification.json
             ${{ runner.temp }}/g01-native-path.json
             core/storage/logs/laravel.log

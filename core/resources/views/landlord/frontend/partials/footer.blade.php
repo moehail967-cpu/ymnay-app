@@ -51,7 +51,8 @@
 {{--</footer>--}}
 {{-- NEW FOOTER END --}}
 
-@if(request()->routeIs('landlord.homepage'))
+{{-- Fresh central installs do not own tenant widget tables. Keep configured legacy footers where the table exists. --}}
+@if(request()->routeIs('landlord.homepage') || (!request()->routeIs('landlord.store.*') && !\Illuminate\Support\Facades\Schema::hasTable('widgets')))
     @include('landlord.frontend.partials.ymnay-footer')
 @elseif(!request()->routeIs('landlord.store.*'))
 <footer class="pt-[60px] sm:pt-[80px] lg:pt-[120px] pb-8" style="background-color: var(--section-bg-6, #E5EFF8)">

@@ -88,4 +88,19 @@ class OnboardingVisualContractTest extends TestCase
             foreach ($pages as $page) $page->delete();
         }
     }
+
+    public function test_public_policy_page_renders_without_a_tenant_widgets_table_in_central(): void
+    {
+        $this->assertFalse(\Illuminate\Support\Facades\Schema::hasTable('widgets'));
+        $page = Page::create([
+            'title' => 'سياسة المراجعة', 'slug' => 'visual-public-policy-'.Str::lower(Str::random(8)),
+            'page_content' => '<p>محتوى سياسة تجريبي ظاهر للزائر</p>', 'status' => 1, 'visibility' => 0,
+        ]);
+        $page->slug()->create(['slug' => $page->slug]);
+        try {
+            $this->get(url('/'.$page->slug))->assertOk()->assertSee('محتوى سياسة تجريبي ظاهر للزائر');
+        } finally {
+            $page->delete();
+        }
+    }
 }

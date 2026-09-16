@@ -80,7 +80,8 @@ async function legal(page, container, name) {
     const popup = await popupPromise;
     await popup.waitForLoadState('domcontentloaded');
     assert.match(popup.url(), /\/visual-(terms_condition|privacy_policy)$/);
-    assert.ok((await popup.locator('body').innerText()).includes('صفحة تجريبية'));
+    const text = await popup.locator('body').innerText();
+    assert.ok(text.includes('صفحة تجريبية'), `Policy ${popup.url()} did not render its public fixture: ${text.slice(0, 400)}`);
     assert.equal(page.url(), before);
     await popup.close();
   }
@@ -123,6 +124,19 @@ try {
       return { body_family, heading_family, logo_url: logo?.currentSrc || logo?.src, font_faces: faces, public_loaded_fonts: [...document.fonts].filter(f => f.status === 'loaded').map(f => f.family) };
     });
     assert.ok(observed.logo_url, 'No actual public brand logo was found.');
+    // The public homepage intentionally uses a white mark over a dark hero.
+    // Observe the real inner-page mark separately for our light header; never recolor an asset or copy white-on-white.
+    const whiteLogoUrl = observed.logo_url;
+    await publicPage.screenshot({ path: path.join(out, 'public-brand-source.png') });
+    await publicPage.goto('https://ymnay.com/login', { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await publicPage.evaluate(() => document.fonts.ready);
+    const innerLogo = await publicPage.evaluate(() => [...document.querySelectorAll('nav img,header img,.logo-wrapper img,.navbar-brand img')]
+      .find(img => img.getBoundingClientRect().width > 35 && img.getBoundingClientRect().height > 10 && img.naturalWidth > 0)?.currentSrc);
+    assert.ok(innerLogo, 'The public inner-page logo could not be observed.');
+    observed.logo_url = innerLogo;
+    observed.logo_source = 'https://ymnay.com/login';
+    observed.white_logo_url = whiteLogoUrl;
+    await publicPage.screenshot({ path: path.join(out, 'public-inner-brand-source.png') });
     const logoUrl = new URL(observed.logo_url);
     assert.equal(logoUrl.protocol, 'https:');
     assert.ok(/(^|\.)(ymnay\.com|nazmart\.net)$/.test(logoUrl.hostname), 'Unexpected public logo host.');
@@ -134,6 +148,17 @@ try {
     identity.logo_file = `visual-ymnay-logo.${extension}`;
     identity.logo_sha256 = createHash('sha256').update(bytes).digest('hex');
     await writeAsset(`landlord/uploads/media-uploader/${identity.logo_file}`, bytes);
+    const whiteUrl = new URL(whiteLogoUrl);
+    assert.equal(whiteUrl.protocol, 'https:');
+    assert.ok(/(^|\.)(ymnay\.com|nazmart\.net)$/.test(whiteUrl.hostname));
+    const whiteResponse = await publicContext.request.get(whiteUrl.href);
+    assert.ok(whiteResponse.ok());
+    const whiteBytes = await whiteResponse.body();
+    assert.ok(whiteBytes.length > 100 && whiteBytes.length < 5 * 1024 * 1024);
+    const whiteExtension = /\.(png|svg|webp|jpe?g)$/i.exec(whiteUrl.pathname)?.[1] || 'png';
+    identity.white_logo_file = `visual-ymnay-white-logo.${whiteExtension}`;
+    identity.white_logo_sha256 = createHash('sha256').update(whiteBytes).digest('hex');
+    await writeAsset(`landlord/uploads/media-uploader/${identity.white_logo_file}`, whiteBytes);
     const catalog = {};
     for (const [index, face] of observed.font_faces.entries()) {
       if (index > 15) break;
@@ -157,7 +182,6 @@ try {
       await writeAsset('landlord/frontend/webfonts/custom-fonts.json', JSON.stringify(catalog));
     }
     Object.assign(identity, observed, { verified: true });
-    await publicPage.screenshot({ path: path.join(out, 'public-brand-source.png') });
     await publicContext.close();
   } catch (error) {
     identity.error = error.message;
@@ -197,6 +221,8 @@ try {
     await selected(page, `${kind}-plan-selection-change`);
     await radio.focus(); await page.keyboard.press('Space');
     await selected(page, `${kind}-native-keyboard-selection`);
+    await page.mouse.move(0, 0);
+    await page.locator('.ym-title').click();
     await shot(page, `${kind}-02-package-selected`, true);
     await Promise.all([page.waitForURL('**/create-store?step=2'), page.locator('form[action$="/create-store/plan"] button[type="submit"]').click()]);
     await page.locator('input[value="aromatic"]').check();

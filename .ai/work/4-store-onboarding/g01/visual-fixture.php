@@ -71,7 +71,12 @@ foreach (['body', 'heading'] as $kind) {
 if (!empty($identity['logo_file'])) {
     $logo = MediaUploader::create(['title' => 'YMNAY public logo - review copy', 'alt' => 'YMNAY يمناي', 'path' => $identity['logo_file'], 'load_from' => 0, 'user_type' => 0]);
     $set('site_logo', $logo->id);
-    $set('site_white_logo', $logo->id);
+    if (!empty($identity['white_logo_file'])) {
+        $whiteLogo = MediaUploader::create(['title' => 'YMNAY public white logo - review copy', 'alt' => 'YMNAY يمناي', 'path' => $identity['white_logo_file'], 'load_from' => 0, 'user_type' => 0]);
+        $set('site_white_logo', $whiteLogo->id);
+    } else {
+        $set('site_white_logo', $logo->id);
+    }
 }
 foreach (['terms_condition' => 'الشروط والأحكام', 'privacy_policy' => 'سياسة الخصوصية'] as $key => $title) {
     $page = Page::create(['title' => $title, 'slug' => 'visual-'.$key, 'page_content' => '<p>صفحة تجريبية لاختبار فتح الرابط وحفظ النموذج. ليست صياغة قانونية أو سياسة منشورة.</p>', 'status' => 1, 'visibility' => 0]);

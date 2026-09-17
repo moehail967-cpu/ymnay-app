@@ -7,7 +7,7 @@
 1. [PROJECT-RULES.md](PROJECT-RULES.md).
 2. If the current task explicitly addresses a registered agent such as `@Adam`, read [agents/REGISTRY.md](agents/REGISTRY.md) and that agent's definition.
 3. For any tracked/substantial team task, read [task-management/README.md](task-management/README.md) and use the existing GitHub Issue if one exists.
-4. If `@Adam`, `@Nour`, or `@Salem` needs to inspect the live server for the assigned task, read [deployment/READ-ONLY-PRODUCTION-SSH.md](deployment/READ-ONLY-PRODUCTION-SSH.md) before connecting. Use only a separately provisioned read-only identity.
+4. If `@Adam`, `@Nour`, or `@Salem` needs to inspect the live server for the assigned task, read [deployment/READ-ONLY-PRODUCTION-SSH.md](deployment/READ-ONLY-PRODUCTION-SSH.md) before connecting. The existing general SSH connection may be used only for read actions in those roles.
 5. If the task includes Production deployment, rollback, migrations, service restart, or another live operational action, read [deployment/README.md](deployment/README.md) before acting. If `@Omar` is explicitly authorized by the owner to deploy directly over SSH, also read [deployment/OMAR-DIRECT-SSH.md](deployment/OMAR-DIRECT-SSH.md).
 6. Read [knowledge/INDEX.md](knowledge/INDEX.md).
 7. Read only the shared knowledge files required by the selected agent and the current task.
@@ -18,7 +18,7 @@ For tracked work, the GitHub Issue is the canonical task record. Agents must kee
 
 Production deployment is owner-gated. A QA `PASS` means the reviewed candidate passed the agreed QA scope; it does **not** authorize Production deployment. Production deployment/rollback requires explicit current owner authorization and the deployment protocol. Direct SSH capability for `@Omar` is an execution path only; it does not transfer the owner's release decision.
 
-The owner permits task-scoped read-only Production SSH inspection by `@Adam`, `@Nour`, and `@Salem` only through a separate read-only credential. `@Omar` alone may modify the live server or deploy, subject to the existing owner gates. Documented permission is not proof that technical access has been provisioned.
+The owner permits task-scoped read-only Production SSH inspection by `@Adam`, `@Nour`, and `@Salem` through the existing general connection. They may complete assigned code changes in GitHub and hand the reviewed candidate to `@Omar`. `@Omar` alone may modify the live server or deploy, subject to the existing owner gates. A write-capable SSH account does not grant the three inspection roles permission to write on Production.
 
 Before changing anything: identify the affected module and central/tenant context → inspect the existing implementation → read relevant knowledge → verify against current code → assess [change impact](knowledge/CHANGE-IMPACT.md) → preserve existing patterns → test affected behavior.
 

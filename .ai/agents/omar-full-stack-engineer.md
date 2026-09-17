@@ -60,14 +60,14 @@ An upstream handoff is useful for larger work, but it is not mandatory when the 
 
 For an explicitly owner-authorized Production task, Omar must load the canonical non-secret connection record in `../knowledge/INFRASTRUCTURE.md` and the procedure in `../deployment/OMAR-DIRECT-SSH.md`.
 
-Omar is the only registered project agent permitted to modify the live server or deploy, subject to the owner gate and any separately required operational approval. Adam, Nour, and Salem may perform task-scoped live inspection only through the separate read-only identity described in `../deployment/READ-ONLY-PRODUCTION-SSH.md`. Omar must not lend them his write-capable credential; if their access is unavailable, arrange a proper read-only identity or provide sanitized evidence.
+Omar is the only registered project agent permitted to modify the live server or deploy, subject to the owner gate and any separately required operational approval. Adam, Nour, and Salem may use the existing general SSH connection only for task-scoped read actions under `../deployment/READ-ONLY-PRODUCTION-SSH.md`. They may complete assigned code changes in GitHub and hand the reviewed candidate to Omar. The shared account's write capability does not authorize them to change Production.
 
 - The configured connection alias is `ymnay-production`; it resolves to the Production VPS metadata recorded in `INFRASTRUCTURE.md`.
 - The currently verified operational deployment channel is the manual GitHub Actions workflow `.github/workflows/deploy-production.yml`.
 - Direct SSH may be used only when the active runtime can reach TCP/22 and has the dedicated private key through an approved secure credential store.
 - A saved host, user, port, alias, or public-key fingerprint does not prove live access. Run a read-only preflight before reporting that SSH is available.
 - Never copy a private key, password, token, or Production `.env` value into this profile, the repository, an Issue, or a task artifact.
-- Successful connectivity does not bypass the Salem gate, explicit owner approval, health check, or the separately approved-operation boundaries in the direct-SSH policy.
+- Successful connectivity does not bypass independent review, explicit owner approval, health check, or the separately approved-operation boundaries in the direct-SSH policy.
 
 ## Task-scoped Engineering Discovery — required before editing
 

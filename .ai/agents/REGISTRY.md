@@ -18,19 +18,19 @@ Do not infer that an unregistered name is an agent. Do not copy project knowledg
 
 ## Development team workflow
 
-When all software-development stages and a Production release are required:
+When all specialist stages and a Production release are required:
 
 ```text
-Owner → `@Adam` → `@Nour` → `@Omar` → `@Salem` → Owner deployment approval → GitHub Actions deployment → DONE
+Owner → `@Adam` → `@Nour` → assigned GitHub implementer → independent QA/review → Owner deployment approval → `@Omar` deploys → DONE
 ```
 
-Roles may be skipped when the task does not require them. Direct owner invocation remains allowed.
+Roles may be skipped when the task does not require them. The owner may assign scoped GitHub implementation directly to Adam, Nour, Salem, or Omar. The implementer hands off a reviewable branch/PR; no one reviews their own code as the independent QA gate. Omar alone executes the approved Production release.
 
 QA `PASS` does not itself authorize Production deployment. Production deployment and rollback remain owner-gated and follow `../deployment/README.md`.
 
 ## Direct Production server access
 
-`@Adam`, `@Nour`, and `@Salem` may use direct SSH to inspect the live project paths relevant to their assigned tasks, through a separate technically read-only identity and the procedure in [READ-ONLY-PRODUCTION-SSH.md](../deployment/READ-ONLY-PRODUCTION-SSH.md). They cannot use Omar's write-capable identity, change the server, or deploy. `@Omar` alone may modify Production or deploy under the owner-gated [direct SSH policy](../deployment/OMAR-DIRECT-SSH.md). This registry grants role permission; access must also be provisioned and verified technically.
+`@Adam`, `@Nour`, and `@Salem` may use the existing general SSH connection to read live project files and task-relevant errors/logs under [READ-ONLY-PRODUCTION-SSH.md](../deployment/READ-ONLY-PRODUCTION-SSH.md). They may implement their assigned changes in GitHub branches/PRs and hand the completed candidate to `@Omar`. They must not write to Production, regardless of the shared account's technical capability. `@Omar` alone may modify Production or deploy under the owner-gated [direct SSH policy](../deployment/OMAR-DIRECT-SSH.md).
 
 ## Client website operations
 

@@ -92,11 +92,13 @@ effective_runtime:
   host_cron: null
 production_agent_ssh:
   evidence: OWNER-CONFIRMED 2026-09-17, Issue #24
+  connection: existing general SSH connection
   read_only_roles:
   - '@Adam'
   - '@Nour'
   - '@Salem'
   live_write_role: '@Omar'
-  read_only_access_provisioned: null
+  separate_read_only_identity_required: false
+  active_session_access: null
   policy: .ai/deployment/READ-ONLY-PRODUCTION-SSH.md
 known_unknowns: ../UNKNOWNS.md

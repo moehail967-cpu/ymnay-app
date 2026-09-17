@@ -8,16 +8,16 @@ Production deployment is **owner-gated**.
 
 No agent may deploy merely because implementation or QA is complete.
 
-`@Adam`, `@Nour`, and `@Salem` may inspect task-relevant live project paths using a separately provisioned read-only SSH identity under [READ-ONLY-PRODUCTION-SSH.md](READ-ONLY-PRODUCTION-SSH.md). `@Omar` is the only registered agent allowed to modify the server or deploy, with the owner gate and the operation-specific limits below.
+`@Adam`, `@Nour`, and `@Salem` may inspect task-relevant live project files and errors/logs through the existing general SSH connection under [READ-ONLY-PRODUCTION-SSH.md](READ-ONLY-PRODUCTION-SSH.md). They may implement assigned changes in GitHub and hand the candidate to Omar. `@Omar` is the only registered agent allowed to modify the live server or deploy, with the owner gate and the operation-specific limits below.
 
 Normal flow:
 
 ```text
-@Omar implementation
-→ @Salem QA
+Assigned agent completes the GitHub branch/PR
+→ independent QA/review (Salem cannot self-approve his own code)
 → READY_FOR_DEPLOYMENT
 → Owner explicitly approves deployment
-→ GitHub Actions manual workflow
+→ @Omar executes the approved GitHub Actions or direct SSH deployment
 → Production health check
 → DEPLOYED / DEPLOY_FAILED
 ```
@@ -36,7 +36,7 @@ GitHub Actions workflow:
 
 `.github/workflows/deploy-production.yml`
 
-It is manual-only (`workflow_dispatch`). It refuses to deploy unless:
+It is manual-only (`workflow_dispatch`). Omar runs it after the owner approves the exact release. It refuses to deploy unless:
 
 - it is run from `main`;
 - the operator enters `DEPLOY` as explicit confirmation;
@@ -129,14 +129,14 @@ If restoration of the previous source is required, use `ROLLBACK_REQUIRED` and p
 
 Deployment-related statuses are defined in `.ai/task-management/README.md`.
 
-After Salem returns `PASS` for a change that must go live:
+After independent review returns `PASS` for a change that must go live:
 
 - set `Status: READY_FOR_DEPLOYMENT`;
 - set `Current Agent: Owner`;
 - record the exact main commit intended for deployment;
 - do not close the Issue yet.
 
-When the owner approves deployment, the workflow may run.
+When the owner approves deployment, Omar may run the workflow for the exact approved revision.
 
 Success:
 
@@ -160,11 +160,11 @@ If rollback is required:
 
 ### @Omar
 
-Omar prepares deployable code and must report deployment impact. He does not deploy without explicit owner authorization.
+Omar may implement code and receives reviewed GitHub candidates from Adam, Nour, or Salem. He checks the exact revision and deployment impact, and alone performs the owner-authorized Production deployment or server modification.
 
 ### @Salem
 
-Salem verifies the exact candidate revision and states whether it is QA-ready. A PASS does not itself authorize Production deployment.
+Salem may verify or implement an assigned fix in GitHub. He cannot provide the independent QA verdict on his own code. A PASS does not itself authorize Production deployment.
 
 ### Owner
 

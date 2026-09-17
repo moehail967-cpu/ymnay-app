@@ -2,7 +2,7 @@
 
 This policy authorizes `@Omar` to use an owner-authorized direct SSH/terminal connection for Production deployments.
 
-Omar is the only registered project agent permitted to modify the live server or deploy. `@Adam`, `@Nour`, and `@Salem` have a separate task-scoped read-only inspection role under [READ-ONLY-PRODUCTION-SSH.md](READ-ONLY-PRODUCTION-SSH.md); do not share Omar's write-capable credential with them.
+Omar is the only registered project agent permitted to modify the live server or deploy. `@Adam`, `@Nour`, and `@Salem` may use the existing general SSH connection only for task-scoped read actions under [READ-ONLY-PRODUCTION-SSH.md](READ-ONLY-PRODUCTION-SSH.md). The shared account's write capability does not authorize them to change Production.
 
 ## Release gate
 
@@ -11,8 +11,8 @@ Direct SSH does not remove the owner gate.
 Required flow:
 
 ```text
-@Omar implementation
-→ @Salem QA PASS
+Assigned agent completes GitHub implementation
+→ independent QA/review PASS (Salem cannot self-approve his own code)
 → READY_FOR_DEPLOYMENT
 → Owner explicitly authorizes the specific deployment
 → @Omar direct SSH deployment

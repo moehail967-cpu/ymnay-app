@@ -36,6 +36,7 @@ Omar must preserve the safety properties of `.github/workflows/deploy-production
 - verify the exact approved revision;
 - verify the Production target before mutation;
 - create a filtered source backup first;
+- keep repository-only team instructions (`.ai/` and `AGENTS.md`) out of the live server;
 - preserve Production `.env`, runtime/storage data, customer uploads, payment proofs, generated links, and other excluded runtime paths;
 - do not use blind `git reset --hard` against the live checkout;
 - use maintenance mode only for the deployment window;

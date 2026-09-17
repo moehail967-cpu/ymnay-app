@@ -30,6 +30,8 @@ Normal flow after requirements and any owner-accepted interface design:
 
 The canonical deployment source is the current `main` branch.
 
+Team instructions remain in GitHub. The deployment filter excludes `.ai/` and `AGENTS.md`; do not upload them through direct SSH either. A change limited to agent instructions is effective after the approved merge to `main` and does not require a Production deployment. Production remains the target for application changes and task-relevant read-only inspection under the role policies.
+
 ## Deployment workflow
 
 GitHub Actions workflow:

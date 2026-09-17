@@ -24,7 +24,7 @@ External product/tool capability documents such as `STITCH-CODEX-DESIGN-WORKFLOW
 | Login/permissions | [AUTHORIZATION](AUTHORIZATION.md), [SECURITY](SECURITY.md) | Exact actor, guard, route middleware |
 | Subscription/payment/checkout | [WORKFLOWS](WORKFLOWS.md), [INTEGRATIONS](INTEGRATIONS.md) | Central versus tenant payment chain |
 | Theme/UI/Page Builder | [ARCHITECTURE](ARCHITECTURE.md), [CODE-MAP](CODE-MAP.md), [CONVENTIONS](CONVENTIONS.md) | Active theme or builder format |
-| Stitch / AI-assisted UI redesign / design-to-code handoff | [STITCH-CODEX-DESIGN-WORKFLOW](STITCH-CODEX-DESIGN-WORKFLOW.md) | Current UI in browser, relevant frontend source, approved Product Brief/design artifacts |
+| Stitch / AI-assisted UI redesign / design-to-code handoff | [STITCH-CODEX-DESIGN-WORKFLOW](STITCH-CODEX-DESIGN-WORKFLOW.md) | `../skills/google-stitch/REGISTRY.md`, current UI in browser, relevant frontend source, approved Product Brief/design artifacts |
 | Plugin | [MODULES](MODULES.md), [ARCHITECTURE](ARCHITECTURE.md) | Manifest, main class, PluginManager |
 | Queue/cron/event | [BACKGROUND-PROCESSING](BACKGROUND-PROCESSING.md) | Job plus dispatch site and driver |
 | Infrastructure/performance | [INFRASTRUCTURE](INFRASTRUCTURE.md), [CHANGE-IMPACT](CHANGE-IMPACT.md) | Config versus actual runtime evidence |

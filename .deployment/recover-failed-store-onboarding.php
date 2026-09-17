@@ -56,11 +56,20 @@ $expectedDatabaseCounts = [
     'media_uploaders' => 288,
 ];
 
-$expectedDatabaseTimestamp = gmdate('Y-m-d H:i:s', strtotime($expectedFailedAt));
 $requests = StoreOnboardingRequest::query()
     ->where('status', 'failed')
-    ->where('updated_at', $expectedDatabaseTimestamp)
-    ->get();
+    ->get()
+    ->filter(static function (StoreOnboardingRequest $request) use ($expectedFailedAt): bool {
+        if (! $request->updated_at) {
+            return false;
+        }
+
+        return $request->updated_at
+            ->copy()
+            ->utc()
+            ->format('Y-m-d\\TH:i:s\\Z') === $expectedFailedAt;
+    })
+    ->values();
 
 $fail($requests->count() !== 1, 'Recovery target was not exactly one failed request.');
 $request = $requests->first();

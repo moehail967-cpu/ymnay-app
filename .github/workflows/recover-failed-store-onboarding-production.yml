@@ -96,8 +96,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" \
-            "cd '$APP_ROOT/core' && RECOVERY_CONFIRM='RECOVER_FAILED_ONBOARDING' EXPECTED_FAILED_AT='$EXPECTED_FAILED_AT' php /tmp/ymnay-recover-failed-store-onboarding.php"
+          RECOVERY_OUTPUT="$(ssh -i "$HOME/.ssh/id_deploy" -p "$PORT" "$PROD_USER@$PROD_HOST" \
+            "cd '$APP_ROOT/core' && RECOVERY_CONFIRM='RECOVER_FAILED_ONBOARDING' EXPECTED_FAILED_AT='$EXPECTED_FAILED_AT' php /tmp/ymnay-recover-failed-store-onboarding.php")"
+          printf '%s\n' "$RECOVERY_OUTPUT"
+          grep -qx 'RECOVERY_STATUS=success' <<< "$RECOVERY_OUTPUT"
 
       - name: Remove temporary recovery script
         if: always()

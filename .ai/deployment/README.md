@@ -8,6 +8,8 @@ Production deployment is **owner-gated**.
 
 No agent may deploy merely because implementation or QA is complete.
 
+`@Adam`, `@Nour`, and `@Salem` may inspect task-relevant live project paths using a separately provisioned read-only SSH identity under [READ-ONLY-PRODUCTION-SSH.md](READ-ONLY-PRODUCTION-SSH.md). `@Omar` is the only registered agent allowed to modify the server or deploy, with the owner gate and the operation-specific limits below.
+
 Normal flow:
 
 ```text

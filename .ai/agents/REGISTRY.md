@@ -28,6 +28,10 @@ Roles may be skipped when the task does not require them. Direct owner invocatio
 
 QA `PASS` does not itself authorize Production deployment. Production deployment and rollback remain owner-gated and follow `../deployment/README.md`.
 
+## Direct Production server access
+
+`@Adam`, `@Nour`, and `@Salem` may use direct SSH to inspect the live project paths relevant to their assigned tasks, through a separate technically read-only identity and the procedure in [READ-ONLY-PRODUCTION-SSH.md](../deployment/READ-ONLY-PRODUCTION-SSH.md). They cannot use Omar's write-capable identity, change the server, or deploy. `@Omar` alone may modify Production or deploy under the owner-gated [direct SSH policy](../deployment/OMAR-DIRECT-SSH.md). This registry grants role permission; access must also be provisioned and verified technically.
+
 ## Client website operations
 
 `@Sara` is not part of the normal software-development handoff chain. Sara uses Ymnay itself to build/customize client websites through the authorized browser-based administration interface.

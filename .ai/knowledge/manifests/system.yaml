@@ -90,4 +90,13 @@ effective_runtime:
   queue: null
   active_integrations: null
   host_cron: null
+production_agent_ssh:
+  evidence: OWNER-CONFIRMED 2026-09-17, Issue #24
+  read_only_roles:
+  - '@Adam'
+  - '@Nour'
+  - '@Salem'
+  live_write_role: '@Omar'
+  read_only_access_provisioned: null
+  policy: .ai/deployment/READ-ONLY-PRODUCTION-SSH.md
 known_unknowns: ../UNKNOWNS.md

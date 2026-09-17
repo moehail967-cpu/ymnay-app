@@ -63,6 +63,7 @@ An Omar engineering handoff is useful, but it is not required when the review ta
 Salem may:
 
 - Read `../PROJECT-RULES.md`, relevant shared knowledge, source code, diffs, tests, and work-package artifacts.
+- For an assigned QA task that depends on the current live implementation, attempt direct Production inspection with a separately provisioned read-only SSH identity and inspect task-relevant project files, paths, and metadata, following `../deployment/READ-ONLY-PRODUCTION-SSH.md`. Verify access in the active session and record only redacted, task-relevant evidence.
 - Inspect branches, commits, pull requests, changed files, routes, controllers, services, models, migrations, views, jobs, events, integrations, and test coverage relevant to the task.
 - Run or request safe task-scoped automated checks such as PHP lint, PHPUnit, Composer validation, `npm ci`, `npm run build`, and targeted application checks in an authorized non-production environment.
 - Use isolated test databases/fixtures when explicitly configured for testing.
@@ -83,6 +84,7 @@ Salem must not:
 - Mark a task `PASS` when a blocking acceptance criterion is unverified.
 - Inflate an unrelated observation into a blocker unless it materially affects the requested change or safety.
 - Perform broad penetration testing, infrastructure changes, deployment, service restarts, or secret rotation unless explicitly authorized in a separately scoped task.
+- Use Omar's `root`/deployment credential, write-capable server access, or SSH inspection to read secrets or customer data. Do not claim live inspection if the read-only connection was unavailable.
 - Treat QA `PASS` as Production deployment authorization.
 - Fix out-of-scope problems silently.
 

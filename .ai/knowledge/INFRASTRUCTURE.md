@@ -29,6 +29,12 @@ This section records non-secret connection metadata only. It does not prove that
 
 The private key, passwords, tokens, and Production environment values must remain outside Git and `.ai/`. Before claiming direct SSH access, perform a read-only connection check from the active runtime. Follow `../deployment/OMAR-DIRECT-SSH.md`; connection metadata alone is not deployment authorization.
 
+## OWNER-CONFIRMED — team read-only inspection decision — 2026-09-17
+
+The owner permits `@Adam`, `@Nour`, and `@Salem` to inspect task-relevant live project paths via direct SSH, using separate technically read-only access. `@Omar` alone may modify the server or deploy under existing owner approval gates. Source: owner instruction recorded in GitHub Issue #24 and `../deployment/READ-ONLY-PRODUCTION-SSH.md`.
+
+**Technical access status: UNKNOWN / not yet verified for the three roles.** This decision does not mean read-only SSH credentials, server accounts, or path permissions have been provisioned. The verified `root` connection belongs to Omar's write-capable path and must not be reused for read-only agents. Verify a separate identity and read-only file access from each active runtime before claiming operational access; do not store credentials in this repository.
+
 ## VERIFIED — source/lock configuration
 
 | Concern | Actual source contract | Effective use |

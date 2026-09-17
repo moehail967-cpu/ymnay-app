@@ -4,8 +4,12 @@ on:
     paths:
       - 'core/app/**'
       - 'core/database/**'
+      - 'core/tests/Unit/MediaSeedPathTest.php'
+      - 'core/tests/Unit/RecoveryWorkflowSafetyTest.php'
+      - '.deployment/recover-failed-store-onboarding.php'
       - '.ai/work/4-store-onboarding/tests/**'
       - '.github/workflows/onboarding-regression.yml'
+      - '.github/workflows/recover-failed-store-onboarding-production.yml'
 permissions:
   contents: read
 jobs:
@@ -64,6 +68,11 @@ jobs:
           php -l .deployment/recover-failed-store-onboarding.php
       - name: Check durable stage decisions
         run: php .ai/work/4-store-onboarding/tests/stages-regression.php > "$RUNNER_TEMP/stage-results.json"
+      - name: Check media seed and recovery guards
+        run: |
+          "$YMNAY_TEST_FIXTURE/vendor/bin/phpunit" --no-configuration --colors=never \
+            core/tests/Unit/MediaSeedPathTest.php \
+            core/tests/Unit/RecoveryWorkflowSafetyTest.php
       - name: Run real Laravel components and MySQL regression fixture
         run: |
           "$YMNAY_TEST_FIXTURE/vendor/bin/phpunit" --no-configuration --colors=never \

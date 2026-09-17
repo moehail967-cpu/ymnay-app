@@ -6,6 +6,7 @@ Evidence baseline: clean `main` at `60ba2c68e09ed367026ac62c55a666a72fba900d`, i
 
 - Canonical repository: `moehail967-cpu/ymnay-app`; canonical branch: `main`. A task branch is not deployment authority.
 - `.ai/` is the sole repository AI authority; `AGENTS.md` stays a short entry pointer. Current named agents are registered in `.ai/agents/REGISTRY.md`.
+- Team instructions are read from the latest approved GitHub `main` revision only; proposed changes on task branches take effect after merge. Do not copy `.ai/` or `AGENTS.md` to Production; the live server contains deployed application files and is not an instruction source.
 - Tracked team work follows `.ai/task-management/README.md`; GitHub Issues are the canonical task-status and handoff record.
 - Production deployment/rollback follows `.ai/deployment/README.md` and requires explicit current owner authorization. QA `PASS` does not itself authorize deployment.
 - `@Adam`, `@Nour`, and `@Salem` may use the existing general SSH connection only for task-relevant read actions on Production, including relevant errors/logs, within `.ai/deployment/READ-ONLY-PRODUCTION-SSH.md`. Adam owns product requirements and acceptance criteria; Nour owns interface design and must obtain owner acceptance before handing the approved design and Adam's plan to Omar; Salem owns independent QA. `@Omar` alone implements application code and may modify the live server or deploy, subject to the owner gates and separately scoped operational approvals.

@@ -60,7 +60,7 @@ An upstream handoff is useful for larger work, but it is not mandatory when the 
 
 For an explicitly owner-authorized Production task, Omar must load the canonical non-secret connection record in `../knowledge/INFRASTRUCTURE.md` and the procedure in `../deployment/OMAR-DIRECT-SSH.md`.
 
-Omar is the only registered project agent permitted to modify the live server or deploy, subject to the owner gate and any separately required operational approval. Adam, Nour, and Salem may use the existing general SSH connection only for task-scoped read actions under `../deployment/READ-ONLY-PRODUCTION-SSH.md`. They may complete assigned code changes in GitHub and hand the reviewed candidate to Omar. The shared account's write capability does not authorize them to change Production.
+Omar is the implementation agent and the only registered project agent permitted to modify the live server or deploy, subject to the owner gate and any separately required operational approval. Adam, Nour, and Salem may use the existing general SSH connection only for task-scoped read actions under `../deployment/READ-ONLY-PRODUCTION-SSH.md`. Adam supplies product requirements and acceptance criteria; Nour supplies the interface design after owner acceptance of its specific artifacts; Salem independently reviews Omar's candidate. The shared account's write capability does not authorize them to change Production.
 
 - The configured connection alias is `ymnay-production`; it resolves to the Production VPS metadata recorded in `INFRASTRUCTURE.md`.
 - The currently verified operational deployment channel is the manual GitHub Actions workflow `.github/workflows/deploy-production.yml`.
@@ -249,9 +249,9 @@ For tiny documentation-only or owner-explicit direct edits, follow the current t
 
 ## UI implementation from Nour
 
-When Nour supplies an approved/proposed UI package:
+When Nour supplies an owner-approved UI package:
 
-1. read the actual `UI-UX-SPEC` and `HANDOFF-TO-ENGINEER` artifacts;
+1. verify the owner's acceptance of the specific design artifacts in the GitHub Issue, then read Adam's Product Brief and the actual `UI-UX-SPEC` and `HANDOFF-TO-ENGINEER` artifacts;
 2. inspect the current implementation and reusable components;
 3. preserve the stated `Do Not Change` behavior;
 4. implement required desktop/mobile/RTL/states/interactions;

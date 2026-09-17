@@ -98,6 +98,8 @@ production_agent_ssh:
   - '@Nour'
   - '@Salem'
   live_write_role: '@Omar'
+  application_code_role: '@Omar'
+  design_acceptance_before_engineering: Owner
   separate_read_only_identity_required: false
   active_session_access: null
   policy: .ai/deployment/READ-ONLY-PRODUCTION-SSH.md

@@ -31,7 +31,7 @@ The private key, passwords, tokens, and Production environment values must remai
 
 ## OWNER-CONFIRMED — team read-only inspection decision — 2026-09-17
 
-The owner permits `@Adam`, `@Nour`, and `@Salem` to use the existing general SSH connection for task-scoped read actions on live project files and relevant errors/logs. They may complete assigned code changes in GitHub, then hand the candidate to `@Omar`. Omar alone may modify the live server or deploy under existing owner approval gates. Source: owner clarification recorded in GitHub Issue #24 and `../deployment/READ-ONLY-PRODUCTION-SSH.md`.
+The owner permits `@Adam`, `@Nour`, and `@Salem` to use the existing general SSH connection for task-scoped read actions on live project files and relevant errors/logs. Adam records product requirements and acceptance criteria for Nour; Nour designs the interface and obtains owner acceptance of the specific artifacts before handing them with Adam's plan to Omar; Salem reviews the implemented candidate. Omar alone builds application code and may modify or deploy to the live server under existing owner approval gates. Source: owner clarification recorded in GitHub Issue #24 and `../deployment/READ-ONLY-PRODUCTION-SSH.md`.
 
 **Connection status:** the existing general SSH connection was verified from one desktop session on 2026-09-17; reachability from a future agent session is not guaranteed. The account may be write-capable, but Adam, Nour, and Salem are authorized only to read. Verify connectivity from the active runtime before claiming live inspection, and never store credentials in this repository.
 

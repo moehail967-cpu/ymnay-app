@@ -7,8 +7,8 @@ The owner authorizes `@Adam`, `@Nour`, and `@Salem` to use the existing general 
 1. Identify the assigned task, affected central/tenant context, and likely paths. Read the repository source and current project guidance.
 2. Connect through the approved existing SSH connection. Verify the host and current session with non-mutating commands before claiming live access. Inspect only paths and errors relevant to the task under `/home/ymnay/htdocs/ymnay.com`, including `core/` when applicable.
 3. Use bounded read commands such as `pwd`, `hostname`, `id`, `stat`, `ls`, `find`, `rg`/`grep`, `sed`, `cat`, `head`, and `tail`. Read only the smallest log segment needed. Redact secrets and customer data before recording evidence. Distinguish live findings from repository code and inference.
-4. Complete authorized task changes on a GitHub task branch/PR. Run verification in a safe non-Production environment. Do not edit or deploy files on the live server to test a fix.
-5. Record the changed branch/commit/PR, checks, relevant live evidence, and remaining risks in the GitHub Issue. Follow the task-management review gate, then hand the completed candidate to `@Omar` for owner-authorized deployment. If live access fails, report it and continue with available repository evidence where possible.
+4. Complete the assigned role's artifacts in the GitHub Issue or task work package: Adam's system-grounded Product Brief and acceptance criteria for Nour; Nour's interface specification and real design references for owner acceptance, followed by a handoff of the accepted design and Adam's plan to Omar; Salem's independent QA evidence and verdict for Omar's implemented candidate. These roles do not edit application source code.
+5. Record relevant live evidence, artifact links, checks, and remaining risks in the GitHub Issue. Follow the role handoff and owner design/release gates in task management. If live access fails, report it and continue with available repository evidence where possible.
 
 ## Server boundary
 

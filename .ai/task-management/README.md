@@ -212,43 +212,46 @@ Create only files that are actually needed. Do not create empty folders or fake 
 
 ## Role routing
 
-Default team flow when all stages and a Production release are needed:
+Default team flow when all stages and Production release are needed:
 
 ```text
 Owner
-  → `@Adam`  Product / UX
-  → `@Nour`  UI / UX design
-  → assigned GitHub implementer (`@Adam`, `@Nour`, `@Salem`, or `@Omar`)
-  → independent QA / review
+  → `@Adam`  product brief / acceptance criteria
+  → `@Nour`  interface design / prototypes
+  → Owner accepts the specific design package
+  → `@Omar`  application implementation from Adam's plan and Nour's approved design
+  → `@Salem` QA / review
   → Owner deployment approval
-  → `@Omar` Production deployment
+  → GitHub Actions Production deployment
   → Owner / DONE
 ```
 
-Direct invocation is still allowed. A task can skip roles that are unnecessary for its scope. Adam, Nour, and Salem may complete assigned fixes/code changes in GitHub, then hand the exact reviewed candidate to Omar after the owner release gate. The implementer cannot serve as the independent reviewer of their own change.
+Direct invocation is still allowed. A task can skip roles that are unnecessary for its scope.
+
+When design is part of the task, Nour records the exact proposed artifacts and routes the Issue to `NEEDS_REVIEW` with `Current Agent: Owner`. Only after the owner accepts those artifacts does Nour route `READY_FOR_DEVELOPMENT` to Omar with Adam's brief and the approved design package. Owner design acceptance and owner Production release authorization are separate decisions.
 
 Routing rules:
 
 - product/business ambiguity → `@Adam` or Owner;
 - interface/design work → `@Nour`;
-- implementation/fix → the owner-assigned agent on a GitHub branch/PR; `@Omar` handles Production deployment;
-- independent verification/retest → `@Salem` by default; choose another reviewer when Salem authored the change;
+- implementation/fix → `@Omar`;
+- independent verification/retest → `@Salem`;
 - Production deployment/rollback authorization → Owner;
 - strategic/business acceptance → Owner.
 
 ## QA loop
 
-If the independent reviewer returns `FAIL`:
+If Salem returns `FAIL`:
 
 1. set `Status: QA_FAILED`;
-2. route `Current Agent` to the agent who owns the blocker or the assigned implementer;
-3. the reviewer posts reproducible blocker evidence;
+2. route `Current Agent` to the role that owns the blocker, usually `@Omar`;
+3. Salem posts reproducible blocker evidence;
 4. responsible agent fixes/clarifies and sets `READY_FOR_QA` again;
-5. the same independent reviewer retests before changing the verdict.
+5. Salem retests before changing the verdict.
 
 A code change alone does not close a QA finding.
 
-If the independent reviewer returns `PASS` for a code change that must go live:
+If Salem returns `PASS` for a code change that must go live:
 
 1. set `Status: READY_FOR_DEPLOYMENT`;
 2. set `Current Agent: Owner`;
@@ -257,8 +260,6 @@ If the independent reviewer returns `PASS` for a code change that must go live:
 5. wait for explicit owner deployment authorization.
 
 A QA `PASS` is not deployment authorization.
-
-If Salem implemented the candidate, another designated reviewer must verify it before `READY_FOR_DEPLOYMENT`; Salem cannot issue an independent QA `PASS` on his own code.
 
 ## Deployment lifecycle
 
@@ -270,13 +271,12 @@ Before deployment:
 - QA/owner acceptance required by scope must be recorded;
 - schema/worker/service operational requirements must be identified;
 - owner must explicitly authorize Production deployment.
-- `@Omar` must receive the exact reviewed candidate and deployment impact from the implementer/reviewer.
 
 When deployment starts:
 
 ```text
 Status: DEPLOYING
-Current Agent: `@Omar`
+Current Agent: Owner
 Deployment: <workflow run / commit>
 ```
 

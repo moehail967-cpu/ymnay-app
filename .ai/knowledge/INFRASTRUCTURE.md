@@ -11,7 +11,7 @@ Production web root: `/home/ymnay/htdocs/ymnay.com`; Laravel root: `/home/ymnay/
 | PHP settings | memory 768M; execution 600s; upload 512M; POST 256M; display_errors Off | Owner-supplied web/runtime values; CLI may differ; POST limit is lower than upload limit |
 | Extensions | redis, memcached, PDO/pdo_mysql/mysqli, curl, openssl, mbstring, intl, imagick, gd, sockets, sodium, xml, zip, OPcache | Installed capability only, not proof each is used |
 
-## OWNER-CONFIRMED — Omar Production access profile — 2026-09-16
+## OWNER-CONFIRMED — Production SSH connection profile — 2026-09-16
 
 This section records non-secret connection metadata only. It does not prove that every execution environment can reach the server or possesses the matching private key.
 
@@ -20,14 +20,20 @@ This section records non-secret connection metadata only. It does not prove that
 | SSH alias | `ymnay-production` | Convenience alias; the active runtime must have its own secure SSH configuration |
 | Host | `148.230.114.69` | Production VPS |
 | Port | `22` | Direct outbound TCP/22 is blocked in the current ChatGPT cloud runtime |
-| User | `root` | Administrative access; use only with explicit owner authorization and the direct-SSH policy |
+| User | `root` | Administrative account; Adam/Nour/Salem are limited by role policy to read actions, while only Omar may perform approved live changes |
 | Authorized key identity | `codex-ymnay-deploy-2026-09-16` | Public fingerprint: `SHA256:UrphjzYtIVL6DV898caxiqBNuXttrTHJklXv5EEscJs` |
 | Web root | `/home/ymnay/htdocs/ymnay.com` | Root HTTP entry remains the repository root `index.php` |
 | Laravel root | `/home/ymnay/htdocs/ymnay.com/core` | Run Laravel commands from this directory only when specifically authorized |
 | Health URL | `https://ymnay.com/` | Public post-deployment health target |
 | Current verified deployment channel | `.github/workflows/deploy-production.yml` | Manual GitHub Actions workflow; successful run `35156339983` deployed commit `e1a4e6ebc522f2e8f2961424222d0c4803c04add` |
 
-The private key, passwords, tokens, and Production environment values must remain outside Git and `.ai/`. Before claiming direct SSH access, perform a read-only connection check from the active runtime. Follow `../deployment/OMAR-DIRECT-SSH.md`; connection metadata alone is not deployment authorization.
+The private key, passwords, tokens, and Production environment values must remain outside Git and `.ai/`. Before claiming direct SSH access, perform a read-only connection check from the active runtime. Follow `../deployment/READ-ONLY-PRODUCTION-SSH.md` for Adam/Nour/Salem and `../deployment/OMAR-DIRECT-SSH.md` for Omar's approved live changes; connection metadata alone is not deployment authorization.
+
+## OWNER-CONFIRMED — team read-only inspection decision — 2026-09-17
+
+The owner permits `@Adam`, `@Nour`, and `@Salem` to use the existing general SSH connection for task-scoped read actions on live project files and relevant errors/logs. Adam records product requirements and acceptance criteria for Nour; Nour designs the interface and obtains owner acceptance of the specific artifacts before handing them with Adam's plan to Omar; Salem reviews the implemented candidate. Omar alone builds application code and may modify or deploy to the live server under existing owner approval gates. Source: owner clarification recorded in GitHub Issue #24 and `../deployment/READ-ONLY-PRODUCTION-SSH.md`.
+
+**Connection status:** the existing general SSH connection was verified from one desktop session on 2026-09-17; reachability from a future agent session is not guaranteed. The account may be write-capable, but Adam, Nour, and Salem are authorized only to read. Verify connectivity from the active runtime before claiming live inspection, and never store credentials in this repository.
 
 ## VERIFIED — source/lock configuration
 

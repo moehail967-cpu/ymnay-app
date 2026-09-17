@@ -21,10 +21,12 @@ Do not infer that an unregistered name is an agent. Do not copy project knowledg
 When all software-development stages and a Production release are required:
 
 ```text
-Owner → `@Adam` → `@Nour` → `@Omar` → `@Salem` → Owner deployment approval → GitHub Actions deployment → DONE
+Owner → `@Adam` product brief/acceptance criteria → `@Nour` interface design → Owner design acceptance → `@Omar` application implementation → `@Salem` QA → Owner deployment approval → `@Omar` deployment → DONE
 ```
 
 Roles may be skipped when the task does not require them. Direct owner invocation remains allowed.
+
+Adam, Nour, and Salem may inspect task-relevant live files and errors over the existing general SSH connection under [read-only Production SSH policy](../deployment/READ-ONLY-PRODUCTION-SSH.md). Their deliverables are product, design, and QA artifacts respectively; Omar owns application code. Owner acceptance of Nour's specific design package is required before the Nour-to-Omar handoff when design is part of the task.
 
 QA `PASS` does not itself authorize Production deployment. Production deployment and rollback remain owner-gated and follow `../deployment/README.md`.
 

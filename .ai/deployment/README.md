@@ -8,17 +8,19 @@ Production deployment is **owner-gated**.
 
 No agent may deploy merely because implementation or QA is complete.
 
-Normal flow:
+Normal flow after requirements and any owner-accepted interface design:
 
 ```text
-@Omar implementation
+@Omar application implementation
 → @Salem QA
 → READY_FOR_DEPLOYMENT
 → Owner explicitly approves deployment
-→ GitHub Actions manual workflow
+→ @Omar runs the approved GitHub Actions manual workflow or authorized direct SSH deployment
 → Production health check
 → DEPLOYED / DEPLOY_FAILED
 ```
+
+`@Adam`, `@Nour`, and `@Salem` may inspect task-relevant live files and errors through the existing general SSH connection under [read-only Production SSH policy](READ-ONLY-PRODUCTION-SSH.md). They do not modify application code or Production. Omar owns implementation and live changes. Design acceptance by the owner, when applicable, precedes Omar's implementation; release authorization remains a separate later decision.
 
 ## Production target
 

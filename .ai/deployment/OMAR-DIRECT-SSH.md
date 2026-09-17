@@ -2,6 +2,8 @@
 
 This policy authorizes `@Omar` to use an owner-authorized direct SSH/terminal connection for Production deployments.
 
+`@Adam`, `@Nour`, and `@Salem` may use the existing general connection only for task-scoped read actions under [READ-ONLY-PRODUCTION-SSH.md](READ-ONLY-PRODUCTION-SSH.md). Omar alone implements application code and performs owner-authorized live changes. Where Nour designs the interface, the owner accepts the specific design package before Nour hands it and Adam's product plan to Omar.
+
 ## Release gate
 
 Direct SSH does not remove the owner gate.

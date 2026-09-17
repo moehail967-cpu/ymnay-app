@@ -216,9 +216,10 @@ Default team flow when all stages and Production release are needed:
 
 ```text
 Owner
-  → `@Adam`  Product / UX
-  → `@Nour`  UI / UX design
-  → `@Omar`  implementation
+  → `@Adam`  product brief / acceptance criteria
+  → `@Nour`  interface design / prototypes
+  → Owner accepts the specific design package
+  → `@Omar`  application implementation from Adam's plan and Nour's approved design
   → `@Salem` QA / review
   → Owner deployment approval
   → GitHub Actions Production deployment
@@ -226,6 +227,8 @@ Owner
 ```
 
 Direct invocation is still allowed. A task can skip roles that are unnecessary for its scope.
+
+When design is part of the task, Nour records the exact proposed artifacts and routes the Issue to `NEEDS_REVIEW` with `Current Agent: Owner`. Only after the owner accepts those artifacts does Nour route `READY_FOR_DEVELOPMENT` to Omar with Adam's brief and the approved design package. Owner design acceptance and owner Production release authorization are separate decisions.
 
 Routing rules:
 

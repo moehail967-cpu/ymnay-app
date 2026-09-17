@@ -8,6 +8,7 @@ Evidence baseline: clean `main` at `60ba2c68e09ed367026ac62c55a666a72fba900d`, i
 - `.ai/` is the sole repository AI authority; `AGENTS.md` stays a short entry pointer. Current named agents are registered in `.ai/agents/REGISTRY.md`.
 - Tracked team work follows `.ai/task-management/README.md`; GitHub Issues are the canonical task-status and handoff record.
 - Production deployment/rollback follows `.ai/deployment/README.md` and requires explicit current owner authorization. QA `PASS` does not itself authorize deployment.
+- `@Adam`, `@Nour`, and `@Salem` may use the existing general SSH connection only for task-relevant read actions on Production, including relevant errors/logs, within `.ai/deployment/READ-ONLY-PRODUCTION-SSH.md`. Adam owns product requirements and acceptance criteria; Nour owns interface design and must obtain owner acceptance before handing the approved design and Adam's plan to Omar; Salem owns independent QA. `@Omar` alone implements application code and may modify the live server or deploy, subject to the owner gates and separately scoped operational approvals.
 - Preserve existing architecture and user-facing behavior outside the requested scope. No unsolicited refactor, schema repair, UI change, or dependency upgrade.
 - Never commit secrets, production environment files, customer uploads/proofs, generated invoices, logs, caches, sessions, dumps, backups, installed dependencies, or runtime storage. Preserve the sanitized `core/.env.example` and existing `.gitignore` exclusions.
 

@@ -10,6 +10,8 @@ Baseline: `main` / `60ba2c68e09ed367026ac62c55a666a72fba900d`; discovery date: 2
 - **OWNER-CONFIRMED:** infrastructure/task input supplied on 2026-09-12; explicitly distinguish this provenance from code verification.
 - Table rows inherit their section's label unless marked otherwise. Manifest `evidence`/`sources` serve the same purpose. Empty arrays mean none found in that declared static inventory, not a guarantee of no dynamic behavior; `null` means unknown/not established.
 
+External product/tool capability documents such as `STITCH-CODEX-DESIGN-WORKFLOW.md` may cite current vendor documentation. A verified vendor capability does not prove the capability is configured, connected, authorized, or working in the active YMNAY task environment; task access must be verified separately.
+
 ## Read only what the task needs
 
 | Task | Start here | Then inspect |
@@ -22,6 +24,7 @@ Baseline: `main` / `60ba2c68e09ed367026ac62c55a666a72fba900d`; discovery date: 2
 | Login/permissions | [AUTHORIZATION](AUTHORIZATION.md), [SECURITY](SECURITY.md) | Exact actor, guard, route middleware |
 | Subscription/payment/checkout | [WORKFLOWS](WORKFLOWS.md), [INTEGRATIONS](INTEGRATIONS.md) | Central versus tenant payment chain |
 | Theme/UI/Page Builder | [ARCHITECTURE](ARCHITECTURE.md), [CODE-MAP](CODE-MAP.md), [CONVENTIONS](CONVENTIONS.md) | Active theme or builder format |
+| Stitch / AI-assisted UI redesign / design-to-code handoff | [STITCH-CODEX-DESIGN-WORKFLOW](STITCH-CODEX-DESIGN-WORKFLOW.md) | Current UI in browser, relevant frontend source, approved Product Brief/design artifacts |
 | Plugin | [MODULES](MODULES.md), [ARCHITECTURE](ARCHITECTURE.md) | Manifest, main class, PluginManager |
 | Queue/cron/event | [BACKGROUND-PROCESSING](BACKGROUND-PROCESSING.md) | Job plus dispatch site and driver |
 | Infrastructure/performance | [INFRASTRUCTURE](INFRASTRUCTURE.md), [CHANGE-IMPACT](CHANGE-IMPACT.md) | Config versus actual runtime evidence |

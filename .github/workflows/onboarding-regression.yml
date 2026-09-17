@@ -60,6 +60,8 @@ jobs:
           php -l core/app/Listeners/TenantDomainCreate.php
           php -l core/app/Providers/TenancyServiceProvider.php
           php -l core/database/seeders/TenantDatabaseSeeder.php
+          php -l core/database/seeders/Tenant/MediaSeed.php
+          php -l .deployment/recover-failed-store-onboarding.php
       - name: Check durable stage decisions
         run: php .ai/work/4-store-onboarding/tests/stages-regression.php > "$RUNNER_TEMP/stage-results.json"
       - name: Run real Laravel components and MySQL regression fixture

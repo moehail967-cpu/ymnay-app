@@ -168,9 +168,9 @@ $proofContents = "synthetic G01 file; no production data\n";
 foreach ([
     // Exercises the asynchronous Storage-based tenant file copy.
     storage_path('app/seeder-files/all-media'),
-    // The legacy MediaSeed expects the distribution's optional demo-media bundle.
-    // Supply one synthetic fixture so a source checkout can exercise the copy path.
-    base_path('assets/tenant/seeder-files/all-media'),
+    // MediaSeed reads the repository-root demo bundle through the canonical
+    // global asset helper, matching the Production document-root topology.
+    global_assets_path('assets/tenant/seeder-files/all-media'),
 ] as $proofDirectory) {
     if (! is_dir($proofDirectory) && ! mkdir($proofDirectory, 0775, true) && ! is_dir($proofDirectory)) {
         throw new RuntimeException("Could not create the isolated file evidence directory: {$proofDirectory}");

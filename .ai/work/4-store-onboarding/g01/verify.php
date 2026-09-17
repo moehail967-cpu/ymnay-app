@@ -58,7 +58,7 @@ $tenantFileExists = static function (Tenant $fileTenant): bool {
 };
 $assert($tenantFileExists($tenant), 'Delayed tenant file copy did not finish.');
 $assert(
-    is_file(base_path('assets/tenant/uploads/media-uploader/g01-browser-store/g01-proof.txt')),
+    is_file(global_assets_path('assets/tenant/uploads/media-uploader/g01-browser-store/g01-proof.txt')),
     'Legacy tenant media copy did not finish.'
 );
 $assert(DB::table('file_sync_jobs')->count() === 0, 'Tenant file queue was not drained.');

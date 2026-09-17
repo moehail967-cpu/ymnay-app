@@ -8,6 +8,8 @@ When a repository-aware task explicitly addresses a registered handle (for examp
 
 Do not infer that an unregistered name is an agent. Do not copy project knowledge into agent definitions; agents read the shared knowledge base through `../AGENT-BOOTSTRAP.md`.
 
+For `@Nour`, Google Stitch work has one additional mandatory role resource: when a task explicitly uses Stitch or materially depends on the Stitch-to-Code workflow, read [`../skills/google-stitch/REGISTRY.md`](../skills/google-stitch/REGISTRY.md) after Nour's definition and before invoking any Stitch skill. Only skills marked ACTIVE there are assigned to Nour. Each local skill wrapper pins the exact Google Labs upstream skill revision and YMNAY guardrails. A registered skill does not prove Stitch MCP/runtime access; verify task access separately.
+
 | Handle | Name | Role | Definition | Status | Aliases |
 |---|---|---|---|---|---|
 | `@Adam` | Adam | Product & UX Engineer | [adam-product-ux.md](adam-product-ux.md) | ACTIVE | `Adam`, `Product/UX`, `Product Agent` |

@@ -10,18 +10,24 @@ use Xgenious\PageBuilder\Core\WidgetCategory;
 class InstagramWidget extends BaseWidget
 {
     protected function getWidgetType(): string  { return 'aromatic_instagram_widget'; }
-    protected function getWidgetName(): string  { return 'Aromatic: Instagram'; }
+    protected function getWidgetName(): string  { return 'Aromatic: معرض الصور'; }
     protected function getWidgetIcon(): string|array { return 'lab la-instagram'; }
-    protected function getWidgetDescription(): string { return __('Instagram follow CTA section'); }
+    protected function getWidgetDescription(): string { return 'معرض صور وروابط إنستغرام قابلة للتعديل'; }
     protected function getCategory(): string    { return WidgetCategory::THEME; }
     protected function getWidgetTags(): array   { return ['instagram', 'social', 'aromatic']; }
 
     public function getGeneralFields(): array
     {
         $control = new ControlManager();
-        $control->addGroup('content', 'Content')
-            ->registerField('title',        FieldManager::TEXT()->setLabel('Title')->setDefault('Follow Us on Instagram'))
-            ->registerField('instagram_url', FieldManager::URL()->setLabel('Instagram URL')->setDefault('#'))
+        $control->addGroup('content', 'المحتوى')
+            ->registerField('title',        FieldManager::TEXT()->setLabel('العنوان')->setDefault('مجتمع أثير على إنستغرام'))
+            ->registerField('instagram_url', FieldManager::URL()->setLabel('رابط إنستغرام')->setDefault('#'))
+            ->endGroup();
+        $control->addGroup('media', 'الصور')
+            ->registerField('image_one', FieldManager::IMAGE()->setLabel('الصورة الأولى'))
+            ->registerField('image_two', FieldManager::IMAGE()->setLabel('الصورة الثانية'))
+            ->registerField('image_three', FieldManager::IMAGE()->setLabel('الصورة الثالثة'))
+            ->registerField('image_four', FieldManager::IMAGE()->setLabel('الصورة الرابعة'))
             ->endGroup();
 
         return $control->getFields();
@@ -30,9 +36,9 @@ class InstagramWidget extends BaseWidget
     public function getStyleFields(): array
     {
         $control = new ControlManager();
-        $control->addGroup('spacing', 'Spacing')
-            ->registerField('padding_top',    FieldManager::NUMBER()->setLabel('Padding Top (px)')->setDefault(50)->setMin(0)->setMax(200))
-            ->registerField('padding_bottom', FieldManager::NUMBER()->setLabel('Padding Bottom (px)')->setDefault(50)->setMin(0)->setMax(200))
+        $control->addGroup('spacing', 'المسافات')
+            ->registerField('padding_top',    FieldManager::NUMBER()->setLabel('المسافة العلوية (بكسل)')->setDefault(50)->setMin(0)->setMax(200))
+            ->registerField('padding_bottom', FieldManager::NUMBER()->setLabel('المسافة السفلية (بكسل)')->setDefault(50)->setMin(0)->setMax(200))
             ->endGroup();
         return $control->getFields();
     }
@@ -44,13 +50,28 @@ class InstagramWidget extends BaseWidget
         }
 
         $content = $settings['general']['content'] ?? [];
+        $media = $settings['general']['media'] ?? [];
         $spacing = $settings['style']['spacing']   ?? [];
 
         $rawUrl = $content['instagram_url'] ?? '#';
+        $images = [];
+        foreach (['image_one', 'image_two', 'image_three', 'image_four'] as $field) {
+            $image = $media[$field] ?? null;
+            $url = is_array($image) ? ($image['img_url'] ?? $image['url'] ?? null) : null;
+            $id = is_array($image) ? ($image['id'] ?? null) : $image;
+            if (!$url && is_numeric($id)) {
+                $attachment = get_attachment_image_by_id((int) $id);
+                $url = $attachment['img_url'] ?? null;
+            }
+            if ($url) {
+                $images[] = $url;
+            }
+        }
 
         return view('theme-aromatic::widgets.instagram_widget', [
-            'title'          => $content['title'] ?? 'Follow Us on Instagram',
+            'title'          => $content['title'] ?? 'مجتمع أثير على إنستغرام',
             'instagram_url'  => is_array($rawUrl) ? ($rawUrl['url'] ?? '#') : $rawUrl,
+            'images'         => $images,
             'padding_top'    => (int) ($spacing['padding_top']    ?? 50),
             'padding_bottom' => (int) ($spacing['padding_bottom'] ?? 50),
         ])->render();

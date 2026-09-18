@@ -11,21 +11,21 @@ use Xgenious\PageBuilder\Core\WidgetCategory;
 class ProductTypeList extends BaseWidget
 {
     protected function getWidgetType(): string  { return 'aromatic_product_type_list'; }
-    protected function getWidgetName(): string  { return 'Aromatic: Our Store'; }
+    protected function getWidgetName(): string  { return 'Aromatic: منتجات المتجر'; }
     protected function getWidgetIcon(): string|array { return 'las la-store'; }
-    protected function getWidgetDescription(): string { return __('Tabbed category-filtered product grid'); }
+    protected function getWidgetDescription(): string { return 'شبكة منتجات بفئات قابلة للتصفية'; }
     protected function getCategory(): string    { return WidgetCategory::THEME; }
     protected function getWidgetTags(): array   { return ['products', 'store', 'tabs', 'category', 'aromatic']; }
 
     public function getGeneralFields(): array
     {
         $control = new ControlManager();
-        $control->addGroup('content', 'Content')
-            ->registerField('title',     FieldManager::TEXT()->setLabel('Section Title')->setDefault('Our Store'))
-            ->registerField('show_line', FieldManager::SELECT()->setLabel('Show Underline')->setOptions(['yes' => 'Yes', 'no' => 'No'])->setDefault('yes'))
-            ->registerField('item_show', FieldManager::NUMBER()->setLabel('Products to Show')->setDefault(8)->setMin(2)->setMax(24))
-            ->registerField('sort_by',   FieldManager::SELECT()->setLabel('Sort By')->setOptions(['id' => 'Default', 'created_at' => 'Newest', 'sale_price' => 'Price'])->setDefault('id'))
-            ->registerField('sort_to',   FieldManager::SELECT()->setLabel('Order')->setOptions(['desc' => 'Descending', 'asc' => 'Ascending'])->setDefault('desc'))
+        $control->addGroup('content', 'المحتوى')
+            ->registerField('title',     FieldManager::TEXT()->setLabel('عنوان القسم')->setDefault('منتجاتنا الأكثر طلباً'))
+            ->registerField('show_line', FieldManager::SELECT()->setLabel('إظهار الخط')->setOptions(['yes' => 'نعم', 'no' => 'لا'])->setDefault('yes'))
+            ->registerField('item_show', FieldManager::NUMBER()->setLabel('عدد المنتجات')->setDefault(8)->setMin(2)->setMax(24))
+            ->registerField('sort_by',   FieldManager::SELECT()->setLabel('ترتيب حسب')->setOptions(['id' => 'الافتراضي', 'created_at' => 'الأحدث', 'sale_price' => 'السعر'])->setDefault('id'))
+            ->registerField('sort_to',   FieldManager::SELECT()->setLabel('الاتجاه')->setOptions(['desc' => 'تنازلي', 'asc' => 'تصاعدي'])->setDefault('desc'))
             ->endGroup();
 
         return $control->getFields();
@@ -34,9 +34,9 @@ class ProductTypeList extends BaseWidget
     public function getStyleFields(): array
     {
         $control = new ControlManager();
-        $control->addGroup('spacing', 'Spacing')
-            ->registerField('padding_top',    FieldManager::NUMBER()->setLabel('Padding Top (px)')->setDefault(80)->setMin(0)->setMax(300))
-            ->registerField('padding_bottom', FieldManager::NUMBER()->setLabel('Padding Bottom (px)')->setDefault(80)->setMin(0)->setMax(300))
+        $control->addGroup('spacing', 'المسافات')
+            ->registerField('padding_top',    FieldManager::NUMBER()->setLabel('المسافة العلوية (بكسل)')->setDefault(80)->setMin(0)->setMax(300))
+            ->registerField('padding_bottom', FieldManager::NUMBER()->setLabel('المسافة السفلية (بكسل)')->setDefault(80)->setMin(0)->setMax(300))
             ->endGroup();
         return $control->getFields();
     }
@@ -69,7 +69,7 @@ class ProductTypeList extends BaseWidget
             $categories = $products->pluck('category')->filter()->unique('id')->values();
 
             return view('theme-aromatic::widgets.product_type_list', [
-                'title'          => $content['title']    ?? 'Our Store',
+                'title'          => $content['title']    ?? 'منتجاتنا الأكثر طلباً',
                 'show_line'      => ($content['show_line'] ?? 'yes') === 'yes',
                 'products'       => $products,
                 'categories'     => $categories,

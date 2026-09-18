@@ -10,7 +10,7 @@ use Xgenious\PageBuilder\Core\WidgetCategory;
 class PromoBanner extends BaseWidget
 {
     protected function getWidgetType(): string  { return 'aromatic_promo_banner'; }
-    protected function getWidgetName(): string  { return 'Aromatic: Promo Banner'; }
+    protected function getWidgetName(): string  { return 'Aromatic: العرض المميز'; }
     protected function getWidgetIcon(): string|array { return 'las la-star'; }
     protected function getWidgetDescription(): string { return __('Split promo banner: text + price + CTA on left, product image on right'); }
     protected function getCategory(): string    { return WidgetCategory::THEME; }
@@ -19,15 +19,15 @@ class PromoBanner extends BaseWidget
     public function getGeneralFields(): array
     {
         $control = new ControlManager();
-        $control->addGroup('content', 'Content')
-            ->registerField('title',       FieldManager::TEXTAREA()->setLabel('Title (HTML allowed)')->setDefault('New Perfume Collection'))
-            ->registerField('price',       FieldManager::TEXT()->setLabel('Price (number only)')->setDefault('320'))
-            ->registerField('button_text', FieldManager::TEXT()->setLabel('Button Text')->setDefault('Buy Now'))
-            ->registerField('button_url',  FieldManager::URL()->setLabel('Button URL')->setDefault('#'))
+        $control->addGroup('content', 'المحتوى')
+            ->registerField('title',       FieldManager::TEXTAREA()->setLabel('العنوان (يسمح بتنسيق HTML)')->setDefault('ثلاثية العطور النادرة'))
+            ->registerField('price',       FieldManager::TEXT()->setLabel('السعر الاختياري')->setDefault(''))
+            ->registerField('button_text', FieldManager::TEXT()->setLabel('نص الزر')->setDefault('اكتشف المجموعة'))
+            ->registerField('button_url',  FieldManager::URL()->setLabel('رابط الزر')->setDefault('#'))
             ->endGroup();
 
-        $control->addGroup('media', 'Media')
-            ->registerField('promo_image', FieldManager::IMAGE()->setLabel('Product Image'))
+        $control->addGroup('media', 'الصور')
+            ->registerField('promo_image', FieldManager::IMAGE()->setLabel('صورة المجموعة'))
             ->endGroup();
 
         return $control->getFields();
@@ -36,9 +36,9 @@ class PromoBanner extends BaseWidget
     public function getStyleFields(): array
     {
         $control = new ControlManager();
-        $control->addGroup('spacing', 'Spacing')
-            ->registerField('padding_top',    FieldManager::NUMBER()->setLabel('Padding Top (px)')->setDefault(80)->setMin(0)->setMax(200))
-            ->registerField('padding_bottom', FieldManager::NUMBER()->setLabel('Padding Bottom (px)')->setDefault(80)->setMin(0)->setMax(200))
+        $control->addGroup('spacing', 'المسافات')
+            ->registerField('padding_top',    FieldManager::NUMBER()->setLabel('المسافة العلوية (بكسل)')->setDefault(80)->setMin(0)->setMax(200))
+            ->registerField('padding_bottom', FieldManager::NUMBER()->setLabel('المسافة السفلية (بكسل)')->setDefault(80)->setMin(0)->setMax(200))
             ->endGroup();
         return $control->getFields();
     }
@@ -76,9 +76,9 @@ class PromoBanner extends BaseWidget
             $rawUrl = $content['button_url'] ?? '#';
 
             return view('theme-aromatic::widgets.promo_banner', [
-                'title'          => $content['title']       ?? 'New Perfume Collection',
-                'price'          => $content['price']       ?? '320',
-                'button_text'    => $content['button_text'] ?? 'Buy Now',
+                'title'          => $content['title']       ?? 'ثلاثية العطور النادرة',
+                'price'          => $content['price']       ?? '',
+                'button_text'    => $content['button_text'] ?? 'اكتشف المجموعة',
                 'button_url'     => is_array($rawUrl) ? ($rawUrl['url'] ?? '#') : $rawUrl,
                 'image_url'      => $image_url,
                 'padding_top'    => (int) ($spacing['padding_top']    ?? 80),

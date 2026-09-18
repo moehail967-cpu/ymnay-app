@@ -37,7 +37,7 @@
                 {!! renderNavbarIconsHooks() !!}
 
                 {{-- Mobile toggle --}}
-                <button class="ar-hamburger d-lg-none" id="arMenuToggle" type="button" aria-label="Menu">
+                <button class="ar-hamburger d-lg-none" id="arMenuToggle" type="button" aria-label="{{ __('القائمة') }}" aria-controls="arMobileNav" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
             </div>
@@ -79,6 +79,6 @@
     window.arDoSearch=function(){var q=(document.getElementById('ar_search_input')||{}).value?.trim();if(q)location.href='{{ theme_shop_url() }}?search='+encodeURIComponent(q);};
     window.arDoSearchMob=function(){var q=(document.getElementById('ar_search_mob')||{}).value?.trim();if(q)location.href='{{ theme_shop_url() }}?search='+encodeURIComponent(q);};
     var tog=document.getElementById('arMenuToggle'),nav=document.getElementById('arMobileNav');
-    if(tog&&nav)tog.addEventListener('click',function(){nav.classList.toggle('open');this.classList.toggle('open');});
+    if(tog&&nav)tog.addEventListener('click',function(){var open=nav.classList.toggle('open');this.classList.toggle('open',open);this.setAttribute('aria-expanded',String(open));});
 })();
 </script>

@@ -11,20 +11,20 @@ use Xgenious\PageBuilder\Core\WidgetCategory;
 class NewCollection extends BaseWidget
 {
     protected function getWidgetType(): string  { return 'aromatic_new_collection'; }
-    protected function getWidgetName(): string  { return 'Aromatic: New Collection'; }
+    protected function getWidgetName(): string  { return 'Aromatic: التشكيلة الجديدة'; }
     protected function getWidgetIcon(): string|array { return 'las la-shopping-bag'; }
-    protected function getWidgetDescription(): string { return __('New arrivals product grid – 4 columns with centered title'); }
+    protected function getWidgetDescription(): string { return 'شبكة أحدث المنتجات بعنوان قابل للتعديل'; }
     protected function getCategory(): string    { return WidgetCategory::THEME; }
     protected function getWidgetTags(): array   { return ['products', 'new', 'collection', 'aromatic']; }
 
     public function getGeneralFields(): array
     {
         $control = new ControlManager();
-        $control->addGroup('content', 'Content')
-            ->registerField('title',      FieldManager::TEXT()->setLabel('Section Title')->setDefault('New Collections'))
-            ->registerField('show_line',  FieldManager::SELECT()->setLabel('Show Underline')->setOptions(['yes' => 'Yes', 'no' => 'No'])->setDefault('yes'))
-            ->registerField('item_show',  FieldManager::NUMBER()->setLabel('Products to Show')->setDefault(4)->setMin(2)->setMax(12))
-            ->registerField('item_order', FieldManager::SELECT()->setLabel('Order')->setOptions(['desc' => 'Newest First', 'asc' => 'Oldest First'])->setDefault('desc'))
+        $control->addGroup('content', 'المحتوى')
+            ->registerField('title',      FieldManager::TEXT()->setLabel('عنوان القسم')->setDefault('تشكيلة جديدة تستحق الاكتشاف'))
+            ->registerField('show_line',  FieldManager::SELECT()->setLabel('إظهار الخط')->setOptions(['yes' => 'نعم', 'no' => 'لا'])->setDefault('yes'))
+            ->registerField('item_show',  FieldManager::NUMBER()->setLabel('عدد المنتجات')->setDefault(4)->setMin(2)->setMax(12))
+            ->registerField('item_order', FieldManager::SELECT()->setLabel('الترتيب')->setOptions(['desc' => 'الأحدث أولاً', 'asc' => 'الأقدم أولاً'])->setDefault('desc'))
             ->endGroup();
 
         return $control->getFields();
@@ -33,9 +33,9 @@ class NewCollection extends BaseWidget
     public function getStyleFields(): array
     {
         $control = new ControlManager();
-        $control->addGroup('spacing', 'Spacing')
-            ->registerField('padding_top',    FieldManager::NUMBER()->setLabel('Padding Top (px)')->setDefault(80)->setMin(0)->setMax(300))
-            ->registerField('padding_bottom', FieldManager::NUMBER()->setLabel('Padding Bottom (px)')->setDefault(80)->setMin(0)->setMax(300))
+        $control->addGroup('spacing', 'المسافات')
+            ->registerField('padding_top',    FieldManager::NUMBER()->setLabel('المسافة العلوية (بكسل)')->setDefault(80)->setMin(0)->setMax(300))
+            ->registerField('padding_bottom', FieldManager::NUMBER()->setLabel('المسافة السفلية (بكسل)')->setDefault(80)->setMin(0)->setMax(300))
             ->endGroup();
         return $control->getFields();
     }
@@ -65,7 +65,7 @@ class NewCollection extends BaseWidget
             }
 
             return view('theme-aromatic::widgets.new_collection', [
-                'title'          => $content['title']    ?? 'New Collections',
+                'title'          => $content['title']    ?? 'تشكيلة جديدة تستحق الاكتشاف',
                 'show_line'      => ($content['show_line'] ?? 'yes') === 'yes',
                 'products'       => $products,
                 'padding_top'    => (int) ($spacing['padding_top']    ?? 80),

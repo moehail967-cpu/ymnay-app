@@ -1,10 +1,8 @@
 <section class="ar-hero-widget" style="padding-top:{{ $padding_top }}px;padding-bottom:{{ $padding_bottom }}px;">
     <div class="container">
         <div class="ar-hero-inner">
-            {{-- Image: LEFT (matches design) --}}
             <div class="ar-hero-media">
                 <div class="ar-hero-img-wrap">
-                    <div class="ar-hero-circle"></div>
                     @if(!empty($image_url))
                         <img src="{{ $image_url }}" alt="{{ strip_tags($title) }}" class="ar-hero-img">
                     @else
@@ -31,6 +29,13 @@
                         <a href="{{ $button2_url }}" class="ar-btn ar-btn-outline">{{ $button2_text }}</a>
                     @endif
                 </div>
+                @if(!empty($stats))
+                    <div class="ar-hero-stats" aria-label="أبرز المزايا">
+                        @foreach($stats as $stat)
+                            <span>{{ $stat }}</span>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
     </div>

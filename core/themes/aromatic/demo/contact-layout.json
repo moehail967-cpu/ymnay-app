@@ -1,96 +1,119 @@
 {
-    "format": "xg_page_builder_v2",
-    "version": "1.0",
-    "content": {
-        "containers": [
-            {
-                "id": "section-ct001",
-                "type": "section",
-                "columns": [
-                    {
-                        "id": "column-ct001",
-                        "width": "100%",
-                        "widgets": [
-                            {
-                                "id": "widget-ct001",
-                                "type": "tenant_contact_info_form"
-                            }
-                        ],
-                        "settings": []
-                    }
-                ],
-                "settings": {
-                    "margin": "0px",
-                    "padding": "0px",
-                    "backgroundColor": "#ffffff"
-                }
-            },
-            {
-                "id": "section-ct002",
-                "type": "section",
-                "columns": [
-                    {
-                        "id": "column-ct002",
-                        "width": "100%",
-                        "widgets": [
-                            {
-                                "id": "widget-ct002",
-                                "type": "tenant_google_map_embed"
-                            }
-                        ],
-                        "settings": []
-                    }
-                ],
-                "settings": {
-                    "margin": "0px",
-                    "padding": "0px",
-                    "backgroundColor": "#ffffff"
-                }
-            }
-        ]
-    },
-    "widgets": {
-        "widget-ct001": {
-            "type": "tenant_contact_info_form",
-            "container_id": "section-ct001",
-            "column_id": "column-ct001",
-            "sort_order": 0,
-            "is_visible": true,
-            "is_enabled": true,
-            "version": "1.0.0",
-            "settings": {
-                "general": [],
-                "style": {
-                    "margin": "0",
-                    "padding": "0"
-                },
-                "advanced": {
-                    "customCSS": null,
-                    "cssClasses": null
-                },
-                "responsive": {}
-            }
-        },
-        "widget-ct002": {
-            "type": "tenant_google_map_embed",
-            "container_id": "section-ct002",
-            "column_id": "column-ct002",
-            "sort_order": 0,
-            "is_visible": true,
-            "is_enabled": true,
-            "version": "1.0.0",
-            "settings": {
-                "general": [],
-                "style": {
-                    "margin": "0",
-                    "padding": "0"
-                },
-                "advanced": {
-                    "customCSS": null,
-                    "cssClasses": null
-                },
-                "responsive": {}
-            }
+  "format": "xg_page_builder_v2",
+  "version": "1.0",
+  "content": {
+    "containers": [
+      {
+        "id": "section-ct001",
+        "type": "section",
+        "columns": [
+          {
+            "id": "column-ct001",
+            "width": "100%",
+            "widgets": [
+              {
+                "id": "widget-ct001",
+                "type": "tenant_contact_info_form"
+              }
+            ],
+            "settings": []
+          }
+        ],
+        "settings": {
+          "margin": "0px",
+          "padding": "0px",
+          "backgroundColor": "#ffffff"
         }
+      },
+      {
+        "id": "section-atheer-faq",
+        "type": "section",
+        "columns": [
+          {
+            "id": "column-atheer-faq",
+            "width": "100%",
+            "widgets": [
+              {
+                "id": "widget-atheer-faq",
+                "type": "aromatic_faq"
+              }
+            ],
+            "settings": []
+          }
+        ],
+        "settings": {
+          "margin": "0px",
+          "padding": "0px",
+          "backgroundColor": "#ffffff"
+        }
+      }
+    ]
+  },
+  "widgets": {
+    "widget-ct001": {
+      "type": "tenant_contact_info_form",
+      "container_id": "section-ct001",
+      "column_id": "column-ct001",
+      "sort_order": 0,
+      "is_visible": true,
+      "is_enabled": true,
+      "version": "1.0.0",
+      "settings": {
+        "general": {
+          "content": {
+            "title": "تواصل مع فريق أثير",
+            "description": "يسعدنا سماع استفساراتك ومساعدتك في اختيار عطرك المفضل. اترك رسالتك وسنعود إليك.",
+            "info_items": [
+              {
+                "label": "راسلنا من هنا",
+                "value": "استخدم نموذج التواصل وسنرد على رسالتك",
+                "icon": "las la-envelope"
+              }
+            ]
+          }
+        },
+        "style": {
+          "margin": "0",
+          "padding": "0"
+        },
+        "advanced": {
+          "customCSS": null,
+          "cssClasses": null
+        },
+        "responsive": {}
+      }
+    },
+    "widget-atheer-faq": {
+      "type": "aromatic_faq",
+      "container_id": "section-atheer-faq",
+      "column_id": "column-atheer-faq",
+      "sort_order": 0,
+      "is_visible": true,
+      "is_enabled": true,
+      "version": "1.0.0",
+      "settings": {
+        "general": {
+          "content": {
+            "title": "الأسئلة الأكثر شيوعاً",
+            "question_1": "كم تستغرق مدة الشحن والتوصيل؟",
+            "answer_1": "تظهر خيارات الشحن والمدة المتاحة لعنوانك أثناء إتمام الطلب.",
+            "question_2": "ما سياسة الاستبدال والاسترجاع؟",
+            "answer_2": "يمكنك الاطلاع على سياسة المتجر قبل إتمام الشراء والتواصل معنا عند الحاجة.",
+            "question_3": "هل المنتجات أصلية؟",
+            "answer_3": "نعرض تفاصيل كل منتج ومكوناته في صفحة المنتج لتختار بثقة.",
+            "question_4": "كيف أختار الرائحة المناسبة؟",
+            "answer_4": "تصفح وصف النفحات لكل عطر أو اكتب لنا لنساعدك في الاختيار."
+          }
+        },
+        "style": {
+          "spacing": {
+            "padding_top": 85,
+            "padding_bottom": 85
+          }
+        },
+        "advanced": {},
+        "responsive": {}
+      }
     }
+  }
 }

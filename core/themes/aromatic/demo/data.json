@@ -3,229 +3,245 @@
     "settings": [
       {
         "key": "site_title",
-        "value": "Aromatic — Luxury Fragrances"
+        "value": "أثير | عطور وعناية طبيعية"
       },
       {
         "key": "site_description",
-        "value": "Discover your signature scent. Premium perfumes, skincare and home fragrances crafted for every mood."
+        "value": "عطور شرقية ومنتجات عناية منتقاة بعناية لترافق تفاصيل يومك."
+      },
+      {
+        "key": "site_announcement_text",
+        "value": "تشكيلة عطرية بروح عربية — اكتشف جديد أثير"
+      },
+      {
+        "key": "footer_description",
+        "value": "أثير مساحة للعطور والعناية تجمع نقاء المكونات مع جمال التفاصيل."
       }
     ],
     "media": [
       {
-        "path": "assets/images/hero-banner.png",
+        "path": "assets/images/atheer-hero.jpg",
         "import_as": "aromatic-hero"
       },
       {
-        "path": "assets/images/promo-banner.jpg",
+        "path": "assets/images/atheer-promo.jpg",
         "import_as": "aromatic-promo-banner"
       },
       {
-        "path": "assets/images/cat-perfumes.jpg",
+        "path": "assets/images/atheer-cat-perfume.jpg",
         "import_as": "aromatic-cat-perfumes"
       },
       {
-        "path": "assets/images/cat-candles.jpg",
+        "path": "assets/images/atheer-cat-home.jpg",
         "import_as": "aromatic-cat-candles"
       },
       {
-        "path": "assets/images/cat-gift-sets.jpg",
+        "path": "assets/images/atheer-cat-gifts.jpg",
         "import_as": "aromatic-cat-gift-sets"
       },
       {
-        "path": "assets/images/cat-skincare.jpg",
+        "path": "assets/images/atheer-cat-skin.jpg",
         "import_as": "aromatic-cat-skincare"
       },
       {
-        "path": "assets/images/cat-hair-care.jpg",
+        "path": "assets/images/atheer-cat-hair.jpg",
         "import_as": "aromatic-cat-hair-care"
       },
       {
-        "path": "assets/images/cat-body-care.jpg",
+        "path": "assets/images/atheer-cat-body.jpg",
         "import_as": "aromatic-cat-body-care"
       },
       {
-        "path": "assets/images/prod-perfume-1.jpg",
+        "path": "assets/images/atheer-product-4.jpg",
         "import_as": "aromatic-prod-perfume-1"
       },
       {
-        "path": "assets/images/prod-perfume-2.jpg",
+        "path": "assets/images/atheer-product-6.jpg",
         "import_as": "aromatic-prod-perfume-2"
       },
       {
-        "path": "assets/images/prod-perfume-3.jpg",
+        "path": "assets/images/atheer-product-1.jpg",
         "import_as": "aromatic-prod-perfume-3"
       },
       {
-        "path": "assets/images/prod-candle.jpg",
+        "path": "assets/images/atheer-product-8.jpg",
         "import_as": "aromatic-prod-candle"
       },
       {
-        "path": "assets/images/prod-serum.jpg",
+        "path": "assets/images/atheer-product-5.jpg",
         "import_as": "aromatic-prod-serum"
       },
       {
-        "path": "assets/images/prod-face-cream.jpg",
+        "path": "assets/images/atheer-product-7.jpg",
         "import_as": "aromatic-prod-face-cream"
       },
       {
-        "path": "assets/images/prod-hair-oil.jpg",
+        "path": "assets/images/atheer-product-3.jpg",
         "import_as": "aromatic-prod-hair-oil"
       },
       {
-        "path": "assets/images/prod-body-lotion.jpg",
+        "path": "assets/images/atheer-product-2.jpg",
         "import_as": "aromatic-prod-body-lotion"
+      },
+      {
+        "path": "assets/images/atheer-gallery-1.jpg",
+        "import_as": "atheer-gallery-1"
+      },
+      {
+        "path": "assets/images/atheer-gallery-2.jpg",
+        "import_as": "atheer-gallery-2"
+      },
+      {
+        "path": "assets/images/atheer-gallery-3.jpg",
+        "import_as": "atheer-gallery-3"
+      },
+      {
+        "path": "assets/images/atheer-gallery-4.jpg",
+        "import_as": "atheer-gallery-4"
+      },
+      {
+        "path": "assets/images/atheer-about.jpg",
+        "import_as": "atheer-about"
+      },
+      {
+        "path": "assets/images/atheer-craft-1.jpg",
+        "import_as": "atheer-craft-1"
+      },
+      {
+        "path": "assets/images/atheer-craft-2.jpg",
+        "import_as": "atheer-craft-2"
+      },
+      {
+        "path": "assets/images/atheer-craft-3.jpg",
+        "import_as": "atheer-craft-3"
       }
     ],
     "categories": [
       {
-        "name": "Perfumes",
+        "name": "العطور الفاخرة",
         "slug": "perfumes",
         "image": "aromatic-cat-perfumes"
       },
       {
-        "name": "Candles",
+        "name": "معطرات المنازل",
         "slug": "candles",
         "image": "aromatic-cat-candles"
       },
       {
-        "name": "Gift Sets",
+        "name": "مجموعات الهدايا",
         "slug": "gift-sets",
         "image": "aromatic-cat-gift-sets"
       },
       {
-        "name": "Skincare",
+        "name": "سيرومات ونضارة البشرة",
         "slug": "skincare",
         "image": "aromatic-cat-skincare"
       },
       {
-        "name": "Hair Care",
+        "name": "العناية بالشعر",
         "slug": "hair-care",
         "image": "aromatic-cat-hair-care"
       },
       {
-        "name": "Body Care",
+        "name": "العناية بالجسم",
         "slug": "body-care",
         "image": "aromatic-cat-body-care"
       }
     ],
     "products": [
       {
-        "name": "Midnight Rose Eau de Parfum",
-        "summary": "A deep, romantic floral built on dark rose, smoky oud and warm amber. Long-lasting sillage.",
+        "name": "عطر روز ميدنايت",
+        "summary": "نفحات ورد دافئة تمتزج بخشب العود في عطر مسائي أنيق.",
         "price": 89.99,
         "compare_price": 119.99,
         "category": "perfumes",
         "image": "aromatic-prod-perfume-1",
         "stock": 40,
         "tags": [
-          "rose",
-          "oud",
-          "floral",
-          "evening"
+          "perfumes"
         ]
       },
       {
-        "name": "Ocean Breeze Cologne",
-        "summary": "Crisp aquatic freshness — sea salt, white cedar and a cool citrus opening.",
+        "name": "عطر نسيم المحيط",
+        "summary": "انتعاش الحمضيات ولمسات البحر في تركيبة يومية خفيفة.",
         "price": 64.99,
         "compare_price": 84.99,
         "category": "perfumes",
         "image": "aromatic-prod-perfume-2",
         "stock": 55,
         "tags": [
-          "aquatic",
-          "fresh",
-          "citrus",
-          "cedar"
+          "perfumes"
         ]
       },
       {
-        "name": "Velvet Oud EDP 100ml",
-        "summary": "Rich Middle-Eastern oud accord layered with spiced saffron and creamy sandalwood.",
+        "name": "عطر سحر الشرق بالعود 100 مل",
+        "summary": "توليفة شرقية من العود الكمبودي والعنبر بلمسة فاخرة تدوم.",
         "price": 129.99,
         "compare_price": 169.99,
         "category": "perfumes",
         "image": "aromatic-prod-perfume-3",
         "stock": 30,
         "tags": [
-          "oud",
-          "saffron",
-          "sandalwood",
-          "oriental"
+          "perfumes"
         ]
       },
       {
-        "name": "Sandalwood & Vanilla Soy Candle",
-        "summary": "Hand-poured 200g soy wax candle with warm sandalwood, vanilla and a whisper of musk. 45-hour burn.",
+        "name": "مجموعة اكتشاف العطور",
+        "summary": "مجموعة مختارة لتجربة بصمتك العطرية المفضلة أو إهدائها.",
         "price": 39.99,
         "compare_price": 54.99,
         "category": "candles",
         "image": "aromatic-prod-candle",
         "stock": 50,
         "tags": [
-          "candle",
-          "sandalwood",
-          "vanilla",
-          "soy"
+          "candles"
         ]
       },
       {
-        "name": "Vitamin C Brightening Serum",
-        "summary": "High-potency 20% Vitamin C serum that visibly brightens skin and reduces dark spots in 4 weeks.",
+        "name": "سيروم فيتامين سي للنضارة",
+        "summary": "سيروم خفيف يمنح البشرة إشراقاً وملمساً ناعماً.",
         "price": 49.99,
         "compare_price": 69.99,
         "category": "skincare",
         "image": "aromatic-prod-serum",
         "stock": 60,
         "tags": [
-          "serum",
-          "vitamin-c",
-          "brightening",
           "skincare"
         ]
       },
       {
-        "name": "Rose Hydra Cream 50ml",
-        "summary": "Intense 72-hour hydration with rose hip oil and hyaluronic acid for plump, dewy skin.",
+        "name": "كريم هيدرا بماء الورد 50 مل",
+        "summary": "عناية يومية مرطبة بماء الورد ولمسة حريرية.",
         "price": 44.99,
         "compare_price": 59.99,
         "category": "skincare",
         "image": "aromatic-prod-face-cream",
         "stock": 45,
         "tags": [
-          "moisturiser",
-          "rose",
-          "hyaluronic",
           "skincare"
         ]
       },
       {
-        "name": "Argan Hair Elixir 100ml",
-        "summary": "Cold-pressed Moroccan argan oil blended with silk proteins for glossy, frizz-free hair.",
+        "name": "إكسير الأرغان للشعر 100 مل",
+        "summary": "زيت أرغان مغذٍ يمنح الشعر لمعاناً طبيعياً.",
         "price": 34.99,
         "compare_price": 44.99,
         "category": "hair-care",
         "image": "aromatic-prod-hair-oil",
         "stock": 70,
         "tags": [
-          "argan",
-          "hair",
-          "oil",
-          "frizz-free"
+          "hair-care"
         ]
       },
       {
-        "name": "Silk Body Lotion 250ml",
-        "summary": "Lightweight, fast-absorbing lotion enriched with shea butter and jasmine extract for silky skin.",
+        "name": "لوشن الحرير للجسم 250 مل",
+        "summary": "تركيبة ناعمة مع زبدة الشيا لراحة تدوم طوال اليوم.",
         "price": 29.99,
         "compare_price": 39.99,
         "category": "body-care",
         "image": "aromatic-prod-body-lotion",
         "stock": 80,
         "tags": [
-          "lotion",
-          "shea",
-          "jasmine",
           "body-care"
         ]
       }
@@ -244,7 +260,7 @@
         "widget_order": 2,
         "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
         "widget_settings": {
-          "title": "Collections",
+          "title": "أقسام المتجر",
           "menu_id": "@primary_menu"
         }
       },
@@ -254,7 +270,7 @@
         "widget_order": 3,
         "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterNavWidget",
         "widget_settings": {
-          "title": "Customer Care",
+          "title": "خدمة العملاء",
           "menu_id": "@primary_menu"
         }
       },
@@ -264,7 +280,7 @@
         "widget_order": 4,
         "widget_namespace": "Plugins\\WidgetBuilder\\Widgets\\Tenant\\Footer\\GlobalFooterBadgesWidget",
         "widget_settings": {
-          "title": "Our Promise",
+          "title": "وعد أثير",
           "footer_badges": {
             "badge_icon_": [
               "🌿",
@@ -273,16 +289,16 @@
               "🎁"
             ],
             "badge_title_": [
-              "100% Authentic",
-              "Free Shipping",
-              "Secure Payment",
-              "Gift Wrapping"
+              "تشكيلة منتقاة",
+              "خيارات توصيل",
+              "خيارات دفع",
+              "أفكار للهدايا"
             ],
             "badge_sub_": [
-              "Genuine fragrances only",
-              "On orders over $60",
-              "SSL encrypted checkout",
-              "Complimentary on request"
+              "تفاصيل تساعدك على الاختيار",
+              "تظهر أثناء الطلب",
+              "تظهر عند إتمام الشراء",
+              "تفاصيل تليق بمن تحب"
             ]
           }
         }
@@ -290,7 +306,7 @@
     ],
     "pages": [
       {
-        "title": "Home",
+        "title": "الرئيسية",
         "slug": "aromatic-home",
         "page_builder": true,
         "breadcrumb": false,
@@ -298,18 +314,18 @@
         "layout_file": "demo/page_builder_layout.json"
       },
       {
-        "title": "About Us",
+        "title": "من نحن",
         "slug": "about-us",
-        "page_builder": false,
-        "breadcrumb": true,
-        "layout_file": "assets/page_layout/about-layout.json"
+        "page_builder": true,
+        "breadcrumb": false,
+        "layout_file": "demo/about-layout.json"
       },
       {
-        "title": "Contact",
+        "title": "تواصل معنا",
         "slug": "contact-us",
-        "page_builder": false,
-        "breadcrumb": true,
-        "layout_file": "assets/page_layout/contact-layout.json"
+        "page_builder": true,
+        "breadcrumb": false,
+        "layout_file": "demo/contact-layout.json"
       }
     ]
   }

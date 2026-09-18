@@ -16,7 +16,7 @@ class HeroSection extends BaseWidget
 
     protected function getWidgetName(): string
     {
-        return 'Aromatic: Hero Section';
+        return 'Aromatic: الواجهة الرئيسية';
     }
 
     protected function getWidgetIcon(): string|array
@@ -26,7 +26,7 @@ class HeroSection extends BaseWidget
 
     protected function getWidgetDescription(): string
     {
-        return __('Full-width luxury hero banner with fragrance imagery and CTA buttons');
+        return 'واجهة عربية بصورة رئيسية وأزرار قابلة للتعديل';
     }
 
     protected function getCategory(): string
@@ -42,18 +42,21 @@ class HeroSection extends BaseWidget
     public function getGeneralFields(): array
     {
         $control = new ControlManager();
-        $control->addGroup('content', 'Content')
-            ->registerField('section_tag', FieldManager::TEXT()->setLabel('Section Tag')->setDefault('New Arrivals'))
-            ->registerField('title', FieldManager::TEXTAREA()->setLabel('Title (HTML allowed)')->setDefault('Discover Your <br>Signature Scent'))
-            ->registerField('subtitle', FieldManager::TEXTAREA()->setLabel('Subtitle')->setDefault('Explore our curated collection of premium fragrances crafted for every mood.'))
-            ->registerField('button_text', FieldManager::TEXT()->setLabel('Primary Button Text')->setDefault('Shop Collection'))
-            ->registerField('button_url', FieldManager::URL()->setLabel('Primary Button URL')->setDefault('#'))
-            ->registerField('button2_text', FieldManager::TEXT()->setLabel('Secondary Button Text')->setDefault('Learn More'))
-            ->registerField('button2_url', FieldManager::URL()->setLabel('Secondary Button URL')->setDefault('#'))
+        $control->addGroup('content', 'المحتوى')
+            ->registerField('section_tag', FieldManager::TEXT()->setLabel('العبارة العلوية')->setDefault('الموسم الجديد'))
+            ->registerField('title', FieldManager::TEXTAREA()->setLabel('العنوان (يسمح بتنسيق HTML)')->setDefault('اكتشف عطرك الأيقوني <br>وتألقك الطبيعي'))
+            ->registerField('subtitle', FieldManager::TEXTAREA()->setLabel('الوصف')->setDefault('مجموعة مختارة بعناية من أنقى النفحات العطرية الشرقية والفرنسية.'))
+            ->registerField('button_text', FieldManager::TEXT()->setLabel('نص الزر الأساسي')->setDefault('تسوق التشكيلة الجديدة'))
+            ->registerField('button_url', FieldManager::URL()->setLabel('رابط الزر الأساسي')->setDefault('#'))
+            ->registerField('button2_text', FieldManager::TEXT()->setLabel('نص الزر الثاني')->setDefault('اكتشف المجموعات'))
+            ->registerField('button2_url', FieldManager::URL()->setLabel('رابط الزر الثاني')->setDefault('#'))
+            ->registerField('stat_one', FieldManager::TEXT()->setLabel('ميزة أولى')->setDefault('مكونات منتقاة بعناية'))
+            ->registerField('stat_two', FieldManager::TEXT()->setLabel('ميزة ثانية')->setDefault('تفاصيل تصنع الفرق'))
+            ->registerField('stat_three', FieldManager::TEXT()->setLabel('ميزة ثالثة')->setDefault('تجربة عطرية عربية'))
             ->endGroup();
 
-        $control->addGroup('media', 'Media')
-            ->registerField('hero_image', FieldManager::IMAGE()->setLabel('Hero Image'))
+        $control->addGroup('media', 'الصور')
+            ->registerField('hero_image', FieldManager::IMAGE()->setLabel('الصورة الرئيسية'))
             ->endGroup();
 
         return $control->getFields();
@@ -62,9 +65,9 @@ class HeroSection extends BaseWidget
     public function getStyleFields(): array
     {
         $control = new ControlManager();
-        $control->addGroup('spacing', 'Spacing')
-            ->registerField('padding_top', FieldManager::NUMBER()->setLabel('Padding Top (px)')->setDefault(0)->setMin(0)->setMax(200))
-            ->registerField('padding_bottom', FieldManager::NUMBER()->setLabel('Padding Bottom (px)')->setDefault(0)->setMin(0)->setMax(200))
+        $control->addGroup('spacing', 'المسافات')
+            ->registerField('padding_top', FieldManager::NUMBER()->setLabel('المسافة العلوية (بكسل)')->setDefault(0)->setMin(0)->setMax(200))
+            ->registerField('padding_bottom', FieldManager::NUMBER()->setLabel('المسافة السفلية (بكسل)')->setDefault(0)->setMin(0)->setMax(200))
             ->endGroup();
 
         return $control->getFields();
@@ -104,13 +107,14 @@ class HeroSection extends BaseWidget
             $rawUrl2 = $content['button2_url'] ?? '#';
 
             return view('theme-aromatic::widgets.hero_section', [
-                'section_tag'    => $content['section_tag'] ?? 'New Arrivals',
-                'title'          => $content['title'] ?? 'Discover Your <br>Signature Scent',
-                'subtitle'       => $content['subtitle'] ?? 'Explore our curated collection of premium fragrances crafted for every mood.',
-                'button_text'    => $content['button_text'] ?? 'Shop Collection',
+                'section_tag'    => $content['section_tag'] ?? 'الموسم الجديد',
+                'title'          => $content['title'] ?? 'اكتشف عطرك الأيقوني <br>وتألقك الطبيعي',
+                'subtitle'       => $content['subtitle'] ?? 'مجموعة مختارة بعناية من أنقى النفحات العطرية الشرقية والفرنسية.',
+                'button_text'    => $content['button_text'] ?? 'تسوق التشكيلة الجديدة',
                 'button_url'     => is_array($rawUrl1) ? ($rawUrl1['url'] ?? '#') : $rawUrl1,
-                'button2_text'   => $content['button2_text'] ?? 'Learn More',
+                'button2_text'   => $content['button2_text'] ?? 'اكتشف المجموعات',
                 'button2_url'    => is_array($rawUrl2) ? ($rawUrl2['url'] ?? '#') : $rawUrl2,
+                'stats'          => array_filter([$content['stat_one'] ?? '', $content['stat_two'] ?? '', $content['stat_three'] ?? '']),
                 'image_url'      => $hero_img,
                 'padding_top'    => (int) ($spacing['padding_top'] ?? 0),
                 'padding_bottom' => (int) ($spacing['padding_bottom'] ?? 0),

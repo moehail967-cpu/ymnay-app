@@ -1,0 +1,6 @@
+body.aromatic .ar-nav-links li ul { right: 0; left: auto; }
+body.aromatic .ar-badge { right: auto; left: 2px; }
+body.aromatic .ar-search-dropdown { right: 0; left: 0; }
+body.aromatic .ar-card-wishlist { left: 12px; right: auto; }
+body.aromatic .ar-card-badge { right: 12px; left: auto; }
+body.aromatic .ar-promo-content { text-align: right; }

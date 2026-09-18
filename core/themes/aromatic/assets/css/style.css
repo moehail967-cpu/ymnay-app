@@ -75,9 +75,9 @@ Version: 1.0.0
 # Normalize
 --------------------------------------------------------------*/
 :root {
-  --main-color-one: #F83A26;
+  --main-color-one: #171717;
   --main-color-one-rgb: 248, 58, 38;
-  --main-color-two: #FFBA00;
+  --main-color-two: #806641;
   --main-color-three: #FF6A3A;
   --main-color-four: #FF695C;
   --heading-color: #1B1C25;
@@ -475,7 +475,7 @@ input[type=number] {
 }
 
 .shop-color-1 {
-  background: #F83A26 !important;
+  background: #171717 !important;
 }
 
 .shop-color-2 {
@@ -9731,7 +9731,7 @@ input[type=number] {
   display: block;
   height: 30px;
   width: 30px;
-  background: #F83A26;
+  background: #171717;
 }
 .single-shop-left .shop-left-title .shop-left-list .size-lists {
   display: -webkit-box;
@@ -10501,7 +10501,7 @@ input[type=number] {
   width: calc(100% + 8px);
   left: -4px;
   top: -4px;
-  border: 1px solid #F83A26;
+  border: 1px solid #171717;
 }
 .value-input-area .color-list li.shop-color-2 {
   border-color: #30BB6F;
@@ -10652,7 +10652,7 @@ input[type=number] {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: 1px solid #F83A26;
+  border: 1px solid #171717;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
@@ -11582,7 +11582,7 @@ input[type=number] {
   margin: 50px auto 20px;
   max-width: 1290px;
   display: inline-block;
-  border-bottom: 5px solid #F83A26;
+  border-bottom: 5px solid #171717;
 }
 @media (min-width: 1200px) and (max-width: 1399.98px) {
   .single-blog-details blockquote {
@@ -18000,7 +18000,7 @@ blockquote .blockquote-contents-title {
    ============================================================ */
 
 :root {
-  --ar-red:    #F83A26;
+  --ar-red:    #171717;
   --ar-dark:   #1B1C25;
   --ar-body:   #666666;
   --ar-light:  #999999;
@@ -18067,7 +18067,7 @@ blockquote .blockquote-contents-title {
   text-transform: uppercase;
 }
 .ar-btn-red  { background: var(--ar-red); color: #fff; }
-.ar-btn-red:hover { background: #c92e1a; color: #fff; }
+.ar-btn-red:hover { background: #806641; color: #fff; }
 .ar-btn-dark { background: var(--ar-dark); color: #fff; }
 .ar-btn-dark:hover { background: #333; color: #fff; }
 .ar-btn-outline {
@@ -18211,7 +18211,7 @@ blockquote .blockquote-contents-title {
   justify-content: center;
   font-size: 80px;
   color: var(--ar-red);
-  background: rgba(248,58,38,.08);
+  background: rgba(23,23,23,.08);
   border-radius: 50%;
   position: relative;
   z-index: 1;
@@ -18636,11 +18636,11 @@ height:40px;}
   text-decoration: none;
   transition: color .2s;
 }
-.collection-title a:hover { color: var(--main-color-one, #F83A26) !important; }
+.collection-title a:hover { color: var(--main-color-one, #171717) !important; }
 
 /* --- Fix: common price title – red sale price --- */
 .common-price-title {
-  color: var(--main-color-one, #F83A26) !important;
+  color: var(--main-color-one, #171717) !important;
   font-size: 15px !important;
   font-weight: 600;
 }
@@ -18682,7 +18682,7 @@ height:40px;}
 }
 .banner-five .banner-contents .btn-wrapper { margin-top: 32px; }
 .banner-five .banner-contents .cmn-btn.btn-bg-1 {
-  background: var(--main-color-one, #F83A26);
+  background: var(--main-color-one, #171717);
   color: #fff;
   border: none;
   padding: 12px 28px;
@@ -18696,7 +18696,7 @@ height:40px;}
   border-radius: 0;
 }
 .banner-five .banner-contents .cmn-btn.btn-bg-1:hover {
-  background: #c92e1a;
+  background: #806641;
 }
 
 /* --- Fix: spray/promo section text --- */
@@ -18711,7 +18711,7 @@ height:40px;}
   display: block;
   font-size: 2rem !important;
   font-weight: 700 !important;
-  color: var(--main-color-one, #F83A26) !important;
+  color: var(--main-color-one, #171717) !important;
   margin-bottom: 28px;
 }
 .spray-contents .cmn-btn.btn-bg-heading {
@@ -18757,7 +18757,7 @@ height:40px;}
   color: var(--light-color, #666);
   transition: color .2s;
 }
-.instagram-contents .icon:hover { color: var(--main-color-one, #F83A26); }
+.instagram-contents .icon:hover { color: var(--main-color-one, #171717); }
 .instagram-contents .instagram-title {
   font-size: 14px !important;
   font-weight: 500;
@@ -18924,8 +18924,8 @@ body {
 
 /* Buttons — match aromatic ar-btn style */
 .ps-btn-primary {
-  background: var(--main-color-one, #F83A26) !important;
-  border-color: var(--main-color-one, #F83A26) !important;
+  background: var(--main-color-one, #171717) !important;
+  border-color: var(--main-color-one, #171717) !important;
   font-family: var(--rubik-font, "Rubik", sans-serif) !important;
   font-size: 13px !important;
   font-weight: 700 !important;
@@ -18933,7 +18933,7 @@ body {
   text-transform: uppercase !important;
   padding: 12px 28px !important;
 }
-.ps-btn-primary:hover { background: #c92e1a !important; border-color: #c92e1a !important; }
+.ps-btn-primary:hover { background: #806641 !important; border-color: #806641 !important; }
 
 .ps-btn-outline {
   color: var(--heading-color, #1B1C25) !important;
@@ -18949,7 +18949,7 @@ body {
 
 /* Grand total accent color */
 .ps-total-row.is-grand span:last-child {
-  color: var(--main-color-one, #F83A26) !important;
+  color: var(--main-color-one, #171717) !important;
 }
 
 /* Page background — use aromatic's cream bg */
